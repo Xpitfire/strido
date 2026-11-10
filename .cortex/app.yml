@@ -25,8 +25,8 @@ services:
   - docs                             # first service = the gateway upstream of public_routes
   - assistant
 health_urls:
-  - http://127.0.0.1:4390/healthz
-  - http://127.0.0.1:4391/api/health
+  - http://127.0.0.1:4392/healthz
+  - http://127.0.0.1:4393/api/health
 public_urls:
   - https://strido.cortex.a2olabs.com/
 public_routes:

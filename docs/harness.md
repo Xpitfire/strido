@@ -48,7 +48,7 @@ The site runs at **https://strido.cortex.a2olabs.com/**, public, in English and 
 
 ```bash
 make docs & make assistant                                  # local: site with live AI bar on http://127.0.0.1:4173/
-docker compose -f docker-compose.docs.yml up --build       # local images: site :4390, assistant :4391
+docker compose -f docker-compose.docs.yml up --build       # local images: site :4392, assistant :4393
 make i18n                                                   # after English changes: new German segments to translate
 git push                                                      # Cortex builds from GitHub, not from the checkout
 cortex deploy --ref "$(git rev-parse HEAD)"

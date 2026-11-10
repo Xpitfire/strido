@@ -1,7 +1,7 @@
 # Strido documentation site and its assistant (deployed by Cortex from .cortex/app.yml behind Cortex SSO,
 # with the overlay docker-compose.cortex.yml).
-# Local: docker compose -f docker-compose.docs.yml up --build  ->  site http://127.0.0.1:4390/,
-#        assistant http://127.0.0.1:4391/api/health (development identity; model access from a sourced
+# Local: docker compose -f docker-compose.docs.yml up --build  ->  site http://127.0.0.1:4392/,
+#        assistant http://127.0.0.1:4393/api/health (development identity; model access from a sourced
 #        Keyring env: `set -a; . ~/.config/cortex/keyring.prod.env; set +a` before `up`).
 services:
   docs:
@@ -12,7 +12,7 @@ services:
     image: strido-docs:local
     restart: unless-stopped
     ports:
-      - "127.0.0.1:4390:8080"  # loopback only: the host runner probes /healthz; users come through the gateway
+      - "127.0.0.1:4392:8080"  # loopback only: the host runner probes /healthz; users come through the gateway
     read_only: true
     tmpfs:
       - /var/cache/nginx
@@ -27,7 +27,7 @@ services:
     image: strido-assistant:local
     restart: unless-stopped
     ports:
-      - "127.0.0.1:4391:8090"  # loopback only, like docs
+      - "127.0.0.1:4393:8090"  # loopback only, like docs
     read_only: true
     tmpfs:
       - /tmp
