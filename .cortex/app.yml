@@ -45,8 +45,11 @@ models:                              # Cortex Keyring: the assistant's Anthropic
   providers: [anthropic, claude]
   subscriber: dinu.marius.constantin@gmail.com
   rate_per_minute: 60
+# access.directory (the app key the assistant uses to verify `cxu_` agent tokens) is off for now: the deploy
+# runner cannot read the app directory Control created for the new `strido` workspace ("fix its owner and
+# group (Control writes them)"). Re-enable once fixed; until then agents use the SSO lane only.
 access:
-  directory: true                    # app key: the assistant verifies `cxu_` agent tokens with Cortex
+  directory: false
   services: [assistant]
   keyUser: "1000:1000"               # the image's `node` user
 config:
