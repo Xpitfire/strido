@@ -1,0 +1,43 @@
+# Strido documentation site and its assistant (deployed by Cortex from .cortex/app.yml behind Cortex SSO,
+# with the overlay docker-compose.cortex.yml).
+# Local: docker compose -f docker-compose.docs.yml up --build  ->  site http://127.0.0.1:4390/,
+#        assistant http://127.0.0.1:4391/api/health (development identity; model access from a sourced
+#        Keyring env: `set -a; . ~/.config/cortex/keyring.prod.env; set +a` before `up`).
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: docs-site/Dockerfile
+      target: docs
+    image: strido-docs:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4390:8080"  # loopback only: the host runner probes /healthz; users come through the gateway
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+
+  assistant:
+    build:
+      context: .
+      dockerfile: docs-site/Dockerfile
+      target: assistant
+    image: strido-assistant:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4391:8090"  # loopback only, like docs
+    read_only: true
+    tmpfs:
+      - /tmp
+    environment:
+      ASSISTANT_AUTH_MODE: dev
+      ASSISTANT_DEV: "1"
+      ANTHROPIC_BASE_URL: ${ANTHROPIC_BASE_URL:-}
+      ANTHROPIC_AUTH_TOKEN: ${ANTHROPIC_AUTH_TOKEN:-}
+    volumes:
+      - assistant-data:/data  # conversations and attachments (SQLite)
+
+volumes:
+  assistant-data:

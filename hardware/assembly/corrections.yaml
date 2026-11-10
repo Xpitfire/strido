@@ -1,0 +1,33 @@
+# Corrections to the upstream STEP assembly so the CAD matches the parts people actually print.
+# Applied by strido_cad.assembly (placed parts) and strido_cad.fasteners (derived fasteners);
+# verified by strido_verify.fits (every screw must run through holes in every printed part).
+#
+# rotate: rigid rotation of the listed parts and fastener joints of the listed legs about a
+#         measured leg axis (thigh = femur pivot axis, STEP +x), angle in degrees (right hand).
+#         Angles are the measured offsets between hole patterns (strido_verify.fits proves them).
+
+corrections:
+  - id: right_femur_horn_pattern
+    why: >-
+      All four femurs print from one STL (Femur.stl x4). The STEP mirrors the right-side femurs, so on
+      FR and RR the printed femur's square of four horn screws (r = 7 mm) sits 30 deg away from the
+      STEP's disc-horn holes (3.6 mm chord: screws would hit solid material). Built robots mount the
+      25T disc horn rotated by -30 deg on the right legs; the extra thigh offset is absorbed by the
+      spline (2 teeth = 28.8 deg) and the neutral trim.
+    legs: [FR, RR]
+    axis: thigh
+    body: thigh                     # only parts on this rigid body of the leg (the hip horn is not on the thigh axis)
+    angle_deg: -30.0
+    parts: [purchased/servo_disc_horn_25t]
+    fastener_joints: [femur_to_horn]
+  - id: right_femur_connector_pattern
+    why: >-
+      The femur servo connector is nearly rotationally symmetric, so registering its STL to the mirrored
+      STEP solid on the right legs left its four screw holes 22 deg off the femur's holes. Rotate it onto
+      the femur pattern (the part is screwed to the femur; its orientation is set by those holes).
+    legs: [FR, RR]
+    axis: thigh
+    body: thigh                     # only parts on this rigid body of the leg (the hip horn is not on the thigh axis)
+    angle_deg: 22.0
+    parts: [printed/femur_servo_connector]
+    fastener_joints: []

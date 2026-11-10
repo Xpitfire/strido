@@ -1,0 +1,74 @@
+{
+ "831d0f72d242b7d1": {
+  "en": "Getting started",
+  "de": "Erste Schritte"
+ },
+ "45b3025b2a7e04f7": {
+  "en": "Seven stages from an empty desk to a walking robot. Each stage links to the page with the details; the [Learn wiki](wiki/README.md) explains the engineering behind them.",
+  "de": "Sieben Etappen vom leeren Tisch zum gehenden Roboter. Jede Etappe verlinkt auf die Seite mit den Details; das [Lernen-Wiki](wiki/README.md) erklärt die Technik dahinter."
+ },
+ "8b3f4ab40b6033fc": {
+  "en": "1 · Print",
+  "de": "1 · Drucken"
+ },
+ "a8d60db963ba6dfa": {
+  "en": "Easiest: the [print kit](print-kit.md) page builds a ready-to-print package (pick complete robots or single parts; STLs named with their quantity, the slicer profile, a parts sheet and the ready plates), or take the whole build kit from the [downloads](downloads.md) page. Import the included `prusaslicer.ini` (PrusaSlicer: File › Import › Import Config; other slicers: enter the values from the [print list](../hardware/print/print_list.md)), then print the plates (220 × 220 mm bed or larger) or the single STLs. Every part and plate was sliced with exactly this profile ([printability](verification/printability.md)); about 1.0 kg PETG and 100 h of printing. Lime parts are the shells and shoulders; everything else graphite. After printing, follow the warnings in the [fit report](verification/fits.md).",
+  "de": "Am einfachsten: Die Seite [Druckpaket](print-kit.md) erstellt ein druckfertiges Paket (wählen Sie komplette Roboter oder einzelne Teile; STLs mit ihrer Stückzahl im Namen, das Slicer-Profil, ein Teileblatt und die fertigen Druckplatten), oder laden Sie das gesamte Baupaket von der Seite [Downloads](downloads.md). Importieren Sie die enthaltene `prusaslicer.ini` (PrusaSlicer: Datei › Importieren › Konfiguration importieren; andere Slicer: übernehmen Sie die Werte aus der [Druckliste](../hardware/print/print_list.md)) und drucken Sie dann die Druckplatten (Druckbett 220 × 220 mm oder größer) oder die einzelnen STLs. Jedes Teil und jede Druckplatte wurde mit genau diesem Profil gesliced ([Druckbarkeit](verification/printability.md)); etwa 1,0 kg PETG und 100 h Druckzeit. Die limettengrünen Teile sind die Schalen und Schultern; alles andere ist graphitfarben. Beachten Sie nach dem Drucken die Warnungen im [Passungsbericht](verification/fits.md)."
+ },
+ "6778437b1f074cf0": {
+  "en": "2 · Buy",
+  "de": "2 · Kaufen"
+ },
+ "e9cd57093e59f349": {
+  "en": "The [shop](shop.md) sells the complete robot as one kit (or single parts) with real shop offers: pick one of the four [buying plans](bom/shopping_list.md) or change the shop per part, see the total with every shop's shipping in the cart, and check out per shop with a guided checklist that opens each item's shop page in turn (plus a copyable order list for shops with a quick-order form). Fasteners include 10 % spares. Tools: section E of the [catalogue PDF](catalog/strido-catalog.pdf).",
+  "de": "Der [Shop](shop.md) verkauft den kompletten Roboter als ein Bausatz (oder einzelne Teile) mit echten Shop-Angeboten: Wählen Sie einen der vier [Einkaufspläne](bom/shopping_list.md) oder ändern Sie den Shop pro Teil, sehen Sie die Gesamtsumme inklusive der Versandkosten jedes Shops im Warenkorb und gehen Sie pro Shop mit einer geführten Checkliste zur Kasse, die nacheinander die Shopseite jedes Artikels öffnet (dazu eine kopierbare Bestellliste für Shops mit Schnellbestellformular). Befestigungselemente enthalten 10 % Reserve. Werkzeug: Abschnitt E des [Katalog-PDFs](catalog/strido-catalog.pdf)."
+ },
+ "47b5de853e7205a1": {
+  "en": "3 · Assemble",
+  "de": "3 · Montieren"
+ },
+ "07c6a3616c740399": {
+  "en": "Follow the [assembly manual](assembly/README.md) or the PDF. The [3D viewer](viewer.md) replays every step on the full model. Before step 1: centre all twelve servos (step 5 below can be done on the bench first).",
+  "de": "Folgen Sie der [Montageanleitung](assembly/README.md) oder dem PDF. Die [3D-Ansicht](viewer.md) spielt jeden Schritt am vollständigen Modell ab. Vor Schritt 1: Zentrieren Sie alle zwölf Servos (Etappe 5 unten kann vorher auf dem Arbeitstisch erfolgen)."
+ },
+ "067110e3dd59de0b": {
+  "en": "4 · Wire",
+  "de": "4 · Verkabeln"
+ },
+ "6a09ac149bf87ebc": {
+  "en": "[Electronics](electronics.md): power tree, wiring list, the routed wiring harness, pin map and the first smoke test without servos. The pin map is machine-checked against the firmware ([electronics check](verification/electronics.md)).",
+  "de": "[Elektronik](electronics.md): Versorgungsbaum, Verkabelungsliste, der verlegte Kabelbaum, Pinbelegung und der erste Rauchtest ohne Servos. Die Pinbelegung wird maschinell gegen die Firmware geprüft ([Elektronikprüfung](verification/electronics.md))."
+ },
+ "41836abfd8873685": {
+  "en": "5 · Flash and calibrate",
+  "de": "5 · Flashen und kalibrieren"
+ },
+ "e2c57ea4667ca756": {
+  "en": "Details: [software › firmware](software.md#firmware) and [electronics › wiring harness](electronics.md#wiring-harness).",
+  "de": "Details: [Software › Firmware](software.md#firmware) und [Elektronik › Kabelbaum](electronics.md#wiring-harness)."
+ },
+ "08f3dfb1c9be662b": {
+  "en": "6 · Run",
+  "de": "6 · Ausführen"
+ },
+ "7599d0e04be0e306": {
+  "en": "On the Raspberry Pi 5 (Docker): `docker compose -f docker/compose.yaml run --rm robot`, then `ros2 run teleop_twist_keyboard teleop_twist_keyboard`. Topics and launch files: [software](software.md).",
+  "de": "Auf dem Raspberry Pi 5 (Docker): `docker compose -f docker/compose.yaml run --rm robot`, dann `ros2 run teleop_twist_keyboard teleop_twist_keyboard`. Topics und Launch-Dateien: [Software](software.md)."
+ },
+ "6828c94bb6a372ee": {
+  "en": "7 · Simulate, train, integrate",
+  "de": "7 · Simulieren, trainieren, integrieren"
+ },
+ "d64e07a6bba36234": {
+  "en": "`make sim-walk`, `make sim-gazebo`, `make rl-train`, and the NT-X harness via `make ntx-smoke`: [simulation](simulation.md), [NT-X integration](ntx-integration.md).",
+  "de": "`make sim-walk`, `make sim-gazebo`, `make rl-train` und das NT-X-Harness über `make ntx-smoke`: [Simulation](simulation.md), [NT-X-Integration](ntx-integration.md)."
+ },
+ "0b13b412aab2c572": {
+  "en": "Developing on this repository",
+  "de": "Entwicklung an diesem Repository"
+ },
+ "0b8ca165391fb147": {
+  "en": "Changing the design, running the verification gates or rebuilding this site: see the [harness runbook](harness.md).",
+  "de": "Design ändern, Verifikationsprüfungen ausführen oder diese Site neu bauen: siehe das [Harness-Runbook](harness.md)."
+ }
+}

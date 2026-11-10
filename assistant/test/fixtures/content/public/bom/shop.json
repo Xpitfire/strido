@@ -1,0 +1,31 @@
+{
+ "vendors": {
+  "reichelt_at": {
+   "name": "Reichelt.at"
+  }
+ },
+ "lines": [
+  {
+   "id": "fuse_25a",
+   "name": "ATO blade fuse 25 A",
+   "category": "Power",
+   "qty": 3,
+   "offers": [
+    {
+     "vendor": "reichelt_at",
+     "price": 0.36,
+     "pack": 1
+    }
+   ]
+  }
+ ],
+ "plans": [
+  {
+   "key": "lowest",
+   "letter": "A",
+   "choice": {
+    "fuse_25a": 0
+   }
+  }
+ ]
+}

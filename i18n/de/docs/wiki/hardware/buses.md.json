@@ -1,0 +1,330 @@
+{
+ "562d5377b7081b3d": {
+  "en": "Buses and signals",
+  "de": "Busse und Signale"
+ },
+ "67c475c40288c77a": {
+  "en": "A bus is an agreed way of moving bits between chips: which wires carry what, how fast, and who may talk when. Strido uses five: I²C for the sensors and the servo driver, USB serial between the Pi and the ESP32 (and to the LiDAR), PWM to the servos, SPI to the face display and CSI to the camera. Each was picked for a reason you can work out from the numbers.",
+  "de": "Ein Bus ist eine vereinbarte Art, Bits zwischen Chips zu übertragen: welche Leitungen was führen, wie schnell und wer wann sprechen darf. Strido verwendet fünf: I²C für die Sensoren und den Servotreiber, USB-Seriell zwischen dem Pi und dem ESP32 (und zum LiDAR), PWM zu den Servos, SPI zum Gesichtsdisplay und CSI zur Kamera. Jeder wurde aus einem Grund gewählt, den Sie aus den Zahlen herleiten können."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "c01c5458303cc784": {
+  "en": "**I²C** (400 kHz) on XIAO D4 = SDA, D5 = SCL: PCA9685 0x40 (all-call 0x70), LSM6DSOX 0x6A, INA260 0x41. Wires W17 (22 AWG, soldered at the XIAO, crimped at the PCA9685) and W18, W19 (STEMMA QT cables, `stemma_qt_female` × 2).",
+  "de": "**I²C** (400 kHz) an XIAO D4 = SDA, D5 = SCL: PCA9685 0x40 (All-Call 0x70), LSM6DSOX 0x6A, INA260 0x41. Leitungen W17 (22 AWG, am XIAO gelötet, am PCA9685 gecrimpt) und W18, W19 (STEMMA-QT-Kabel, `stemma_qt_female` × 2)."
+ },
+ "d1a3e162291058fb": {
+  "en": "**USB serial:** Pi → XIAO USB CDC (W14, `/dev/strido_mcu`) and Pi → RPLIDAR C1 USB adapter (W15, `/dev/rplidar`).",
+  "de": "**USB-Seriell:** Pi → XIAO USB CDC (W14, `/dev/strido_mcu`) und Pi → RPLIDAR-C1-USB-Adapter (W15, `/dev/rplidar`)."
+ },
+ "3f27769172eeb7bb": {
+  "en": "**PWM:** PCA9685 → 12 servos, 200 Hz, 500–2500 µs; LCD backlight on D2.",
+  "de": "**PWM:** PCA9685 → 12 Servos, 200 Hz, 500–2500 µs; LCD-Hintergrundbeleuchtung an D2."
+ },
+ "f9cb8d2f7349997b": {
+  "en": "**SPI:** XIAO → Waveshare 2\" ST7789 LCD (D8 SCK, D10 MOSI, D9 DC, D0 CS, D1 RST), W21.",
+  "de": "**SPI:** XIAO → Waveshare 2\" ST7789 LCD (D8 SCK, D10 MOSI, D9 DC, D0 CS, D1 RST), W21."
+ },
+ "e3735d93f28b2cf6": {
+  "en": "**CSI:** Pi 5 CAM/DISP 0 → Camera Module 3 Wide, 22→15-pin FFC, 300 mm (W16).",
+  "de": "**CSI:** Pi 5 CAM/DISP 0 → Camera Module 3 Wide, 22→15-Pin-FFC, 300 mm (W16)."
+ },
+ "e8c2699792b9ca45": {
+  "en": "**Source of truth:** `hardware/electronics.yaml`, `firmware/strido_esp32s3/src/board_config.h`, `hardware/wiring.yaml` (cables and routes; cut list in the [wiring check](../../verification/wiring.md)), `docs/electronics.md` (pin maps, wiring list).",
+  "de": "**Maßgebliche Quelle:** `hardware/electronics.yaml`, `firmware/strido_esp32s3/src/board_config.h`, `hardware/wiring.yaml` (Kabel und Routen; Zuschnittliste in der [Verkabelungsprüfung](../../verification/wiring.md)), `docs/electronics.md` (Pinbelegungen, Verkabelungsliste)."
+ },
+ "d4b1ea5708dd5329": {
+  "en": "Overview",
+  "de": "Überblick"
+ },
+ "edc681a65b2d3a53": {
+  "en": "| Bus | Wires | Speed in Strido | Topology | Used for |",
+  "de": "| Bus | Leitungen | Geschwindigkeit in Strido | Topologie | Verwendet für |"
+ },
+ "481bf5fd939437d1": {
+  "en": "| I²C | SDA, SCL (+ 3.3 V, GND) | 400 kHz | shared, addressed | servo driver, IMU, power monitor |",
+  "de": "| I²C | SDA, SCL (+ 3,3 V, GND) | 400 kHz | gemeinsam, adressiert | Servotreiber, IMU, Power-Monitor |"
+ },
+ "4f9cd6c230f3256e": {
+  "en": "| USB (CDC serial) | D+, D−, 5 V, GND | USB full speed | point to point | Pi ⇄ XIAO commands and state |",
+  "de": "| USB (CDC-Seriell) | D+, D−, 5 V, GND | USB Full Speed | Punkt-zu-Punkt | Pi ⇄ XIAO Kommandos und Zustand |"
+ },
+ "fbf60a410810515c": {
+  "en": "| UART (behind USB adapter) | TX, RX, GND | 460 800 baud | point to point | RPLIDAR C1 scan data |",
+  "de": "| UART (hinter USB-Adapter) | TX, RX, GND | 460 800 Baud | Punkt-zu-Punkt | RPLIDAR-C1-Scandaten |"
+ },
+ "0eec135f5b6f97e2": {
+  "en": "| Servo PWM | one signal per servo | 200 Hz frame, µs pulse | one wire per servo | joint position commands |",
+  "de": "| Servo-PWM | ein Signal pro Servo | 200-Hz-Rahmen, µs-Puls | eine Leitung pro Servo | Gelenkpositionskommandos |"
+ },
+ "48ccf64578b4161a": {
+  "en": "| SPI | SCK, MOSI, CS, DC | 27 MHz write clock | one device here | LCD pixels |",
+  "de": "| SPI | SCK, MOSI, CS, DC | 27 MHz Schreibtakt | hier ein Gerät | LCD-Pixel |"
+ },
+ "132861aa2e6af2d7": {
+  "en": "| MIPI CSI-2 | differential lanes in a ribbon | Gbit/s class | point to point | camera images |",
+  "de": "| MIPI CSI-2 | differenzielle Lanes in einem Flachbandkabel | Gbit/s-Klasse | Punkt-zu-Punkt | Kamerabilder |"
+ },
+ "f5bc84acc35f9566": {
+  "en": "I²C: one pair of wires, many devices",
+  "de": "I²C: ein Leitungspaar, viele Geräte"
+ },
+ "82f98b5063ca5b8b": {
+  "en": "**I²C** (Inter-Integrated Circuit) uses two wires: **SCL** (clock, driven by the controller) and **SDA** (data, both directions). Every device has a 7-bit **address**. The XIAO starts each transaction by sending an address, and only the device with that address answers.",
+  "de": "**I²C** (Inter-Integrated Circuit) verwendet zwei Leitungen: **SCL** (Takt, vom Controller getrieben) und **SDA** (Daten, in beide Richtungen). Jedes Gerät hat eine 7-Bit-**Adresse**. Der XIAO beginnt jede Transaktion mit dem Senden einer Adresse, und nur das Gerät mit dieser Adresse antwortet."
+ },
+ "777a58406da50a3a": {
+  "en": "Addresses in this robot",
+  "de": "Adressen in diesem Roboter"
+ },
+ "5571b92eddff1fe0": {
+  "en": "| Address | Device | Note |",
+  "de": "| Adresse | Gerät | Hinweis |"
+ },
+ "5cced38a681d6c5b": {
+  "en": "| 0x40 | PCA9685 servo driver | firmware `kPcaAddress` |",
+  "de": "| 0x40 | PCA9685 Servotreiber | Firmware `kPcaAddress` |"
+ },
+ "322878c2ab7f11a3": {
+  "en": "| 0x70 | PCA9685 all-call | the PCA9685 also answers here; nothing else may use it |",
+  "de": "| 0x70 | PCA9685 All-Call | der PCA9685 antwortet auch hier; nichts anderes darf sie verwenden |"
+ },
+ "3ff947afc82e41c1": {
+  "en": "| 0x6A | LSM6DSOX IMU | `kImuAddress` |",
+  "de": "| 0x6A | LSM6DSOX IMU | `kImuAddress` |"
+ },
+ "e4a1620c09f5c410": {
+  "en": "| 0x41 | INA260 power monitor | `kPowerMonitorAddress`; **bridge the A0 jumper** |",
+  "de": "| 0x41 | INA260 Power-Monitor | `kPowerMonitorAddress`; **Jumper A0 brücken** |"
+ },
+ "1fe4e6b60162c6ec": {
+  "en": "The INA260 ships at **0x40**, the same as the PCA9685. Two devices on one address both answer at once and corrupt each other's replies. Bridging the solder jumper A0 moves the INA260 to 0x41. `strido_verify.electronics` checks that all addresses are unique and that the firmware constants match the YAML.",
+  "de": "Der INA260 wird mit **0x40** ausgeliefert, derselben Adresse wie der PCA9685. Zwei Geräte an einer Adresse antworten gleichzeitig und verfälschen gegenseitig ihre Antworten. Das Brücken des Lötjumpers A0 verschiebt den INA260 auf 0x41. `strido_verify.electronics` prüft, dass alle Adressen eindeutig sind und die Firmware-Konstanten mit der YAML übereinstimmen."
+ },
+ "41650c296ebacc96": {
+  "en": "Open drain and pull-ups",
+  "de": "Open Drain und Pull-ups"
+ },
+ "7db6420e355010dd": {
+  "en": "I²C devices never drive a line high. They can only pull it **low** (open-drain), and **pull-up resistors** return it to the supply voltage when nobody pulls. That is how several devices share one wire without short-circuiting each other.",
+  "de": "I²C-Geräte treiben eine Leitung nie auf High. Sie können sie nur auf **Low** ziehen (Open Drain), und **Pull-up-Widerstände** bringen sie auf die Versorgungsspannung zurück, wenn niemand zieht. So teilen sich mehrere Geräte eine Leitung, ohne sich gegenseitig kurzzuschließen."
+ },
+ "4f2921db7597e978": {
+  "en": "Two consequences:",
+  "de": "Zwei Folgen:"
+ },
+ "1acd2d9322a6396a": {
+  "en": "**The pull-up voltage sets the logic level.** On Strido the bus is pulled up to the XIAO's **3.3 V**, and every device on it is powered from that 3.3 V rail. The check confirms 3.3 V sits inside every device's range: PCA9685 2.3–5.5 V, LSM6DSOX breakout 3–5 V, INA260 2.7–5.5 V.",
+  "de": "**Die Pull-up-Spannung bestimmt den Logikpegel.** Bei Strido ist der Bus auf die **3,3 V** des XIAO hochgezogen, und jedes Gerät daran wird aus dieser 3,3-V-Schiene versorgt. Die Prüfung bestätigt, dass 3,3 V im Bereich jedes Geräts liegt: PCA9685 2,3–5,5 V, LSM6DSOX-Breakout 3–5 V, INA260 2,7–5,5 V."
+ },
+ "35501da00e192265": {
+  "en": "**The resistors and the wiring set the speed.** Each pull-up charges the bus capacitance (wires plus pins) back to high. Too much capacitance, or pull-ups that are too weak, makes the rising edges slow, and fast-mode I²C at 400 kHz has a strict rise-time limit. Breakout boards usually carry their own pull-ups, and on a shared bus they act in parallel. Short wires keep the capacitance low. W17 is the longest hop, routed 272 mm and cut 300 mm; W18 and W19 are 150 mm STEMMA QT cables (routed 86 mm and 125 mm).",
+  "de": "**Die Widerstände und die Verkabelung bestimmen die Geschwindigkeit.** Jeder Pull-up lädt die Buskapazität (Leitungen plus Pins) wieder auf High. Zu viel Kapazität oder zu schwache Pull-ups machen die steigenden Flanken langsam, und Fast-Mode-I²C mit 400 kHz hat eine strenge Grenze für die Anstiegszeit. Breakout-Boards haben meist eigene Pull-ups, die an einem gemeinsamen Bus parallel wirken. Kurze Leitungen halten die Kapazität niedrig. W17 ist die längste Strecke, 272 mm verlegt und auf 300 mm zugeschnitten; W18 und W19 sind 150-mm-STEMMA-QT-Kabel (86 mm und 125 mm verlegt)."
+ },
+ "61f3bee94cd5a290": {
+  "en": "The pull-up resistor $R_\\mathrm{p}$ and the bus capacitance $C_\\mathrm{b}$ form an RC circuit. When the last device releases the line, the voltage rises exponentially towards the supply $V_\\mathrm{DD}$:",
+  "de": "Der Pull-up-Widerstand $R_\\mathrm{p}$ und die Buskapazität $C_\\mathrm{b}$ bilden ein RC-Glied. Wenn das letzte Gerät die Leitung freigibt, steigt die Spannung exponentiell in Richtung der Versorgung $V_\\mathrm{DD}$:"
+ },
+ "16f002a50febf2eb": {
+  "en": "I²C measures the **rise time** $t_\\mathrm{r}$ between 30 % and 70 % of $V_\\mathrm{DD}$. Solving $V(t)$ for those two levels gives $t_\\mathrm{r} = R_\\mathrm{p} C_\\mathrm{b} \\ln(0.7/0.3) \\approx 0.847\\,R_\\mathrm{p} C_\\mathrm{b}$. The I²C specification (NXP UM10204) allows at most $300\\,\\mathrm{ns}$ in fast mode and $400\\,\\mathrm{pF}$ of bus capacitance, so the largest allowed pull-up is",
+  "de": "I²C misst die **Anstiegszeit** $t_\\mathrm{r}$ zwischen 30 % und 70 % von $V_\\mathrm{DD}$. Löst man $V(t)$ für diese beiden Pegel, ergibt sich $t_\\mathrm{r} = R_\\mathrm{p} C_\\mathrm{b} \\ln(0.7/0.3) \\approx 0.847\\,R_\\mathrm{p} C_\\mathrm{b}$. Die I²C-Spezifikation (NXP UM10204) erlaubt im Fast Mode höchstens $300\\,\\mathrm{ns}$ und $400\\,\\mathrm{pF}$ Buskapazität, daher ist der größte zulässige Pull-up"
+ },
+ "71da03fd4f41365e": {
+  "en": "For an assumed $C_\\mathrm{b} = 100\\,\\mathrm{pF}$ (an illustration, not a measurement of this harness) that is $R_\\mathrm{p,max} \\approx 3.5\\,\\mathrm{k\\Omega}$. The lower bound comes from the $3\\,\\mathrm{mA}$ a device must be able to sink while holding the line below $0.4\\,\\mathrm{V}$: $R_\\mathrm{p,min} = (V_\\mathrm{DD} - 0.4\\,\\mathrm{V}) / 3\\,\\mathrm{mA} \\approx 0.97\\,\\mathrm{k\\Omega}$ at $3.3\\,\\mathrm{V}$. Pull-ups on several breakouts combine like parallel resistors, $1/R_\\mathrm{p} = \\sum_i 1/R_i$, which is why too many boards can push $R_\\mathrm{p}$ below that minimum.",
+  "de": "Für ein angenommenes $C_\\mathrm{b} = 100\\,\\mathrm{pF}$ (eine Veranschaulichung, keine Messung dieses Kabelbaums) sind das $R_\\mathrm{p,max} \\approx 3.5\\,\\mathrm{k\\Omega}$. Die Untergrenze ergibt sich aus den $3\\,\\mathrm{mA}$, die ein Gerät aufnehmen können muss, während es die Leitung unter $0.4\\,\\mathrm{V}$ hält: $R_\\mathrm{p,min} = (V_\\mathrm{DD} - 0.4\\,\\mathrm{V}) / 3\\,\\mathrm{mA} \\approx 0.97\\,\\mathrm{k\\Omega}$ bei $3.3\\,\\mathrm{V}$. Pull-ups auf mehreren Breakouts addieren sich wie parallele Widerstände, $1/R_\\mathrm{p} = \\sum_i 1/R_i$, weshalb zu viele Boards $R_\\mathrm{p}$ unter dieses Minimum drücken können."
+ },
+ "8da06aa33c28aba3": {
+  "en": "Why 400 kHz",
+  "de": "Warum 400 kHz"
+ },
+ "08398bbad9859032": {
+  "en": "The clock period, and so the time for one bit, is $T_\\mathrm{bit} = 1/f_\\mathrm{SCL}$; at $400\\,\\mathrm{kHz}$ that is $2.5\\,\\mu\\mathrm{s}$. Each I²C byte takes 9 clock cycles (8 data bits plus an acknowledge). Setting one PCA9685 channel means sending the address, a register number and four data bytes:",
+  "de": "Die Taktperiode und damit die Zeit für ein Bit ist $T_\\mathrm{bit} = 1/f_\\mathrm{SCL}$; bei $400\\,\\mathrm{kHz}$ sind das $2.5\\,\\mu\\mathrm{s}$. Jedes I²C-Byte benötigt 9 Taktzyklen (8 Datenbits plus ein Acknowledge). Um einen PCA9685-Kanal zu setzen, werden die Adresse, eine Registernummer und vier Datenbytes gesendet:"
+ },
+ "853b2a3942cc1a2b": {
+  "en": "The IMU read and, every 100 ms, the INA260 read share the same 5 ms control period. At the 100 kHz standard mode the servo writes alone would take about 6.5 ms and miss the deadline. That is why the bus runs in **fast mode, 400 kHz** (`kI2cHz`). These figures are rough estimates; the exact count depends on the library.",
+  "de": "Das Auslesen der IMU und, alle 100 ms, das Auslesen des INA260 teilen sich dieselbe Regelperiode von 5 ms. Im Standard Mode mit 100 kHz würden allein die Servo-Schreibvorgänge etwa 6,5 ms dauern und die Frist verpassen. Deshalb läuft der Bus im **Fast Mode, 400 kHz** (`kI2cHz`). Diese Zahlen sind grobe Schätzungen; die genaue Anzahl hängt von der Bibliothek ab."
+ },
+ "5e2f859ee215156c": {
+  "en": "STEMMA QT",
+  "de": "STEMMA QT"
+ },
+ "dde16ddea20cddb8": {
+  "en": "Both hops to and from the IMU use a **STEMMA QT** cable: Adafruit's 4-pin JST SH (1 mm pitch) connector carrying 3.3 V, GND, SDA and SCL. It is pin-compatible with SparkFun's Qwiic. The IMU breakout has two STEMMA QT sockets so the bus can continue; each BOM cable ends in female sockets for a 2.54 mm header. The IMU sits 2.5 mm under the Pi's circuit board, so Dupont housings on its header cannot fit; the low STEMMA QT plug does.",
+  "de": "Beide Strecken zur und von der IMU verwenden ein **STEMMA-QT**-Kabel: den 4-poligen JST-SH-Steckverbinder von Adafruit (1 mm Raster) mit 3,3 V, GND, SDA und SCL. Er ist pinkompatibel mit Qwiic von SparkFun. Das IMU-Breakout hat zwei STEMMA-QT-Buchsen, sodass der Bus weitergeführt werden kann; jedes Kabel aus der Stückliste endet in Buchsen für eine 2,54-mm-Stiftleiste. Die IMU sitzt 2,5 mm unter der Leiterplatte des Pi, daher passen Dupont-Gehäuse nicht auf ihre Stiftleiste; der flache STEMMA-QT-Stecker schon."
+ },
+ "dd0492d3d4763bac": {
+  "en": "The first hop has the opposite problem. The XIAO's pins point up 9 mm below the upper shoulder frame, too little for a 14 mm Dupont housing, so W17 (3V3, GND, SDA, SCL, 22 AWG) is **soldered to the XIAO pins** and **crimped** with Dupont contacts at the PCA9685 (see [cable management](../making/cable-management.md#connectors-and-terminations)). The full chain is:",
+  "de": "Die erste Strecke hat das umgekehrte Problem. Die Pins des XIAO zeigen 9 mm unterhalb des oberen Schulterrahmens nach oben, zu wenig für ein 14 mm hohes Dupont-Gehäuse, daher wird W17 (3V3, GND, SDA, SCL, 22 AWG) **an die XIAO-Pins gelötet** und am PCA9685 mit Dupont-Kontakten **gecrimpt** (siehe [Kabelmanagement](../making/cable-management.md#connectors-and-terminations)). Die vollständige Kette ist:"
+ },
+ "9d9e720eeeb92361": {
+  "en": "USB serial and UART",
+  "de": "USB-Seriell und UART"
+ },
+ "c58e9a8eb0945608": {
+  "en": "UART basics",
+  "de": "UART-Grundlagen"
+ },
+ "041d42b2a348f6d7": {
+  "en": "A **UART** sends bytes one bit at a time on a TX wire and receives on an RX wire. There is no clock wire: both sides agree on a **baud rate** in advance. Each byte is framed by a start bit and a stop bit, so 8N1 framing costs 10 bit-times per byte.",
+  "de": "Ein **UART** sendet Bytes Bit für Bit über eine TX-Leitung und empfängt über eine RX-Leitung. Es gibt keine Taktleitung: Beide Seiten vereinbaren vorab eine **Baudrate**. Jedes Byte wird von einem Start- und einem Stoppbit eingerahmt, sodass die 8N1-Rahmung 10 Bitzeiten pro Byte kostet."
+ },
+ "7492ea21cc6829c4": {
+  "en": "The RPLIDAR C1 speaks 3.3 V TTL UART at **460 800 baud, 8N1**:",
+  "de": "Der RPLIDAR C1 spricht 3,3-V-TTL-UART mit **460 800 Baud, 8N1**:"
+ },
+ "fda14ff5aa42de79": {
+  "en": "That is plenty for 5000 samples per second. A small CP210x USB adapter (in the LiDAR pedestal) turns that UART into a USB serial port on the Pi. The udev rule names it `/dev/rplidar`, so the port name never changes between boots.",
+  "de": "Das reicht für 5000 Messpunkte pro Sekunde reichlich. Ein kleiner CP210x-USB-Adapter (im LiDAR-Sockel) macht aus diesem UART einen USB-Seriell-Port am Pi. Die udev-Regel benennt ihn `/dev/rplidar`, sodass sich der Portname zwischen Systemstarts nie ändert."
+ },
+ "87970dded267cab2": {
+  "en": "USB CDC to the XIAO",
+  "de": "USB CDC zum XIAO"
+ },
+ "5a72d1868a2dc7f2": {
+  "en": "The ESP32-S3 has native USB. The firmware presents itself as a **CDC** (Communications Device Class) serial port, which Linux shows as a tty and udev names `/dev/strido_mcu`. Over USB the \"baud rate\" is meaningless: data moves in USB packets. The firmware's `kUsbBaud = 2000000` is ignored and only kept for a possible UART fallback.",
+  "de": "Der ESP32-S3 hat natives USB. Die Firmware meldet sich als serieller **CDC**-Port (Communications Device Class), den Linux als tty anzeigt und udev `/dev/strido_mcu` nennt. Über USB ist die „Baudrate“ bedeutungslos: Die Daten werden in USB-Paketen übertragen. `kUsbBaud = 2000000` der Firmware wird ignoriert und nur für einen möglichen UART-Rückfall behalten."
+ },
+ "e29a44c993c6067e": {
+  "en": "Framing: COBS and CRC16",
+  "de": "Rahmung: COBS und CRC16"
+ },
+ "830b1e2b6c16f868": {
+  "en": "A serial link is just a stream of bytes, so the receiver needs to know where a message starts and whether it arrived intact:",
+  "de": "Eine serielle Verbindung ist nur ein Bytestrom, daher muss der Empfänger wissen, wo eine Nachricht beginnt und ob sie unversehrt angekommen ist:"
+ },
+ "6431be9b90fe5fe7": {
+  "en": "**COBS** (Consistent Overhead Byte Stuffing) rewrites each frame so it contains no `0x00` byte, then appends one `0x00` as the end marker. After a glitch, the receiver resynchronises at the next zero.",
+  "de": "**COBS** (Consistent Overhead Byte Stuffing) schreibt jeden Rahmen so um, dass er kein `0x00`-Byte enthält, und hängt dann ein `0x00` als Endmarke an. Nach einer Störung synchronisiert sich der Empfänger an der nächsten Null neu."
+ },
+ "bb2e2e8ecbbce9d1": {
+  "en": "**CRC16-CCITT-FALSE** is a 16-bit checksum over the frame. A frame with a wrong CRC is dropped instead of moving a leg to a garbage angle.",
+  "de": "**CRC16-CCITT-FALSE** ist eine 16-Bit-Prüfsumme über den Rahmen. Ein Rahmen mit falscher CRC wird verworfen, statt ein Bein auf einen unsinnigen Winkel zu bewegen."
+ },
+ "c1df65a740253991": {
+  "en": "The traffic is small: a `STATE` payload is 103 bytes at 100 Hz, $103\\,\\mathrm{B} \\times 100\\,\\mathrm{Hz} \\approx 10\\,\\mathrm{kB/s}$, and a `JOINT_COMMAND` carries 12 × float32 per gait step.",
+  "de": "Der Datenverkehr ist gering: Eine `STATE`-Nutzlast umfasst 103 Byte bei 100 Hz, $103\\,\\mathrm{B} \\times 100\\,\\mathrm{Hz} \\approx 10\\,\\mathrm{kB/s}$, und ein `JOINT_COMMAND` trägt 12 × float32 pro Gait-Schritt."
+ },
+ "378eb88665d56647": {
+  "en": "PWM to the servos",
+  "de": "PWM zu den Servos"
+ },
+ "144671ea02d7f0e5": {
+  "en": "The servo signal is a pulse-width-modulated wire: a 3.3 V pulse every 5 ms (200 Hz) whose **width**, 500–2500 µs, encodes the angle. Each servo has its own signal wire from a PCA9685 channel; ground is shared through the servo power bus. Details and the numbers are in [Servos](servos.md).",
+  "de": "Das Servosignal ist eine pulsweitenmodulierte Leitung: ein 3,3-V-Puls alle 5 ms (200 Hz), dessen **Breite**, 500–2500 µs, den Winkel codiert. Jedes Servo hat eine eigene Signalleitung von einem PCA9685-Kanal; die Masse wird über den Servo-Versorgungsbus geteilt. Details und Zahlen finden Sie unter [Servos](servos.md)."
+ },
+ "c598fdee4a838a62": {
+  "en": "The LCD backlight is a second use of PWM, on XIAO D2. Here the **duty cycle** $D = t_\\mathrm{on}/T$, the fraction of time the line is high, sets brightness: the average voltage the LED sees is $\\bar{V} = D\\,V_\\mathrm{high}$. It runs at a 20 kHz frequency ($T = 50\\,\\mu\\mathrm{s}$), far above what the eye can see flicker in. D2 is GPIO 3, an ESP32-S3 **strapping pin** that is read at boot to select the boot mode. The firmware therefore drives it only after boot.",
+  "de": "Die LCD-Hintergrundbeleuchtung ist eine zweite PWM-Anwendung, an XIAO D2. Hier bestimmt das **Tastverhältnis** $D = t_\\mathrm{on}/T$, der Zeitanteil, in dem die Leitung High ist, die Helligkeit: Die mittlere Spannung an der LED ist $\\bar{V} = D\\,V_\\mathrm{high}$. Sie läuft mit 20 kHz ($T = 50\\,\\mu\\mathrm{s}$), weit über dem, was das Auge als Flimmern wahrnimmt. D2 ist GPIO 3, ein **Strapping-Pin** des ESP32-S3, der beim Booten gelesen wird, um den Boot-Modus zu wählen. Die Firmware treibt ihn daher erst nach dem Booten."
+ },
+ "0f7e849075a6e3f3": {
+  "en": "SPI to the face display",
+  "de": "SPI zum Gesichtsdisplay"
+ },
+ "60131b85ffdc25bf": {
+  "en": "**SPI** (Serial Peripheral Interface) has a clock (SCK), a data line from controller to device (MOSI) and a chip-select (CS) per device. There are no addresses: pulling CS low selects the device. SPI is push-pull rather than open-drain, so it runs far faster than I²C.",
+  "de": "**SPI** (Serial Peripheral Interface) hat einen Takt (SCK), eine Datenleitung vom Controller zum Gerät (MOSI) und einen Chip-Select (CS) pro Gerät. Es gibt keine Adressen: Wird CS auf Low gezogen, ist das Gerät ausgewählt. SPI arbeitet im Gegentakt statt mit Open Drain und läuft daher weit schneller als I²C."
+ },
+ "abcb4c029ed34811": {
+  "en": "The Waveshare 2\" LCD uses an ST7789 controller, 240 × 320 pixels. One full frame at 16 bits per pixel is:",
+  "de": "Das Waveshare-2\"-LCD verwendet einen ST7789-Controller mit 240 × 320 Pixeln. Ein vollständiges Bild mit 16 Bit pro Pixel umfasst:"
+ },
+ "9a8db48e6ddb9c53": {
+  "en": "On I²C at 400 kHz, with 9 clocks per 8-bit byte, the same frame would take $N \\cdot \\tfrac{9}{8} / 400\\,\\mathrm{kHz} \\approx 3.5\\,\\mathrm{s}$. The firmware writes at **27 MHz**, noted as \"conservative for ~15 cm jumper wires\" in `face.cpp`: longer, unshielded wires blur fast edges. The display needs only one direction, so MISO is unused. The extra **DC** (data/command) line tells the controller whether a byte is a command or pixel data. **RST** resets the panel.",
+  "de": "Über I²C mit 400 kHz und 9 Takten pro 8-Bit-Byte würde dasselbe Bild $N \\cdot \\tfrac{9}{8} / 400\\,\\mathrm{kHz} \\approx 3.5\\,\\mathrm{s}$ dauern. Die Firmware schreibt mit **27 MHz**, in `face.cpp` vermerkt als „konservativ für ~15 cm Jumperkabel“: Längere, ungeschirmte Leitungen verschleifen schnelle Flanken. Das Display braucht nur eine Richtung, daher bleibt MISO ungenutzt. Die zusätzliche **DC**-Leitung (Data/Command) teilt dem Controller mit, ob ein Byte ein Kommando oder Pixeldaten ist. **RST** setzt das Panel zurück."
+ },
+ "e870e76622f90643": {
+  "en": "CSI to the camera",
+  "de": "CSI zur Kamera"
+ },
+ "e91b1264cecc238b": {
+  "en": "The camera produces far more data than any of the buses above: 12 megapixels, 1080p50 video. It uses **MIPI CSI-2**, a high-speed serial interface with differential data lanes, carried on a flat flexible cable (FFC) straight into the Pi's image signal processor.",
+  "de": "Die Kamera erzeugt weit mehr Daten als jeder der obigen Busse: 12 Megapixel, 1080p50-Video. Sie verwendet **MIPI CSI-2**, eine schnelle serielle Schnittstelle mit differenziellen Daten-Lanes, geführt über ein flexibles Flachbandkabel (FFC) direkt zum Bildsignalprozessor des Pi."
+ },
+ "b3b59f76966d33cd": {
+  "en": "The **Pi 5** has 22-pin, 0.5 mm-pitch camera connectors; **Camera Module 3** has a 15-pin, 1 mm-pitch connector. Hence the **22 → 15 pin** adapter cable, 300 mm long, routed through the front-shell ribbon slot.",
+  "de": "Der **Pi 5** hat 22-polige Kameraanschlüsse mit 0,5 mm Raster; das **Camera Module 3** hat einen 15-poligen Anschluss mit 1 mm Raster. Daher das **22 → 15 Pin**-Adapterkabel, 300 mm lang, durch den Flachbandschlitz der Frontschale verlegt."
+ },
+ "a80ef8f5233a401f": {
+  "en": "FFCs are fragile: the ribbon goes in with the camera, just before the front shell (assembly Step 18). Avoid sharp folds, fold its 124 mm of spare length flat, and insert it with the metal contacts facing the connector's contacts.",
+  "de": "FFCs sind empfindlich: Das Flachbandkabel wird mit der Kamera eingesetzt, kurz vor der Frontschale (Montage-Schritt 18). Vermeiden Sie scharfe Knicke, falten Sie die 124 mm Überlänge flach, und stecken Sie es mit den Metallkontakten zu den Kontakten des Steckverbinders ein."
+ },
+ "5a1d6a20a6750333": {
+  "en": "The camera also has its own small control bus for focus and settings. That runs inside the CSI cable to the Pi, not on the robot's I²C bus.",
+  "de": "Die Kamera hat außerdem einen eigenen kleinen Steuerbus für Fokus und Einstellungen. Dieser läuft innerhalb des CSI-Kabels zum Pi, nicht über den I²C-Bus des Roboters."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "48459f15e4d16c4f": {
+  "en": "What would go wrong if you forgot to bridge the INA260's A0 jumper?",
+  "de": "Was würde schiefgehen, wenn Sie vergessen, den Jumper A0 des INA260 zu brücken?"
+ },
+ "5f4e440097362ffe": {
+  "en": "Why do I²C lines need pull-up resistors, while SPI lines do not?",
+  "de": "Warum brauchen I²C-Leitungen Pull-up-Widerstände, SPI-Leitungen aber nicht?"
+ },
+ "b59654203bed764e": {
+  "en": "Roughly how long does it take to write all 12 servo channels at 100 kHz, and why does that matter?",
+  "de": "Wie lange dauert es ungefähr, alle 12 Servokanäle mit 100 kHz zu schreiben, und warum ist das wichtig?"
+ },
+ "5ccdac7fc8652e77": {
+  "en": "What does the `0x00` byte at the end of each USB frame do?",
+  "de": "Was bewirkt das `0x00`-Byte am Ende jedes USB-Rahmens?"
+ },
+ "1071cb54b50d04c7": {
+  "en": "Why does the camera use CSI instead of USB or SPI?",
+  "de": "Warum verwendet die Kamera CSI statt USB oder SPI?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "17c4c0bcae78eccd": {
+  "en": "The INA260 would sit at 0x40 together with the PCA9685, and both would answer the same transactions, corrupting the bus. The firmware would then refuse to drive without a working power monitor.",
+  "de": "Der INA260 läge zusammen mit dem PCA9685 auf 0x40, und beide würden auf dieselben Transaktionen antworten und den Bus stören. Die Firmware würde dann ohne funktionierenden Power-Monitor den Betrieb verweigern."
+ },
+ "9ab8cd32c3e94e76": {
+  "en": "I²C outputs are open-drain and only pull low, so something must pull the line high. SPI outputs actively drive both levels.",
+  "de": "I²C-Ausgänge sind Open Drain und ziehen nur auf Low, daher muss etwas die Leitung auf High ziehen. SPI-Ausgänge treiben beide Pegel aktiv."
+ },
+ "83546e9108da969d": {
+  "en": "About 6.5 ms (four times the 1.6 ms at 400 kHz), longer than the 5 ms control period.",
+  "de": "Etwa 6,5 ms (das Vierfache der 1,6 ms bei 400 kHz), länger als die Regelperiode von 5 ms."
+ },
+ "7a41458eb0cb0f17": {
+  "en": "It marks the end of a COBS-encoded frame. COBS guarantees no other zero appears inside, so the receiver can always resynchronise.",
+  "de": "Es markiert das Ende eines COBS-codierten Rahmens. COBS garantiert, dass innerhalb keine weitere Null vorkommt, sodass sich der Empfänger immer neu synchronisieren kann."
+ },
+ "32833015aeb295c7": {
+  "en": "Its data rate (12 MP stills, 1080p50 video) needs a high-speed differential link straight into the Pi's image processor; SPI is far too slow, and CSI is the Pi's native camera interface.",
+  "de": "Ihre Datenrate (12-MP-Standbilder, 1080p50-Video) erfordert eine schnelle differenzielle Verbindung direkt zum Bildprozessor des Pi; SPI ist viel zu langsam, und CSI ist die native Kameraschnittstelle des Pi."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "672d14276375f80d": {
+  "en": "[I²C bus pull-up resistor calculation (TI SLVA689)](https://www.ti.com/lit/an/slva689/slva689.pdf)",
+  "de": "[Berechnung der Pull-up-Widerstände am I²C-Bus (TI SLVA689)](https://www.ti.com/lit/an/slva689/slva689.pdf)"
+ },
+ "a2a696a7298cf113": {
+  "en": "[Introducing Adafruit STEMMA QT](https://learn.adafruit.com/introducing-adafruit-stemma-qt)",
+  "de": "[Einführung in Adafruit STEMMA QT](https://learn.adafruit.com/introducing-adafruit-stemma-qt)"
+ },
+ "af5ff930ec0dceda": {
+  "en": "[Consistent Overhead Byte Stuffing (overview)](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)",
+  "de": "[Consistent Overhead Byte Stuffing (Überblick)](https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing)"
+ },
+ "af0cd8ea840fd0e6": {
+  "en": "[RPLIDAR C1 datasheet (Slamtec)](https://wiki.slamtec.com/download/attachments/83066883/SLAMTEC_rplidar_datasheet_C1_v1.0_en.pdf?api=v2&modificationDate=1700531479533&version=1)",
+  "de": "[RPLIDAR-C1-Datenblatt (Slamtec)](https://wiki.slamtec.com/download/attachments/83066883/SLAMTEC_rplidar_datasheet_C1_v1.0_en.pdf?api=v2&modificationDate=1700531479533&version=1)"
+ },
+ "1eab1aa8cc110957": {
+  "en": "Related pages: [Microcontrollers](microcontrollers.md), [Sensors](sensors.md), [Firmware](../software/firmware.md), [Cable management](../making/cable-management.md), [Electronics, wiring and power](../../electronics.md)",
+  "de": "Verwandte Seiten: [Mikrocontroller](microcontrollers.md), [Sensoren](sensors.md), [Firmware](../software/firmware.md), [Kabelmanagement](../making/cable-management.md), [Elektronik, Verkabelung und Versorgung](../../electronics.md)"
+ }
+}

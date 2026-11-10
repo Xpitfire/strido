@@ -1,0 +1,270 @@
+{
+ "3c44d96f7f5bea9f": {
+  "en": "Kinematics",
+  "de": "Kinematik"
+ },
+ "cef86cc6f97264f5": {
+  "en": "Kinematics is the geometry of motion, without forces. Forward kinematics maps joint angles to the foot position. Inverse kinematics maps a foot position back to joint angles. The Jacobian links joint velocities to foot velocities. This page derives all three for the Strido leg, including its knee linkage.",
+  "de": "Kinematik ist die Geometrie der Bewegung, ohne Kräfte. Die Vorwärtskinematik bildet Gelenkwinkel auf die Fußposition ab. Die inverse Kinematik bildet eine Fußposition zurück auf Gelenkwinkel ab. Die Jacobi-Matrix verknüpft Gelenkgeschwindigkeiten mit Fußgeschwindigkeiten. Diese Seite leitet alle drei für das Strido-Bein her, einschließlich seines Kniekoppelgetriebes."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "5ea92a14fa556f73": {
+  "en": "**Leg model:** `packages/strido-core/src/strido/leg.py` (`foot_position`, `inverse_kinematics`, `calf_from_crank`, `crank_from_calf`, `transmission_angles`), mirrored in C++ in `firmware/strido_esp32s3/lib/strido_core/`.",
+  "de": "**Beinmodell:** `packages/strido-core/src/strido/leg.py` (`foot_position`, `inverse_kinematics`, `calf_from_crank`, `crank_from_calf`, `transmission_angles`), in C++ gespiegelt in `firmware/strido_esp32s3/lib/strido_core/`."
+ },
+ "89e6c8d67ce141ec": {
+  "en": "**Dimensions:** `hardware/kinematics.yaml` (`legs_linkage`, `legs_base`), measured from the CAD. **Limits:** `hardware/joint_limits.yaml`.",
+  "de": "**Maße:** `hardware/kinematics.yaml` (`legs_linkage`, `legs_base`), aus dem CAD gemessen. **Grenzen:** `hardware/joint_limits.yaml`."
+ },
+ "2c8716b15a300404": {
+  "en": "**Practical guide:** [Kinematics and gaits](../software/kinematics-and-gaits.md) shows how the gait uses these functions.",
+  "de": "**Praxisleitfaden:** [Kinematik und Gaits](../software/kinematics-and-gaits.md) zeigt, wie der Gait diese Funktionen nutzt."
+ },
+ "e500d0ab15c36a3a": {
+  "en": "The leg as a kinematic chain",
+  "de": "Das Bein als kinematische Kette"
+ },
+ "8c6ebc6bd73fd786": {
+  "en": "Each leg has three revolute joints (`leg.py` docstring; the conventions match the Unitree Go2):",
+  "de": "Jedes Bein hat drei Drehgelenke (Docstring von `leg.py`; die Konventionen entsprechen dem Unitree Go2):"
+ },
+ "f1073f4c4c532237": {
+  "en": "| Joint | Axis | Zero | Positive |",
+  "de": "| Gelenk | Achse | Null | Positiv |"
+ },
+ "4c31e95c1fe4b1ad": {
+  "en": "| hip $q_1$ | $+x$ | leg vertical | foot towards $+y$ |",
+  "de": "| Hüfte $q_1$ | $+x$ | Bein senkrecht | Fuß Richtung $+y$ |"
+ },
+ "666da011eeee6fb8": {
+  "en": "| thigh $q_2$ | $+y$ | femur straight down | knee backwards |",
+  "de": "| Oberschenkel $q_2$ | $+y$ | Femur gerade nach unten | Knie nach hinten |"
+ },
+ "f21c3704e670ff74": {
+  "en": "| calf $q_3$ | $+y$, relative to femur | calf in line with femur | negative = knee bent |",
+  "de": "| Unterschenkel $q_3$ | $+y$, relativ zum Femur | Unterschenkel in Linie mit Femur | negativ = Knie gebeugt |"
+ },
+ "0dfb79ced1fc282d": {
+  "en": "From `hardware/kinematics.yaml` (front-left leg, rounded): the hip is at $\\mathbf{h} = (0.1197, 0.039, 0)\\,\\mathrm{m}$ in `base_link`, the leg plane sits $d = 38.3\\,\\mathrm{mm}$ outboard of the hip ($40.2\\,\\mathrm{mm}$ on the rear legs), the thigh is $l_1 = 130.0\\,\\mathrm{mm}$ and the calf is $l_2 = 124.1\\,\\mathrm{mm}$ to the foot centre.",
+  "de": "Aus `hardware/kinematics.yaml` (Bein vorne links, gerundet): Die Hüfte liegt bei $\\mathbf{h} = (0.1197, 0.039, 0)\\,\\mathrm{m}$ in `base_link`, die Beinebene liegt $d = 38.3\\,\\mathrm{mm}$ außerhalb der Hüfte ($40.2\\,\\mathrm{mm}$ bei den Hinterbeinen), der Oberschenkel misst $l_1 = 130.0\\,\\mathrm{mm}$ und der Unterschenkel $l_2 = 124.1\\,\\mathrm{mm}$ bis zur Fußmitte."
+ },
+ "cca7d2350bbc449e": {
+  "en": "The thigh and calf move in a vertical **leg plane**. The hip joint tilts that plane about $x$. So the problem splits into two easier ones: a planar two-link arm, and one rotation.",
+  "de": "Oberschenkel und Unterschenkel bewegen sich in einer senkrechten **Beinebene**. Das Hüftgelenk kippt diese Ebene um $x$. Das Problem zerfällt also in zwei einfachere: einen ebenen Zweigelenkarm und eine Drehung."
+ },
+ "506ed0ab744debd6": {
+  "en": "Forward kinematics",
+  "de": "Vorwärtskinematik"
+ },
+ "969b345d29504ac5": {
+  "en": "In the leg plane, let $u$ point forward and $v$ point up, both measured from the thigh pivot. Write $s_2 = \\sin q_2$ and $s_{23} = \\sin(q_2 + q_3)$, and similarly for cosines. The knee and the foot are at:",
+  "de": "In der Beinebene zeige $u$ nach vorne und $v$ nach oben, beide vom Oberschenkel-Drehpunkt aus gemessen. Schreiben Sie $s_2 = \\sin q_2$ und $s_{23} = \\sin(q_2 + q_3)$, analog für Kosinus. Knie und Fuß liegen bei:"
+ },
+ "c4a320c0d45a59f6": {
+  "en": "The angles add because $q_3$ is measured relative to the femur, so the calf's absolute angle is $q_2 + q_3$. The signs are negative because zero means \"pointing down\" and positive $q_2$ swings the foot backwards (towards $-u$).",
+  "de": "Die Winkel addieren sich, weil $q_3$ relativ zum Femur gemessen wird; der absolute Winkel des Unterschenkels ist also $q_2 + q_3$. Die Vorzeichen sind negativ, weil Null „nach unten zeigend“ bedeutet und ein positives $q_2$ den Fuß nach hinten schwingt (Richtung $-u$)."
+ },
+ "3220cb01453cc77d": {
+  "en": "Next, the hip rotation. The foot in the hip frame, before abduction, is $(u, d, v)$. Rotating about $x$ by $q_1$ and adding the hip position gives:",
+  "de": "Als Nächstes die Hüftdrehung. Der Fuß im Hüft-Koordinatensystem vor der Abduktion ist $(u, d, v)$. Drehung um $x$ um $q_1$ und Addition der Hüftposition ergibt:"
+ },
+ "6cd5011ae4eee6cd": {
+  "en": "This is `foot_position` line for line. For the frame conventions, see [frames and rotations](frames-and-rotations.md).",
+  "de": "Das ist `foot_position` Zeile für Zeile. Zu den Konventionen der Koordinatensysteme siehe [Koordinatensysteme und Rotationen](frames-and-rotations.md)."
+ },
+ "4f332917ce85e082": {
+  "en": "Inverse kinematics",
+  "de": "Inverse Kinematik"
+ },
+ "c41f17cdd0838923": {
+  "en": "We are given a foot target $\\mathbf{p}$ and need $(q_1, q_2, q_3)$. Let $\\mathbf{r} = \\mathbf{p} - \\mathbf{h} = (r_x, r_y, r_z)$.",
+  "de": "Gegeben ist ein Fußziel $\\mathbf{p}$, gesucht ist $(q_1, q_2, q_3)$. Sei $\\mathbf{r} = \\mathbf{p} - \\mathbf{h} = (r_x, r_y, r_z)$."
+ },
+ "bae246e9a01247d6": {
+  "en": "Hip abduction",
+  "de": "Hüftabduktion"
+ },
+ "572d621be79564a1": {
+  "en": "A rotation about $x$ leaves the $x$ component alone and preserves length in the $y$–$z$ plane:",
+  "de": "Eine Drehung um $x$ lässt die $x$-Komponente unverändert und erhält die Länge in der $y$–$z$-Ebene:"
+ },
+ "98f82965febb17eb": {
+  "en": "The foot is below the hip, so we take the negative root:",
+  "de": "Der Fuß liegt unter der Hüfte, also nehmen wir die negative Wurzel:"
+ },
+ "b67b315daff342b2": {
+  "en": "If the term under the root is not positive, the target lies inside the cylinder of radius $d$ around the hip axis and cannot be reached. The direction of $(r_y, r_z)$ is the direction of $(d, v)$ rotated by $q_1$, so:",
+  "de": "Ist der Term unter der Wurzel nicht positiv, liegt das Ziel innerhalb des Zylinders mit Radius $d$ um die Hüftachse und ist nicht erreichbar. Die Richtung von $(r_y, r_z)$ ist die um $q_1$ gedrehte Richtung von $(d, v)$, also:"
+ },
+ "d26656ef00817d8a": {
+  "en": "The planar two-link problem: law of cosines",
+  "de": "Das ebene Zweigelenkproblem: Kosinussatz"
+ },
+ "afe55103b4686442": {
+  "en": "Now set $u = r_x$ and solve the two-link arm. The thigh, the calf and the line from pivot to foot form a triangle with sides $l_1$, $l_2$ and $\\rho = \\sqrt{u^2+v^2}$. The law of cosines at the knee gives the knee angle. With our convention (the knee interior angle is $\\pi + q_3$):",
+  "de": "Setzen Sie nun $u = r_x$ und lösen Sie den Zweigelenkarm. Oberschenkel, Unterschenkel und die Linie vom Drehpunkt zum Fuß bilden ein Dreieck mit den Seiten $l_1$, $l_2$ und $\\rho = \\sqrt{u^2+v^2}$. Der Kosinussatz am Knie liefert den Kniewinkel. Mit unserer Konvention (der Knie-Innenwinkel ist $\\pi + q_3$):"
+ },
+ "f783db2a885ff7de": {
+  "en": "There are two solutions, $\\pm\\arccos$, for knee-forward and knee-backward. Strido uses $q_3 = -\\arccos(\\cdot)$, a bent knee pointing backwards. If $\\lvert\\cos q_3\\rvert > 1$, the target is out of reach.",
+  "de": "Es gibt zwei Lösungen, $\\pm\\arccos$, für Knie nach vorne und Knie nach hinten. Strido verwendet $q_3 = -\\arccos(\\cdot)$, ein gebeugtes Knie, das nach hinten zeigt. Ist $\\lvert\\cos q_3\\rvert > 1$, liegt das Ziel außer Reichweite."
+ },
+ "2c54fbd3a32935c0": {
+  "en": "The thigh angle is the direction to the foot minus the angle the calf adds inside the triangle:",
+  "de": "Der Oberschenkelwinkel ist die Richtung zum Fuß minus den Winkel, den der Unterschenkel im Dreieck hinzufügt:"
+ },
+ "335c1590cc411912": {
+  "en": "The minus signs in the first term come from the \"zero = straight down, positive = backwards\" convention. Use `atan2`, never `atan`, so that the quadrant is correct.",
+  "de": "Die Minuszeichen im ersten Term stammen aus der Konvention „Null = gerade nach unten, positiv = nach hinten“. Verwenden Sie `atan2`, nie `atan`, damit der Quadrant stimmt."
+ },
+ "eef0f1c77b6f2a20": {
+  "en": "The knee four-bar",
+  "de": "Das Knie-Viergelenk"
+ },
+ "7b35f36be7f1bce7": {
+  "en": "The knee servo does not drive $q_3$ directly. A parallelogram (arm $24.0\\,\\mathrm{mm}$, short link $28.3\\,\\mathrm{mm}$, crank $24.0\\,\\mathrm{mm}$) copies the servo angle onto a crank $\\psi$ at the thigh pivot. A four-bar (crank $26.9\\,\\mathrm{mm}$, long link $131\\,\\mathrm{mm}$, tibia crank $24.0\\,\\mathrm{mm}$, and the femur $130.0\\,\\mathrm{mm}$ as ground link) then turns the tibia. Because the four-bar's ground link is the femur itself:",
+  "de": "Der Knieservo treibt $q_3$ nicht direkt an. Ein Parallelogramm (Arm $24.0\\,\\mathrm{mm}$, kurze Koppel $28.3\\,\\mathrm{mm}$, Kurbel $24.0\\,\\mathrm{mm}$) überträgt den Servowinkel auf eine Kurbel $\\psi$ am Oberschenkel-Drehpunkt. Ein Viergelenk (Kurbel $26.9\\,\\mathrm{mm}$, lange Koppel $131\\,\\mathrm{mm}$, Tibiakurbel $24.0\\,\\mathrm{mm}$ und der Femur $130.0\\,\\mathrm{mm}$ als Steg) dreht dann die Tibia. Weil der Steg des Viergelenks der Femur selbst ist:"
+ },
+ "adae1756e2a92881": {
+  "en": "Moving the thigh alone also moves the knee. `crank_from_calf` inverts this geometrically. The far end of the crank lies on a circle of radius $26.9\\,\\mathrm{mm}$ around the pivot, and also on a circle of radius $131\\,\\mathrm{mm}$ (the long link) around the tibia pin. Intersecting the two circles gives two candidates, and the assembly branch picks one. `circle_intersection` returns `None` when the circles do not meet. That means the linkage cannot be assembled in that pose.",
+  "de": "Bewegt man nur den Oberschenkel, bewegt sich auch das Knie. `crank_from_calf` invertiert das geometrisch. Das freie Ende der Kurbel liegt auf einem Kreis mit Radius $26.9\\,\\mathrm{mm}$ um den Drehpunkt und zugleich auf einem Kreis mit Radius $131\\,\\mathrm{mm}$ (die lange Koppel) um den Tibia-Bolzen. Der Schnitt der beiden Kreise liefert zwei Kandidaten, und der Montagezweig wählt einen aus. `circle_intersection` gibt `None` zurück, wenn sich die Kreise nicht treffen. Dann lässt sich das Koppelgetriebe in dieser Pose nicht zusammensetzen."
+ },
+ "b126383f3d669c32": {
+  "en": "graph LR\n  S[knee servo angle] -->|parallelogram 1:1| C[crank ψ]\n  C -->|four-bar, depends on q2| K[knee q3]\n  T[thigh servo q2] --> K",
+  "de": "graph LR\n  S[Knieservo-Winkel] -->|Parallelogramm 1:1| C[Kurbel ψ]\n  C -->|Viergelenk, abhängig von q2| K[Knie q3]\n  T[Oberschenkelservo q2] --> K"
+ },
+ "7e0c8c05f56399b5": {
+  "en": "The Jacobian",
+  "de": "Die Jacobi-Matrix"
+ },
+ "967582c746107378": {
+  "en": "The Jacobian maps joint rates to foot velocity, $\\dot{\\mathbf{p}} = \\mathbf{J}(\\mathbf{q})\\,\\dot{\\mathbf{q}}$. Differentiating the planar forward kinematics:",
+  "de": "Die Jacobi-Matrix bildet Gelenkgeschwindigkeiten auf die Fußgeschwindigkeit ab, $\\dot{\\mathbf{p}} = \\mathbf{J}(\\mathbf{q})\\,\\dot{\\mathbf{q}}$. Ableiten der ebenen Vorwärtskinematik ergibt:"
+ },
+ "3fa0ad002890d489": {
+  "en": "The full $3\\times 3$ Jacobian adds the hip column, $\\partial\\mathbf{p}/\\partial q_1 = \\hat{\\mathbf{x}} \\times (\\mathbf{p} - \\mathbf{h})$, and rotates the planar columns by $\\mathbf{R}_x(q_1)$. The Jacobian also governs forces through $\\boldsymbol{\\tau} = \\mathbf{J}^\\top\\mathbf{F}$ (see [statics and dynamics](statics-and-dynamics.md)).",
+  "de": "Die vollständige $3\\times 3$-Jacobi-Matrix ergänzt die Hüftspalte, $\\partial\\mathbf{p}/\\partial q_1 = \\hat{\\mathbf{x}} \\times (\\mathbf{p} - \\mathbf{h})$, und dreht die ebenen Spalten mit $\\mathbf{R}_x(q_1)$. Die Jacobi-Matrix bestimmt auch die Kräfte über $\\boldsymbol{\\tau} = \\mathbf{J}^\\top\\mathbf{F}$ (siehe [Statik und Dynamik](statics-and-dynamics.md))."
+ },
+ "c2b947caa0f40719": {
+  "en": "For the drive, the chain rule adds one more factor. The knee servo's rate is $\\dot\\psi$, and",
+  "de": "Für den Antrieb fügt die Kettenregel einen weiteren Faktor hinzu. Die Geschwindigkeit des Knieservos ist $\\dot\\psi$, und"
+ },
+ "3df88a3cf34c0ba7": {
+  "en": "Workspace and singularities",
+  "de": "Arbeitsraum und Singularitäten"
+ },
+ "d79eee80a3deaf10": {
+  "en": "Ignoring joint limits, the planar foot reaches an annulus:",
+  "de": "Ohne Gelenkgrenzen erreicht der ebene Fuß einen Kreisring:"
+ },
+ "f731aaddc65a22d0": {
+  "en": "The joint limits and self-collisions cut this down. `hardware/joint_limits.yaml` limits $q_3$ to $[-150^\\circ, -45^\\circ]$ and the front $q_2$ to $[-45^\\circ, 125^\\circ]$, found by sweeping the posed CAD for collisions on a $5^\\circ$ grid.",
+  "de": "Gelenkgrenzen und Eigenkollisionen schränken das ein. `hardware/joint_limits.yaml` begrenzt $q_3$ auf $[-150^\\circ, -45^\\circ]$ und das vordere $q_2$ auf $[-45^\\circ, 125^\\circ]$, ermittelt durch Abfahren des gestellten CAD auf Kollisionen in einem $5^\\circ$-Raster."
+ },
+ "7dba5a24a72c9e0c": {
+  "en": "A **singularity** is a pose where $\\det\\mathbf{J} = 0$. There the foot cannot move in some direction, however fast the joints turn, and inverse kinematics becomes ill-conditioned. For the planar leg this happens at $\\sin q_3 = 0$: the leg fully straight ($q_3 = 0$, on the outer workspace boundary) or fully folded. The calf limit keeps $\\lvert\\sin q_3\\rvert \\ge \\sin 30^\\circ = 0.5$ (at the $-150^\\circ$ end; at least $0.71$ at the $-45^\\circ$ end), so the leg never gets close. This is one reason the stand pose keeps the knee well bent.",
+  "de": "Eine **Singularität** ist eine Pose mit $\\det\\mathbf{J} = 0$. Dort kann sich der Fuß in eine Richtung nicht bewegen, egal wie schnell sich die Gelenke drehen, und die inverse Kinematik wird schlecht konditioniert. Beim ebenen Bein geschieht das bei $\\sin q_3 = 0$: Bein vollständig gestreckt ($q_3 = 0$, am äußeren Rand des Arbeitsraums) oder vollständig eingeklappt. Die Unterschenkelgrenze hält $\\lvert\\sin q_3\\rvert \\ge \\sin 30^\\circ = 0.5$ (am Ende bei $-150^\\circ$; mindestens $0.71$ am Ende bei $-45^\\circ$), sodass das Bein nie in die Nähe kommt. Das ist ein Grund, warum die Standpose das Knie deutlich gebeugt hält."
+ },
+ "b80b2f947cccb791": {
+  "en": "The four-bar has its own singularities. When the long link lines up with the crank or with the tibia crank (a transmission angle near $0$ or $180^\\circ$), $\\partial f/\\partial\\psi$ blows up or vanishes. `transmission_angles` measures both angles, and `joint_limits.yaml` requires at least $25^\\circ$ (`transmission_min_deg`).",
+  "de": "Das Viergelenk hat eigene Singularitäten. Wenn die lange Koppel mit der Kurbel oder mit der Tibiakurbel fluchtet (Übertragungswinkel nahe $0$ oder $180^\\circ$), wird $\\partial f/\\partial\\psi$ unendlich oder verschwindet. `transmission_angles` misst beide Winkel, und `joint_limits.yaml` verlangt mindestens $25^\\circ$ (`transmission_min_deg`)."
+ },
+ "92fc154ad97b52d8": {
+  "en": "Worked example: the stand pose",
+  "de": "Durchgerechnetes Beispiel: die Standpose"
+ },
+ "96538d4618e4d837": {
+  "en": "The stand pose puts each foot straight below its hip, $0.17\\,\\mathrm{m}$ down (`stand_pose(height=0.17)` in `strido/gait.py`). For the front-left leg, $\\mathbf{r} = (0,\\ 0.0383,\\ -0.170)\\,\\mathrm{m}$.",
+  "de": "Die Standpose setzt jeden Fuß senkrecht unter seine Hüfte, $0.17\\,\\mathrm{m}$ tiefer (`stand_pose(height=0.17)` in `strido/gait.py`). Für das Bein vorne links gilt $\\mathbf{r} = (0,\\ 0.0383,\\ -0.170)\\,\\mathrm{m}$."
+ },
+ "f8decca9abd3d2f1": {
+  "en": "**Hip.** $v = -\\sqrt{0.0383^2 + 0.170^2 - 0.0383^2} = -0.170$, so $q_1 = \\operatorname{atan2}(-0.170, 0.0383) - \\operatorname{atan2}(-0.170, 0.0383) = 0$.",
+  "de": "**Hüfte.** $v = -\\sqrt{0.0383^2 + 0.170^2 - 0.0383^2} = -0.170$, also $q_1 = \\operatorname{atan2}(-0.170, 0.0383) - \\operatorname{atan2}(-0.170, 0.0383) = 0$."
+ },
+ "a3a0774a7525d65d": {
+  "en": "**Knee.** With $u = 0$:",
+  "de": "**Knie.** Mit $u = 0$:"
+ },
+ "74b557f2b3b5d587": {
+  "en": "**Thigh.** $l_2\\sin q_3 = -0.1234$ and $l_1 + l_2\\cos q_3 = 0.1170$, so",
+  "de": "**Oberschenkel.** $l_2\\sin q_3 = -0.1234$ und $l_1 + l_2\\cos q_3 = 0.1170$, also"
+ },
+ "3e24796973a22ba0": {
+  "en": "These match `stand_pose()`, which returns $(0^\\circ, 46.53^\\circ, -96.03^\\circ)$ for every leg. The calf's absolute angle is $q_2 + q_3 = -49.5^\\circ$: the knee sits behind and above the foot, and the calf leans forward to reach it.",
+  "de": "Das stimmt mit `stand_pose()` überein, das für jedes Bein $(0^\\circ, 46.53^\\circ, -96.03^\\circ)$ liefert. Der absolute Winkel des Unterschenkels ist $q_2 + q_3 = -49.5^\\circ$: Das Knie liegt hinter und über dem Fuß, und der Unterschenkel neigt sich nach vorne, um ihn zu erreichen."
+ },
+ "a2ef891b7e602033": {
+  "en": "**Jacobian.** At this pose,",
+  "de": "**Jacobi-Matrix.** In dieser Pose gilt"
+ },
+ "1207378f4f4407ae": {
+  "en": "A thigh rate of $1\\,\\mathrm{rad/s}$ moves the foot $0.17\\,\\mathrm{m/s}$ backwards and not at all vertically. To lift the foot you mostly need the knee.",
+  "de": "Eine Oberschenkelgeschwindigkeit von $1\\,\\mathrm{rad/s}$ bewegt den Fuß mit $0.17\\,\\mathrm{m/s}$ nach hinten und überhaupt nicht senkrecht. Um den Fuß anzuheben, braucht man vor allem das Knie."
+ },
+ "495997f7bd71c8a5": {
+  "en": "**Linkage.** `leg.py` gives a crank angle of $\\psi = 38.9^\\circ$ and transmission angles of $84^\\circ$ and $86^\\circ$, close to the ideal $90^\\circ$. The sensitivity is $\\partial q_3/\\partial\\psi = -1.12$: the knee turns $1.12^\\circ$ for each degree of crank.",
+  "de": "**Koppelgetriebe.** `leg.py` liefert einen Kurbelwinkel von $\\psi = 38.9^\\circ$ und Übertragungswinkel von $84^\\circ$ und $86^\\circ$, nahe am Ideal von $90^\\circ$. Die Empfindlichkeit ist $\\partial q_3/\\partial\\psi = -1.12$: Das Knie dreht sich um $1.12^\\circ$ pro Grad Kurbel."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "5606ac208fd4a5eb": {
+  "en": "Why can the hip angle be solved before, and separately from, the thigh and knee?",
+  "de": "Warum lässt sich der Hüftwinkel vor und getrennt von Oberschenkel und Knie lösen?"
+ },
+ "a5f3484e92a8bdde": {
+  "en": "What does $\\lvert\\cos q_3\\rvert > 1$ mean physically?",
+  "de": "Was bedeutet $\\lvert\\cos q_3\\rvert > 1$ physikalisch?"
+ },
+ "4c89dc220e6e3ef1": {
+  "en": "At the stand pose, which joint mainly moves the foot forward, and which mainly moves it vertically?",
+  "de": "Welches Gelenk bewegt den Fuß in der Standpose hauptsächlich nach vorne, und welches hauptsächlich senkrecht?"
+ },
+ "3a812141d1d4d830": {
+  "en": "Why do the transmission angles matter even when $\\det\\mathbf{J}_{\\text{plane}}$ is far from zero?",
+  "de": "Warum sind die Übertragungswinkel wichtig, selbst wenn $\\det\\mathbf{J}_{\\text{plane}}$ weit von null entfernt ist?"
+ },
+ "aba3ef6e76362946": {
+  "en": "<details><summary>Answers</summary>",
+  "de": "<details><summary>Antworten</summary>"
+ },
+ "9312bbedf06f7981": {
+  "en": "The hip axis is the $x$ axis, and $q_2$, $q_3$ never change the foot's distance from it. So $r_y^2 + r_z^2$ depends only on the planar depth $v$ and the fixed offset $d$.",
+  "de": "Die Hüftachse ist die $x$-Achse, und $q_2$, $q_3$ ändern den Abstand des Fußes von ihr nie. Daher hängt $r_y^2 + r_z^2$ nur von der ebenen Tiefe $v$ und dem festen Versatz $d$ ab."
+ },
+ "5311ae7f2c4b30ac": {
+  "en": "The target is farther than $l_1 + l_2$ or closer than $\\lvert l_1 - l_2\\rvert$, so no triangle exists.",
+  "de": "Das Ziel ist weiter entfernt als $l_1 + l_2$ oder näher als $\\lvert l_1 - l_2\\rvert$, also existiert kein Dreieck."
+ },
+ "b666430fcd651764": {
+  "en": "The thigh moves it forward and back ($J_{11} = -0.170$, $J_{21} = 0$). Only the knee column has a vertical component.",
+  "de": "Der Oberschenkel bewegt ihn nach vorne und hinten ($J_{11} = -0.170$, $J_{21} = 0$). Nur die Kniespalte hat eine senkrechte Komponente."
+ },
+ "9df2aadb854292e2": {
+  "en": "They describe the *drive* linkage, not the leg. Near $0^\\circ$ or $180^\\circ$ the knee servo loses leverage and the crank–knee map becomes ill-conditioned, whatever the leg Jacobian says.",
+  "de": "Sie beschreiben das *Antriebs*-Koppelgetriebe, nicht das Bein. Nahe $0^\\circ$ oder $180^\\circ$ verliert der Knieservo Hebelwirkung und die Abbildung Kurbel–Knie wird schlecht konditioniert, egal was die Bein-Jacobi-Matrix sagt."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "7cb8b20f39692e18": {
+  "en": "K. M. Lynch and F. C. Park, *Modern Robotics*, Cambridge University Press, 2017, ch. 4–6 (forward kinematics, velocity kinematics, inverse kinematics).",
+  "de": "K. M. Lynch und F. C. Park, *Modern Robotics*, Cambridge University Press, 2017, Kap. 4–6 (Vorwärtskinematik, Geschwindigkeitskinematik, inverse Kinematik)."
+ },
+ "f6cb5b866c84029b": {
+  "en": "B. Siciliano et al., *Robotics: Modelling, Planning and Control*, Springer, 2009, ch. 2–3.",
+  "de": "B. Siciliano et al., *Robotics: Modelling, Planning and Control*, Springer, 2009, Kap. 2–3."
+ },
+ "67ff65bab29ff27c": {
+  "en": "R. L. Norton, *Design of Machinery*, McGraw-Hill, ch. 4 (four-bar position analysis and transmission angle).",
+  "de": "R. L. Norton, *Design of Machinery*, McGraw-Hill, Kap. 4 (Lageanalyse von Viergelenken und Übertragungswinkel)."
+ },
+ "2d7e4576cdc5e3c3": {
+  "en": "[Kinematics and gaits](../software/kinematics-and-gaits.md) in this wiki.",
+  "de": "[Kinematik und Gaits](../software/kinematics-and-gaits.md) in diesem Wiki."
+ }
+}

@@ -1,0 +1,298 @@
+{
+ "68203a41c40a6c07": {
+  "en": "Batteries: the 2S LiPo",
+  "de": "Akkus: der 2S-LiPo"
+ },
+ "e2902d6f12874fd4": {
+  "en": "Strido runs from one 2S lithium-polymer (LiPo) pack: 7.4 V nominal, 5000 mAh, about 37 Wh. LiPo stores a lot of energy for its weight and can deliver large currents, but it is also the one part of the robot that can start a fire. This page explains the numbers on the label and the habits that keep the pack healthy and safe.",
+  "de": "Strido läuft mit einem 2S-Lithium-Polymer-Akkupack (LiPo): 7,4 V nominal, 5000 mAh, etwa 37 Wh. Ein LiPo speichert viel Energie für sein Gewicht und kann große Ströme liefern, ist aber auch das eine Teil des Roboters, das einen Brand auslösen kann. Diese Seite erklärt die Zahlen auf dem Etikett und die Gewohnheiten, die den Akkupack gesund und sicher halten."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "b50b6678810b5462": {
+  "en": "**Part:** LiPo 2S 5000 mAh hardcase with XT60, max 138 × 47 × 25 mm (Gens ace G-Tech class), BOM line `lipo_2s_5000`.",
+  "de": "**Teil:** LiPo 2S 5000 mAh Hardcase mit XT60, max. 138 × 47 × 25 mm (Gens-ace-G-Tech-Klasse), Stücklistenposition `lipo_2s_5000`."
+ },
+ "292d8c11e7cc173e": {
+  "en": "**Accessories:** balance charger with AC input (B6AC class, `charger`), LiPo safety bag (`lipo_bag`), LiPo cell checker / low-voltage alarm (`lipo_checker`).",
+  "de": "**Zubehör:** Balance-Ladegerät mit Netzeingang (B6AC-Klasse, `charger`), LiPo-Sicherheitstasche (`lipo_bag`), LiPo-Zellenprüfer / Unterspannungsalarm (`lipo_checker`)."
+ },
+ "c043e6a81856bf13": {
+  "en": "**Data:** `hardware/electronics.yaml` → `power.pack` (7.4 V nominal, 8.4 V full, 6.4 V empty, 5000 mAh) and `rails.pack` (6.0–8.4 V).",
+  "de": "**Daten:** `hardware/electronics.yaml` → `power.pack` (7,4 V nominal, 8,4 V voll, 6,4 V leer, 5000 mAh) und `rails.pack` (6,0–8,4 V)."
+ },
+ "5072249f89a6856e": {
+  "en": "**Firmware:** low-battery warning at 6.8 V, servo cut-off at 6.4 V (`firmware/strido_esp32s3/lib/strido_core/include/strido/safety.h`), measured by the INA260.",
+  "de": "**Firmware:** Akku-Warnung bei 6,8 V, Servoabschaltung bei 6,4 V (`firmware/strido_esp32s3/lib/strido_core/include/strido/safety.h`), gemessen vom INA260."
+ },
+ "f9353cd2ab739457": {
+  "en": "**ROS 2:** `/battery_state` (pack voltage and logic-branch current).",
+  "de": "**ROS 2:** `/battery_state` (Akkuspannung und Strom des Logikzweigs)."
+ },
+ "53f9387911c6afce": {
+  "en": "Cells and the \"2S\" label",
+  "de": "Zellen und die Bezeichnung „2S“"
+ },
+ "39732eb3e1b5f1f0": {
+  "en": "A LiPo **cell** is one lithium-ion pouch. Its voltage depends on its state of charge:",
+  "de": "Eine LiPo-**Zelle** ist ein einzelner Lithium-Ionen-Pouch. Ihre Spannung hängt vom Ladezustand ab:"
+ },
+ "88a9a0e3a51b161b": {
+  "en": "| Cell state | Voltage per cell | 2S pack |",
+  "de": "| Zellzustand | Spannung pro Zelle | 2S-Akkupack |"
+ },
+ "fe523e7634a55b5d": {
+  "en": "| Full (end of charge) | 4.20 V | 8.4 V |",
+  "de": "| Voll (Ladeende) | 4,20 V | 8,4 V |"
+ },
+ "60229a70c0489bfc": {
+  "en": "| Nominal (label value) | 3.70 V | 7.4 V |",
+  "de": "| Nominal (Etikettwert) | 3,70 V | 7,4 V |"
+ },
+ "2e7b87a14d03e972": {
+  "en": "| Strido warning | 3.40 V | 6.8 V |",
+  "de": "| Strido-Warnung | 3,40 V | 6,8 V |"
+ },
+ "d27016780d6b64fc": {
+  "en": "| Strido servo cut-off | 3.20 V | 6.4 V |",
+  "de": "| Strido-Servoabschaltung | 3,20 V | 6,4 V |"
+ },
+ "05990b11fc7b7714": {
+  "en": "| Lowest rail value the logic branch is checked for | 3.00 V | 6.0 V |",
+  "de": "| Niedrigster Schienenwert, für den der Logikzweig geprüft ist | 3,00 V | 6,0 V |"
+ },
+ "bd91abf1bd88288a": {
+  "en": "**2S** means two cells in **s**eries: the voltages add, and the capacity stays that of one cell. (A \"2S2P\" pack would have two parallel pairs, doubling capacity.) Two cells were chosen because:",
+  "de": "**2S** bedeutet zwei Zellen in **S**erie: Die Spannungen addieren sich, und die Kapazität bleibt die einer Zelle. (Ein „2S2P“-Akkupack hätte zwei parallele Paare und doppelte Kapazität.) Zwei Zellen wurden gewählt, weil:"
+ },
+ "a90eac342de4a808": {
+  "en": "2S (6.4–8.4 V in use) sits just above the 6.0 V servo rail, so the UBECs only need to step down a little.",
+  "de": "2S (6,4–8,4 V im Betrieb) knapp über der 6,0-V-Servoschiene liegt, sodass die UBECs nur wenig herunterregeln müssen."
+ },
+ "924a98033dd1ec5c": {
+  "en": "2S is the common RC-car pack, so packs, chargers and XT60 leads are cheap and easy to find.",
+  "de": "2S der übliche RC-Car-Akkupack ist, sodass Akkupacks, Ladegeräte und XT60-Leitungen günstig und leicht erhältlich sind."
+ },
+ "2ba8ed0022e31f03": {
+  "en": "Capacity and energy",
+  "de": "Kapazität und Energie"
+ },
+ "88dee8557f699fa6": {
+  "en": "**Capacity** (mAh) is charge $Q$: 5000 mAh means the pack can deliver 5 A for one hour, or 1 A for five hours, before it is empty. Charge is current integrated over time, $Q = \\int I\\,\\mathrm{d}t$, so at constant current $Q = I\\,t$. **Energy** (Wh) also accounts for voltage. Electrical power is $P = V I$; integrating it over the discharge gives the energy, and if the voltage stays close to its nominal value this reduces to",
+  "de": "**Kapazität** (mAh) ist die Ladung $Q$: 5000 mAh bedeutet, dass der Akkupack eine Stunde lang 5 A oder fünf Stunden lang 1 A liefern kann, bevor er leer ist. Ladung ist der über die Zeit integrierte Strom, $Q = \\int I\\,\\mathrm{d}t$, bei konstantem Strom also $Q = I\\,t$. **Energie** (Wh) berücksichtigt auch die Spannung. Elektrische Leistung ist $P = V I$; ihr Integral über die Entladung ergibt die Energie, und bleibt die Spannung nahe ihrem Nennwert, vereinfacht sich dies zu"
+ },
+ "9c9508a81b159fba": {
+  "en": "(1 Wh = 3600 J, so this is about 133 kJ.) The nominal voltage is used because a LiPo's voltage falls gently from 4.2 V to about 3.2 V per cell over most of the discharge; 3.7 V per cell is a good average.",
+  "de": "(1 Wh = 3600 J, das sind also etwa 133 kJ.) Die Nennspannung wird verwendet, weil die Spannung eines LiPo über den Großteil der Entladung sanft von 4,2 V auf etwa 3,2 V pro Zelle fällt; 3,7 V pro Zelle ist ein guter Mittelwert."
+ },
+ "392fd4b6b90aecae": {
+  "en": "Energy is the number that predicts runtime. `docs/electronics.md` estimates about 60 W drawn from the pack while trotting (12 servos ≈ 50 W, plus Pi, LiDAR and the rest, through 90 %-efficient converters). With a usable fraction $\\eta_\\mathrm{use} = 0.8$ of the stored energy:",
+  "de": "Die Energie ist die Größe, die die Laufzeit vorhersagt. `docs/electronics.md` schätzt etwa 60 W Entnahme aus dem Akkupack beim Trot (12 Servos ≈ 50 W, plus Pi, LiDAR und der Rest, über Wandler mit 90 % Wirkungsgrad). Mit einem nutzbaren Anteil $\\eta_\\mathrm{use} = 0.8$ der gespeicherten Energie:"
+ },
+ "132bc33c5b11bab4": {
+  "en": "Standing draws less, so the doc estimates about 45 min. The 80 % factor is there because the firmware stops the servos well before the cells are truly empty. Both runtimes are marked [ESTIMATE]: measure your own with `/battery_state` and a clamp meter.",
+  "de": "Stehen verbraucht weniger, daher schätzt das Dokument etwa 45 min. Der Faktor 80 % ist da, weil die Firmware die Servos lange vor der echten Entleerung der Zellen abschaltet. Beide Laufzeiten sind als [ESTIMATE] markiert: Messen Sie Ihre eigene mit `/battery_state` und einer Strommesszange."
+ },
+ "18b77054aceccd16": {
+  "en": "37 Wh is also below the 100 Wh limit above which shipping a LiPo needs a surcharge (`docs/bom/sources.md`).",
+  "de": "37 Wh liegen auch unter der Grenze von 100 Wh, oberhalb derer der Versand eines LiPo einen Zuschlag kostet (`docs/bom/sources.md`)."
+ },
+ "fd5002c1ec89daeb": {
+  "en": "C-rating: how fast the pack can deliver",
+  "de": "C-Rate: wie schnell der Akkupack liefern kann"
+ },
+ "8bd17a4c4b509075": {
+  "en": "The **C-rating** expresses current as a multiple of capacity. With $Q$ in ampere-hours, a rate of $C$ means the current",
+  "de": "Die **C-Rate** drückt den Strom als Vielfaches der Kapazität aus. Mit $Q$ in Amperestunden bedeutet eine Rate von $C$ den Strom"
+ },
+ "32eb012599abcd77": {
+  "en": "so 1C on a 5000 mAh pack is $5\\,\\mathrm{A}$, and 60C is $60 \\times 5\\,\\mathrm{A} = 300\\,\\mathrm{A}$ (the Gens ace pack's continuous rating; 100C gives $500\\,\\mathrm{A}$ burst). Equivalently, a pack discharged at $n$C empties in $1/n$ hours.",
+  "de": "also sind 1C bei einem 5000-mAh-Akkupack $5\\,\\mathrm{A}$, und 60C sind $60 \\times 5\\,\\mathrm{A} = 300\\,\\mathrm{A}$ (der Dauerwert des Gens-ace-Akkupacks; 100C ergibt $500\\,\\mathrm{A}$ Spitze). Gleichbedeutend: Ein mit $n$C entladener Akkupack ist in $1/n$ Stunden leer."
+ },
+ "f062eaf45172f101": {
+  "en": "`hardware/electronics.yaml` records a `max_discharge_a` of 300 A for this pack (60C continuous, Gens ace GEA502S60X6HGT). The robot's worst-case pack current is about 23.6 A (servo and logic branches, `docs/verification/electronics.md`), so the pack works at under a tenth of its rating.",
+  "de": "`hardware/electronics.yaml` verzeichnet für diesen Akkupack einen `max_discharge_a` von 300 A (60C dauerhaft, Gens ace GEA502S60X6HGT). Der ungünstigste Akkustrom des Roboters beträgt etwa 23,6 A (Servo- und Logikzweig, `docs/verification/electronics.md`), der Akkupack arbeitet also unter einem Zehntel seiner Nennbelastbarkeit."
+ },
+ "99d2acadfff64407": {
+  "en": "Why buy far more C than you need? Every cell behaves roughly like an ideal voltage source $V_\\mathrm{oc}$ (the open-circuit voltage) in series with an **internal resistance** $R_\\mathrm{int}$. By Ohm's law the terminal voltage under load is",
+  "de": "Warum weit mehr C kaufen als nötig? Jede Zelle verhält sich grob wie eine ideale Spannungsquelle $V_\\mathrm{oc}$ (die Leerlaufspannung) in Reihe mit einem **Innenwiderstand** $R_\\mathrm{int}$. Nach dem Ohmschen Gesetz ist die Klemmenspannung unter Last"
+ },
+ "a4bc49713c2ebce1": {
+  "en": "and the pack also turns $P_\\mathrm{loss} = I^2 R_\\mathrm{int}$ into heat. A pack with a higher genuine C-rating usually has a lower internal resistance, so it **sags** less when twelve servos pull a current peak together. As an illustration (not a measured value), a pack with $R_\\mathrm{int} = 10\\,\\mathrm{m\\Omega}$ at the robot's worst-case $23.6\\,\\mathrm{A}$ would sag by $0.24\\,\\mathrm{V}$ and dissipate $5.6\\,\\mathrm{W}$. Less sag means fewer false low-battery readings and more voltage headroom for the UBECs. Cheap packs often overstate their C-rating, which is why `docs/bom/sources.md` lists the LiPo among the parts where the brand matters (hardcase, real C rating).",
+  "de": "und der Akkupack wandelt außerdem $P_\\mathrm{loss} = I^2 R_\\mathrm{int}$ in Wärme um. Ein Akkupack mit höherer echter C-Rate hat meist einen geringeren Innenwiderstand und **bricht** daher weniger ein, wenn zwölf Servos gemeinsam eine Stromspitze ziehen. Zur Veranschaulichung (kein Messwert): Ein Akkupack mit $R_\\mathrm{int} = 10\\,\\mathrm{m\\Omega}$ würde beim ungünstigsten Strom des Roboters von $23.6\\,\\mathrm{A}$ um $0.24\\,\\mathrm{V}$ einbrechen und $5.6\\,\\mathrm{W}$ verheizen. Weniger Einbruch bedeutet weniger falsche Unterspannungsmeldungen und mehr Spannungsreserve für die UBECs. Billige Akkupacks geben ihre C-Rate oft zu hoch an, weshalb `docs/bom/sources.md` den LiPo zu den Teilen zählt, bei denen die Marke zählt (Hardcase, echte C-Rate)."
+ },
+ "fb2a3af835314609": {
+  "en": "Load sag and the cut-off filter",
+  "de": "Lasteinbruch und der Abschaltfilter"
+ },
+ "3bf4c519ac156e22": {
+  "en": "Sag is also why the firmware does **not** cut off on a single low reading. The INA260 is read every 100 ms. The servos only relax after **5 consecutive readings below 6.4 V** (0.5 s), so a short current spike in mid-step does not drop the robot. A pack that really is empty stays low and trips the cut-off.",
+  "de": "Der Einbruch ist auch der Grund, warum die Firmware **nicht** bei einem einzelnen niedrigen Messwert abschaltet. Der INA260 wird alle 100 ms gelesen. Die Servos werden erst nach **5 aufeinanderfolgenden Messwerten unter 6,4 V** (0,5 s) entspannt, sodass eine kurze Stromspitze mitten im Schritt den Roboter nicht fallen lässt. Ein wirklich leerer Akkupack bleibt niedrig und löst die Abschaltung aus."
+ },
+ "0304d78bb648f712": {
+  "en": "Charging: always a balance charger",
+  "de": "Laden: immer mit Balance-Ladegerät"
+ },
+ "2e1cda105f9568ed": {
+  "en": "LiPo cells charge with **constant current, then constant voltage** (CC/CV): the charger pushes a set current until the cell reaches 4.20 V, then holds 4.20 V while the current tapers. Going above 4.20 V per cell damages the cell and can make it unstable.",
+  "de": "LiPo-Zellen werden mit **Konstantstrom, dann Konstantspannung** (CC/CV) geladen: Das Ladegerät treibt einen eingestellten Strom, bis die Zelle 4,20 V erreicht, und hält dann 4,20 V, während der Strom abfällt. Über 4,20 V pro Zelle wird die Zelle beschädigt und kann instabil werden."
+ },
+ "9b9ccfca664826ac": {
+  "en": "In a series pack the charger only sees the total voltage, and the two cells are never exactly equal. One cell could reach 4.30 V while the other is still at 4.10 V, and the total would still read 8.4 V. The **balance lead**, the small extra plug with one wire per cell junction, lets a **balance charger** measure each cell and bleed off the higher one. Strido's B6AC-class charger does this.",
+  "de": "In einem Serien-Akkupack sieht das Ladegerät nur die Gesamtspannung, und die beiden Zellen sind nie genau gleich. Eine Zelle könnte 4,30 V erreichen, während die andere noch bei 4,10 V liegt, und die Summe würde trotzdem 8,4 V anzeigen. Die **Balance-Leitung**, der kleine Zusatzstecker mit einem Draht pro Zellverbindung, lässt ein **Balance-Ladegerät** jede Zelle messen und die höhere entladen. Das Ladegerät der B6AC-Klasse von Strido tut das."
+ },
+ "d88b12cd4a90a181": {
+  "en": "Rules of thumb (see Battery University in Further reading):",
+  "de": "Faustregeln (siehe Battery University unter Weiterführende Literatur):"
+ },
+ "c98affa8cc54368d": {
+  "en": "Charge at **1C or less**: 5 A for this pack.",
+  "de": "Laden Sie mit **1C oder weniger**: 5 A für diesen Akkupack."
+ },
+ "915b3bfab20a651d": {
+  "en": "Always plug in the balance lead and select the LiPo program with the right cell count (2S).",
+  "de": "Stecken Sie immer die Balance-Leitung an und wählen Sie das LiPo-Programm mit der richtigen Zellenzahl (2S)."
+ },
+ "15cca94ce00c03d2": {
+  "en": "Charge **inside the LiPo bag**, on a non-flammable surface, and **never leave it unattended** (`docs/electronics.md`, safety rules).",
+  "de": "Laden Sie **in der LiPo-Tasche** auf einer nicht brennbaren Unterlage und **lassen Sie ihn nie unbeaufsichtigt** (`docs/electronics.md`, Sicherheitsregeln)."
+ },
+ "b67094501a510ba0": {
+  "en": "Let a warm pack cool down before charging it.",
+  "de": "Lassen Sie einen warmen Akkupack vor dem Laden abkühlen."
+ },
+ "daf10f34992259da": {
+  "en": "Storage voltage",
+  "de": "Lagerspannung"
+ },
+ "99e774425e16559f": {
+  "en": "A LiPo ages fastest when it sits **full** (4.20 V per cell), and it is damaged if it sits **empty**. For storage longer than a few days, bring each cell to about **3.80–3.85 V** (about 7.6–7.7 V for the pack). Most balance chargers, including the B6AC class, have a *storage* program that charges or discharges to this level automatically.",
+  "de": "Ein LiPo altert am schnellsten, wenn er **voll** (4,20 V pro Zelle) gelagert wird, und er wird beschädigt, wenn er **leer** gelagert wird. Bringen Sie für eine Lagerung von mehr als einigen Tagen jede Zelle auf etwa **3,80–3,85 V** (etwa 7,6–7,7 V für den Akkupack). Die meisten Balance-Ladegeräte, auch die der B6AC-Klasse, haben ein *Storage*-Programm, das automatisch auf diesen Wert lädt oder entlädt."
+ },
+ "4ff03a097b0e8813": {
+  "en": "The LiPo checker",
+  "de": "Der LiPo-Prüfer"
+ },
+ "591dbcef5258a419": {
+  "en": "The cell checker plugs into the balance lead and shows each cell's voltage and the total. Use it:",
+  "de": "Der Zellenprüfer wird an die Balance-Leitung gesteckt und zeigt die Spannung jeder Zelle und die Summe. Verwenden Sie ihn:"
+ },
+ "dd0a8de179e46e96": {
+  "en": "**Before a run:** both cells near 4.2 V and within a few hundredths of a volt of each other.",
+  "de": "**Vor einem Einsatz:** beide Zellen nahe 4,2 V und innerhalb weniger Hundertstel Volt voneinander."
+ },
+ "3bfdfcd240020332": {
+  "en": "**After a run:** cells still at or above about 3.2 V and still balanced.",
+  "de": "**Nach einem Einsatz:** Zellen noch bei oder über etwa 3,2 V und weiterhin ausgeglichen."
+ },
+ "ea91e404fe6561e4": {
+  "en": "**Before storage:** cells at storage voltage.",
+  "de": "**Vor der Lagerung:** Zellen auf Lagerspannung."
+ },
+ "e78871b915cf023b": {
+  "en": "A cell that drifts away from its partner run after run is the first sign of a failing pack. In alarm mode the checker beeps when any cell drops below a threshold. That adds a second, independent warning on top of the firmware's.",
+  "de": "Eine Zelle, die sich Einsatz für Einsatz von ihrer Partnerzelle entfernt, ist das erste Anzeichen eines versagenden Akkupacks. Im Alarmmodus piept der Prüfer, wenn eine Zelle unter einen Schwellwert fällt. Das ergänzt die Warnung der Firmware um eine zweite, unabhängige."
+ },
+ "f3eb4041452c2658": {
+  "en": "Safe handling",
+  "de": "Sicherer Umgang"
+ },
+ "2c098857f61e6612": {
+  "en": "LiPo fire risk",
+  "de": "LiPo-Brandgefahr"
+ },
+ "cdfe6e0700122d05": {
+  "en": "A damaged, over-charged or over-discharged LiPo can vent and burn violently. A LiPo fire cannot be put out by smothering it.",
+  "de": "Ein beschädigter, überladener oder tiefentladener LiPo kann ausgasen und heftig brennen. Ein LiPo-Brand lässt sich nicht durch Ersticken löschen."
+ },
+ "7bd5b8f1f2beaa7d": {
+  "en": "**Inspect the pack.** A hardcase helps, but check for swelling (\"puffing\"), dents, cut wires or a hot pack after use. Retire any puffed pack.",
+  "de": "**Prüfen Sie den Akkupack.** Ein Hardcase hilft, aber achten Sie nach dem Gebrauch auf Aufblähen („Puffing“), Dellen, beschädigte Drähte oder einen heißen Akkupack. Nehmen Sie jeden aufgeblähten Akkupack außer Betrieb."
+ },
+ "540bd8547dd377c7": {
+  "en": "**Never short the leads.** The pack can deliver hundreds of amps. That is also why the arming loop key must never fit the battery's own XT60. See [Power](power.md) for the contact rule.",
+  "de": "**Schließen Sie die Leitungen nie kurz.** Der Akkupack kann Hunderte Ampere liefern. Deshalb darf der Arming-Loop-Key auch nie in die XT60 des Akkus selbst passen. Siehe [Stromversorgung](power.md) für die Kontaktregel."
+ },
+ "75b824f6626e0425": {
+  "en": "**Fuse close to the pack.** The 25 A main fuse protects the 14 AWG trunk right after the battery input.",
+  "de": "**Sicherung nahe am Akkupack.** Die 25-A-Hauptsicherung schützt den 14-AWG-Hauptstrang direkt nach dem Akkueingang."
+ },
+ "a3c4034e4e6de09b": {
+  "en": "**Unplug after use.** Even with the logic switched off, the robot stays connected to the pack through its wiring. Disconnect the battery when you finish.",
+  "de": "**Nach dem Gebrauch abstecken.** Auch bei ausgeschalteter Logik bleibt der Roboter über seine Verkabelung mit dem Akkupack verbunden. Trennen Sie den Akku, wenn Sie fertig sind."
+ },
+ "d5ca1578af3f1c80": {
+  "en": "**Transport and store** the pack in the LiPo bag, at storage voltage, away from heat.",
+  "de": "**Transportieren und lagern** Sie den Akkupack in der LiPo-Tasche, auf Lagerspannung und fern von Hitze."
+ },
+ "fa78848e66ba90fd": {
+  "en": "**Dispose properly:** discharge fully with a charger's discharge program, then take it to a battery collection point.",
+  "de": "**Fachgerecht entsorgen:** Vollständig mit dem Entladeprogramm eines Ladegeräts entladen und dann zu einer Batteriesammelstelle bringen."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "372b1f2c4d3ded7d": {
+  "en": "What is the pack voltage of a 2S LiPo at 3.4 V per cell, and what does the firmware do there?",
+  "de": "Wie hoch ist die Akkuspannung eines 2S-LiPo bei 3,4 V pro Zelle, und was tut die Firmware dort?"
+ },
+ "f17328e7db204a09": {
+  "en": "How much current is 2C for this pack?",
+  "de": "Wie viel Strom sind 2C für diesen Akkupack?"
+ },
+ "3ddb5fff9163ad7b": {
+  "en": "Why does a balance charger need the balance lead if it already measures 8.4 V at the main leads?",
+  "de": "Warum braucht ein Balance-Ladegerät die Balance-Leitung, wenn es an den Hauptleitungen bereits 8,4 V misst?"
+ },
+ "9ac79ed85d6b079e": {
+  "en": "Why does the firmware wait for five consecutive low readings before it cuts off?",
+  "de": "Warum wartet die Firmware auf fünf aufeinanderfolgende niedrige Messwerte, bevor sie abschaltet?"
+ },
+ "d2754b97b38b5900": {
+  "en": "You will not use the robot for a month. What should you do with the pack?",
+  "de": "Sie werden den Roboter einen Monat lang nicht benutzen. Was sollten Sie mit dem Akkupack tun?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "5e582be4c5eeefc8": {
+  "en": "6.8 V; the firmware raises the low-battery warning.",
+  "de": "6,8 V; die Firmware löst die Akku-Warnung aus."
+ },
+ "0e5ad6df4b172b88": {
+  "en": "The total can read 8.4 V while one cell is over-charged and the other under-charged; only per-cell measurement shows and corrects that.",
+  "de": "Die Summe kann 8,4 V anzeigen, während eine Zelle überladen und die andere unterladen ist; nur die Messung pro Zelle zeigt und korrigiert das."
+ },
+ "007d5ae011315def": {
+  "en": "Current peaks make the voltage sag briefly. Requiring 0.5 s below 6.4 V ignores spikes and reacts only to a truly empty pack.",
+  "de": "Stromspitzen lassen die Spannung kurz einbrechen. Die Forderung von 0,5 s unter 6,4 V ignoriert Spitzen und reagiert nur auf einen wirklich leeren Akkupack."
+ },
+ "f0aa4bc8c2a92d26": {
+  "en": "Bring it to storage voltage (about 3.80–3.85 V per cell) with the charger's storage program and keep it in the LiPo bag.",
+  "de": "Bringen Sie ihn mit dem Storage-Programm des Ladegeräts auf Lagerspannung (etwa 3,80–3,85 V pro Zelle) und bewahren Sie ihn in der LiPo-Tasche auf."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "537e757df5e48ac9": {
+  "en": "[BU-409: Charging Lithium-ion (Battery University)](https://batteryuniversity.com/article/bu-409-charging-lithium-ion)",
+  "de": "[BU-409: Laden von Lithium-Ionen-Akkus (Battery University)](https://batteryuniversity.com/article/bu-409-charging-lithium-ion)"
+ },
+ "fdb984943dc9afe1": {
+  "en": "[BU-808: How to prolong lithium-based batteries (Battery University)](https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries)",
+  "de": "[BU-808: Wie man die Lebensdauer von Lithium-Akkus verlängert (Battery University)](https://batteryuniversity.com/article/bu-808-how-to-prolong-lithium-based-batteries)"
+ },
+ "e567f773c14b3063": {
+  "en": "[TI INA260 datasheet](https://www.ti.com/lit/ds/symlink/ina260.pdf): the sensor that measures the pack voltage",
+  "de": "[TI-INA260-Datenblatt](https://www.ti.com/lit/ds/symlink/ina260.pdf): der Sensor, der die Akkuspannung misst"
+ },
+ "388d24202c4a47fb": {
+  "en": "Related pages: [Power](power.md), [Safety](../making/safety.md), [Electronics, wiring and power](../../electronics.md)",
+  "de": "Verwandte Seiten: [Stromversorgung](power.md), [Sicherheit](../making/safety.md), [Elektronik, Verkabelung und Stromversorgung](../../electronics.md)"
+ }
+}

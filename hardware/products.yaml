@@ -1,0 +1,688 @@
+# Product information for the parts shop and print kit (docs site). Keys: BOM line ids / printed part ids.
+purchased:
+  pi5_4gb:
+    summary: Quad-core Linux computer that runs ROS 2, perception and the gait planner
+    description: >-
+      The Raspberry Pi 5 is the high-level brain of Strido. It runs Linux, Docker and ROS 2,
+      reads the LiDAR and camera, and streams joint targets over USB to the XIAO ESP32-S3.
+      The 4 GB model is enough for the ROS 2 stack and keeps the logic power budget near 7 W typical.
+    features: [Quad-core Arm Cortex-A76, Two MIPI camera/display connectors, PCIe 2.0 x1 and USB 3.0, Official long-term availability]
+    specs: {SoC: Broadcom BCM2712, CPU: 4 × Cortex-A76 at 2.4 GHz, RAM: 4 GB LPDDR4X, USB: 2 × USB 3.0 + 2 × USB 2.0, Supply: 5 V, Board size: 85 × 56 mm}
+    role: Sits on M2.5 × 6 stand-offs on the electronics deck, fed from the 5 V regulator through GPIO pins 2/4 and 6/14.
+    learn: [hardware/microcontrollers, software/linux-on-the-pi, software/docker, software/ros2]
+  pi5_cooler:
+    summary: Official clip-on heatsink and PWM fan for the Raspberry Pi 5
+    description: >-
+      Clip-on aluminium heatsink with a temperature-controlled fan that plugs into the Pi 5 fan header.
+      Inside a closed shell the Pi would throttle under ROS 2 load; the cooler keeps it at full clock.
+    features: [Push-pin mounting, Thermal pads included, Fan speed controlled by the Pi firmware]
+    specs: {Compatibility: Raspberry Pi 5, Connector: 4-pin fan header}
+    role: Mounted on top of the Raspberry Pi 5 on the electronics deck.
+    learn: [hardware/microcontrollers, software/linux-on-the-pi]
+  microsd_64:
+    summary: Fast A2 microSD card holding the Pi operating system and containers
+    description: >-
+      The boot and root storage for the Raspberry Pi 5. The A2 application-performance class gives
+      the random I/O that Docker images and ROS 2 logs need. Buy from retailer stock: fake cards are common.
+    features: [A2 application performance class, U3 / V30 speed class, 64 GB room for images and bags]
+    specs: {Capacity: 64 GB, Class: A2, UHS speed class: U3, Video class: V30}
+    role: Inserted in the Raspberry Pi 5 card slot.
+    learn: [software/linux-on-the-pi, software/docker]
+  camera_module_3_wide:
+    summary: 12 MP wide-angle autofocus camera for the robot's face
+    description: >-
+      Official Raspberry Pi camera with a Sony IMX708 sensor, autofocus and a wide lens. It looks
+      forward from a printed tilt mount behind the front shell and feeds the Pi over MIPI CSI-2.
+      The wide variant sees more of the floor right in front of the feet.
+    features: [Sony IMX708 sensor, Phase-detect autofocus, HDR mode, Wide 120° lens]
+    specs: {Sensor: Sony IMX708, Resolution: 11.9 MP, Diagonal field of view: 120°, Interface: MIPI CSI-2 (15-pin)}
+    role: Held on the camera tilt plate at the front, cabled to the Pi 5 CAM port.
+    learn: [hardware/sensors, software/ros2]
+  camera_cable_300:
+    summary: 300 mm ribbon from the Pi 5 22-pin camera port to the 15-pin camera
+    description: >-
+      The Pi 5 uses the smaller 22-pin (0.5 mm pitch) camera connector while the Camera Module 3 has
+      the 15-pin standard connector. The 300 mm length reaches from the deck to the front camera through the shell slot.
+    features: [22-pin to 15-pin, 300 mm length, Official Raspberry Pi part]
+    specs: {Length: 300 mm, Connectors: 22-pin 0.5 mm / 15-pin 1 mm}
+    role: Runs from the Pi 5 CAM port through the front-shell slot to the camera.
+    learn: [hardware/sensors, hardware/buses]
+  xiao_esp32s3:
+    summary: Thumb-sized ESP32-S3 board running the real-time servo and sensor firmware
+    description: >-
+      The motion controller of Strido. It receives joint targets from the Pi over USB, drives the
+      PCA9685 over I²C at 400 kHz, reads the IMU and power monitor, and draws the face on the LCD over SPI.
+      It was chosen for its tiny footprint and native USB.
+    features: [Dual-core 240 MHz Xtensa LX7, Native USB-C, 8 MB flash + 8 MB PSRAM, Pre-soldered headers]
+    specs: {MCU: ESP32-S3R8, CPU: 2 × Xtensa LX7 at 240 MHz, Flash: 8 MB, PSRAM: 8 MB, Size: 21 × 17.8 mm}
+    role: Taped in the front cavity, powered and connected by USB from the Pi, master of the I²C bus.
+    learn: [hardware/microcontrollers, software/firmware, hardware/buses]
+  pca9685:
+    summary: 16-channel 12-bit PWM driver that generates all twelve servo pulses
+    description: >-
+      The PCA9685 creates the servo pulses in hardware so the ESP32 only writes registers over I²C.
+      Strido runs it at 200 Hz with 500-2500 µs pulses on channels 4-15. Clones are fine if they keep the Adafruit 815 footprint.
+    features: [16 channels, 12-bit resolution, I²C address 0x40, Active-low OE for a safe start-up]
+    specs: {Channels: '16', Resolution: 12 bit, Supply VCC: 2.3-5.5 V, PWM frequency: 24-1526 Hz, Board size: 62.5 × 25.4 mm}
+    role: On the deck between the XIAO (I²C, OE) and the twelve servo signal leads.
+    learn: [hardware/buses, hardware/servos, software/firmware]
+  lsm6dsox:
+    summary: 6-axis accelerometer and gyroscope for body attitude
+    description: >-
+      The IMU measures acceleration and rotation of the body so the controller can estimate tilt and
+      balance. It sits in a pocket in the electronics deck near the centre of the robot and talks I²C at address 0x6A.
+    features: [3-axis accelerometer, 3-axis gyroscope, STEMMA QT connectors, 3-5 V input]
+    specs: {Sensor: ST LSM6DSOX, Accelerometer range: ±2/4/8/16 g, Gyroscope range: ±125 to ±2000 dps, I²C address: 0x6A}
+    role: Pressed into the deck pocket and wired to the XIAO I²C bus.
+    learn: [hardware/sensors, hardware/buses]
+  ina260:
+    summary: Current, voltage and power monitor with an integrated shunt
+    description: >-
+      Measures the logic-branch current and the pack voltage so the robot can publish battery state and
+      warn before the LiPo is over-discharged. The A0 jumper is bridged to move it to 0x41, away from the PCA9685.
+    features: [Integrated 2 mΩ shunt, Up to 36 V bus, I²C with alert pin]
+    specs: {Sensor: TI INA260, Max current: 15 A, Bus voltage: 0-36 V, Shunt: 2 mΩ internal, I²C address in Strido: 0x41}
+    role: In the logic branch between the logic fuse/switch and the 5 V regulator.
+    learn: [hardware/power, hardware/sensors, hardware/buses]
+  lcd_2inch:
+    summary: 2-inch 240 × 320 IPS screen that shows the robot's face and status
+    description: >-
+      A small SPI display behind a window in the front shell. The ESP32 drives it for an animated face
+      and quick status without needing a monitor.
+    features: [ST7789 controller, SPI interface, 3.3 V / 5 V supply]
+    specs: {Controller: ST7789, Resolution: 240 × 320, Diagonal: 2.0 in, Interface: SPI}
+    role: Behind the front shell window on the display bracket, wired to the XIAO SPI pins.
+    learn: [hardware/buses, software/firmware]
+  rplidar_c1:
+    summary: 360° time-of-flight laser scanner for mapping and obstacle detection
+    description: >-
+      The RPLIDAR C1 spins on top of the robot and returns a ring of distance points for SLAM and
+      navigation in ROS 2. The genuine Slamtec unit is recommended because the official ROS driver supports it.
+    features: [360° scan, DTOF ranging, USB adapter included, Official ROS 2 driver]
+    specs: {Ranging: DTOF, Range radius: 0.05-12 m, Sample rate: 5000 Hz, Scan frequency: 10 Hz typical, Supply: 5 V}
+    role: On the LiDAR pedestal on the top shell, USB to the Pi 5.
+    learn: [hardware/sensors, software/ros2]
+  stemma_qt_female:
+    summary: JST SH 4-pin to female jumper cable for the I²C sensors
+    description: >-
+      Adapts the IMU's STEMMA QT sockets to 0.1 in header pins: one cable from the PCA9685 header to the IMU (W18), one from the IMU to the INA260 header (W19). The IMU sits 2.5 mm under the Pi, where only this low plug fits. It carries 3.3 V, ground, SDA and SCL.
+    features: [JST SH 4-pin, Female 0.1 in sockets, 150 mm]
+    specs: {Length: 150 mm, Connector: JST SH 1.0 mm 4-pin}
+    role: W18 and W19, the I²C daisy chain PCA9685 → LSM6DSOX → INA260.
+    learn: [hardware/buses, making/cable-management]
+  resistor_2k2:
+    summary: Pull-up that keeps the servo outputs disabled while the controller boots
+    description: >-
+      Holds the PCA9685 OE pin high (outputs off) until the firmware actively pulls it low, so servos cannot twitch at power-up or reset.
+    features: [Through-hole, Soldered across OE and VCC]
+    specs: {Resistance: 2.2 kΩ, Power: 0.25 W}
+    role: Soldered on the PCA9685 header between OE and VCC.
+    learn: [hardware/buses, making/safety]
+  servo_spt5435lv:
+    summary: 35 kg·cm 180° digital servo that drives each of the 12 joints
+    description: >-
+      Every hip, thigh and knee joint is a SPT5435LV-180W servo. It gives high torque on 6 V at a low price
+      and the 180° variant maps 500-2500 µs to the full joint range. Thirteen are ordered: twelve plus one spare.
+    features: [35 kg·cm class torque, 180° travel, 25T output spline, Waterproof case]
+    specs: {Supply: 4.8-6.0 V, Pulse range: 500-2500 µs, Travel: 180°, Signal level: 3.3-5.0 V, Stall current (design value): 3.5 A}
+    role: Three per leg, signal from the PCA9685, power from the 6 V UBEC bus.
+    learn: [hardware/servos, hardware/power, software/kinematics-and-gaits]
+  disc_horn_25t:
+    summary: Aluminium 25-tooth disc horn for the hip and thigh joints
+    description: >-
+      A round metal horn that clamps on the servo spline and gives a wide bolt circle for the leg parts.
+      Aluminium does not strip like the plastic horns supplied with most servos.
+    features: [25T spline, Aluminium, Multiple M3 holes]
+    specs: {Spline: 25T, Material: aluminium}
+    role: Joins the femur and each leg module to its servo output.
+    learn: [hardware/servos, hardware/mechanics]
+  arm_horn_25t:
+    summary: Clamping aluminium arm horn for the knee drive
+    description: >-
+      A single-arm horn with a clamp screw that drives the knee linkage. The clamp stops backlash on the spline.
+    features: [25T spline, Clamping hub, Aluminium]
+    specs: {Spline: 25T, Material: aluminium}
+    role: On each knee servo, linked to the knee linkage with an M3 × 16 screw.
+    learn: [hardware/servos, hardware/mechanics]
+  bearing_625zz:
+    summary: Shielded 5 × 16 × 5 mm ball bearing for the hip pivot
+    description: >-
+      Supports the outer end of each hip so the servo is not loaded sideways. Pressed into the outer shoulder frames.
+    features: [Metal shields, Press fit in printed seat]
+    specs: {Bore: 5 mm, Outer diameter: 16 mm, Width: 5 mm}
+    role: In the outer shoulder frames, carrying the hip pivot screw.
+    learn: [hardware/mechanics]
+  bearing_6805:
+    summary: Thin-section 25 × 37 × 7 mm sealed bearing for the knee crank
+    description: >-
+      A large thin bearing that lets the shoulder crank turn freely around the thigh axis while carrying the leg load.
+    features: [Rubber seals both sides, Thin section]
+    specs: {Bore: 25 mm, Outer diameter: 37 mm, Width: 7 mm}
+    role: Pressed into the left/right shoulder crank, over the femur servo connector.
+    learn: [hardware/mechanics]
+  bearing_633zz:
+    summary: Shielded 3 × 13 × 5 mm ball bearing for the knee joint
+    description: Two per leg in the tibia halves, giving a low-friction knee pivot on an M3 axle.
+    features: [Metal shields, M3 axle]
+    specs: {Bore: 3 mm, Outer diameter: 13 mm, Width: 5 mm}
+    role: In the inner and outer tibia, on the knee axle.
+    learn: [hardware/mechanics]
+  sleeve_3x5x5:
+    summary: Sintered bronze bushing for the linkage eyes
+    description: >-
+      Small oil-impregnated bushings pressed into each link eye so the M3 pins do not wear the plastic.
+    features: [Self-lubricating bronze, Press fit]
+    specs: {Bore: 3 mm, Outer diameter: 5 mm, Length: 5 mm}
+    role: Eight per leg in the long and short links.
+    learn: [hardware/mechanics]
+  ubec_10a:
+    summary: 10 A switching regulator that powers six servos at 6.0 V
+    description: >-
+      Each UBEC steps the 2S pack down to 6.0 V for one pair of legs. Two units share the servo load so
+      no single converter has to carry all twelve servos.
+    features: [2-6S input, Selectable 6.0 / 7.4 / 8.4 V, Switching regulator]
+    specs: {Input: 2-6S LiPo, Output: 6.0 V (jumpers open), Continuous current: 10 A}
+    role: Pack branch in, 6 V out to the front or rear WAGO servo bus.
+    learn: [hardware/power, hardware/servos]
+  lipo_2s_5000:
+    summary: 7.4 V 5000 mAh hardcase LiPo that powers the whole robot
+    description: >-
+      A two-cell lithium-polymer pack under the deck. It stores about 37 Wh and can deliver far more current
+      than the servos need. The hardcase and the 138 × 47 × 25 mm limit match the battery bay.
+    features: [Hardcase, XT60 plug, Balance lead]
+    specs: {Configuration: 2S1P, Nominal voltage: 7.4 V, Capacity: 5000 mAh, Discharge rating: 60C continuous / 100C burst (Gens ace GEA502S60X6HGT), Size: 138 × 47 × 25 mm}
+    role: Strapped under the deck, feeds the main fuse through W01.
+    learn: [hardware/batteries, making/safety]
+  charger:
+    summary: Mains-powered balance charger for the LiPo pack
+    description: Charges the 2S pack with cell balancing so no cell goes over 4.2 V.
+    features: [Balance charging, AC input, LiPo/LiHV/NiMH modes]
+    specs: {Cells: 1-6S LiPo}
+    role: Bench equipment; connects to the pack's XT60 and balance lead.
+    learn: [hardware/batteries, making/safety]
+  lipo_bag:
+    summary: Fire-resistant bag for charging and storing the LiPo
+    description: Contains flames and sparks if a damaged pack fails during charging or storage.
+    features: [Fire-retardant fabric, Fits a 2S 5000 mAh pack]
+    specs: {Size: 23 × 30 cm}
+    role: Bench safety equipment used while charging.
+    learn: [hardware/batteries, making/safety]
+  lipo_checker:
+    summary: Cell voltage checker with low-voltage buzzer
+    description: Shows each cell voltage on the balance lead and beeps before the pack is over-discharged.
+    features: [Per-cell display, Adjustable alarm]
+    specs: {}
+    role: Plugs into the pack balance lead.
+    learn: [hardware/batteries, making/safety]
+  pololu_regulator:
+    summary: 5 V 5.5 A step-down regulator for the Pi and logic
+    description: >-
+      A high-efficiency buck regulator that feeds the Raspberry Pi 5 and USB devices. The Pi 5 needs a stiff 5 V;
+      cheap buck modules often overstate their current.
+    features: [Synchronous buck, Wide input range, Reverse-voltage protection]
+    specs: {Output: 5 V, Continuous current: 5.5 A, Input: up to 50 V}
+    role: On M2 stand-offs on the deck, between the INA260 and the Pi GPIO 5 V pins.
+    learn: [hardware/power]
+  pololu_switch:
+    summary: MOSFET soft power switch controlled by a pushbutton
+    description: >-
+      Switches the logic branch on and off with a small momentary button instead of a heavy toggle. It also gives reverse-voltage protection.
+    features: [Momentary pushbutton control, Reverse-voltage protection, Electronic off input]
+    specs: {Input: 4.5-40 V, Continuous current: 6 A at 55 °C}
+    role: Foam-taped on the deck, in the logic branch after the 7.5 A fuse.
+    learn: [hardware/power, making/safety]
+  pushbutton:
+    summary: Stainless 12 mm momentary button for power on/off
+    description: The external power button in the back shell; it drives the Pololu switch A/B pads.
+    features: [Stainless steel, Momentary normally open, Screw terminals]
+    specs: {Mounting hole: 12 mm, Contact: 1 NO, Rating: 2 A / 36 V DC}
+    role: In the back shell, wired to the Pololu switch (W13).
+    learn: [hardware/power]
+  xt60_pairs:
+    summary: Genuine Amass XT60H connectors for battery lead, arming port and loop key
+    description: >-
+      High-current power connectors. One pair joins the battery, one forms the rear arming port and one becomes
+      the loop key that enables the servo branch.
+    features: [Gold-plated contacts, Polarised housing, Housing cap (H version)]
+    specs: {Continuous current: 30 A}
+    role: Battery lead, rear arming port in the bezel, and the loop key.
+    learn: [hardware/power, making/safety]
+  fuse_holder:
+    summary: Inline ATO blade-fuse holder with 14 AWG leads
+    description: One holder protects the whole pack (25 A), the second the logic branch (7.5 A).
+    features: [ATO/ATC blade fuses, 14 AWG leads, Cover]
+    specs: {Wire: 14 AWG}
+    role: Main fuse after the battery lead; logic fuse before the power switch.
+    learn: [hardware/power, making/safety, making/cable-management]
+  fuse_25a:
+    summary: 25 A blade fuse for the main battery line
+    description: Blows before the 14 AWG main wiring overheats in a short circuit.
+    features: [ATO standard size, Colour-coded]
+    specs: {Rating: 25 A, Type: ATO blade}
+    role: In the main fuse holder.
+    learn: [hardware/power, making/safety]
+  fuse_7_5a:
+    summary: 7.5 A blade fuse for the logic branch
+    description: Protects the 18 AWG logic wiring, switch and 5 V regulator.
+    features: [ATO standard size]
+    specs: {Rating: 7.5 A, Type: ATO blade}
+    role: In the logic fuse holder.
+    learn: [hardware/power, making/safety]
+  wago_221_415:
+    summary: Five-way lever connector for the servo power buses
+    description: Tool-free splice blocks that distribute 6 V and ground to the servo leads; four per bus.
+    features: [5 conductors, Lever clamps, Transparent housing]
+    specs: {Conductors: '5', Wire range: 0.2-4 mm², Rating: 32 A / 450 V}
+    role: Clipped into the front and rear servo-bus holders.
+    learn: [hardware/power, making/tools-and-workshop]
+  wire_14awg:
+    summary: Flexible 14 AWG silicone wire for the main battery current
+    description: Carries the full pack current from battery to fuse, arming port and UBECs.
+    features: [Silicone insulation, High strand count]
+    specs: {Cross-section: 2.5 mm²}
+    role: Wires W01-W04.
+    learn: [hardware/power, making/tools-and-workshop, making/cable-management]
+  wire_18awg:
+    summary: 18 AWG silicone wire for UBEC outputs and the logic branch
+    description: Sized for up to 10 A per UBEC output and the logic branch.
+    features: [Silicone insulation, Flexible]
+    specs: {Cross-section: 0.75 mm²}
+    role: Wires W04/logic, W05–W11 and W24 (1 m red + 1 m black per unit; two units).
+    learn: [hardware/power, making/cable-management]
+  wire_22awg:
+    summary: Thin silicone wire for the Pi 5 V feed, button and jumpers
+    description: Used in parallel pairs for the Pi 5 V feed and for low-current signals.
+    features: [Six colours, Silicone insulation]
+    specs: {Gauge: 22 AWG}
+    role: W12 Pi feed, button wiring and jumpers.
+    learn: [hardware/power, making/tools-and-workshop, making/cable-management]
+  usb_a_c_short:
+    summary: 20 cm angled USB-A to USB-C cable
+    description: Short angled cables for the Pi-to-XIAO and Pi-to-LiDAR adapter links in the tight body.
+    features: [90° plug, 20 cm]
+    specs: {Length: 200 mm}
+    role: Pi USB port to the XIAO and to the LiDAR USB adapter.
+    learn: [hardware/buses, making/cable-management]
+  dupont_set:
+    summary: 20 cm Dupont jumper assortment
+    description: Jumpers for the bench set-up when centring the servos and testing the boards before they go into the robot.
+    features: [F-F, M-M and F-M, 0.1 in pitch]
+    specs: {Length: 200 mm}
+    role: Bench wiring.
+    learn: [hardware/buses, making/cable-management]
+  heat_shrink:
+    summary: Heat-shrink tubing assortment
+    description: Insulates and strain-relieves every solder joint and splice.
+    features: [Several diameters]
+    specs: {}
+    role: Over all soldered power and signal joints.
+    learn: [making/tools-and-workshop, making/safety, making/cable-management]
+  cable_ties:
+    summary: 100 mm × 2.5 mm cable ties
+    description: Tie the harness at every marked point of the routed wiring and hold the main fuse holder in the rear cavity.
+    features: [100 pieces]
+    specs: {Size: 100 × 2.5 mm}
+    role: Cable management and fuse holder mounting.
+    learn: [making/tools-and-workshop, making/cable-management]
+  spiral_wrap:
+    summary: Black spiral wrap for the cable bundles
+    description: Wraps every bundle of three or more cables where it passes a frame opening or runs near a moving part; the wiring check sizes the bundles and their length.
+    features: [Black PE, Bundles 4-10 mm, Re-openable]
+    specs: {Length: 5-10 m}
+    role: Protects the servo leads and power bundles in the cavities and openings.
+    learn: [making/cable-management]
+  cable_tie_mounts:
+    summary: Small adhesive base for a cable tie
+    description: Two mounts on the deck side strips hold the logic and signal bundles beside the Pi and the PCA9685.
+    features: [13 × 13 mm footprint, Acrylic adhesive, 2.5-3.6 mm ties]
+    specs: {Size: 13 × 13 × 4.1 mm}
+    role: Tie points on the electronics deck.
+    learn: [making/cable-management]
+  dupont_crimp_contacts:
+    summary: Loose Dupont contacts and housings for crimping
+    description: The servo signal wires, the I²C wires and the Pi 5 V feed are cut to length and get new female contacts in 1- to 4-pin housings; needs the Dupont crimp tool.
+    features: [2.54 mm pitch, Female and male contacts, 1-6 pin housings]
+    specs: {Wire: AWG 22-28}
+    role: Signal connectors at the PCA9685 (servo signals, W17, W20) and the Pi header (W12, W22).
+    learn: [making/cable-management, making/tools-and-workshop]
+  solder:
+    summary: Lead-free flux-core solder wire
+    description: For the XT60s, fuse holders, ground star, UBEC leads, switch terminals and the XIAO pins.
+    features: [0.8 mm, Flux core, Lead-free]
+    specs: {Diameter: 0.8 mm}
+    role: Every soldered joint of the harness.
+    learn: [making/tools-and-workshop]
+  velcro:
+    summary: Hook-and-loop strap that holds the battery
+    description: Holds the LiPo under the deck and allows quick removal for charging.
+    features: [Reusable, Quick release]
+    specs: {}
+    role: Battery strap under the deck.
+    learn: [hardware/batteries, making/cable-management]
+  foam_tape:
+    summary: 19 mm double-sided foam mounting tape
+    description: Mounts the XIAO, UBECs and power switch while damping vibration.
+    features: [Foam carrier, 19 mm width]
+    specs: {Width: 19 mm}
+    role: Under the XIAO, UBECs and Pololu switch.
+    learn: [making/tools-and-workshop, making/cable-management]
+  m3_kit:
+    summary: Stainless M3 socket head screw kit with nuts and washers
+    description: Covers most of the robot's M3 screws, nuts and washers in one box.
+    features: [6-50 mm lengths, 360 nuts and 360 washers, Stainless steel]
+    specs: {Pieces: '1080', Thread: M3}
+    role: Frame, legs and shells.
+    learn: [making/fasteners]
+  m3x10_100:
+    summary: M3 × 10 socket head screws, the most-used screw in the robot
+    description: Used for the frame, servo ears and shoulder frames; a 100-pack covers them all.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M3, Length: 10 mm, Standard: DIN 912}
+    role: Frame and servo mounting.
+    learn: [making/fasteners]
+  m3x20:
+    summary: M3 × 20 socket head screws
+    description: Clamp the femur to its disc horn and close the servo mounts.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M3, Length: 20 mm, Standard: DIN 912}
+    role: Femur, servo mount top brackets and foot spacer.
+    learn: [making/fasteners]
+  m3_nyloc:
+    summary: M3 nylon-insert lock nuts for moving joints
+    description: Hold their position on pivot screws that must stay just loose enough to turn.
+    features: [DIN 985, Nylon insert]
+    specs: {Thread: M3, Standard: DIN 985}
+    role: Tibia, knee linkage and camera pivot.
+    learn: [making/fasteners]
+  m2_5x5:
+    summary: M2.5 × 5 screws for boards and stand-offs
+    description: Fix the stand-offs to the deck and the boards to the stand-offs.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M2.5, Length: 5 mm, Standard: DIN 912}
+    role: Pi 5, PCA9685 and INA260 mounting.
+    learn: [making/fasteners]
+  m2_5x6:
+    summary: M2.5 × 6 screws for the IMU, arming port and LiDAR
+    description: Slightly longer M2.5 screws for parts with thicker clamps.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M2.5, Length: 6 mm, Standard: DIN 912}
+    role: IMU, arming port ring and RPLIDAR C1.
+    learn: [making/fasteners]
+  m2x5:
+    summary: M2 × 5 screws for the regulator and display
+    description: Small screws for the Pololu regulator stand-offs and the display bracket.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M2, Length: 5 mm, Standard: DIN 912}
+    role: D36V50F5 stand-offs and LCD bracket.
+    learn: [making/fasteners]
+  m2x10:
+    summary: M2 × 10 screws for the camera
+    description: Fix the Camera Module 3 to its tilt plate.
+    features: [DIN 912, A2 stainless]
+    specs: {Thread: M2, Length: 10 mm, Standard: DIN 912}
+    role: Camera module mounting.
+    learn: [making/fasteners]
+  m2_nuts:
+    summary: M2 hex nuts
+    description: Back the camera screws behind the tilt plate.
+    features: [DIN 934, A2 stainless]
+    specs: {Thread: M2, Standard: DIN 934}
+    role: Camera tilt plate.
+    learn: [making/fasteners]
+  m2_5_nuts:
+    summary: M2.5 hex nuts
+    description: Hold the IMU screws under the deck.
+    features: [DIN 934, A2 stainless]
+    specs: {Thread: M2.5, Standard: DIN 934}
+    role: IMU pocket in the electronics deck.
+    learn: [making/fasteners]
+  standoff_m2_5x6:
+    summary: 6 mm female-female M2.5 stand-off
+    description: Lift the Pi, PCA9685 and INA260 off the deck for airflow and wiring room.
+    features: [Female-female, Brass]
+    specs: {Thread: M2.5, Length: 6 mm}
+    role: Under the Pi 5, PCA9685 and INA260.
+    learn: [making/fasteners]
+  standoff_m2x8:
+    summary: 8 mm female-female M2 brass stand-off
+    description: Raise the Pololu regulator above the deck.
+    features: [Female-female, Brass]
+    specs: {Thread: M2, Length: 8 mm}
+    role: Under the D36V50F5.
+    learn: [making/fasteners]
+  threadlocker:
+    summary: Medium-strength blue thread locker
+    description: Keeps metal-to-metal screws such as the horn centre screws from loosening under vibration while staying removable.
+    features: [Medium strength, Removable with hand tools]
+    specs: {}
+    role: Servo horn centre screws and other metal threads.
+    learn: [making/fasteners]
+  filament_primary:
+    summary: Graphite/black filament for the structural parts
+    description: Prints the frame, legs, brackets and mounts; about 1 kg covers the primary-colour parts.
+    features: [PETG (the material the slicer profile and the strength check assume), 1 kg spool]
+    specs: {Material: PETG, Weight: 1 kg, Diameter: 1.75 mm, Tensile yield (printed XY): 47 MPa (Prusament PETG TDS), Layer adhesion: 18 MPa, Heat deflection: 68 °C}
+    role: All primary (graphite) printed parts.
+    learn: [making/3d-printing]
+  filament_secondary:
+    summary: Lime/yellow filament for the shells and shoulders
+    description: Prints the body shells and the shoulder cranks in the accent colour.
+    features: [PETG (the material the slicer profile and the strength check assume), 1 kg spool]
+    specs: {Material: PETG, Weight: 1 kg, Diameter: 1.75 mm}
+    role: All secondary (lime) printed parts.
+    learn: [making/3d-printing]
+  pi_psu:
+    summary: Official 27 W USB-C supply for bench work without the battery
+    description: Powers the Pi 5 at full USB current on the bench for software work, without arming the servos.
+    features: [USB Power Delivery, EU plug, Official Raspberry Pi part]
+    specs: {Output: 5.1 V / 5 A, Power: 27 W, Connector: USB-C}
+    role: Bench supply into the Pi 5 USB-C port.
+    learn: [hardware/power, software/linux-on-the-pi]
+printed:
+  arming_port_bezel:
+    summary: Rear bezel that holds the XT60 arming port
+    description: Frames the XT60H arming port in the back shell; the ring clamps it from inside with two M2.5 × 6 screws.
+    features: [No supports, 26 × 26 × 4.5 mm, Graphite]
+    role: In the back shell, holding the servo arming port (Step 16).
+    learn: [making/3d-printing, making/safety]
+  arming_port_ring:
+    summary: Clamp ring for the arming port
+    description: Clamps the bezel and XT60H from inside the back shell.
+    features: [No supports, 22 × 22 × 3 mm, Graphite]
+    role: Inside the back shell behind the arming port bezel (Step 16).
+    learn: [making/3d-printing]
+  back_shell_button:
+    summary: Rear body shell with the 12 mm power-button hole
+    description: Upstream back shell with the hole opened from 11.5 to 12.2 mm for the stainless button; it also carries the arming port.
+    features: [No supports, Lime, 74 × 114 × 69 mm]
+    role: Closes the rear of the body (Step 16).
+    learn: [making/3d-printing, software/cad-as-code]
+  bottom_shell:
+    summary: Belly shell that closes the battery bay
+    description: Screws into the nuts of the lower shoulder frames with 8 × M3 × 8 and protects the battery.
+    features: [Supports in published orientation, Lime, 114 × 208 mm footprint needs a ≥ 220 mm bed]
+    role: Underside of the body (Step 18).
+    learn: [making/3d-printing]
+  camera_mount_base:
+    summary: Base with cheeks that carries the camera tilt pivot
+    description: Screws to the front upper shoulder frame with 2 × M3 × 12; the tilt plate hangs on an M3 × 40 pivot with a lock nut.
+    features: [Printed standing on its base, Horizontal M3 pivot bore, Graphite]
+    role: Front of the body, behind the front shell (Step 15).
+    learn: [making/3d-printing, hardware/sensors]
+  camera_tilt_plate:
+    summary: Plate that holds the Camera Module 3 at an adjustable tilt
+    description: The camera is fixed with 4 × M2 × 10 and nuts; friction on the pivot holds the 15° reference angle.
+    features: [Supports, Graphite, M2 holes for the camera board]
+    role: Between the camera base cheeks (Step 15).
+    learn: [making/3d-printing, hardware/sensors]
+  display_bracket:
+    summary: Flat bracket that clamps the LCD behind the front shell window
+    description: Fixed to the LCD studs with M2 × 5 and to the shell bosses with self-tapping M3 × 10.
+    features: [No supports, Flat 3 mm plate, Graphite]
+    role: Inside the front shell (Step 14).
+    learn: [making/3d-printing]
+  electronics_deck:
+    summary: Central plate that carries the boards and slides into the side beams
+    description: Upstream plate extended with an IMU pocket and stand-off holes for the regulator and INA260. Stand-off screws sit in counterbores underneath.
+    features: [Print top face down with supports, 18 mm bridge over the IMU pocket, Counterbored screw holes, 3 mm thick in the centre]
+    role: Spine of the electronics, held in the side body beam grooves (Steps 1-2).
+    learn: [making/3d-printing, hardware/mechanics, software/cad-as-code]
+  femur:
+    summary: Thigh link that carries the knee
+    description: Bolted to a disc horn on the thigh servo with 4 × M3 × 20; it bends under walking loads so print with solid walls.
+    features: [Printed flat on its side with supports, 151 mm long, Graphite]
+    role: Between the thigh servo and the tibia (Step 9).
+    learn: [making/strength, hardware/mechanics, making/3d-printing]
+  femur_servo_connector:
+    summary: Hub that joins the femur to the thigh servo horn
+    description: Clamped with the femur to the disc horn; the shoulder crank bearing turns on it.
+    features: [Supports, Small part, Graphite]
+    role: Thigh joint, inside the 6805 bearing (Steps 9-10).
+    learn: [hardware/mechanics]
+  foot_spacer:
+    summary: Spacer clamped between the tibia halves at the foot
+    description: Holds the two tibia halves at the right distance with an M3 × 20 screw and lock nut.
+    features: [Supports, Graphite]
+    role: Foot end of the tibia (Step 11).
+    learn: [hardware/mechanics, making/fasteners]
+  front_shell_display:
+    summary: Front shell with display window and camera ribbon slot
+    description: Upstream front shell with a 43 × 33 mm display window, two display bosses and a camera cable slot.
+    features: [No supports, Lime, Self-tapping bosses]
+    role: Front of the body, with the LCD face (Step 14).
+    learn: [making/3d-printing, software/cad-as-code]
+  hip_bearing_pin:
+    summary: Small pin that takes the hip pivot screw
+    description: Pressed into the leg servo mount; the M3 × 10 hip pivot screw passes through the 625 bearing into it.
+    features: [No supports, Re-oriented for bed contact, 5 mm cube]
+    role: Outer hip pivot of each leg (Steps 8, 13).
+    learn: [hardware/mechanics]
+  inner_shoulder_frame:
+    summary: Bulkhead that holds the two hip servos
+    description: Closes the frame with the side beams and carries the hip servos with M3 screws and nuts.
+    features: [No supports, Graphite, Nut traps]
+    role: Front and rear frame bulkheads (Steps 2-3).
+    learn: [hardware/mechanics, making/fasteners]
+  inner_tibia:
+    summary: Inner half of the lower leg
+    description: Paired with the outer tibia; holds a 633ZZ knee bearing.
+    features: [Supports, Re-oriented for bed contact, Bearing seat]
+    role: Lower leg (Step 11).
+    learn: [making/strength, hardware/mechanics, making/3d-printing]
+  left_servo_mount:
+    summary: Leg servo mount for the rear-right leg
+    description: Holds the thigh and knee servos with 8 × M3 × 10; closed with the top bracket.
+    features: [Printed lying like a U, Graphite]
+    role: Rear-right leg module (Step 8).
+    learn: [making/strength, hardware/mechanics, hardware/servos]
+  left_servo_mount_fl:
+    summary: Front-left leg servo mount with hip pivot pilot
+    description: Upstream left mount plus a 2.5 mm pilot for the front hip pivot.
+    features: [Supports, 2.5 mm pilot hole, Graphite]
+    role: Front-left leg module (Step 8).
+    learn: [making/strength, hardware/mechanics, software/cad-as-code]
+  left_shoulder:
+    summary: Left knee drive crank with the 6805 bearing seat
+    description: Turns on the 6805-2RS bearing around the thigh axis and drives the knee linkage.
+    features: [Supports, Lime, Bearing seat]
+    role: Knee drive on the FL and RL legs (Step 10).
+    learn: [making/strength, hardware/mechanics, software/kinematics-and-gaits]
+  lidar_pedestal:
+    summary: Raised pedestal that holds the RPLIDAR C1 and its USB adapter
+    description: Self-tapped to the top shell with 4 × M3 × 12; the LiDAR is fixed with 4 × M2.5 × 6.
+    features: [Print upside down, No supports, Adapter pocket]
+    role: On top of the body (Step 17).
+    learn: [making/3d-printing, hardware/sensors]
+  stiff_long_link:
+    summary: Strido long knee linkage rod, 10 mm wide in the leg plane
+    description: >-
+      Transfers the knee servo's motion to the tibia. Same pin spacing (131 mm) and bushing eyes as the
+      upstream Long_Link, but a 10 x 10 mm shaft instead of 5 x 8 mm, set 2 mm off the pin line away from the
+      femur, so it no longer buckles when the knee servo stalls (ADR-010); sleeve-bearing pair in each eye.
+    features: [Printed flat without supports, 141 mm, 10 x 10 mm shaft]
+    role: Knee linkage (Step 12).
+    learn: [making/strength, hardware/mechanics, software/kinematics-and-gaits]
+  lower_shoulder_frame_front:
+    summary: Front lower shoulder frame with servo-bus pilot hole
+    description: Upstream frame plus an M3 pilot for the front servo-bus holder; nut pockets for the bottom shell.
+    features: [No supports, M3 pilot hole, Nut pockets]
+    role: Front shoulder frame (Step 4).
+    learn: [hardware/mechanics, making/fasteners]
+  lower_shoulder_frame_rear:
+    summary: Rear lower shoulder frame with servo-bus pilot hole
+    description: Same as the front version, for the rear servo-bus holder.
+    features: [No supports, M3 pilot hole, Nut pockets]
+    role: Rear shoulder frame (Step 4).
+    learn: [hardware/mechanics, making/fasteners]
+  outer_shoulder_frame:
+    summary: Outer frame with two 625ZZ hip bearing seats
+    description: Supports the outer end of the hips through press-fit bearings.
+    features: [No supports, Bearing seats, Graphite]
+    role: Shoulder frames (Step 4).
+    learn: [hardware/mechanics]
+  outer_tibia:
+    summary: Outer half of the lower leg
+    description: Paired with the inner tibia; holds a 633ZZ knee bearing.
+    features: [Supports, Re-oriented for bed contact, Bearing seat]
+    role: Lower leg (Step 11).
+    learn: [making/strength, hardware/mechanics, making/3d-printing]
+  right_servo_mount:
+    summary: Leg servo mount for the rear-left leg
+    description: Mirror of the left mount; holds thigh and knee servos.
+    features: [Printed lying like a U, Graphite]
+    role: Rear-left leg module (Step 8).
+    learn: [making/strength, hardware/mechanics, hardware/servos]
+  right_servo_mount_fr:
+    summary: Front-right leg servo mount with hip pivot pilot
+    description: Upstream right mount plus a 2.5 mm pilot for the front hip pivot.
+    features: [Supports, 2.5 mm pilot hole, Graphite]
+    role: Front-right leg module (Step 8).
+    learn: [making/strength, hardware/mechanics, software/cad-as-code]
+  right_shoulder:
+    summary: Right knee drive crank with the 6805 bearing seat
+    description: Mirror of the left shoulder for the FR and RR legs.
+    features: [Supports, Lime, Bearing seat]
+    role: Knee drive on the FR and RR legs (Step 10).
+    learn: [making/strength, hardware/mechanics, software/kinematics-and-gaits]
+  servo_bus_holder_front:
+    summary: Holder for four WAGO connectors of the front servo bus
+    description: Self-taps to the front lower shoulder frame with one M3 × 12.
+    features: [Supports, WAGO clips, Graphite]
+    role: Front servo power distribution (Step 5).
+    learn: [hardware/power, software/cad-as-code]
+  servo_bus_holder_rear:
+    summary: Holder for four WAGO connectors of the rear servo bus
+    description: Self-taps to the rear lower shoulder frame with one M3 × 12.
+    features: [Supports, WAGO clips, Graphite]
+    role: Rear servo power distribution (Step 5).
+    learn: [hardware/power, software/cad-as-code]
+  servo_mount_top_bracket:
+    summary: Bracket that closes each leg servo mount
+    description: Clamps both leg servos with 2 × M3 × 20.
+    features: [Printed flat, Graphite]
+    role: Leg module (Step 8).
+    learn: [hardware/mechanics]
+  short_link:
+    summary: Short knee linkage rod
+    description: Second linkage bar with bronze bushings.
+    features: [Supports, Re-oriented for bed contact, Bushing seats]
+    role: Knee linkage (Step 12).
+    learn: [making/strength, hardware/mechanics, software/kinematics-and-gaits]
+  side_body_beam:
+    summary: Long side beam with the deck groove
+    description: Holds the electronics deck in its groove and joins the shoulder frames.
+    features: [Printed flat, 150 mm, Graphite]
+    role: Body sides (Step 2).
+    learn: [hardware/mechanics]
+  top_shell_sensor:
+    summary: Top shell with LiDAR pedestal holes and cable slot
+    description: Upstream top shell plus holes for the LiDAR pedestal and a USB cable slot; closed with 6 × M3 × 8.
+    features: [Supports, Lime, 114 × 208 mm footprint]
+    role: Top of the body (Step 17).
+    learn: [making/3d-printing, software/cad-as-code]
+  upper_shoulder_frame:
+    summary: Upper shoulder frame with shell nut pockets
+    description: Joins the shoulder frames and carries M3 nuts for the top shell and camera base.
+    features: [No supports, Nut pockets, Graphite]
+    role: Shoulder frames (Step 4).
+    learn: [hardware/mechanics, making/fasteners]

@@ -1,0 +1,254 @@
+{
+ "32d7e82082479b8c": {
+  "en": "Control",
+  "de": "Regelung"
+ },
+ "5130740a58882f75": {
+  "en": "Control theory is about making a system do what you command, despite loads, noise and modelling errors, by measuring what it actually does and correcting for the difference. This page covers open and closed loop, PID and PD control, transfer functions and step responses, sampling rates, the hobby servo's internal loop, and compliance, using the Strido servos and its MuJoCo model as examples.",
+  "de": "Regelungstechnik sorgt dafür, dass ein System tut, was Sie ihm befehlen – trotz Lasten, Rauschen und Modellfehlern –, indem gemessen wird, was es tatsächlich tut, und die Differenz korrigiert wird. Diese Seite behandelt Steuerung und Regelung, PID- und PD-Regelung, Übertragungsfunktionen und Sprungantworten, Abtastraten, den internen Regelkreis des Hobbyservos und Nachgiebigkeit, mit den Servos von Strido und seinem MuJoCo-Modell als Beispielen."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "9ec7459953f46271": {
+  "en": "**Rates:** the firmware runs a $200\\,\\mathrm{Hz}$ control and IMU loop (`kControlPeriodUs = 5000`) and refreshes the servos at $200\\,\\mathrm{Hz}$ (`kServoFrequencyHz`; the SPT5435LV accepts up to $330\\,\\mathrm{Hz}$). It streams state to the host at $100\\,\\mathrm{Hz}$ (all in `firmware/strido_esp32s3/src/board_config.h`). The joint command stream is $100\\,\\mathrm{Hz}$ (`strido_sim/walk.py`) and the learned policy runs at $50\\,\\mathrm{Hz}$ (`strido/policy.py`).",
+  "de": "**Raten:** Die Firmware betreibt eine Regel- und IMU-Schleife mit $200\\,\\mathrm{Hz}$ (`kControlPeriodUs = 5000`) und aktualisiert die Servos mit $200\\,\\mathrm{Hz}$ (`kServoFrequencyHz`; der SPT5435LV akzeptiert bis zu $330\\,\\mathrm{Hz}$). Sie streamt den Zustand mit $100\\,\\mathrm{Hz}$ an den Host (alles in `firmware/strido_esp32s3/src/board_config.h`). Der Gelenkbefehlsstrom läuft mit $100\\,\\mathrm{Hz}$ (`strido_sim/walk.py`), die gelernte Policy mit $50\\,\\mathrm{Hz}$ (`strido/policy.py`)."
+ },
+ "6e7755e8ddca9c56": {
+  "en": "**Servo model in simulation:** MuJoCo position actuators with `kp=\"25\" kv=\"0.4\" forcerange=\"-3.432 3.432\"`, plus joint `damping=\"0.25\" armature=\"0.012\" frictionloss=\"0.05\"` (`models/mujoco/strido.xml`).",
+  "de": "**Servomodell in der Simulation:** MuJoCo-Positionsaktuatoren mit `kp=\"25\" kv=\"0.4\" forcerange=\"-3.432 3.432\"`, dazu Gelenk-`damping=\"0.25\" armature=\"0.012\" frictionloss=\"0.05\"` (`models/mujoco/strido.xml`)."
+ },
+ "c6a92c214a92cc2f": {
+  "en": "**Hardware:** 12 SPT5435LV-180W position servos driven by a PCA9685 PWM board ([servos](../hardware/servos.md), [firmware](../software/firmware.md)).",
+  "de": "**Hardware:** 12 SPT5435LV-180W-Positionsservos, angesteuert von einem PCA9685-PWM-Board ([Servos](../hardware/servos.md), [Firmware](../software/firmware.md))."
+ },
+ "ea4870a592f354a0": {
+  "en": "Open loop and closed loop",
+  "de": "Steuerung und Regelung"
+ },
+ "f3c0a8c7e4e45652": {
+  "en": "**Open loop** applies a precomputed input and never checks the result. A trot gait that replays foot trajectories through inverse kinematics is open loop with respect to the body: if the robot slips, the gait does not notice.",
+  "de": "**Steuerung** (offener Kreis) legt einen vorab berechneten Eingang an und prüft das Ergebnis nie. Ein Trot-Gait, der Fußtrajektorien über inverse Kinematik abspielt, ist bezüglich des Körpers eine Steuerung: Rutscht der Roboter, bemerkt der Gait es nicht."
+ },
+ "447b2c3dbaeb50c9": {
+  "en": "**Closed loop** (feedback) measures the output $y$, compares it with the reference $r$, and acts on the error $e = r - y$. Feedback rejects disturbances and hides modelling errors. The price is stability problems if the gain is too high or the delay too long.",
+  "de": "**Regelung** (geschlossener Kreis, Rückkopplung) misst den Ausgang $y$, vergleicht ihn mit der Führungsgröße $r$ und wirkt auf den Fehler $e = r - y$. Rückkopplung unterdrückt Störungen und verdeckt Modellfehler. Der Preis sind Stabilitätsprobleme, wenn die Verstärkung zu hoch oder die Verzögerung zu lang ist."
+ },
+ "3587e35c5ab29619": {
+  "en": "Strido stacks several loops, each faster than the one above it:",
+  "de": "Strido stapelt mehrere Regelkreise, jeder schneller als der darüber:"
+ },
+ "1408cdb699859f93": {
+  "en": "graph LR\n  P[policy / gait<br/>50–100 Hz] -->|joint targets| F[ESP32 loop<br/>200 Hz, slew limit, linkage]\n  F -->|PWM pulse, 200 Hz frames| S[servo's internal<br/>position loop]\n  S --> J[joint]\n  IMU[IMU 200 Hz] -->|gravity, gyro| P",
+  "de": "graph LR\n  P[Policy / Gait<br/>50–100 Hz] -->|Gelenk-Sollwerte| F[ESP32-Schleife<br/>200 Hz, Ratenbegrenzung, Koppelgetriebe]\n  F -->|PWM-Puls, 200-Hz-Frames| S[interner<br/>Positionsregelkreis des Servos]\n  S --> J[Gelenk]\n  IMU[IMU 200 Hz] -->|Schwerkraft, Gyro| P"
+ },
+ "5298bf83da5172a1": {
+  "en": "The servos give no position feedback to the host (`strido_sim/rl/env.py`). So the only joint-level loop closes *inside* each servo. The policy closes the body-level loop through the IMU.",
+  "de": "Die Servos geben dem Host keine Positionsrückmeldung (`strido_sim/rl/env.py`). Der einzige Regelkreis auf Gelenkebene schließt sich also *innerhalb* jedes Servos. Die Policy schließt den Regelkreis auf Körperebene über die IMU."
+ },
+ "0c5ce6bfe4deec4b": {
+  "en": "PID control",
+  "de": "PID-Regelung"
+ },
+ "0b00aa3c08a07b26": {
+  "en": "The classic controller combines three terms:",
+  "de": "Der klassische Regler kombiniert drei Anteile:"
+ },
+ "e23cd55a5951ee19": {
+  "en": "**P** pushes in proportion to the error, like a spring.",
+  "de": "**P** drückt proportional zum Fehler, wie eine Feder."
+ },
+ "38dd4c498f69ea64": {
+  "en": "**I** accumulates past error and removes steady-state offsets, at the cost of overshoot and wind-up.",
+  "de": "**I** summiert vergangene Fehler auf und beseitigt bleibende Regelabweichungen, auf Kosten von Überschwingen und Wind-up."
+ },
+ "97bbc6a38fb0be35": {
+  "en": "**D** opposes the rate of change, like a damper. In practice it acts on $-\\dot y$ instead of $\\dot e$, which avoids a kick when the reference jumps.",
+  "de": "**D** wirkt der Änderungsrate entgegen, wie ein Dämpfer. In der Praxis wirkt er auf $-\\dot y$ statt auf $\\dot e$, was einen Stoß bei einem Sprung der Führungsgröße vermeidet."
+ },
+ "bae906da1923c3ce": {
+  "en": "For joints, the usual choice is **PD** with the target velocity set to zero:",
+  "de": "Für Gelenke ist die übliche Wahl **PD** mit Soll-Geschwindigkeit null:"
+ },
+ "a4a97d6967147057": {
+  "en": "This is exactly MuJoCo's `<position kp kv>` actuator. It is then clipped to the force range, $\\lvert\\tau\\rvert \\le 3.432\\,\\mathrm{N\\,m}$, the servo's stall torque.",
+  "de": "Das ist genau MuJoCos `<position kp kv>`-Aktuator. Das Ergebnis wird dann auf den Kraftbereich begrenzt, $\\lvert\\tau\\rvert \\le 3.432\\,\\mathrm{N\\,m}$, das Blockiermoment des Servos."
+ },
+ "6ec4e3047644004d": {
+  "en": "Transfer functions and the step response",
+  "de": "Übertragungsfunktionen und die Sprungantwort"
+ },
+ "b50265d24e0684df": {
+  "en": "Model one joint as an inertia $I$ with viscous damping $b$. In the Laplace domain, $I s^2 Q = T - b s Q$. With PD control the closed loop from target to angle is:",
+  "de": "Modellieren Sie ein Gelenk als Trägheit $I$ mit viskoser Dämpfung $b$. Im Laplace-Bereich gilt $I s^2 Q = T - b s Q$. Mit PD-Regelung lautet der geschlossene Kreis von Sollwert zu Winkel:"
+ },
+ "55242806224fb448": {
+  "en": "This standard second-order system explains most of what you see in a step response:",
+  "de": "Dieses Standardsystem zweiter Ordnung erklärt das meiste, was Sie in einer Sprungantwort sehen:"
+ },
+ "28ab206f9f080edb": {
+  "en": "$\\omega_n$ sets the speed. Rise time $\\approx 1.8/\\omega_n$, and bandwidth $\\approx \\omega_n$ for $\\zeta$ near $0.7$.",
+  "de": "$\\omega_n$ bestimmt die Geschwindigkeit. Anstiegszeit $\\approx 1.8/\\omega_n$ und Bandbreite $\\approx \\omega_n$ für $\\zeta$ nahe $0.7$."
+ },
+ "d0dc384c71e5a18f": {
+  "en": "$\\zeta$ sets the shape. Below 1 the response overshoots and rings. The overshoot is $\\exp(-\\pi\\zeta/\\sqrt{1-\\zeta^2})$. Above 1 it is sluggish but monotone.",
+  "de": "$\\zeta$ bestimmt die Form. Unter 1 schwingt die Antwort über und klingt nach. Das Überschwingen beträgt $\\exp(-\\pi\\zeta/\\sqrt{1-\\zeta^2})$. Über 1 ist sie träge, aber monoton."
+ },
+ "f06718fb1cf71296": {
+  "en": "Raising $k_p$ speeds the response up but lowers $\\zeta$, so you raise $k_v$ with it.",
+  "de": "Eine Erhöhung von $k_p$ beschleunigt die Antwort, senkt aber $\\zeta$, also erhöhen Sie $k_v$ mit."
+ },
+ "e211908b9b2857e3": {
+  "en": "The static stiffness is $k_p$: a constant load $\\tau_L$ leaves an error of $\\tau_L/k_p$. Only an integral term removes it.",
+  "de": "Die statische Steifigkeit ist $k_p$: Eine konstante Last $\\tau_L$ hinterlässt einen Fehler von $\\tau_L/k_p$. Nur ein Integralanteil beseitigt ihn."
+ },
+ "482a4f02887efec2": {
+  "en": "Worked example: the MuJoCo knee",
+  "de": "Rechenbeispiel: das MuJoCo-Knie"
+ },
+ "e54a8d2ccccaaa87": {
+  "en": "From `models/mujoco/strido.xml`: $k_p = 25\\,\\mathrm{N\\,m/rad}$, $k_v = 0.4\\,\\mathrm{N\\,m\\,s/rad}$, joint damping $b = 0.25$, armature $0.012\\,\\mathrm{kg\\,m^2}$. The calf adds $m r_c^2 \\approx 0.0521 \\cdot 0.048^2 = 1.2\\times10^{-4}\\,\\mathrm{kg\\,m^2}$ plus its own $1.5\\times10^{-4}\\,\\mathrm{kg\\,m^2}$ about its centre of mass (`mass_report.yaml`), so $I \\approx 0.0123\\,\\mathrm{kg\\,m^2}$ for a swinging calf (the armature dominates). Then:",
+  "de": "Aus `models/mujoco/strido.xml`: $k_p = 25\\,\\mathrm{N\\,m/rad}$, $k_v = 0.4\\,\\mathrm{N\\,m\\,s/rad}$, Gelenkdämpfung $b = 0.25$, Armatur $0.012\\,\\mathrm{kg\\,m^2}$. Der Unterschenkel trägt $m r_c^2 \\approx 0.0521 \\cdot 0.048^2 = 1.2\\times10^{-4}\\,\\mathrm{kg\\,m^2}$ bei, dazu seine eigenen $1.5\\times10^{-4}\\,\\mathrm{kg\\,m^2}$ um seinen Schwerpunkt (`mass_report.yaml`), also $I \\approx 0.0123\\,\\mathrm{kg\\,m^2}$ für einen schwingenden Unterschenkel (die Armatur dominiert). Dann gilt:"
+ },
+ "b2dbe5c153c108c1": {
+  "en": "That predicts a rise time of about $40\\,\\mathrm{ms}$ and roughly $10\\,\\%$ overshoot. These are estimates: they ignore friction loss, the torque clamp and the other links.",
+  "de": "Das sagt eine Anstiegszeit von etwa $40\\,\\mathrm{ms}$ und rund $10\\,\\%$ Überschwingen voraus. Das sind Schätzungen: Sie ignorieren Reibungsverluste, die Momentenbegrenzung und die anderen Glieder."
+ },
+ "77bacfce4fb75bc6": {
+  "en": "In the stand the knee carries $0.70\\,\\mathrm{N\\,m}$ (see [statics and dynamics](statics-and-dynamics.md)), so the model sags by:",
+  "de": "Im Stand trägt das Knie $0.70\\,\\mathrm{N\\,m}$ (siehe [Statik und Dynamik](statics-and-dynamics.md)), also sackt das Modell ab um:"
+ },
+ "d1d33c4981822e99": {
+  "en": "The policy can learn to command slightly past the target to cancel this. Because the RL environment randomises the servo stiffness each episode (`env.py`), the policy cannot rely on one exact value.",
+  "de": "Die Policy kann lernen, leicht über den Sollwert hinaus zu kommandieren, um das auszugleichen. Da die RL-Umgebung die Servosteifigkeit in jeder Episode randomisiert (`env.py`), kann sich die Policy nicht auf einen exakten Wert verlassen."
+ },
+ "d2da00f07bdec85f": {
+  "en": "Sampling, delay and bandwidth",
+  "de": "Abtastung, Verzögerung und Bandbreite"
+ },
+ "f9d52dc8352cbe9d": {
+  "en": "Digital controllers sample. The Nyquist limit says you need more than two samples per period of the fastest signal you care about. For good control, the rule of thumb is a loop **10–20 times faster** than the closed-loop bandwidth. Delay matters just as much: a pure delay $T_d$ adds phase lag $\\varphi = \\omega T_d$, which eats the phase margin and eventually destabilises a high-gain loop.",
+  "de": "Digitale Regler tasten ab. Die Nyquist-Grenze besagt, dass Sie mehr als zwei Abtastwerte pro Periode des schnellsten relevanten Signals brauchen. Für gute Regelung lautet die Faustregel: eine Schleife **10–20-mal schneller** als die Bandbreite des geschlossenen Kreises. Verzögerung zählt genauso: Eine reine Totzeit $T_d$ fügt einen Phasenverzug $\\varphi = \\omega T_d$ hinzu, der die Phasenreserve aufzehrt und einen Regelkreis mit hoher Verstärkung schließlich destabilisiert."
+ },
+ "4a4504dfe96a9f3b": {
+  "en": "For Strido:",
+  "de": "Für Strido:"
+ },
+ "742b40d86d509b6a": {
+  "en": "| Loop | Rate | Period / worst-case added delay |",
+  "de": "| Schleife | Rate | Periode / zusätzliche Verzögerung im ungünstigsten Fall |"
+ },
+ "f300d07769d2b416": {
+  "en": "| Policy | $50\\,\\mathrm{Hz}$ | $20\\,\\mathrm{ms}$ |",
+  "de": "| Policy | $50\\,\\mathrm{Hz}$ | $20\\,\\mathrm{ms}$ |"
+ },
+ "84beed2441dd2d41": {
+  "en": "| Joint command stream | $100\\,\\mathrm{Hz}$ | $10\\,\\mathrm{ms}$ |",
+  "de": "| Gelenkbefehlsstrom | $100\\,\\mathrm{Hz}$ | $10\\,\\mathrm{ms}$ |"
+ },
+ "201d593ae0288cd3": {
+  "en": "| ESP32 control + IMU | $200\\,\\mathrm{Hz}$ | $5\\,\\mathrm{ms}$ |",
+  "de": "| ESP32-Regelung + IMU | $200\\,\\mathrm{Hz}$ | $5\\,\\mathrm{ms}$ |"
+ },
+ "6ebddb4700ac982d": {
+  "en": "| Servo PWM frame | $200\\,\\mathrm{Hz}$ (max $330\\,\\mathrm{Hz}$) | $5\\,\\mathrm{ms}$ ($3.0\\,\\mathrm{ms}$) |",
+  "de": "| Servo-PWM-Frame | $200\\,\\mathrm{Hz}$ (max. $330\\,\\mathrm{Hz}$) | $5\\,\\mathrm{ms}$ ($3.0\\,\\mathrm{ms}$) |"
+ },
+ "8693b73cc4336693": {
+  "en": "| MuJoCo physics | $500\\,\\mathrm{Hz}$ | $2\\,\\mathrm{ms}$ |",
+  "de": "| MuJoCo-Physik | $500\\,\\mathrm{Hz}$ | $2\\,\\mathrm{ms}$ |"
+ },
+ "83d486dcc20f95ef": {
+  "en": "A classic analogue servo takes a new pulse only every $20\\,\\mathrm{ms}$ ($50\\,\\mathrm{Hz}$). At the $7.2\\,\\mathrm{Hz}$ joint bandwidth estimated above, that much delay alone costs $\\omega T_d = 45 \\cdot 0.02 = 0.9\\,\\mathrm{rad} \\approx 52^\\circ$ of phase. At $200\\,\\mathrm{Hz}$ it is $13^\\circ$. That is presumably why the firmware runs the PCA9685 at $200\\,\\mathrm{Hz}$. The $50\\,\\mathrm{Hz}$ policy is fine because it only shapes the gait, whose cycle is $0.4\\,\\mathrm{s}$ ($2.5\\,\\mathrm{Hz}$, `GAIT_PERIOD_S` in `strido/policy.py`). That gives 20 policy steps per cycle, while the fast loops below it do the stiff work.",
+  "de": "Ein klassischer analoger Servo nimmt nur alle $20\\,\\mathrm{ms}$ ($50\\,\\mathrm{Hz}$) einen neuen Puls an. Bei der oben geschätzten Gelenkbandbreite von $7.2\\,\\mathrm{Hz}$ kostet allein diese Verzögerung $\\omega T_d = 45 \\cdot 0.02 = 0.9\\,\\mathrm{rad} \\approx 52^\\circ$ Phase. Bei $200\\,\\mathrm{Hz}$ sind es $13^\\circ$. Vermutlich betreibt die Firmware den PCA9685 deshalb mit $200\\,\\mathrm{Hz}$. Die $50\\,\\mathrm{Hz}$-Policy ist ausreichend, weil sie nur die Gangart formt, deren Zyklus $0.4\\,\\mathrm{s}$ beträgt ($2.5\\,\\mathrm{Hz}$, `GAIT_PERIOD_S` in `strido/policy.py`). Das ergibt 20 Policy-Schritte pro Zyklus, während die schnellen Schleifen darunter die steife Arbeit leisten."
+ },
+ "869b78a6973f70a5": {
+  "en": "The hobby servo's internal loop",
+  "de": "Der interne Regelkreis des Hobbyservos"
+ },
+ "a4724aef71a232b9": {
+  "en": "A hobby servo is a small closed-loop system in a box: a DC motor, a gearbox, a potentiometer on the output and a controller chip. The pulse width encodes the target angle. The chip compares it with the pot reading and drives the motor with roughly proportional (often PD-like) control, saturating at the stall torque. You can neither read its position nor tune its gains. Externally it behaves like a stiff PD joint with a torque limit, a speed limit (no-load $0.14\\,\\mathrm{s}/60^\\circ$ at $6\\,\\mathrm{V}$, about $7.5\\,\\mathrm{rad/s}$) and some deadband. That is the abstraction MuJoCo's position actuator models. The firmware adds a $6\\,\\mathrm{rad/s}$ slew limit on top (`MAX_JOINT_SPEED_RAD_S`), so that sudden steps do not pull near-stall current.",
+  "de": "Ein Hobbyservo ist ein kleines Regelsystem in einer Box: ein Gleichstrommotor, ein Getriebe, ein Potentiometer am Abtrieb und ein Regler-Chip. Die Pulsbreite kodiert den Sollwinkel. Der Chip vergleicht ihn mit dem Potentiometerwert und treibt den Motor mit annähernd proportionaler (oft PD-ähnlicher) Regelung an, begrenzt durch das Blockiermoment. Sie können weder seine Position auslesen noch seine Verstärkungen einstellen. Von außen verhält er sich wie ein steifes PD-Gelenk mit Momentbegrenzung, Geschwindigkeitsbegrenzung (im Leerlauf $0.14\\,\\mathrm{s}/60^\\circ$ bei $6\\,\\mathrm{V}$, etwa $7.5\\,\\mathrm{rad/s}$) und etwas Totzone. Genau diese Abstraktion modelliert MuJoCos Positionsaktuator. Die Firmware fügt zusätzlich eine Ratenbegrenzung von $6\\,\\mathrm{rad/s}$ hinzu (`MAX_JOINT_SPEED_RAD_S`), damit plötzliche Sprünge keinen Strom nahe dem Blockierstrom ziehen."
+ },
+ "aef2a79fc49d63f5": {
+  "en": "Impedance and compliance",
+  "de": "Impedanz und Nachgiebigkeit"
+ },
+ "dff0c5972ada9de3": {
+  "en": "A position controller with gains $k_p$ and $k_v$ makes the joint behave like a **spring and damper** towards the target:",
+  "de": "Ein Positionsregler mit den Verstärkungen $k_p$ und $k_v$ lässt das Gelenk sich wie ein **Feder-Dämpfer-System** in Richtung Sollwert verhalten:"
+ },
+ "4c2afded7e7f539d": {
+  "en": "Mapped to the foot through $\\boldsymbol{\\tau} = \\mathbf{J}^\\top\\mathbf{F}$ and $\\delta\\mathbf{p} = \\mathbf{J}\\,\\delta\\mathbf{q}$, the foot's Cartesian stiffness is:",
+  "de": "Über $\\boldsymbol{\\tau} = \\mathbf{J}^\\top\\mathbf{F}$ und $\\delta\\mathbf{p} = \\mathbf{J}\\,\\delta\\mathbf{q}$ auf den Fuß abgebildet, ergibt sich die kartesische Steifigkeit des Fußes:"
+ },
+ "1729755c6f3a9c18": {
+  "en": "**Impedance control** chooses this stiffness on purpose. A legged robot wants its feet *compliant* when they touch down, so impacts are absorbed and small terrain errors do not jolt the body, and stiff during stance. Robots with torque-controlled motors (the MIT Cheetah, for example) set $\\mathbf{K}_x$ in software. A hobby servo is stiff and fixed, so on Strido compliance comes from lower commanded speed, the slew limit, the foot pads, and a policy trained with randomised stiffness.",
+  "de": "**Impedanzregelung** wählt diese Steifigkeit gezielt. Ein Laufroboter will seine Füße beim Aufsetzen *nachgiebig*, damit Stöße absorbiert werden und kleine Geländefehler den Körper nicht erschüttern, und steif während der Standphase. Roboter mit drehmomentgeregelten Motoren (zum Beispiel der MIT Cheetah) setzen $\\mathbf{K}_x$ in Software. Ein Hobbyservo ist steif und fest eingestellt, daher entsteht die Nachgiebigkeit bei Strido durch niedrigere kommandierte Geschwindigkeit, die Ratenbegrenzung, die Fußpolster und eine mit randomisierter Steifigkeit trainierte Policy."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbstkontrolle"
+ },
+ "ae908da0b17eb7c8": {
+  "en": "Why does a PD-controlled joint carrying a constant load not reach its target exactly?",
+  "de": "Warum erreicht ein PD-geregeltes Gelenk unter konstanter Last seinen Sollwert nicht exakt?"
+ },
+ "b2a5b472088299b4": {
+  "en": "If you double $k_p$ and keep $k_v$, what happens to $\\omega_n$ and $\\zeta$?",
+  "de": "Was passiert mit $\\omega_n$ und $\\zeta$, wenn Sie $k_p$ verdoppeln und $k_v$ beibehalten?"
+ },
+ "a7cfb42fb1680802": {
+  "en": "Why would a $50\\,\\mathrm{Hz}$ servo frame hurt more than a $50\\,\\mathrm{Hz}$ policy?",
+  "de": "Warum würde ein $50\\,\\mathrm{Hz}$-Servo-Frame mehr schaden als eine $50\\,\\mathrm{Hz}$-Policy?"
+ },
+ "5acb6b251cffcf8e": {
+  "en": "Where is the only joint-position feedback loop on the real robot?",
+  "de": "Wo befindet sich am realen Roboter der einzige Rückkopplungskreis für die Gelenkposition?"
+ },
+ "aba3ef6e76362946": {
+  "en": "<details><summary>Answers</summary>",
+  "de": "<details><summary>Antworten</summary>"
+ },
+ "503d39d3efa06fe4": {
+  "en": "At steady state the P term must supply the load torque, so $e = \\tau_L/k_p \\neq 0$. Only an integral term removes it.",
+  "de": "Im stationären Zustand muss der P-Anteil das Lastmoment aufbringen, also ist $e = \\tau_L/k_p \\neq 0$. Nur ein Integralanteil beseitigt ihn."
+ },
+ "cbaa99a1b26e8bbd": {
+  "en": "$\\omega_n$ grows by $\\sqrt{2}$. $\\zeta$ shrinks by $\\sqrt{2}$, so there is more overshoot.",
+  "de": "$\\omega_n$ wächst um den Faktor $\\sqrt{2}$. $\\zeta$ sinkt um den Faktor $\\sqrt{2}$, es gibt also mehr Überschwingen."
+ },
+ "e69a3949cad36fc9": {
+  "en": "The frame delay sits inside the fast, stiff joint loop, whose bandwidth is several hertz. The policy shapes slower body motion (the $2.5\\,\\mathrm{Hz}$ gait cycle) and relies on the joint loops beneath it.",
+  "de": "Die Frame-Verzögerung liegt innerhalb der schnellen, steifen Gelenkschleife, deren Bandbreite mehrere Hertz beträgt. Die Policy formt langsamere Körperbewegungen (den $2.5\\,\\mathrm{Hz}$-Gangzyklus) und stützt sich auf die Gelenkschleifen darunter."
+ },
+ "7af98452db8ebfbc": {
+  "en": "Inside each servo, between its potentiometer and its controller chip. The host and the ESP32 never see the joint angle.",
+  "de": "Innerhalb jedes Servos, zwischen seinem Potentiometer und seinem Regler-Chip. Host und ESP32 sehen den Gelenkwinkel nie."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "8063f3f40c1f71b2": {
+  "en": "K. J. Åström and R. M. Murray, *Feedback Systems: An Introduction for Scientists and Engineers*, 2nd ed., Princeton University Press, 2021. [Free online](https://fbswiki.org)",
+  "de": "K. J. Åström und R. M. Murray, *Feedback Systems: An Introduction for Scientists and Engineers*, 2. Aufl., Princeton University Press, 2021. [Kostenlos online](https://fbswiki.org)"
+ },
+ "17e4782a2f408a68": {
+  "en": "K. M. Lynch and F. C. Park, *Modern Robotics*, Cambridge University Press, 2017, ch. 11 (robot control, including impedance control).",
+  "de": "K. M. Lynch und F. C. Park, *Modern Robotics*, Cambridge University Press, 2017, Kap. 11 (Roboterregelung, einschließlich Impedanzregelung)."
+ },
+ "dc44390d6cb9a014": {
+  "en": "N. Hogan, \"Impedance Control: An Approach to Manipulation\", *ASME J. Dynamic Systems, Measurement, and Control*, 107(1), 1985.",
+  "de": "N. Hogan, „Impedance Control: An Approach to Manipulation“, *ASME J. Dynamic Systems, Measurement, and Control*, 107(1), 1985."
+ },
+ "c60051f4769cb254": {
+  "en": "[MuJoCo documentation: actuators](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator).",
+  "de": "[MuJoCo-Dokumentation: Aktuatoren](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator)."
+ },
+ "3e07e7f04cd9980e": {
+  "en": "[Servos](../hardware/servos.md) and [firmware](../software/firmware.md) in this wiki.",
+  "de": "[Servos](../hardware/servos.md) und [Firmware](../software/firmware.md) in diesem Wiki."
+ }
+}

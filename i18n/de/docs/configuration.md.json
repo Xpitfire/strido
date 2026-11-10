@@ -1,0 +1,38 @@
+{
+ "b332c3492d5eb10a": {
+  "en": "Configuration",
+  "de": "Konfiguration"
+ },
+ "695bf823e179dcbf": {
+  "en": "**Status:** every environment key the code reads. Defaults live in the committed `.env.example`; secrets: none.",
+  "de": "**Status:** alle Umgebungsschlüssel, die der Code liest. Standardwerte stehen in der eingecheckten `.env.example`; Geheimnisse: keine."
+ },
+ "4e42f01bced5a41c": {
+  "en": "| Key | Default | Read by | Meaning |",
+  "de": "| Schlüssel | Standard | Gelesen von | Bedeutung |"
+ },
+ "96788e01264ded0e": {
+  "en": "| `ROS_DOMAIN_ID` | `42` | `docker/compose.yaml` | ROS 2 domain of the robot and simulation containers |",
+  "de": "| `ROS_DOMAIN_ID` | `42` | `docker/compose.yaml` | ROS-2-Domain der Roboter- und Simulationscontainer |"
+ },
+ "77876e9a69617121": {
+  "en": "| `STRIDO_BLENDER` | *(empty)* | `strido_publish.scene` | Blender executable for renders; empty = `blender` on PATH, else the macOS app bundle |",
+  "de": "| `STRIDO_BLENDER` | *(leer)* | `strido_publish.scene` | Blender-Programm für Renderings; leer = `blender` im PATH, sonst das macOS-App-Bundle |"
+ },
+ "b06b7d0c1740984c": {
+  "en": "| `STRIDO_PRUSASLICER` | *(empty)* | `strido_verify.printability` | PrusaSlicer executable for the printability gate; empty = `prusa-slicer` on PATH, else the macOS app bundle |",
+  "de": "| `STRIDO_PRUSASLICER` | *(leer)* | `strido_verify.printability` | PrusaSlicer-Programm für die Druckbarkeitsprüfung; leer = `prusa-slicer` im PATH, sonst das macOS-App-Bundle |"
+ },
+ "4c8b24e4bf33083c": {
+  "en": "| `STRIDO_REPO_ROOT` | *(empty)* | `strido.workspace` | Repository root for the tooling when running outside the checkout |",
+  "de": "| `STRIDO_REPO_ROOT` | *(leer)* | `strido.workspace` | Repository-Wurzel für die Werkzeuge bei Ausführung außerhalb des Checkouts |"
+ },
+ "7499334e26a6e1b5": {
+  "en": "| `STRIDO_SERIAL_PORT` | `/dev/strido_mcu` | `strido-cli`, `strido_ntx.plugin` | Serial device of the XIAO ESP32-S3 (udev symlink from `ros2/strido_bringup/config/99-strido.rules`) |",
+  "de": "| `STRIDO_SERIAL_PORT` | `/dev/strido_mcu` | `strido-cli`, `strido_ntx.plugin` | Serielles Gerät des XIAO ESP32-S3 (udev-Symlink aus `ros2/strido_bringup/config/99-strido.rules`) |"
+ },
+ "657e60af0a6acca4": {
+  "en": "The ROS 2 launch files take the same values as launch arguments (`mcu_port`, `use_policy`, `policy`, `camera`). Makefile variables: `NTX_HARNESS` (path of the NT-X checkout for `make ntx-smoke`, default `../../ntx-harness`), `POLICY` (policy file for `make sim-gazebo`).",
+  "de": "Die ROS-2-Launch-Dateien übernehmen dieselben Werte als Launch-Argumente (`mcu_port`, `use_policy`, `policy`, `camera`). Makefile-Variablen: `NTX_HARNESS` (Pfad des NT-X-Checkouts für `make ntx-smoke`, Standard `../../ntx-harness`), `POLICY` (Policy-Datei für `make sim-gazebo`)."
+ }
+}

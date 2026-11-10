@@ -1,0 +1,26 @@
+[project]
+name = "strido-ntx"
+version = "0.2.0"
+description = "NT-X extension for Strido: robot spec + MJCF catalog assets, stand skill, and a serial RobotPort for the ESP32-S3 motion controller"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Apache-2.0" }
+# The NT-X harness (ntx-harness) is the host environment and is not a dependency here:
+# install this package into the NT-X environment (`uv pip install -e packages/strido-ntx`).
+dependencies = ["strido-core", "pyyaml>=6", "numpy>=1.24"]
+
+[project.entry-points."ntx.assets"]
+strido = "strido_ntx"
+
+[project.entry-points."ntx.adapters"]
+strido = "strido_ntx.plugin:register"
+
+[tool.uv.sources]
+strido-core = { workspace = true }
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strido_ntx"]

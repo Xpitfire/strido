@@ -1,0 +1,19 @@
+[project]
+name = "strido-core"
+version = "0.2.0"
+description = "Strido robot runtime library: measured geometry, linkage-exact leg kinematics, trot gait, MCU serial protocol, numpy policy runtime and the bench CLI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+# Deliberately light: this package runs on the Raspberry Pi and inside the ROS 2 image.
+dependencies = ["numpy>=1.24", "pyserial>=3.5"]
+
+[project.scripts]
+strido-cli = "strido.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strido"]

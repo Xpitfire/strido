@@ -1,0 +1,8 @@
+*
+!packages/strido-core
+!ros2/strido_description
+!ros2/strido_bringup
+!ros2/strido_control
+!docker/ros2
+**/__pycache__
+**/*.egg-info

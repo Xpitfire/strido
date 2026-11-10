@@ -1,0 +1,20 @@
+[project]
+name = "strido-publish"
+version = "0.2.0"
+description = "Strido publication: BOM and shopping optimiser, print kit, assembly manual, parts catalogue PDF, renders, web 3D viewer assets"
+requires-python = ">=3.12,<3.13"
+license = { text = "Apache-2.0" }
+# weasyprint needs the Pango system library (macOS: brew install pango; Debian: libpango-1.0-0)
+dependencies = ["strido-core", "strido-cad", "strido-verify", "weasyprint==70.0", "pillow==13.0.0", "jinja2==3.1.6", "pyyaml==6.0.3"]
+
+[tool.uv.sources]
+strido-core = { workspace = true }
+strido-cad = { workspace = true }
+strido-verify = { workspace = true }
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strido_publish"]

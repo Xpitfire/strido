@@ -1,0 +1,6771 @@
+{
+ "screws": [
+  {
+   "instance": "iso4762_m2x5#0",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "bracket -> LCD hex studs",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 29.108,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.397,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#1",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "bracket -> LCD hex studs",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 29.234,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.397,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#2",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "bracket -> LCD hex studs",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 42.844,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.397,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#3",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "bracket -> LCD hex studs",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 42.725,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.397,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#4",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "bracket -> front shell boss (self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 6.5
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#5",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "bracket -> front shell boss (self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 6.5
+    },
+    {
+     "part": "display_bracket",
+     "instance": "display_bracket",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#6",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "LiDAR -> pedestal",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#7",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "LiDAR -> pedestal",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#8",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "LiDAR -> pedestal",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#9",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "LiDAR -> pedestal",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#10",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "pedestal -> top shell (from below, self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#11",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "pedestal -> top shell (from below, self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#12",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "pedestal -> top shell (from below, self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#13",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "pedestal -> top shell (from below, self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lidar_pedestal",
+     "instance": "lidar_pedestal",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#14",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "camera base + front shell -> upper shoulder frame nut (replaces upstream M3x8)",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_mount_base",
+     "instance": "camera_mount_base",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.972,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 5.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 3.154,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#16",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "camera base + front shell -> upper shoulder frame nut (replaces upstream M3x8)",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_mount_base",
+     "instance": "camera_mount_base",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.963,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 5.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 3.157,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x40#18",
+   "spec": "iso4762_m3x40",
+   "thread": "M3",
+   "joint": "camera tilt pivot",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "camera_mount_base",
+     "instance": "camera_mount_base",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 6.0,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "camera_tilt_plate",
+     "instance": "camera_tilt_plate",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 29.5,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x10#20",
+   "spec": "iso4762_m2x10",
+   "thread": "M2",
+   "joint": "camera PCB -> tilt plate bosses",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_tilt_plate",
+     "instance": "camera_tilt_plate",
+     "source": "strido",
+     "start_mm": 0.8,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.197,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x10#22",
+   "spec": "iso4762_m2x10",
+   "thread": "M2",
+   "joint": "camera PCB -> tilt plate bosses",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_tilt_plate",
+     "instance": "camera_tilt_plate",
+     "source": "strido",
+     "start_mm": 0.8,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.197,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x10#24",
+   "spec": "iso4762_m2x10",
+   "thread": "M2",
+   "joint": "camera PCB -> tilt plate bosses",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_tilt_plate",
+     "instance": "camera_tilt_plate",
+     "source": "strido",
+     "start_mm": 0.8,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.197,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x10#26",
+   "spec": "iso4762_m2x10",
+   "thread": "M2",
+   "joint": "camera PCB -> tilt plate bosses",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "camera_tilt_plate",
+     "instance": "camera_tilt_plate",
+     "source": "strido",
+     "start_mm": 0.8,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.197,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#28",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "clamp ring -> bezel through the D20 hole",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 5.664,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "arming_port_ring",
+     "instance": "arming_port_ring",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "arming_port_bezel",
+     "instance": "arming_port_bezel",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.097,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 2.5 mm (< 1.5 d)",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#29",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "clamp ring -> bezel through the D20 hole",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 5.458,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "arming_port_ring",
+     "instance": "arming_port_ring",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "arming_port_bezel",
+     "instance": "arming_port_bezel",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.097,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 2.5 mm (< 1.5 d)",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#31",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.703,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#32",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#34",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.692,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#35",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#37",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.701,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#38",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#40",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.69,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#41",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#43",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.762,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#44",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#46",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.75,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#47",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#49",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.76,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#50",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#52",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below, head in pocket)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.5,
+     "hole_d_mm": 2.749,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#53",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "board -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x6#54",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "IMU -> deck",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x6#56",
+   "spec": "iso4762_m2_5x6",
+   "thread": "M2.5",
+   "joint": "IMU -> deck",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#59",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "regulator -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2x5#60",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "stand-off -> deck (from below)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.297,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#62",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "regulator -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2x5#63",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "stand-off -> deck (from below)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.297,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2x5#65",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "regulator -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2x5#66",
+   "spec": "iso4762_m2x5",
+   "thread": "M2",
+   "joint": "stand-off -> deck (from below)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.297,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#68",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "INA260 -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#69",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m2_5x5#71",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "INA260 -> stand-off",
+   "termination": "nut",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m2_5x5#72",
+   "spec": "iso4762_m2_5x5",
+   "thread": "M2.5",
+   "joint": "stand-off -> deck (from below)",
+   "termination": "nut",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "electronics_deck",
+     "instance": "electronics_deck",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 2.797,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#73",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "bus holder -> lower shoulder frame (self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "servo_bus_holder_front",
+     "instance": "servo_bus_holder_front",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 6.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 5.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#74",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "bus holder -> lower shoulder frame (self-tapping)",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "servo_bus_holder_rear",
+     "instance": "servo_bus_holder_rear",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 3.396,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 6.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.597,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 5.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u0",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "bottom_shell",
+     "instance": "body/bottom_shell#1",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.054,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.15,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u2",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "bottom_shell",
+     "instance": "body/bottom_shell#1",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.054,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.168,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u4",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "bottom_shell",
+     "instance": "body/bottom_shell#1",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.054,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.147,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u6",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "bottom_shell",
+     "instance": "body/bottom_shell#1",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.054,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.166,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u8",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.948,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.154,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u10",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.935,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.156,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u12",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.975,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.128,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u14",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.02,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.137,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u16",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.075,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.13,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u18",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_bottom",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.077,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.127,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u20",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.375,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.143,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u22",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.385,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.157,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u24",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.364,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.139,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u26",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "shell_to_shoulder_top",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "top_shell_sensor",
+     "instance": "top_shell_sensor",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.374,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 5.5,
+     "hole_d_mm": 3.15,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u28",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.103,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.999,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.153,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u30",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.101,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.147,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u32",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.107,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.153,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u34",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.095,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.998,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.147,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u36",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.102,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 12.022,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.151,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u38",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.107,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_front",
+     "instance": "lower_shoulder_frame_front",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.172,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u40",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.101,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.151,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u42",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.098,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.949,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "lower_shoulder_frame_rear",
+     "instance": "lower_shoulder_frame_rear",
+     "source": "strido",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.172,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u44",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.581,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#7",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.161,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u46",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.691,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#7",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.133,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u48",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.579,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#7",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.158,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u50",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 2.689,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#7",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.135,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u52",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.146,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#8",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.133,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u54",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.077,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#8",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.161,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u56",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.132,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#8",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.135,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u58",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "chassis_side",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.072,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "side_body_beam",
+     "instance": "body/side_body_beam#8",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.158,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u60",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.916,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u62",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.879,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u64",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.916,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u66",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.871,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u68",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.968,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u70",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.899,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u72",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.964,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u74",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.888,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u76",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.106,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.809,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.158,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u78",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.155,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.082,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u80",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.123,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.159,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u82",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.115,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.954,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.082,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u84",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.879,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u86",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.916,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u88",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.871,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u90",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.916,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u92",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.899,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u94",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.968,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u96",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.888,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u98",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_servo_ears",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 5.0,
+     "hole_d_mm": 2.964,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 2.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u100",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.112,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.877,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.144,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u102",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#10",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.123,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#13",
+     "source": "upstream STL",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.117,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u104",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_shoulder_frame",
+     "instance": "body/inner_shoulder_frame#9",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 3.155,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 3.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 3.144,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u106",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "shoulder_frames",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 3.103,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 2.0,
+     "hole_d_mm": 11.806,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "upper_shoulder_frame",
+     "instance": "body/upper_shoulder_frame#14",
+     "source": "upstream STL",
+     "start_mm": 2.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.117,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u108",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x8#u109",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x10#u111",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_pivot",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 15.774,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 32.05,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "hip_bearing_pin",
+     "instance": "RL/hip_bearing_pin@0154",
+     "source": "upstream STEP",
+     "start_mm": 0.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 3.296,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.941,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u112",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.94,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "RR/servo_mount_top_bracket#33",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.939,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u113",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.955,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "RL/servo_mount_top_bracket#15",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.968,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u114",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.925,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "RR/servo_mount_top_bracket#33",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.94,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u115",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.956,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "RL/servo_mount_top_bracket#15",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.973,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u116",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.899,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u117",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.957,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u118",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.951,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u119",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.953,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u120",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 3.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.899,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u121",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.964,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u122",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.96,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u123",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.938,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u124",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.957,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u125",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.944,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u126",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.954,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u127",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.949,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u128",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.942,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u129",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.956,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u130",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.944,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u131",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.951,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u132",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.944,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u133",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.945,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u134",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.945,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u135",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount",
+     "instance": "RL/right_servo_mount#16",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.939,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x16#u137",
+   "spec": "iso4762_m3x16",
+   "thread": "M3",
+   "joint": "arm_pin",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "short_link",
+     "instance": "RR/short_link#35",
+     "source": "upstream STL",
+     "start_mm": 0.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.94,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x16#u139",
+   "spec": "iso4762_m3x16",
+   "thread": "M3",
+   "joint": "arm_pin",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "short_link",
+     "instance": "RL/short_link#17",
+     "source": "upstream STL",
+     "start_mm": 0.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.937,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u140",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.57,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "short_link",
+     "instance": "RR/short_link#35",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.962,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u141",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.658,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "short_link",
+     "instance": "RL/short_link#17",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.974,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u142",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur_servo_connector",
+     "instance": "RR/femur_servo_connector#36",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 5.917,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 33.898,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u143",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur_servo_connector",
+     "instance": "RL/femur_servo_connector#18",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 5.922,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 33.887,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u144",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 14.5,
+     "hole_d_mm": 3.238,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.943,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RR/femur_servo_connector#36",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.264,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u145",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.318,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.892,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RL/femur_servo_connector#18",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.309,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u146",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.254,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.012,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RR/femur_servo_connector#36",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.212,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u147",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.318,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.963,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RL/femur_servo_connector#18",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.275,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u148",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.238,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.938,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RR/femur_servo_connector#36",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.35,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u149",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.315,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.983,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RL/femur_servo_connector#18",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.365,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u150",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.299,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.014,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RR/femur_servo_connector#36",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.256,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u151",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.317,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.067,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "RL/femur_servo_connector#18",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.303,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u153",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RR/inner_tibia#41",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 13.211,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.8,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u155",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RR/outer_tibia#40",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 13.178,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "RR/femur#37",
+     "source": "upstream STL",
+     "start_mm": 5.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.784,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u157",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RL/outer_tibia#23",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 13.209,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.846,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u159",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RL/inner_tibia#22",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 13.199,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "RL/femur#19",
+     "source": "upstream STL",
+     "start_mm": 5.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.843,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u160",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "right_shoulder",
+     "instance": "RR/right_shoulder#39",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.441,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "RR/long_link#38",
+     "source": "strido derived",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.921,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u161",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "left_shoulder",
+     "instance": "RL/left_shoulder#21",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.528,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "RL/long_link#20",
+     "source": "strido derived",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.948,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u162",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "knee_drive_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x8#u163",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "knee_drive_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x20#u164",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "tibia_foot",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RR/inner_tibia#41",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.947,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "RR/outer_tibia#40",
+     "source": "upstream STL",
+     "start_mm": 7.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.918,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u166",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "tibia_foot",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RL/outer_tibia#23",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.955,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "RL/inner_tibia#22",
+     "source": "upstream STL",
+     "start_mm": 7.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.912,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 8.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u168",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RR/inner_tibia#41",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.945,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "RR/outer_tibia#40",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.92,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u170",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RL/outer_tibia#23",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.957,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 4.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "RL/inner_tibia#22",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.932,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u172",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RR/inner_tibia#41",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 2.94,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "RR/outer_tibia#40",
+     "source": "upstream STL",
+     "start_mm": 3.8,
+     "span_mm": 6.5,
+     "hole_d_mm": 2.926,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u174",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RL/outer_tibia#23",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 2.946,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "RL/inner_tibia#22",
+     "source": "upstream STL",
+     "start_mm": 3.8,
+     "span_mm": 6.5,
+     "hole_d_mm": 2.934,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u176",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "tibia_link_pin",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "RR/inner_tibia#41",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 1.5,
+     "hole_d_mm": 3.134,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "RR/long_link#38",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 3.026,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 0
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "RR/outer_tibia#40",
+     "source": "upstream STL",
+     "start_mm": 16.8,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.086,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u178",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "tibia_link_pin",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "RL/outer_tibia#23",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 1.5,
+     "hole_d_mm": 3.124,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "RL/long_link#20",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 2.913,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 10.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "RL/inner_tibia#22",
+     "source": "upstream STL",
+     "start_mm": 16.8,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.105,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u181",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_pivot",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 12.22,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 35.915,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "hip_bearing_pin",
+     "instance": "FL/hip_bearing_pin@0213",
+     "source": "upstream STEP",
+     "start_mm": 0.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 3.295,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.497,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u182",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.941,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "FR/servo_mount_top_bracket#43",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.927,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u183",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.884,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.91): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "FL/servo_mount_top_bracket#25",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.956,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u184",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.94,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u185",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.915,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u186",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.922,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "FR/servo_mount_top_bracket#43",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.927,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u187",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "bracket_screws",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.904,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 12.0
+    },
+    {
+     "part": "servo_mount_top_bracket",
+     "instance": "FL/servo_mount_top_bracket#25",
+     "source": "upstream STL",
+     "start_mm": 4.8,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.955,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u188",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.934,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u189",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.952,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u190",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.939,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u191",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.94,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u192",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.942,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u193",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.928,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u194",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.942,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u195",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.891,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.91): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u196",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.941,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "accepted deviation (ADR-009): print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u197",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.899,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u198",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.937,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u199",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.906,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u200",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.931,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u201",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "leg_servo_ears_and_bracket",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount_fl",
+     "instance": "FL/left_servo_mount#24",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 9.5,
+     "hole_d_mm": 2.912,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 9.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x16#u203",
+   "spec": "iso4762_m3x16",
+   "thread": "M3",
+   "joint": "arm_pin",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "short_link",
+     "instance": "FR/short_link#44",
+     "source": "upstream STL",
+     "start_mm": 0.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.94,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x16#u205",
+   "spec": "iso4762_m3x16",
+   "thread": "M3",
+   "joint": "arm_pin",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "short_link",
+     "instance": "FL/short_link#26",
+     "source": "upstream STL",
+     "start_mm": 0.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.94,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u206",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.533,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "short_link",
+     "instance": "FR/short_link#44",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.962,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u207",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.633,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "short_link",
+     "instance": "FL/short_link#26",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.978,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u208",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur_servo_connector",
+     "instance": "FR/femur_servo_connector#45",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 5.917,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 33.896,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u209",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur_servo_connector",
+     "instance": "FL/femur_servo_connector#27",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 5.927,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 33.881,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u210",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 14.5,
+     "hole_d_mm": 3.238,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.941,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FR/femur_servo_connector#45",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.264,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u211",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.304,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.891,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FL/femur_servo_connector#27",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.276,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u212",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.254,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.016,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FR/femur_servo_connector#45",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.212,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u213",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.304,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.936,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FL/femur_servo_connector#27",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.213,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u214",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.237,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 22.925,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FR/femur_servo_connector#45",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.35,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u215",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.301,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.006,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FL/femur_servo_connector#27",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.329,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u216",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.299,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.02,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FR/femur_servo_connector#45",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.256,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u217",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "femur_to_horn",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 15.0,
+     "hole_d_mm": 3.303,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 13.3,
+     "span_mm": 6.5,
+     "hole_d_mm": 23.067,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur_servo_connector",
+     "instance": "FL/femur_servo_connector#27",
+     "source": "upstream STL",
+     "start_mm": 15.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.241,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u219",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FR/inner_tibia#50",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 13.168,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.8,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u221",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FR/outer_tibia#49",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 13.195,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "FR/femur#46",
+     "source": "upstream STL",
+     "start_mm": 5.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.784,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u223",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FL/outer_tibia#32",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 13.209,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.848,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u225",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "knee_axle",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FL/inner_tibia#31",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 13.211,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "femur",
+     "instance": "FL/femur#28",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.845,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u226",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "right_shoulder",
+     "instance": "FR/right_shoulder#48",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.44,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "FR/long_link#47",
+     "source": "strido derived",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.924,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u227",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "crank_pins",
+   "termination": "thread-forming",
+   "status": "ok",
+   "parts": [
+    {
+     "part": "left_shoulder",
+     "instance": "FL/left_shoulder#30",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 11.5,
+     "hole_d_mm": 2.545,
+     "fit": "thread-forming",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 11.5
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "FL/long_link#29",
+     "source": "strido derived",
+     "start_mm": 4.3,
+     "span_mm": 10.0,
+     "hole_d_mm": 4.944,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u228",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "knee_drive_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x8#u229",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "knee_drive_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x20#u230",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "tibia_foot",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FR/inner_tibia#50",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.9,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "FR/outer_tibia#49",
+     "source": "upstream STL",
+     "start_mm": 7.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.936,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x20#u232",
+   "spec": "iso4762_m3x20",
+   "thread": "M3",
+   "joint": "tibia_foot",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FL/outer_tibia#32",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 7.0,
+     "hole_d_mm": 2.95,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 7.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "FL/inner_tibia#31",
+     "source": "upstream STL",
+     "start_mm": 7.3,
+     "span_mm": 12.0,
+     "hole_d_mm": 2.919,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 8.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u234",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FR/inner_tibia#50",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.901,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "FR/outer_tibia#49",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.936,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u236",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FL/outer_tibia#32",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.955,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 4.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "FL/inner_tibia#31",
+     "source": "upstream STL",
+     "start_mm": 4.3,
+     "span_mm": 6.0,
+     "hole_d_mm": 2.939,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u238",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FR/inner_tibia#50",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 2.895,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "FR/outer_tibia#49",
+     "source": "upstream STL",
+     "start_mm": 3.8,
+     "span_mm": 6.5,
+     "hole_d_mm": 2.937,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x12#u240",
+   "spec": "iso4762_m3x12",
+   "thread": "M3",
+   "joint": "tibia_joints",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FL/outer_tibia#32",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 2.944,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.5
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "FL/inner_tibia#31",
+     "source": "upstream STL",
+     "start_mm": 3.8,
+     "span_mm": 6.5,
+     "hole_d_mm": 2.941,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 3.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u242",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "tibia_link_pin",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "inner_tibia",
+     "instance": "FR/inner_tibia#50",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 1.5,
+     "hole_d_mm": 3.09,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "FR/long_link#47",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 3.023,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 0
+    },
+    {
+     "part": "outer_tibia",
+     "instance": "FR/outer_tibia#49",
+     "source": "upstream STL",
+     "start_mm": 16.8,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.11,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x25#u244",
+   "spec": "iso4762_m3x25",
+   "thread": "M3",
+   "joint": "tibia_link_pin",
+   "termination": "nut",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_tibia",
+     "instance": "FL/outer_tibia#32",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 1.5,
+     "hole_d_mm": 3.124,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    },
+    {
+     "part": "stiff_long_link",
+     "instance": "FL/long_link#29",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 10.0,
+     "hole_d_mm": 2.908,
+     "fit": "tight passage",
+     "status": "warn",
+     "note": "narrow hole on a nut joint: drill to clearance",
+     "engaged_mm": 10.0
+    },
+    {
+     "part": "inner_tibia",
+     "instance": "FL/inner_tibia#31",
+     "source": "upstream STL",
+     "start_mm": 16.8,
+     "span_mm": 4.5,
+     "hole_d_mm": 3.122,
+     "fit": "clearance",
+     "status": "warn",
+     "note": "tight after printing: chase with a drill",
+     "engaged_mm": 0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u246",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x8#u247",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "horn_centre_screw",
+   "termination": "vendor thread",
+   "status": "ok",
+   "parts": []
+  },
+  {
+   "instance": "iso4762_m3x10#u249",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_pivot",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#11",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 15.808,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "back_shell_button",
+     "instance": "back_shell_button",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.5,
+     "hole_d_mm": 31.885,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "hip_bearing_pin",
+     "instance": "RR/hip_bearing_pin@0271",
+     "source": "upstream STEP",
+     "start_mm": 0.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 3.296,
+     "fit": "bearing bore",
+     "status": "ok",
+     "note": "screw runs inside bearings/bushings held by this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.926,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.0
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u250",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 3.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.922,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u251",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.915,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u252",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.939,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.93): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x8#u253",
+   "spec": "iso4762_m3x8",
+   "thread": "M3",
+   "joint": "hip_horn",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "left_servo_mount",
+     "instance": "RR/left_servo_mount#34",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 4.5,
+     "hole_d_mm": 2.922,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "weak grip (printed ratio 0.92): stop when snug; if it spins, harden the pilot with thin CA glue and re-drive (no anaerobic thread locker on plastic)",
+     "engaged_mm": 4.5
+    }
+   ]
+  },
+  {
+   "instance": "iso4762_m3x10#u255",
+   "spec": "iso4762_m3x10",
+   "thread": "M3",
+   "joint": "hip_pivot",
+   "termination": "thread-forming",
+   "status": "warn",
+   "parts": [
+    {
+     "part": "outer_shoulder_frame",
+     "instance": "body/outer_shoulder_frame#12",
+     "source": "upstream STL",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 12.279,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "front_shell_display",
+     "instance": "front_shell_display",
+     "source": "strido",
+     "start_mm": 0.3,
+     "span_mm": 3.0,
+     "hole_d_mm": 35.994,
+     "fit": "passage",
+     "status": "ok",
+     "note": "screw (or its head) crosses a bore or cavity of this part",
+     "engaged_mm": 0
+    },
+    {
+     "part": "hip_bearing_pin",
+     "instance": "FR/hip_bearing_pin@0330",
+     "source": "upstream STEP",
+     "start_mm": 0.8,
+     "span_mm": 5.0,
+     "hole_d_mm": 3.295,
+     "fit": "clearance",
+     "status": "ok",
+     "note": "",
+     "engaged_mm": 0
+    },
+    {
+     "part": "right_servo_mount_fr",
+     "instance": "FR/right_servo_mount#42",
+     "source": "strido derived",
+     "start_mm": 5.8,
+     "span_mm": 4.0,
+     "hole_d_mm": 2.497,
+     "fit": "thread-forming",
+     "status": "warn",
+     "note": "short engagement 4.0 mm (< 1.5 d)",
+     "engaged_mm": 4.0
+    }
+   ]
+  }
+ ],
+ "seats": [
+  {
+   "bearing": "body/bearing_625zz@0147",
+   "part": "outer_shoulder_frame",
+   "od_mm": 16.0,
+   "seat_d_mm": 16.213,
+   "status": "ok"
+  },
+  {
+   "bearing": "body/bearing_625zz@0148",
+   "part": "outer_shoulder_frame",
+   "od_mm": 16.0,
+   "seat_d_mm": 16.166,
+   "status": "ok"
+  },
+  {
+   "bearing": "body/bearing_625zz@0150",
+   "part": "outer_shoulder_frame",
+   "od_mm": 16.0,
+   "seat_d_mm": 16.191,
+   "status": "ok"
+  },
+  {
+   "bearing": "body/bearing_625zz@0151",
+   "part": "outer_shoulder_frame",
+   "od_mm": 16.0,
+   "seat_d_mm": 16.195,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/sleeve_bearing_3x5x5_pair@0159",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.986,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/sleeve_bearing_3x5x5_pair@0160",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.977,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/sleeve_bearing_3x5x5_pair@0177",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.948,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/sleeve_bearing_3x5x5_pair@0178",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.861,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/bearing_6805_2rs@0179",
+   "part": "left_shoulder",
+   "od_mm": 37.0,
+   "seat_d_mm": 36.933,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/bearing_633zz@0203",
+   "part": "outer_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.226,
+   "status": "ok"
+  },
+  {
+   "bearing": "RL/bearing_633zz@0204",
+   "part": "inner_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.208,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/sleeve_bearing_3x5x5_pair@0218",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.983,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/sleeve_bearing_3x5x5_pair@0219",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.979,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/sleeve_bearing_3x5x5_pair@0236",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.948,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/sleeve_bearing_3x5x5_pair@0237",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.863,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/bearing_6805_2rs@0238",
+   "part": "left_shoulder",
+   "od_mm": 37.0,
+   "seat_d_mm": 36.921,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/bearing_633zz@0262",
+   "part": "inner_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.226,
+   "status": "ok"
+  },
+  {
+   "bearing": "FL/bearing_633zz@0263",
+   "part": "outer_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.227,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/sleeve_bearing_3x5x5_pair@0276",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.983,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/sleeve_bearing_3x5x5_pair@0277",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.983,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/sleeve_bearing_3x5x5_pair@0294",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.927,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/sleeve_bearing_3x5x5_pair@0295",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.853,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/bearing_6805_2rs@0296",
+   "part": "right_shoulder",
+   "od_mm": 37.0,
+   "seat_d_mm": 36.945,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/bearing_633zz@0320",
+   "part": "outer_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.186,
+   "status": "ok"
+  },
+  {
+   "bearing": "RR/bearing_633zz@0321",
+   "part": "inner_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.233,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/sleeve_bearing_3x5x5_pair@0335",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.984,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/sleeve_bearing_3x5x5_pair@0336",
+   "part": "short_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.983,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/sleeve_bearing_3x5x5_pair@0353",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.925,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/sleeve_bearing_3x5x5_pair@0354",
+   "part": "stiff_long_link",
+   "od_mm": 5.0,
+   "seat_d_mm": 4.856,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/bearing_6805_2rs@0355",
+   "part": "right_shoulder",
+   "od_mm": 37.0,
+   "seat_d_mm": 36.94,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/bearing_633zz@0379",
+   "part": "outer_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.207,
+   "status": "ok"
+  },
+  {
+   "bearing": "FR/bearing_633zz@0380",
+   "part": "inner_tibia",
+   "od_mm": 13.0,
+   "seat_d_mm": 13.176,
+   "status": "ok"
+  }
+ ]
+}

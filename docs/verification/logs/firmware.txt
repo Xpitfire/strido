@@ -1,0 +1,5 @@
+# 2026-10-30T21:01Z make firmware
+RAM:   [=         ]   8.0% (used 26204 bytes from 327680 bytes)
+Flash: [==        ]  16.0% (used 533671 bytes from 3342336 bytes)
+========================= [SUCCESS] Took 2.06 seconds =========================
+xiao_esp32s3   SUCCESS   00:00:02.057

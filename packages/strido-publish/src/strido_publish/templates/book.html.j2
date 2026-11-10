@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Strido · Catalogue & assembly book</title></head>
+<body>
+
+<section class="cover">
+  <div class="title"><b>Strido</b><span>Catalogue &amp; assembly book — print, buy, build, wire, program</span></div>
+  <img src="{{ images.hero_front }}" alt="">
+  <div class="foot">Open 12-DoF quadruped · derived from Yertle by Jerome Graves (MIT) · Strido {{ version }}, generated from the verified CAD assembly.<br>
+    Every part, bolt and pin on these pages is placed in the CAD model and checked for collisions, fits and clearance.</div>
+  <div class="band"></div>
+</section>
+
+<h1 id="overview">What you are building</h1>
+<div class="specs">
+  <div><b>430 × 188 × 264 mm</b>standing, LiDAR on top</div>
+  <div><b>≈ 3.0 kg</b>CAD mass incl. 2S 5000 mAh battery</div>
+  <div><b>12 × SPT5435LV</b>35 kg·cm at 6 V, linkage-driven knees</div>
+  <div><b>{{ totals.printed }} printed pieces</b>{{ totals.printed_types }} part types, PETG/PLA+</div>
+  <div><b>{{ totals.purchased }} purchased parts</b>boards, servos, bearings, sensors</div>
+  <div><b>{{ totals.fasteners }} fasteners</b>M2 / M2.5 / M3, drawn 1:1 in section C</div>
+</div>
+<img class="figure" src="{{ images.exploded }}" alt="Exploded view">
+<h2>Contents</h2>
+<ul class="toc">
+  <li><a href="#printed">A · Printed parts</a></li>
+  <li><a href="#purchased">B · Purchased parts</a></li>
+  <li><a href="#bags">C · Hardware bags (1:1)</a></li>
+  <li><a href="#shopping">D · Shopping plan</a></li>
+  <li><a href="#tools">E · Tools and consumables</a></li>
+  <li><a href="#assembly">F · Assembly</a></li>
+  <li><a href="#wiring">G · Wiring and pin map</a></li>
+  <li><a href="#software">H · Software: flash, calibrate, walk, train</a></li>
+  <li><a href="#verification">I · What was verified</a></li>
+</ul>
+<div class="warn"><b>Safety.</b> LiPo batteries can burn: charge in a LiPo bag with a balance charger, never unattended. The XT60 loop key is the servo kill switch; the push button is not an emergency stop. Keep fingers out of the legs whenever the loop key is in.</div>
+
+<h1 id="printed">A · Printed parts</h1>
+<p>Print every part once per listed quantity. Files: <code>hardware/print/stl/</code> (oriented for printing) and ready-to-slice plates in <code>hardware/print/plates/</code>
+({{ plates|length }} plates: {{ plates|join(", ") }}). Settings: PETG or PLA+, 0.4 mm nozzle, 0.2 mm layers, 3 walls, 5 top/bottom layers, 30 % gyroid.
+Lime = shells and shoulders, graphite = everything else.</p>
+<div class="cards">
+{% for part in printed %}
+  <div class="card printed">
+    {% if part.image %}<img src="{{ root }}/docs/assembly/img/parts/{{ part.id }}.png" alt="">{% endif %}
+    <div><span class="qty">{{ part.qty }}×</span> <span class="name">{{ part.title }}</span>
+      <div class="meta">{{ part.bbox_mm|map("round")|map("int")|join(" × ") }} mm · {{ part.colour }}{% if part.supports %} · supports{% endif %}<br>
+      <code>{{ part.file.split("/")[-1] }}</code>{% if part.note %}<br>{{ part.note }}{% endif %}</div></div>
+  </div>
+{% endfor %}
+</div>
+
+<h1 id="purchased">B · Purchased parts</h1>
+<p>Modelled in the CAD (sizes are the model envelopes). Price = cheapest observed offer, EUR incl. VAT; the shopping plan (section D) bundles them by shop.</p>
+<div class="cards">
+{% for part in purchased %}
+  <div class="card purchased">
+    {% if part.image %}<img src="{{ root }}/docs/assembly/img/parts/{{ part.id }}.png" alt="">{% endif %}
+    <div><span class="qty">{{ part.qty }}×</span> <span class="name">{{ part.title }}</span>
+      <div class="meta">{{ part.bbox_mm|map("round")|map("int")|join(" × ") }} mm{% if part.vendor %}<br>{{ part.vendor }} · {{ part.sku }} · €{{ "%.2f"|format(part.price_eur) }}{% if part.pack > 1 %} / {{ part.pack }}{% endif %}{% endif %}</div></div>
+  </div>
+{% endfor %}
+</div>
+<h2>Not modelled in the CAD</h2>
+<table><tr><th>Item</th><th>Qty</th><th>Category</th><th>Note</th></tr>
+{% for line in non_cad %}<tr><td>{{ line.name }}</td><td>{{ line.qty }}</td><td>{{ line.category }}</td><td class="note">{{ line.note or "" }}</td></tr>{% endfor %}
+</table>
+
+<h1 id="bags">C · Hardware bags (1:1)</h1>
+<p>Drawn in true millimetres — print this page at <b>100 %</b> (no "fit to page") and lay a screw on its drawing to identify it. Check: the bar below is exactly 100 mm long.
+"Buy" includes 10 % (at least 2) spares.</p>
+<div class="ruler">{{ ruler|safe }}</div>
+<div class="bags">
+{% for bag in bags %}
+  <div class="bag">{{ bag.svg|safe }}<div class="qty">{{ bag.qty }}×</div><div class="label">{{ bag.title }}<br><span class="muted">buy {{ bag.buy }}</span></div></div>
+{% endfor %}
+</div>
+
+<h1 id="shopping">D · Shopping plan (lowest total)</h1>
+<p>Cheapest combination of shops including shipping (optimiser over every subset of shops, prices observed 2026-10-30 — re-check before ordering).
+Total <b>€{{ "%.2f"|format(shopping.total) }}</b> delivered to Austria. Other strategies (fewest shops, EU only, genuine boards): <code>docs/bom/shopping_list.md</code>.</p>
+{% for shop in shopping.shops %}
+<h3>{{ shop.name }} — €{{ "%.2f"|format(shop.subtotal) }} + €{{ "%.2f"|format(shop.shipping) }} shipping</h3>
+{% if shop.note %}<p class="note">{{ shop.note }}</p>{% endif %}
+<table><tr><th>Item</th><th>SKU</th><th>Need</th><th>Buy</th><th>Cost</th></tr>
+{% for row in shop.rows %}<tr><td>{{ row.name }}</td><td><code>{{ row.sku }}</code></td><td>{{ row.qty }}</td><td>{{ row.pieces }}</td><td>€{{ "%.2f"|format(row.cost) }}</td></tr>{% endfor %}
+</table>
+{% endfor %}
+
+<h1 id="tools">E · Tools and consumables</h1>
+<table><tr><th>Tool</th><th>Used for</th></tr>{% for tool, use in tools %}<tr><td>{{ tool }}</td><td>{{ use }}</td></tr>{% endfor %}</table>
+<h2>Before you start</h2>
+<ol>
+  <li>Print everything in section A; remove supports and brims. Test-fit the bearings (625ZZ, 633ZZ, 6805-2RS) and sleeves.</li>
+  <li>Chase the holes listed in <code>docs/verification/fits.md</code> ("Holes to chase") with the drill shown.</li>
+  <li>Prepare the 12 servo leads and both UBECs (section G, harness steps).</li>
+  <li><b>Centre all 12 servos</b> before fitting any horn: flash the firmware (section H), then <code>strido-cli --port &lt;port&gt; center</code>. A centred servo is the assembly reference: hip vertical, femur 45° backwards, knee crank 35°.</li>
+  <li>Screws into printed pilot holes: turn until snug, never to full torque. Screws into metal horns: one drop of medium thread locker.</li>
+</ol>
+
+<h1 id="assembly">F · Assembly</h1>
+<p>{{ steps|length }} steps. Leg steps show the front-left leg — build all four; quantities are per leg. Highlighted parts are new in the step.
+Every part and fastener of the robot appears in exactly one parts box.</p>
+{% for step in steps %}
+<section class="step">
+  <header><span class="number">{{ step.index }}</span><span class="title">{{ step.title }}</span>{% if step.per_leg %}<span class="legs">× 4 legs</span>{% endif %}</header>
+  <div class="box">{% for item in step.box %}<div>{% if item.icon %}<img src="{{ item.icon }}" alt="">{% endif %}<b>{{ item.qty }}×</b> {{ item.label }}</div>{% endfor %}</div>
+  <img class="drawing" src="{{ step.image }}" alt="Step {{ step.index }}">
+  <ol>{% for text in step.instructions %}<li>{{ text|safe }}</li>{% endfor %}</ol>
+</section>
+{% endfor %}
+
+<h1 id="wiring">G · Wiring and pin map</h1>
+<h2>XIAO ESP32-S3 pins</h2>
+<table><tr><th>Pad</th><th>GPIO</th><th>Function</th><th>Connects to</th><th>Note</th></tr>
+{% for pin in electronics.controller.pins %}<tr><td>{{ pin.pad }}</td><td>{{ electronics.controller.pads[pin.pad] }}</td><td>{{ pin.function }}</td><td>{{ pin.to }}</td><td class="note">{{ pin.note or "" }}</td></tr>{% endfor %}
+</table>
+<h2>I²C bus ({{ electronics.i2c.frequency_hz // 1000 }} kHz)</h2>
+<table><tr><th>Address</th><th>Device</th><th>Note</th></tr>
+{% for device in electronics.i2c.devices %}<tr><td>0x{{ "%02X"|format(device.address) }}</td><td>{{ device.device }}</td><td class="note">{{ device.note or "" }}</td></tr>{% endfor %}
+</table>
+<h2>PCA9685 servo channels ({{ electronics.servos.frequency_hz }} Hz)</h2>
+<table><tr><th>Leg</th><th>hip</th><th>thigh</th><th>calf (knee crank)</th></tr>
+{% for leg, ch in electronics.servos.channels.items() %}<tr><td>{{ leg }}</td><td>{{ ch.hip }}</td><td>{{ ch.thigh }}</td><td>{{ ch.calf }}</td></tr>{% endfor %}
+</table>
+<h2>Wiring harness</h2>
+<img class="figure" src="{{ images.wiring }}" alt="Routed wiring harness">
+<h2>Cut list</h2>
+<p class="note">Every cable is routed through the CAD (<code>hardware/wiring.yaml</code>) and checked for reach, hip-loop slack and clearance in every pose (<code>docs/verification/wiring.md</code>). Cut length = route + strip/solder allowance + slack; servo-lead branches are measured from the tie where the lead splits.</p>
+<table><tr><th>Run</th><th>Cable</th><th>From</th><th>To</th><th>Cut</th></tr>
+{% for row in cut_list %}<tr><td>{{ row.run }}</td><td>{{ row.type }}</td><td>{{ row.from }}</td><td>{{ row.to }}</td><td>{% if row.cut_mm %}{{ row.cut_mm }} mm{% else %}ready-made{% endif %}</td></tr>{% endfor %}
+</table>
+<p class="note">Wiring list, build order, the XT60 loop-key contact rule and the Raspberry Pi power settings: <code>docs/electronics.md</code>.
+Fuses: main {{ electronics.power.fuses[0].rating_a }} A, logic {{ electronics.power.fuses[1].rating_a }} A. Servo UBECs at 6.0 V (jumper open) — never 7.4 V.</p>
+
+<h1 id="software">H · Software: flash, calibrate, walk, train</h1>
+<h2>1 · Flash the motion controller (any computer)</h2>
+<p><code>pipx install platformio</code> · <code>cd firmware/strido_esp32s3 &amp;&amp; pio run -e xiao_esp32s3 -t upload</code> (XIAO on USB-C; hold BOOT while plugging in if no port appears).</p>
+<h2>2 · Bench tools</h2>
+<p><code>uv sync --locked</code> then <code>uv run strido-cli --port &lt;port&gt; center</code> (assembly reference), <code>… calibrate</code> (per-joint trim, stored in flash), <code>… monitor</code> (battery, IMU, flags).</p>
+<h2>3 · Raspberry Pi 5</h2>
+<p>Ubuntu 24.04 or Raspberry Pi OS with Docker. Set <code>PSU_MAX_CURRENT=5000</code> (rpi-eeprom-config) and install the udev rules (<code>ros2/strido_bringup/config/99-strido.rules</code>). Then
+<code>docker compose -f docker/compose.yaml build ros</code> and <code>docker compose -f docker/compose.yaml run --rm robot</code> (MCU bridge, gait, LiDAR).</p>
+<h2>4 · First stand and walk</h2>
+<p>Robot on its belly with legs folded → loop key in (servos stay limp) → start the launch (rest pose, 3 s stand-up) → <code>ros2 run teleop_twist_keyboard teleop_twist_keyboard</code>. Stop: <code>/strido/estop</code> true, or pull the loop key.</p>
+<h2>5 · Simulate and train</h2>
+<p><code>make sim-walk</code> (MuJoCo), <code>make sim-gazebo</code> (ROS 2 + Gazebo in Docker), <code>make rl-smoke</code> / <code>make rl-train</code> (PPO), <code>make ntx-smoke</code> (NT-X harness). The released policy: <code>models/policies/ppo-v1/policy.npz</code>.</p>
+<div class="warn">Not yet measured on a built robot: servo response, current draw, runtime. Treat the learned policy as experimental until it is retrained with measured servo dynamics.</div>
+
+<h1 id="verification">I · What was verified</h1>
+<table><tr><th>Check</th><th>Result</th></tr>
+{% for check, result, status in verification %}<tr><td>{{ check }}</td><td class="result-{{ status }}">{{ result }}</td></tr>
+{% endfor %}<tr><td>Joint limits (method)</td><td>range-of-motion sweep with the mirrored partner leg and 0.3 mm clearance (<code>hardware/joint_limits.yaml</code>)</td></tr>
+</table>
+<p class="note">CAD, simulation and native firmware tests are not hardware evidence. The verification ledger (<code>docs/verification.md</code>) records what ran and its limits.</p>
+
+</body>
+</html>

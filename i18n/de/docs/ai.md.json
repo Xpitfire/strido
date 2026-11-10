@@ -1,0 +1,130 @@
+{
+ "2aeb500960f9198b": {
+  "en": "AI assistant and agents",
+  "de": "KI-Assistent und Agenten"
+ },
+ "1288b96a8c28ea0e": {
+  "en": "**Status:** the assistant answers from this documentation (English and German) through Cortex Keyring; the same knowledge is open to coding agents through an MCP server, an Agent Skill and `llms.txt`. Answers are generated: check figures against the linked page before you cut, crimp or power anything.",
+  "de": "**Status:** Der Assistent antwortet über Cortex Keyring aus dieser Dokumentation (Englisch und Deutsch); dasselbe Wissen steht Coding-Agenten über einen MCP-Server, einen Agent Skill und `llms.txt` offen. Antworten sind generiert: Prüfen Sie Zahlen auf der verlinkten Seite, bevor Sie schneiden, crimpen oder Strom anlegen."
+ },
+ "ae207dbb7b681953": {
+  "en": "Ask the assistant",
+  "de": "Den Assistenten fragen"
+ },
+ "40d3577cf762ef82": {
+  "en": "The bar at the bottom of every page is the assistant.",
+  "de": "Die Leiste am unteren Rand jeder Seite ist der Assistent."
+ },
+ "abf2d8bec1192927": {
+  "en": "| Do | How |",
+  "de": "| Aktion | So geht's |"
+ },
+ "3b13d8de2539b943": {
+  "en": "| Open it | Click the bar or press `/` anywhere outside a text field (`Ctrl K` / `⌘ K` stays the page search) |",
+  "de": "| Öffnen | Auf die Leiste klicken oder `/` außerhalb eines Textfelds drücken (`Ctrl K` / `⌘ K` bleibt die Seitensuche) |"
+ },
+ "5ede88a5a5dc3d78": {
+  "en": "| Ask | Type and press `Enter` (`Shift Enter` for a new line); it knows which page you are on |",
+  "de": "| Fragen | Tippen und `Enter` drücken (`Shift Enter` für eine neue Zeile); er weiß, auf welcher Seite Sie sind |"
+ },
+ "c211528bd6228d16": {
+  "en": "| Show it something | Paste a screenshot or photo (`Ctrl V` / `⌘ V`), drop images or text files onto the page, or use the paperclip; a long pasted text becomes an attachment |",
+  "de": "| Etwas zeigen | Screenshot oder Foto einfügen (`Ctrl V` / `⌘ V`), Bilder oder Textdateien auf die Seite ziehen oder die Büroklammer nutzen; ein langer eingefügter Text wird zum Anhang |"
+ },
+ "4bf7e061bdb05ced": {
+  "en": "| Keep it open | Pin it: it becomes a sidebar on the right while you read; unpin to float it again |",
+  "de": "| Offen halten | Anheften: Er wird beim Lesen zur Seitenleiste rechts; lösen, um ihn wieder schweben zu lassen |"
+ },
+ "73292b6ce8554d8f": {
+  "en": "| Shrink it | `Esc` or the collapse button reduces it to the small bar |",
+  "de": "| Verkleinern | `Esc` oder die Einklapp-Schaltfläche reduziert ihn auf die kleine Leiste |"
+ },
+ "6eb505ccd0bff8be": {
+  "en": "| Conversations | Click the title for your history: start a new one (`Alt N`), switch, rename or delete |",
+  "de": "| Unterhaltungen | Auf den Titel klicken für den Verlauf: neue beginnen (`Alt N`), wechseln, umbenennen oder löschen |"
+ },
+ "a824c1a024336ba2": {
+  "en": "| Stop | The stop button ends an answer; the part already written is kept |",
+  "de": "| Stoppen | Die Stopp-Schaltfläche beendet eine Antwort; der bereits geschriebene Teil bleibt erhalten |"
+ },
+ "e12c45ca62ee23b6": {
+  "en": "It searches the documentation, reads the pages it needs and links them in its answer; on the German site it answers in German. Photos of your build are welcome: it compares them with the assembly steps and the wiring list.",
+  "de": "Er durchsucht die Dokumentation, liest die nötigen Seiten und verlinkt sie in seiner Antwort; auf der deutschen Seite antwortet er auf Deutsch. Fotos Ihres Aufbaus sind willkommen: Er vergleicht sie mit den Montageschritten und der Verkabelungsliste."
+ },
+ "be0fa8d6ed661dd8": {
+  "en": "**Your data:** conversations and attachments are stored by the assistant service for your account only, until you delete them. **Availability:** the assistant runs on the owner's Cortex Keyring subscription; when the bar shows a lock, it is not available for your account.",
+  "de": "**Ihre Daten:** Unterhaltungen und Anhänge speichert der Assistenzdienst nur für Ihr Konto, bis Sie sie löschen. **Verfügbarkeit:** Der Assistent läuft über das Cortex-Keyring-Abonnement des Betreibers; zeigt die Leiste ein Schloss, ist er für Ihr Konto nicht verfügbar."
+ },
+ "59e942d382e66b9d": {
+  "en": "Use the knowledge base in your own agent",
+  "de": "Die Wissensbasis im eigenen Agenten nutzen"
+ },
+ "e85a965587cd299f": {
+  "en": "The documentation is published for language models and coding agents in three forms.",
+  "de": "Die Dokumentation ist für Sprachmodelle und Coding-Agenten in drei Formen veröffentlicht."
+ },
+ "d938c8168e3acbba": {
+  "en": "MCP server",
+  "de": "MCP-Server"
+ },
+ "67dbbf6ddd0c7ece": {
+  "en": "The MCP server is `https://strido.cortex.a2olabs.com/mcp`. Agents sign in with a personal Cortex app token (90 days by default):",
+  "de": "Der MCP-Server ist `https://strido.cortex.a2olabs.com/mcp`. Agenten melden sich mit einem persönlichen Cortex-App-Token an (standardmäßig 90 Tage gültig):"
+ },
+ "26acf2dd15d17e40": {
+  "en": "Codex: add `[mcp_servers.strido]` with `url = \"https://strido.cortex.a2olabs.com/mcp\"` and `bearer_token_env_var = \"STRIDO_TOKEN\"` to `~/.codex/config.toml`. Tools:",
+  "de": "Codex: `[mcp_servers.strido]` mit `url = \"https://strido.cortex.a2olabs.com/mcp\"` und `bearer_token_env_var = \"STRIDO_TOKEN\"` in `~/.codex/config.toml` eintragen. Werkzeuge:"
+ },
+ "d207f5c68e018c93": {
+  "en": "| Tool | Returns |",
+  "de": "| Werkzeug | Liefert |"
+ },
+ "733240359bf74722": {
+  "en": "| `search_docs` | the best-matching sections (title, link, snippet), English or German |",
+  "de": "| `search_docs` | die passendsten Abschnitte (Titel, Link, Ausschnitt), Englisch oder Deutsch |"
+ },
+ "eb25ee2e1a621db5": {
+  "en": "| `read_page` | a whole page or one section as Markdown |",
+  "de": "| `read_page` | eine ganze Seite oder einen Abschnitt als Markdown |"
+ },
+ "f269d8d99267a688": {
+  "en": "| `list_pages` | the site map with links |",
+  "de": "| `list_pages` | die Seitenübersicht mit Links |"
+ },
+ "bca882c41f292e85": {
+  "en": "| `search_parts` | bill-of-materials lines with quantity, price, shop and product data |",
+  "de": "| `search_parts` | Stücklistenzeilen mit Menge, Preis, Shop und Produktdaten |"
+ },
+ "09d365d12ae1f1a0": {
+  "en": "`cortex api delete /api/v1/apps/strido/tokens/<id>` revokes the token.",
+  "de": "`cortex api delete /api/v1/apps/strido/tokens/<id>` widerruft das Token."
+ },
+ "cf852b12d3efcea1": {
+  "en": "Agent Skill with the full documentation",
+  "de": "Agent Skill mit der vollständigen Dokumentation"
+ },
+ "d95fd50fc37d20a8": {
+  "en": "[Download the skill (ZIP)](/downloads/strido-skill.zip) (or, with the token: `curl -H \"Authorization: Bearer $STRIDO_TOKEN\" -o strido-skill.zip https://strido.cortex.a2olabs.com/api/agent/strido-skill.zip`) and unpack it into your agent's skill directory (Claude Code: `~/.claude/skills/`, Codex: `~/.agents/skills/`). It holds `strido/SKILL.md` and every page in English and German under `references/`, so an agent can answer offline; fetch it again after a release.",
+  "de": "[Skill herunterladen (ZIP)](/downloads/strido-skill.zip) (oder mit dem Token: `curl -H \"Authorization: Bearer $STRIDO_TOKEN\" -o strido-skill.zip https://strido.cortex.a2olabs.com/api/agent/strido-skill.zip`) und in das Skill-Verzeichnis Ihres Agenten entpacken (Claude Code: `~/.claude/skills/`, Codex: `~/.agents/skills/`). Er enthält `strido/SKILL.md` und jede Seite auf Englisch und Deutsch unter `references/`, sodass ein Agent offline antworten kann; laden Sie ihn nach einem Release neu."
+ },
+ "f43a9e2f7da89777": {
+  "en": "llms.txt",
+  "de": "llms.txt"
+ },
+ "34f68341e164ee9d": {
+  "en": "| File | Contents |",
+  "de": "| Datei | Inhalt |"
+ },
+ "543bf24c3b31e520": {
+  "en": "| [/llms.txt](/llms.txt) | index of every page with its link ([German](/de/llms.txt)) |",
+  "de": "| [/llms.txt](/llms.txt) | Verzeichnis aller Seiten mit Link ([Deutsch](/de/llms.txt)) |"
+ },
+ "7e8d7fc6ff58108b": {
+  "en": "| [/llms-full.txt](/llms-full.txt) | every page in one Markdown file ([German](/de/llms-full.txt)) |",
+  "de": "| [/llms-full.txt](/llms-full.txt) | alle Seiten in einer Markdown-Datei ([Deutsch](/de/llms-full.txt)) |"
+ },
+ "2bba02da87844f8b": {
+  "en": "The site needs a Cortex sign-in: people download the files in the browser; agents use the MCP server or fetch the same files with the app token under `/api/agent/` (`llms.txt`, `llms-full.txt`, `de/llms.txt`, `de/llms-full.txt`).",
+  "de": "Die Seite braucht eine Cortex-Anmeldung: Menschen laden die Dateien im Browser herunter; Agenten nutzen den MCP-Server oder holen dieselben Dateien mit dem App-Token unter `/api/agent/` (`llms.txt`, `llms-full.txt`, `de/llms.txt`, `de/llms-full.txt`)."
+ }
+}

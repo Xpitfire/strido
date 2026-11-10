@@ -1,0 +1,4 @@
+# 2026-10-30T21:19Z MuJoCo gait demo (simulation/mujoco/walk.py; heading hold uses simulator yaw)
+commanded vx=0.15 vy=0.0 wz=0.0 for 10.0s -> displacement [1.104, -0.046, -0.004] m, base height 0.174 m, yaw -1.7 deg
+video -> build/sim/walk.mp4
+commanded vx=0.0 vy=0.0 wz=0.6 for 6.0s -> displacement [0.016, -0.114, -0.005] m, base height 0.174 m, yaw -162.1 deg

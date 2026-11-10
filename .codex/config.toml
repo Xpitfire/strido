@@ -1,0 +1,21 @@
+# harness:begin
+[features]
+memories = true
+
+[mcp_servers.codegraph]
+startup_timeout_sec = 15
+command = ".harness/node_modules/.bin/codegraph"
+args = ["serve", "--mcp", "--path", "."]
+
+[mcp_servers.workos]
+url = "https://mcp.workos.com/mcp"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "pull-request-number", "context-used", "run-state"]
+# harness:end
+
+# Strido hardware knowledge (part sizes, fits, clearances, pin map, BOM); see AGENTS.md
+[mcp_servers.strido-hardware]
+startup_timeout_sec = 30
+command = "uv"
+args = ["run", "--locked", "strido", "mcp"]

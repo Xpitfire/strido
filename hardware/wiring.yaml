@@ -1,0 +1,203 @@
+# Strido wiring harness: the single source for every cable, its connectors and its route.
+#
+# strido_cad.wiring routes every cable through the CAD (STEP frame, mm, CAD reference pose) and
+# adds the cables, spiral-wrap sleeves and ties to the assembly (renders, 3D viewer, manual).
+# strido_verify.wiring checks: every lead reaches (supplied length), every loop across a hip
+# joint has slack over the whole hip range, bends, connector ports, wire consumption against the
+# BOM, and clearance to every part in every pose (rigid runs) - docs/verification/wiring.md.
+# strido_verify.electronics checks ampacity and fuses on the cables that carry a power branch.
+#
+# Coordinates: STEP frame (x lateral, +x = left; y longitudinal, -y = front; z up). The body is
+# symmetric about x = -5: nodes named *.L are mirrored to *.R for the right legs. Nodes with
+# body: hip move with the leg's hip (front.* -> FL/FR, rear.* -> RL/RR).
+
+anchor_stub_mm: {default: 4.0, wago: 1.2}  # straight lead-out from a connector before the cable may bend
+sleeve_wall_mm: 0.3        # spiral wrap over bundles of >= 3 cables
+sleeve_kg_per_m: 0.012     # PE spiral wrap, 6 mm
+termination_mm:            # extra length per end beyond the routed path (strip, crimp, solder cup)
+  wago: 11.0               # WAGO 221 strip length
+  solder: 6.0
+  crimp: 3.0
+  plug: 0.0                # moulded plug: the anchor is the cable exit of the plug
+  screw: 7.0               # screw terminal strip length
+slack:                     # every cut wire is cut this much longer than routed (re-termination, dressing)
+  fraction: 0.08
+  min_mm: 10.0
+# Wire per unit of a BOM line (its cheapest offer in hardware/bom.yaml), per colour; the gate multiplies
+# by the line's qty. 14/18 AWG: Lindinger 20479/44422, 1 m red + 1 m black; 22 AWG: 6 colours x 4 m;
+# spiral wrap: the shorter offer, 5 m.
+stock_per_unit_mm:
+  wire_14awg: {red: 1000, black: 1000}
+  wire_18awg: {red: 1000, black: 1000}
+  wire_22awg: {red: 4000, black: 4000, yellow: 4000, blue: 4000, green: 4000, white: 4000}
+  spiral_wrap: {black: 5000}
+# Ready-made pieces per BOM unit (Dupont set: 40 female-female jumpers; ties: bag of 100).
+pieces_per_unit: {dupont_set: 40, cable_ties: 100}
+
+# Cable types. od_mm: outer diameter of one conductor or of the round cable; strand_mm: spacing of
+# the drawn conductors for multi-colour cables; supplied_mm: fixed length of a ready-made cable
+# (absent = cut to length from the BOM line); colours: drawn conductors (render colour names).
+cable_types:
+  wire_14awg_pair:   {conductors: 2, od_mm: 3.6, strand_mm: 3.6, colours: [red, black], kg_per_m: 0.070, bom: wire_14awg, gauge: 14 AWG, min_bend_mm: 11}
+  wire_14awg_red:    {conductors: 1, od_mm: 3.6, strand_mm: 3.6, colours: [red], kg_per_m: 0.035, bom: wire_14awg, gauge: 14 AWG, min_bend_mm: 11}
+  wire_14awg_black:  {conductors: 1, od_mm: 3.6, strand_mm: 3.6, colours: [black], kg_per_m: 0.035, bom: wire_14awg, gauge: 14 AWG, min_bend_mm: 11}
+  wire_18awg_pair:   {conductors: 2, od_mm: 2.2, strand_mm: 2.2, colours: [red, black], kg_per_m: 0.030, bom: wire_18awg, gauge: 18 AWG, min_bend_mm: 7}
+  fuse_holder_lead:  {conductors: 1, od_mm: 3.6, strand_mm: 3.6, colours: [red], kg_per_m: 0.035, supplied_mm: 150, gauge: 14 AWG, min_bend_mm: 11, source: "in-line ATO holder, 14 AWG loop ~305 mm cut in half (Nilight B07426WCLM) [MEASURE]"}
+  wire_18awg_red:    {conductors: 1, od_mm: 2.2, strand_mm: 2.2, colours: [red], kg_per_m: 0.015, bom: wire_18awg, gauge: 18 AWG, min_bend_mm: 7}
+  wire_18awg_black:  {conductors: 1, od_mm: 2.2, strand_mm: 2.2, colours: [black], kg_per_m: 0.015, bom: wire_18awg, gauge: 18 AWG, min_bend_mm: 7}
+  wire_22awg_pair:   {conductors: 2, od_mm: 1.6, strand_mm: 1.6, colours: [red, black], kg_per_m: 0.014, bom: wire_22awg, gauge: 22 AWG, min_bend_mm: 5}
+  wire_22awg_quad:   {conductors: 4, od_mm: 1.6, strand_mm: 1.6, colours: [red, red, black, black], kg_per_m: 0.028, bom: wire_22awg, gauge: 22 AWG, min_bend_mm: 5}
+  battery_core_red:  {conductors: 1, od_mm: 4.2, strand_mm: 4.2, colours: [red], kg_per_m: 0.045, supplied_mm: 120, gauge: 12 AWG, min_bend_mm: 13, source: "Gens ace 2S 5000 soft-case listing (~120 mm, 12 AWG); hardcase not published [MEASURE]"}
+  battery_core_black: {conductors: 1, od_mm: 4.2, strand_mm: 4.2, colours: [black], kg_per_m: 0.045, supplied_mm: 120, gauge: 12 AWG, min_bend_mm: 13, source: "as battery_core_red"}
+  servo_lead:        {conductors: 3, od_mm: 1.3, strand_mm: 1.3, colours: [brown, red, orange], kg_per_m: 0.018, supplied_mm: 260, gauge: 22 AWG, min_bend_mm: 4, source: "SPT5435LV-180W spec page: connector wire length 260 mm"}
+  servo_power:       {conductors: 2, od_mm: 1.3, strand_mm: 1.3, colours: [brown, red], kg_per_m: 0.012, gauge: 22 AWG, min_bend_mm: 4}
+  servo_signal:      {conductors: 1, od_mm: 1.3, strand_mm: 1.3, colours: [orange], kg_per_m: 0.006, gauge: 22 AWG, min_bend_mm: 4}
+  wire_22awg_i2c:    {conductors: 4, od_mm: 1.6, strand_mm: 1.6, colours: [red, black, yellow, blue], kg_per_m: 0.028, bom: wire_22awg, gauge: 22 AWG, min_bend_mm: 5}
+  wire_22awg_white:  {conductors: 1, od_mm: 1.6, strand_mm: 1.6, colours: [white], kg_per_m: 0.007, bom: wire_22awg, gauge: 22 AWG, min_bend_mm: 5}
+  wire_22awg_green:  {conductors: 1, od_mm: 1.6, strand_mm: 1.6, colours: [green], kg_per_m: 0.007, bom: wire_22awg, gauge: 22 AWG, min_bend_mm: 5}
+  dupont_1:          {conductors: 1, od_mm: 1.2, strand_mm: 1.2, colours: [green], kg_per_m: 0.003, supplied_mm: 200, bom: dupont_set, min_bend_mm: 3}
+  stemma_qt:         {conductors: 4, od_mm: 2.4, strand_mm: 2.4, colours: [black], kg_per_m: 0.012, supplied_mm: 150, bom: stemma_qt_female, min_bend_mm: 6}
+  lcd_cable:         {conductors: 8, od_mm: 3.2, strand_mm: 3.2, colours: [grey], kg_per_m: 0.020, supplied_mm: 200, source: "Waveshare 2inch LCD Module: PH2.0 8-pin cable, 20 cm, supplied with the display", min_bend_mm: 6}
+  usb_a_c:           {conductors: 4, od_mm: 3.5, strand_mm: 3.5, colours: [black], kg_per_m: 0.030, supplied_mm: 200, bom: usb_a_c_short, min_bend_mm: 15}
+  camera_ffc:        {conductors: 22, od_mm: 2.0, strand_mm: 2.0, colours: [ffc], kg_per_m: 0.010, supplied_mm: 300, bom: camera_cable_300, min_bend_mm: 2, flat: true}
+  lidar_cable:       {conductors: 5, od_mm: 2.6, strand_mm: 2.6, colours: [black], kg_per_m: 0.012, ready_made: true, source: "RPLIDAR C1 sensor cable to the USB adapter (supplied; length not published [MEASURE])", min_bend_mm: 6}
+
+# Connector anchors in the canonical frame of a vendor part (strido_cad.vendor documents each
+# frame): local point where the cable leaves the connector and the direction it leaves in.
+# `match` selects one placement by its label when a vendor part is placed more than once.
+# Parametric anchors need no entry: servo:<leg>.<joint>, wago:<cavity>.<bay>.p<port>, pca:<channel>.
+anchors:
+  battery.lead_red:    {vendor: lipo_2s_5000_gensace, local: [138.0, 21.0, 20.0], out: [1, 0, 0], end: plug}
+  battery.lead_black:  {vendor: lipo_2s_5000_gensace, local: [138.0, 26.0, 20.0], out: [1, 0, 0], end: plug}
+  xt60_battery.pack_red:   {vendor: xt60h_female, match: battery input, local: [-3.6, 0.0, -20.0], out: [0, 0, -1], end: plug}  # the pack's mated XT60 plug ends 20 mm out of the hood
+  xt60_battery.pack_black: {vendor: xt60h_female, match: battery input, local: [3.6, 0.0, -20.0], out: [0, 0, -1], end: plug}
+  xt60_battery.robot_red:   {vendor: xt60h_female, match: battery input, local: [-3.6, 0.0, 23.5], out: [0, 0, 1], end: solder}
+  xt60_battery.robot_black: {vendor: xt60h_female, match: battery input, local: [3.6, 0.0, 23.5], out: [0, 0, 1], end: solder}
+  xt60_arming.cups:    {vendor: xt60h_female, match: arming jack, local: [0.0, 0.0, 23.5], out: [0, 0, 1], end: solder}
+  fuse_main.in:        {vendor: fuse_holder_ato, match: 25 A main, local: [-27.0, 0.0, 4.1], out: [-1, 0, 0], end: solder}
+  fuse_main.out:       {vendor: fuse_holder_ato, match: 25 A main, local: [27.0, 0.0, 4.1], out: [1, 0, 0], end: solder}
+  fuse_logic.in:       {vendor: fuse_holder_ato, match: 7.5 A logic, local: [-27.0, 0.0, 4.1], out: [-1, 0, 0], end: solder}
+  fuse_logic.out:      {vendor: fuse_holder_ato, match: 7.5 A logic, local: [27.0, 0.0, 4.1], out: [1, 0, 0], end: solder}
+  ubec_front.in:       {vendor: hobbywing_ubec_10a, match: front legs, local: [45.0, 10.0, 8.1], out: [1, 0, 0], end: solder}
+  ubec_front.out:      {vendor: hobbywing_ubec_10a, match: front legs, local: [0.0, 10.0, 8.1], out: [-1, 0, 0], end: solder}
+  ubec_rear.in:        {vendor: hobbywing_ubec_10a, match: rear legs, local: [0.0, 10.0, 8.1], out: [-1, 0, 0], end: solder}
+  ubec_rear.out:       {vendor: hobbywing_ubec_10a, match: rear legs, local: [45.0, 10.0, 8.1], out: [1, 0, 0], end: solder}
+  pi.gpio_power:       {vendor: raspberry_pi_5, local: [16.0, 53.8, 17.9], out: [0, 0, 1], end: crimp}
+  pi.gpio_poweroff:    {vendor: raspberry_pi_5, local: [54.1, 51.2, 17.9], out: [0, 0, 1], end: crimp}
+  pi.usb_low:          {vendor: raspberry_pi_5, local: [99.0, 29.0, 5.3], out: [0, 0, -1], end: plug}
+  pi.usb_high:         {vendor: raspberry_pi_5, local: [99.0, 29.0, 13.3], out: [0, 1, 0], end: plug}
+  pi.cam0:             {vendor: raspberry_pi_5, local: [50.0, 13.0, 5.0], out: [0, 0, 1], end: plug}
+  pca.header_left:     {vendor: adafruit_pca9685, local: [1.3, 12.0, 18.1], out: [0, 0, 1], end: crimp}
+  pca.header_right:    {vendor: adafruit_pca9685, local: [60.9, 12.0, 18.1], out: [0, 0, 1], end: plug}
+  xiao.pins:           {vendor: seeed_xiao_esp32s3, local: [10.5, 8.9, -8.5], out: [0, 0, -1], end: solder}
+  xiao.usb:            {vendor: seeed_xiao_esp32s3, local: [42.0, 8.9, 2.9], out: [1, 0, 0], end: plug}
+  imu.qt_left:         {vendor: adafruit_lsm6dsox, local: [-4.0, 8.9, 2.6], out: [-1, 0, 0], end: plug}
+  imu.qt_right:        {vendor: adafruit_lsm6dsox, local: [29.4, 8.9, 2.6], out: [1, 0, 0], end: plug}
+  ina.vin:             {vendor: adafruit_ina260, local: [11.5, 26.0, 6.5], out: [0, 1, 0], end: screw}
+  ina.header:          {vendor: adafruit_ina260, local: [10.0, 1.3, 18.0], out: [0, 0, 1], end: plug}
+  reg.vin:             {vendor: pololu_d36v50f5, local: [5.0, 23.5, 3.4], out: [0, 0, 1], end: solder}
+  reg.vout:            {vendor: pololu_d36v50f5, local: [20.0, 23.5, 3.4], out: [0, 0, 1], end: solder}
+  switch.vin:          {vendor: pololu_power_switch_hp, local: [4.0, 27.0, 6.0], out: [0, 1, 0], end: screw}
+  switch.vout:         {vendor: pololu_power_switch_hp, local: [16.0, 27.0, 6.0], out: [0, 1, 0], end: screw}
+  switch.ab:           {vendor: pololu_power_switch_hp, local: [21.5, 8.0, 3.0], out: [1, 0, 0], end: solder}
+  button.terminals:    {vendor: pushbutton_12mm, local: [0.0, 0.0, 31.0], out: [0, 0, 1], end: solder}
+  lcd.connector:       {vendor: waveshare_lcd_2inch, local: [18.8, 0.0, -9.5], out: [0, 0, -1], end: plug}
+  camera.ffc:          {vendor: rpi_camera_module_3_wide, local: [24.5, 12.5, -2.0], out_world: [0, -0.6, -1], end: plug}
+  lidar.cable:         {vendor: rplidar_c1, local: [-26.0, 0.0, 6.0], out: [-1, 0, 0], end: plug}
+  lidar_adapter.sensor: {vendor: rplidar_usb_adapter, local: [16.0, 24.0, 5.0], out: [0, 1, 0], end: plug}
+  lidar_adapter.usb:   {vendor: rplidar_usb_adapter, local: [34.0, 11.0, 5.0], out: [1, 0, 0], end: plug}
+
+# Route nodes (STEP mm). tie: cable tie (to the named structure); loop_mm + bulge: the free length
+# from this node to the next one on another body (a lead crossing the hip joint), drawn bowed
+# towards `bulge`. The router fills the legs between consecutive base nodes.
+nodes:
+  # --- front cavity, left leg (mirrored to .R): servo leads cross the hip joint near its axis
+  front.thigh_tie.L:  {at: [20.5, -84.5, 79.0], body: hip, tie: servo mount plate edge, loop_mm: 30, bulge: [0, -1, 0]}
+  front.thigh_base.L: {at: [8.5, -84.0, 86.0], tie: upper shoulder frame slot edge}
+  front.calf_turn.L:  {at: [20.5, -133.0, 58.7], body: hip}
+  front.calf_tie.L:   {at: [20.5, -131.0, 76.7], body: hip, tie: servo mount plate edge, loop_mm: 32, bulge: [0, 1, 0]}
+  front.calf_base.L:  {at: [10.0, -114.0, 76.0], tie: bus holder tie slot}
+  front.hip_top.L:    {at: [30.0, -50.0, 98.0], tie: hip servo lead to the servo ear}
+  # --- rear cavity, left leg (mirrored to .R); the main fuse holder fills the corridor above z 75,
+  # so the leads cross under it
+  rear.thigh_tie.L:   {at: [22.0, 155.0, 79.0], body: hip, tie: servo mount plate edge, loop_mm: 22, bulge: [0, -1, 0]}
+  rear.thigh_base.L:  {at: [12.5, 150.0, 71.0], tie: bus holder tie slot}
+  rear.calf_turn.L:   {at: [22.0, 106.5, 58.7], body: hip}
+  rear.calf_tie.L:    {at: [22.0, 106.5, 76.0], body: hip, tie: servo mount plate edge, loop_mm: 22, bulge: [0, 1, 0]}
+  rear.calf_base.L:   {at: [12.5, 112.0, 71.0], tie: bus holder tie slot}
+  rear.hip_top.L:     {at: [30.0, 72.0, 98.0], tie: hip servo lead to the servo ear}
+  # --- cavity trunks: leads split above the WAGO bus; power drops to the +x wire entries
+  front.split0:       {at: [8.5, -122.0, 74.0], tie: bus holder tie slot (bay 0)}
+  front.split1:       {at: [8.5, -86.0, 74.0], tie: bus holder tie slot (bay 1)}
+  rear.split0:        {at: [8.0, 108.0, 70.0], tie: bus holder tie slot (bay 0)}
+  rear.split1:        {at: [8.0, 144.0, 70.0], tie: bus holder tie slot (bay 1)}
+  front.opening:      {at: [-10.0, -66.5, 88.0], tie: inner shoulder frame opening}
+  rear.opening:       {at: [-5.0, 88.5, 84.0], tie: inner shoulder frame opening}
+  front.outer_opening: {at: [-5.0, -141.5, 80.0], tie: outer shoulder frame opening}
+  rear.outer_opening: {at: [-5.0, 163.5, 70.0], tie: outer shoulder frame opening}
+  rear.opening_low:   {at: [4.0, 88.5, 56.0]}
+  # --- middle body: signals to the PCA9685 beside the Pi cooler fan, power boards behind
+  mid.front_trunk:    {at: [-24.0, -30.0, 97.0]}
+  mid.pca_front:      {at: [-8.0, 24.0, 100.0]}
+  mid.pca_rear:       {at: [-2.0, 46.0, 98.0]}
+  mid.pca_left:       {at: [-33.0, 34.0, 96.0]}
+  mid.right_strip:    {at: [-45.0, 30.0, 74.5], tie: adhesive tie mount on the deck, mount: {at: [-45.0, 30.0, 67.6], normal: [0, 0, 1]}}
+  mid.left_strip:     {at: [33.0, 0.0, 74.5], tie: adhesive tie mount on the deck, mount: {at: [33.0, 0.0, 67.6], normal: [0, 0, 1]}}
+  mid.over_power:     {at: [-12.0, 84.0, 86.0]}
+  # --- under the deck: battery pocket (left, behind the front UBEC) and the channels round the pack
+  mid.ground_star:    {at: [35.0, 64.0, 42.0], tie: heat-shrunk splice}
+  mid.ubec_split:     {at: [30.0, 74.0, 42.0], tie: heat-shrunk splice}
+  mid.right_low:      {at: [-49.0, 20.0, 46.0]}
+  # --- front shell: camera ribbon and display cable
+  front.ffc_shell:    {at: [-5.0, -148.0, 88.0]}
+  # --- top: LiDAR cable slot in the top shell, notch in the pedestal
+  top.lidar_slot:     {at: [-5.0, 38.0, 101.0]}
+  top.pedestal_notch: {at: [-5.0, 31.0, 118.5]}
+  # --- back shell
+  back.splice:        {at: [-5.0, 175.0, 50.0], tie: heat-shrunk splice}
+
+# Servo leads: the 260 mm lead of every servo is tied at its base node (cavity) or at the inner frame
+# opening (hip servos). There the red/brown pair is peeled off, cut to length and clamped in the leg's
+# WAGO pair; the orange signal wire is cut to length, re-crimped (female Dupont contact, 1-pin housing)
+# and plugged on the PCA9685 channel of hardware/electronics.yaml servos.channels. No extensions.
+servo_leads:
+  type: servo_lead
+  power_type: servo_power
+  signal_type: servo_signal
+  bay: {FL: front, FR: front, RL: rear, RR: rear}
+  wago_bay: {FL: 0, FR: 1, RL: 0, RR: 1}
+  wago_port: {hip: 1, thigh: 2, calf: 3}   # port 0: UBEC feed (bay 0) or jumper (bay 1); port 4: jumper (bay 0)
+  route:
+    hip:   {trunk: ["{bay}.hip_top.{side}", "{bay}.opening"], power: ["{bay}.split{wago}"], signal: ["mid.pca_{bay}"]}
+    thigh: {trunk: ["{bay}.thigh_tie.{side}", "{bay}.thigh_base.{side}"], power: ["{bay}.split{wago}"], signal: ["{bay}.opening", "mid.pca_{bay}"]}
+    calf:  {trunk: ["{bay}.calf_turn.{side}", "{bay}.calf_tie.{side}", "{bay}.calf_base.{side}"], power: ["{bay}.split{wago}"], signal: ["{bay}.opening", "mid.pca_{bay}"]}
+
+cables:
+  # --- power entry (servo domain left, logic domain right in docs/electronics.md)
+  - {id: W00, via: [], cores: [{name: red, type: battery_core_red, from: battery.lead_red, to: xt60_battery.pack_red}, {name: black, type: battery_core_black, from: battery.lead_black, to: xt60_battery.pack_black}], note: "the pack's own lead into the robot's XT60H (battery input, under the deck)"}
+  - {id: W01, type: wire_14awg_red, from: xt60_battery.robot_red, to: fuse_main.in, carries: pack, sleeve: true, via: [rear.opening_low], note: "unfused: the 25 A fuse sits in the rear cavity, ~0.15 m from the pack"}
+  - {id: W02, type: wire_14awg_red, from: fuse_main.out, via: [rear.outer_opening, back.splice], carries: pack, branches: [{name: arming, type: wire_14awg_red, via: [], to: xt60_arming.cups}, {name: logic, type: fuse_holder_lead, via: [], to: fuse_logic.in}], note: "the logic holder's own 14 AWG lead is the tap: no thinner wire behind the 25 A fuse"}
+  - {id: W03, type: wire_14awg_red, from: xt60_arming.cups, via: [rear.outer_opening, rear.opening_low, mid.ubec_split], carries: servo_branch, branches: [{name: front, type: wire_14awg_red, via: [], to: ubec_front.in}, {name: rear, type: wire_14awg_red, via: [mid.right_low], to: ubec_rear.in}], note: "second contact of the arming jack: the loop key bridges W02 to W03"}
+  - {id: W04, type: wire_14awg_black, from: xt60_battery.robot_black, via: [mid.ground_star], carries: pack, branches: [{name: front, type: wire_14awg_black, via: [], to: ubec_front.in}, {name: rear, type: wire_14awg_black, via: [mid.right_low], to: ubec_rear.in}, {name: logic, type: wire_18awg_black, carries: logic_branch, via: [rear.opening_low, mid.over_power, mid.right_strip], to: switch.vin}], note: "ground star at the battery input"}
+  - {id: W05, type: wire_18awg_pair, from: ubec_front.out, to: wago:front.0.p0, carries: ubec_front, via: [front.opening, front.split0], note: "UBEC output lead extended with 18 AWG"}
+  - {id: W06, type: wire_18awg_pair, from: ubec_rear.out, to: wago:rear.0.p0, carries: ubec_rear, via: [rear.opening_low, rear.split0], note: "UBEC output lead extended with 18 AWG"}
+  - {id: W07, carries: ubec_front, via: [], cores: [{name: vplus, type: wire_18awg_red, from: wago:front.0.p4.V+, to: wago:front.1.p0.V+}, {name: gnd, type: wire_18awg_black, from: wago:front.0.p4.GND, to: wago:front.1.p0.GND}], note: "bus jumpers to the second front leg, one per rail along the WAGO faces"}
+  - {id: W08, carries: ubec_rear, via: [], cores: [{name: vplus, type: wire_18awg_red, from: wago:rear.0.p4.V+, to: wago:rear.1.p0.V+}, {name: gnd, type: wire_18awg_black, from: wago:rear.0.p4.GND, to: wago:rear.1.p0.GND}], note: "bus jumpers to the second rear leg, one per rail along the WAGO faces"}
+  - {id: W09, type: wire_18awg_red, from: fuse_logic.out, to: switch.vin, carries: logic_branch, via: [rear.outer_opening, rear.opening, mid.over_power, mid.right_strip], note: "logic feed (+); its ground is W04/logic"}
+  # --- logic domain
+  - {id: W10, type: wire_18awg_red, from: switch.vout, to: ina.vin, carries: logic_branch, via: [mid.right_strip, mid.over_power], note: "switch VOUT -> INA260 VIN+ (high-side shunt)"}
+  - {id: W11, type: wire_18awg_red, from: ina.vin, to: reg.vin, carries: logic_branch, via: [], note: "INA260 VIN- -> D36V50F5 VIN"}
+  - {id: W24, type: wire_18awg_black, from: switch.vout, to: reg.vin, carries: logic_branch, via: [mid.right_strip, mid.over_power], note: "switch GND -> D36V50F5 GND: the INA260 terminal block has only VIN+ and VIN-"}
+  - {id: W12, type: wire_22awg_quad, from: reg.vout, to: pi.gpio_power, carries: logic_5v_per_pin, parallel: 2, via: [mid.pca_rear], note: "Dupont crimps on the Pi end: pins 2+4 (5 V), 6+14 (GND)"}
+  - {id: W13, type: wire_22awg_pair, from: button.terminals, to: switch.ab, via: [rear.outer_opening, rear.opening, mid.over_power, mid.right_strip], note: "momentary button -> switch A/B"}
+  # --- signals
+  - {id: W14, type: usb_a_c, from: pi.usb_low, to: xiao.usb, via: [], note: "Pi USB -> XIAO (power + serial)"}
+  - {id: W15, type: usb_a_c, from: pi.usb_high, to: lidar_adapter.usb, via: [top.lidar_slot], note: "Pi USB -> LiDAR adapter through the top-shell slot"}
+  - {id: W16, type: camera_ffc, from: pi.cam0, to: camera.ffc, via: [front.opening, front.outer_opening, front.ffc_shell], note: "22-to-15 pin ribbon; route last, no sharp folds"}
+  - {id: W17, type: wire_22awg_i2c, from: xiao.pins, to: pca.header_left, via: [front.opening, mid.front_trunk, mid.pca_left], note: "I2C + 3V3 + GND: soldered to the XIAO pins (no room for Dupont housings under the upper shoulder frame), Dupont crimps at the PCA"}
+  - {id: W18, type: stemma_qt, from: pca.header_right, to: imu.qt_right, via: [mid.left_strip], note: "STEMMA QT -> female sockets: the IMU sits under the Pi (2.5 mm under the PCB)"}
+  - {id: W19, type: stemma_qt, from: imu.qt_left, to: ina.header, via: [], note: "STEMMA QT -> female sockets"}
+  - {id: W20, type: wire_22awg_green, from: xiao.pins, to: pca.header_left, via: [front.opening, mid.front_trunk, mid.pca_left], note: "XIAO D3 -> PCA9685 OE (2.2 kOhm pull-up at the PCA)"}
+  - {id: W21, type: lcd_cable, from: lcd.connector, to: xiao.pins, via: [front.outer_opening], note: "display cable; solder its Dupont end to the XIAO pins"}
+  - {id: W22, type: wire_22awg_white, from: pi.gpio_poweroff, to: switch.ab, via: [mid.right_strip], note: "optional: GPIO 26 -> switch OFF"}
+  - {id: W23, type: lidar_cable, from: lidar.cable, to: lidar_adapter.sensor, via: [top.pedestal_notch], note: "the sensor's own cable into the pedestal"}

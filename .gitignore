@@ -1,0 +1,67 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ---- Editors / IDE ----
+.vscode/c_cpp_properties.json
+
+# ---- RL training outputs ----
+upstream/yertle/learning/runs/
+upstream/yertle/isaac_lab/runs/
+
+# ---- colcon build logs ----
+ros2/log/
+
+# ---- LaTeX build artifacts of the upstream paper (keep the .tex and the built .pdf) ----
+upstream/yertle/paper/*.aux
+upstream/yertle/paper/*.bbl
+upstream/yertle/paper/*.bcf
+upstream/yertle/paper/*.blg
+upstream/yertle/paper/*.log
+upstream/yertle/paper/*.out
+upstream/yertle/paper/*.run.xml
+upstream/yertle/paper/*.synctex.gz
+
+# ---- Generated upstream robot model (regenerate with convert_urdf; config.yaml holds a
+#      local absolute path) ----
+upstream/yertle/simulation/usd/
+simulation/usd/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+build/
+*.blend1
+
+# Local reference material (ChatGPT export with third-party product photos)
+Compare Quadruped Robots.pdf
+# PlatformIO
+.pio/
+
+# harness:begin
+.codegraph/
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+auth.json
+# harness:end
+
+# Python coverage data
+.coverage
+.coverage.*

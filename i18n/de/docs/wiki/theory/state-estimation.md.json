@@ -1,0 +1,246 @@
+{
+ "adf2d959b0be6808": {
+  "en": "State estimation",
+  "de": "State Estimation"
+ },
+ "97f5a6c822207265": {
+  "en": "A robot never measures its state directly; it infers orientation, velocity and position from noisy, biased sensors. This page covers IMU models, complementary and Mahony filters, the Kalman filter, leg odometry and LiDAR SLAM, and what Strido actually publishes.",
+  "de": "Ein Roboter misst seinen Zustand nie direkt; er leitet Orientierung, Geschwindigkeit und Position aus verrauschten, mit Bias behafteten Sensoren ab. Diese Seite behandelt IMU-Modelle, Komplementär- und Mahony-Filter, das Kalman-Filter, Bein-Odometrie und LiDAR-SLAM sowie das, was Strido tatsächlich veröffentlicht."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "7a16c30a4be27749": {
+  "en": "The XIAO ESP32-S3 reads an LSM6DSOX IMU and runs a Mahony filter in its $200\\,\\mathrm{Hz}$ control loop (`firmware/strido_esp32s3/src/main.cpp`, period `kControlPeriodUs = 5000` in `board_config.h`). `ros2/strido_control/strido_control/mcu_bridge.py` republishes it as `/imu/data`; `gait_node.py` publishes `/odom` by dead reckoning; an RPLIDAR C1 publishes `/scan` (see [docs/software.md](../../software.md) and [Sensors](../hardware/sensors.md)).",
+  "de": "Der XIAO ESP32-S3 liest eine LSM6DSOX-IMU aus und führt in seiner Regelschleife mit $200\\,\\mathrm{Hz}$ ein Mahony-Filter aus (`firmware/strido_esp32s3/src/main.cpp`, Periode `kControlPeriodUs = 5000` in `board_config.h`). `ros2/strido_control/strido_control/mcu_bridge.py` veröffentlicht es erneut als `/imu/data`; `gait_node.py` veröffentlicht `/odom` per Koppelnavigation; ein RPLIDAR C1 veröffentlicht `/scan` (siehe [docs/software.md](../../software.md) und [Sensoren](../hardware/sensors.md))."
+ },
+ "0cd4ca90641356bc": {
+  "en": "IMU measurement models",
+  "de": "IMU-Messmodelle"
+ },
+ "48f9cac3fae91902": {
+  "en": "An inertial measurement unit contains a 3-axis **gyroscope** (angular velocity) and a 3-axis **accelerometer** (specific force). Both are expressed in the sensor's body frame $\\{b\\}$.",
+  "de": "Eine inertiale Messeinheit enthält ein 3-Achsen-**Gyroskop** (Winkelgeschwindigkeit) und einen 3-Achsen-**Beschleunigungssensor** (spezifische Kraft). Beide werden im körperfesten Koordinatensystem des Sensors $\\{b\\}$ ausgedrückt."
+ },
+ "67d2871f5ad701dd": {
+  "en": "**Gyroscope.**",
+  "de": "**Gyroskop.**"
+ },
+ "50f912bc5f663967": {
+  "en": "$\\mathbf{b}_g$ is a slowly drifting **bias** (temperature dependent), $\\mathbf{n}_g$ white noise. Integrating the gyro gives orientation, but integrating the bias gives an angle error growing linearly in time: a bias of only $0.5^\\circ/\\mathrm{s}$ becomes $30^\\circ$ after a minute.",
+  "de": "$\\mathbf{b}_g$ ist ein langsam driftender **Bias** (temperaturabhängig), $\\mathbf{n}_g$ weißes Rauschen. Die Integration des Gyroskops liefert die Orientierung, die Integration des Bias jedoch einen Winkelfehler, der linear mit der Zeit wächst: Ein Bias von nur $0.5^\\circ/\\mathrm{s}$ wird nach einer Minute zu $30^\\circ$."
+ },
+ "142a4f100feb78dc": {
+  "en": "**Accelerometer.** It measures acceleration *minus* gravity, rotated into the body:",
+  "de": "**Beschleunigungssensor.** Er misst die Beschleunigung *minus* der Schwerkraft, in den Körper gedreht:"
+ },
+ "6ab6d4b7e3e008a0": {
+  "en": "where $\\mathbf{R}$ rotates body to world. Standing still ($\\ddot{\\mathbf{p}} = 0$), it reads $\\mathbf{R}^\\top (0, 0, 9.81)^\\top$: the \"up\" vector in body coordinates. That fixes **roll and pitch** with no drift, but it is noisy and corrupted whenever the body accelerates (every footstep). It says nothing about **yaw**, because rotating about gravity leaves the gravity vector unchanged.",
+  "de": "wobei $\\mathbf{R}$ vom Körper- ins Weltkoordinatensystem dreht. Im Stillstand ($\\ddot{\\mathbf{p}} = 0$) liest er $\\mathbf{R}^\\top (0, 0, 9.81)^\\top$: den „Oben“-Vektor in Körperkoordinaten. Das legt **Rollen und Nicken** ohne Drift fest, ist aber verrauscht und verfälscht, sobald der Körper beschleunigt (bei jedem Schritt). Über das **Gieren** sagt er nichts aus, da eine Drehung um die Schwerkraftachse den Schwerkraftvektor nicht verändert."
+ },
+ "a2c210c1c7db25d2": {
+  "en": "The two sensors are complementary: gyro is smooth but drifts; accelerometer is noisy but drift-free.",
+  "de": "Die beiden Sensoren ergänzen sich: Das Gyroskop ist glatt, driftet aber; der Beschleunigungssensor ist verrauscht, aber driftfrei."
+ },
+ "31eb51059d88cb21": {
+  "en": "The complementary filter",
+  "de": "Das Komplementärfilter"
+ },
+ "17f7688da65a11ac": {
+  "en": "For one tilt angle $\\theta$, blend the integrated gyro (trusted at high frequency) with the accelerometer angle (trusted at low frequency):",
+  "de": "Für einen Neigungswinkel $\\theta$ wird das integrierte Gyroskop (vertrauenswürdig bei hohen Frequenzen) mit dem Winkel des Beschleunigungssensors (vertrauenswürdig bei niedrigen Frequenzen) gemischt:"
+ },
+ "8e7c6ca4192ce936": {
+  "en": "In the frequency domain this is a high-pass on the gyro plus a low-pass on the accelerometer with the same cut-off; the crossover time constant is",
+  "de": "Im Frequenzbereich ist das ein Hochpass auf dem Gyroskop plus ein Tiefpass auf dem Beschleunigungssensor mit derselben Grenzfrequenz; die Übergangszeitkonstante ist"
+ },
+ "8235732714af09f3": {
+  "en": "**Worked example.** At Strido's $\\Delta t = 5\\,\\mathrm{ms}$, choosing $\\alpha = 0.98$ gives $\\tau = 0.98 \\times 0.005 / 0.02 \\approx 0.25\\,\\mathrm{s}$: longer than the $0.2\\,\\mathrm{s}$ stance of the trot, so footstep jolts are mostly filtered out while gyro drift is corrected within about a second.",
+  "de": "**Rechenbeispiel.** Bei $\\Delta t = 5\\,\\mathrm{ms}$ von Strido ergibt die Wahl $\\alpha = 0.98$ den Wert $\\tau = 0.98 \\times 0.005 / 0.02 \\approx 0.25\\,\\mathrm{s}$: länger als die Standphase des Trots von $0.2\\,\\mathrm{s}$, sodass Schrittstöße größtenteils herausgefiltert werden, während die Gyroskopdrift innerhalb von etwa einer Sekunde korrigiert wird."
+ },
+ "c6817d62661f55f4": {
+  "en": "The Mahony filter (what the firmware runs)",
+  "de": "Das Mahony-Filter (das, was die Firmware ausführt)"
+ },
+ "c7061a2c8481c6e0": {
+  "en": "Mahony's filter is a complementary filter on the rotation group, using a quaternion $\\hat{\\mathbf{q}}$ instead of separate angles. Each step:",
+  "de": "Mahonys Filter ist ein Komplementärfilter auf der Rotationsgruppe und verwendet statt getrennter Winkel ein Quaternion $\\hat{\\mathbf{q}}$. Jeder Schritt:"
+ },
+ "7cb0df05d8930824": {
+  "en": "Predict the gravity (\"up\") direction from the current estimate: $\\hat{\\mathbf{v}} = \\hat{\\mathbf{R}}^\\top \\mathbf{e}_z$.",
+  "de": "Die Schwerkraftrichtung („oben“) aus der aktuellen Schätzung vorhersagen: $\\hat{\\mathbf{v}} = \\hat{\\mathbf{R}}^\\top \\mathbf{e}_z$."
+ },
+ "f94a9a98dc6e7cc3": {
+  "en": "Normalise the accelerometer: $\\bar{\\mathbf{a}} = \\tilde{\\mathbf{a}} / \\lVert \\tilde{\\mathbf{a}} \\rVert$.",
+  "de": "Den Beschleunigungssensor normieren: $\\bar{\\mathbf{a}} = \\tilde{\\mathbf{a}} / \\lVert \\tilde{\\mathbf{a}} \\rVert$."
+ },
+ "5922100b54d2dd3e": {
+  "en": "The error is the rotation needed to align them:",
+  "de": "Der Fehler ist die Drehung, die nötig ist, um beide auszurichten:"
+ },
+ "e50750ef68710b06": {
+  "en": "Correct the gyro with proportional and integral feedback (the integral term converges to minus the gyro bias, cancelling it):",
+  "de": "Das Gyroskop mit proportionaler und integraler Rückführung korrigieren (der Integralterm konvergiert gegen den negativen Gyroskop-Bias und hebt ihn auf):"
+ },
+ "5e7c712989889e56": {
+  "en": "Integrate the quaternion kinematics $\\dot{\\mathbf{q}} = \\tfrac12\\, \\mathbf{q} \\otimes (0, \\boldsymbol{\\omega}_\\mathrm{c})$ and renormalise:",
+  "de": "Die Quaternion-Kinematik $\\dot{\\mathbf{q}} = \\tfrac12\\, \\mathbf{q} \\otimes (0, \\boldsymbol{\\omega}_\\mathrm{c})$ integrieren und erneut normieren:"
+ },
+ "0d79de27907578f9": {
+  "en": "$K_p$ sets the crossover (roughly $\\tau \\approx 1/K_p$); $K_i$ removes constant gyro bias. Yaw is not observable without a magnetometer, so it drifts.",
+  "de": "$K_p$ legt den Übergang fest (ungefähr $\\tau \\approx 1/K_p$); $K_i$ entfernt einen konstanten Gyroskop-Bias. Das Gieren ist ohne Magnetometer nicht beobachtbar und driftet daher."
+ },
+ "9083fa6feeac0140": {
+  "en": "In the firmware, `Adafruit_Mahony` is started at $1/\\Delta t = 200\\,\\mathrm{Hz}$ and fed through `updateIMU` (gyro and accelerometer only, no magnetometer). Before filtering, board axes are remapped to the base frame because the IMU is mounted with its $x$ to robot left and $y$ to the rear:",
+  "de": "In der Firmware wird `Adafruit_Mahony` mit $1/\\Delta t = 200\\,\\mathrm{Hz}$ gestartet und über `updateIMU` gespeist (nur Gyroskop und Beschleunigungssensor, kein Magnetometer). Vor dem Filtern werden die Platinenachsen auf das Basiskoordinatensystem umgelegt, da die IMU mit ihrer $x$-Achse nach links und ihrer $y$-Achse nach hinten montiert ist:"
+ },
+ "6947655112bb7701": {
+  "en": "The sensor is configured for $\\pm 8\\,g$, $\\pm 1000^\\circ/\\mathrm{s}$ at $416\\,\\mathrm{Hz}$ output data rate. The repository keeps the library's default gains (Adafruit AHRS: $K_p = 0.5$, $K_i = 0$, i.e. no bias integration).",
+  "de": "Der Sensor ist auf $\\pm 8\\,g$, $\\pm 1000^\\circ/\\mathrm{s}$ bei einer Ausgabedatenrate von $416\\,\\mathrm{Hz}$ konfiguriert. Das Repository behält die Standardverstärkungen der Bibliothek bei (Adafruit AHRS: $K_p = 0.5$, $K_i = 0$, d. h. keine Bias-Integration)."
+ },
+ "0438597c1fdaf7b8": {
+  "en": "The Kalman filter",
+  "de": "Das Kalman-Filter"
+ },
+ "6ad00ea34e639c78": {
+  "en": "The Kalman filter is the optimal estimator for linear systems with Gaussian noise. State $\\mathbf{x}$ with covariance $\\mathbf{P}$, model",
+  "de": "Das Kalman-Filter ist der optimale Schätzer für lineare Systeme mit gaußschem Rauschen. Zustand $\\mathbf{x}$ mit Kovarianz $\\mathbf{P}$, Modell"
+ },
+ "d24e892413e148f2": {
+  "en": "**Predict** (propagate the model; uncertainty grows):",
+  "de": "**Prädiktion** (Modell fortschreiben; die Unsicherheit wächst):"
+ },
+ "40962f5aae8cf8c6": {
+  "en": "**Update** (fuse a measurement; uncertainty shrinks):",
+  "de": "**Korrektur** (eine Messung fusionieren; die Unsicherheit schrumpft):"
+ },
+ "35e9fe3182d21d5c": {
+  "en": "The gain $\\mathbf{K}$ weighs the innovation $\\mathbf{z} - \\mathbf{H}\\hat{\\mathbf{x}}$ by how much we trust the measurement ($\\mathbf{R}_\\mathrm{n}$) versus the prediction ($\\mathbf{P}$). A tilt filter with state $(\\theta, b_g)$, gyro as input and accelerometer angle as measurement converges to a complementary filter with an automatically tuned $\\alpha$ and bias estimate. Nonlinear systems (rotations, legged robots) use the **extended** Kalman filter, which linearises $\\mathbf{F}$ and $\\mathbf{H}$ about the current estimate.",
+  "de": "Die Verstärkung $\\mathbf{K}$ gewichtet die Innovation $\\mathbf{z} - \\mathbf{H}\\hat{\\mathbf{x}}$ danach, wie sehr wir der Messung ($\\mathbf{R}_\\mathrm{n}$) gegenüber der Prädiktion ($\\mathbf{P}$) vertrauen. Ein Neigungsfilter mit Zustand $(\\theta, b_g)$, Gyroskop als Eingang und Beschleunigungswinkel als Messung konvergiert zu einem Komplementärfilter mit automatisch abgestimmtem $\\alpha$ und Bias-Schätzung. Nichtlineare Systeme (Rotationen, Laufroboter) verwenden das **erweiterte** Kalman-Filter, das $\\mathbf{F}$ und $\\mathbf{H}$ um die aktuelle Schätzung linearisiert."
+ },
+ "449fbda1797be32d": {
+  "en": "Leg odometry",
+  "de": "Bein-Odometrie"
+ },
+ "f729d4adf5b64239": {
+  "en": "If a stance foot does not slip, its world position is fixed, so the body velocity follows from the leg's joint velocities through forward kinematics (see [Kinematics](kinematics.md)):",
+  "de": "Rutscht ein Standfuß nicht, ist seine Weltposition fest, sodass sich die Körpergeschwindigkeit aus den Gelenkgeschwindigkeiten des Beins über die Vorwärtskinematik ergibt (siehe [Kinematik](kinematics.md)):"
+ },
+ "15cb16c7ca82ca35": {
+  "en": "averaged over the stance feet and integrated for position. Errors come from slip, contact detection and calibration, so it drifts; state-of-the-art quadrupeds fuse it with the IMU in an EKF.",
+  "de": "gemittelt über die Standfüße und für die Position integriert. Fehler entstehen durch Rutschen, Kontakterkennung und Kalibrierung, daher driftet sie; moderne Vierbeiner fusionieren sie in einem EKF mit der IMU."
+ },
+ "8cfa84efbb4603e0": {
+  "en": "Strido's hobby servos have **no position feedback**: `/joint_states` reports the commanded angles after clamping, not measured ones. True leg odometry is therefore not available, and `gait_node.py` does something simpler: it integrates the *commanded* body velocity,",
+  "de": "Die Hobby-Servos von Strido haben **keine Positionsrückmeldung**: `/joint_states` meldet die kommandierten Winkel nach der Begrenzung, keine gemessenen. Echte Bein-Odometrie ist daher nicht verfügbar, und `gait_node.py` macht etwas Einfacheres: Es integriert die *kommandierte* Körpergeschwindigkeit,"
+ },
+ "caa229819ecff30a": {
+  "en": "with no slip model. If the robot actually achieves 80 % of a $0.30\\,\\mathrm{m/s}$ command, `/odom` overestimates distance by $0.06\\,\\mathrm{m}$ every second.",
+  "de": "ohne Rutschmodell. Erreicht der Roboter tatsächlich 80 % eines Kommandos von $0.30\\,\\mathrm{m/s}$, überschätzt `/odom` die Distanz um $0.06\\,\\mathrm{m}$ pro Sekunde."
+ },
+ "fd163d398c36bd2f": {
+  "en": "LiDAR scan matching and SLAM",
+  "de": "LiDAR-Scan-Matching und SLAM"
+ },
+ "9f70d866ef1a5af8": {
+  "en": "A 2D LiDAR returns ranges $r_j$ at bearings $\\theta_j$. **Scan matching** finds the rigid transform $(\\mathbf{R}, \\mathbf{t})$ that best aligns a new scan to a previous scan or map, e.g. with ICP (iterative closest point):",
+  "de": "Ein 2D-LiDAR liefert Entfernungen $r_j$ unter Winkeln $\\theta_j$. **Scan-Matching** findet die starre Transformation $(\\mathbf{R}, \\mathbf{t})$, die einen neuen Scan am besten auf einen vorherigen Scan oder eine Karte ausrichtet, z. B. mit ICP (Iterative Closest Point):"
+ },
+ "b86cf666f905f5d8": {
+  "en": "where $\\mathbf{m}_{c(j)}$ is the closest map point to $\\mathbf{p}_j$. Chaining matches gives LiDAR odometry, which also drifts. **SLAM** (simultaneous localisation and mapping) removes the drift by recognising previously seen places (*loop closure*) and solving a pose-graph optimisation over all poses at once. Wheel/leg odometry is a useful initial guess for the matcher, which is the role the code comment assigns to Strido's `/odom` (\"a seed for SLAM\").",
+  "de": "wobei $\\mathbf{m}_{c(j)}$ der nächstgelegene Kartenpunkt zu $\\mathbf{p}_j$ ist. Das Verketten von Matches ergibt LiDAR-Odometrie, die ebenfalls driftet. **SLAM** (simultane Lokalisierung und Kartierung) beseitigt die Drift, indem es bereits gesehene Orte wiedererkennt (*Loop Closure*) und eine Posengraph-Optimierung über alle Posen gleichzeitig löst. Rad-/Bein-Odometrie ist ein nützlicher Startwert für den Matcher – genau die Rolle, die der Code-Kommentar dem `/odom` von Strido zuweist („ein Startwert für SLAM“)."
+ },
+ "95db358127f92163": {
+  "en": "What Strido publishes",
+  "de": "Was Strido veröffentlicht"
+ },
+ "c3270a1bc39ab9ff": {
+  "en": "| Topic | Contents | Source |",
+  "de": "| Topic | Inhalt | Quelle |"
+ },
+ "997586d27a3dd83d": {
+  "en": "| `/imu/data` (`sensor_msgs/Imu`, frame `imu_link`, axes aligned with `base_link`) | orientation quaternion from the Mahony filter, angular velocity in $\\mathrm{rad/s}$, linear acceleration in $\\mathrm{m/s^2}$ (gravity included); not published while the IMU reports a fault | `mcu_bridge.py`, state stream at $100\\,\\mathrm{Hz}$ (`kStatePeriodMs = 10`) |",
+  "de": "| `/imu/data` (`sensor_msgs/Imu`, Frame `imu_link`, Achsen an `base_link` ausgerichtet) | Orientierungsquaternion aus dem Mahony-Filter, Winkelgeschwindigkeit in $\\mathrm{rad/s}$, lineare Beschleunigung in $\\mathrm{m/s^2}$ (inklusive Schwerkraft); wird nicht veröffentlicht, solange die IMU einen Fehler meldet | `mcu_bridge.py`, Zustandsstrom mit $100\\,\\mathrm{Hz}$ (`kStatePeriodMs = 10`) |"
+ },
+ "ea9547350d721450": {
+  "en": "| `/odom` + TF `odom` $\\to$ `base_link` (`nav_msgs/Odometry`) | dead reckoning of the commanded velocity | `gait_node.py` only |",
+  "de": "| `/odom` + TF `odom` $\\to$ `base_link` (`nav_msgs/Odometry`) | Koppelnavigation der kommandierten Geschwindigkeit | nur `gait_node.py` |"
+ },
+ "fee4c8ff49429095": {
+  "en": "| `/scan` (`sensor_msgs/LaserScan`, `lidar_link`) | RPLIDAR C1 ranges at $10\\,\\mathrm{Hz}$ | `sllidar_ros2` |",
+  "de": "| `/scan` (`sensor_msgs/LaserScan`, `lidar_link`) | RPLIDAR-C1-Entfernungen mit $10\\,\\mathrm{Hz}$ | `sllidar_ros2` |"
+ },
+ "c78f97e5f1e74fee": {
+  "en": "The learned policy uses only `/imu/data`: the gyro and the gravity direction derived from the quaternion (see [Reinforcement learning](reinforcement-learning.md)).",
+  "de": "Die gelernte Policy verwendet nur `/imu/data`: das Gyroskop und die aus dem Quaternion abgeleitete Schwerkraftrichtung (siehe [Reinforcement Learning](reinforcement-learning.md))."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "f20c19677dbc0f69": {
+  "en": "Why can an accelerometer give roll and pitch but not yaw?",
+  "de": "Warum kann ein Beschleunigungssensor Rollen und Nicken liefern, aber nicht Gieren?"
+ },
+ "895859b5f9085b5c": {
+  "en": "   <details><summary>Answer</summary>",
+  "de": "   <details><summary>Antwort</summary>"
+ },
+ "863debd243018941": {
+  "en": "It measures the gravity direction in the body frame; rotating about the vertical axis does not change that direction.",
+  "de": "Er misst die Schwerkraftrichtung im Körperkoordinatensystem; eine Drehung um die Hochachse ändert diese Richtung nicht."
+ },
+ "00cc637550584d06": {
+  "en": "With $\\Delta t = 5\\,\\mathrm{ms}$, what $\\alpha$ gives a complementary-filter time constant of $0.5\\,\\mathrm{s}$?",
+  "de": "Welches $\\alpha$ ergibt bei $\\Delta t = 5\\,\\mathrm{ms}$ eine Zeitkonstante des Komplementärfilters von $0.5\\,\\mathrm{s}$?"
+ },
+ "02a2eb1973c7bf0f": {
+  "en": "What does the integral gain $K_i$ in the Mahony filter estimate, and what happens with $K_i = 0$?",
+  "de": "Was schätzt die Integralverstärkung $K_i$ im Mahony-Filter, und was passiert bei $K_i = 0$?"
+ },
+ "845c017844c549f4": {
+  "en": "The gyro bias. With $K_i = 0$ a constant bias leaves a small steady roll/pitch offset of about $b_g/K_p$ and uncorrected yaw drift.",
+  "de": "Den Gyroskop-Bias. Bei $K_i = 0$ hinterlässt ein konstanter Bias einen kleinen bleibenden Roll-/Nickversatz von etwa $b_g/K_p$ und unkorrigierte Gierdrift."
+ },
+ "b3829eafdbba7e92": {
+  "en": "In the Kalman update, what happens to $\\mathbf{K}$ as $\\mathbf{R}_\\mathrm{n} \\to \\infty$?",
+  "de": "Was passiert in der Kalman-Korrektur mit $\\mathbf{K}$, wenn $\\mathbf{R}_\\mathrm{n} \\to \\infty$?"
+ },
+ "abd7b6a1280c9658": {
+  "en": "$\\mathbf{K} \\to 0$: the measurement is ignored and the estimate follows the prediction.",
+  "de": "$\\mathbf{K} \\to 0$: Die Messung wird ignoriert und die Schätzung folgt der Prädiktion."
+ },
+ "6763060694daab4d": {
+  "en": "Why can't Strido do classic leg odometry?",
+  "de": "Warum kann Strido keine klassische Bein-Odometrie durchführen?"
+ },
+ "5141c4ff354577fc": {
+  "en": "Its servos give no joint-position feedback, so the actual $\\mathbf{q}$ and $\\dot{\\mathbf{q}}$ are unknown; only commands are available.",
+  "de": "Seine Servos liefern keine Rückmeldung der Gelenkposition, daher sind die tatsächlichen $\\mathbf{q}$ und $\\dot{\\mathbf{q}}$ unbekannt; nur Kommandos sind verfügbar."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "68b12c757fa54ae2": {
+  "en": "R. Mahony, T. Hamel and J.-M. Pflimlin, \"Nonlinear Complementary Filters on the Special Orthogonal Group\", *IEEE Transactions on Automatic Control*, 2008.",
+  "de": "R. Mahony, T. Hamel und J.-M. Pflimlin, „Nonlinear Complementary Filters on the Special Orthogonal Group“, *IEEE Transactions on Automatic Control*, 2008."
+ },
+ "3e199235175a1cee": {
+  "en": "S. Thrun, W. Burgard and D. Fox, *Probabilistic Robotics*, MIT Press, 2005.",
+  "de": "S. Thrun, W. Burgard und D. Fox, *Probabilistic Robotics*, MIT Press, 2005."
+ },
+ "40a30a47cc257727": {
+  "en": "J. Solà, \"Quaternion kinematics for the error-state Kalman filter\", arXiv:1711.02508, 2017.",
+  "de": "J. Solà, „Quaternion kinematics for the error-state Kalman filter“, arXiv:1711.02508, 2017."
+ },
+ "a8ac9db655a459cc": {
+  "en": "M. Bloesch et al., \"State Estimation for Legged Robots — Consistent Fusion of Leg Kinematics and IMU\", *Robotics: Science and Systems*, 2012.",
+  "de": "M. Bloesch et al., „State Estimation for Legged Robots — Consistent Fusion of Leg Kinematics and IMU“, *Robotics: Science and Systems*, 2012."
+ },
+ "da5368bbc98e36ee": {
+  "en": "W. Hess, D. Kohler, H. Rapp and D. Andor, \"Real-Time Loop Closure in 2D LIDAR SLAM\" (Cartographer), *IEEE ICRA*, 2016.",
+  "de": "W. Hess, D. Kohler, H. Rapp und D. Andor, „Real-Time Loop Closure in 2D LIDAR SLAM“ (Cartographer), *IEEE ICRA*, 2016."
+ }
+}

@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "codegraph": {
+      "command": ".harness/node_modules/.bin/codegraph",
+      "args": [
+        "serve",
+        "--mcp",
+        "--path",
+        "."
+      ]
+    },
+    "workos": {
+      "type": "http",
+      "url": "https://mcp.workos.com/mcp"
+    },
+    "strido-hardware": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--locked",
+        "strido",
+        "mcp"
+      ]
+    }
+  }
+}

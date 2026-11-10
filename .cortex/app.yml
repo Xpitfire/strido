@@ -1,0 +1,59 @@
+# Cortex app manifest: the Strido documentation site (static VitePress + downloadable build kit) and its
+# assistant service (AI bar API, MCP server for agents, agent files).
+#
+#   https://strido.cortex.a2olabs.com/   The app ships its own gateway route (.cortex/access/caddy/sso/): the
+#                                         static site is public; /api/* and /mcp go to the assistant behind
+#                                         Cortex SSO (or a `cxu_` bearer token from `cortex apps connect
+#                                         strido`), so model use stays with signed-in users.
+#
+# Deploy (pushed commit only: Cortex builds from GitHub, not from this checkout):
+#   cortex deploy --dry-run
+#   cortex deploy --ref "$(git rev-parse HEAD)"
+#   cortex jobs watch <job-id>
+#   cortex apps show strido
+#
+# The image builds the site from the repository (docs-site/Dockerfile, targets docs and assistant). The
+# repository is public: https://github.com/Xpitfire/strido.
+workspace: strido
+version: "0.3"
+repo: Xpitfire/strido
+ref: main
+compose_files:
+  - docker-compose.docs.yml
+  - docker-compose.cortex.yml        # access network aliases, assistant env files
+services:
+  - docs                             # first service = the gateway upstream of public_routes
+  - assistant
+health_urls:
+  - http://127.0.0.1:4390/healthz
+  - http://127.0.0.1:4391/api/health
+public_urls:
+  - https://strido.cortex.a2olabs.com/
+public_routes:
+  - url: https://strido.cortex.a2olabs.com/
+    service: docs
+    target_port: 8080
+exposure: authenticated
+commit_changes: false
+support:
+  widget:
+    enabled: false                   # the support proxy would sit in the assistant's SSE answer stream
+models:                              # Cortex Keyring: the assistant's Anthropic access (CORTEX_MODEL_* env)
+  source: keyring
+  providers: [anthropic, claude]
+  subscriber: dinu.marius.constantin@gmail.com
+  rate_per_minute: 60
+access:
+  directory: true                    # app key: the assistant verifies `cxu_` agent tokens with Cortex
+  services: [assistant]
+  keyUser: "1000:1000"               # the image's `node` user
+config:
+  - key: CORTEX_APP_HEADER_SECRET
+    scope: runtime-env
+    required: true
+    secret: true
+    label: Gateway header secret
+    description: >-
+      Proof that a request came through the Cortex gateway route; read from the gateway's generated env
+      file (docker-compose.cortex.yml). Without it the assistant refuses to start.
+    services: [assistant]

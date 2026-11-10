@@ -1,0 +1,12 @@
+# 2026-10-30T21:09Z make models print bom renders manual
+total mass 3.008 kg; base 1.675 kg
+32 printed part types, 67 pieces
+plate_graphite_01.3mf plate_graphite_02.3mf plate_graphite_03.3mf plate_graphite_04.3mf plate_graphite_05.3mf plate_lime_01.3mf plate_lime_02.3mf plate_lime_03.3mf 
+Lowest total                                                                8 shops  €963.67
+Fewest shops                                                                4 shops  €1,107.16
+EU warehouses (DigiKey only for parts without an EU offer, no AliExpress)   9 shops  €1,128.66
+Genuine boards where available                                              8 shops  €972.64
+CAD coverage: all purchased parts and fasteners supplied in every strategy
+docs/images/xray_top.png
+479 instances in 18 steps
+wrote docs/assembly/manual.pdf

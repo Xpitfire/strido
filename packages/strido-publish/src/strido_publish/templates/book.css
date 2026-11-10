@@ -1,0 +1,79 @@
+/* Strido catalogue & assembly book: A4, WeasyPrint. Colours = the robot (graphite + lime). */
+@page {
+  size: A4; margin: 16mm 14mm 16mm 14mm;
+  @top-left { content: "Strido · Catalogue & assembly book"; font: 8pt "Helvetica Neue", Arial, sans-serif; color: #7a8288; }
+  @top-right { content: string(section); font: 8pt "Helvetica Neue", Arial, sans-serif; color: #7a8288; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt "Helvetica Neue", Arial, sans-serif; color: #7a8288; }
+}
+@page cover { margin: 0; @top-left { content: none; } @top-right { content: none; } @bottom-right { content: none; } }
+@page step { margin: 12mm 12mm 14mm 12mm; }
+
+html { font: 9.5pt/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif; color: #1d2428; }
+h1 { string-set: section content(); font-size: 22pt; margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 1.2mm solid #c4dc1c; page-break-before: always; }
+h2 { font-size: 13pt; margin: 6mm 0 2mm; }
+h3 { font-size: 10.5pt; margin: 4mm 0 1.5mm; }
+p { margin: 0 0 2mm; }
+code { font: 8.5pt Menlo, Consolas, monospace; background: #f1f2ee; padding: 0 1mm; border-radius: 1mm; }
+table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+th { text-align: left; border-bottom: 0.5mm solid #1d2428; padding: 1mm 1.5mm; }
+td { border-bottom: 0.2mm solid #d8dbd2; padding: 1mm 1.5mm; vertical-align: top; }
+.muted { color: #6b747a; }
+.note { font-size: 8pt; color: #4b555b; }
+.warn { border-left: 1.2mm solid #ff7a1a; background: #fff3e8; padding: 2mm 3mm; margin: 3mm 0; }
+.ok { color: #4f6400; font-weight: 600; }
+
+/* ---------- cover ---------- */
+.cover { page: cover; height: 297mm; background: #1d2428; color: #fff; position: relative; overflow: hidden; }
+.cover img { position: absolute; top: 58mm; left: 0; width: 210mm; }
+.cover .title { position: absolute; top: 22mm; left: 16mm; right: 16mm; }
+.cover .title b { display: block; font-size: 46pt; letter-spacing: -1pt; color: #c4dc1c; }
+.cover .title span { font-size: 15pt; }
+.cover .foot { position: absolute; bottom: 18mm; left: 16mm; right: 16mm; font-size: 9pt; color: #c8cfd3; }
+.cover .band { position: absolute; bottom: 0; left: 0; right: 0; height: 6mm; background: #c4dc1c; }
+
+/* ---------- overview ---------- */
+.specs { display: flex; flex-wrap: wrap; gap: 2.5mm; margin: 3mm 0; }
+.specs div { width: 56mm; border: 0.3mm solid #d8dbd2; border-radius: 2mm; padding: 2mm 3mm; background: #f6f7f2; }
+.specs b { display: block; font-size: 11pt; color: #4f6400; }
+.figure { width: 100%; border-radius: 2mm; margin: 2mm 0; }
+.toc a { color: #1d2428; text-decoration: none; }
+.toc a::after { content: leader(".") target-counter(attr(href), page); }
+.toc li { margin: 1mm 0; list-style: none; }
+
+/* ---------- part cards ---------- */
+/* inline blocks, not flex: WeasyPrint breaks lines of inline blocks across pages, a flex box moves whole */
+.cards { font-size: 0; }
+.card { display: inline-block; vertical-align: top; width: 53mm; min-height: 22mm; margin: 0 2.4mm 2.4mm 0; font-size: 9.5pt;
+        border: 0.3mm solid #c9cdc3; border-radius: 2.5mm; padding: 2mm; page-break-inside: avoid; }
+.card:nth-child(3n) { margin-right: 0; }
+.card.printed { border-top: 1.5mm solid #c4dc1c; }
+.card.purchased { border-top: 1.5mm solid #3d74c9; }
+.card img { float: left; width: 15mm; height: 15mm; object-fit: contain; margin-right: 2mm; }
+.card .qty { font-size: 13pt; font-weight: 700; }
+.card .name { font-weight: 600; font-size: 8.5pt; line-height: 1.2; }
+.card .meta { font-size: 7pt; color: #4b555b; line-height: 1.25; overflow-wrap: anywhere; }
+
+/* ---------- hardware bags (1:1) ---------- */
+.bags { font-size: 0; }
+.bag { display: inline-block; vertical-align: bottom; width: 34mm; margin: 0 2mm 5mm 0; font-size: 9.5pt; page-break-inside: avoid; text-align: center; }
+.bag svg { display: block; margin: 0 auto 1mm; }
+.bag .qty { font-weight: 700; font-size: 12pt; }
+.bag .label { font-size: 7pt; }
+.ruler { margin: 4mm 0; }
+
+/* ---------- assembly steps ---------- */
+.step { page: step; page-break-before: always; }
+.step header { display: flex; align-items: baseline; gap: 4mm; border-bottom: 1mm solid #1d2428; margin-bottom: 3mm; }
+.step .number { font-size: 34pt; font-weight: 800; line-height: 1; }
+.step .title { font-size: 14pt; font-weight: 700; string-set: section "Assembly · " content(); }
+.step .legs { margin-left: auto; font-size: 10pt; font-weight: 700; background: #c4dc1c; padding: 0.5mm 2mm; border-radius: 1.5mm; }
+.step img.drawing { width: 100%; max-height: 150mm; object-fit: contain; border: 0.3mm solid #e1e3dc; border-radius: 2mm; }
+.box { display: flex; flex-wrap: wrap; gap: 1.5mm 3mm; border: 0.6mm solid #1d2428; border-radius: 3mm; padding: 2mm 3mm; margin: 3mm 0; }
+.box div { display: flex; align-items: center; gap: 1.5mm; width: 58mm; font-size: 7.5pt; }
+.box img { width: 11mm; height: 11mm; object-fit: contain; }
+.box b { font-size: 10pt; }
+.step ol { margin: 2mm 0 0 5mm; padding: 0; }
+.step li { margin-bottom: 1.5mm; }
+td.result-ok { color: #4f6400; font-weight: 600; }
+td.result-warn { color: #b85600; font-weight: 600; }
+td.result-fail { color: #b00020; font-weight: 700; }

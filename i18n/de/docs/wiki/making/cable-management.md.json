@@ -1,0 +1,586 @@
+{
+ "a655c9a9baa0333c": {
+  "en": "Cable management and the wiring harness",
+  "de": "Kabelmanagement und der Kabelbaum"
+ },
+ "2dd38774f4216dff": {
+  "en": "A walking robot shakes, flexes and bends its own wiring thousands of times an hour. Most failures in hobby robots are not broken parts but a lead that chafed through, a contact that worked loose or a wire that snapped inside its insulation next to a joint. This page explains how a **wiring harness** is designed against those failures: how thick each wire must be, what a fuse really protects, how much slack a cable needs to cross a moving joint, how to bend, bundle and terminate wires, and what the CAD check can and cannot prove. Every rule is worked through with Strido's own cut list.",
+  "de": "Ein gehender Roboter schüttelt, biegt und knickt seine eigene Verkabelung tausende Male pro Stunde. Die meisten Ausfälle bei Hobbyrobotern sind keine gebrochenen Teile, sondern eine durchgescheuerte Leitung, ein gelockerter Kontakt oder ein Draht, der neben einem Gelenk in seiner Isolierung gebrochen ist. Diese Seite erklärt, wie ein **Kabelbaum** gegen diese Ausfälle ausgelegt wird: wie dick jeder Draht sein muss, was eine Sicherung wirklich schützt, wie viel Spiel ein Kabel braucht, um ein bewegliches Gelenk zu überqueren, wie man Drähte biegt, bündelt und anschließt und was die CAD-Prüfung beweisen kann und was nicht. Jede Regel wird an der Zuschnittliste von Strido durchgerechnet."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "93034334bc9c30a9": {
+  "en": "**Source of truth:** `hardware/wiring.yaml` names every cable W00–W23 and the twelve servo leads (S-*leg*-*joint*), the connector each end sits on, the tie points it passes and the wire stock. `strido_cad.wiring` routes them through the CAD; `python -m strido_verify.wiring` checks them and writes the [wiring check](../../verification/wiring.md) with the **cut list**. Ratings and fuses are in `hardware/electronics.yaml`. The build order is in [electronics, wiring and power](../../electronics.md#wiring-harness) and assembly Steps 14–17 (and the shell Steps 18–22) of the [assembly manual](../../assembly/README.md). Decision: [ADR-011](../../decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad).",
+  "de": "**Maßgebliche Quelle:** `hardware/wiring.yaml` benennt jedes Kabel W00–W23 und die zwölf Servokabel (S-*leg*-*joint*), den Steckverbinder an jedem Ende, die Befestigungspunkte, die es passiert, und das Drahtmaterial. `strido_cad.wiring` verlegt sie im CAD; `python -m strido_verify.wiring` prüft sie und schreibt die [Verkabelungsprüfung](../../verification/wiring.md) mit der **Zuschnittliste**. Nennwerte und Sicherungen stehen in `hardware/electronics.yaml`. Die Baureihenfolge steht in [Elektronik, Verkabelung und Versorgung](../../electronics.md#wiring-harness) und in den Montageschritten 14–17 (sowie den Schalenschritten 18–22) der [Montageanleitung](../../assembly/README.md). Entscheidung: [ADR-011](../../decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad)."
+ },
+ "b403fabd47ac0901": {
+  "en": "Why design a harness at all?",
+  "de": "Warum überhaupt einen Kabelbaum auslegen?"
+ },
+ "542d63ad0f8da6d0": {
+  "en": "The robot's earlier wiring was a list with estimated lengths. As soon as every cable was modelled in the CAD, the list turned out to hide real defects (ADR-011): the main fuse holder left 4 mm for a 14 AWG lead that cannot bend that tightly; Dupont housings fitted neither on the IMU (2.5 mm under the Pi) nor on the XIAO pins (9 mm under the upper shoulder frame); the XIAO-to-PCA9685 wires needed about 0.3 m instead of 0.1 m; and a 60 mm 18 AWG tap sat behind the 25 A fuse alone. None of these shows up on paper. All of them show up in a real build, usually as a late surprise.",
+  "de": "Die frühere Verkabelung des Roboters war eine Liste mit geschätzten Längen. Sobald jedes Kabel im CAD modelliert war, zeigte sich, dass die Liste echte Mängel verbarg (ADR-011): Der Hauptsicherungshalter ließ 4 mm für eine 14-AWG-Leitung, die sich nicht so eng biegen lässt; Dupont-Gehäuse passten weder auf die IMU (2,5 mm unter dem Pi) noch auf die XIAO-Pins (9 mm unter dem oberen Schulterrahmen); die Drähte vom XIAO zum PCA9685 brauchten etwa 0,3 m statt 0,1 m; und ein 60 mm langer 18-AWG-Abgriff lag allein hinter der 25-A-Sicherung. Nichts davon zeigt sich auf dem Papier. Alles davon zeigt sich beim echten Aufbau, meist als späte Überraschung."
+ },
+ "c6a9865a3739ff05": {
+  "en": "A harness is designed against the ways wiring fails in a walking machine:",
+  "de": "Ein Kabelbaum wird gegen die Arten ausgelegt, auf die Verkabelung in einer gehenden Maschine versagt:"
+ },
+ "9393dd3d53e80c7d": {
+  "en": "| Failure | What happens | Design answer |",
+  "de": "| Ausfall | Was passiert | Konstruktive Antwort |"
+ },
+ "c167ef2822f166dd": {
+  "en": "| **Chafing** | a cable rubs on a moving horn, link or shell edge until the insulation wears through and the conductor shorts | route along structure, clear of everything that moves; spiral wrap on bundles; check clearance over the joint ranges |",
+  "de": "| **Scheuern** | ein Kabel reibt an einem beweglichen Horn, einer Koppel oder Schalenkante, bis die Isolierung durchgescheuert ist und der Leiter kurzschließt | entlang der Struktur verlegen, fern von allem, was sich bewegt; Spiralschlauch an Bündeln; Freigang über die Gelenkbereiche prüfen |"
+ },
+ "15e4cb89b787bda8": {
+  "en": "| **Connector fretting** | vibration makes two mated contacts slide by micrometres; the plating wears, oxide builds up and the contact becomes intermittent | fewer connectors; latching or clamping contacts; tie the cable so its weight does not hang on the contact |",
+  "de": "| **Reibkorrosion am Steckverbinder** | Vibration lässt zwei gesteckte Kontakte um Mikrometer gleiten; die Beschichtung verschleißt, Oxid baut sich auf und der Kontakt wird zeitweise unterbrochen | weniger Steckverbinder; rastende oder klemmende Kontakte; das Kabel so binden, dass sein Gewicht nicht am Kontakt hängt |"
+ },
+ "4969294a339e46c5": {
+  "en": "| **Flex fatigue** | a wire bent back and forth at one point breaks strand by strand inside intact insulation | cross joints near their axis with a free loop; avoid stiff points (solder wicking) next to a flexing section |",
+  "de": "| **Biegeermüdung** | ein an einer Stelle hin und her gebogener Draht bricht Litze für Litze in intakter Isolierung | Gelenke nahe ihrer Achse mit einer freien Schlaufe überqueren; steife Stellen (Lotdurchtränkung) neben einem sich biegenden Abschnitt vermeiden |"
+ },
+ "2667d0e93c798e8b": {
+  "en": "| **Pinch** | a cable is caught between two parts that close, such as a leg folding against the body | keep every cable out of the volume the legs sweep |",
+  "de": "| **Quetschen** | ein Kabel wird zwischen zwei sich schließenden Teilen eingeklemmt, etwa wenn ein Bein gegen den Körper klappt | jedes Kabel aus dem Volumen heraushalten, das die Beine überstreichen |"
+ },
+ "ed22c6c4969003cb": {
+  "en": "| **Heat** | an undersized wire heats with $P = I^2 R$; insulation softens; in a short circuit it can burn | size every wire for its current; fuse it below what it can carry |",
+  "de": "| **Hitze** | ein unterdimensionierter Draht erwärmt sich mit $P = I^2 R$; die Isolierung erweicht; bei einem Kurzschluss kann er brennen | jeden Draht für seinen Strom auslegen; unterhalb dessen absichern, was er tragen kann |"
+ },
+ "b35904f15062d0cd": {
+  "en": "The rest of the page goes through these one by one.",
+  "de": "Der Rest der Seite geht diese Punkte nacheinander durch."
+ },
+ "54a61ee91a8d4863": {
+  "en": "Conductor sizing",
+  "de": "Leiterquerschnitt"
+ },
+ "106ed9743ddb25de": {
+  "en": "Ampacity",
+  "de": "Strombelastbarkeit"
+ },
+ "9ad0cf1b050aadbc": {
+  "en": "A wire's **ampacity** is the current it can carry continuously without its insulation getting too hot. It depends on the copper cross-section, the insulation's temperature rating, the surrounding temperature and how well the wire can shed heat: a wire alone in free air carries more than the same wire in a tight bundle (general; published tables derate bundles). Strido uses deliberately conservative values for short chassis runs (`wire_ampacity_a` in `hardware/electronics.yaml`):",
+  "de": "Die **Strombelastbarkeit** eines Drahts ist der Strom, den er dauerhaft führen kann, ohne dass seine Isolierung zu heiß wird. Sie hängt vom Kupferquerschnitt, der Temperaturklasse der Isolierung, der Umgebungstemperatur und davon ab, wie gut der Draht Wärme abgeben kann: Ein Draht allein in freier Luft trägt mehr als derselbe Draht in einem engen Bündel (allgemein; veröffentlichte Tabellen setzen Bündel herab). Strido verwendet für kurze Leitungen im Chassis bewusst konservative Werte (`wire_ampacity_a` in `hardware/electronics.yaml`):"
+ },
+ "91bdff834d37a121": {
+  "en": "| Gauge | Copper area (approx.) | Resistance (approx.) | Ampacity used | Used for in Strido |",
+  "de": "| Querschnitt | Kupferfläche (ca.) | Widerstand (ca.) | Verwendete Belastbarkeit | Verwendet in Strido für |"
+ },
+ "a05b2af7788a74d2": {
+  "en": "| 14 AWG | $2.1\\,\\mathrm{mm^2}$ | $8.3\\,\\mathrm{m\\Omega/m}$ | 32 A | battery trunk W01–W04 |",
+  "de": "| 14 AWG | $2.1\\,\\mathrm{mm^2}$ | $8.3\\,\\mathrm{m\\Omega/m}$ | 32 A | Akku-Hauptleitung W01–W04 |"
+ },
+ "9d3ac03e7a628d64": {
+  "en": "| 18 AWG | $0.82\\,\\mathrm{mm^2}$ | $21\\,\\mathrm{m\\Omega/m}$ | 16 A | UBEC outputs W05/W06, bus jumpers W07/W08, logic branch W09–W11, logic grounds W24, W04/logic |",
+  "de": "| 18 AWG | $0.82\\,\\mathrm{mm^2}$ | $21\\,\\mathrm{m\\Omega/m}$ | 16 A | UBEC-Ausgänge W05/W06, Bus-Brücken W07/W08, Logikzweig W09–W11, Logikmassen W24, W04/logic |"
+ },
+ "b43d1364bbf02735": {
+  "en": "| 22 AWG | $0.33\\,\\mathrm{mm^2}$ | $53\\,\\mathrm{m\\Omega/m}$ | 7 A | Pi 5 V feed W12, servo leads, I²C and OE wires W17/W20, button W13 |",
+  "de": "| 22 AWG | $0.33\\,\\mathrm{mm^2}$ | $53\\,\\mathrm{m\\Omega/m}$ | 7 A | 5-V-Versorgung des Pi W12, Servokabel, I²C- und OE-Drähte W17/W20, Taster W13 |"
+ },
+ "1c946c910400a811": {
+  "en": "The `python -m strido_verify.electronics` gate reads the power cables from `hardware/wiring.yaml` and checks each one's worst-case current against this table: for example W05 carries the UBEC's 10 A continuous on 18 AWG ($10 \\le 16$), and W12 carries 1.6 A per 22 AWG wire ($1.6 \\le 7$).",
+  "de": "Die Prüfung `python -m strido_verify.electronics` liest die Leistungskabel aus `hardware/wiring.yaml` und prüft den Strom jedes Kabels im ungünstigsten Fall gegen diese Tabelle: Zum Beispiel führt W05 die 10 A Dauerstrom des UBEC auf 18 AWG ($10 \\le 16$), und W12 führt 1,6 A pro 22-AWG-Draht ($1.6 \\le 7$)."
+ },
+ "2c0e18703842507b": {
+  "en": "Resistance and voltage drop",
+  "de": "Widerstand und Spannungsabfall"
+ },
+ "d85480ec65febbe0": {
+  "en": "A conductor's resistance grows with its length $L$ and shrinks with its cross-section $A$:",
+  "de": "Der Widerstand eines Leiters wächst mit seiner Länge $L$ und sinkt mit seinem Querschnitt $A$:"
+ },
+ "5ddd5c4a2f88bca1": {
+  "en": "The current flows out on one conductor and back on the other, so a supply pair loses",
+  "de": "Der Strom fließt auf einem Leiter hin und auf dem anderen zurück, daher verliert ein Versorgungspaar"
+ },
+ "9224e9f69d9cd969": {
+  "en": "**W05**, front UBEC to the front WAGO bus: 18 AWG pair, routed 190 mm, cut 222 mm. Taking the full cut length as the copper in circuit (an upper bound) at the UBEC's 10 A continuous rating:",
+  "de": "**W05**, vorderer UBEC zum vorderen WAGO-Bus: 18-AWG-Paar, verlegt 190 mm, zugeschnitten 222 mm. Nimmt man die volle Zuschnittlänge als Kupfer im Stromkreis (eine Obergrenze) beim Dauernennstrom des UBEC von 10 A:"
+ },
+ "7e7821dcca7ccb66": {
+  "en": "That is about 1.6 % of the 6.0 V rail: acceptable.",
+  "de": "Das sind etwa 1,6 % der 6,0-V-Schiene: akzeptabel."
+ },
+ "e2e5be3276bf625f": {
+  "en": "**W12**, regulator to the Pi: 22 AWG, routed 104 mm, cut 123 mm, two wires per rail with 1.6 A each:",
+  "de": "**W12**, Spannungsregler zum Pi: 22 AWG, verlegt 104 mm, zugeschnitten 123 mm, zwei Drähte pro Schiene mit je 1,6 A:"
+ },
+ "9b8093cc5ddc0b58": {
+  "en": "Small, but the Pi's margin is small too: the regulator may deliver as little as 4.8 V and the Pi flags under-voltage below 4.63 V ([power](../hardware/power.md)). That is why W12 uses two wires per rail, and why it is kept short.",
+  "de": "Klein, aber auch die Reserve des Pi ist klein: Der Spannungsregler liefert möglicherweise nur 4,8 V, und der Pi meldet Unterspannung unter 4,63 V ([Versorgung](../hardware/power.md)). Deshalb verwendet W12 zwei Drähte pro Schiene und wird kurz gehalten."
+ },
+ "7bfaa2e61d3f8260": {
+  "en": "Fusing: a fuse protects the wire",
+  "de": "Absicherung: Eine Sicherung schützt den Draht"
+ },
+ "d62b67ccd81cfa16": {
+  "en": "A fuse does not protect the robot's boards. It protects **the wire behind it** from overheating in a fault. It must therefore blow before the weakest wire it covers overheats, and must not blow at normal load:",
+  "de": "Eine Sicherung schützt nicht die Platinen des Roboters. Sie schützt **den Draht dahinter** im Fehlerfall vor Überhitzung. Sie muss daher auslösen, bevor der schwächste Draht, den sie abdeckt, überhitzt, und darf bei normaler Last nicht auslösen:"
+ },
+ "cbc0958bbc82d8dd": {
+  "en": "where $I_\\mathrm{wire,min}$ is the ampacity of the *thinnest* wire anywhere behind that fuse. Strido's two fuses (`fuses` in `hardware/electronics.yaml`):",
+  "de": "wobei $I_\\mathrm{wire,min}$ die Strombelastbarkeit des *dünnsten* Drahts irgendwo hinter dieser Sicherung ist. Die zwei Sicherungen von Strido (`fuses` in `hardware/electronics.yaml`):"
+ },
+ "8611d9e99e69ce76": {
+  "en": "| Fuse | Rating | Protects | Thinnest wire behind it | Worst-case load |",
+  "de": "| Sicherung | Nennwert | Schützt | Dünnster Draht dahinter | Last im ungünstigsten Fall |"
+ },
+ "71559a3e45d74dd5": {
+  "en": "| Main (ATO) | 25 A | W02, W03, W04/front, W04/rear | 14 AWG, 32 A | 23.6 A (servo branch ≈ 21 A at an empty pack + logic) |",
+  "de": "| Haupt (ATO) | 25 A | W02, W03, W04/front, W04/rear | 14 AWG, 32 A | 23,6 A (Servozweig ≈ 21 A bei leerem Akkupack + Logik) |"
+ },
+ "7f42e1f947075781": {
+  "en": "| Logic (ATO) | 7.5 A | W09, W10, W11, W24, W04/logic | 18 AWG, 16 A | 2.74 A |",
+  "de": "| Logik (ATO) | 7,5 A | W09, W10, W11, W24, W04/logic | 18 AWG, 16 A | 2,74 A |"
+ },
+ "461e0504cfcb0b7d": {
+  "en": "W04/logic and W24 are the logic branch's *ground* returns. In normal operation they carry the same current as the logic feed, so the logic fuse limits it and they may be 18 AWG. The limit is one of normal current, not of every fault: a short from the servo branch (behind only the 25 A fuse) onto a logic ground would return through them. That is why the servo-branch wires run apart from the logic grounds except at the inner frame opening, inside their insulation and wrap.",
+  "de": "W04/logic und W24 sind die *Masse*rückleitungen des Logikzweigs. Im Normalbetrieb führen sie denselben Strom wie die Logikversorgung, daher begrenzt die Logiksicherung ihn und sie dürfen 18 AWG haben. Die Grenze betrifft den Normalstrom, nicht jeden Fehler: Ein Kurzschluss vom Servozweig (nur hinter der 25-A-Sicherung) auf eine Logikmasse würde über sie zurückfließen. Deshalb verlaufen die Drähte des Servozweigs getrennt von den Logikmassen, außer an der inneren Rahmenöffnung, innerhalb ihrer Isolierung und Umhüllung."
+ },
+ "a9aeb35b549507eb": {
+  "en": "**Why the old tap was wrong.** The old design fed the logic fuse holder through a 60 mm piece of 18 AWG taken off the trunk *behind the 25 A fuse*. Nothing but the 25 A fuse covered that piece, and 25 A is above 18 AWG's 16 A. A fault drawing, say, 20 A through the tap would never blow the fuse but would heat the tap with",
+  "de": "**Warum der alte Abgriff falsch war.** Das alte Design speiste den Logiksicherungshalter über ein 60 mm langes Stück 18 AWG, das von der Hauptleitung *hinter der 25-A-Sicherung* abgegriffen wurde. Nur die 25-A-Sicherung deckte dieses Stück ab, und 25 A liegt über den 16 A von 18 AWG. Ein Fehler, der etwa 20 A durch den Abgriff zieht, würde die Sicherung nie auslösen, aber den Abgriff erwärmen mit"
+ },
+ "0757032641d17a59": {
+  "en": "indefinitely (an illustration of the principle, not a measured fault). \"Keep it short\" lowers the chance of a fault but does not change the rule. The fix: the tap is now the logic fuse holder's **own 14 AWG lead**, spliced to W02 in the back shell. No wire thinner than 14 AWG sits behind the 25 A fuse alone, and everything after the 7.5 A fuse is at least 18 AWG.",
+  "de": "unbegrenzt lange (eine Veranschaulichung des Prinzips, kein gemessener Fehler). „Kurz halten“ verringert die Wahrscheinlichkeit eines Fehlers, ändert aber nicht die Regel. Die Lösung: Der Abgriff ist jetzt die **eigene 14-AWG-Leitung** des Logiksicherungshalters, in der Rückschale an W02 angespleißt. Kein Draht dünner als 14 AWG liegt allein hinter der 25-A-Sicherung, und alles nach der 7,5-A-Sicherung hat mindestens 18 AWG."
+ },
+ "037c3de54572952b": {
+  "en": "**Why W01 is unfused and kept short.** W01 runs from the battery input to the main fuse. Nothing can protect it except the pack's own limits: the pack is rated for 300 A (`hardware/electronics.yaml`), so a short on W01 is a battery short. The fuse sits where there was room for its holder and its 14 AWG leads to bend: on the rear WAGO bus, about 0.15 m from the battery input. W01 is therefore treated like the pack's own lead: 14 AWG, cut 151 mm, in spiral wrap, routed clear of everything that moves. ADR-011 says to move the fuse closer only if a compact fused battery input fits under the deck.",
+  "de": "**Warum W01 ungesichert ist und kurz gehalten wird.** W01 verläuft vom Akkueingang zur Hauptsicherung. Nichts außer den eigenen Grenzen des Akkupacks kann sie schützen: Der Akkupack ist für 300 A ausgelegt (`hardware/electronics.yaml`), ein Kurzschluss an W01 ist also ein Akkukurzschluss. Die Sicherung sitzt dort, wo Platz für ihren Halter und das Biegen ihrer 14-AWG-Leitungen war: am hinteren WAGO-Bus, etwa 0,15 m vom Akkueingang. W01 wird daher wie die eigene Leitung des Akkupacks behandelt: 14 AWG, zugeschnitten 151 mm, im Spiralschlauch, fern von allem Beweglichen verlegt. ADR-011 sieht vor, die Sicherung nur dann näher zu rücken, wenn ein kompakter abgesicherter Akkueingang unter das Deck passt."
+ },
+ "55da22e6c0a03023": {
+  "en": "Crossing a joint: service loops",
+  "de": "Ein Gelenk überqueren: Bewegungsschlaufen"
+ },
+ "ba9c89ff2cca1248": {
+  "en": "A cable that crosses a joint must change length as the joint turns. If it cannot, the joint pulls on the cable, and the pull ends up at the weakest point: a solder joint, a crimp or a connector. A **service loop** is a deliberate piece of free cable between two fixed ties that absorbs this change.",
+  "de": "Ein Kabel, das ein Gelenk überquert, muss seine Länge ändern, wenn sich das Gelenk dreht. Kann es das nicht, zieht das Gelenk am Kabel, und der Zug landet an der schwächsten Stelle: einer Lötstelle, einer Crimpverbindung oder einem Steckverbinder. Eine **Bewegungsschlaufe** ist ein bewusst freies Kabelstück zwischen zwei festen Befestigungspunkten, das diese Änderung aufnimmt."
+ },
+ "62785191d2f5e340": {
+  "en": "On Strido the thigh and knee servos ride on the hip body, so their leads cross only the **hip** joint. Each lead is tied at the servo mount plate near the hip axis (on the moving side) and again at the shoulder frame or bus holder (on the body). Between the ties hangs the loop. The hip servos sit on the body and need no loop. The other joints need none either, because no lead crosses them: placing the motors decides which joints the wiring has to cross.",
+  "de": "Bei Strido sitzen die Oberschenkel- und Knieservos auf dem Hüftkörper, daher überqueren ihre Leitungen nur das **Hüft**gelenk. Jede Leitung wird an der Servohalterungsplatte nahe der Hüftachse (auf der beweglichen Seite) und erneut am Schulterrahmen oder Bushalter (am Körper) festgebunden. Zwischen den Befestigungen hängt die Schlaufe. Die Hüftservos sitzen am Körper und brauchen keine Schlaufe. Auch die anderen Gelenke brauchen keine, weil keine Leitung sie überquert: Die Platzierung der Motoren entscheidet, welche Gelenke die Verkabelung überqueren muss."
+ },
+ "b19b177a3558a515": {
+  "en": "How far apart do the ties move?",
+  "de": "Wie weit bewegen sich die Befestigungspunkte auseinander?"
+ },
+ "576ffb0be247e489": {
+  "en": "Put the origin on the hip axis. Let $\\mathbf{p}$ be the tie on the moving hip body (in the hip's reference pose) and $\\mathbf{q}$ the tie on the body. When the hip turns by $\\theta$, the moving tie goes to $R(\\theta)\\,\\mathbf{p}$, with $R(\\theta)$ the rotation about the hip axis (see [frames and rotations](../theory/frames-and-rotations.md)). The tie-to-tie distance is",
+  "de": "Legen Sie den Ursprung auf die Hüftachse. Sei $\\mathbf{p}$ der Befestigungspunkt am beweglichen Hüftkörper (in der Referenzpose der Hüfte) und $\\mathbf{q}$ der Befestigungspunkt am Körper. Dreht sich die Hüfte um $\\theta$, wandert der bewegliche Befestigungspunkt nach $R(\\theta)\\,\\mathbf{p}$, mit $R(\\theta)$ der Drehung um die Hüftachse (siehe [Koordinatensysteme und Drehungen](../theory/frames-and-rotations.md)). Der Abstand zwischen den Befestigungspunkten ist"
+ },
+ "881584450bd86af7": {
+  "en": "To see what drives it, split each point into a part along the unit axis $\\hat{\\mathbf{a}}$ and a part perpendicular to it: $\\mathbf{p} = p_a\\,\\hat{\\mathbf{a}} + \\mathbf{p}_\\perp$, $\\mathbf{q} = q_a\\,\\hat{\\mathbf{a}} + \\mathbf{q}_\\perp$, with radii $r_p = \\lVert \\mathbf{p}_\\perp \\rVert$ and $r_q = \\lVert \\mathbf{q}_\\perp \\rVert$. The rotation leaves the axial parts alone and turns $\\mathbf{p}_\\perp$ by $\\theta$, so the law of cosines gives",
+  "de": "Um zu sehen, was ihn bestimmt, zerlegen Sie jeden Punkt in einen Anteil entlang der Einheitsachse $\\hat{\\mathbf{a}}$ und einen Anteil senkrecht dazu: $\\mathbf{p} = p_a\\,\\hat{\\mathbf{a}} + \\mathbf{p}_\\perp$, $\\mathbf{q} = q_a\\,\\hat{\\mathbf{a}} + \\mathbf{q}_\\perp$, mit den Radien $r_p = \\lVert \\mathbf{p}_\\perp \\rVert$ und $r_q = \\lVert \\mathbf{q}_\\perp \\rVert$. Die Drehung lässt die axialen Anteile unverändert und dreht $\\mathbf{p}_\\perp$ um $\\theta$, daher ergibt der Kosinussatz"
+ },
+ "b96ba149a96c7cd5": {
+  "en": "where $\\theta_0$ is the hip angle at which the two perpendicular parts point the same way. Over a full turn $d$ would swing between",
+  "de": "wobei $\\theta_0$ der Hüftwinkel ist, bei dem die beiden senkrechten Anteile in dieselbe Richtung zeigen. Über eine volle Umdrehung würde $d$ schwanken zwischen"
+ },
+ "285843a05f8728d3": {
+  "en": "and within the hip's limited range it covers part of that interval. The lesson is in the radii: the swing grows with $r_p\\,r_q$. **Ties close to the axis move little**, so the loop can be short. That is why the leads are tied at the servo mount plate *near the hip axis* rather than further out.",
+  "de": "und innerhalb des begrenzten Hüftbereichs deckt es einen Teil dieses Intervalls ab. Die Lehre steckt in den Radien: Die Schwankung wächst mit $r_p\\,r_q$. **Befestigungspunkte nahe der Achse bewegen sich wenig**, daher kann die Schlaufe kurz sein. Deshalb werden die Leitungen an der Servohalterungsplatte *nahe der Hüftachse* festgebunden statt weiter außen."
+ },
+ "282e65d3f71c2802": {
+  "en": "The wiring gate does not trust a hand formula. It places both ties in the CAD and evaluates $d(\\theta)$ over the full hip range. For the front legs:",
+  "de": "Die Verkabelungsprüfung vertraut keiner Handformel. Sie platziert beide Befestigungspunkte im CAD und wertet $d(\\theta)$ über den gesamten Hüftbereich aus. Für die Vorderbeine:"
+ },
+ "3a119bd24257b5a2": {
+  "en": "| Lead | Tie-to-tie distance over the hip range | Required loop $1.2\\,d_\\mathrm{max}$ | Loop in `wiring.yaml` |",
+  "de": "| Leitung | Abstand der Befestigungspunkte über den Hüftbereich | Erforderliche Schlaufe $1.2\\,d_\\mathrm{max}$ | Schlaufe in `wiring.yaml` |"
+ },
+ "dfb20f3ab476effc": {
+  "en": "| front thigh | 13.0–24.1 mm | 28.9 mm | 30 mm |",
+  "de": "| vorderer Oberschenkel | 13,0–24,1 mm | 28,9 mm | 30 mm |"
+ },
+ "1b3e948dde1d584f": {
+  "en": "| front knee | 20.0–25.6 mm | 30.7 mm | 32 mm |",
+  "de": "| vorderes Knie | 20,0–25,6 mm | 30,7 mm | 32 mm |"
+ },
+ "f8b223187f7d8736": {
+  "en": "| rear thigh | 11.9–16.2 mm | 19.4 mm | 22 mm |",
+  "de": "| hinterer Oberschenkel | 11,9–16,2 mm | 19,4 mm | 22 mm |"
+ },
+ "9f86bb2878005780": {
+  "en": "| rear knee | 11.9–16.1 mm | 19.4 mm | 22 mm |",
+  "de": "| hinteres Knie | 11,9–16,1 mm | 19,4 mm | 22 mm |"
+ },
+ "73fb6e0d46c3c773": {
+  "en": "The front knee lead's tie on the shoulder side sits at the bus holder, 17 mm towards the inner frame: its loop is a little longer, but the signal wire saves more on its way to the PCA9685, and with that the 260 mm lead reaches without an extension.",
+  "de": "Der schulterseitige Befestigungspunkt der vorderen Knieleitung sitzt am Bushalter, 17 mm in Richtung des inneren Rahmens: Ihre Schlaufe ist etwas länger, aber der Signaldraht spart auf dem Weg zum PCA9685 mehr ein, und damit reicht das 260-mm-Servokabel ohne Verlängerung."
+ },
+ "9cd87ce8a3a46a4a": {
+  "en": "The slack rule",
+  "de": "Die Spielregel"
+ },
+ "771f53a4bfefabc5": {
+  "en": "The robot's rule is",
+  "de": "Die Regel des Roboters lautet"
+ },
+ "c08caeb5f363c5a8": {
+  "en": "Worked for the front knee: $1.2 \\times 25.6\\,\\mathrm{mm} = 30.7\\,\\mathrm{mm}$, rounded up to **32 mm**. Why not exactly $d_\\mathrm{max}$? At that length the cable would be a straight, taut chord at the extreme hip angle and would pull on both ties. A cable also cannot leave a tie at any angle: it leaves in the direction it is tied and has to curve towards the other tie, and the curve costs length. The 20 % covers both. Why not much longer? Extra loop has to hang somewhere, and a long loop can droop into a moving part. The gate checks the loop's *length* only; where it hangs is not modelled, so you check that by hand (see the checklist below).",
+  "de": "Durchgerechnet für das vordere Knie: $1.2 \\times 25.6\\,\\mathrm{mm} = 30.7\\,\\mathrm{mm}$, aufgerundet auf **32 mm**. Warum nicht genau $d_\\mathrm{max}$? Bei dieser Länge wäre das Kabel beim extremen Hüftwinkel eine gerade, straffe Sehne und würde an beiden Befestigungspunkten ziehen. Ein Kabel kann einen Befestigungspunkt auch nicht in beliebigem Winkel verlassen: Es verlässt ihn in der Richtung, in der es gebunden ist, und muss sich zum anderen Befestigungspunkt hin krümmen, und die Krümmung kostet Länge. Die 20 % decken beides ab. Warum nicht viel länger? Zusätzliche Schlaufe muss irgendwo hängen, und eine lange Schlaufe kann in ein bewegliches Teil durchhängen. Die Prüfung kontrolliert nur die *Länge* der Schlaufe; wo sie hängt, wird nicht modelliert, daher prüfen Sie das von Hand (siehe Checkliste unten)."
+ },
+ "699c4eda504e1c75": {
+  "en": "Bend radius and flex life",
+  "de": "Biegeradius und Biegelebensdauer"
+ },
+ "86b633269f82fd6a": {
+  "en": "Every cable has a minimum bend radius. A common rule of thumb (general, not a datasheet value; check the cable maker's data) is a few times the outer diameter (OD) for a cable that is bent once and then fixed, and about ten times the OD or more for a cable that flexes in service. `hardware/wiring.yaml` records a minimum static bend for each cable type, about three times the OD: 11 mm for 14 AWG (3.6 mm OD), 7 mm for 18 AWG (2.2 mm), 5 mm for 22 AWG (1.6 mm), 15 mm for the USB cables. The old main-fuse position left 4 mm for a 14 AWG lead, which needs 11 mm: that is why the fuse moved.",
+  "de": "Jedes Kabel hat einen minimalen Biegeradius. Eine gängige Faustregel (allgemein, kein Datenblattwert; prüfen Sie die Angaben des Kabelherstellers) ist ein Mehrfaches des Außendurchmessers (AD) für ein Kabel, das einmal gebogen und dann fixiert wird, und etwa das Zehnfache des AD oder mehr für ein Kabel, das sich im Betrieb biegt. `hardware/wiring.yaml` hält für jeden Kabeltyp eine minimale statische Biegung fest, etwa das Dreifache des AD: 11 mm für 14 AWG (3,6 mm AD), 7 mm für 18 AWG (2,2 mm), 5 mm für 22 AWG (1,6 mm), 15 mm für die USB-Kabel. Die alte Position der Hauptsicherung ließ 4 mm für eine 14-AWG-Leitung, die 11 mm braucht: Deshalb wurde die Sicherung verlegt."
+ },
+ "b47d1785aaf6a4f8": {
+  "en": "Why bending fatigues a wire: a strand of diameter $d_s$ bent to radius $R$ stretches on its outside by the bending strain (general beam result)",
+  "de": "Warum Biegen einen Draht ermüdet: Eine Litze mit Durchmesser $d_s$, auf den Radius $R$ gebogen, dehnt sich an ihrer Außenseite um die Biegedehnung (allgemeines Balkenergebnis)"
+ },
+ "718ec1d99ff56fac": {
+  "en": "Copper survives many cycles at small strain and few at large strain. Two consequences:",
+  "de": "Kupfer übersteht viele Zyklen bei kleiner Dehnung und wenige bei großer Dehnung. Zwei Folgen:"
+ },
+ "9d2a33753909833c": {
+  "en": "**Fine strands flex better.** In a stranded wire the strands can slide, so each one bends about its own centre. For an illustrative strand of $d_s = 0.08\\,\\mathrm{mm}$ at $R = 5\\,\\mathrm{mm}$, $\\varepsilon \\approx 0.08/10 = 0.8\\,\\%$. A solid 22 AWG conductor ($A = 0.33\\,\\mathrm{mm^2}$, so $d = \\sqrt{4A/\\pi} \\approx 0.65\\,\\mathrm{mm}$) bent the same way sees $\\varepsilon \\approx 0.65/10 = 6.5\\,\\%$, eight times more. Silicone wire and servo leads are fine-stranded for this reason.",
+  "de": "**Feine Litzen biegen sich besser.** In einem Litzendraht können die Einzeldrähte gleiten, sodass sich jeder um seine eigene Mitte biegt. Für eine beispielhafte Litze mit $d_s = 0.08\\,\\mathrm{mm}$ bei $R = 5\\,\\mathrm{mm}$ gilt $\\varepsilon \\approx 0.08/10 = 0.8\\,\\%$. Ein massiver 22-AWG-Leiter ($A = 0.33\\,\\mathrm{mm^2}$, also $d = \\sqrt{4A/\\pi} \\approx 0.65\\,\\mathrm{mm}$), gleich gebogen, erfährt $\\varepsilon \\approx 0.65/10 = 6.5\\,\\%$, achtmal mehr. Silikonlitze und Servokabel sind aus diesem Grund feinlitzig."
+ },
+ "1c0786ed9709a09b": {
+  "en": "**A longer loop bends gentler.** Spreading the same joint motion over more cable means a larger radius and a smaller strain. A loop that is just long enough bends sharply at its ends every step.",
+  "de": "**Eine längere Schlaufe biegt sanfter.** Dieselbe Gelenkbewegung auf mehr Kabel zu verteilen bedeutet einen größeren Radius und eine kleinere Dehnung. Eine Schlaufe, die gerade lang genug ist, knickt bei jedem Schritt scharf an ihren Enden."
+ },
+ "d8baf80b7e21bf67": {
+  "en": "The CAD draws route corners sharp and does not check bend radii, so the radius is your job at the bench.",
+  "de": "Das CAD zeichnet die Ecken der Verlegung scharf und prüft keine Biegeradien, daher ist der Radius Ihre Aufgabe am Arbeitstisch."
+ },
+ "68e91ccdf8dd8efc": {
+  "en": "Bundling, spiral wrap and ties",
+  "de": "Bündeln, Spiralschlauch und Kabelbinder"
+ },
+ "7868d281c91dccac": {
+  "en": "**Spiral wrap** (a PE spiral that wraps around a bundle) on every bundle of **three or more cables**. It holds the bundle together, protects it from edges, and still lets single cables branch out anywhere. Strido uses about 228 mm of it (`spiral_wrap`, wire-stock check).",
+  "de": "**Spiralschlauch** (eine PE-Spirale, die sich um ein Bündel wickelt) an jedem Bündel aus **drei oder mehr Kabeln**. Er hält das Bündel zusammen, schützt es vor Kanten und lässt trotzdem einzelne Kabel an beliebiger Stelle abzweigen. Strido verwendet etwa 228 mm davon (`spiral_wrap`, Prüfung des Drahtmaterials)."
+ },
+ "b9c64910206d8aab": {
+  "en": "**Cable ties** at the marked tie nodes of `wiring.yaml`, about 30 from a bag of 100: servo mount plate edges, shoulder frame slots, bus holder slots, frame openings. Ties fix the cable to structure so it cannot wander into a moving part, and they take pull off the terminations.",
+  "de": "**Kabelbinder** an den markierten Befestigungspunkten von `wiring.yaml`, etwa 30 aus einem 100er-Beutel: Kanten der Servohalterungsplatten, Schlitze im Schulterrahmen, Schlitze im Bushalter, Rahmenöffnungen. Kabelbinder fixieren das Kabel an der Struktur, damit es nicht in ein bewegliches Teil wandern kann, und sie nehmen Zug von den Anschlüssen."
+ },
+ "5e933c2fc4cf2ae6": {
+  "en": "**Adhesive tie mounts:** two 13 × 13 mm mounts on the deck side strips (`cable_tie_mounts`, modelled in the CAD) where there is no slot to tie to.",
+  "de": "**Selbstklebende Kabelbinder-Sockel:** zwei 13 × 13 mm große Sockel an den seitlichen Leisten des Decks (`cable_tie_mounts`, im CAD modelliert), wo es keinen Schlitz zum Festbinden gibt."
+ },
+ "d5a2aa8f1abe179b": {
+  "en": "**Tie spacing** (general practice): tie at every branch, before and after every bend, and close to every connector, so a pull on the cable ends at a tie rather than at a contact. On the robot, the tie nodes in the CAD already do this.",
+  "de": "**Abstand der Kabelbinder** (allgemeine Praxis): an jeder Abzweigung, vor und nach jeder Biegung und nahe an jedem Steckverbinder binden, sodass ein Zug am Kabel an einem Kabelbinder endet statt an einem Kontakt. Am Roboter erledigen das bereits die Befestigungspunkte im CAD."
+ },
+ "aebb32954db33c9a": {
+  "en": "**Tension** (general): pull a tie snug so the cable cannot slide, not so tight that it dents the insulation. A crushed spot is a stiff point and a future chafe point. Flush-cut the tail; a sharp tail scratches skin and insulation.",
+  "de": "**Spannung** (allgemein): Ziehen Sie einen Kabelbinder so fest an, dass das Kabel nicht rutschen kann, aber nicht so fest, dass er die Isolierung eindrückt. Eine gequetschte Stelle ist eine steife Stelle und eine künftige Scheuerstelle. Schneiden Sie das Ende bündig ab; ein scharfes Ende zerkratzt Haut und Isolierung."
+ },
+ "10b8ed424754da40": {
+  "en": "Signal and power",
+  "de": "Signal und Leistung"
+ },
+ "a026f85d429c1f10": {
+  "en": "A changing current $I$ in one loop induces a voltage in a nearby loop, $V = M\\,\\mathrm{d}I/\\mathrm{d}t$, where $M$ (mutual inductance) grows with the loop areas and shrinks with distance (general). Servo currents change fast: up to 3.5 A per servo at stall. Two general habits keep that out of the signals:",
+  "de": "Ein sich ändernder Strom $I$ in einer Schleife induziert eine Spannung in einer benachbarten Schleife, $V = M\\,\\mathrm{d}I/\\mathrm{d}t$, wobei $M$ (Gegeninduktivität) mit den Schleifenflächen wächst und mit dem Abstand sinkt (allgemein). Servoströme ändern sich schnell: bis zu 3,5 A pro Servo im Blockierfall. Zwei allgemeine Gewohnheiten halten das von den Signalen fern:"
+ },
+ "048175b287f1907c": {
+  "en": "**Separate them.** Run signal wires away from high-current wires where you can, and cross them at right angles rather than in parallel. On Strido each servo lead is split at a tie: red/brown drop to the WAGO bus in the cavity, the orange signal runs on to the PCA9685 beside the Pi.",
+  "de": "**Trennen Sie sie.** Verlegen Sie Signaldrähte wo möglich fern von Hochstromdrähten und kreuzen Sie sie im rechten Winkel statt parallel. Bei Strido wird jedes Servokabel an einem Kabelbinder aufgeteilt: Rot/Braun gehen zum WAGO-Bus im Hohlraum, das orange Signal läuft weiter zum PCA9685 neben dem Pi."
+ },
+ "80beb60c1c83b4b1": {
+  "en": "**Keep loops small and twist pairs.** A signal and its return run side by side enclose little area. Twisting a pair (general technique; the robot's docs do not prescribe it) alternates the direction of each small loop, so induced voltages cancel along the length.",
+  "de": "**Halten Sie Schleifen klein und verdrillen Sie Paare.** Ein Signal und seine Rückleitung nebeneinander umschließen wenig Fläche. Das Verdrillen eines Paars (allgemeine Technik; die Dokumentation des Roboters schreibt es nicht vor) wechselt die Richtung jeder kleinen Schleife, sodass sich induzierte Spannungen entlang der Länge aufheben."
+ },
+ "2a10bae841c0fbee": {
+  "en": "A common ground is part of the same story: a servo's signal is read against its ground, so all domains share one ground star at the battery input ([power](../hardware/power.md)).",
+  "de": "Eine gemeinsame Masse gehört zur selben Geschichte: Das Signal eines Servos wird gegen seine Masse gelesen, daher teilen alle Bereiche einen Massesternpunkt am Akkueingang ([Versorgung](../hardware/power.md))."
+ },
+ "83658ada7e4af066": {
+  "en": "Connectors and terminations",
+  "de": "Steckverbinder und Anschlüsse"
+ },
+ "a964c06f1c2be2b9": {
+  "en": "WAGO lever clamps",
+  "de": "WAGO-Hebelklemmen"
+ },
+ "cc29df925c5ccdf0": {
+  "en": "The servo bus is built from WAGO 221-415 lever connectors: five entries, 0.2–4 mm², rated 32 A. A spring clamp grips the bare conductor when the lever closes, with no tool. WAGO's datasheet requires a **strip length of 11 mm**: shorter and the clamp grips too little copper; longer and bare copper sticks out of the housing. Push the conductor in until the insulation meets the housing, close the lever, and tug. The housing is transparent, so you can see the conductor reach the end. One wire per entry: the gate checks this for every WAGO port.",
+  "de": "Der Servobus besteht aus WAGO-221-415-Hebelklemmen: fünf Eingänge, 0,2–4 mm², ausgelegt für 32 A. Eine Federklemme greift den blanken Leiter, wenn der Hebel schließt, ganz ohne Werkzeug. Das Datenblatt von WAGO verlangt eine **Abisolierlänge von 11 mm**: kürzer, und die Klemme greift zu wenig Kupfer; länger, und blankes Kupfer ragt aus dem Gehäuse. Schieben Sie den Leiter ein, bis die Isolierung am Gehäuse anliegt, schließen Sie den Hebel und ziehen Sie leicht daran. Das Gehäuse ist durchsichtig, sodass Sie sehen, ob der Leiter das Ende erreicht. Ein Draht pro Eingang: Die Prüfung kontrolliert das für jeden WAGO-Anschluss."
+ },
+ "1d52361a2c20c2ca": {
+  "en": "Crimp or solder?",
+  "de": "Crimpen oder löten?"
+ },
+ "92f794b6704596a4": {
+  "en": "**Crimping** squeezes a metal contact cold around the bare strands (conductor grip) and around the insulation (insulation grip). The insulation grip is the **strain relief**: it takes bending and pull off the conductor joint. The strands stay flexible right up to the contact.",
+  "de": "**Crimpen** presst einen Metallkontakt kalt um die blanken Litzen (Leitercrimp) und um die Isolierung (Isolationscrimp). Der Isolationscrimp ist die **Zugentlastung**: Er nimmt Biegung und Zug von der Leiterverbindung. Die Litzen bleiben bis direkt zum Kontakt flexibel."
+ },
+ "c8588c25f53a561c": {
+  "en": "**Soldering** joins the strands with molten alloy. Solder also runs up inside the insulation by capillary action (**wicking**) and turns that part of the wire into a solid rod. Bending then concentrates at the end of the wicked section, exactly as in the strain formula above (solid conductor, large $\\varepsilon$), and strands break there under vibration. Wicking is a defect in harness workmanship standards such as IPC/WHMA-A-620.",
+  "de": "**Löten** verbindet die Litzen mit geschmolzener Legierung. Lot läuft durch Kapillarwirkung auch in die Isolierung hinein (**Lotdurchtränkung**) und macht diesen Teil des Drahts zu einem massiven Stab. Die Biegung konzentriert sich dann am Ende des durchtränkten Abschnitts, genau wie in der Dehnungsformel oben (massiver Leiter, großes $\\varepsilon$), und dort brechen die Litzen unter Vibration. Lotdurchtränkung gilt in Verarbeitungsnormen für Kabelbäume wie IPC/WHMA-A-620 als Fehler."
+ },
+ "ae3c09ad622c9c5c": {
+  "en": "So: solder where the wire is fixed and supported (and add heat-shrink as strain relief); crimp or clamp where it moves. On Strido the soldered joints are the power entry (XT60H cups, fuse holder leads, the heat-shrunk splices), the switch, regulator and button, and the XIAO pins. The XIAO pins sit 9 mm under the upper shoulder frame, and a Dupont housing is 14 mm tall, so W17 (3V3, GND, SDA, SCL) and W20 (D3 → OE) are soldered there and crimped at the PCA9685, and the display cable's Dupont ends (W21) are soldered there too. Tie these wires close to the board so no pull reaches the solder.",
+  "de": "Also: Löten Sie, wo der Draht fixiert und abgestützt ist (und ergänzen Sie Schrumpfschlauch als Zugentlastung); crimpen oder klemmen Sie, wo er sich bewegt. Bei Strido sind die Lötstellen der Leistungseingang (XT60H-Lötkelche, Leitungen des Sicherungshalters, die mit Schrumpfschlauch überzogenen Spleiße), Schalter, Spannungsregler und Taster sowie die XIAO-Pins. Die XIAO-Pins sitzen 9 mm unter dem oberen Schulterrahmen, und ein Dupont-Gehäuse ist 14 mm hoch, daher werden W17 (3V3, GND, SDA, SCL) und W20 (D3 → OE) dort angelötet und am PCA9685 gecrimpt, und auch die Dupont-Enden des Displaykabels (W21) werden dort angelötet. Binden Sie diese Drähte nahe an der Platine fest, damit kein Zug die Lötstelle erreicht."
+ },
+ "cd51a1a6d8bd18a8": {
+  "en": "Dupont contacts",
+  "de": "Dupont-Kontakte"
+ },
+ "f58921ea8ccadb67": {
+  "en": "Dupont contacts plug onto 2.54 mm header pins and hold by spring friction only. A heavy or swinging cable can work them loose (general), so tie the bundle near the board and let nothing hang on the contacts. On the robot they are used where they fit: W12 on the Pi (one wire per pin), W17/W20 at the PCA9685, and each servo's orange signal wire, re-crimped into a 1-pin housing on its PCA9685 channel. Where even a housing does not fit, there is another connector: the IMU sits 2.5 mm under the Pi, so W18 is a STEMMA QT cable with its low JST-SH plug.",
+  "de": "Dupont-Kontakte werden auf 2,54-mm-Stiftleisten gesteckt und halten nur durch Federreibung. Ein schweres oder schwingendes Kabel kann sie lockern (allgemein), daher binden Sie das Bündel nahe an der Platine fest und lassen nichts an den Kontakten hängen. Am Roboter werden sie dort verwendet, wo sie passen: W12 am Pi (ein Draht pro Pin), W17/W20 am PCA9685 und der orange Signaldraht jedes Servos, neu gecrimpt in ein 1-Pin-Gehäuse auf seinem PCA9685-Kanal. Wo nicht einmal ein Gehäuse passt, gibt es einen anderen Steckverbinder: Die IMU sitzt 2,5 mm unter dem Pi, daher ist W18 ein STEMMA-QT-Kabel mit seinem flachen JST-SH-Stecker."
+ },
+ "da7beb4dfc17d622": {
+  "en": "XT60 and the contact rule",
+  "de": "XT60 und die Kontaktregel"
+ },
+ "62afa04224e166de": {
+  "en": "The XT60 is the 30 A connector of the battery input, the arming port and the loop key. Describe its halves by **pins** and **sockets**, not \"male/female\". The loop key is a shorted connector, so it must have the same contact type as the pack's own connector: then it cannot mate with the pack ([XT60 contact rule](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery)).",
+  "de": "Der XT60 ist der 30-A-Steckverbinder des Akkueingangs, des Arming-Ports und des Loop-Keys. Beschreiben Sie seine Hälften mit **Stiften** und **Buchsen**, nicht mit „Stecker/Kupplung“. Der Loop-Key ist ein kurzgeschlossener Steckverbinder, daher muss er denselben Kontakttyp wie der eigene Steckverbinder des Akkupacks haben: Dann kann er nicht mit dem Akkupack gesteckt werden ([XT60-Kontaktregel](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery))."
+ },
+ "c77e877b2c7ff015": {
+  "en": "Cut leads to length, don't extend them",
+  "de": "Leitungen auf Länge schneiden, nicht verlängern"
+ },
+ "eaa5ccd9a536dd59": {
+  "en": "Earlier the servos were connected with 300 mm extension leads. Every extension adds a mated three-pin plug and socket per servo: twelve extra connections, 36 extra contacts, each one a candidate for fretting. Each servo now uses only its own 260 mm lead: it runs to a tie, where the red and brown wires are peeled off, cut to length and clamped in the leg's WAGO pair (red into the upper V+ connector, brown into the lower GND; ports hip 1, thigh 2, knee 3), while the orange signal wire is cut to length and re-crimped for its PCA9685 channel. Fewer connectors in a walking robot means fewer intermittent contacts, and a shorter power path ([power](../hardware/power.md)).",
+  "de": "Früher wurden die Servos mit 300-mm-Verlängerungskabeln angeschlossen. Jede Verlängerung fügt pro Servo eine gesteckte dreipolige Stecker-Buchse-Verbindung hinzu: zwölf zusätzliche Verbindungen, 36 zusätzliche Kontakte, jeder ein Kandidat für Reibkorrosion. Jedes Servo verwendet jetzt nur sein eigenes 260-mm-Servokabel: Es läuft zu einem Kabelbinder, wo der rote und der braune Draht abgetrennt, auf Länge geschnitten und im WAGO-Paar des Beins geklemmt werden (Rot in die obere V+-Klemme, Braun in die untere GND; Anschlüsse Hüfte 1, Oberschenkel 2, Knie 3), während der orange Signaldraht auf Länge geschnitten und für seinen PCA9685-Kanal neu gecrimpt wird. Weniger Steckverbinder in einem gehenden Roboter bedeuten weniger zeitweise unterbrochene Kontakte und einen kürzeren Leistungspfad ([Versorgung](../hardware/power.md))."
+ },
+ "ff04c7327523e4e6": {
+  "en": "The **cut list** in the [wiring check](../../verification/wiring.md) gives every wire's routed length and the length to cut:",
+  "de": "Die **Zuschnittliste** in der [Verkabelungsprüfung](../../verification/wiring.md) gibt für jeden Draht die verlegte Länge und die Zuschnittlänge an:"
+ },
+ "117d44fa44577e3c": {
+  "en": "with a termination allowance $t$ per end (WAGO strip 11 mm, solder 6 mm, crimp 3 mm, screw terminal 7 mm). The slack covers dressing and one re-termination. Two examples:",
+  "de": "mit einer Anschlusszugabe $t$ pro Ende (WAGO-Abisolierung 11 mm, Löten 6 mm, Crimpen 3 mm, Schraubklemme 7 mm). Das Spiel deckt das Verlegen und ein erneutes Anschließen ab. Zwei Beispiele:"
+ },
+ "4d5a90848d592b05": {
+  "en": "Ready-made cables cannot be cut, so the gate checks **reach** instead: supplied length ≥ route + terminations + 10 mm. Their excess is folded and tied: 178 mm on the Pi–XIAO USB cable (W14), 124 mm on the camera ribbon (W16), 141 mm on the display cable (W21), 55 mm on the LiDAR USB cable (W15). Servo leads have 12–124 mm to spare before cutting. The front knee leads are the tightest at 12 mm: route them exactly as the manual draws them.",
+  "de": "Fertig konfektionierte Kabel lassen sich nicht kürzen, daher prüft die Prüfung stattdessen die **Reichweite**: gelieferte Länge ≥ Verlegung + Anschlüsse + 10 mm. Ihr Überschuss wird gefaltet und festgebunden: 178 mm beim Pi–XIAO-USB-Kabel (W14), 124 mm beim Kamera-Flachbandkabel (W16), 141 mm beim Displaykabel (W21), 55 mm beim LiDAR-USB-Kabel (W15). Servokabel haben vor dem Kürzen 12–124 mm Reserve. Die vorderen Knieleitungen sind mit 12 mm am knappsten: Verlegen Sie sie genau so, wie die Anleitung sie zeigt."
+ },
+ "9e14e96b4fc93e74": {
+  "en": "How the CAD routes the harness",
+  "de": "Wie das CAD den Kabelbaum verlegt"
+ },
+ "476c14e3f963e032": {
+  "en": "`strido_cad.wiring` treats routing as a path search:",
+  "de": "`strido_cad.wiring` behandelt das Verlegen als Pfadsuche:"
+ },
+ "db625f2b21b9a925": {
+  "en": "**Obstacles.** A voxel grid with 1 mm cells marks every base part, plus every volume a leg part sweeps over its joint limits (the hip in 1° steps, the thigh and calf over a grid of angles). A cable routed through free voxels stays clear of a leg at the sampled joint angles; the gate then re-checks the operating poses against the real meshes.",
+  "de": "**Hindernisse.** Ein Voxelgitter mit 1-mm-Zellen markiert jedes Grundteil sowie jedes Volumen, das ein Beinteil über seine Gelenkgrenzen überstreicht (die Hüfte in 1°-Schritten, Oberschenkel und Unterschenkel über ein Winkelraster). Ein durch freie Voxel verlegtes Kabel bleibt bei den abgetasteten Gelenkwinkeln von einem Bein frei; die Prüfung kontrolliert die Betriebsposen anschließend erneut gegen die echten Meshes."
+ },
+ "ef9e2f91b58e798d": {
+  "en": "**Search.** Between consecutive tie nodes, Dijkstra's shortest-path algorithm finds a path through free voxels. Its cost prefers voxels within 3 mm of a surface, because real cables are tied along structure, not strung through open space.",
+  "de": "**Suche.** Zwischen aufeinanderfolgenden Befestigungspunkten findet Dijkstras Kürzeste-Pfade-Algorithmus einen Pfad durch freie Voxel. Seine Kostenfunktion bevorzugt Voxel innerhalb von 3 mm zu einer Oberfläche, weil echte Kabel entlang der Struktur gebunden und nicht durch freien Raum gespannt werden."
+ },
+ "3282ec12ff1961dc": {
+  "en": "**Shortcut.** The path is straightened only where the straight line stays as close to structure as the searched path did.",
+  "de": "**Abkürzung.** Der Pfad wird nur dort begradigt, wo die gerade Linie ebenso nahe an der Struktur bleibt wie der gesuchte Pfad."
+ },
+ "ce3b05069867141c": {
+  "en": "The result is drawn in the renders, the [3D viewer](../../viewer.md) and the assembly manual, so what you see in the build steps is the routed harness.",
+  "de": "Das Ergebnis wird in den Renderings, der [3D-Ansicht](../../viewer.md) und der Montageanleitung gezeichnet, sodass Sie in den Bauschritten den verlegten Kabelbaum sehen."
+ },
+ "8b88991069991509": {
+  "en": "What the gate proves, and what it does not",
+  "de": "Was die Prüfung beweist und was nicht"
+ },
+ "26a16f9a9f3557fb": {
+  "en": "`python -m strido_verify.wiring` re-checks the routed harness independently of the router:",
+  "de": "`python -m strido_verify.wiring` prüft den verlegten Kabelbaum unabhängig vom Verlegealgorithmus erneut:"
+ },
+ "e377d5da1260b025": {
+  "en": "**Reach:** every ready-made cable covers its route with terminations and 10 mm to spare.",
+  "de": "**Reichweite:** Jedes fertig konfektionierte Kabel deckt seine Verlegung mit Anschlüssen und 10 mm Reserve ab."
+ },
+ "0141c018eacc803e": {
+  "en": "**Stock:** wire per gauge and colour, spiral wrap and ties fit the BOM.",
+  "de": "**Material:** Draht pro Querschnitt und Farbe, Spiralschlauch und Kabelbinder passen zur Stückliste."
+ },
+ "26e457e0db564144": {
+  "en": "**Hip loops:** every loop is at least $1.2\\,d_\\mathrm{max}$.",
+  "de": "**Hüftschlaufen:** Jede Schlaufe ist mindestens $1.2\\,d_\\mathrm{max}$ lang."
+ },
+ "a82fc65b8ed6a297": {
+  "en": "**Ports:** one cable per WAGO entry and per PCA9685 channel.",
+  "de": "**Anschlüsse:** ein Kabel pro WAGO-Eingang und pro PCA9685-Kanal."
+ },
+ "d6386d648196a57f": {
+  "en": "**Clearance:** no conductor passes through a part, and every cable keeps at least 1.0 mm (warn) / 0.3 mm (fail) from every part of another body in every operating pose: stand, crouch, tall, eight trot phases, hips in and out.",
+  "de": "**Freigang:** Kein Leiter führt durch ein Teil, und jedes Kabel hält in jeder Betriebspose mindestens 1,0 mm (warn) / 0,3 mm (fail) Abstand zu jedem Teil eines anderen Körpers: Stehen, Hocken, hoch, acht Trot-Phasen, Hüften innen und außen."
+ },
+ "c70eba0622058aea": {
+  "en": "It does **not** model bend radii (route corners are drawn sharp) or where a hip loop hangs. It also cannot see workmanship: a crimp that pulls out, a cold solder joint, a tie pulled too tight. Those are checked at the bench.",
+  "de": "Sie modelliert **keine** Biegeradien (Ecken der Verlegung werden scharf gezeichnet) und nicht, wo eine Hüftschlaufe hängt. Sie kann auch keine Verarbeitungsqualität erkennen: eine Crimpverbindung, die sich herauszieht, eine kalte Lötstelle, einen zu fest gezogenen Kabelbinder. Das wird am Arbeitstisch geprüft."
+ },
+ "0b615b5e3577740e": {
+  "en": "Build checklist",
+  "de": "Checkliste für den Aufbau"
+ },
+ "5e6cd752f4022127": {
+  "en": "Cut every wire from the cut list; label both ends with its ID.",
+  "de": "Schneiden Sie jeden Draht nach der Zuschnittliste zu; beschriften Sie beide Enden mit seiner ID."
+ },
+ "ff699ece31f6dce7": {
+  "en": "Strip WAGO ends to 11 mm; tug every WAGO entry, crimp and solder joint.",
+  "de": "Isolieren Sie WAGO-Enden auf 11 mm ab; ziehen Sie leicht an jedem WAGO-Eingang, jeder Crimp- und Lötverbindung."
+ },
+ "b61f836c837c66ca": {
+  "en": "Slide heat-shrink on before soldering; shrink it over every soldered power joint.",
+  "de": "Schieben Sie den Schrumpfschlauch vor dem Löten auf; schrumpfen Sie ihn über jede gelötete Leistungsverbindung."
+ },
+ "150e8c7a602547ae": {
+  "en": "Fuses and loop key stay **out** until the wiring is checked ([electronics](../../electronics.md#wiring-harness), build order steps 3–7).",
+  "de": "Sicherungen und Loop-Key bleiben **draußen**, bis die Verkabelung geprüft ist ([Elektronik](../../electronics.md#wiring-harness), Bauschritte 3–7)."
+ },
+ "4fbe850ae707839d": {
+  "en": "Tie each thigh and knee lead at the servo mount plate and at the shoulder frame / bus holder, leaving the loop between the ties (front: 30 mm thigh, 32 mm knee; rear: 22 mm).",
+  "de": "Binden Sie jede Oberschenkel- und Knieleitung an der Servohalterungsplatte und am Schulterrahmen / Bushalter fest und lassen Sie die Schlaufe zwischen den Befestigungspunkten (vorne: 30 mm Oberschenkel, 32 mm Knie; hinten: 22 mm)."
+ },
+ "ba26cb3e7b44fe31": {
+  "en": "Spiral wrap every bundle of three or more cables; ties at the marked points; snug, not crushing.",
+  "de": "Jedes Bündel aus drei oder mehr Kabeln in Spiralschlauch; Kabelbinder an den markierten Punkten; satt, nicht quetschend."
+ },
+ "830a547aaa02d61b": {
+  "en": "Respect bend radii by eye: no 14 AWG lead bent tighter than about 11 mm.",
+  "de": "Achten Sie per Augenmaß auf Biegeradien: keine 14-AWG-Leitung enger als etwa 11 mm gebogen."
+ },
+ "d38fc80ccd25ab23": {
+  "en": "**Move every joint through its full range by hand**, loop key out: hips in and out, thighs and knees from folded to stretched. Watch every loop and bundle: nothing may pull taut, rub or come near a moving part.",
+  "de": "**Bewegen Sie jedes Gelenk von Hand durch seinen gesamten Bereich**, Loop-Key gezogen: Hüften innen und außen, Oberschenkel und Knie von gefaltet bis gestreckt. Beobachten Sie jede Schlaufe und jedes Bündel: Nichts darf sich straff ziehen, scheuern oder einem beweglichen Teil nahekommen."
+ },
+ "807ee14e6bee99b8": {
+  "en": "Continuity-check each cable against the wiring list; measure the resistance between + and − at the battery input (not near 0 Ω) before connecting the pack.",
+  "de": "Prüfen Sie den Durchgang jedes Kabels gegen die Verkabelungsliste; messen Sie den Widerstand zwischen + und − am Akkueingang (nicht nahe 0 Ω), bevor Sie den Akkupack anschließen."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "cee486db14327989": {
+  "en": "Name three ways wiring fails in a walking robot and one design measure against each.",
+  "de": "Nennen Sie drei Arten, wie Verkabelung in einem gehenden Roboter versagt, und je eine konstruktive Maßnahme dagegen."
+ },
+ "b99c1e98707f0561": {
+  "en": "The main fuse is 25 A. Why may no 18 AWG wire sit behind it alone, and how did the redesign fix the old logic tap?",
+  "de": "Die Hauptsicherung hat 25 A. Warum darf kein 18-AWG-Draht allein dahinter liegen, und wie hat die Überarbeitung den alten Logikabgriff behoben?"
+ },
+ "14069153072fec18": {
+  "en": "Estimate the round-trip voltage drop of W06 (18 AWG pair, routed 151 mm) at 10 A.",
+  "de": "Schätzen Sie den Spannungsabfall von W06 (18-AWG-Paar, verlegt 151 mm) für Hin- und Rückleitung bei 10 A."
+ },
+ "6b50cdaab5c27b01": {
+  "en": "A tie on the hip sits at radius $r_p = 10\\,\\mathrm{mm}$ from the hip axis and a body tie at $r_q = 15\\,\\mathrm{mm}$, with no axial offset. Over a full turn, between which distances would $d(\\theta)$ swing? What does that say about where to put ties?",
+  "de": "Ein Befestigungspunkt an der Hüfte sitzt im Radius $r_p = 10\\,\\mathrm{mm}$ von der Hüftachse und ein Befestigungspunkt am Körper bei $r_q = 15\\,\\mathrm{mm}$, ohne axialen Versatz. Zwischen welchen Abständen würde $d(\\theta)$ über eine volle Umdrehung schwanken? Was sagt das darüber, wo Befestigungspunkte sitzen sollten?"
+ },
+ "24f0f25f0a20911a": {
+  "en": "The gate finds a loop's largest tie-to-tie distance is 25 mm. How long must the loop be by the robot's rule, and why is a loop of exactly 25 mm not enough?",
+  "de": "Die Prüfung ermittelt als größten Abstand der Befestigungspunkte einer Schlaufe 25 mm. Wie lang muss die Schlaufe nach der Regel des Roboters sein, und warum reicht eine Schlaufe von genau 25 mm nicht?"
+ },
+ "f92fc0a91363129e": {
+  "en": "Why does a soldered stranded wire break sooner under vibration than a crimped one?",
+  "de": "Warum bricht ein verlöteter Litzendraht unter Vibration früher als ein gecrimpter?"
+ },
+ "34ccef938bfc3c37": {
+  "en": "Why were the servo extensions removed?",
+  "de": "Warum wurden die Servoverlängerungen entfernt?"
+ },
+ "6e5d5cf63df27469": {
+  "en": "Compute the cut length of W09 (routed 256 mm, solder at the fuse holder, screw terminal at the switch).",
+  "de": "Berechnen Sie die Zuschnittlänge von W09 (verlegt 256 mm, Löten am Sicherungshalter, Schraubklemme am Schalter)."
+ },
+ "9ba25b23eafd2905": {
+  "en": "Name two things the wiring gate does not check, and how you check them instead.",
+  "de": "Nennen Sie zwei Dinge, die die Verkabelungsprüfung nicht kontrolliert, und wie Sie sie stattdessen prüfen."
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "b6903dca4779b533": {
+  "en": "Any three of: chafing (route along structure, spiral wrap, clearance check), connector fretting (fewer connectors, tie the cable so nothing hangs on contacts), flex fatigue (loops near the joint axis, no stiff points next to flexing wire), pinch (keep cables out of the volume the legs sweep), heat (size wires for their current, fuse below ampacity).",
+  "de": "Drei beliebige aus: Scheuern (entlang der Struktur verlegen, Spiralschlauch, Freigangsprüfung), Reibkorrosion am Steckverbinder (weniger Steckverbinder, Kabel so binden, dass nichts an Kontakten hängt), Biegeermüdung (Schlaufen nahe der Gelenkachse, keine steifen Stellen neben sich biegendem Draht), Quetschen (Kabel aus dem von den Beinen überstrichenen Volumen heraushalten), Hitze (Drähte für ihren Strom auslegen, unterhalb der Strombelastbarkeit absichern)."
+ },
+ "fef8619bdcd99f06": {
+  "en": "A fuse must be no larger than the ampacity of the thinnest wire behind it; 18 AWG is rated 16 A, so a fault between 16 and 25 A would heat it without blowing the fuse. The tap is now the logic fuse holder's own 14 AWG lead, spliced to W02.",
+  "de": "Eine Sicherung darf nicht größer sein als die Strombelastbarkeit des dünnsten Drahts dahinter; 18 AWG ist für 16 A ausgelegt, daher würde ein Fehler zwischen 16 und 25 A ihn erwärmen, ohne die Sicherung auszulösen. Der Abgriff ist jetzt die eigene 14-AWG-Leitung des Logiksicherungshalters, an W02 angespleißt."
+ },
+ "effa1a7cfa2bd1f7": {
+  "en": "$R = 0.151 \\times 21 \\approx 3.2\\,\\mathrm{m\\Omega}$ per conductor; $\\Delta V \\approx 10 \\times 2 \\times 3.2 \\approx 63\\,\\mathrm{mV}$ (with the 180 mm cut length as an upper bound, about 76 mV).",
+  "de": "$R = 0.151 \\times 21 \\approx 3.2\\,\\mathrm{m\\Omega}$ pro Leiter; $\\Delta V \\approx 10 \\times 2 \\times 3.2 \\approx 63\\,\\mathrm{mV}$ (mit der Zuschnittlänge von 180 mm als Obergrenze etwa 76 mV)."
+ },
+ "65acbc466fbdf5c4": {
+  "en": "$d_\\mathrm{min} = \\lvert 10 - 15 \\rvert = 5\\,\\mathrm{mm}$, $d_\\mathrm{max} = 10 + 15 = 25\\,\\mathrm{mm}$. The swing grows with both radii, so ties close to the axis need a shorter loop.",
+  "de": "$d_\\mathrm{min} = \\lvert 10 - 15 \\rvert = 5\\,\\mathrm{mm}$, $d_\\mathrm{max} = 10 + 15 = 25\\,\\mathrm{mm}$. Die Schwankung wächst mit beiden Radien, daher brauchen Befestigungspunkte nahe der Achse eine kürzere Schlaufe."
+ },
+ "fdac473663a23d89": {
+  "en": "$1.2 \\times 25 = 30\\,\\mathrm{mm}$. At exactly 25 mm the cable is taut at the extreme angle and pulls on the ties and terminations; it also needs length to curve away from each tie.",
+  "de": "$1.2 \\times 25 = 30\\,\\mathrm{mm}$. Bei genau 25 mm ist das Kabel beim extremen Winkel straff und zieht an den Befestigungspunkten und Anschlüssen; es braucht außerdem Länge, um sich von jedem Befestigungspunkt wegzukrümmen."
+ },
+ "cfb3b29b644f0ac7": {
+  "en": "Solder wicks up the strands and makes a solid, stiff section; bending concentrates at its end, where a solid conductor sees much larger strain than individual strands. A crimp leaves the strands flexible and its insulation grip relieves strain.",
+  "de": "Lot zieht in die Litzen und bildet einen massiven, steifen Abschnitt; die Biegung konzentriert sich an seinem Ende, wo ein massiver Leiter eine viel größere Dehnung erfährt als einzelne Litzen. Eine Crimpverbindung lässt die Litzen flexibel, und ihr Isolationscrimp sorgt für Zugentlastung."
+ },
+ "74077f92f696e5fc": {
+  "en": "Each extension added a three-pin plug and socket per servo (36 contacts in total) that could fret loose, plus extra wire and voltage drop. Cutting each servo's own lead to length removes them.",
+  "de": "Jede Verlängerung fügte pro Servo eine dreipolige Stecker-Buchse-Verbindung hinzu (insgesamt 36 Kontakte), die sich durch Reibkorrosion lockern konnte, dazu zusätzlichen Draht und Spannungsabfall. Das Kürzen des eigenen Servokabels jedes Servos entfernt sie."
+ },
+ "a1b424bda8ed502b": {
+  "en": "$256 + 6 + 7 + 0.08 \\times 256 = 289.5 \\Rightarrow 290\\,\\mathrm{mm}$, as in the cut list.",
+  "de": "$256 + 6 + 7 + 0.08 \\times 256 = 289.5 \\Rightarrow 290\\,\\mathrm{mm}$, wie in der Zuschnittliste."
+ },
+ "551eaeaca96b1599": {
+  "en": "Bend radii and where a loop hangs (move every joint through its range by hand and look); workmanship such as crimps, solder joints and tie tension (pull test, inspection, continuity check).",
+  "de": "Biegeradien und wo eine Schlaufe hängt (jedes Gelenk von Hand durch seinen Bereich bewegen und hinsehen); Verarbeitungsqualität wie Crimpverbindungen, Lötstellen und Spannung der Kabelbinder (Zugprobe, Sichtprüfung, Durchgangsprüfung)."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "1b7ec8f9cdcc423d": {
+  "en": "[IPC/WHMA-A-620, Requirements and Acceptance for Cable and Wire Harness Assemblies (table of contents)](https://www.electronics.org/TOC/IPC-WHMA-A-620E_TOC.pdf): the industry workmanship standard for crimps, solder joints, wicking, bundling and ties.",
+  "de": "[IPC/WHMA-A-620, Requirements and Acceptance for Cable and Wire Harness Assemblies (Inhaltsverzeichnis)](https://www.electronics.org/TOC/IPC-WHMA-A-620E_TOC.pdf): der Branchenstandard zur Verarbeitungsqualität für Crimpverbindungen, Lötstellen, Lotdurchtränkung, Bündelung und Kabelbinder."
+ },
+ "4837008351b00c68": {
+  "en": "[NASA-STD-8739.4, Workmanship Standard for Crimping, Interconnecting Cables, Harnesses, and Wiring](https://standards.nasa.gov/sites/default/files/standards/NASA/A/4/nasa-std-87394a_w_change_4_0.pdf): a free, detailed harness workmanship standard.",
+  "de": "[NASA-STD-8739.4, Workmanship Standard for Crimping, Interconnecting Cables, Harnesses, and Wiring](https://standards.nasa.gov/sites/default/files/standards/NASA/A/4/nasa-std-87394a_w_change_4_0.pdf): ein frei verfügbarer, detaillierter Standard zur Verarbeitungsqualität von Kabelbäumen."
+ },
+ "0ff90997c0eccb76": {
+  "en": "[Molex Quality Crimping Handbook](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/commercialcrimpbookpdf/638/63800/TM-638000029-001.pdf): conductor and insulation grip, pull tests, crimp defects.",
+  "de": "[Molex Quality Crimping Handbook](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/commercialcrimpbookpdf/638/63800/TM-638000029-001.pdf): Leiter- und Isolationscrimp, Zugproben, Crimpfehler."
+ },
+ "866027ccbde1a3f7": {
+  "en": "[WAGO 221-415 data sheet](https://wago.priintcloud.com/datasheets/221-415/en): 0.2–4 mm², 32 A, strip length 11 mm.",
+  "de": "[Datenblatt WAGO 221-415](https://wago.priintcloud.com/datasheets/221-415/en): 0,2–4 mm², 32 A, Abisolierlänge 11 mm."
+ },
+ "2687cfda149f8b47": {
+  "en": "[HellermannTyton spiral binding (SBPE)](https://www.hellermanntyton.com/products/protective-tubing-and-spiral-binding/sbpe1.5/161-41001): spiral wrap sizes and temperature range.",
+  "de": "[HellermannTyton Spiralschlauch (SBPE)](https://www.hellermanntyton.com/products/protective-tubing-and-spiral-binding/sbpe1.5/161-41001): Größen und Temperaturbereich des Spiralschlauchs."
+ },
+ "b55dd0bf7e3fedd7": {
+  "en": "[NBS Handbook 100, Copper Wire Tables](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook100.pdf): AWG diameters, areas and resistances.",
+  "de": "[NBS Handbook 100, Copper Wire Tables](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook100.pdf): AWG-Durchmesser, -Flächen und -Widerstände."
+ },
+ "3dcc739f948a363c": {
+  "en": "[PowerStream AWG table](https://www.powerstream.com/Wire_Size.htm): a widely copied chassis-wiring ampacity table (secondary source; the robot's values are deliberately lower).",
+  "de": "[PowerStream AWG-Tabelle](https://www.powerstream.com/Wire_Size.htm): eine vielfach kopierte Tabelle zur Strombelastbarkeit bei Chassisverkabelung (Sekundärquelle; die Werte des Roboters sind bewusst niedriger)."
+ },
+ "28fa11f7bb1afe8b": {
+  "en": "[Raspberry Pi hardware documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html): GPIO header power pins.",
+  "de": "[Raspberry-Pi-Hardwaredokumentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html): Versorgungspins der GPIO-Stiftleiste."
+ },
+ "1853baded0f2196b": {
+  "en": "Robot docs: [electronics, wiring and power](../../electronics.md#wiring-harness), [wiring check and cut list](../../verification/wiring.md), [ADR-011](../../decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad).",
+  "de": "Roboterdokumentation: [Elektronik, Verkabelung und Versorgung](../../electronics.md#wiring-harness), [Verkabelungsprüfung und Zuschnittliste](../../verification/wiring.md), [ADR-011](../../decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad)."
+ },
+ "f0dd5443419ac65c": {
+  "en": "Related in this wiki: [power](../hardware/power.md), [tools and workshop](tools-and-workshop.md), [safety](safety.md), [frames and rotations](../theory/frames-and-rotations.md).",
+  "de": "Verwandt in diesem Wiki: [Versorgung](../hardware/power.md), [Werkzeug und Werkstatt](tools-and-workshop.md), [Sicherheit](safety.md), [Koordinatensysteme und Drehungen](../theory/frames-and-rotations.md)."
+ }
+}

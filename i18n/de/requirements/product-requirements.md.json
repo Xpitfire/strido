@@ -1,0 +1,174 @@
+{
+ "a364c63e480deace": {
+  "en": "Product requirements",
+  "de": "Produktanforderungen"
+ },
+ "9bd35db3211f4ff4": {
+  "en": "**Status:** requirement catalogue for Strido 0.2. The *Status* column states what the repository demonstrates today; evidence tiers are defined in [docs/verification.md](../docs/verification.md). CAD, simulation and native tests are not hardware evidence.",
+  "de": "**Status:** Anforderungskatalog für Strido 0.2. Die Spalte *Status* gibt an, was das Repository heute nachweist; die Nachweisstufen sind in [docs/verification.md](../docs/verification.md) definiert. CAD, Simulation und native Tests sind keine Hardware-Nachweise."
+ },
+ "41cd8b3a608ce6cb": {
+  "en": "Strido is a small, affordable, 3D-printed quadruped that a developer builds at home to develop ROS 2 and learning software that later transfers to a Unitree Go2 at work, and that runs in the NT-X harness. It reuses the proven Yertle legs and frame and adds what a Mini Pupper 4 class robot offers: a face display, a 360° LiDAR, a wide camera and an onboard computer.",
+  "de": "Strido ist ein kleiner, erschwinglicher, 3D-gedruckter Vierbeiner, den ein Entwickler zu Hause baut, um ROS-2- und Lernsoftware zu entwickeln, die später auf einen Unitree Go2 bei der Arbeit übertragen wird, und der im NT-X-Harness läuft. Er übernimmt die bewährten Yertle-Beine und den Rahmen und ergänzt, was ein Roboter der Mini-Pupper-4-Klasse bietet: ein Gesichtsdisplay, ein 360°-LiDAR, eine Weitwinkelkamera und einen Bordcomputer."
+ },
+ "e23e043568998f9b": {
+  "en": "Families",
+  "de": "Bereiche"
+ },
+ "edd2126619e03e91": {
+  "en": "| Family | Scope |",
+  "de": "| Bereich | Umfang |"
+ },
+ "491e065faef7da28": {
+  "en": "| MECH | Mechanical design, fits, motion |",
+  "de": "| MECH | Mechanische Konstruktion, Passungen, Bewegung |"
+ },
+ "396cabe8dc515406": {
+  "en": "| MAKE | Printing, purchasing, assembly documentation |",
+  "de": "| MAKE | Druck, Einkauf, Montagedokumentation |"
+ },
+ "a35d0677fbec89e9": {
+  "en": "| ELEC | Power, wiring, pins |",
+  "de": "| ELEC | Stromversorgung, Verkabelung, Pins |"
+ },
+ "882947fcad05259b": {
+  "en": "| FW | Motion-controller firmware |",
+  "de": "| FW | Firmware der Bewegungssteuerung |"
+ },
+ "4bee46b6e81885a8": {
+  "en": "| SW | Robot software (ROS 2, bench tools) |",
+  "de": "| SW | Robotersoftware (ROS 2, Werkbank-Werkzeuge) |"
+ },
+ "ea584ed970a08970": {
+  "en": "| SIM | Simulation and learning |",
+  "de": "| SIM | Simulation und Lernen |"
+ },
+ "ae39b0333e5c5055": {
+  "en": "| NTX | NT-X harness integration |",
+  "de": "| NTX | NT-X-Harness-Integration |"
+ },
+ "12fdf42e11f085a3": {
+  "en": "| DOC | Documentation site, catalogue, renders |",
+  "de": "| DOC | Dokumentationsseite, Katalog, Renderings |"
+ },
+ "62e2ff56e619f001": {
+  "en": "| ENG | Engineering harness, checks, release |",
+  "de": "| ENG | Engineering-Harness, Prüfungen, Release |"
+ },
+ "e0cdd07f6a270b82": {
+  "en": "Requirements",
+  "de": "Anforderungen"
+ },
+ "80f4f2ff60bfba25": {
+  "en": "| ID | Requirement and observable acceptance | Prio | Status | Evidence |",
+  "de": "| ID | Anforderung und beobachtbare Abnahme | Prio | Status | Nachweis |"
+ },
+ "b10ca86bbecb04ec": {
+  "en": "| MECH-001 | 12 actuated joints (hip abduction, thigh, knee per leg) in Go2 joint naming and order. | MUST | met (Q1) | `models/mujoco/strido.xml`, `hardware/joint_limits.yaml` |",
+  "de": "| MECH-001 | 12 angetriebene Gelenke (Hüftabduktion, Oberschenkel, Knie je Bein) in Go2-Gelenkbenennung und -Reihenfolge. | MUST | erfüllt (Q1) | `models/mujoco/strido.xml`, `hardware/joint_limits.yaml` |"
+ },
+ "0dbabc21241e2899": {
+  "en": "| MECH-002 | No two solids of the assembled robot intersect except designed contacts (threads, seats, press fits), in every reference pose. | MUST | met (Q1) | [interference](../docs/verification/interference.md) |",
+  "de": "| MECH-002 | Keine zwei Volumenkörper des montierten Roboters durchdringen sich außer an vorgesehenen Kontakten (Gewinde, Sitze, Presspassungen), in jeder Referenzpose. | MUST | erfüllt (Q1) | [Durchdringung](../docs/verification/interference.md) |"
+ },
+ "4c39816f754c46bf": {
+  "en": "| MECH-003 | Every screw passes through clearance holes or forms its thread in a pilot of 0.70–0.97 d (printed size), is held by a nut, pilot or threaded part, and engages ≥ 1.0 d; every bearing seat is within −0.15…+0.30 mm of the bearing OD. | MUST | met (Q1) | [fits](../docs/verification/fits.md) |",
+  "de": "| MECH-003 | Jede Schraube führt durch Durchgangsbohrungen oder formt ihr Gewinde in einer Kernbohrung von 0,70–0,97 d (gedruckte Größe), wird von einer Mutter, Kernbohrung oder einem Gewindeteil gehalten und greift ≥ 1,0 d ein; jeder Lagersitz liegt innerhalb −0,15…+0,30 mm des Lageraußendurchmessers. | MUST | erfüllt (Q1) | [Passungen](../docs/verification/fits.md) |"
+ },
+ "a67d6d1291b7b10b": {
+  "en": "| MECH-004 | Parts on different rigid bodies keep ≥ 0.3 mm running clearance in every operating pose (stand/crouch/tall, trot cycle, hip limits). | MUST | met (Q1) | [clearance](../docs/verification/clearance.md) |",
+  "de": "| MECH-004 | Teile auf verschiedenen Starrkörpern halten in jeder Betriebspose (Stehen/Hocken/Hoch, Trot-Zyklus, Hüftgrenzen) ≥ 0,3 mm Bewegungsfreigang. | MUST | erfüllt (Q1) | [Freigang](../docs/verification/clearance.md) |"
+ },
+ "fe6121b3374b4589": {
+  "en": "| MECH-005 | Joint limits come from a collision and linkage sweep (incl. the mirrored partner leg and 0.3 mm clearance) and are enforced identically in firmware, Python and simulation. | MUST | met (Q0/Q1) | `make drift`, `hardware/joint_limits.yaml` |",
+  "de": "| MECH-005 | Gelenkgrenzen stammen aus einem Kollisions- und Koppelgetriebe-Sweep (inkl. des gespiegelten Partnerbeins und 0,3 mm Freigang) und werden in Firmware, Python und Simulation identisch durchgesetzt. | MUST | erfüllt (Q0/Q1) | `make drift`, `hardware/joint_limits.yaml` |"
+ },
+ "9e08950c371bb7ad": {
+  "en": "| MECH-006 | Sensor head: 2\" LCD face, 360° LiDAR with an unobstructed scan plane, wide camera that does not see the robot. | MUST | met (Q1) | [sensors](../docs/verification/sensors.md) |",
+  "de": "| MECH-006 | Sensorkopf: 2\"-LCD-Gesicht, 360°-LiDAR mit freier Scanebene, Weitwinkelkamera, die den Roboter nicht sieht. | MUST | erfüllt (Q1) | [Sensoren](../docs/verification/sensors.md) |"
+ },
+ "52c8f22b7fad173c": {
+  "en": "| MAKE-001 | Every printed part ships as an oriented STL and on 220 × 220 mm 3MF plates that fit a 220 × 220 × 250 mm bed; closed manifold. | MUST | met (Q1) | `hardware/print/` |",
+  "de": "| MAKE-001 | Jedes Druckteil wird als ausgerichtete STL und auf 220 × 220 mm großen 3MF-Druckplatten geliefert, die auf ein 220 × 220 × 250 mm großes Druckbett passen; geschlossen und mannigfaltig. | MUST | erfüllt (Q1) | `hardware/print/` |"
+ },
+ "0592a935fb36f655": {
+  "en": "| MAKE-002 | The BOM covers every purchased part and fastener of the CAD (fasteners + 10 %, ≥ 2 spares) in every shopping strategy; offers cite a vendor, SKU, price and date. | MUST | met (Q1) | `make bom`, [BOM](../docs/bom/README.md) |",
+  "de": "| MAKE-002 | Die Stückliste deckt jedes Kaufteil und Befestigungselement des CAD ab (Befestigungselemente + 10 %, ≥ 2 Reserve) in jeder Einkaufsstrategie; Angebote nennen Händler, SKU, Preis und Datum. | MUST | erfüllt (Q1) | `make bom`, [Stückliste](../docs/bom/README.md) |"
+ },
+ "7008ded9c5d38f9e": {
+  "en": "| MAKE-003 | Shopping plan minimises the delivered cost (shipping thresholds, per-order fees) and offers fewest-shops, EU-only and genuine-board alternatives. | SHOULD | met (Q1) | [shopping list](../docs/bom/shopping_list.md) |",
+  "de": "| MAKE-003 | Der Einkaufsplan minimiert die Lieferkosten (Versandschwellen, Gebühren pro Bestellung) und bietet Alternativen mit möglichst wenigen Shops, nur EU und Original-Boards. | SHOULD | erfüllt (Q1) | [Einkaufsliste](../docs/bom/shopping_list.md) |"
+ },
+ "33ab67b4a644df87": {
+  "en": "| MAKE-004 | IKEA-style assembly: every printed part, purchased part and fastener appears in exactly one step's parts box, with a CAD drawing per step. | MUST | met (Q1) | [assembly](../docs/assembly/README.md) |",
+  "de": "| MAKE-004 | Montage im IKEA-Stil: Jedes Druckteil, Kaufteil und Befestigungselement erscheint in genau einer Teilebox eines Schritts, mit einer CAD-Zeichnung pro Schritt. | MUST | erfüllt (Q1) | [Montage](../docs/assembly/README.md) |"
+ },
+ "a7e555bfff06b44c": {
+  "en": "| MAKE-005 | A4 catalogue & assembly book (PDF): printed and purchased part catalogues, fasteners at 1:1, shopping plan, tools, all steps, wiring, software appendix. | MUST | met (Q1) | [catalogue PDF](../docs/catalog/strido-catalog.pdf) |",
+  "de": "| MAKE-005 | A4-Katalog & Montagebuch (PDF): Kataloge der Druck- und Kaufteile, Befestigungselemente im Maßstab 1:1, Einkaufsplan, Werkzeuge, alle Schritte, Verkabelung, Software-Anhang. | MUST | erfüllt (Q1) | [Katalog-PDF](../docs/catalog/strido-catalog.pdf) |"
+ },
+ "6c51ee58f903cdec": {
+  "en": "| ELEC-001 | Servo current never flows through a logic board; separate fused servo (6.0 V) and logic (5 V) domains with a physical arming key. | MUST | met (design) | [electronics](../docs/electronics.md) |",
+  "de": "| ELEC-001 | Servostrom fließt nie durch eine Logikplatine; getrennte, abgesicherte Servo- (6,0 V) und Logik-Domänen (5 V) mit physischem Loop-Key. | MUST | erfüllt (Design) | [Elektronik](../docs/electronics.md) |"
+ },
+ "0304a76166a18b0e": {
+  "en": "| ELEC-002 | Pins, I²C addresses, servo channels, fuses and wire gauges are machine-checked against the firmware header and the load. | MUST | met (Q0) | [electronics check](../docs/verification/electronics.md) |",
+  "de": "| ELEC-002 | Pins, I²C-Adressen, Servokanäle, Sicherungen und Leitungsquerschnitte werden maschinell gegen den Firmware-Header und die Last geprüft. | MUST | erfüllt (Q0) | [Elektronikprüfung](../docs/verification/electronics.md) |"
+ },
+ "4f505d87208cb931": {
+  "en": "| FW-001 | Command watchdog (hold 200 ms, relax 2 s), latched e-stop via PCA9685 OE, low-battery cut-off, refusal to drive without the power monitor. | MUST | met (Q0 native) | `make test-firmware` |",
+  "de": "| FW-001 | Befehls-Watchdog (Halten 200 ms, Entspannen 2 s), verriegelter Not-Halt über PCA9685 OE, Abschaltung bei niedrigem Akkustand, Fahrverweigerung ohne Power-Monitor. | MUST | erfüllt (Q0 nativ) | `make test-firmware` |"
+ },
+ "38f25e6524f4a54c": {
+  "en": "| FW-002 | Joint ↔ servo mapping is linkage-exact (knee driven through the crank four-bar) and identical to the Python mirror. | MUST | met (Q0) | firmware tests with Python golden values |",
+  "de": "| FW-002 | Die Zuordnung Gelenk ↔ Servo ist koppelgetriebe-exakt (Knie über das Kurbel-Viergelenk angetrieben) und identisch mit dem Python-Spiegel. | MUST | erfüllt (Q0) | Firmware-Tests mit Python-Referenzwerten |"
+ },
+ "848be3900f3de57f": {
+  "en": "| SW-001 | ROS 2 Jazzy bringup with a Go2-style contract: `/cmd_vel`, `/joint_states`, `/imu/data`, `/scan`, `/battery_state`, `/tf`. | MUST | met (Q2 sim) | `make sim-gazebo` |",
+  "de": "| SW-001 | ROS-2-Jazzy-Bringup mit einem Vertrag im Go2-Stil: `/cmd_vel`, `/joint_states`, `/imu/data`, `/scan`, `/battery_state`, `/tf`. | MUST | erfüllt (Q2 Sim) | `make sim-gazebo` |"
+ },
+ "0ff93702220bb04b": {
+  "en": "| SW-002 | Bench CLI to centre, pulse, calibrate and monitor the servos without ROS. | MUST | met (Q0) | `tests/core/test_cli.py` |",
+  "de": "| SW-002 | Werkbank-CLI zum Zentrieren, Pulsen, Kalibrieren und Überwachen der Servos ohne ROS. | MUST | erfüllt (Q0) | `tests/core/test_cli.py` |"
+ },
+ "124bb1788297f4cf": {
+  "en": "| SIM-001 | MuJoCo and Gazebo models generated from the verified CAD (masses, inertias, limits). | MUST | met (Q2) | `make models`, `make sim-walk` |",
+  "de": "| SIM-001 | MuJoCo- und Gazebo-Modelle, generiert aus dem verifizierten CAD (Massen, Trägheiten, Grenzen). | MUST | erfüllt (Q2) | `make models`, `make sim-walk` |"
+ },
+ "3c466cbb3b3095f6": {
+  "en": "| SIM-002 | A velocity-tracking policy trained in simulation runs through the same numpy runtime as on the robot. | SHOULD | partial (sim only) | `make rl-smoke`, `models/policies/ppo-v1` |",
+  "de": "| SIM-002 | Eine in der Simulation trainierte Policy zur Geschwindigkeitsverfolgung läuft über dieselbe numpy-Laufzeit wie auf dem Roboter. | SHOULD | teilweise (nur Sim) | `make rl-smoke`, `models/policies/ppo-v1` |"
+ },
+ "03ef165111af18f3": {
+  "en": "| NTX-001 | The robot appears in the NT-X catalog (robot spec + MJCF + stand skill) without NT-X core changes, and stands in NT-X MuJoCo. | MUST | met (Q2) | `make ntx-smoke` |",
+  "de": "| NTX-001 | Der Roboter erscheint im NT-X-Katalog (Roboterspezifikation + MJCF + Steh-Skill) ohne Änderungen am NT-X-Kern und steht in NT-X MuJoCo. | MUST | erfüllt (Q2) | `make ntx-smoke` |"
+ },
+ "260d0cdf50240ab6": {
+  "en": "| NTX-002 | A `RobotPort` drives the real robot over the MCU protocol with explicit semantics (no odometry, commanded q, latched protective stop). | MUST | met (protocol-level fake MCU) | `make ntx-smoke`, `tests/ntx/` |",
+  "de": "| NTX-002 | Ein `RobotPort` steuert den echten Roboter über das MCU-Protokoll mit expliziter Semantik (keine Odometrie, kommandiertes q, verriegelter Schutzhalt). | MUST | erfüllt (Fake-MCU auf Protokollebene) | `make ntx-smoke`, `tests/ntx/` |"
+ },
+ "0fc26e67f899d78d": {
+  "en": "| NTX-003 | NT-X sessions open the Strido port through the registry. | SHOULD | open: NT-X core dispatches hardware only to Unitree SDK2 | [NT-X integration](../docs/ntx-integration.md) |",
+  "de": "| NTX-003 | NT-X-Sitzungen öffnen den Strido-Port über die Registry. | SHOULD | offen: Der NT-X-Kern leitet Hardware nur an Unitree SDK2 weiter | [NT-X-Integration](../docs/ntx-integration.md) |"
+ },
+ "d665bee6acbbc09f": {
+  "en": "| DOC-001 | Documentation site with the catalogue, an interactive 3D model (explode, step-through, part picking), renders, guides and verification reports. | MUST | met (Q2) | `make docs-build` |",
+  "de": "| DOC-001 | Dokumentationsseite mit Katalog, interaktivem 3D-Modell (Explosion, Schritt-für-Schritt, Teileauswahl), Renderings, Anleitungen und Verifikationsberichten. | MUST | erfüllt (Q2) | `make docs-build` |"
+ },
+ "86275d8e55df5193": {
+  "en": "| DOC-002 | Renders of the complete robot including the display face, LiDAR and camera. | MUST | met | `docs/images/` |",
+  "de": "| DOC-002 | Renderings des vollständigen Roboters einschließlich Display-Gesicht, LiDAR und Kamera. | MUST | erfüllt | `docs/images/` |"
+ },
+ "4bf8e81b2802b6db": {
+  "en": "| ENG-001 | Engineering harness installed (checks profile) with project skills, a hardware MCP server and gates for lint, types, architecture, drift, tests, firmware and CAD verification. | MUST | met (Q0) | `make check-fast`, `make harness-check` |",
+  "de": "| ENG-001 | Engineering-Harness installiert (Profil checks) mit Projekt-Skills, einem Hardware-MCP-Server und Prüfungen für Lint, Typen, Architektur, Drift, Tests, Firmware und CAD-Verifikation. | MUST | erfüllt (Q0) | `make check-fast`, `make harness-check` |"
+ },
+ "06eef336936f5ef7": {
+  "en": "| ENG-002 | One command builds a release zip with the full repository, print plates, the PDF, the walk video and the policy. | MUST | met | `make package` |",
+  "de": "| ENG-002 | Ein Befehl baut ein Release-Zip mit dem vollständigen Repository, den Druckplatten, dem PDF, dem Laufvideo und der Policy. | MUST | erfüllt | `make package` |"
+ },
+ "dd6bdcad85b9c459": {
+  "en": "| HW-001 | A built robot stands, walks under teleoperation, and its measured mass, current and runtime are recorded. | MUST | open: no robot built yet | [TODO](../TODO.md) |",
+  "de": "| HW-001 | Ein gebauter Roboter steht, läuft unter Teleoperation, und seine gemessene Masse, sein Strom und seine Laufzeit werden aufgezeichnet. | MUST | offen: noch kein Roboter gebaut | [TODO](../TODO.md) |"
+ }
+}

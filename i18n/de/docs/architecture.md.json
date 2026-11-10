@@ -1,0 +1,146 @@
+{
+ "cd74053c54816e47": {
+  "en": "Architecture",
+  "de": "Architektur"
+ },
+ "b48a1882daa43d3f": {
+  "en": "**Status:** describes the repository as built (0.2). Layer rules are enforced by import-linter (`make layers`).",
+  "de": "**Status:** beschreibt das Repository im gebauten Zustand (0.2). Die Schichtregeln werden durch import-linter erzwungen (`make layers`)."
+ },
+ "6725e7bbcd28f3a8": {
+  "en": "System",
+  "de": "System"
+ },
+ "5a5a07f4b0835e3f": {
+  "en": "flowchart TB\n  subgraph Robot[\"Robot\"]\n    PI[\"Raspberry Pi 5<br/>ROS 2 Jazzy: gait / policy, mcu_bridge, LiDAR, camera\"] <-->|\"USB CDC · COBS + CRC16\"| MCU[\"XIAO ESP32-S3 firmware<br/>200 Hz servo loop · watchdog · e-stop · cut-off\"]\n    MCU -->|I²C| PCA[\"PCA9685 → 12 servos\"]\n    MCU -->|I²C| SENS[\"LSM6DSOX IMU · INA260\"]\n    MCU -->|SPI| LCD[\"2-inch LCD face\"]\n  end\n  subgraph Dev[\"Development workstation\"]\n    CAD[\"strido-cad<br/>STEP → parts → assembly\"] --> VER[\"strido-verify<br/>interference · ROM · fits · clearance · sensors · electronics\"]\n    CAD --> MOD[\"models: URDF/xacro · MJCF · meshes\"]\n    VER --> PUB[\"strido-publish<br/>print kit · BOM · manual · book PDF · renders · GLB\"]\n    MOD --> SIM[\"strido-sim<br/>MuJoCo walk · Gym env · PPO\"]\n    MOD --> NTX[\"strido-ntx<br/>NT-X catalog assets · serial RobotPort\"]\n    PUB --> SITE[\"docs-site (VitePress, English + German)<br/>catalogue · 3D viewer · guides · AI bar\"]\n    SITE --> AST[\"assistant<br/>chat API · MCP · Cortex Keyring\"]\n    WS[\"strido-workspace<br/>CLI · hardware MCP server\"] --> VER\n  end\n  SIM -->|\"policy.npz\"| PI\n  NTX -->|\"same MCU protocol\"| MCU\n  CORE[\"strido-core<br/>geometry · leg kinematics · gait · protocol · policy runtime\"]\n  CORE -.-> PI\n  CORE -.-> SIM\n  CORE -.-> CAD\n  CORE -.-> NTX",
+  "de": "flowchart TB\n  subgraph Robot[\"Roboter\"]\n    PI[\"Raspberry Pi 5<br/>ROS 2 Jazzy: Gait / Policy, mcu_bridge, LiDAR, Kamera\"] <-->|\"USB CDC · COBS + CRC16\"| MCU[\"XIAO ESP32-S3 Firmware<br/>200-Hz-Servoschleife · Watchdog · Not-Aus · Abschaltung\"]\n    MCU -->|I²C| PCA[\"PCA9685 → 12 Servos\"]\n    MCU -->|I²C| SENS[\"LSM6DSOX IMU · INA260\"]\n    MCU -->|SPI| LCD[\"2-Zoll-LCD-Gesicht\"]\n  end\n  subgraph Dev[\"Entwicklungsrechner\"]\n    CAD[\"strido-cad<br/>STEP → Teile → Baugruppe\"] --> VER[\"strido-verify<br/>Durchdringung · Bewegungsbereich · Passungen · Freigang · Sensoren · Elektronik\"]\n    CAD --> MOD[\"Modelle: URDF/xacro · MJCF · Meshes\"]\n    VER --> PUB[\"strido-publish<br/>Druckpaket · Stückliste · Anleitung · Buch-PDF · Renderings · GLB\"]\n    MOD --> SIM[\"strido-sim<br/>MuJoCo-Gehen · Gym-Umgebung · PPO\"]\n    MOD --> NTX[\"strido-ntx<br/>NT-X-Katalog-Assets · serieller RobotPort\"]\n    PUB --> SITE[\"docs-site (VitePress, Englisch + Deutsch)<br/>Teilekatalog · 3D-Ansicht · Anleitungen · KI-Leiste\"]\n    SITE --> AST[\"assistant<br/>Chat-API · MCP · Cortex Keyring\"]\n    WS[\"strido-workspace<br/>CLI · Hardware-MCP-Server\"] --> VER\n  end\n  SIM -->|\"policy.npz\"| PI\n  NTX -->|\"gleiches MCU-Protokoll\"| MCU\n  CORE[\"strido-core<br/>Geometrie · Beinkinematik · Gait · Protokoll · Policy-Laufzeit\"]\n  CORE -.-> PI\n  CORE -.-> SIM\n  CORE -.-> CAD\n  CORE -.-> NTX"
+ },
+ "ed717cc7aa574ad5": {
+  "en": "Repository layout",
+  "de": "Aufbau des Repositorys"
+ },
+ "7608d94475645b7b": {
+  "en": "| Path | What | Owner of truth |",
+  "de": "| Pfad | Inhalt | Maßgebliche Quelle |"
+ },
+ "d2e9f21d7cdf6fcb": {
+  "en": "| `hardware/` | Tracked hardware data: kinematics, joint limits, fasteners, BOM, electronics, tolerances, contact rules, assembly corrections; the print kit (`print/`) | YAML sources; `print/` and `joint_limits.yaml` are generated |",
+  "de": "| `hardware/` | Versionierte Hardwaredaten: Kinematik, Gelenkgrenzen, Befestigungselemente, Stückliste, Elektronik, Toleranzen, Kontaktregeln, Montagekorrekturen; das Druckpaket (`print/`) | YAML-Quellen; `print/` und `joint_limits.yaml` werden generiert |"
+ },
+ "f569c2f63c86e34f": {
+  "en": "| `packages/strido-core` | Robot runtime library (numpy + pyserial only): runs on the Pi, in ROS 2, simulation and tooling | code |",
+  "de": "| `packages/strido-core` | Laufzeitbibliothek des Roboters (nur numpy + pyserial): läuft auf dem Pi, in ROS 2, in der Simulation und im Tooling | Code |"
+ },
+ "de3e911452b3212e": {
+  "en": "| `packages/strido-cad` | CAD pipeline: STEP registration, kinematics extraction, Strido parts (CadQuery), vendor models, fasteners, posing, code and model generation | code + `hardware/` |",
+  "de": "| `packages/strido-cad` | CAD-Pipeline: STEP-Registrierung, Kinematikextraktion, Strido-Teile (CadQuery), Herstellermodelle, Befestigungselemente, Posen, Code- und Modellgenerierung | Code + `hardware/` |"
+ },
+ "c111c0964876996a": {
+  "en": "| `packages/strido-verify` | Physical verification: interference, range of motion, fits and tolerances, moving clearance, sensor field of view, electronics | code + `hardware/verification/` |",
+  "de": "| `packages/strido-verify` | Physische Verifikation: Durchdringung, Bewegungsbereich, Passungen und Toleranzen, Freigang in Bewegung, Sensorsichtfeld, Elektronik | Code + `hardware/verification/` |"
+ },
+ "7e2c3f211c34ea37": {
+  "en": "| `packages/strido-publish` | BOM optimiser, print kit, assembly manual, catalogue & book PDF, renders, web 3D viewer | code |",
+  "de": "| `packages/strido-publish` | Stücklisten-Optimierer, Druckpaket, Montageanleitung, Katalog- & Buch-PDF, Renderings, Web-3D-Ansicht | Code |"
+ },
+ "280d763af17ec69c": {
+  "en": "| `packages/strido-sim` | MuJoCo walk demo, Gymnasium environment, PPO training/evaluation | code |",
+  "de": "| `packages/strido-sim` | MuJoCo-Gehdemo, Gymnasium-Umgebung, PPO-Training/-Evaluierung | Code |"
+ },
+ "dcf776dd26bbb582": {
+  "en": "| `packages/strido-ntx` | NT-X extension: catalog assets, stand skill, serial `RobotPort` | code; assets generated |",
+  "de": "| `packages/strido-ntx` | NT-X-Erweiterung: Katalog-Assets, Steh-Skill, serieller `RobotPort` | Code; Assets generiert |"
+ },
+ "c7a2b9b4a024f5a9": {
+  "en": "| `src/strido_workspace` | `strido` CLI and the `strido-hardware` MCP server | code |",
+  "de": "| `src/strido_workspace` | `strido`-CLI und der `strido-hardware`-MCP-Server | Code |"
+ },
+ "c56f661fab4e833c": {
+  "en": "| `firmware/strido_esp32s3` | PlatformIO firmware; `lib/strido_core` is portable and natively tested | code; `geometry_generated.h` generated |",
+  "de": "| `firmware/strido_esp32s3` | PlatformIO-Firmware; `lib/strido_core` ist portabel und nativ getestet | Code; `geometry_generated.h` generiert |"
+ },
+ "1b93e261cc29edb1": {
+  "en": "| `ros2/` | ROS 2 packages: description (generated), bringup, control | code |",
+  "de": "| `ros2/` | ROS-2-Pakete: Beschreibung (generiert), Bringup, Steuerung | Code |"
+ },
+ "27ce9e23c2e3d5cd": {
+  "en": "| `models/` | MuJoCo models (generated) and released policies | generated |",
+  "de": "| `models/` | MuJoCo-Modelle (generiert) und veröffentlichte Policies | generiert |"
+ },
+ "6f496849e4e7c774": {
+  "en": "| `docs/`, `requirements/` | Canonical documentation; `docs/{bom,assembly,catalog,viewer,verification}` are generated | Markdown |",
+  "de": "| `docs/`, `requirements/` | Kanonische Dokumentation; `docs/{bom,assembly,catalog,viewer,verification}` werden generiert | Markdown |"
+ },
+ "dbac85bf23151c9f": {
+  "en": "| `docs-site/` | VitePress site; `content/{docs,requirements,de,public/*}` are synced copies (German pages rendered from `i18n/`) | site code |",
+  "de": "| `docs-site/` | VitePress-Seite; `content/{docs,requirements,de,public/*}` sind synchronisierte Kopien (deutsche Seiten aus `i18n/` gerendert) | Seitencode |"
+ },
+ "09524a510a1e2b8d": {
+  "en": "| `i18n/` | German translation catalogues, one per published page and data file (`i18n/README.md`) | translations |",
+  "de": "| `i18n/` | Deutsche Übersetzungskataloge, einer je veröffentlichter Seite und Datendatei (`i18n/README.md`) | Übersetzungen |"
+ },
+ "923fec0fe4b865a0": {
+  "en": "| `assistant/` | Assistant service behind the AI bar: conversations, documentation search, MCP server for agents | code |",
+  "de": "| `assistant/` | Assistenzdienst hinter der KI-Leiste: Unterhaltungen, Doku-Suche, MCP-Server für Agenten | Code |"
+ },
+ "363e08f34729e1f7": {
+  "en": "| `skills/strido/` | Agent Skill for the documentation (also as a ZIP with every page) | Markdown |",
+  "de": "| `skills/strido/` | Agent Skill für die Dokumentation (auch als ZIP mit jeder Seite) | Markdown |"
+ },
+ "52f7784e3c8a6557": {
+  "en": "| `upstream/yertle/` | Unmodified upstream Yertle design and software (reference) | upstream |",
+  "de": "| `upstream/yertle/` | Unverändertes Yertle-Design und -Software von Upstream (Referenz) | Upstream |"
+ },
+ "beb54bf3a85806d0": {
+  "en": "| `.harness/` | Engineering harness submodule (agents, hooks, checks) | upstream harness |",
+  "de": "| `.harness/` | Engineering-Harness-Submodul (Agenten, Hooks, Prüfungen) | Upstream-Harness |"
+ },
+ "b61c1f5dfcff36d8": {
+  "en": "Package layering",
+  "de": "Paketschichtung"
+ },
+ "45063afe1b360a2e": {
+  "en": "flowchart TD\n  WS[\"strido_workspace\"] --> PUB[\"strido_publish\"] --> VER[\"strido_verify\"] --> CAD[\"strido_cad\"] --> CORE[\"strido (core)\"]\n  SIM[\"strido_sim\"] --> CORE\n  NTX[\"strido_ntx\"] --> CORE",
+  "de": "flowchart TD\n  WS[\"strido_workspace\"] --> PUB[\"strido_publish\"] --> VER[\"strido_verify\"] --> CAD[\"strido_cad\"] --> CORE[\"strido (core)\"]\n  SIM[\"strido_sim\"] --> CORE\n  NTX[\"strido_ntx\"] --> CORE"
+ },
+ "c6ad5cf79cbd9a54": {
+  "en": "Contracts (`pyproject.toml`, `[tool.importlinter]`): the core never imports tooling; publish → verify → cad → core is a strict layer order; simulation and the NT-X adapter never pull in the CAD stack (they run where CadQuery is not installed).",
+  "de": "Verträge (`pyproject.toml`, `[tool.importlinter]`): Der Kern importiert niemals Tooling; publish → verify → cad → core ist eine strikte Schichtreihenfolge; Simulation und NT-X-Adapter ziehen niemals den CAD-Stack nach (sie laufen dort, wo CadQuery nicht installiert ist)."
+ },
+ "b52c10f173ffd4ac": {
+  "en": "Data flow of a hardware change",
+  "de": "Datenfluss einer Hardwareänderung"
+ },
+ "71fcb9c23dd7f975": {
+  "en": "sequenceDiagram\n  participant Dev as Developer / agent\n  participant YAML as hardware/*.yaml · parts.py\n  participant CAD as strido_cad\n  participant VER as strido_verify\n  participant PUB as strido_publish\n  Dev->>YAML: change a part, placement, fastener or limit\n  Dev->>CAD: make cad (kinematics, limits, bindings, models)\n  CAD->>VER: make verify (interference, ROM, fits, clearance, sensors)\n  VER-->>Dev: fail → fix geometry, never widen a rule\n  Dev->>PUB: make publish (print kit, BOM, manual, renders, viewer, book)\n  PUB-->>Dev: make bom fails if any CAD part is not purchasable",
+  "de": "sequenceDiagram\n  participant Dev as Entwickler / Agent\n  participant YAML as hardware/*.yaml · parts.py\n  participant CAD as strido_cad\n  participant VER as strido_verify\n  participant PUB as strido_publish\n  Dev->>YAML: Teil, Platzierung, Befestigungselement oder Grenze ändern\n  Dev->>CAD: make cad (Kinematik, Grenzen, Bindungen, Modelle)\n  CAD->>VER: make verify (Durchdringung, Bewegungsbereich, Passungen, Freigang, Sensoren)\n  VER-->>Dev: Fehler → Geometrie korrigieren, niemals eine Regel lockern\n  Dev->>PUB: make publish (Druckpaket, Stückliste, Anleitung, Renderings, 3D-Ansicht, Buch)\n  PUB-->>Dev: make bom schlägt fehl, wenn ein CAD-Teil nicht käuflich ist"
+ },
+ "e5ac2c2b24825157": {
+  "en": "Interfaces",
+  "de": "Schnittstellen"
+ },
+ "a0170ebf10047355": {
+  "en": "| Interface | Definition | Consumers |",
+  "de": "| Schnittstelle | Definition | Nutzer |"
+ },
+ "86c7f9f09f76e50d": {
+  "en": "| MCU wire protocol | `packages/strido-core/src/strido/protocol.py` ⇄ `firmware/.../protocol.h` (COBS + CRC16, 12 × float32 joint targets, 103-byte state payload) | ROS 2 `mcu_bridge`, `strido-cli`, NT-X `StridoSerialPort` |",
+  "de": "| MCU-Leitungsprotokoll | `packages/strido-core/src/strido/protocol.py` ⇄ `firmware/.../protocol.h` (COBS + CRC16, 12 × float32-Gelenksollwerte, 103-Byte-Zustandsnutzlast) | ROS 2 `mcu_bridge`, `strido-cli`, NT-X `StridoSerialPort` |"
+ },
+ "b8d1d933b6fd14f2": {
+  "en": "| Joint convention | Go2 names and signs, order FL, FR, RL, RR × hip/thigh/calf | firmware, ROS 2, MuJoCo, NT-X |",
+  "de": "| Gelenkkonvention | Go2-Namen und -Vorzeichen, Reihenfolge FL, FR, RL, RR × Hüfte/Oberschenkel/Unterschenkel | Firmware, ROS 2, MuJoCo, NT-X |"
+ },
+ "92138840e55b69ba": {
+  "en": "| ROS 2 topics | [software](software.md) | teleop, Nav2, NT-X rosbridge |",
+  "de": "| ROS-2-Topics | [Software](software.md) | teleop, Nav2, NT-X rosbridge |"
+ },
+ "1278947e29a23350": {
+  "en": "| NT-X | `RobotSpec` + MJCF + skill (catalog assets), `RobotPort` (registry adapter `strido-serial`) | NT-X harness and Studio |",
+  "de": "| NT-X | `RobotSpec` + MJCF + Skill (Katalog-Assets), `RobotPort` (Registry-Adapter `strido-serial`) | NT-X-Harness und Studio |"
+ },
+ "5cb53b355d28caf6": {
+  "en": "| Hardware knowledge | `strido-hardware` MCP tools / `strido` CLI | coding agents, humans |",
+  "de": "| Hardwarewissen | `strido-hardware`-MCP-Tools / `strido`-CLI | Coding-Agenten, Menschen |"
+ }
+}

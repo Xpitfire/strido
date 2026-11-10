@@ -1,0 +1,54 @@
+# Inputs for the mass model (strido_cad.models). Every purchased mass has
+# a source; printed masses follow from the CAD volume and the print settings below.
+
+print_settings:
+  material: PETG
+  density_g_cm3: 1.27
+  wall_mm: 1.2          # 3 perimeters x 0.4 mm
+  default_infill: 0.30  # gyroid
+  infill_override:
+    femur_servo_connector: 0.80   # upstream: "high infill"
+    hip_bearing_pin: 1.00
+    foot_spacer: 0.50
+    short_link: 0.50
+    stiff_long_link: 0.50
+
+# kg; source in comments
+purchased_kg:
+  servo_spt5435lv: 0.072            # SPT product page (72 g); Servo Database lists 70 g
+  raspberry_pi_5: 0.073             # 46 g board (raspberrypi.com) + 27 g Active Cooler (estimate, UNVERIFIED)
+  rplidar_c1: 0.110                 # Slamtec C1 datasheet
+  rpi_camera_module_3_wide: 0.004   # Raspberry Pi product brief
+  waveshare_lcd_2inch: 0.014        # estimate from module size incl. studs (UNVERIFIED)
+  adafruit_pca9685: 0.009           # Adafruit 815 (with headers)
+  adafruit_lsm6dsox: 0.0017         # Adafruit 4438
+  adafruit_ina260: 0.002            # Adafruit 4226
+  pololu_d36v50f5: 0.007            # Pololu 4091 specs
+  pololu_power_switch_hp: 0.0027    # Pololu 2813 specs
+  seeed_xiao_esp32s3: 0.003         # Seeed wiki (pre-soldered headers incl., estimate)
+  lipo_2s_5000_gensace: 0.250       # gensace.de GEA502S60X6HGT
+  wago_221_415: 0.004               # estimate (UNVERIFIED)
+  hobbywing_ubec_10a: 0.034         # Hobbywing UBEC-10A user guide (incl. leads)
+  fuse_holder_ato: 0.012            # estimate (UNVERIFIED)
+  rplidar_usb_adapter: 0.006        # estimate (UNVERIFIED)
+  pushbutton_12mm: 0.006            # estimate (UNVERIFIED)
+  xt60h_female: 0.004               # estimate (UNVERIFIED)
+  cable_tie_mount: 0.001            # HellermannTyton MB2APT-A class 13 x 13 mm (estimate)
+
+# Parts whose mass follows from volume x density (steel / aluminium hardware).
+density_kg_m3:
+  steel: 7850.0
+  aluminium: 2700.0
+  bronze: 8800.0
+material_of:
+  bearing_625zz: steel
+  bearing_6805_2rs: steel
+  bearing_633zz: steel
+  sleeve_bearing_3x5x5_pair: bronze
+  servo_disc_horn_25t: aluminium
+  servo_arm_horn_25t: aluminium
+  fastener: steel
+
+# Foam tape, heat-shrink, solder, crimp housings: lumped into the base link. Cables, sleeves and ties are
+# routed in the CAD (hardware/wiring.yaml) and weighed per instance (length x mass per metre).
+consumables_kg: 0.015  # estimate (UNVERIFIED)

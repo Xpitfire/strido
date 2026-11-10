@@ -1,0 +1,102 @@
+# Strido electronics: single machine-readable source for pins, buses, channels, power and wiring.
+# Checked by `python -m strido_verify.electronics` (make drift): the firmware pin header
+# (firmware/strido_esp32s3/src/board_config.h) must match in both directions (every header
+# constant is listed here), addresses and pins must be unique, and every wire, fuse and
+# converter must carry its load. Writes docs/verification/electronics.md.
+#
+# Units: A, V, W, mm. Ratings cite the datasheet or vendor page in docs/bom/sources.md.
+
+# Header constants that are timing, not wiring; listed so the header has no unchecked constant.
+firmware_timing_constants: [kControlPeriodUs, kStatePeriodMs, kUsbBaud]
+
+controller:
+  board: Seeed XIAO ESP32-S3
+  # XIAO pad -> ESP32-S3 GPIO (Seeed wiki pinout); strapping pins must not be driven during boot
+  pads: {D0: 1, D1: 2, D2: 3, D3: 4, D4: 5, D5: 6, D6: 43, D7: 44, D8: 7, D9: 8, D10: 9}
+  strapping_gpio: [0, 3, 45, 46]
+  onboard_led: {gpio: 21, constant: kStatusLed}  # user LED on the module, not on a pad
+  pins:
+    # function            pad   firmware constant      net / note
+    - {function: lcd_cs,        pad: D0, constant: kLcdCs,            to: "LCD CS"}
+    - {function: lcd_rst,       pad: D1, constant: kLcdRst,           to: "LCD RST"}
+    - {function: lcd_backlight, pad: D2, constant: kLcdBacklight,     to: "LCD BL", note: "strapping pin: driven only after boot"}
+    - {function: servo_oe_n,    pad: D3, constant: kServoOutputEnableN, to: "PCA9685 OE", note: "active low; 2.2 kΩ pull-up to VCC keeps outputs off in reset"}
+    - {function: i2c_sda,       pad: D4, constant: kSda,              to: "I²C SDA"}
+    - {function: i2c_scl,       pad: D5, constant: kScl,              to: "I²C SCL"}
+    - {function: lcd_sck,       pad: D8, constant: kLcdSck,           to: "LCD CLK"}
+    - {function: lcd_dc,        pad: D9, constant: kLcdDc,            to: "LCD DC"}
+    - {function: lcd_mosi,      pad: D10, constant: kLcdMosi,         to: "LCD DIN"}
+
+i2c:
+  frequency_hz: 400000
+  firmware_constant: kI2cHz
+  devices:
+    - {device: PCA9685 servo driver, address: 0x40, constant: kPcaAddress, also_answers: [0x70], note: "0x70 = all-call"}
+    - {device: LSM6DSOX IMU, address: 0x6A, constant: kImuAddress}
+    - {device: INA260 power monitor, address: 0x41, constant: kPowerMonitorAddress, note: "bridge the A0 jumper (default 0x40 collides with the PCA9685)"}
+
+servos:
+  model: SPT5435LV-180W
+  frequency_hz: 200
+  frequency_constant: kServoFrequencyHz
+  max_frequency_hz: 330
+  pulse_us: [500, 2500]
+  # PCA9685 channel per joint, Go2 order (FL, FR, RL, RR) x (hip, thigh, calf); firmware kServoChannel
+  channels:
+    FL: {hip: 15, thigh: 11, calf: 7}
+    FR: {hip: 14, thigh: 10, calf: 6}
+    RL: {hip: 13, thigh: 9, calf: 5}
+    RR: {hip: 12, thigh: 8, calf: 4}
+  stall_current_a: 3.5
+  standing_current_a: 0.42   # [ESTIMATE] 5 A / 12 servos (MuJoCo standing torques)
+  trotting_current_a: 0.70   # [ESTIMATE] 50 W / 6 V / 12
+
+power:
+  pack: {chemistry: LiPo 2S, nominal_v: 7.4, full_v: 8.4, empty_v: 6.4, capacity_mah: 5000, max_discharge_a: 300}  # 60C continuous (Gens ace GEA502S60X6HGT; 100C burst)
+  converters:
+    - {id: ubec_front, part: Hobbywing UBEC-10A, output_v: 6.0, continuous_a: 10.0, peak_a: 15.0, feeds: [FL, FR]}
+    - {id: ubec_rear, part: Hobbywing UBEC-10A, output_v: 6.0, continuous_a: 10.0, peak_a: 15.0, feeds: [RL, RR]}
+    - {id: logic_5v, part: Pololu D36V50F5, output_v: 5.0, continuous_a: 5.5, peak_a: 5.5}
+  switch: {part: Pololu 2813 Big Pushbutton Power Switch HP, continuous_a: 6.0}
+  monitor: {part: INA260, max_a: 15.0, max_v: 36.0}
+  fuses:
+    # protects: cables of hardware/wiring.yaml downstream of the fuse (W01, pack to fuse, is unfused like the pack lead)
+    - {id: main, rating_a: 25.0, protects: [W02, W03, W04, W04/front, W04/rear]}
+    - {id: logic, rating_a: 7.5, protects: [W09, W10, W11, W24, W04/logic]}  # W24, W04/logic: logic ground return (normal current)
+  logic_loads:
+    - {load: Raspberry Pi 5 + Active Cooler, typical_w: 7.0, peak_w: 12.0}
+    - {load: RPLIDAR C1, typical_w: 1.2, peak_w: 1.5}
+    - {load: Camera Module 3 Wide, typical_w: 0.5, peak_w: 0.8}
+    - {load: XIAO ESP32-S3 + LCD + IMU + PCA9685 logic, typical_w: 1.0, peak_w: 1.5}
+  converter_efficiency: 0.9
+
+# Copper ampacity used for the wire check: chassis wiring in free air, PVC/silicone, short runs
+# (conservative values below the common chassis-wiring tables).
+wire_ampacity_a: {"14 AWG": 32.0, "18 AWG": 16.0, "20 AWG": 11.0, "22 AWG": 7.0}
+
+# Voltage domains: every device's supply and signal levels must sit inside its rated range over the
+# whole rail range (strido_verify.electronics). Rated ranges cite the vendor page/datasheet in
+# docs/bom/sources.md; [ESTIMATE] marks values without a datasheet figure.
+rails:
+  pack:      {nominal_v: 7.4, min_v: 6.0, max_v: 8.4, note: "2S LiPo, 3.0-4.2 V/cell (the logic branch keeps running below the 6.4 V servo cut-off)"}
+  servo_6v:  {nominal_v: 6.0, min_v: 5.4, max_v: 6.0, note: "UBEC 6.0 V setting; accept a unit only if it measures 5.8-6.0 V unloaded; 5.4 V = [ESTIMATE] buck dropout at an empty pack and 10 A"}
+  logic_5v:  {nominal_v: 5.0, min_v: 4.8, max_v: 5.2, note: "D36V50F5, 5 V +/- 4 %"}
+  logic_3v3: {nominal_v: 3.3, min_v: 3.2, max_v: 3.4, note: "XIAO ESP32-S3 3V3 regulator [ESTIMATE +/- 3 %]"}
+supplies:
+  - {device: Hobbywing UBEC-10A input,   rail: pack,      rated_v: [6.0, 25.2], source: "2-6S LiPo at 3.0-4.2 V per cell (Hobbywing UBEC-10A V2-Car manual: input 2-6S)"}
+  - {device: Pololu 2813 power switch,    rail: pack,      rated_v: [4.5, 40.0], source: "Pololu product page"}
+  - {device: INA260 bus input (VIN+/-),   rail: pack,      rated_v: [0.0, 36.0], source: "TI INA260 datasheet"}
+  - {device: Pololu D36V50F5 input,       rail: pack,      rated_v: [5.5, 50.0], source: "Pololu product page"}
+  - {device: SPT5435LV servo V+,          rail: servo_6v,  rated_v: [4.8, 6.0],  source: "SPT spec page (voltage range 4.8/6.0 V)"}
+  - {device: Raspberry Pi 5 (GPIO 5 V),   rail: logic_5v,  rated_v: [4.75, 5.25], source: "[ESTIMATE] 5 V +/- 5 %; undervoltage flag below 4.63 V"}
+  - {device: XIAO ESP32-S3 (USB from Pi), rail: logic_5v,  rated_v: [4.75, 5.25], source: "USB 2.0 VBUS range"}
+  - {device: RPLIDAR C1 (USB from Pi),    rail: logic_5v,  rated_v: [4.75, 5.25], source: "USB 2.0 VBUS range [ESTIMATE: C1 datasheet states 5 V]"}
+  - {device: PCA9685 VCC,                 rail: logic_3v3, rated_v: [2.3, 5.5],  source: "NXP PCA9685 datasheet"}
+  - {device: LSM6DSOX breakout VIN,       rail: logic_3v3, rated_v: [3.0, 5.0],  source: "Adafruit 4438 (3-5 V)"}
+  - {device: INA260 VS,                   rail: logic_3v3, rated_v: [2.7, 5.5],  source: "TI INA260 datasheet"}
+  - {device: Waveshare 2inch LCD VCC,     rail: logic_3v3, rated_v: [3.3, 5.0],  source: "Waveshare wiki (3.3 V / 5 V)"}
+signals:
+  - {signal: servo PWM,  driver: "PCA9685 outputs (VCC 3.3 V)", level_rail: logic_3v3, receiver: SPT5435LV signal input, accepts_v: [3.3, 5.0], source: "SPT spec page (PWM voltage 3.3-5.0 V)"}
+  - {signal: I²C,        driver: "XIAO ESP32-S3, pull-ups to 3.3 V", level_rail: logic_3v3, receiver: "PCA9685, LSM6DSOX, INA260", accepts_v: [3.0, 5.0], source: "overlap of the three VCC ranges (PCA9685 2.3-5.5, LSM6DSOX breakout 3-5, INA260 2.7-5.5 V)"}
+  - {signal: LCD SPI,    driver: XIAO ESP32-S3 GPIO, level_rail: logic_3v3, receiver: Waveshare 2inch LCD, accepts_v: [3.3, 5.0], source: "Waveshare wiki"}
+  - {signal: servo OE,   driver: XIAO ESP32-S3 GPIO, level_rail: logic_3v3, receiver: PCA9685 OE, accepts_v: [2.3, 5.5], source: "NXP PCA9685 datasheet (VCC range)"}

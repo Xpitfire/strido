@@ -1,0 +1,161 @@
+[project]
+name = "strido-workspace"
+version = "0.2.0"
+description = "Strido development workspace: umbrella CLI, hardware knowledge MCP server and the cross-package checks"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "strido-core",
+    "strido-cad",
+    "strido-verify",
+    "strido-sim",
+    "strido-publish",
+    "strido-ntx",
+    "mcp>=1.20,<2",
+    "pyyaml==6.0.3",
+]
+
+[project.scripts]
+strido = "strido_workspace.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest==9.2.0",
+    "pytest-cov>=6",
+    "hypothesis>=6.100",
+    "ruff==0.17.3",
+    "mypy>=1.15",
+    "import-linter>=2.1",
+    "types-pyyaml",
+]
+# PPO training (`make rl-smoke`, `make rl-train`): PyTorch is large, so it is opt-in (`uv sync --group rl`).
+rl = ["strido-sim[rl]"]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+strido-core = { workspace = true }
+strido-cad = { workspace = true }
+strido-verify = { workspace = true }
+strido-sim = { workspace = true }
+strido-publish = { workspace = true }
+strido-ntx = { workspace = true }
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strido_workspace"]
+
+# ---------------------------------------------------------------- tests
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config --import-mode=importlib"
+markers = [
+    "cad: needs the CAD cache (build/cad, minutes on a cold cache); run by `make test-cad`",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["strido", "strido_ntx", "strido_workspace"]
+# Exercised outside this test process: inside the NT-X environment (`make ntx-smoke`), over stdio
+# (`make mcp-smoke`) or as generators checked by `make drift`.
+omit = [
+    "*/strido/geometry.py",
+    "*/strido_ntx/serial_port.py",
+    "*/strido_ntx/plugin.py",
+    "*/strido_ntx/smoke.py",
+    "*/strido_ntx/smoke_inner.py",
+    "*/strido_ntx/build_assets.py",
+    "*/strido_workspace/mcp_server.py",
+    "*/strido_workspace/mcp_smoke.py",
+]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true
+
+# ---------------------------------------------------------------- lint
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+extend-exclude = [".harness", "upstream", "docs-site", "ros2/*/build", "build", "dist", "packages/strido-core/src/strido/geometry.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "PERF", "N"]
+ignore = [
+    "E501",    # long table/data lines are kept readable; the formatter wraps code
+    "N802",    # ROS/MuJoCo callback names
+    "N803",    # matrix argument names (R, T) follow the maths
+    "N806",
+    "RUF001",  # unicode in user-facing strings (×, °, µ) is intended
+    "RUF002",
+    "RUF003",
+    "PERF401", # explicit append loops build CAD instance lists more readably than comprehensions
+    "B905",    # zip over fixed-size joint/leg tuples; lengths are asserted where they can differ
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["strido", "strido_cad", "strido_verify", "strido_sim", "strido_publish", "strido_ntx", "strido_workspace"]
+
+[tool.ruff.lint.per-file-ignores]
+"packages/strido-publish/src/strido_publish/blender/*.py" = ["I"]  # runs inside Blender (bpy)
+
+# ---------------------------------------------------------------- types
+[tool.mypy]
+python_version = "3.12"
+explicit_package_bases = true
+mypy_path = [
+    "packages/strido-core/src",
+    "packages/strido-cad/src",
+    "packages/strido-verify/src",
+    "packages/strido-sim/src",
+    "packages/strido-publish/src",
+    "packages/strido-ntx/src",
+    "src",
+]
+files = [
+    "packages/strido-core/src",
+    "packages/strido-ntx/src",
+    "src",
+]
+strict = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+# ntx is the host environment of strido_ntx (not installed here); the others ship no type information
+module = ["serial", "serial.*", "mujoco", "mujoco.*", "trimesh", "trimesh.*", "mcp", "mcp.*", "ntx", "ntx.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# numpy arithmetic is typed as Any; returning it from an annotated ndarray function is expected here
+module = ["strido.leg", "strido.policy", "strido.gait"]
+warn_return_any = false
+
+# ---------------------------------------------------------------- architecture
+[tool.importlinter]
+root_packages = ["strido", "strido_cad", "strido_verify", "strido_sim", "strido_publish", "strido_ntx", "strido_workspace"]
+
+[[tool.importlinter.contracts]]
+name = "Robot runtime stays independent of the development tooling"
+type = "forbidden"
+source_modules = ["strido"]
+forbidden_modules = ["strido_cad", "strido_verify", "strido_sim", "strido_publish", "strido_ntx", "strido_workspace"]
+
+[[tool.importlinter.contracts]]
+name = "Tooling layers: publish -> verify -> cad -> core"
+type = "layers"
+layers = ["strido_workspace", "strido_publish", "strido_verify", "strido_cad", "strido"]
+
+[[tool.importlinter.contracts]]
+name = "Simulation and NT-X adapter never pull in the CAD stack"
+type = "forbidden"
+source_modules = ["strido_sim", "strido_ntx"]
+forbidden_modules = ["strido_cad", "strido_verify", "strido_publish", "strido_workspace"]

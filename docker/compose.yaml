@@ -1,0 +1,30 @@
+name: strido
+
+services:
+  ros:
+    build:
+      context: ..
+      dockerfile: docker/ros2/Dockerfile
+    image: strido-ros:jazzy
+    network_mode: host
+    ipc: host
+    environment:
+      ROS_DOMAIN_ID: "${ROS_DOMAIN_ID:-42}"
+
+  # Headless Gazebo walk test (no display needed)
+  sim-smoke:
+    image: strido-ros:jazzy
+    command: ["/sim_smoke.sh"]
+
+  # On the robot (Raspberry Pi 5): MCU bridge, gait, LiDAR (camera needs the Raspberry Pi
+  # libcamera fork, see docs/software.md)
+  robot:
+    image: strido-ros:jazzy
+    network_mode: host
+    ipc: host
+    privileged: true
+    volumes:
+      - /dev:/dev
+    environment:
+      ROS_DOMAIN_ID: "${ROS_DOMAIN_ID:-42}"
+    command: ["ros2", "launch", "strido_bringup", "robot.launch.py"]

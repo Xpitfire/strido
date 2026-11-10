@@ -1,0 +1,21 @@
+# 2026-10-30T21:01Z make test
+codegen --check: no drift (exit 0)
+27 passed in 1.45s
+test/test_core/test_main.cpp:194: test_linkage_matches_python_model	[PASSED]
+test/test_core/test_main.cpp:195: test_linkage_round_trip_over_the_workspace	[PASSED]
+test/test_core/test_main.cpp:196: test_linkage_rejects_unreachable_crank	[PASSED]
+test/test_core/test_main.cpp:197: test_crc_matches_ccitt_false_check_value	[PASSED]
+test/test_core/test_main.cpp:198: test_joint_command_frame_matches_python_bytes	[PASSED]
+test/test_core/test_main.cpp:199: test_frame_reader_decodes_a_stream_and_drops_corruption	[PASSED]
+test/test_core/test_main.cpp:200: test_pulse_mapping_and_window	[PASSED]
+test/test_core/test_main.cpp:201: test_actuator_clamp_respects_generated_limits	[PASSED]
+test/test_core/test_main.cpp:202: test_watchdog_holds_then_relaxes	[PASSED]
+test/test_core/test_main.cpp:203: test_estop_latches_until_released_and_new_command	[PASSED]
+test/test_core/test_main.cpp:204: test_battery_cutoff_with_hysteresis	[PASSED]
+test/test_core/test_main.cpp:205: test_no_power_monitor_refuses_to_drive	[PASSED]
+test/test_core/test_main.cpp:206: test_calibration_pulses_allowed_without_power_monitor	[PASSED]
+test/test_core/test_main.cpp:207: test_non_finite_joint_command_is_rejected	[PASSED]
+test/test_core/test_main.cpp:208: test_rate_limit_caps_step	[PASSED]
+----------------- native:test_core [PASSED] Took 0.39 seconds -----------------
+native         test_core  PASSED    00:00:00.394
+================= 15 test cases: 15 succeeded in 00:00:00.394 =================

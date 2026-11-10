@@ -1,0 +1,1609 @@
+{
+ "generated_by": "strido_publish.book",
+ "parts": [
+  {
+   "id": "arming_port_bezel",
+   "kind": "printed",
+   "title": "Arming port bezel",
+   "qty": 1,
+   "steps": [
+    19
+   ],
+   "image": "/parts/arming_port_bezel.png",
+   "bbox_mm": [
+    26.0,
+    26.0,
+    4.5
+   ],
+   "file": "hardware/print/stl/arming_port_bezel.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 1.1,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "arming_port_ring",
+   "kind": "printed",
+   "title": "Arming port ring",
+   "qty": 1,
+   "steps": [
+    19
+   ],
+   "image": "/parts/arming_port_ring.png",
+   "bbox_mm": [
+    22.0,
+    22.0,
+    3.0
+   ],
+   "file": "hardware/print/stl/arming_port_ring.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 0.6,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "back_shell_button",
+   "kind": "printed",
+   "title": "Back shell button",
+   "qty": 1,
+   "steps": [
+    19
+   ],
+   "image": "/parts/back_shell_button.png",
+   "bbox_mm": [
+    74.2,
+    114.1,
+    68.9
+   ],
+   "file": "hardware/print/stl/back_shell_button.stl",
+   "colour": "secondary (lime)",
+   "supports": false,
+   "volume_cm3": 41.8,
+   "source": "Strido (modified upstream back_shell)",
+   "note": "upstream Back_Shell with the D11.5 hole opened to D12.2"
+  },
+  {
+   "id": "bottom_shell",
+   "kind": "printed",
+   "title": "Bottom shell",
+   "qty": 1,
+   "steps": [
+    22
+   ],
+   "image": "/parts/bottom_shell.png",
+   "bbox_mm": [
+    114.0,
+    207.5,
+    42.0
+   ],
+   "file": "hardware/print/stl/bottom_shell.stl",
+   "colour": "secondary (lime)",
+   "supports": true,
+   "volume_cm3": 53.1,
+   "source": "upstream STL",
+   "note": "published orientation; resting it on its -Y face lowers overhang to 1 %"
+  },
+  {
+   "id": "camera_mount_base",
+   "kind": "printed",
+   "title": "Camera mount base",
+   "qty": 1,
+   "steps": [
+    18
+   ],
+   "image": "/parts/camera_mount_base.png",
+   "bbox_mm": [
+    40.0,
+    28.0,
+    19.5
+   ],
+   "file": "hardware/print/stl/camera_mount_base.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 4.6,
+   "source": "Strido (new)",
+   "note": "print standing on its base; the M3 pivot bore prints horizontal (a 3.4 mm drill clears it if tight)"
+  },
+  {
+   "id": "camera_tilt_plate",
+   "kind": "printed",
+   "title": "Camera tilt plate",
+   "qty": 1,
+   "steps": [
+    18
+   ],
+   "image": "/parts/camera_tilt_plate.png",
+   "bbox_mm": [
+    27.3,
+    29.6,
+    18.9
+   ],
+   "file": "hardware/print/stl/camera_tilt_plate.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 4.2,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "display_bracket",
+   "kind": "printed",
+   "title": "Display bracket",
+   "qty": 1,
+   "steps": [
+    17
+   ],
+   "image": "/parts/display_bracket.png",
+   "bbox_mm": [
+    40.0,
+    83.0,
+    3.0
+   ],
+   "file": "hardware/print/stl/display_bracket.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 8.9,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "electronics_deck",
+   "kind": "printed",
+   "title": "Electronics deck",
+   "qty": 1,
+   "steps": [
+    1
+   ],
+   "image": "/parts/electronics_deck.png",
+   "bbox_mm": [
+    106.5,
+    150.0,
+    5.0
+   ],
+   "file": "hardware/print/stl/electronics_deck.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 47.9,
+   "source": "Strido (modified upstream electronics_mounting_plate)",
+   "note": "upstream plate + IMU pocket and stand-off holes for the regulator and INA260; print top face down with supports (the IMU pocket floor is an 18 mm bridge the slicer flags without them)"
+  },
+  {
+   "id": "femur",
+   "kind": "printed",
+   "title": "Femur",
+   "qty": 4,
+   "steps": [
+    9
+   ],
+   "image": "/parts/femur.png",
+   "bbox_mm": [
+    26.0,
+    151.0,
+    14.8
+   ],
+   "file": "hardware/print/stl/femur.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 33.6,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "femur_servo_connector",
+   "kind": "printed",
+   "title": "Femur servo connector",
+   "qty": 4,
+   "steps": [
+    9
+   ],
+   "image": "/parts/femur_servo_connector.png",
+   "bbox_mm": [
+    28.0,
+    28.0,
+    6.3
+   ],
+   "file": "hardware/print/stl/femur_servo_connector.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 1.7,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "foot_spacer",
+   "kind": "printed",
+   "title": "Foot spacer",
+   "qty": 4,
+   "steps": [
+    11
+   ],
+   "image": "/parts/foot_spacer.png",
+   "bbox_mm": [
+    22.1,
+    23.7,
+    12.0
+   ],
+   "file": "hardware/print/stl/foot_spacer.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 1.2,
+   "source": "upstream STEP (no upstream STL published)",
+   "note": ""
+  },
+  {
+   "id": "front_shell_display",
+   "kind": "printed",
+   "title": "Front shell display",
+   "qty": 1,
+   "steps": [
+    17
+   ],
+   "image": "/parts/front_shell_display.png",
+   "bbox_mm": [
+    74.1,
+    114.0,
+    50.3
+   ],
+   "file": "hardware/print/stl/front_shell_display.stl",
+   "colour": "secondary (lime)",
+   "supports": false,
+   "volume_cm3": 28.4,
+   "source": "Strido (modified upstream front_shell)",
+   "note": "upstream Front_Shell + 43x33 display window, 2 display bosses, camera ribbon slot"
+  },
+  {
+   "id": "hip_bearing_pin",
+   "kind": "printed",
+   "title": "Hip bearing pin",
+   "qty": 4,
+   "steps": [
+    8
+   ],
+   "image": "/parts/hip_bearing_pin.png",
+   "bbox_mm": [
+    5.0,
+    5.0,
+    5.0
+   ],
+   "file": "hardware/print/stl/hip_bearing_pin.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 0.1,
+   "source": "upstream STEP (no upstream STL published)",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "inner_shoulder_frame",
+   "kind": "printed",
+   "title": "Inner shoulder frame",
+   "qty": 2,
+   "steps": [
+    2
+   ],
+   "image": "/parts/inner_shoulder_frame.png",
+   "bbox_mm": [
+    110.0,
+    70.0,
+    5.0
+   ],
+   "file": "hardware/print/stl/inner_shoulder_frame.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 17.7,
+   "source": "upstream STL",
+   "note": ""
+  },
+  {
+   "id": "inner_tibia",
+   "kind": "printed",
+   "title": "Inner tibia",
+   "qty": 4,
+   "steps": [
+    11
+   ],
+   "image": "/parts/inner_tibia.png",
+   "bbox_mm": [
+    134.8,
+    104.2,
+    14.4
+   ],
+   "file": "hardware/print/stl/inner_tibia.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.2,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang; 1 hole step cut for bridging (hole overhang trick); block supports in the bearing bore so the step bridges"
+  },
+  {
+   "id": "left_servo_mount",
+   "kind": "printed",
+   "title": "Left servo mount",
+   "qty": 1,
+   "steps": [
+    8
+   ],
+   "image": "/parts/left_servo_mount.png",
+   "bbox_mm": [
+    56.4,
+    52.0,
+    19.0
+   ],
+   "file": "hardware/print/stl/left_servo_mount.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.5,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "left_servo_mount_fl",
+   "kind": "printed",
+   "title": "Left servo mount fl",
+   "qty": 1,
+   "steps": [
+    8
+   ],
+   "image": "/parts/left_servo_mount_fl.png",
+   "bbox_mm": [
+    56.4,
+    52.0,
+    19.0
+   ],
+   "file": "hardware/print/stl/left_servo_mount_fl.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.5,
+   "source": "Strido (modified upstream left_servo_mount)",
+   "note": "upstream left_servo_mount + Ø2.5 mm hip pivot pilot for the FL leg; re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "left_shoulder",
+   "kind": "printed",
+   "title": "Left shoulder",
+   "qty": 2,
+   "steps": [
+    10
+   ],
+   "image": "/parts/left_shoulder.png",
+   "bbox_mm": [
+    50.4,
+    55.3,
+    26.0
+   ],
+   "file": "hardware/print/stl/left_shoulder.stl",
+   "colour": "secondary (lime)",
+   "supports": true,
+   "volume_cm3": 12.8,
+   "source": "upstream STL",
+   "note": ""
+  },
+  {
+   "id": "lidar_pedestal",
+   "kind": "printed",
+   "title": "Lidar pedestal",
+   "qty": 1,
+   "steps": [
+    21
+   ],
+   "image": "/parts/lidar_pedestal.png",
+   "bbox_mm": [
+    56.0,
+    56.0,
+    14.0
+   ],
+   "file": "hardware/print/stl/lidar_pedestal.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 18.1,
+   "source": "Strido (new)",
+   "note": "print upside down (top plate on the bed)"
+  },
+  {
+   "id": "lower_shoulder_frame_front",
+   "kind": "printed",
+   "title": "Lower shoulder frame front",
+   "qty": 1,
+   "steps": [
+    4
+   ],
+   "image": "/parts/lower_shoulder_frame_front.png",
+   "bbox_mm": [
+    20.0,
+    70.0,
+    12.0
+   ],
+   "file": "hardware/print/stl/lower_shoulder_frame_front.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 13.4,
+   "source": "Strido (modified upstream lower_shoulder_frame)",
+   "note": "upstream Lower_Shoulder_Frame + one M3 pilot hole for the servo-bus holder"
+  },
+  {
+   "id": "lower_shoulder_frame_rear",
+   "kind": "printed",
+   "title": "Lower shoulder frame rear",
+   "qty": 1,
+   "steps": [
+    4
+   ],
+   "image": "/parts/lower_shoulder_frame_rear.png",
+   "bbox_mm": [
+    20.0,
+    70.0,
+    12.0
+   ],
+   "file": "hardware/print/stl/lower_shoulder_frame_rear.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 13.4,
+   "source": "Strido (modified upstream lower_shoulder_frame)",
+   "note": "upstream Lower_Shoulder_Frame + one M3 pilot hole for the servo-bus holder"
+  },
+  {
+   "id": "outer_shoulder_frame",
+   "kind": "printed",
+   "title": "Outer shoulder frame",
+   "qty": 2,
+   "steps": [
+    4
+   ],
+   "image": "/parts/outer_shoulder_frame.png",
+   "bbox_mm": [
+    110.0,
+    70.0,
+    5.0
+   ],
+   "file": "hardware/print/stl/outer_shoulder_frame.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 25.2,
+   "source": "upstream STL",
+   "note": "2 hole steps cut for bridging (hole overhang trick)"
+  },
+  {
+   "id": "outer_tibia",
+   "kind": "printed",
+   "title": "Outer tibia",
+   "qty": 4,
+   "steps": [
+    11
+   ],
+   "image": "/parts/outer_tibia.png",
+   "bbox_mm": [
+    134.8,
+    104.2,
+    14.4
+   ],
+   "file": "hardware/print/stl/outer_tibia.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.0,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang; 1 hole step cut for bridging (hole overhang trick); block supports in the bearing bore so the step bridges"
+  },
+  {
+   "id": "right_servo_mount",
+   "kind": "printed",
+   "title": "Right servo mount",
+   "qty": 1,
+   "steps": [
+    8
+   ],
+   "image": "/parts/right_servo_mount.png",
+   "bbox_mm": [
+    56.4,
+    52.0,
+    19.0
+   ],
+   "file": "hardware/print/stl/right_servo_mount.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.5,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "right_servo_mount_fr",
+   "kind": "printed",
+   "title": "Right servo mount fr",
+   "qty": 1,
+   "steps": [
+    8
+   ],
+   "image": "/parts/right_servo_mount_fr.png",
+   "bbox_mm": [
+    56.4,
+    52.0,
+    19.0
+   ],
+   "file": "hardware/print/stl/right_servo_mount_fr.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 17.5,
+   "source": "Strido (modified upstream right_servo_mount)",
+   "note": "upstream right_servo_mount + Ø2.5 mm hip pivot pilot for the FR leg; re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "right_shoulder",
+   "kind": "printed",
+   "title": "Right shoulder",
+   "qty": 2,
+   "steps": [
+    10
+   ],
+   "image": "/parts/right_shoulder.png",
+   "bbox_mm": [
+    50.4,
+    55.3,
+    26.0
+   ],
+   "file": "hardware/print/stl/right_shoulder.stl",
+   "colour": "secondary (lime)",
+   "supports": true,
+   "volume_cm3": 12.8,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "servo_bus_holder_front",
+   "kind": "printed",
+   "title": "Servo bus holder front",
+   "qty": 1,
+   "steps": [
+    5
+   ],
+   "image": "/parts/servo_bus_holder_front.png",
+   "bbox_mm": [
+    22.4,
+    66.8,
+    27.8
+   ],
+   "file": "hardware/print/stl/servo_bus_holder_front.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 7.9,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "servo_bus_holder_rear",
+   "kind": "printed",
+   "title": "Servo bus holder rear",
+   "qty": 1,
+   "steps": [
+    5
+   ],
+   "image": "/parts/servo_bus_holder_rear.png",
+   "bbox_mm": [
+    22.4,
+    66.8,
+    14.5
+   ],
+   "file": "hardware/print/stl/servo_bus_holder_rear.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 5.3,
+   "source": "Strido (new)",
+   "note": ""
+  },
+  {
+   "id": "servo_mount_top_bracket",
+   "kind": "printed",
+   "title": "Servo mount top bracket",
+   "qty": 4,
+   "steps": [
+    8
+   ],
+   "image": "/parts/servo_mount_top_bracket.png",
+   "bbox_mm": [
+    56.4,
+    19.0,
+    5.8
+   ],
+   "file": "hardware/print/stl/servo_mount_top_bracket.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 4.9,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "short_link",
+   "kind": "printed",
+   "title": "Short link",
+   "qty": 4,
+   "steps": [
+    12
+   ],
+   "image": "/parts/short_link.png",
+   "bbox_mm": [
+    35.3,
+    10.0,
+    7.0
+   ],
+   "file": "hardware/print/stl/short_link.stl",
+   "colour": "primary (graphite)",
+   "supports": true,
+   "volume_cm3": 1.6,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "side_body_beam",
+   "kind": "printed",
+   "title": "Side body beam",
+   "qty": 2,
+   "steps": [
+    2
+   ],
+   "image": "/parts/side_body_beam.png",
+   "bbox_mm": [
+    25.0,
+    150.0,
+    6.5
+   ],
+   "file": "hardware/print/stl/side_body_beam.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 12.2,
+   "source": "upstream STL",
+   "note": "re-oriented from the published STL: more bed contact, less overhang"
+  },
+  {
+   "id": "stiff_long_link",
+   "kind": "printed",
+   "title": "Stiff long link",
+   "qty": 4,
+   "steps": [
+    12
+   ],
+   "image": "/parts/stiff_long_link.png",
+   "bbox_mm": [
+    10.5,
+    141.0,
+    10.0
+   ],
+   "file": "hardware/print/stl/stiff_long_link.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 13.5,
+   "source": "Strido (modified upstream long_link)",
+   "note": "upstream long_link, 10 x 10 mm instead of 5 x 8 mm, same pins and eyes: buckling, ADR-010"
+  },
+  {
+   "id": "top_shell_sensor",
+   "kind": "printed",
+   "title": "Top shell sensor",
+   "qty": 1,
+   "steps": [
+    21
+   ],
+   "image": "/parts/top_shell_sensor.png",
+   "bbox_mm": [
+    114.0,
+    207.5,
+    42.1
+   ],
+   "file": "hardware/print/stl/top_shell_sensor.stl",
+   "colour": "secondary (lime)",
+   "supports": true,
+   "volume_cm3": 56.0,
+   "source": "Strido (modified upstream top_shell)",
+   "note": "upstream Top_Shell + LiDAR pedestal holes and LiDAR USB cable slot"
+  },
+  {
+   "id": "upper_shoulder_frame",
+   "kind": "printed",
+   "title": "Upper shoulder frame",
+   "qty": 2,
+   "steps": [
+    4
+   ],
+   "image": "/parts/upper_shoulder_frame.png",
+   "bbox_mm": [
+    40.0,
+    70.0,
+    12.0
+   ],
+   "file": "hardware/print/stl/upper_shoulder_frame.stl",
+   "colour": "primary (graphite)",
+   "supports": false,
+   "volume_cm3": 22.0,
+   "source": "upstream STL",
+   "note": ""
+  },
+  {
+   "id": "adafruit_ina260",
+   "kind": "purchased",
+   "title": "INA260 power monitor",
+   "qty": 1,
+   "steps": [
+    7
+   ],
+   "image": "/parts/adafruit_ina260.png",
+   "bbox_mm": [
+    22.9,
+    22.9,
+    11.6
+   ],
+   "vendor": "DigiKey.at",
+   "sku": "Adafruit 4226",
+   "price_eur": 10.6,
+   "pack": 1,
+   "bom_line": "ina260"
+  },
+  {
+   "id": "adafruit_lsm6dsox",
+   "kind": "purchased",
+   "title": "LSM6DSOX IMU",
+   "qty": 1,
+   "steps": [
+    1
+   ],
+   "image": "/parts/adafruit_lsm6dsox.png",
+   "bbox_mm": [
+    25.4,
+    17.8,
+    4.6
+   ],
+   "vendor": "DigiKey.at",
+   "sku": "Adafruit 4438",
+   "price_eur": 12.73,
+   "pack": 1,
+   "bom_line": "lsm6dsox"
+  },
+  {
+   "id": "adafruit_pca9685",
+   "kind": "purchased",
+   "title": "PCA9685 servo driver",
+   "qty": 1,
+   "steps": [
+    7
+   ],
+   "image": "/parts/adafruit_pca9685.png",
+   "bbox_mm": [
+    62.2,
+    25.4,
+    12.1
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B06XSFFXQY",
+   "price_eur": 6.95,
+   "pack": 1,
+   "bom_line": "pca9685"
+  },
+  {
+   "id": "bearing_625zz",
+   "kind": "purchased",
+   "title": "Ball bearing 625ZZ",
+   "qty": 4,
+   "steps": [
+    4
+   ],
+   "image": "/parts/bearing_625zz.png",
+   "bbox_mm": [
+    16.0,
+    16.0,
+    5.0
+   ],
+   "vendor": "kugellager-express.de",
+   "sku": "625-ZZ",
+   "price_eur": 0.88,
+   "pack": 1,
+   "bom_line": "bearing_625zz"
+  },
+  {
+   "id": "bearing_633zz",
+   "kind": "purchased",
+   "title": "Ball bearing 633ZZ",
+   "qty": 8,
+   "steps": [
+    11
+   ],
+   "image": "/parts/bearing_633zz.png",
+   "bbox_mm": [
+    13.0,
+    13.0,
+    5.0
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0GGT3GW69 (8-pack)",
+   "price_eur": 10.27,
+   "pack": 8,
+   "bom_line": "bearing_633zz"
+  },
+  {
+   "id": "bearing_6805_2rs",
+   "kind": "purchased",
+   "title": "Ball bearing 6805-2RS",
+   "qty": 4,
+   "steps": [
+    10
+   ],
+   "image": "/parts/bearing_6805_2rs.png",
+   "bbox_mm": [
+    37.0,
+    37.0,
+    7.0
+   ],
+   "vendor": "kugellager-express.de",
+   "sku": "6805/61805-2RS",
+   "price_eur": 1.7,
+   "pack": 1,
+   "bom_line": "bearing_6805"
+  },
+  {
+   "id": "cable_tie_mount",
+   "kind": "purchased",
+   "title": "Adhesive cable-tie mount 13 × 13 mm",
+   "qty": 2,
+   "steps": [
+    20
+   ],
+   "image": "/parts/cable_tie_mount.png",
+   "bbox_mm": [
+    13.0,
+    13.0,
+    4.1
+   ],
+   "vendor": "Reichelt.at",
+   "sku": "HT 151-02243 (per piece)",
+   "price_eur": 1.06,
+   "pack": 1,
+   "bom_line": "cable_tie_mounts"
+  },
+  {
+   "id": "fuse_holder_ato",
+   "kind": "purchased",
+   "title": "ATO fuse holder",
+   "qty": 2,
+   "steps": [
+    14,
+    19
+   ],
+   "image": "/parts/fuse_holder_ato.png",
+   "bbox_mm": [
+    52.0,
+    32.2,
+    15.8
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B07426WCLM (Nilight, 10 holders)",
+   "price_eur": 8.56,
+   "pack": 10,
+   "bom_line": "fuse_holder"
+  },
+  {
+   "id": "hobbywing_ubec_10a",
+   "kind": "purchased",
+   "title": "Hobbywing UBEC-10A",
+   "qty": 2,
+   "steps": [
+    6
+   ],
+   "image": "/parts/hobbywing_ubec_10a.png",
+   "bbox_mm": [
+    45.0,
+    20.0,
+    16.2
+   ],
+   "vendor": "Lindinger.at",
+   "sku": "HW30603003",
+   "price_eur": 26.99,
+   "pack": 1,
+   "bom_line": "ubec_10a"
+  },
+  {
+   "id": "lipo_2s_5000_gensace",
+   "kind": "purchased",
+   "title": "LiPo 2S 5000 mAh",
+   "qty": 1,
+   "steps": [
+    22
+   ],
+   "image": "/parts/lipo_2s_5000_gensace.png",
+   "bbox_mm": [
+    138.0,
+    47.0,
+    25.0
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0GKP683YF",
+   "price_eur": 22.18,
+   "pack": 1,
+   "bom_line": "lipo_2s_5000"
+  },
+  {
+   "id": "pololu_d36v50f5",
+   "kind": "purchased",
+   "title": "Pololu D36V50F5 5 V regulator",
+   "qty": 1,
+   "steps": [
+    7
+   ],
+   "image": "/parts/pololu_d36v50f5.png",
+   "bbox_mm": [
+    25.4,
+    25.4,
+    9.5
+   ],
+   "vendor": "Eckstein (DE)",
+   "sku": "D36V50F5",
+   "price_eur": 41.59,
+   "pack": 1,
+   "bom_line": "pololu_regulator"
+  },
+  {
+   "id": "pololu_power_switch_hp",
+   "kind": "purchased",
+   "title": "Pololu #2813 pushbutton switch",
+   "qty": 1,
+   "steps": [
+    7
+   ],
+   "image": "/parts/pololu_power_switch_hp.png",
+   "bbox_mm": [
+    25.4,
+    20.3,
+    4.0
+   ],
+   "vendor": "DigiKey.at",
+   "sku": "Pololu 2813 (Marketplace)",
+   "price_eur": 10.8,
+   "pack": 1,
+   "bom_line": "pololu_switch"
+  },
+  {
+   "id": "pushbutton_12mm",
+   "kind": "purchased",
+   "title": "12 mm push button",
+   "qty": 1,
+   "steps": [
+    19
+   ],
+   "image": "/parts/pushbutton_12mm.png",
+   "bbox_mm": [
+    31.5,
+    14.0,
+    14.0
+   ],
+   "vendor": "Reichelt.at",
+   "sku": 318555,
+   "price_eur": 5.66,
+   "pack": 1,
+   "bom_line": "pushbutton"
+  },
+  {
+   "id": "raspberry_pi_5",
+   "kind": "purchased",
+   "title": "Raspberry Pi 5 + Active Cooler",
+   "qty": 1,
+   "steps": [
+    7
+   ],
+   "image": "/parts/raspberry_pi_5.png",
+   "bbox_mm": [
+    88.5,
+    57.2,
+    19.0
+   ],
+   "vendor": "DigiKey.at",
+   "sku": "SC1431 (2648-SC1431-ND)",
+   "price_eur": 117.18,
+   "pack": 1,
+   "bom_line": "pi5_4gb"
+  },
+  {
+   "id": "rpi_camera_module_3_wide",
+   "kind": "purchased",
+   "title": "Camera Module 3 Wide",
+   "qty": 1,
+   "steps": [
+    18
+   ],
+   "image": "/parts/rpi_camera_module_3_wide.png",
+   "bbox_mm": [
+    25.0,
+    23.9,
+    11.4
+   ],
+   "vendor": "Welectron (DE)",
+   "sku": "Camera Module 3 Wide",
+   "price_eur": 35.9,
+   "pack": 1,
+   "bom_line": "camera_module_3_wide"
+  },
+  {
+   "id": "rplidar_c1",
+   "kind": "purchased",
+   "title": "RPLIDAR C1",
+   "qty": 1,
+   "steps": [
+    21
+   ],
+   "image": "/parts/rplidar_c1.png",
+   "bbox_mm": [
+    55.6,
+    55.6,
+    41.3
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0CP8YRY44 (WayPonDEV)",
+   "price_eur": 70.58,
+   "pack": 1,
+   "bom_line": "rplidar_c1"
+  },
+  {
+   "id": "rplidar_usb_adapter",
+   "kind": "purchased",
+   "title": "RPLIDAR USB adapter",
+   "qty": 1,
+   "steps": [
+    21
+   ],
+   "image": "/parts/rplidar_usb_adapter.png",
+   "bbox_mm": [
+    32.0,
+    22.0,
+    10.0
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0CP8YRY44 (WayPonDEV)",
+   "price_eur": 70.58,
+   "pack": 1,
+   "bom_line": "rplidar_c1"
+  },
+  {
+   "id": "seeed_xiao_esp32s3",
+   "kind": "purchased",
+   "title": "Seeed XIAO ESP32-S3",
+   "qty": 1,
+   "steps": [
+    5
+   ],
+   "image": "/parts/seeed_xiao_esp32s3.png",
+   "bbox_mm": [
+    22.5,
+    17.8,
+    13.0
+   ],
+   "vendor": "DigiKey.at",
+   "sku": 102010634,
+   "price_eur": 9.05,
+   "pack": 1,
+   "bom_line": "xiao_esp32s3"
+  },
+  {
+   "id": "servo_arm_horn_25t",
+   "kind": "purchased",
+   "title": "25T aluminium arm horn",
+   "qty": 4,
+   "steps": [
+    10
+   ],
+   "image": "/parts/servo_arm_horn_25t.png",
+   "bbox_mm": [
+    27.1,
+    27.1,
+    6.1
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0F5QG8HQS (5-pack)",
+   "price_eur": 9.06,
+   "pack": 5,
+   "bom_line": "arm_horn_25t"
+  },
+  {
+   "id": "servo_disc_horn_25t",
+   "kind": "purchased",
+   "title": "25T aluminium disc horn",
+   "qty": 8,
+   "steps": [
+    9,
+    13
+   ],
+   "image": "/parts/servo_disc_horn_25t.png",
+   "bbox_mm": [
+    20.0,
+    20.0,
+    5.2
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B07F71J1Q2 (DollaTek, 5-pack)",
+   "price_eur": 5.03,
+   "pack": 5,
+   "bom_line": "disc_horn_25t"
+  },
+  {
+   "id": "servo_spt5435lv",
+   "kind": "purchased",
+   "title": "Servo SPT5435LV-180W",
+   "qty": 12,
+   "steps": [
+    3,
+    8
+   ],
+   "image": "/parts/servo_spt5435lv.png",
+   "bbox_mm": [
+    56.4,
+    44.5,
+    20.0
+   ],
+   "vendor": "AliExpress (DigitalServo Store)",
+   "sku": "4000135787995, variant 35kg-180 Waterproof",
+   "price_eur": 13.46,
+   "pack": 1,
+   "bom_line": "servo_spt5435lv"
+  },
+  {
+   "id": "sleeve_bearing_3x5x5_pair",
+   "kind": "purchased",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "qty": 16,
+   "steps": [
+    12
+   ],
+   "image": "/parts/sleeve_bearing_3x5x5_pair.png",
+   "bbox_mm": [
+    10.0,
+    5.0,
+    5.0
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0G15L264D (50-pack)",
+   "price_eur": 10.27,
+   "pack": 50,
+   "bom_line": "sleeve_3x5x5"
+  },
+  {
+   "id": "wago_221_415",
+   "kind": "purchased",
+   "title": "WAGO 221-415",
+   "qty": 8,
+   "steps": [
+    5
+   ],
+   "image": "/parts/wago_221_415.png",
+   "bbox_mm": [
+    30.0,
+    18.8,
+    8.4
+   ],
+   "vendor": "Reichelt.at",
+   "sku": 149800,
+   "price_eur": 0.81,
+   "pack": 1,
+   "bom_line": "wago_221_415"
+  },
+  {
+   "id": "waveshare_lcd_2inch",
+   "kind": "purchased",
+   "title": "Waveshare 2\" LCD (ST7789)",
+   "qty": 1,
+   "steps": [
+    17
+   ],
+   "image": "/parts/waveshare_lcd_2inch.png",
+   "bbox_mm": [
+    58.0,
+    35.0,
+    10.0
+   ],
+   "vendor": "Welectron (DE)",
+   "sku": 17344,
+   "price_eur": 10.9,
+   "pack": 1,
+   "bom_line": "lcd_2inch"
+  },
+  {
+   "id": "xt60h_female",
+   "kind": "purchased",
+   "title": "XT60H female",
+   "qty": 2,
+   "steps": [
+    14,
+    19
+   ],
+   "image": "/parts/xt60h_female.png",
+   "bbox_mm": [
+    23.5,
+    16.4,
+    9.2
+   ],
+   "vendor": "Lindinger.at",
+   "sku": "Robbe XT60 3 pairs (9750234)",
+   "price_eur": 4.99,
+   "pack": 1,
+   "bom_line": "xt60_pairs"
+  },
+  {
+   "id": "din985_m3",
+   "kind": "fastener",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "qty": 17,
+   "steps": [
+    11,
+    12,
+    18
+   ],
+   "image": "/parts/din985_m3.png",
+   "bbox_mm": [
+    6.4,
+    5.5,
+    4.0
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P000461 (zinc-plated)",
+   "price_eur": 1.39,
+   "pack": 100,
+   "bom_line": "m3_nyloc"
+  },
+  {
+   "id": "iso4032_m2",
+   "kind": "fastener",
+   "title": "M2 hex nut (ISO 4032)",
+   "qty": 4,
+   "steps": [
+    18
+   ],
+   "image": "/parts/iso4032_m2.png",
+   "bbox_mm": [
+    4.6,
+    4.0,
+    1.6
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P002807",
+   "price_eur": 1.87,
+   "pack": 100,
+   "bom_line": "m2_nuts"
+  },
+  {
+   "id": "iso4032_m2_5",
+   "kind": "fastener",
+   "title": "M2.5 hex nut (ISO 4032)",
+   "qty": 2,
+   "steps": [
+    1
+   ],
+   "image": "/parts/iso4032_m2_5.png",
+   "bbox_mm": [
+    5.8,
+    5.0,
+    2.0
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P004196",
+   "price_eur": 2.0,
+   "pack": 100,
+   "bom_line": "m2_5_nuts"
+  },
+  {
+   "id": "iso4032_m3",
+   "kind": "fastener",
+   "title": "M3 hex nut (ISO 4032)",
+   "qty": 56,
+   "steps": [
+    2,
+    3,
+    4
+   ],
+   "image": "/parts/iso4032_m3.png",
+   "bbox_mm": [
+    6.4,
+    5.5,
+    2.4
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso4762_m2_5x5",
+   "kind": "fastener",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "qty": 20,
+   "steps": [
+    1,
+    7
+   ],
+   "image": "/parts/iso4762_m2_5x5.png",
+   "bbox_mm": [
+    7.5,
+    4.5,
+    4.5
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P004986",
+   "price_eur": 0.83,
+   "pack": 10,
+   "bom_line": "m2_5x5"
+  },
+  {
+   "id": "iso4762_m2_5x6",
+   "kind": "fastener",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "qty": 8,
+   "steps": [
+    1,
+    19,
+    21
+   ],
+   "image": "/parts/iso4762_m2_5x6.png",
+   "bbox_mm": [
+    8.5,
+    4.5,
+    4.5
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P005010",
+   "price_eur": 0.83,
+   "pack": 10,
+   "bom_line": "m2_5x6"
+  },
+  {
+   "id": "iso4762_m2x10",
+   "kind": "fastener",
+   "title": "M2 × 10 socket head screw (ISO 4762)",
+   "qty": 4,
+   "steps": [
+    18
+   ],
+   "image": "/parts/iso4762_m2x10.png",
+   "bbox_mm": [
+    12.0,
+    3.8,
+    3.8
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P002803",
+   "price_eur": 0.78,
+   "pack": 10,
+   "bom_line": "m2x10"
+  },
+  {
+   "id": "iso4762_m2x5",
+   "kind": "fastener",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "qty": 10,
+   "steps": [
+    1,
+    7,
+    17
+   ],
+   "image": "/parts/iso4762_m2x5.png",
+   "bbox_mm": [
+    7.0,
+    3.8,
+    3.8
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "P003957",
+   "price_eur": 0.86,
+   "pack": 10,
+   "bom_line": "m2x5"
+  },
+  {
+   "id": "iso4762_m3x10",
+   "kind": "fastener",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "qty": 86,
+   "steps": [
+    2,
+    3,
+    4,
+    8,
+    11,
+    13,
+    17
+   ],
+   "image": "/parts/iso4762_m3x10.png",
+   "bbox_mm": [
+    13.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "M3x10 DIN912 A2, 100",
+   "price_eur": 2.35,
+   "pack": 100,
+   "bom_line": "m3x10_100"
+  },
+  {
+   "id": "iso4762_m3x12",
+   "kind": "fastener",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "qty": 16,
+   "steps": [
+    5,
+    11,
+    18,
+    21
+   ],
+   "image": "/parts/iso4762_m3x12.png",
+   "bbox_mm": [
+    15.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso4762_m3x16",
+   "kind": "fastener",
+   "title": "M3 × 16 socket head screw (ISO 4762)",
+   "qty": 4,
+   "steps": [
+    12
+   ],
+   "image": "/parts/iso4762_m3x16.png",
+   "bbox_mm": [
+    19.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso4762_m3x20",
+   "kind": "fastener",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "qty": 28,
+   "steps": [
+    8,
+    9,
+    11
+   ],
+   "image": "/parts/iso4762_m3x20.png",
+   "bbox_mm": [
+    23.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Schraubenking.at",
+   "sku": "M3x20 DIN912 A2, 10",
+   "price_eur": 0.97,
+   "pack": 10,
+   "bom_line": "m3x20"
+  },
+  {
+   "id": "iso4762_m3x25",
+   "kind": "fastener",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "qty": 12,
+   "steps": [
+    12
+   ],
+   "image": "/parts/iso4762_m3x25.png",
+   "bbox_mm": [
+    28.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso4762_m3x40",
+   "kind": "fastener",
+   "title": "M3 × 40 socket head screw (ISO 4762)",
+   "qty": 1,
+   "steps": [
+    18
+   ],
+   "image": "/parts/iso4762_m3x40.png",
+   "bbox_mm": [
+    43.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso4762_m3x8",
+   "kind": "fastener",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "qty": 34,
+   "steps": [
+    9,
+    10,
+    13,
+    21,
+    22
+   ],
+   "image": "/parts/iso4762_m3x8.png",
+   "bbox_mm": [
+    11.0,
+    5.5,
+    5.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "iso7089_m3",
+   "kind": "fastener",
+   "title": "M3 washer (ISO 7089)",
+   "qty": 16,
+   "steps": [
+    11,
+    12,
+    13
+   ],
+   "image": "/parts/iso7089_m3.png",
+   "bbox_mm": [
+    7.0,
+    7.0,
+    0.5
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0D2VST57H",
+   "price_eur": 17.14,
+   "pack": 1,
+   "bom_line": "m3_kit"
+  },
+  {
+   "id": "standoff_m2_5_ff_6",
+   "kind": "fastener",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "qty": 10,
+   "steps": [
+    1
+   ],
+   "image": "/parts/standoff_m2_5_ff_6.png",
+   "bbox_mm": [
+    6.0,
+    5.8,
+    5.0
+   ],
+   "vendor": "DigiKey.at",
+   "sku": 970060151,
+   "price_eur": 0.552,
+   "pack": 1,
+   "bom_line": "standoff_m2_5x6"
+  },
+  {
+   "id": "standoff_m2_ff_8",
+   "kind": "fastener",
+   "title": "M2 × 8 stand-off F-F (brass)",
+   "qty": 3,
+   "steps": [
+    1
+   ],
+   "image": "/parts/standoff_m2_ff_8.png",
+   "bbox_mm": [
+    8.0,
+    4.6,
+    4.0
+   ],
+   "vendor": "Amazon.de",
+   "sku": "B0DR67YGQL",
+   "price_eur": 7.73,
+   "pack": 40,
+   "bom_line": "standoff_m2x8"
+  }
+ ]
+}

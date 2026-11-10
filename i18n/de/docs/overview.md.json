@@ -1,0 +1,122 @@
+{
+ "881d13493c72f9e8": {
+  "en": "Strido at a glance",
+  "de": "Strido auf einen Blick"
+ },
+ "973fbfee8daeda2f": {
+  "en": "**Status:** design verified in CAD and simulation; no robot has been built from this revision yet (see [verification](verification.md)).",
+  "de": "**Status:** Konstruktion in CAD und Simulation verifiziert; aus dieser Revision wurde noch kein Roboter gebaut (siehe [Verifikation](verification.md))."
+ },
+ "e60877ad8895420f": {
+  "en": "Strido is a 3D-printed, 12-DoF quadruped in the class of the Mini Pupper 4: small enough for a desk, complete enough to develop real ROS 2 and learning software that transfers to a Unitree Go2. It keeps the proven legs and frame of [Yertle](https://github.com/Jerome-Graves/yertle) (MIT, Jerome Graves) and adds the sensor head, electronics and software stack of a modern research robot.",
+  "de": "Strido ist ein 3D-gedruckter Vierbeiner mit 12 Freiheitsgraden in der Klasse des Mini Pupper 4: klein genug für einen Schreibtisch, vollständig genug, um echte ROS-2- und Lernsoftware zu entwickeln, die sich auf einen Unitree Go2 übertragen lässt. Er übernimmt die bewährten Beine und den Rahmen von [Yertle](https://github.com/Jerome-Graves/yertle) (MIT, Jerome Graves) und ergänzt Sensorkopf, Elektronik und Software-Stack eines modernen Forschungsroboters."
+ },
+ "4a800dababcd1f9d": {
+  "en": "![Strido standing](images/hero_front.png)",
+  "de": "![Strido stehend](images/hero_front.png)"
+ },
+ "015b4e0a76e50458": {
+  "en": "Specifications",
+  "de": "Technische Daten"
+ },
+ "45deff70c8a4189d": {
+  "en": "| Property | Strido |",
+  "de": "| Eigenschaft | Strido |"
+ },
+ "5c25b6610b7419d6": {
+  "en": "| Size (standing, incl. LiDAR) | 430 × 188 × 264 mm |",
+  "de": "| Größe (stehend, inkl. LiDAR) | 430 × 188 × 264 mm |"
+ },
+ "7b2744a2b68d11c1": {
+  "en": "| Mass (CAD, incl. battery) | ≈ 3.0 kg |",
+  "de": "| Masse (CAD, inkl. Akku) | ≈ 3,0 kg |"
+ },
+ "a02ae4d5d20028ca": {
+  "en": "| Actuation | 12 × SPT5435LV, 35 kg·cm at 6 V; knee driven through a crank and four-bar linkage |",
+  "de": "| Antrieb | 12 × SPT5435LV, 35 kg·cm bei 6 V; Knie über Kurbel und Viergelenk-Koppelgetriebe angetrieben |"
+ },
+ "2551d29d6ce395df": {
+  "en": "| Compute | Raspberry Pi 5 (4 GB) + Seeed XIAO ESP32-S3 motion controller (200 Hz) |",
+  "de": "| Rechner | Raspberry Pi 5 (4 GB) + Bewegungscontroller Seeed XIAO ESP32-S3 (200 Hz) |"
+ },
+ "16b7e43bf491870e": {
+  "en": "| Sensors | RPLIDAR C1 (unobstructed 360°), Camera Module 3 Wide, LSM6DSOX IMU, INA260 power monitor |",
+  "de": "| Sensoren | RPLIDAR C1 (freie 360°), Camera Module 3 Wide, IMU LSM6DSOX, Power-Monitor INA260 |"
+ },
+ "7306490a4a0cbdb9": {
+  "en": "| Face | Waveshare 2\" ST7789 LCD behind the front shell |",
+  "de": "| Gesicht | Waveshare 2\" ST7789 LCD hinter der Frontschale |"
+ },
+ "536d7c13fbce1456": {
+  "en": "| Power | 2S 5000 mAh LiPo; 2 × 6.0 V UBEC for the servos; 5 V/5.5 A logic regulator; 25 A main + 7.5 A logic fuse; XT60 arming key |",
+  "de": "| Stromversorgung | 2S 5000 mAh LiPo; 2 × 6,0-V-UBEC für die Servos; 5 V/5,5 A Logik-Spannungsregler; 25-A-Haupt- + 7,5-A-Logiksicherung; XT60-Loop-Key |"
+ },
+ "53e9e15fdc5381ff": {
+  "en": "| Software | ROS 2 Jazzy (Docker, amd64/arm64), Gazebo Harmonic, MuJoCo 3, PPO, NT-X extension |",
+  "de": "| Software | ROS 2 Jazzy (Docker, amd64/arm64), Gazebo Harmonic, MuJoCo 3, PPO, NT-X-Erweiterung |"
+ },
+ "0e31ddefbfca4b4f": {
+  "en": "| Cost | from €979 incl. shipping to Austria (plan A, lowest total; see the [shop](shop.md) and the [shopping list](bom/shopping_list.md)) |",
+  "de": "| Kosten | ab 979 € inkl. Versand nach Österreich (Plan A, niedrigste Gesamtsumme; siehe [Shop](shop.md) und [Einkaufsliste](bom/shopping_list.md)) |"
+ },
+ "6424c41653d95b72": {
+  "en": "How it compares",
+  "de": "Im Vergleich"
+ },
+ "dd4fbb5ead41b85a": {
+  "en": "| | Strido | Mini Pupper 2 | Mini Pupper 4 (pre-production) | Unitree Go2 |",
+  "de": "| | Strido | Mini Pupper 2 | Mini Pupper 4 (Vorserie) | Unitree Go2 |"
+ },
+ "e1656a266f0aa03f": {
+  "en": "| Leg DoF | 12 | 12 | 12 | 12 |",
+  "de": "| Freiheitsgrade Beine | 12 | 12 | 12 | 12 |"
+ },
+ "c85fc4a1eb29db85": {
+  "en": "| Size class | 430 mm | 210 mm | ≈ 250 mm | 700 mm |",
+  "de": "| Größenklasse | 430 mm | 210 mm | ≈ 250 mm | 700 mm |"
+ },
+ "526cad3c62c32266": {
+  "en": "| Motion controller | ESP32-S3 | ESP32-S3 | n/a | proprietary |",
+  "de": "| Bewegungscontroller | ESP32-S3 | ESP32-S3 | k. A. | proprietär |"
+ },
+ "183373da3798b26f": {
+  "en": "| LiDAR / camera / face | yes / yes / yes | optional / yes / yes | yes / yes / yes | yes / yes / no |",
+  "de": "| LiDAR / Kamera / Gesicht | ja / ja / ja | optional / ja / ja | ja / ja / ja | ja / ja / nein |"
+ },
+ "dc68abcb1971f503": {
+  "en": "| ROS 2 contract | Go2 joint names, `/cmd_vel`, `/scan` | MangDang stack | MangDang stack | Unitree SDK2 / ROS 2 |",
+  "de": "| ROS-2-Schnittstelle | Go2-Gelenknamen, `/cmd_vel`, `/scan` | MangDang-Stack | MangDang-Stack | Unitree SDK2 / ROS 2 |"
+ },
+ "2dbfa247909c5401": {
+  "en": "| Openness | full CAD, print files, firmware, sim models | partial | not published | closed |",
+  "de": "| Offenheit | vollständiges CAD, Druckdateien, Firmware, Simulationsmodelle | teilweise | nicht veröffentlicht | geschlossen |"
+ },
+ "60763f3cb3a0fa07": {
+  "en": "The point is transfer: develop navigation, perception and learning at home against the same ROS 2 topics and joint conventions as the Go2, then move the application layer to the Go2 at work. Low-level gaits and learned policies do not transfer unchanged between a 3 kg hobby-servo robot and a 15 kg Go2; see [simulation](simulation.md).",
+  "de": "Es geht um Übertragbarkeit: Entwickeln Sie Navigation, Wahrnehmung und Lernen zu Hause mit denselben ROS-2-Topics und Gelenkkonventionen wie beim Go2, und übertragen Sie dann die Anwendungsschicht in der Arbeit auf den Go2. Low-Level-Gaits und gelernte Policies lassen sich nicht unverändert zwischen einem 3 kg schweren Hobby-Servo-Roboter und einem 15 kg schweren Go2 übertragen; siehe [Simulation](simulation.md)."
+ },
+ "e0a964e131a6f7c6": {
+  "en": "What changed compared with Yertle",
+  "de": "Was sich gegenüber Yertle geändert hat"
+ },
+ "896644a12f1fc6b5": {
+  "en": "**Sensor head:** front shell with LCD window and bracket; tilting camera mount; LiDAR pedestal lifting the scan plane above every leg pose.",
+  "de": "**Sensorkopf:** Frontschale mit LCD-Fenster und Halterung; neigbare Kamerahalterung; LiDAR-Sockel, der die Scanebene über jede Beinpose hebt."
+ },
+ "074ff898c0a6d58b": {
+  "en": "**Electronics:** Pi 5 + XIAO ESP32-S3, PCA9685 with hardware output-enable kill, IMU, power monitor; servo current on two UBECs through WAGO buses, never through a logic board.",
+  "de": "**Elektronik:** Pi 5 + XIAO ESP32-S3, PCA9685 mit Hardware-Abschaltung über Output-Enable, IMU, Power-Monitor; Servostrom über zwei UBECs und WAGO-Busse, nie über eine Logikplatine."
+ },
+ "7f3f6c132d8b8426": {
+  "en": "**Mechanics fixed by the verification harness:** front servo mounts get the missing hip-pivot pilot; right-leg femur horns and connectors aligned to the printed hole pattern; LiDAR pedestal pilots deepened so the screws clamp; hip limits that keep the feet apart when both legs swing in.",
+  "de": "**Durch die Verifikation behobene Mechanik:** Die vorderen Servohalterungen erhalten die fehlende Vorbohrung für den Hüftdrehpunkt; Femur-Hörner und -Verbinder des rechten Beins an das gedruckte Lochbild angepasst; Vorbohrungen des LiDAR-Sockels vertieft, damit die Schrauben klemmen; Hüftgrenzen, die die Füße auseinanderhalten, wenn beide Beine nach innen schwingen."
+ },
+ "3a35a38127395624": {
+  "en": "**Software:** linkage-exact knee mapping, watchdog, latched e-stop, battery cut-off, Go2-style ROS 2 contract, MuJoCo/Gazebo models generated from CAD, PPO training, NT-X integration.",
+  "de": "**Software:** koppelgetriebegenaue Kniezuordnung, Watchdog, einrastender Not-Halt, Unterspannungsabschaltung, ROS-2-Schnittstelle im Go2-Stil, aus dem CAD erzeugte MuJoCo-/Gazebo-Modelle, PPO-Training, NT-X-Integration."
+ },
+ "11b634bdb74d7d24": {
+  "en": "Continue with [getting started](getting-started.md).",
+  "de": "Weiter mit [Erste Schritte](getting-started.md)."
+ }
+}

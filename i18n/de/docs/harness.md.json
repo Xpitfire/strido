@@ -1,0 +1,118 @@
+{
+ "c26596bf20ba3773": {
+  "en": "Engineering harness runbook",
+  "de": "Runbook für den Engineering-Harness"
+ },
+ "cad6716bde3c1311": {
+  "en": "**Status:** how to work on this repository (humans and coding agents). Rules: `AGENTS.md`.",
+  "de": "**Status:** wie an diesem Repository gearbeitet wird (Menschen und Coding-Agenten). Regeln: `AGENTS.md`."
+ },
+ "7013af4c42fe4380": {
+  "en": "Setup",
+  "de": "Einrichtung"
+ },
+ "ac94d72fc8db2940": {
+  "en": "Requirements: uv ≥ 0.9, Python 3.12 (managed by uv), Node 26 (`.nvmrc`), PlatformIO (`pipx install platformio`), Blender 4 for renders, Docker for Gazebo, Pango for the PDF (`brew install pango`).",
+  "de": "Voraussetzungen: uv ≥ 0.9, Python 3.12 (von uv verwaltet), Node 26 (`.nvmrc`), PlatformIO (`pipx install platformio`), Blender 4 für Renderings, Docker für Gazebo, Pango für das PDF (`brew install pango`)."
+ },
+ "f606e1670dbd4929": {
+  "en": "Gates",
+  "de": "Prüfungen"
+ },
+ "fc0a22952a427541": {
+  "en": "| Tier | Command | Proves | Time |",
+  "de": "| Stufe | Befehl | Belegt | Dauer |"
+ },
+ "9682778fbd7b0129": {
+  "en": "| Q0 | `make check-fast` | ruff, mypy (strict for core/ntx/workspace), import-linter layers, generated-file drift (geometry bindings, electronics report, NT-X assets), Python tests with coverage, firmware native tests | ~1 min |",
+  "de": "| Q0 | `make check-fast` | ruff, mypy (strikt für core/ntx/workspace), import-linter-Schichten, Drift generierter Dateien (Geometrie-Bindings, Elektronikbericht, NT-X-Assets), Python-Tests mit Coverage, native Firmware-Tests | ~1 min |"
+ },
+ "a8f82d0d02efe726": {
+  "en": "| Q1 | `make verify` | CAD: hole stacks → fasteners, interference (4 poses), sensor FoV, ROM sweep, fits/tolerances, strength (link bending/buckling, screw shear, hole pressure, bearings, pilot torques), moving clearance | ~10 min |",
+  "de": "| Q1 | `make verify` | CAD: Bohrungsstapel → Befestigungselemente, Durchdringung (4 Posen), Sensor-Sichtfeld, Bewegungsbereichs-Sweep, Passungen/Toleranzen, Festigkeit (Biegung/Knickung der Koppeln, Schraubenscherung, Lochleibung, Lager, Vorbohr-Drehmomente), Freigang in Bewegung | ~10 min |"
+ },
+ "da7065cc8809bedd": {
+  "en": "| Q1 | `make printability` | every printed part and 3MF plate sliced by PrusaSlicer with `hardware/print/prusaslicer.ini` (errors, conflicts, stability issues, missing parts fail), wall-thickness scan, filament and time | ~1 min, needs PrusaSlicer |",
+  "de": "| Q1 | `make printability` | jedes gedruckte Teil und jede 3MF-Druckplatte mit PrusaSlicer und `hardware/print/prusaslicer.ini` gesliced (Fehler, Konflikte, Stabilitätsprobleme, fehlende Teile führen zum Abbruch), Wandstärken-Scan, Filament und Zeit | ~1 min, benötigt PrusaSlicer |"
+ },
+ "2d0ddaa074ea5719": {
+  "en": "| Q1 | `make check` | Q0 + verify + printability + BOM coverage + CAD tests + docs build + harness checks | ~13 min |",
+  "de": "| Q1 | `make check` | Q0 + verify + printability + Stücklisten-Abdeckung + CAD-Tests + Docs-Build + Harness-Prüfungen | ~13 min |"
+ },
+ "1d40304c6536fdec": {
+  "en": "| Q2 | `make smoke` | MuJoCo walk video, MCP server over stdio, NT-X extension inside the NT-X harness | ~2 min |",
+  "de": "| Q2 | `make smoke` | MuJoCo-Laufvideo, MCP-Server über stdio, NT-X-Erweiterung im NT-X-Harness | ~2 min |"
+ },
+ "8ae10eb3909d0486": {
+  "en": "| Q2 | `make sim-gazebo`, `make rl-smoke` | ROS 2 + Gazebo walk test in Docker; PPO pipeline | 5–10 min |",
+  "de": "| Q2 | `make sim-gazebo`, `make rl-smoke` | ROS-2- + Gazebo-Lauftest in Docker; PPO-Pipeline | 5–10 min |"
+ },
+ "31a5231c0a0c3002": {
+  "en": "| Q3 | hardware | a built robot: stand, walk, measured current/runtime | — |",
+  "de": "| Q3 | Hardware | ein gebauter Roboter: Stehen, Laufen, gemessener Strom/gemessene Laufzeit | — |"
+ },
+ "3a6d7b328af3e41c": {
+  "en": "The pre-commit hook runs the harness self-check; CI (`.github/workflows/quality.yml`) runs Q0 and the docs build.",
+  "de": "Der Pre-Commit-Hook führt den Harness-Selbsttest aus; die CI (`.github/workflows/quality.yml`) führt Q0 und den Docs-Build aus."
+ },
+ "0efcb8e03d957783": {
+  "en": "Changing hardware",
+  "de": "Hardware ändern"
+ },
+ "2d3f8f1a2bfa1cfb": {
+  "en": "Edit the source: a CadQuery part in `packages/strido-cad/src/strido_cad/parts.py`, a placement, `hardware/*.yaml`.",
+  "de": "Bearbeiten Sie die Quelle: ein CadQuery-Teil in `packages/strido-cad/src/strido_cad/parts.py`, eine Platzierung, `hardware/*.yaml`."
+ },
+ "696b6e04935db5ef": {
+  "en": "`make cad` if kinematics or limits can change, else `make models`.",
+  "de": "`make cad`, wenn sich Kinematik oder Grenzen ändern können, sonst `make models`."
+ },
+ "962b7fcce3046572": {
+  "en": "`make verify` — fix geometry until it passes; never widen `hardware/verification/*.yaml` to pass. Record any deliberate rule change in `docs/decisions.md`.",
+  "de": "`make verify` — korrigieren Sie die Geometrie, bis sie besteht; erweitern Sie niemals `hardware/verification/*.yaml`, nur damit sie besteht. Halten Sie jede bewusste Regeländerung in `docs/decisions.md` fest."
+ },
+ "88ac9b7ed190e433": {
+  "en": "`make publish` — print kit, BOM, manual, renders, viewer, book.",
+  "de": "`make publish` — Druckpaket, Stückliste, Anleitung, Renderings, 3D-Ansicht, Buch."
+ },
+ "9ed58622fa7d859d": {
+  "en": "`make check-fast`, record the run in `docs/verification.md`.",
+  "de": "`make check-fast`, den Lauf in `docs/verification.md` festhalten."
+ },
+ "6157ff96ba112ab4": {
+  "en": "Agent tooling",
+  "de": "Agenten-Werkzeuge"
+ },
+ "e1f16ca3e2db16ae": {
+  "en": "**Skills** (`.agents/skills/`): `strido-hardware`, `strido-verification`, `strido-bringup`, `strido-docs`, `strido-ntx`, plus the harness skills (`software-engineering`, …).",
+  "de": "**Skills** (`.agents/skills/`): `strido-hardware`, `strido-verification`, `strido-bringup`, `strido-docs`, `strido-ntx`, dazu die Harness-Skills (`software-engineering`, …)."
+ },
+ "994d11bfeef0d118": {
+  "en": "**MCP** (`.mcp.json`, `.codex/config.toml`): `strido-hardware` (part sizes, fasteners, fits, clearances, joint limits, pin map, BOM, verification status), `codegraph` (code index).",
+  "de": "**MCP** (`.mcp.json`, `.codex/config.toml`): `strido-hardware` (Teilegrößen, Befestigungselemente, Passungen, Freigänge, Gelenkgrenzen, Pinbelegung, Stückliste, Verifikationsstatus), `codegraph` (Code-Index)."
+ },
+ "823014c0df9e3823": {
+  "en": "**CLI**: `uv run strido part electronics_deck`, `strido pinout lcd`, `strido fits --status warn`, `strido clearances --max-gap 1`.",
+  "de": "**CLI**: `uv run strido part electronics_deck`, `strido pinout lcd`, `strido fits --status warn`, `strido clearances --max-gap 1`."
+ },
+ "e020e3c67bd0c312": {
+  "en": "Release",
+  "de": "Release"
+ },
+ "06160cf50e52da65": {
+  "en": "`make publish && make package` writes `dist/strido-<version>.zip` (repository + PDF + walk video). Tag `strido-v<version>`.",
+  "de": "`make publish && make package` schreibt `dist/strido-<version>.zip` (Repository + PDF + Laufvideo). Tag `strido-v<version>`."
+ },
+ "636a33a3424cd986": {
+  "en": "Documentation site on Cortex",
+  "de": "Dokumentationsseite auf Cortex"
+ },
+ "0d6b8001af7ceb95": {
+  "en": "The site runs at **https://strido.cortex.a2olabs.com/**, public, in English and German (`/de/`). The image (`docs-site/Dockerfile`, `docker-compose.docs.yml` + `docker-compose.cortex.yml`) builds the site from the repository and bundles the downloads: the build kit ZIP (every STL, the 3MF plates, slicer profile, print list, book PDF, BOM), the book PDF, the 3D model, the Agent Skill ZIP and `llms.txt`. A second service, `assistant`, answers the AI bar and the MCP server `/mcp` from the same pages; it reaches the model through Cortex Keyring (`models` in `.cortex/app.yml`) and keeps conversations in a Docker volume. The app's own gateway route (`.cortex/access/caddy/sso/`) serves the site to everyone and sends `/api/*` and `/mcp` to the assistant behind Cortex SSO (or a Cortex app token), so the assistant's model use stays with signed-in users.",
+  "de": "Die Website läuft öffentlich unter **https://strido.cortex.a2olabs.com/**, auf Englisch und Deutsch (`/de/`). Das Image (`docs-site/Dockerfile`, `docker-compose.docs.yml` + `docker-compose.cortex.yml`) baut die Website aus dem Repository und bündelt die Downloads: das Bausatz-ZIP (jede STL, die 3MF-Platten, Slicer-Profil, Druckliste, Buch-PDF, Stückliste), das Buch-PDF, das 3D-Modell, das Agent-Skill-ZIP und `llms.txt`. Ein zweiter Dienst, `assistant`, beantwortet die KI-Leiste und den MCP-Server `/mcp` aus denselben Seiten; er erreicht das Modell über Cortex Keyring (`models` in `.cortex/app.yml`) und speichert Unterhaltungen in einem Docker-Volume. Die eigene Gateway-Route der App (`.cortex/access/caddy/sso/`) liefert die Website an alle aus und leitet `/api/*` und `/mcp` hinter Cortex-SSO (oder einem Cortex-App-Token) an den Assistenten weiter, sodass die Modellnutzung bei angemeldeten Nutzern bleibt."
+ },
+ "a5fc7d130815955b": {
+  "en": "The repository is public at [github.com/Xpitfire/strido](https://github.com/Xpitfire/strido). Publish only after `make publish` and `make printability`, so the downloads match the verified CAD.",
+  "de": "Das Repository ist öffentlich unter [github.com/Xpitfire/strido](https://github.com/Xpitfire/strido). Veröffentliche erst nach `make publish` und `make printability`, damit die Downloads zur verifizierten CAD passen."
+ }
+}

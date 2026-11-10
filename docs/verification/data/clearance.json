@@ -1,0 +1,1492 @@
+{
+ "poses": [
+  "stand_170mm",
+  "crouch_120mm",
+  "tall_210mm",
+  "trot_0of8",
+  "trot_1of8",
+  "trot_2of8",
+  "trot_3of8",
+  "trot_4of8",
+  "trot_5of8",
+  "trot_6of8",
+  "trot_7of8",
+  "hips_out",
+  "hips_in"
+ ],
+ "joint_interfaces": 72,
+ "pairs": [
+  {
+   "a": "body/bearing_625zz@0147",
+   "b": "iso7089_m3#u248",
+   "parts": [
+    "bearing_625zz",
+    "iso7089_m3"
+   ],
+   "bodies": [
+    "RR.hip",
+    "base"
+   ],
+   "gap_mm": 0.108,
+   "gap_max_mm": 0.108,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "body/bearing_625zz@0148",
+   "b": "iso7089_m3#u110",
+   "parts": [
+    "bearing_625zz",
+    "iso7089_m3"
+   ],
+   "bodies": [
+    "RL.hip",
+    "base"
+   ],
+   "gap_mm": 0.108,
+   "gap_max_mm": 0.108,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/bearing_633zz@0263",
+   "b": "FL/femur#28",
+   "parts": [
+    "bearing_633zz",
+    "femur"
+   ],
+   "bodies": [
+    "FL.calf",
+    "FL.thigh"
+   ],
+   "gap_mm": 0.115,
+   "gap_max_mm": 0.115,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/bearing_633zz@0321",
+   "b": "RR/femur#37",
+   "parts": [
+    "bearing_633zz",
+    "femur"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.thigh"
+   ],
+   "gap_mm": 0.123,
+   "gap_max_mm": 0.123,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/bearing_633zz@0380",
+   "b": "FR/femur#46",
+   "parts": [
+    "bearing_633zz",
+    "femur"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.thigh"
+   ],
+   "gap_mm": 0.123,
+   "gap_max_mm": 0.123,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/bearing_633zz@0203",
+   "b": "RL/femur#19",
+   "parts": [
+    "bearing_633zz",
+    "femur"
+   ],
+   "bodies": [
+    "RL.calf",
+    "RL.thigh"
+   ],
+   "gap_mm": 0.136,
+   "gap_max_mm": 0.136,
+   "pose": "trot_2of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/servo_spt5435lv@0265",
+   "b": "iso4762_m3x8#u120",
+   "parts": [
+    "iso4762_m3x8",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.hip",
+    "base"
+   ],
+   "gap_mm": 0.25,
+   "gap_max_mm": 0.25,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/servo_spt5435lv@0382",
+   "b": "iso4762_m3x8#u250",
+   "parts": [
+    "iso4762_m3x8",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.hip",
+    "base"
+   ],
+   "gap_mm": 0.25,
+   "gap_max_mm": 0.25,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_servo_mount#24",
+   "b": "body/bearing_625zz@0150",
+   "parts": [
+    "bearing_625zz",
+    "left_servo_mount_fl"
+   ],
+   "bodies": [
+    "FL.hip",
+    "base"
+   ],
+   "gap_mm": 0.315,
+   "gap_max_mm": 0.315,
+   "pose": "hips_in",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_servo_mount#42",
+   "b": "body/bearing_625zz@0151",
+   "parts": [
+    "bearing_625zz",
+    "right_servo_mount_fr"
+   ],
+   "bodies": [
+    "FR.hip",
+    "base"
+   ],
+   "gap_mm": 0.339,
+   "gap_max_mm": 0.339,
+   "pose": "hips_in",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/long_link#29",
+   "parts": [
+    "left_shoulder",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.long_link"
+   ],
+   "gap_mm": 0.489,
+   "gap_max_mm": 0.492,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/long_link#20",
+   "parts": [
+    "left_shoulder",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.long_link"
+   ],
+   "gap_mm": 0.496,
+   "gap_max_mm": 0.498,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/short_link#35",
+   "parts": [
+    "right_shoulder",
+    "short_link"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.short_link"
+   ],
+   "gap_mm": 0.496,
+   "gap_max_mm": 0.497,
+   "pose": "trot_7of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/short_link#44",
+   "parts": [
+    "right_shoulder",
+    "short_link"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.short_link"
+   ],
+   "gap_mm": 0.497,
+   "gap_max_mm": 0.498,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/sleeve_bearing_3x5x5_pair@0277",
+   "parts": [
+    "right_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.short_link"
+   ],
+   "gap_mm": 0.504,
+   "gap_max_mm": 0.504,
+   "pose": "trot_1of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/sleeve_bearing_3x5x5_pair@0336",
+   "parts": [
+    "right_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.short_link"
+   ],
+   "gap_mm": 0.504,
+   "gap_max_mm": 0.504,
+   "pose": "trot_4of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/long_link#47",
+   "b": "FR/right_shoulder#48",
+   "parts": [
+    "right_shoulder",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.long_link"
+   ],
+   "gap_mm": 0.508,
+   "gap_max_mm": 0.512,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/sleeve_bearing_3x5x5_pair@0236",
+   "parts": [
+    "left_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.long_link"
+   ],
+   "gap_mm": 0.513,
+   "gap_max_mm": 0.513,
+   "pose": "hips_out",
+   "status": "interface"
+  },
+  {
+   "a": "RR/long_link#38",
+   "b": "RR/right_shoulder#39",
+   "parts": [
+    "right_shoulder",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.long_link"
+   ],
+   "gap_mm": 0.514,
+   "gap_max_mm": 0.514,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/sleeve_bearing_3x5x5_pair@0177",
+   "parts": [
+    "left_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.long_link"
+   ],
+   "gap_mm": 0.517,
+   "gap_max_mm": 0.517,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/sleeve_bearing_3x5x5_pair@0294",
+   "parts": [
+    "right_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.long_link"
+   ],
+   "gap_mm": 0.522,
+   "gap_max_mm": 0.522,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/sleeve_bearing_3x5x5_pair@0353",
+   "parts": [
+    "right_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.long_link"
+   ],
+   "gap_mm": 0.522,
+   "gap_max_mm": 0.522,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/short_link#17",
+   "parts": [
+    "left_shoulder",
+    "short_link"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.short_link"
+   ],
+   "gap_mm": 0.529,
+   "gap_max_mm": 0.529,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/sleeve_bearing_3x5x5_pair@0160",
+   "parts": [
+    "left_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.short_link"
+   ],
+   "gap_mm": 0.529,
+   "gap_max_mm": 0.529,
+   "pose": "trot_4of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/sleeve_bearing_3x5x5_pair@0219",
+   "parts": [
+    "left_shoulder",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.short_link"
+   ],
+   "gap_mm": 0.532,
+   "gap_max_mm": 0.532,
+   "pose": "trot_6of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/short_link#26",
+   "parts": [
+    "left_shoulder",
+    "short_link"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.short_link"
+   ],
+   "gap_mm": 0.534,
+   "gap_max_mm": 0.535,
+   "pose": "trot_7of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/servo_spt5435lv@0364",
+   "parts": [
+    "right_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.hip"
+   ],
+   "gap_mm": 0.589,
+   "gap_max_mm": 0.593,
+   "pose": "trot_3of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/servo_spt5435lv@0241",
+   "parts": [
+    "left_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.hip"
+   ],
+   "gap_mm": 0.591,
+   "gap_max_mm": 0.594,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/servo_spt5435lv@0182",
+   "parts": [
+    "left_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.hip"
+   ],
+   "gap_mm": 0.594,
+   "gap_max_mm": 0.597,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/femur#37",
+   "b": "RR/right_shoulder#39",
+   "parts": [
+    "femur",
+    "right_shoulder"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.thigh"
+   ],
+   "gap_mm": 0.599,
+   "gap_max_mm": 0.608,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/servo_spt5435lv@0247",
+   "parts": [
+    "left_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.hip"
+   ],
+   "gap_mm": 0.601,
+   "gap_max_mm": 0.606,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/servo_spt5435lv@0188",
+   "parts": [
+    "left_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.hip"
+   ],
+   "gap_mm": 0.602,
+   "gap_max_mm": 0.605,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/servo_spt5435lv@0358",
+   "parts": [
+    "right_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.hip"
+   ],
+   "gap_mm": 0.604,
+   "gap_max_mm": 0.609,
+   "pose": "trot_3of8",
+   "status": "interface"
+  },
+  {
+   "a": "body/bearing_625zz@0147",
+   "b": "iso4762_m3x10#u249",
+   "parts": [
+    "bearing_625zz",
+    "iso4762_m3x10"
+   ],
+   "bodies": [
+    "RR.hip",
+    "base"
+   ],
+   "gap_mm": 0.608,
+   "gap_max_mm": 0.608,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "body/bearing_625zz@0148",
+   "b": "iso4762_m3x10#u111",
+   "parts": [
+    "bearing_625zz",
+    "iso4762_m3x10"
+   ],
+   "bodies": [
+    "RL.hip",
+    "base"
+   ],
+   "gap_mm": 0.608,
+   "gap_max_mm": 0.608,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/femur#28",
+   "b": "FL/left_shoulder#30",
+   "parts": [
+    "femur",
+    "left_shoulder"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.thigh"
+   ],
+   "gap_mm": 0.618,
+   "gap_max_mm": 0.625,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/servo_spt5435lv@0299",
+   "parts": [
+    "right_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.hip"
+   ],
+   "gap_mm": 0.619,
+   "gap_max_mm": 0.623,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/servo_spt5435lv@0305",
+   "parts": [
+    "right_shoulder",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.hip"
+   ],
+   "gap_mm": 0.621,
+   "gap_max_mm": 0.624,
+   "pose": "trot_7of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/femur#46",
+   "b": "FR/right_shoulder#48",
+   "parts": [
+    "femur",
+    "right_shoulder"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.thigh"
+   ],
+   "gap_mm": 0.631,
+   "gap_max_mm": 0.637,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/femur#19",
+   "b": "RL/left_shoulder#21",
+   "parts": [
+    "femur",
+    "left_shoulder"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.thigh"
+   ],
+   "gap_mm": 0.638,
+   "gap_max_mm": 0.64,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "back_shell_button",
+   "parts": [
+    "back_shell_button",
+    "right_shoulder"
+   ],
+   "bodies": [
+    "RR.crank",
+    "base"
+   ],
+   "gap_mm": 0.732,
+   "gap_max_mm": 0.732,
+   "pose": "hips_out",
+   "status": "warn"
+  },
+  {
+   "a": "FR/servo_arm_horn_25t@0333",
+   "b": "front_shell_display",
+   "parts": [
+    "front_shell_display",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "FR.arm",
+    "base"
+   ],
+   "gap_mm": 0.767,
+   "gap_max_mm": 0.767,
+   "pose": "hips_out",
+   "status": "warn"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "back_shell_button",
+   "parts": [
+    "back_shell_button",
+    "left_shoulder"
+   ],
+   "bodies": [
+    "RL.crank",
+    "base"
+   ],
+   "gap_mm": 0.784,
+   "gap_max_mm": 0.784,
+   "pose": "hips_out",
+   "status": "warn"
+  },
+  {
+   "a": "FL/servo_arm_horn_25t@0216",
+   "b": "front_shell_display",
+   "parts": [
+    "front_shell_display",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "FL.arm",
+    "base"
+   ],
+   "gap_mm": 0.79,
+   "gap_max_mm": 0.79,
+   "pose": "hips_out",
+   "status": "warn"
+  },
+  {
+   "a": "FL/femur_servo_connector#27",
+   "b": "FL/servo_spt5435lv@0241",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.hip",
+    "FL.thigh"
+   ],
+   "gap_mm": 0.907,
+   "gap_max_mm": 0.908,
+   "pose": "trot_6of8",
+   "status": "interface"
+  },
+  {
+   "a": "RR/femur_servo_connector#36",
+   "b": "RR/servo_spt5435lv@0299",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.hip",
+    "RR.thigh"
+   ],
+   "gap_mm": 0.907,
+   "gap_max_mm": 0.908,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/femur_servo_connector#45",
+   "b": "FR/servo_spt5435lv@0358",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.hip",
+    "FR.thigh"
+   ],
+   "gap_mm": 0.907,
+   "gap_max_mm": 0.908,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/femur_servo_connector#18",
+   "b": "RL/servo_spt5435lv@0182",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.hip",
+    "RL.thigh"
+   ],
+   "gap_mm": 0.912,
+   "gap_max_mm": 0.913,
+   "pose": "trot_4of8",
+   "status": "interface"
+  },
+  {
+   "a": "RR/long_link#38",
+   "b": "iso4762_m3x25#u176",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.long_link"
+   ],
+   "gap_mm": 0.969,
+   "gap_max_mm": 0.97,
+   "pose": "trot_6of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/long_link#47",
+   "b": "iso4762_m3x25#u242",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.long_link"
+   ],
+   "gap_mm": 0.97,
+   "gap_max_mm": 0.971,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/long_link#38",
+   "b": "RR/outer_tibia#40",
+   "parts": [
+    "outer_tibia",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.long_link"
+   ],
+   "gap_mm": 0.984,
+   "gap_max_mm": 0.989,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/long_link#47",
+   "b": "FR/outer_tibia#49",
+   "parts": [
+    "outer_tibia",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.long_link"
+   ],
+   "gap_mm": 0.987,
+   "gap_max_mm": 0.99,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/long_link#38",
+   "b": "iso4762_m3x25#u160",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.long_link"
+   ],
+   "gap_mm": 1.005,
+   "gap_max_mm": 1.006,
+   "pose": "trot_5of8",
+   "status": "interface"
+  },
+  {
+   "a": "RR/outer_tibia#40",
+   "b": "RR/sleeve_bearing_3x5x5_pair@0295",
+   "parts": [
+    "outer_tibia",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.long_link"
+   ],
+   "gap_mm": 1.005,
+   "gap_max_mm": 1.005,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/outer_tibia#49",
+   "b": "FR/sleeve_bearing_3x5x5_pair@0354",
+   "parts": [
+    "outer_tibia",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.long_link"
+   ],
+   "gap_mm": 1.005,
+   "gap_max_mm": 1.005,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/long_link#47",
+   "b": "iso4762_m3x25#u226",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.long_link"
+   ],
+   "gap_mm": 1.007,
+   "gap_max_mm": 1.008,
+   "pose": "trot_3of8",
+   "status": "interface"
+  },
+  {
+   "a": "body/outer_shoulder_frame#12",
+   "b": "iso7089_m3#u180",
+   "parts": [
+    "iso7089_m3",
+    "outer_shoulder_frame"
+   ],
+   "bodies": [
+    "FL.hip",
+    "base"
+   ],
+   "gap_mm": 1.012,
+   "gap_max_mm": 1.169,
+   "pose": "hips_in",
+   "status": "ok"
+  },
+  {
+   "a": "FL/inner_tibia#31",
+   "b": "FL/long_link#29",
+   "parts": [
+    "inner_tibia",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FL.calf",
+    "FL.long_link"
+   ],
+   "gap_mm": 1.017,
+   "gap_max_mm": 1.024,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/long_link#29",
+   "b": "iso4762_m3x25#u227",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.long_link"
+   ],
+   "gap_mm": 1.017,
+   "gap_max_mm": 1.018,
+   "pose": "trot_6of8",
+   "status": "interface"
+  },
+  {
+   "a": "RL/inner_tibia#22",
+   "b": "RL/long_link#20",
+   "parts": [
+    "inner_tibia",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RL.calf",
+    "RL.long_link"
+   ],
+   "gap_mm": 1.018,
+   "gap_max_mm": 1.025,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/long_link#20",
+   "b": "iso4762_m3x25#u161",
+   "parts": [
+    "iso4762_m3x25",
+    "stiff_long_link"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.long_link"
+   ],
+   "gap_mm": 1.019,
+   "gap_max_mm": 1.02,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "RL/inner_tibia#22",
+   "b": "RL/sleeve_bearing_3x5x5_pair@0178",
+   "parts": [
+    "inner_tibia",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "RL.calf",
+    "RL.long_link"
+   ],
+   "gap_mm": 1.02,
+   "gap_max_mm": 1.02,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/inner_tibia#31",
+   "b": "FL/sleeve_bearing_3x5x5_pair@0237",
+   "parts": [
+    "inner_tibia",
+    "sleeve_bearing_3x5x5_pair"
+   ],
+   "bodies": [
+    "FL.calf",
+    "FL.long_link"
+   ],
+   "gap_mm": 1.02,
+   "gap_max_mm": 1.02,
+   "pose": "trot_1of8",
+   "status": "interface"
+  },
+  {
+   "a": "RR/short_link#35",
+   "b": "iso4762_m3x25#u140",
+   "parts": [
+    "iso4762_m3x25",
+    "short_link"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.short_link"
+   ],
+   "gap_mm": 1.026,
+   "gap_max_mm": 1.027,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/short_link#44",
+   "b": "iso4762_m3x25#u206",
+   "parts": [
+    "iso4762_m3x25",
+    "short_link"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.short_link"
+   ],
+   "gap_mm": 1.026,
+   "gap_max_mm": 1.027,
+   "pose": "trot_4of8",
+   "status": "interface"
+  },
+  {
+   "a": "RL/short_link#17",
+   "b": "iso4762_m3x25#u141",
+   "parts": [
+    "iso4762_m3x25",
+    "short_link"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.short_link"
+   ],
+   "gap_mm": 1.032,
+   "gap_max_mm": 1.033,
+   "pose": "trot_4of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/short_link#26",
+   "b": "iso4762_m3x25#u207",
+   "parts": [
+    "iso4762_m3x25",
+    "short_link"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.short_link"
+   ],
+   "gap_mm": 1.034,
+   "gap_max_mm": 1.035,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "body/outer_shoulder_frame#12",
+   "b": "iso7089_m3#u254",
+   "parts": [
+    "iso7089_m3",
+    "outer_shoulder_frame"
+   ],
+   "bodies": [
+    "FR.hip",
+    "base"
+   ],
+   "gap_mm": 1.039,
+   "gap_max_mm": 1.196,
+   "pose": "hips_in",
+   "status": "ok"
+  },
+  {
+   "a": "RR/femur_servo_connector#36",
+   "b": "RR/servo_spt5435lv@0305",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.hip",
+    "RR.thigh"
+   ],
+   "gap_mm": 1.085,
+   "gap_max_mm": 1.085,
+   "pose": "trot_3of8",
+   "status": "interface"
+  },
+  {
+   "a": "FR/femur_servo_connector#45",
+   "b": "FR/servo_spt5435lv@0364",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.hip",
+    "FR.thigh"
+   ],
+   "gap_mm": 1.085,
+   "gap_max_mm": 1.085,
+   "pose": "trot_0of8",
+   "status": "interface"
+  },
+  {
+   "a": "FL/left_shoulder#30",
+   "b": "FL/servo_arm_horn_25t@0216",
+   "parts": [
+    "left_shoulder",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "FL.arm",
+    "FL.crank"
+   ],
+   "gap_mm": 1.089,
+   "gap_max_mm": 1.101,
+   "pose": "trot_3of8",
+   "status": "interface"
+  },
+  {
+   "a": "RR/femur#37",
+   "b": "RR/outer_tibia#40",
+   "parts": [
+    "femur",
+    "outer_tibia"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.thigh"
+   ],
+   "gap_mm": 1.093,
+   "gap_max_mm": 1.095,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/femur#46",
+   "b": "FR/outer_tibia#49",
+   "parts": [
+    "femur",
+    "outer_tibia"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.thigh"
+   ],
+   "gap_mm": 1.094,
+   "gap_max_mm": 1.095,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/left_shoulder#21",
+   "b": "RL/servo_arm_horn_25t@0157",
+   "parts": [
+    "left_shoulder",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "RL.arm",
+    "RL.crank"
+   ],
+   "gap_mm": 1.095,
+   "gap_max_mm": 1.107,
+   "pose": "trot_7of8",
+   "status": "interface"
+  },
+  {
+   "a": "RL/femur_servo_connector#18",
+   "b": "RL/servo_spt5435lv@0188",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.hip",
+    "RL.thigh"
+   ],
+   "gap_mm": 1.097,
+   "gap_max_mm": 1.097,
+   "pose": "stand_170mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/femur_servo_connector#27",
+   "b": "FL/servo_spt5435lv@0247",
+   "parts": [
+    "femur_servo_connector",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.hip",
+    "FL.thigh"
+   ],
+   "gap_mm": 1.098,
+   "gap_max_mm": 1.101,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/right_shoulder#48",
+   "b": "FR/servo_arm_horn_25t@0333",
+   "parts": [
+    "right_shoulder",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "FR.arm",
+    "FR.crank"
+   ],
+   "gap_mm": 1.109,
+   "gap_max_mm": 1.128,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/right_shoulder#39",
+   "b": "RR/servo_arm_horn_25t@0274",
+   "parts": [
+    "right_shoulder",
+    "servo_arm_horn_25t"
+   ],
+   "bodies": [
+    "RR.arm",
+    "RR.crank"
+   ],
+   "gap_mm": 1.112,
+   "gap_max_mm": 1.128,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RR/femur#37",
+   "b": "RR/inner_tibia#41",
+   "parts": [
+    "femur",
+    "inner_tibia"
+   ],
+   "bodies": [
+    "RR.calf",
+    "RR.thigh"
+   ],
+   "gap_mm": 1.118,
+   "gap_max_mm": 1.12,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/femur#28",
+   "b": "FL/outer_tibia#32",
+   "parts": [
+    "femur",
+    "outer_tibia"
+   ],
+   "bodies": [
+    "FL.calf",
+    "FL.thigh"
+   ],
+   "gap_mm": 1.121,
+   "gap_max_mm": 1.124,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "FR/femur#46",
+   "b": "FR/inner_tibia#50",
+   "parts": [
+    "femur",
+    "inner_tibia"
+   ],
+   "bodies": [
+    "FR.calf",
+    "FR.thigh"
+   ],
+   "gap_mm": 1.123,
+   "gap_max_mm": 1.126,
+   "pose": "tall_210mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/femur#19",
+   "b": "RL/inner_tibia#22",
+   "parts": [
+    "femur",
+    "inner_tibia"
+   ],
+   "bodies": [
+    "RL.calf",
+    "RL.thigh"
+   ],
+   "gap_mm": 1.126,
+   "gap_max_mm": 1.132,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "FL/femur#28",
+   "b": "FL/inner_tibia#31",
+   "parts": [
+    "femur",
+    "inner_tibia"
+   ],
+   "bodies": [
+    "FL.calf",
+    "FL.thigh"
+   ],
+   "gap_mm": 1.128,
+   "gap_max_mm": 1.137,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/femur#19",
+   "b": "RL/outer_tibia#23",
+   "parts": [
+    "femur",
+    "outer_tibia"
+   ],
+   "bodies": [
+    "RL.calf",
+    "RL.thigh"
+   ],
+   "gap_mm": 1.14,
+   "gap_max_mm": 1.143,
+   "pose": "crouch_120mm",
+   "status": "interface"
+  },
+  {
+   "a": "RL/servo_spt5435lv@0182",
+   "b": "iso4762_m3x25#u141",
+   "parts": [
+    "iso4762_m3x25",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.crank",
+    "RL.hip"
+   ],
+   "gap_mm": 1.215,
+   "gap_max_mm": 1.457,
+   "pose": "tall_210mm",
+   "status": "ok"
+  },
+  {
+   "a": "FL/servo_spt5435lv@0241",
+   "b": "iso4762_m3x25#u207",
+   "parts": [
+    "iso4762_m3x25",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FL.crank",
+    "FL.hip"
+   ],
+   "gap_mm": 1.215,
+   "gap_max_mm": 1.457,
+   "pose": "tall_210mm",
+   "status": "ok"
+  },
+  {
+   "a": "RR/servo_spt5435lv@0299",
+   "b": "iso4762_m3x25#u140",
+   "parts": [
+    "iso4762_m3x25",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.crank",
+    "RR.hip"
+   ],
+   "gap_mm": 1.215,
+   "gap_max_mm": 1.457,
+   "pose": "tall_210mm",
+   "status": "ok"
+  },
+  {
+   "a": "FR/servo_spt5435lv@0358",
+   "b": "iso4762_m3x25#u206",
+   "parts": [
+    "iso4762_m3x25",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "FR.crank",
+    "FR.hip"
+   ],
+   "gap_mm": 1.215,
+   "gap_max_mm": 1.457,
+   "pose": "tall_210mm",
+   "status": "ok"
+  },
+  {
+   "a": "body/outer_shoulder_frame#12",
+   "b": "iso4762_m3x10#u181",
+   "parts": [
+    "iso4762_m3x10",
+    "outer_shoulder_frame"
+   ],
+   "bodies": [
+    "FL.hip",
+    "base"
+   ],
+   "gap_mm": 1.3,
+   "gap_max_mm": 1.371,
+   "pose": "hips_in",
+   "status": "ok"
+  },
+  {
+   "a": "body/outer_shoulder_frame#12",
+   "b": "iso4762_m3x10#u255",
+   "parts": [
+    "iso4762_m3x10",
+    "outer_shoulder_frame"
+   ],
+   "bodies": [
+    "FR.hip",
+    "base"
+   ],
+   "gap_mm": 1.332,
+   "gap_max_mm": 1.4,
+   "pose": "hips_in",
+   "status": "ok"
+  },
+  {
+   "a": "RL/servo_spt5435lv@0207",
+   "b": "iso4762_m3x8#u121",
+   "parts": [
+    "iso4762_m3x8",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RL.hip",
+    "base"
+   ],
+   "gap_mm": 1.386,
+   "gap_max_mm": 1.432,
+   "pose": "hips_out",
+   "status": "interface"
+  },
+  {
+   "a": "RR/servo_spt5435lv@0324",
+   "b": "iso4762_m3x8#u251",
+   "parts": [
+    "iso4762_m3x8",
+    "servo_spt5435lv"
+   ],
+   "bodies": [
+    "RR.hip",
+    "base"
+   ],
+   "gap_mm": 1.386,
+   "gap_max_mm": 1.432,
+   "pose": "hips_out",
+   "status": "interface"
+  }
+ ]
+}

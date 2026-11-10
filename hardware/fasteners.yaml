@@ -1,0 +1,51 @@
+# Fastener catalogue (nominal ISO/DIN dimensions, mm). Keys are referenced by
+# strido_cad.parts (new joints) and strido_cad.fasteners (upstream joints).
+# kind: screw | nut | washer | standoff | insert. For screws `length` is the
+# ISO nominal length (under the head). Steel class 8.8 or A2 stainless is fine;
+# black-oxide 12.9 hex socket screws are the reference choice.
+standards:
+  iso4762: {title: "ISO 4762 socket head cap screw", head: cylinder}
+  iso7380: {title: "ISO 7380 button head socket screw", head: dome}
+  iso4032: {title: "ISO 4032 hex nut", head: hex}
+  din985: {title: "DIN 985 nylon-insert lock nut", head: hex}
+  iso7089: {title: "ISO 7089 flat washer", head: washer}
+  standoff: {title: "Brass hex stand-off, female-female", head: hex}
+
+thread: # nominal diameter, head diameter dk, head height k, hex key, nut across flats s, nut height m, nyloc height h
+  M2: {d: 2.0, dk: 3.8, k: 2.0, key: 1.5, s: 4.0, m: 1.6, h: 2.8, washer_od: 5.0, washer_t: 0.3}
+  M2.5: {d: 2.5, dk: 4.5, k: 2.5, key: 2.0, s: 5.0, m: 2.0, h: 3.5, washer_od: 6.0, washer_t: 0.5}
+  M3: {d: 3.0, dk: 5.5, k: 3.0, key: 2.5, s: 5.5, m: 2.4, h: 4.0, washer_od: 7.0, washer_t: 0.5}
+  M5: {d: 5.0, dk: 8.5, k: 5.0, key: 4.0, s: 8.0, m: 4.7, h: 5.0, washer_od: 10.0, washer_t: 1.0}
+
+items:
+  iso4762_m2x5: {kind: screw, standard: iso4762, thread: M2, length: 5}
+  iso4762_m2x6: {kind: screw, standard: iso4762, thread: M2, length: 6}
+  iso4762_m2x8: {kind: screw, standard: iso4762, thread: M2, length: 8}
+  iso4762_m2x10: {kind: screw, standard: iso4762, thread: M2, length: 10}
+  iso4762_m2_5x5: {kind: screw, standard: iso4762, thread: M2.5, length: 5}
+  iso4762_m2_5x6: {kind: screw, standard: iso4762, thread: M2.5, length: 6}
+  iso4762_m2_5x8: {kind: screw, standard: iso4762, thread: M2.5, length: 8}
+  iso4762_m3x6: {kind: screw, standard: iso4762, thread: M3, length: 6}
+  iso4762_m3x8: {kind: screw, standard: iso4762, thread: M3, length: 8}
+  iso4762_m3x10: {kind: screw, standard: iso4762, thread: M3, length: 10}
+  iso4762_m3x12: {kind: screw, standard: iso4762, thread: M3, length: 12}
+  iso4762_m3x14: {kind: screw, standard: iso4762, thread: M3, length: 14}
+  iso4762_m3x16: {kind: screw, standard: iso4762, thread: M3, length: 16}
+  iso4762_m3x18: {kind: screw, standard: iso4762, thread: M3, length: 18}
+  iso4762_m3x20: {kind: screw, standard: iso4762, thread: M3, length: 20}
+  iso4762_m3x25: {kind: screw, standard: iso4762, thread: M3, length: 25}
+  iso4762_m3x30: {kind: screw, standard: iso4762, thread: M3, length: 30}
+  iso4762_m3x35: {kind: screw, standard: iso4762, thread: M3, length: 35}
+  iso4762_m3x40: {kind: screw, standard: iso4762, thread: M3, length: 40}
+  iso4762_m3x45: {kind: screw, standard: iso4762, thread: M3, length: 45}
+  iso4762_m3x50: {kind: screw, standard: iso4762, thread: M3, length: 50}
+  iso7380_m3x8: {kind: screw, standard: iso7380, thread: M3, length: 8}
+  iso7380_m3x10: {kind: screw, standard: iso7380, thread: M3, length: 10}
+  iso7380_m3x12: {kind: screw, standard: iso7380, thread: M3, length: 12}
+  iso4032_m2: {kind: nut, standard: iso4032, thread: M2}
+  iso4032_m2_5: {kind: nut, standard: iso4032, thread: M2.5}
+  iso4032_m3: {kind: nut, standard: iso4032, thread: M3}
+  din985_m3: {kind: nut, standard: din985, thread: M3}
+  iso7089_m3: {kind: washer, standard: iso7089, thread: M3}
+  standoff_m2_5_ff_6: {kind: standoff, standard: standoff, thread: M2.5, length: 6, across_flats: 5.0}
+  standoff_m2_ff_8: {kind: standoff, standard: standoff, thread: M2, length: 8, across_flats: 4.0}

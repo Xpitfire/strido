@@ -1,0 +1,298 @@
+{
+ "ee7da89cce28ca40": {
+  "en": "Microcontrollers and the Raspberry Pi",
+  "de": "Mikrocontroller und der Raspberry Pi"
+ },
+ "545637ed8dd603bb": {
+  "en": "Strido has two computers. A Raspberry Pi 5 runs Linux and ROS 2 and decides *where the legs should go*. A Seeed XIAO ESP32-S3 microcontroller runs one small program that turns those targets into servo pulses every 5 ms and keeps the robot safe. This page explains why the work is split this way and how data flows between them.",
+  "de": "Strido hat zwei Computer. Ein Raspberry Pi 5 läuft mit Linux und ROS 2 und entscheidet, *wohin die Beine sollen*. Ein Mikrocontroller Seeed XIAO ESP32-S3 führt ein kleines Programm aus, das diese Ziele alle 5 ms in Servopulse umsetzt und den Roboter sicher hält. Diese Seite erklärt, warum die Arbeit so aufgeteilt ist und wie die Daten zwischen beiden fließen."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "ee33690cfce896e8": {
+  "en": "**Raspberry Pi 5, 4 GB** with Active Cooler (`pi5_4gb`, `pi5_cooler`): ROS 2 Jazzy in Docker or native, running `gait_node` / `policy_node`, `mcu_bridge`, `sllidar_ros2` and optionally `camera_ros` (`ros2/strido_control`, `ros2/strido_bringup`).",
+  "de": "**Raspberry Pi 5, 4 GB** mit Active Cooler (`pi5_4gb`, `pi5_cooler`): ROS 2 Jazzy in Docker oder nativ, mit `gait_node` / `policy_node`, `mcu_bridge`, `sllidar_ros2` und optional `camera_ros` (`ros2/strido_control`, `ros2/strido_bringup`)."
+ },
+ "f3bc649a981a5712": {
+  "en": "**Seeed XIAO ESP32-S3** (`xiao_esp32s3`): firmware in `firmware/strido_esp32s3` (PlatformIO, Arduino-ESP32 3.x). Pins are in `src/board_config.h`, mirrored and checked against `hardware/electronics.yaml`.",
+  "de": "**Seeed XIAO ESP32-S3** (`xiao_esp32s3`): Firmware in `firmware/strido_esp32s3` (PlatformIO, Arduino-ESP32 3.x). Die Pins stehen in `src/board_config.h`, gespiegelt in und geprüft gegen `hardware/electronics.yaml`."
+ },
+ "83565eb4f51d0677": {
+  "en": "**PCA9685 16-channel PWM driver** (`pca9685`, Adafruit 815 layout) at I²C address 0x40: generates the 12 servo pulses.",
+  "de": "**PCA9685 16-Kanal-PWM-Treiber** (`pca9685`, Adafruit-815-Layout) an I²C-Adresse 0x40: erzeugt die 12 Servopulse."
+ },
+ "c223da39d2058aa3": {
+  "en": "**Link:** USB CDC serial, Pi USB-A → XIAO USB-C (W14), device name `/dev/strido_mcu` from `ros2/strido_bringup/config/99-strido.rules`.",
+  "de": "**Verbindung:** USB-CDC-Seriell, Pi USB-A → XIAO USB-C (W14), Gerätename `/dev/strido_mcu` aus `ros2/strido_bringup/config/99-strido.rules`."
+ },
+ "7475729af5754814": {
+  "en": "Two kinds of computer",
+  "de": "Zwei Arten von Computer"
+ },
+ "329ca89526278b04": {
+  "en": "| | Raspberry Pi 5 | XIAO ESP32-S3 |",
+  "de": "| | Raspberry Pi 5 | XIAO ESP32-S3 |"
+ },
+ "5fe1ffbdbea3d913": {
+  "en": "| Processor | Broadcom BCM2712, 4 × Arm Cortex-A76 at 2.4 GHz | Espressif ESP32-S3, 2 × Xtensa LX7 at up to 240 MHz |",
+  "de": "| Prozessor | Broadcom BCM2712, 4 × Arm Cortex-A76 mit 2,4 GHz | Espressif ESP32-S3, 2 × Xtensa LX7 mit bis zu 240 MHz |"
+ },
+ "b56d3128964aae99": {
+  "en": "| Memory | 4 GB RAM, OS on a 64 GB microSD | 8 MB PSRAM, 8 MB flash |",
+  "de": "| Speicher | 4 GB RAM, Betriebssystem auf einer 64-GB-microSD | 8 MB PSRAM, 8 MB Flash |"
+ },
+ "9f783adf051959bf": {
+  "en": "| Operating system | Linux (Ubuntu Server 24.04 or Raspberry Pi OS) | FreeRTOS underneath the Arduino core |",
+  "de": "| Betriebssystem | Linux (Ubuntu Server 24.04 oder Raspberry Pi OS) | FreeRTOS unter dem Arduino-Core |"
+ },
+ "41d959ad8ed00218": {
+  "en": "| Strength | big software: ROS 2, Docker, Python, neural-network policy, LiDAR and camera drivers | predictable timing, instant start-up, direct control of pins and buses |",
+  "de": "| Stärke | große Software: ROS 2, Docker, Python, neuronale Policy, LiDAR- und Kameratreiber | vorhersagbares Timing, sofortiger Start, direkte Steuerung von Pins und Bussen |"
+ },
+ "e7d5c28ea200c3df": {
+  "en": "| Weakness | timing is not guaranteed; boot takes tens of seconds; SD card can be corrupted by power loss | little memory, no OS services, no ROS |",
+  "de": "| Schwäche | Timing nicht garantiert; Booten dauert einige zehn Sekunden; SD-Karte kann durch Stromausfall beschädigt werden | wenig Speicher, keine Betriebssystemdienste, kein ROS |"
+ },
+ "7f61f50713545e06": {
+  "en": "| Power | 5–7 W typical, 12 W peak with cooler | about 1 W including LCD, IMU and PCA9685 logic |",
+  "de": "| Leistung | typisch 5–7 W, Spitze 12 W mit Kühler | etwa 1 W inklusive LCD, IMU und PCA9685-Logik |"
+ },
+ "04ff18f96541a5b7": {
+  "en": "A **microcontroller** (MCU) is a whole computer on one chip, built to run one program forever and react to hardware events within microseconds. A **single-board computer** like the Pi is a small PC: a general-purpose operating system shares the CPU between many processes.",
+  "de": "Ein **Mikrocontroller** (MCU) ist ein kompletter Computer auf einem Chip, gebaut, um dauerhaft ein Programm auszuführen und innerhalb von Mikrosekunden auf Hardware-Ereignisse zu reagieren. Ein **Einplatinencomputer** wie der Pi ist ein kleiner PC: Ein Allzweck-Betriebssystem teilt die CPU zwischen vielen Prozessen auf."
+ },
+ "250ff0df941804a1": {
+  "en": "Real-time vs \"fast on average\"",
+  "de": "Echtzeit vs. „im Mittel schnell“"
+ },
+ "7ab7dacde64a2768": {
+  "en": "A control loop is **real-time** when it meets its deadline *every* cycle, not just on average. The servo loop in Strido has a 5 ms deadline (`kControlPeriodUs = 5000`): the period and the loop rate are reciprocals, $T = 1/f = 1/200\\,\\mathrm{Hz} = 5\\,\\mathrm{ms}$. Why the period matters to a controller is covered in [control](../theory/control.md).",
+  "de": "Eine Regelschleife ist **echtzeitfähig**, wenn sie ihre Deadline in *jedem* Zyklus einhält, nicht nur im Mittel. Die Servoschleife in Strido hat eine Deadline von 5 ms (`kControlPeriodUs = 5000`): Periode und Schleifenrate sind Kehrwerte, $T = 1/f = 1/200\\,\\mathrm{Hz} = 5\\,\\mathrm{ms}$. Warum die Periode für einen Controller wichtig ist, behandelt [Regelung](../theory/control.md)."
+ },
+ "41ce9805adf887ed": {
+  "en": "Linux is fast but not deterministic. The scheduler, a USB interrupt, an SD-card write, Python's garbage collector or a busy ROS node can delay a process by several milliseconds. A late servo update shows up as a jerk in the leg. A frozen process on the Pi must also never leave twelve 3.43 N·m servos holding their last command forever.",
+  "de": "Linux ist schnell, aber nicht deterministisch. Der Scheduler, ein USB-Interrupt, ein Schreibvorgang auf die SD-Karte, Pythons Garbage Collector oder ein ausgelasteter ROS-Node können einen Prozess um mehrere Millisekunden verzögern. Ein verspätetes Servo-Update zeigt sich als Ruck im Bein. Ein eingefrorener Prozess auf dem Pi darf außerdem niemals zwölf Servos mit 3,43 N·m dauerhaft auf ihrem letzten Befehl halten lassen."
+ },
+ "c4ad5db9dcbb0eca": {
+  "en": "The XIAO runs only its own firmware, split into two FreeRTOS tasks pinned to separate cores (`src/main.cpp`):",
+  "de": "Der XIAO führt nur seine eigene Firmware aus, aufgeteilt in zwei FreeRTOS-Tasks auf getrennten Kernen (`src/main.cpp`):"
+ },
+ "802481365ad4e33c": {
+  "en": "| Task | Core | Priority | Period | Work |",
+  "de": "| Task | Kern | Priorität | Periode | Aufgabe |"
+ },
+ "23e8489c38fa038d": {
+  "en": "| `controlTask` | 1 | 3 (higher) | 5 ms | read IMU, update orientation, read INA260 every 100 ms, run the safety state machine, compute and write 12 servo pulses |",
+  "de": "| `controlTask` | 1 | 3 (höher) | 5 ms | IMU lesen, Orientierung aktualisieren, INA260 alle 100 ms lesen, Sicherheits-Zustandsautomat ausführen, 12 Servopulse berechnen und schreiben |"
+ },
+ "e0da18a2a65d8922": {
+  "en": "| `commsTask` | 0 | 2 | ~1 ms poll | parse incoming frames, send a STATE frame every 10 ms (100 Hz), update the LCD face every 50 ms |",
+  "de": "| `commsTask` | 0 | 2 | ~1 ms Polling | eingehende Frames parsen, alle 10 ms einen STATE-Frame senden (100 Hz), LCD-Gesicht alle 50 ms aktualisieren |"
+ },
+ "304b93e8bb96d368": {
+  "en": "Splitting the cores means a burst of serial traffic can never delay the servo update.",
+  "de": "Durch die Aufteilung auf die Kerne kann ein Schwall serieller Daten das Servo-Update nie verzögern."
+ },
+ "1341555cbf4492ab": {
+  "en": "Why both, and not one or the other",
+  "de": "Warum beide und nicht nur einer"
+ },
+ "4a65b076c43cafa9": {
+  "en": "**Pi only?** The Pi would have to generate pulses and enforce safety from Linux, with no timing guarantee. A Pi crash or a reboot would leave the servos in an unknown state.",
+  "de": "**Nur der Pi?** Der Pi müsste Pulse erzeugen und die Sicherheit aus Linux heraus gewährleisten, ohne Timing-Garantie. Ein Absturz oder Neustart des Pi würde die Servos in einem unbekannten Zustand lassen."
+ },
+ "02057ea8d68b20c4": {
+  "en": "**ESP32 only?** It cannot run ROS 2, Nav2, the LiDAR driver, the camera stack or the learned policy with its numpy runtime.",
+  "de": "**Nur der ESP32?** Er kann weder ROS 2, Nav2, den LiDAR-Treiber, den Kamera-Stack noch die gelernte Policy mit ihrer numpy-Laufzeit ausführen."
+ },
+ "bb5347cfbcc29ab7": {
+  "en": "**Both:** each does what it is good at. The Pi plans at 100 Hz (`gait_node`, `rate_hz: 100`) or 50 Hz (`policy_node`). The XIAO executes at 200 Hz and owns everything safety-critical.",
+  "de": "**Beide:** Jeder macht, was er gut kann. Der Pi plant mit 100 Hz (`gait_node`, `rate_hz: 100`) oder 50 Hz (`policy_node`). Der XIAO führt mit 200 Hz aus und verantwortet alles Sicherheitskritische."
+ },
+ "34a6fc33d16938bb": {
+  "en": "What the XIAO guarantees on its own",
+  "de": "Was der XIAO selbstständig garantiert"
+ },
+ "929af1be307c490e": {
+  "en": "These hold no matter what the Pi is doing (`docs/software.md`, `safety.h`):",
+  "de": "Dies gilt unabhängig davon, was der Pi gerade tut (`docs/software.md`, `safety.h`):"
+ },
+ "2ee59bdb87c0a397": {
+  "en": "**Watchdog:** no joint command for 200 ms → hold the pose; 2 s more → relax (outputs off). Only joint commands feed the watchdog, so if the gait node dies, the robot holds, then goes limp.",
+  "de": "**Watchdog:** 200 ms kein Gelenkbefehl → Pose halten; weitere 2 s → kraftlos (Ausgänge aus). Nur Gelenkbefehle speisen den Watchdog; stirbt also der Gait-Node, hält der Roboter zuerst und wird dann kraftlos."
+ },
+ "c5d646d4a65373e2": {
+  "en": "**Latched e-stop:** `/strido/estop` pulls the PCA9685 output-enable pin high. All pulses stop at once, and the stop stays latched until released.",
+  "de": "**Verriegelter Not-Halt:** `/strido/estop` zieht den Output-Enable-Pin des PCA9685 auf High. Alle Pulse stoppen sofort, und der Halt bleibt verriegelt, bis er freigegeben wird."
+ },
+ "71269f1afeb96a28": {
+  "en": "**Battery cut-off:** warning at 6.8 V; relax and refuse to drive after 5 readings below 6.4 V.",
+  "de": "**Akkuabschaltung:** Warnung bei 6,8 V; nach 5 Messwerten unter 6,4 V kraftlos schalten und Fahren verweigern."
+ },
+ "3b2ec3bbcc4100d9": {
+  "en": "**Limits:** every target is rate-limited to 6 rad/s and clamped to the joint and knee-crank limits from the CAD range-of-motion sweep. Non-finite values (NaN) are rejected.",
+  "de": "**Grenzen:** Jedes Ziel wird auf 6 rad/s ratenbegrenzt und auf die Gelenk- und Kniekurbelgrenzen aus dem CAD-Bewegungsbereich-Sweep begrenzt. Nicht-endliche Werte (NaN) werden verworfen."
+ },
+ "b302d01d078934c5": {
+  "en": "**No INA260, no driving:** without a power monitor there is no cut-off.",
+  "de": "**Kein INA260, kein Fahren:** Ohne Power-Monitor gibt es keine Abschaltung."
+ },
+ "c2e672489c03951f": {
+  "en": "The PCA9685 PWM driver",
+  "de": "Der PWM-Treiber PCA9685"
+ },
+ "e5045e8ced3938ac": {
+  "en": "Why not let the ESP32 generate the twelve pulses directly?",
+  "de": "Warum erzeugt der ESP32 die zwölf Pulse nicht direkt?"
+ },
+ "415e001fd41c7026": {
+  "en": "**Pins.** The XIAO exposes 11 pads (D0–D10). Nine are already used, for the LCD (6), I²C (2) and the output-enable line (1). Twelve more pulse outputs are not available.",
+  "de": "**Pins.** Der XIAO bietet 11 Pads (D0–D10). Neun sind bereits belegt, für das LCD (6), I²C (2) und die Output-Enable-Leitung (1). Zwölf weitere Pulsausgänge sind nicht verfügbar."
+ },
+ "b7df5737d71e6c6d": {
+  "en": "**Offloading.** The PCA9685 holds a 12-bit on/off count per channel and repeats the pulses by itself at 200 Hz. The firmware only writes a new value when a target changes.",
+  "de": "**Entlastung.** Der PCA9685 hält pro Kanal einen 12-Bit-Ein/Aus-Zählwert und wiederholt die Pulse selbstständig mit 200 Hz. Die Firmware schreibt nur dann einen neuen Wert, wenn sich ein Ziel ändert."
+ },
+ "a7ba59e3cf653a0d": {
+  "en": "**One kill line.** Its active-low **OE** (output enable) pin switches all 16 outputs off at once, in hardware.",
+  "de": "**Eine Abschaltleitung.** Sein Low-aktiver **OE**-Pin (Output Enable) schaltet alle 16 Ausgänge auf einmal ab, in Hardware."
+ },
+ "b1f3b9413089747f": {
+  "en": "**Continuity with upstream.** Strido keeps the upstream Yertle channel map (channels 4–15), so wiring knowledge carries over.",
+  "de": "**Kontinuität mit Upstream.** Strido behält die Kanalbelegung des Upstream-Yertle bei (Kanäle 4–15), sodass Verkabelungswissen übertragbar bleibt."
+ },
+ "c81237b674fefa41": {
+  "en": "The OE pull-up",
+  "de": "Der OE-Pull-up"
+ },
+ "8bbd3459f28a712c": {
+  "en": "The PCA9685 board pulls OE **low**, which means \"outputs on\". While the XIAO resets or sits in its bootloader, its D3 pin floats, and the servos would follow whatever the PCA9685 last held. A **2.2 kΩ resistor from OE to VCC** keeps the outputs off until the firmware actively enables them. The smoke test checks it: in the bootloader, OE must read ≥ 2.4 V (`docs/electronics.md`, harness step 8).",
+  "de": "Die PCA9685-Platine zieht OE auf **Low**, was „Ausgänge an“ bedeutet. Während der XIAO zurückgesetzt wird oder im Bootloader steht, ist sein Pin D3 offen, und die Servos würden dem folgen, was der PCA9685 zuletzt hielt. Ein **2,2-kΩ-Widerstand von OE nach VCC** hält die Ausgänge aus, bis die Firmware sie aktiv freigibt. Der Smoke-Test prüft das: Im Bootloader muss OE ≥ 2,4 V messen (`docs/electronics.md`, Kabelbaum-Schritt 8)."
+ },
+ "3557427e174d2bc1": {
+  "en": "Data flow",
+  "de": "Datenfluss"
+ },
+ "1423e5f3aa363741": {
+  "en": "flowchart LR\n  CMD[\"/cmd_vel<br/>teleop, Nav2\"] --> GAIT[\"gait_node 100 Hz<br/>or policy_node 50 Hz\"]\n  GAIT -->|\"/leg_controller/commands<br/>12 joint angles\"| BR[\"mcu_bridge\"]\n  BR -->|\"USB CDC: JOINT_COMMAND<br/>COBS + CRC16\"| CT[\"XIAO controlTask 200 Hz<br/>rate limit, linkage, clamp\"]\n  CT -->|\"I²C 400 kHz\"| PCA[\"PCA9685\"] -->|\"PWM 200 Hz\"| SV[\"12 servos\"]\n  IMU[\"LSM6DSOX\"] -->|\"I²C\"| CT\n  INA[\"INA260\"] -->|\"I²C\"| CT\n  CT -->|\"STATE 100 Hz\"| BR\n  BR --> TOP[\"/joint_states /imu/data<br/>/battery_state /diagnostics\"]",
+  "de": "flowchart LR\n  CMD[\"/cmd_vel<br/>teleop, Nav2\"] --> GAIT[\"gait_node 100 Hz<br/>oder policy_node 50 Hz\"]\n  GAIT -->|\"/leg_controller/commands<br/>12 Gelenkwinkel\"| BR[\"mcu_bridge\"]\n  BR -->|\"USB CDC: JOINT_COMMAND<br/>COBS + CRC16\"| CT[\"XIAO controlTask 200 Hz<br/>Ratenbegrenzung, Koppelgetriebe, Begrenzung\"]\n  CT -->|\"I²C 400 kHz\"| PCA[\"PCA9685\"] -->|\"PWM 200 Hz\"| SV[\"12 Servos\"]\n  IMU[\"LSM6DSOX\"] -->|\"I²C\"| CT\n  INA[\"INA260\"] -->|\"I²C\"| CT\n  CT -->|\"STATE 100 Hz\"| BR\n  BR --> TOP[\"/joint_states /imu/data<br/>/battery_state /diagnostics\"]"
+ },
+ "90c7602570781a7c": {
+  "en": "One cycle, end to end:",
+  "de": "Ein Zyklus, von Anfang bis Ende:"
+ },
+ "9fbea3ac50f9604e": {
+  "en": "**Plan.** `gait_node` turns the velocity command into 12 joint angles in radians, Go2 order FL, FR, RL, RR × hip, thigh, calf.",
+  "de": "**Planen.** `gait_node` wandelt den Geschwindigkeitsbefehl in 12 Gelenkwinkel in Radiant um, Go2-Reihenfolge FL, FR, RL, RR × Hüfte, Oberschenkel, Unterschenkel."
+ },
+ "40999502b6c5e88a": {
+  "en": "**Send.** `mcu_bridge` packs them into a `JOINT_COMMAND` frame: sequence number, mode, 12 × float32. It adds a CRC16 checksum, COBS-encodes the frame and writes it to `/dev/strido_mcu`.",
+  "de": "**Senden.** `mcu_bridge` packt sie in einen `JOINT_COMMAND`-Frame: Sequenznummer, Modus, 12 × float32. Er fügt eine CRC16-Prüfsumme hinzu, COBS-kodiert den Frame und schreibt ihn nach `/dev/strido_mcu`."
+ },
+ "671a9ce0fdf353fe": {
+  "en": "**Execute.** On its next 5 ms tick the XIAO:",
+  "de": "**Ausführen.** Bei seinem nächsten 5-ms-Takt:"
+ },
+ "ea90a758a7fd57c2": {
+  "en": "rate-limits the targets;",
+  "de": "begrenzt der XIAO die Änderungsrate der Ziele;"
+ },
+ "f6e11e4a45d6f9a1": {
+  "en": "converts calf angle to knee-crank angle through the linkage model (`jointsToActuators`);",
+  "de": "rechnet er den Unterschenkelwinkel über das Koppelgetriebemodell in den Kniekurbelwinkel um (`jointsToActuators`);"
+ },
+ "20186e3e384ecd06": {
+  "en": "clamps to the joint limits;",
+  "de": "begrenzt er auf die Gelenkgrenzen;"
+ },
+ "4694ddcd63403e58": {
+  "en": "converts each angle to a pulse with the per-joint calibration;",
+  "de": "rechnet er jeden Winkel mit der Kalibrierung pro Gelenk in einen Puls um;"
+ },
+ "37221224e8b3e8eb": {
+  "en": "writes the pulses to the PCA9685.",
+  "de": "schreibt er die Pulse in den PCA9685."
+ },
+ "51d6a7fa57b6de7e": {
+  "en": "**Report.** Every 10 ms the XIAO sends a 103-byte `STATE` payload: the applied joint angles, the orientation quaternion, gyro and accelerometer readings, bus voltage, current and status flags. `mcu_bridge` publishes them as ROS topics.",
+  "de": "**Melden.** Alle 10 ms sendet der XIAO eine 103 Byte große `STATE`-Payload: die angewendeten Gelenkwinkel, das Orientierungsquaternion, Gyroskop- und Beschleunigungsmesswerte, Busspannung, Strom und Status-Flags. `mcu_bridge` veröffentlicht sie als ROS-Topics."
+ },
+ "1c26e3261ac83be8": {
+  "en": "Because both sides share one protocol definition (`packages/strido-core/src/strido/protocol.py` ⇄ `firmware/.../protocol.h`), the same frames work from ROS, from `strido-cli` on a laptop and from the NT-X adapter.",
+  "de": "Da beide Seiten eine gemeinsame Protokolldefinition nutzen (`packages/strido-core/src/strido/protocol.py` ⇄ `firmware/.../protocol.h`), funktionieren dieselben Frames aus ROS, aus `strido-cli` auf einem Laptop und aus dem NT-X-Adapter."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "375d936daac553c0": {
+  "en": "What happens to the servos 200 ms and 2.2 s after `gait_node` crashes?",
+  "de": "Was passiert mit den Servos 200 ms und 2,2 s nach einem Absturz von `gait_node`?"
+ },
+ "ee9584c069b0e9b4": {
+  "en": "Name two reasons the servo pulses come from a PCA9685 rather than directly from the XIAO.",
+  "de": "Nennen Sie zwei Gründe, warum die Servopulse von einem PCA9685 statt direkt vom XIAO kommen."
+ },
+ "6cd165cfc68a645c": {
+  "en": "Why is the control task on its own core with a higher priority than the comms task?",
+  "de": "Warum läuft der Regel-Task auf einem eigenen Kern mit höherer Priorität als der Kommunikations-Task?"
+ },
+ "90783f290f8d59f7": {
+  "en": "What does the 2.2 kΩ resistor on the PCA9685 OE pin prevent?",
+  "de": "Was verhindert der 2,2-kΩ-Widerstand am OE-Pin des PCA9685?"
+ },
+ "e9d88bcab98c77d6": {
+  "en": "Which component converts the calf angle into a knee-crank angle, and why is it not done on the Pi?",
+  "de": "Welche Komponente rechnet den Unterschenkelwinkel in einen Kniekurbelwinkel um, und warum geschieht das nicht auf dem Pi?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "0545201842133c94": {
+  "en": "After 200 ms without commands the servos hold the last pose. After 2 s more (2.2 s in total) they relax, with outputs off.",
+  "de": "Nach 200 ms ohne Befehle halten die Servos die letzte Pose. Nach weiteren 2 s (insgesamt 2,2 s) werden sie kraftlos, die Ausgänge sind aus."
+ },
+ "8a77c03e15136cba": {
+  "en": "Any two of: the XIAO has too few free pins; the PCA9685 repeats the pulses in hardware; its OE pin kills all outputs at once; it keeps the upstream channel map.",
+  "de": "Zwei beliebige von: Der XIAO hat zu wenige freie Pins; der PCA9685 wiederholt die Pulse in Hardware; sein OE-Pin schaltet alle Ausgänge auf einmal ab; er behält die Upstream-Kanalbelegung bei."
+ },
+ "1f47b42989b949d4": {
+  "en": "So serial traffic and LCD updates can never delay the 5 ms servo deadline.",
+  "de": "Damit serieller Datenverkehr und LCD-Updates die 5-ms-Servo-Deadline nie verzögern können."
+ },
+ "b9187cad7fe39092": {
+  "en": "Servos being driven while the XIAO resets or sits in its bootloader, when its D3 pin is not actively holding OE high.",
+  "de": "Dass Servos angesteuert werden, während der XIAO zurückgesetzt wird oder im Bootloader steht, wenn sein Pin D3 OE nicht aktiv auf High hält."
+ },
+ "8caf4532295b010d": {
+  "en": "The XIAO firmware (`jointsToActuators` in `servo_map.cpp`). Doing it next to the clamping and pulse generation lets the MCU enforce knee-crank limits itself, whatever the Pi sends. The same maths also exists in `strido-core` for simulation.",
+  "de": "Die XIAO-Firmware (`jointsToActuators` in `servo_map.cpp`). Geschieht dies direkt neben Begrenzung und Pulserzeugung, kann die MCU die Kniekurbelgrenzen selbst durchsetzen, egal was der Pi sendet. Dieselbe Mathematik existiert auch in `strido-core` für die Simulation."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "76dd9f6f1da7ff0d": {
+  "en": "[ESP32-S3 datasheet (Espressif)](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)",
+  "de": "[ESP32-S3-Datenblatt (Espressif)](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)"
+ },
+ "ec2fe9805f5ee6d9": {
+  "en": "[Seeed XIAO ESP32-S3 getting started](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)",
+  "de": "[Seeed XIAO ESP32-S3: Erste Schritte](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)"
+ },
+ "30a5e8c5bc88f857": {
+  "en": "[Raspberry Pi 5 product page](https://www.raspberrypi.com/products/raspberry-pi-5/)",
+  "de": "[Raspberry Pi 5 Produktseite](https://www.raspberrypi.com/products/raspberry-pi-5/)"
+ },
+ "4ba3dc575cb8d3e8": {
+  "en": "[PCA9685 datasheet (NXP, Adafruit mirror)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)",
+  "de": "[PCA9685-Datenblatt (NXP, Adafruit-Spiegel)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)"
+ },
+ "73e45b4ed7d22f83": {
+  "en": "Related pages: [Buses](buses.md), [Servos](servos.md), [Firmware](../software/firmware.md), [ROS 2](../software/ros2.md), [Software](../../software.md), [Control theory](../theory/control.md)",
+  "de": "Verwandte Seiten: [Busse](buses.md), [Servos](servos.md), [Firmware](../software/firmware.md), [ROS 2](../software/ros2.md), [Software](../../software.md), [Regelungstheorie](../theory/control.md)"
+ }
+}

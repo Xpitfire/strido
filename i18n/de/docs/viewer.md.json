@@ -1,0 +1,30 @@
+{
+ "5b55d012df05f3ab": {
+  "en": "3D viewer",
+  "de": "3D-Ansicht"
+ },
+ "13253f1f4e7f220a": {
+  "en": "The verified CAD assembly, standing at 170 mm (meshes simplified for the web). Drag to orbit, scroll to zoom, click a part to identify it.",
+  "de": "Die verifizierte CAD-Baugruppe in 170 mm Standhöhe (Meshes für das Web vereinfacht). Ziehen zum Drehen, Scrollen zum Zoomen, Klick auf ein Teil, um es zu identifizieren."
+ },
+ "58d1a5a567f08ec0": {
+  "en": "**Explode** pulls every part away from the body centre.",
+  "de": "**Explosion** zieht alle Teile vom Körpermittelpunkt weg."
+ },
+ "0934268d48eb0a5d": {
+  "en": "**Step** replays the [assembly manual](assembly/README.md): parts appear in the order you fit them and the current step glows orange.",
+  "de": "**Schritt** spielt die [Montageanleitung](assembly/README.md) nach: Die Teile erscheinen in der Reihenfolge, in der Sie sie montieren, und der aktuelle Schritt leuchtet orange."
+ },
+ "4f2a7caea13a9468": {
+  "en": "**Shells / fasteners** hide the shells to look inside, or the screws to see the parts.",
+  "de": "**Schalen / Verbindungselemente** blendet die Schalen aus, um hineinzusehen, oder die Schrauben, um die Teile zu sehen."
+ },
+ "97a565702ecb95a9": {
+  "en": "Click any part to identify it: name, part id, how many the robot has, and the step that fits it.",
+  "de": "Klicken Sie auf ein Teil, um es zu identifizieren: Name, Teile-ID, Anzahl am Roboter und der Schritt, in dem es montiert wird."
+ },
+ "352b46c669640858": {
+  "en": "[Download the model (GLB)](viewer/strido.glb): it opens in any glTF viewer, Blender or the NT-X Studio's asset view.",
+  "de": "[Modell herunterladen (GLB)](viewer/strido.glb): Es lässt sich in jedem glTF-Viewer, in Blender oder in der Asset-Ansicht von NT-X Studio öffnen."
+ }
+}

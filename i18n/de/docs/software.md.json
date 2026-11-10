@@ -1,0 +1,210 @@
+{
+ "9b3289a385a5301e": {
+  "en": "Software",
+  "de": "Software"
+ },
+ "54ea87ae062da6ec": {
+  "en": "flowchart TD\n  subgraph PI[\"Raspberry Pi 5 – ROS 2 Jazzy (Docker or native)\"]\n    TELEOP[\"teleop / Nav2 / your node\"] -->|\"/cmd_vel\"| GAIT[\"gait_node<br/>(or policy_node)\"]\n    GAIT -->|\"/leg_controller/commands<br/>12 × rad, Go2 order\"| BRIDGE[\"mcu_bridge\"]\n    GAIT -->|\"/odom + TF\"| TF[\"robot_state_publisher\"]\n    BRIDGE -->|\"/joint_states /imu/data<br/>/battery_state /diagnostics\"| TF\n    LIDAR[\"sllidar_ros2\"] -->|\"/scan\"| TELEOP\n    CAM[\"camera_ros\"] -->|\"/camera/image_raw\"| TELEOP\n  end\n  BRIDGE <-->|\"USB CDC, COBS + CRC16\"| MCU[\"XIAO ESP32-S3 firmware<br/>200 Hz control, watchdog, e-stop\"]\n  MCU -->|\"I²C\"| PCA[\"PCA9685 → 12 servos\"]\n  MCU -->|\"I²C\"| IMU[\"LSM6DSOX, INA260\"]\n  MCU -->|\"SPI\"| LCD[\"LCD face\"]",
+  "de": "flowchart TD\n  subgraph PI[\"Raspberry Pi 5 – ROS 2 Jazzy (Docker oder nativ)\"]\n    TELEOP[\"teleop / Nav2 / Ihr Node\"] -->|\"/cmd_vel\"| GAIT[\"gait_node<br/>(oder policy_node)\"]\n    GAIT -->|\"/leg_controller/commands<br/>12 × rad, Go2-Reihenfolge\"| BRIDGE[\"mcu_bridge\"]\n    GAIT -->|\"/odom + TF\"| TF[\"robot_state_publisher\"]\n    BRIDGE -->|\"/joint_states /imu/data<br/>/battery_state /diagnostics\"| TF\n    LIDAR[\"sllidar_ros2\"] -->|\"/scan\"| TELEOP\n    CAM[\"camera_ros\"] -->|\"/camera/image_raw\"| TELEOP\n  end\n  BRIDGE <-->|\"USB CDC, COBS + CRC16\"| MCU[\"XIAO ESP32-S3 firmware<br/>200-Hz-Regelung, Watchdog, Not-Halt\"]\n  MCU -->|\"I²C\"| PCA[\"PCA9685 → 12 Servos\"]\n  MCU -->|\"I²C\"| IMU[\"LSM6DSOX, INA260\"]\n  MCU -->|\"SPI\"| LCD[\"LCD-Gesicht\"]"
+ },
+ "e04512025376de66": {
+  "en": "The same `/leg_controller/commands` topic is consumed by `ros2_control` in Gazebo and by `mcu_bridge` on the robot, so every node above the bridge runs unchanged in simulation and on hardware.",
+  "de": "Dasselbe Topic `/leg_controller/commands` wird in Gazebo von `ros2_control` und am Roboter von `mcu_bridge` verarbeitet, sodass jeder Node oberhalb der Bridge unverändert in der Simulation und auf der Hardware läuft."
+ },
+ "11689cf40988bacd": {
+  "en": "ROS 2 interface (Go2-style)",
+  "de": "ROS-2-Schnittstelle (Go2-Stil)"
+ },
+ "28f90e875ed5c3c8": {
+  "en": "| Topic | Type | Direction | Notes |",
+  "de": "| Topic | Typ | Richtung | Hinweise |"
+ },
+ "dc47cf571ed474f1": {
+  "en": "| `/cmd_vel` | geometry_msgs/Twist | in | vx, vy [m/s], wz [rad/s]; limits 0.30 / 0.15 / 1.0; 0.5 s timeout → stand |",
+  "de": "| `/cmd_vel` | geometry_msgs/Twist | ein | vx, vy [m/s], wz [rad/s]; Grenzen 0,30 / 0,15 / 1,0; 0,5 s Timeout → Stehen |"
+ },
+ "c13b7fbe4bb4d6a3": {
+  "en": "| `/leg_controller/commands` | std_msgs/Float64MultiArray | internal | 12 joint angles [rad] in Go2 order FL, FR, RL, RR × hip, thigh, calf |",
+  "de": "| `/leg_controller/commands` | std_msgs/Float64MultiArray | intern | 12 Gelenkwinkel [rad] in Go2-Reihenfolge FL, FR, RL, RR × Hüfte, Oberschenkel, Unterschenkel |"
+ },
+ "e69ee191f9d8ac32": {
+  "en": "| `/joint_states` | sensor_msgs/JointState | out | Go2 joint names (`FL_hip_joint` …). Robot: angles the MCU applies after clamping (hobby servos have no feedback) |",
+  "de": "| `/joint_states` | sensor_msgs/JointState | aus | Go2-Gelenknamen (`FL_hip_joint` …). Roboter: Winkel, die die MCU nach dem Begrenzen anwendet (Hobby-Servos haben keine Rückmeldung) |"
+ },
+ "b125ac980b52f3b9": {
+  "en": "| `/imu/data` | sensor_msgs/Imu | out | orientation (Mahony on the MCU), angular velocity, acceleration; frame `imu_link`; not published while the IMU reports a fault |",
+  "de": "| `/imu/data` | sensor_msgs/Imu | aus | Orientierung (Mahony auf der MCU), Winkelgeschwindigkeit, Beschleunigung; Frame `imu_link`; wird nicht veröffentlicht, solange die IMU einen Fehler meldet |"
+ },
+ "99c39dae85168ab3": {
+  "en": "| `/scan` | sensor_msgs/LaserScan | out | RPLIDAR C1, frame `lidar_link`, 10 Hz |",
+  "de": "| `/scan` | sensor_msgs/LaserScan | aus | RPLIDAR C1, Frame `lidar_link`, 10 Hz |"
+ },
+ "7a90844ab4141d46": {
+  "en": "| `/camera/image_raw` | sensor_msgs/Image | out | Camera Module 3 Wide, frame `camera_optical_frame` |",
+  "de": "| `/camera/image_raw` | sensor_msgs/Image | aus | Camera Module 3 Wide, Frame `camera_optical_frame` |"
+ },
+ "a091b8a2e2caa45e": {
+  "en": "| `/battery_state` | sensor_msgs/BatteryState | out | pack voltage + logic-branch current (INA260), negative = discharging |",
+  "de": "| `/battery_state` | sensor_msgs/BatteryState | aus | Akkupackspannung + Strom des Logikzweigs (INA260), negativ = Entladen |"
+ },
+ "e607771999e77b8c": {
+  "en": "| `/odom` + TF `odom→base_link` | nav_msgs/Odometry | out | dead reckoning of the *commanded* velocity (gait_node only) |",
+  "de": "| `/odom` + TF `odom→base_link` | nav_msgs/Odometry | aus | Koppelnavigation aus der *kommandierten* Geschwindigkeit (nur gait_node) |"
+ },
+ "766f57a60306cc8b": {
+  "en": "| `/strido/estop` | std_msgs/Bool | in | true = latched stop (servo outputs off), false = release |",
+  "de": "| `/strido/estop` | std_msgs/Bool | ein | true = verriegelter Halt (Servoausgänge aus), false = Freigabe |"
+ },
+ "49cd7939fc458ea4": {
+  "en": "| `/strido/relax` | std_msgs/Bool | in | true = servos limp |",
+  "de": "| `/strido/relax` | std_msgs/Bool | ein | true = Servos kraftlos |"
+ },
+ "fa9899c1ad2a077b": {
+  "en": "| `/strido/face` | std_msgs/UInt8 | in | LCD expression |",
+  "de": "| `/strido/face` | std_msgs/UInt8 | ein | LCD-Gesichtsausdruck |"
+ },
+ "289e128ca01c1731": {
+  "en": "| `/diagnostics` | diagnostic_msgs/DiagnosticArray | out | MCU flags: estop, relaxed, watchdog, imu_ok, power_ok, pwm_ok, clamped |",
+  "de": "| `/diagnostics` | diagnostic_msgs/DiagnosticArray | aus | MCU-Flags: estop, relaxed, watchdog, imu_ok, power_ok, pwm_ok, clamped |"
+ },
+ "da0d638249ad1bf4": {
+  "en": "Frames follow REP-103 (`base_link`: x forward, y left, z up); joint zero = leg straight down, thigh positive = foot backwards, calf negative = knee bent (Go2 convention).",
+  "de": "Frames folgen REP-103 (`base_link`: x nach vorne, y nach links, z nach oben); Gelenk-Nullstellung = Bein gerade nach unten, Oberschenkel positiv = Fuß nach hinten, Unterschenkel negativ = Knie gebeugt (Go2-Konvention)."
+ },
+ "e2f6e182457aa232": {
+  "en": "Porting code from a Unitree Go2",
+  "de": "Code von einem Unitree Go2 portieren"
+ },
+ "0fff63e3b1f52bcf": {
+  "en": "Joint names, signs, frames and `/cmd_vel` follow the Go2 ROS 2 description, so velocity-level stacks (teleop, Nav2, SLAM with `/scan`) run unchanged. Differences: the command array order is FL, FR, RL, RR (the Unitree SDK motor index order is FR, FL, RR, RL: map by joint name, not by index), there are no foot-contact or motor-torque topics, `/joint_states` are commanded values, the speed envelope is ≈ 0.3 m/s, and the low-level `unitree_go` messages are not provided.",
+  "de": "Gelenknamen, Vorzeichen, Frames und `/cmd_vel` folgen der Go2-ROS-2-Beschreibung, daher laufen Stacks auf Geschwindigkeitsebene (Teleop, Nav2, SLAM mit `/scan`) unverändert. Unterschiede: Die Reihenfolge des Befehlsarrays ist FL, FR, RL, RR (die Motorindex-Reihenfolge des Unitree SDK ist FR, FL, RR, RL: Zuordnung über den Gelenknamen, nicht über den Index), es gibt keine Topics für Fußkontakt oder Motordrehmoment, `/joint_states` sind kommandierte Werte, der Geschwindigkeitsbereich liegt bei ≈ 0,3 m/s, und die Low-Level-Messages `unitree_go` werden nicht bereitgestellt."
+ },
+ "40a2085371b8effb": {
+  "en": "Packages",
+  "de": "Pakete"
+ },
+ "84e87bb5bd6f3c4d": {
+  "en": "| Path | Contents |",
+  "de": "| Pfad | Inhalt |"
+ },
+ "9f375e05ee3d79fb": {
+  "en": "| `ros2/strido_description` | URDF/xacro and meshes **generated from CAD** (`strido_cad.models`), ros2_control controller config, `display.launch.py` |",
+  "de": "| `ros2/strido_description` | URDF/xacro und Meshes **aus CAD generiert** (`strido_cad.models`), ros2_control-Controllerkonfiguration, `display.launch.py` |"
+ },
+ "f357b68ac22921a6": {
+  "en": "| `ros2/strido_bringup` | `gazebo.launch.py`, `robot.launch.py`, world, udev rules |",
+  "de": "| `ros2/strido_bringup` | `gazebo.launch.py`, `robot.launch.py`, Welt, udev-Regeln |"
+ },
+ "a283f501e8282395": {
+  "en": "| `packages/strido-core` | pure-Python core shared by ROS, MuJoCo and tests: generated geometry, leg/linkage kinematics, trot gait, MCU protocol, numpy policy runtime, `strido-cli` |",
+  "de": "| `packages/strido-core` | reiner Python-Kern, gemeinsam genutzt von ROS, MuJoCo und Tests: generierte Geometrie, Bein-/Koppelgetriebe-Kinematik, Trot-Gait, MCU-Protokoll, numpy-Policy-Laufzeit, `strido-cli` |"
+ },
+ "44b1e64d3d529f2a": {
+  "en": "| `firmware/strido_esp32s3` | PlatformIO firmware; `lib/strido_core` holds the portable kinematics/protocol/safety code with native unit tests |",
+  "de": "| `firmware/strido_esp32s3` | PlatformIO-Firmware; `lib/strido_core` enthält den portablen Kinematik-/Protokoll-/Sicherheitscode mit nativen Unit-Tests |"
+ },
+ "9b8c42fcda276df4": {
+  "en": "Launch:",
+  "de": "Starten:"
+ },
+ "c2a314c3b32b319c": {
+  "en": "Firmware",
+  "de": "Firmware"
+ },
+ "0698d90734ed462d": {
+  "en": "PlatformIO, Arduino-ESP32 3.x on the Seeed XIAO ESP32-S3:",
+  "de": "PlatformIO, Arduino-ESP32 3.x auf dem Seeed XIAO ESP32-S3:"
+ },
+ "60275087d925de3f": {
+  "en": "200 Hz loop: command → linkage-exact joint→servo mapping (`servo_map`, generated geometry) → slew limit 6 rad/s → PCA9685 pulses (200 Hz PWM).",
+  "de": "200-Hz-Schleife: Befehl → koppelgetriebegenaue Gelenk→Servo-Abbildung (`servo_map`, generierte Geometrie) → Änderungsratenbegrenzung 6 rad/s → PCA9685-Pulse (200 Hz PWM)."
+ },
+ "13b9f79105124fa9": {
+  "en": "Safety: only joint commands feed the watchdog (no keep-alive message): no command for 200 ms → hold, 2 s more → relax; latched e-stop; PCA9685 OE pin pulled high on relax/e-stop (plus a hardware pull-up for resets); battery warn 6.8 V, cut-off after 5 consecutive readings below 6.4 V; no driving without the INA260; non-finite commands rejected; joint and knee-crank limits from the CAD range-of-motion sweep.",
+  "de": "Sicherheit: Nur Gelenkbefehle speisen den Watchdog (keine Keep-alive-Message): 200 ms kein Befehl → Halten, weitere 2 s → kraftlos schalten; verriegelter Not-Halt; PCA9685-OE-Pin wird beim Kraftlosschalten/Not-Halt auf High gezogen (plus ein Hardware-Pull-up für Resets); Akkuwarnung bei 6,8 V, Abschaltung nach 5 aufeinanderfolgenden Messwerten unter 6,4 V; kein Fahren ohne den INA260; nicht-endliche Befehle werden verworfen; Gelenk- und Kniekurbelgrenzen aus dem CAD-Bewegungsbereich-Sweep."
+ },
+ "4e37dc1159664d67": {
+  "en": "Calibration (neutral pulse, direction, limits per joint) is stored in flash (`Preferences`).",
+  "de": "Die Kalibrierung (Neutralpuls, Richtung, Grenzen pro Gelenk) wird im Flash gespeichert (`Preferences`)."
+ },
+ "e46ec8fba41a0ec6": {
+  "en": "Protocol (USB CDC)",
+  "de": "Protokoll (USB CDC)"
+ },
+ "09019e56038065bd": {
+  "en": "Frames: `COBS(type | payload | CRC16-CCITT-FALSE little endian) 0x00`. Payloads are little-endian packed structs, mirrored in `packages/strido-core/src/strido/protocol.py` and `firmware/.../protocol.h`.",
+  "de": "Frames: `COBS(type | payload | CRC16-CCITT-FALSE little endian) 0x00`. Payloads sind gepackte Little-Endian-Structs, gespiegelt in `packages/strido-core/src/strido/protocol.py` und `firmware/.../protocol.h`."
+ },
+ "0a8d916385058e15": {
+  "en": "| Type | Name | Payload |",
+  "de": "| Typ | Name | Payload |"
+ },
+ "c610e8cdff28226d": {
+  "en": "| 0x01 | JOINT_COMMAND | seq u16, mode u8 (0 relax, 1 position), q[12] f32 |",
+  "de": "| 0x01 | JOINT_COMMAND | seq u16, mode u8 (0 kraftlos, 1 Position), q[12] f32 |"
+ },
+ "87d2218cb74e6503": {
+  "en": "| 0x02 | SERVO_PULSE_COMMAND | seq u16, pulse_us[12] u16 (0 = off) – calibration only |",
+  "de": "| 0x02 | SERVO_PULSE_COMMAND | seq u16, pulse_us[12] u16 (0 = aus) – nur Kalibrierung |"
+ },
+ "a9eadb6f05949453": {
+  "en": "| 0x03 | SET_CALIBRATION | joint u8, direction i8, neutral_us u16, zero_rad f32, min_us u16, max_us u16 |",
+  "de": "| 0x03 | SET_CALIBRATION | joint u8, direction i8, neutral_us u16, zero_rad f32, min_us u16, max_us u16 |"
+ },
+ "c6c36919e562ef75": {
+  "en": "| 0x04 | SAVE_CALIBRATION | – |",
+  "de": "| 0x04 | SAVE_CALIBRATION | – |"
+ },
+ "0dbeeb91b47f1b1d": {
+  "en": "| 0x05 | REQUEST_CALIBRATION | – → 12 × CALIBRATION |",
+  "de": "| 0x05 | REQUEST_CALIBRATION | – → 12 × CALIBRATION |"
+ },
+ "e9a2e43c5629bb68": {
+  "en": "| 0x06 | ESTOP | engaged u8 |",
+  "de": "| 0x06 | ESTOP | engaged u8 |"
+ },
+ "7294fe7999a62939": {
+  "en": "| 0x07 | DISPLAY | expression u8, length u8, text |",
+  "de": "| 0x07 | DISPLAY | expression u8, length u8, text |"
+ },
+ "79e5208e92999bed": {
+  "en": "| 0x81 | STATE (100 Hz) | last seq u16, time_ms u32, flags u8, q[12], quat wxyz[4], gyro[3], accel[3], bus V, current A (f32) |",
+  "de": "| 0x81 | STATE (100 Hz) | last seq u16, time_ms u32, flags u8, q[12], quat wxyz[4], gyro[3], accel[3], Bus-V, Strom A (f32) |"
+ },
+ "af46bc3566e65480": {
+  "en": "| 0x82 | CALIBRATION | as SET_CALIBRATION |",
+  "de": "| 0x82 | CALIBRATION | wie SET_CALIBRATION |"
+ },
+ "809b6e6eea2b2411": {
+  "en": "| 0x83 | LOG | ASCII |",
+  "de": "| 0x83 | LOG | ASCII |"
+ },
+ "1bf7c1bdc62bd5b0": {
+  "en": "Bench tool",
+  "de": "Prüfstand-Werkzeug"
+ },
+ "2f2f9b12dc92a602": {
+  "en": "`strido-cli` (installed with `packages/strido-core`) talks to the controller without ROS:",
+  "de": "`strido-cli` (installiert mit `packages/strido-core`) kommuniziert ohne ROS mit dem Controller:"
+ },
+ "ea61b5af4a8d9637": {
+  "en": "Raspberry Pi setup",
+  "de": "Raspberry-Pi-Einrichtung"
+ },
+ "8a2cf6c5c39e613a": {
+  "en": "Ubuntu Server 24.04 (arm64) or Raspberry Pi OS Bookworm 64-bit; Docker Engine.",
+  "de": "Ubuntu Server 24.04 (arm64) oder Raspberry Pi OS Bookworm 64-bit; Docker Engine."
+ },
+ "beac8b11ac8e4d7a": {
+  "en": "`docker compose -f docker/compose.yaml build ros` (ROS 2 Jazzy, Gazebo libraries, sllidar_ros2 pinned, this repo's packages).",
+  "de": "`docker compose -f docker/compose.yaml build ros` (ROS 2 Jazzy, Gazebo-Bibliotheken, sllidar_ros2 fixiert, die Pakete dieses Repos)."
+ },
+ "be841b2729417e08": {
+  "en": "Power and udev configuration: see [electronics.md](electronics.md#raspberry-pi-configuration).",
+  "de": "Stromversorgungs- und udev-Konfiguration: siehe [electronics.md](electronics.md#raspberry-pi-configuration)."
+ },
+ "a0e465995fbc277d": {
+  "en": "Camera: the Pi 5 camera stack needs the Raspberry Pi libcamera fork; build `camera_ros` against it on the host (Raspberry Pi OS ships it) or use `rpicam-vid` + a GStreamer bridge, then launch with `camera:=true` (default false; the Docker image has no camera node).",
+  "de": "Kamera: Der Kamera-Stack des Pi 5 benötigt den libcamera-Fork von Raspberry Pi; bauen Sie `camera_ros` auf dem Host dagegen (Raspberry Pi OS liefert ihn mit) oder verwenden Sie `rpicam-vid` + eine GStreamer-Bridge, und starten Sie dann mit `camera:=true` (Standard false; das Docker-Image enthält keinen Kamera-Node)."
+ }
+}

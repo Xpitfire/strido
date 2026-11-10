@@ -1,0 +1,390 @@
+{
+ "6f010792b184802c": {
+  "en": "Tools and workshop",
+  "de": "Werkzeuge und Werkstatt"
+ },
+ "94006705a4d191d8": {
+  "en": "Building Strido needs a small set of hand tools, a soldering iron, a Dupont crimp tool and a multimeter, plus a 3D printer. This page lists them, explains the electrical techniques the harness uses (soldering, crimping, lever clamps, heat-shrinking) and the multimeter checks that catch wiring mistakes before they cost a board.",
+  "de": "Für den Bau von Strido brauchen Sie einen kleinen Satz Handwerkzeuge, einen Lötkolben, eine Dupont-Crimpzange und ein Multimeter sowie einen 3D-Drucker. Diese Seite listet sie auf, erklärt die elektrischen Techniken des Kabelbaums (Löten, Crimpen, Hebelklemmen, Schrumpfschlauch) und die Multimeter-Prüfungen, die Verdrahtungsfehler aufdecken, bevor sie ein Board kosten."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "4be49a004f4a157a": {
+  "en": "The tools are listed in the BOM under [Tools (not in the totals)](../../bom/README.md#tools-not-in-the-totals) and in section E (*Tools and consumables*) of the catalogue and assembly book ([catalogue](../../catalog.md)). The harness steps and voltage checks are in [electronics.md](../../electronics.md#wiring-harness); assembly Step 0 lists the tools per task ([assembly manual](../../assembly/README.md)).",
+  "de": "Die Werkzeuge sind in der Stückliste unter [Werkzeuge (nicht in den Summen)](../../bom/README.md#tools-not-in-the-totals) und in Abschnitt E (*Werkzeuge und Verbrauchsmaterial*) des Katalog- und Montagebuchs ([Katalog](../../catalog.md)) aufgeführt. Die Kabelbaum-Schritte und Spannungsprüfungen stehen in [electronics.md](../../electronics.md#wiring-harness); Montageschritt 0 listet die Werkzeuge pro Aufgabe auf ([Montageanleitung](../../assembly/README.md))."
+ },
+ "9c6ffea680c88441": {
+  "en": "The tool list",
+  "de": "Die Werkzeugliste"
+ },
+ "30ede0c2eed9b884": {
+  "en": "From the catalogue's section E (what each tool is for) and the BOM's tool table (example products):",
+  "de": "Aus Abschnitt E des Katalogs (wofür jedes Werkzeug dient) und der Werkzeugtabelle der Stückliste (Beispielprodukte):"
+ },
+ "5a9b40787a59abe4": {
+  "en": "| Tool | Used for in Strido | Example in the BOM |",
+  "de": "| Werkzeug | Verwendung in Strido | Beispiel in der Stückliste |"
+ },
+ "8c2a1b8c3d43e454": {
+  "en": "| Hex keys 1.5 / 2.0 / 2.5 mm | M2 / M2.5 / M3 socket heads | Wera 950/9 Hex-Plus set |",
+  "de": "| Innensechskantschlüssel 1,5 / 2,0 / 2,5 mm | M2- / M2.5- / M3-Zylinderköpfe | Wera 950/9 Hex-Plus Satz |"
+ },
+ "8f0c7038945f6376": {
+  "en": "| Nut drivers 4.0 / 5.0 / 5.5 mm | holding M2 / M2.5 / M3 nuts | not priced |",
+  "de": "| Steckschlüssel 4,0 / 5,0 / 5,5 mm | Halten der M2- / M2.5- / M3-Muttern | nicht bepreist |"
+ },
+ "c37ae18b6b1d85df": {
+  "en": "| Drills 2.2 / 2.7 / 3.2 mm (hand or pin vice) | chasing the tight holes listed in the [fit report](../../verification/fits.md) | — |",
+  "de": "| Bohrer 2,2 / 2,7 / 3,2 mm (Hand oder Stiftenklöbchen) | Nachbohren der engen Löcher aus dem [Passungsbericht](../../verification/fits.md) | — |"
+ },
+ "cad4fa8191ba6b6b": {
+  "en": "| Flush cutters, deburring tool | removing supports and brims | Wiha 26812 |",
+  "de": "| Seitenschneider (bündig), Entgrater | Entfernen von Stützen und Brims | Wiha 26812 |"
+ },
+ "1ad868513e9b8e88": {
+  "en": "| Soldering iron, solder, heat-shrink | power entry, XT60 connectors, splices, XIAO pins, PCA9685 OE pull-up | Miniware TS101; solder (`solder`) and the heat-shrink assortment are in the BOM |",
+  "de": "| Lötkolben, Lot, Schrumpfschlauch | Stromeingang, XT60-Steckverbinder, Spleiße, XIAO-Pins, PCA9685-OE-Pull-up | Miniware TS101; Lot (`solder`) und das Schrumpfschlauch-Sortiment sind in der Stückliste |"
+ },
+ "cb7f72d1ad8cc822": {
+  "en": "| Wire stripper | stripping 14–22 AWG silicone wire | Jokari Super 4 plus |",
+  "de": "| Abisolierzange | Abisolieren von 14–22 AWG Silikonlitze | Jokari Super 4 plus |"
+ },
+ "1e3ff35a471722e6": {
+  "en": "| Dupont crimp tool, contacts + housings | Pi 5 V feed (W12), W17/W20 at the PCA9685, the 12 re-crimped servo signal wires | DxCRIMP set; contacts and housings: `dupont_crimp_contacts` (610-piece kit) in the BOM |",
+  "de": "| Dupont-Crimpzange, Kontakte + Gehäuse | Pi-5-V-Versorgung (W12), W17/W20 am PCA9685, die 12 neu gecrimpten Servo-Signaldrähte | DxCRIMP-Set; Kontakte und Gehäuse: `dupont_crimp_contacts` (610-teiliges Set) in der Stückliste |"
+ },
+ "15b2469aa361e2ba": {
+  "en": "| Spiral wrap, cable ties, adhesive tie mounts | dressing the harness: wrap on every bundle of three or more cables, ties at the marked points, two 13 × 13 mm mounts on the deck side strips | in the BOM (`spiral_wrap`, `cable_ties` bag of 100, `cable_tie_mounts`) |",
+  "de": "| Spiralschlauch, Kabelbinder, selbstklebende Kabelbinder-Sockel | Verlegen des Kabelbaums: Spiralschlauch um jedes Bündel aus drei oder mehr Kabeln, Kabelbinder an den markierten Stellen, zwei Sockel 13 × 13 mm auf den seitlichen Deckleisten | in der Stückliste (`spiral_wrap`, `cable_ties` Beutel à 100, `cable_tie_mounts`) |"
+ },
+ "c4233f7b9f9e0609": {
+  "en": "| Multimeter | 6.0 V UBEC check, 5 V rail, OE voltage | Kaiweets |",
+  "de": "| Multimeter | 6,0-V-UBEC-Prüfung, 5-V-Schiene, OE-Spannung | Kaiweets |"
+ },
+ "a8719aff611da7e3": {
+  "en": "| Calipers | measuring printed holes, bearings, screw lengths | — |",
+  "de": "| Messschieber | Messen gedruckter Löcher, Lager, Schraubenlängen | — |"
+ },
+ "0c03f37b3c0471ed": {
+  "en": "| Medium thread locker | screws into metal horns only (never into printed holes) | in the BOM (fasteners) |",
+  "de": "| Mittelfeste Schraubensicherung | nur für Schrauben in Metallhörnern (nie in gedruckten Löchern) | in der Stückliste (Befestigungselemente) |"
+ },
+ "a046e4637cc37630": {
+  "en": "| Thin CA glue (liquid) | hardening weak printed pilots (ADR-009 fallback) | any liquid superglue |",
+  "de": "| Dünnflüssiger Sekundenkleber (CA) | Härten schwacher gedruckter Vorbohrungen (ADR-009-Rückfallebene) | beliebiger flüssiger Sekundenkleber |"
+ },
+ "b5bd08763ca51d6e": {
+  "en": "| LiPo balance charger + LiPo bag | battery care | in the BOM (power) |",
+  "de": "| LiPo-Balancer-Ladegerät + LiPo-Tasche | Akkupflege | in der Stückliste (Versorgung) |"
+ },
+ "f5935d978ad1968a": {
+  "en": "| USB-C cable | flashing the XIAO ESP32-S3 | — |",
+  "de": "| USB-C-Kabel | Flashen des XIAO ESP32-S3 | — |"
+ },
+ "d5a12534a0366500": {
+  "en": "| 3D printer, ≥ 220 × 220 mm bed | all printed parts (shells are 114 × 208 mm) | e.g. Bambu Lab A1 Combo |",
+  "de": "| 3D-Drucker, Druckbett ≥ 220 × 220 mm | alle Druckteile (Schalen messen 114 × 208 mm) | z. B. Bambu Lab A1 Combo |"
+ },
+ "19f9ed319df438d6": {
+  "en": "Why a pin vice and not a power drill for chasing holes? You only want to remove the 0.1–0.2 mm of plastic that printing added; a power drill heats PETG, grabs and can crack a thin boss.",
+  "de": "Warum ein Stiftenklöbchen und keine Bohrmaschine zum Nachbohren? Sie wollen nur die 0,1–0,2 mm Kunststoff entfernen, die der Druck hinzugefügt hat; eine Bohrmaschine erhitzt PETG, verhakt sich und kann einen dünnen Dom sprengen."
+ },
+ "5a379a3f5f6de901": {
+  "en": "Workspace set-up",
+  "de": "Einrichtung des Arbeitsplatzes"
+ },
+ "a969f163a05dcb5a": {
+  "en": "**A flat, non-flammable surface** for soldering and charging, with nothing flammable within reach of the iron or the LiPo bag.",
+  "de": "**Eine ebene, nicht brennbare Unterlage** zum Löten und Laden, ohne Brennbares in Reichweite des Lötkolbens oder der LiPo-Tasche."
+ },
+ "0d65c2d22755b777": {
+  "en": "**Good light and a magnifier** for the 2.54 mm Dupont pins and the small Adafruit boards.",
+  "de": "**Gutes Licht und eine Lupe** für die 2,54-mm-Dupont-Pins und die kleinen Adafruit-Boards."
+ },
+ "c10b0fa06484b313": {
+  "en": "**Parts trays** per assembly step: the manual's parts boxes list exactly which screws each step uses, so sort them first.",
+  "de": "**Teileschalen** pro Montageschritt: Die Teileboxen der Anleitung listen genau, welche Schrauben jeder Schritt verwendet; sortieren Sie diese also zuerst."
+ },
+ "9898562b77a9523b": {
+  "en": "**Ventilation** while soldering (flux fumes) and while printing.",
+  "de": "**Belüftung** beim Löten (Flussmitteldämpfe) und beim Drucken."
+ },
+ "6d7a29b1b941872b": {
+  "en": "**An anti-static habit**: touch a grounded metal object before handling the Pi, XIAO, IMU or PCA9685, and hold boards by their edges (see [safety](safety.md)).",
+  "de": "**Eine antistatische Gewohnheit**: Berühren Sie einen geerdeten Metallgegenstand, bevor Sie Pi, XIAO, IMU oder PCA9685 anfassen, und halten Sie Boards an den Kanten (siehe [Sicherheit](safety.md))."
+ },
+ "dea0492c61029ce7": {
+  "en": "**A bench supply option**: the BOM's recommended Raspberry Pi 27 W USB-C supply powers the Pi alone for software work, so the LiPo is not needed at the desk.",
+  "de": "**Eine Tischversorgung**: Das in der Stückliste empfohlene Raspberry Pi 27 W USB-C-Netzteil versorgt den Pi allein für Softwarearbeiten, sodass der LiPo am Schreibtisch nicht nötig ist."
+ },
+ "d2120901e4536447": {
+  "en": "Soldering",
+  "de": "Löten"
+ },
+ "d16611fd485c0c05": {
+  "en": "Soldering joins two metals with a lower-melting alloy. A good joint is made by heating **both parts** with the iron and feeding solder into the joint, not onto the iron tip.",
+  "de": "Löten verbindet zwei Metalle mit einer niedriger schmelzenden Legierung. Eine gute Lötstelle entsteht, indem Sie **beide Teile** mit dem Lötkolben erhitzen und das Lot in die Verbindung zuführen, nicht auf die Lötspitze."
+ },
+ "798279580c748069": {
+  "en": "Where you solder on this robot:",
+  "de": "Wo Sie an diesem Roboter löten:"
+ },
+ "c26c8cabde9ffb99": {
+  "en": "| Joint | Wire | Notes |",
+  "de": "| Lötstelle | Draht | Hinweise |"
+ },
+ "b9575124078ccdfa": {
+  "en": "| Battery input XT60H: W01 (+) and W04 (−) | 14 AWG | Large contacts need a hot, broad tip; pre-tin both cup and wire |",
+  "de": "| Akkueingang XT60H: W01 (+) und W04 (−) | 14 AWG | Große Kontakte brauchen eine heiße, breite Spitze; Lötkelch und Draht vorverzinnen |"
+ },
+ "18d95a2ebc9dafe6": {
+  "en": "| Arming jack XT60H: W02/arming on contact 1, W03 on contact 2; the loop key's bridge | 14 AWG | the loop key bridges the jack's two contacts; check its contact type first (multimeter table below) |",
+  "de": "| Arming-Port XT60H: W02/arming an Kontakt 1, W03 an Kontakt 2; die Brücke des Loop-Keys | 14 AWG | der Loop-Key verbindet die beiden Kontakte des Ports; prüfen Sie zuerst seinen Kontakttyp (Multimeter-Tabelle unten) |"
+ },
+ "5b1a950818b8c191": {
+  "en": "| Main fuse holder leads: W01 in, W02 out | 14 AWG | heat-shrink each joint |",
+  "de": "| Leitungen des Hauptsicherungshalters: W01 ein, W02 aus | 14 AWG | jede Lötstelle mit Schrumpfschlauch versehen |"
+ },
+ "899e7761cdc6b024": {
+  "en": "| Back-shell splice: W02, W02/arming and the logic fuse holder's own lead | 14 AWG | heat-shrunk splice; the holder's 14 AWG lead is the logic tap (no thinner wire behind the 25 A fuse) |",
+  "de": "| Spleiß in der Rückschale: W02, W02/arming und die eigene Leitung des Logik-Sicherungshalters | 14 AWG | Spleiß mit Schrumpfschlauch; die 14-AWG-Leitung des Halters ist der Logikabgriff (kein dünnerer Draht hinter der 25-A-Sicherung) |"
+ },
+ "f4d9fb7e68956d0b": {
+  "en": "| Splice under the deck: W03 → both UBEC IN+ | 14 AWG | heat-shrunk splice |",
+  "de": "| Spleiß unter dem Deck: W03 → beide UBEC IN+ | 14 AWG | Spleiß mit Schrumpfschlauch |"
+ },
+ "cbf66284c1c3650c": {
+  "en": "| Ground star W04 beside the battery input | 14 AWG to both UBEC IN−, 18 AWG to the switch GND | one star point; heat-shrink it |",
+  "de": "| Massestern W04 neben dem Akkueingang | 14 AWG zu beiden UBEC IN−, 18 AWG zu GND des Schalters | ein Sternpunkt; mit Schrumpfschlauch versehen |"
+ },
+ "eafc03c4a1f6eaa1": {
+  "en": "| UBEC outputs W05 / W06 | 18 AWG pair | extends each UBEC's output lead |",
+  "de": "| UBEC-Ausgänge W05 / W06 | 18-AWG-Paar | verlängert die Ausgangsleitung jedes UBEC |"
+ },
+ "da1866a13c200e2e": {
+  "en": "| Logic fuse out (W09), regulator in and out (W11, W24 ground, W12) | 18 / 22 AWG | the switch and INA260 ends of W09–W11 and W24 are screw terminals |",
+  "de": "| Logik-Sicherungsausgang (W09), Spannungsregler ein und aus (W11, W24 Masse, W12) | 18 / 22 AWG | die Schalter- und INA260-Enden von W09–W11 und W24 sind Schraubklemmen |"
+ },
+ "e7addf7a37c01a38": {
+  "en": "| Button pair W13 | 22 AWG | heat-shrink each joint |",
+  "de": "| Tasterpaar W13 | 22 AWG | jede Lötstelle mit Schrumpfschlauch versehen |"
+ },
+ "ada106ceca1ad4fb": {
+  "en": "| XIAO pins: W17 (3V3, GND, SDA, SCL), W20 (D3), W21 (display cable's Dupont ends) | 22 AWG / display cable | no room for Dupont housings 9 mm under the upper shoulder frame. Two wires share the XIAO 3V3 pin and two the GND pin (W17 and W21): solder both to the pin |",
+  "de": "| XIAO-Pins: W17 (3V3, GND, SDA, SCL), W20 (D3), W21 (Dupont-Enden des Displaykabels) | 22 AWG / Displaykabel | kein Platz für Dupont-Gehäuse 9 mm unter dem oberen Schulterrahmen. Zwei Drähte teilen sich den XIAO-3V3-Pin und zwei den GND-Pin (W17 und W21): beide an den Pin löten |"
+ },
+ "2d96cc4069dd3e68": {
+  "en": "| 2.2 kΩ OE pull-up | resistor leads | on the PCA9685 header, from OE to VCC; solder it before the board is mounted (Step 7) |",
+  "de": "| 2,2 kΩ OE-Pull-up | Widerstandsbeinchen | an der PCA9685-Stiftleiste, von OE nach VCC; vor der Montage des Boards löten (Schritt 7) |"
+ },
+ "1e49fd227a78247a": {
+  "en": "Technique, in order:",
+  "de": "Technik, der Reihe nach:"
+ },
+ "8c68def760050439": {
+  "en": "Cut the wire to its length from the cut list in the [wiring check](../../verification/wiring.md), strip just enough to fill the cup or joint (the cut list allows 6 mm per soldered end), twist the strands.",
+  "de": "Schneiden Sie den Draht auf die Länge aus der Zuschnittliste im [Verkabelungscheck](../../verification/wiring.md) zu, isolieren Sie gerade so viel ab, dass der Lötkelch oder die Verbindung gefüllt ist (die Zuschnittliste sieht 6 mm pro gelötetem Ende vor), und verdrillen Sie die Litzen."
+ },
+ "fbd95c1f272ea8e4": {
+  "en": "**Slide the heat-shrink onto the wire first.** It cannot go on after the connector is soldered.",
+  "de": "**Schieben Sie den Schrumpfschlauch zuerst auf den Draht.** Nach dem Anlöten des Steckverbinders geht das nicht mehr."
+ },
+ "82450ddcd779a895": {
+  "en": "Tin the wire and the contact separately, then join them and reheat until the solder flows into both.",
+  "de": "Verzinnen Sie Draht und Kontakt getrennt, fügen Sie sie dann zusammen und erhitzen Sie erneut, bis das Lot in beide fließt."
+ },
+ "6a7b461ec36abc52": {
+  "en": "Hold still until the solder sets: a moved joint looks dull and grainy and is weak (\"cold joint\").",
+  "de": "Halten Sie still, bis das Lot erstarrt ist: Eine bewegte Lötstelle sieht matt und körnig aus und ist schwach („kalte Lötstelle“)."
+ },
+ "d624e2f98066d344": {
+  "en": "Inspect: a good joint is smooth and shiny (lead-free solder is slightly duller) with the strands visible under the solder.",
+  "de": "Prüfen: Eine gute Lötstelle ist glatt und glänzend (bleifreies Lot ist etwas matter), die Litzen sind unter dem Lot sichtbar."
+ },
+ "e7cda27a790c1c71": {
+  "en": "Adafruit's guide suggests roughly 370 °C for leaded and 400 °C for lead-free solder on a temperature-controlled iron; heavy XT60 contacts on 14 AWG need the heat but not a long dwell, or the connector's plastic softens. Mating the XT60 to its counterpart while soldering keeps the contacts aligned.",
+  "de": "Der Adafruit-Leitfaden empfiehlt an einem temperaturgeregelten Lötkolben etwa 370 °C für bleihaltiges und 400 °C für bleifreies Lot; schwere XT60-Kontakte an 14 AWG brauchen die Hitze, aber keine lange Verweildauer, sonst erweicht der Kunststoff des Steckverbinders. Wenn Sie den XT60 beim Löten mit seinem Gegenstück stecken, bleiben die Kontakte ausgerichtet."
+ },
+ "ec3d19b49e20af9e": {
+  "en": "Crimping Dupont connectors",
+  "de": "Dupont-Steckverbinder crimpen"
+ },
+ "63d43d2101ec639d": {
+  "en": "A crimp joins a wire to a contact by deforming metal around it, cold. The Dupont crimp tool shapes two pairs of wings: the front pair bites the bare conductor, the rear pair grips the insulation for strain relief. The finished contact clicks into a plastic housing that plugs onto a 2.54 mm header pin.",
+  "de": "Ein Crimp verbindet einen Draht mit einem Kontakt, indem Metall kalt um ihn verformt wird. Die Dupont-Crimpzange formt zwei Flügelpaare: Das vordere Paar beißt in den blanken Leiter, das hintere Paar greift die Isolierung als Zugentlastung. Der fertige Kontakt rastet in ein Kunststoffgehäuse ein, das auf einen 2,54-mm-Stiftleistenpin gesteckt wird."
+ },
+ "5332429bc8b6cc19": {
+  "en": "Crimps in Strido:",
+  "de": "Crimps in Strido:"
+ },
+ "cb07eab3aa7e5a01": {
+  "en": "**W12:** the 5 V feed from the D36V50F5 regulator to Raspberry Pi header pins 2 and 4 (5 V) and 6 and 14 (GND), 22 AWG, one wire per pin, because each pin carries about 1.6 A. Thick silicone insulation may not fit the insulation wings; trim it or use thin-wall wire.",
+  "de": "**W12:** die 5-V-Versorgung vom Spannungsregler D36V50F5 zu den Raspberry-Pi-Pins 2 und 4 (5 V) sowie 6 und 14 (GND), 22 AWG, ein Draht pro Pin, weil jeder Pin etwa 1,6 A führt. Dicke Silikonisolierung passt eventuell nicht in die Isolationsflügel; kürzen Sie sie oder verwenden Sie dünnwandigen Draht."
+ },
+ "e52080d951a97aa7": {
+  "en": "**W17 and W20 at the PCA9685:** the I²C wires (3V3, GND, SDA, SCL) and the OE wire, soldered at the XIAO end, crimped onto the PCA9685's left header.",
+  "de": "**W17 und W20 am PCA9685:** die I²C-Drähte (3V3, GND, SDA, SCL) und der OE-Draht, am XIAO-Ende gelötet, auf die linke Stiftleiste des PCA9685 gecrimpt."
+ },
+ "c69d0f4829d3e439": {
+  "en": "**The 12 servo signal wires:** each servo's own lead runs to a tie, where the red and brown wires are peeled off for the WAGO bus. The orange signal wire is **cut to length** and **re-crimped** with a female Dupont contact in a **1-pin housing**, which plugs onto the PWM pin of its PCA9685 channel. There are no servo extensions: every plug-and-socket pair you leave out is one less contact to work loose in a walking robot ([cable management](cable-management.md)). Cut the orange wire so it reaches its channel without strain; the front knee leads have only 12 mm to spare.",
+  "de": "**Die 12 Servo-Signaldrähte:** Das eigene Servokabel jedes Servos läuft zu einem Kabelbinder, wo die roten und braunen Adern für den WAGO-Bus abgetrennt werden. Die orange Signalader wird **abgelängt** und mit einem Dupont-Buchsenkontakt in einem **1-Pin-Gehäuse** **neu gecrimpt**, das auf den PWM-Pin ihres PCA9685-Kanals gesteckt wird. Es gibt keine Servoverlängerungen: Jedes Stecker-Buchse-Paar, das Sie weglassen, ist ein Kontakt weniger, der sich in einem laufenden Roboter lockern kann ([Kabelmanagement](cable-management.md)). Schneiden Sie die orange Ader so ab, dass sie ihren Kanal ohne Zug erreicht; die vorderen Knieleitungen haben nur 12 mm Reserve."
+ },
+ "a26be8bfba74688b": {
+  "en": "Crimp rather than solder at these ends: a crimp leaves the strands flexible right up to the contact, and its insulation grip relieves strain.",
+  "de": "Crimpen statt löten an diesen Enden: Ein Crimp lässt die Litzen bis zum Kontakt flexibel, und seine Isolationsklemmung entlastet den Zug."
+ },
+ "bd106ebc550b9e69": {
+  "en": "Checks for every crimp:",
+  "de": "Prüfungen für jeden Crimp:"
+ },
+ "fbfb148951fa2a84": {
+  "en": "Pull test: a firm tug must not pull the wire out.",
+  "de": "Zugprobe: Ein kräftiger Ruck darf den Draht nicht herausziehen."
+ },
+ "373ac5fb2f848469": {
+  "en": "No strands outside the contact.",
+  "de": "Keine Litzen außerhalb des Kontakts."
+ },
+ "b9b03a765bb67067": {
+  "en": "The contact latches in the housing (it should not push out from the front).",
+  "de": "Der Kontakt rastet im Gehäuse ein (er darf sich nicht nach vorne herausschieben lassen)."
+ },
+ "b563ac84fb4880b1": {
+  "en": "Lever clamps (WAGO)",
+  "de": "Hebelklemmen (WAGO)"
+ },
+ "7ff7dee94ad5bf0e": {
+  "en": "The servo power bus is made of WAGO 221-415 lever connectors: no tool, but the strip length matters. Strip **11 mm** (WAGO's data sheet), open the lever, push the conductor in until the insulation meets the housing, close the lever and tug. Through the transparent housing you can see the copper reach the end. Each servo's red wire goes into the leg's upper (V+) connector, the brown into the lower (GND), ports hip 1, thigh 2, knee 3; one wire per entry. Wire each WAGO before sliding it into its holder: there is no room to open the levers in place.",
+  "de": "Der Servo-Versorgungsbus besteht aus WAGO-221-415-Hebelklemmen: kein Werkzeug nötig, aber die Abisolierlänge zählt. Isolieren Sie **11 mm** ab (WAGO-Datenblatt), öffnen Sie den Hebel, schieben Sie den Leiter ein, bis die Isolierung am Gehäuse anliegt, schließen Sie den Hebel und ziehen Sie daran. Durch das transparente Gehäuse sehen Sie, dass das Kupfer bis zum Ende reicht. Der rote Draht jedes Servos kommt in die obere (V+) Klemme des Beins, der braune in die untere (GND), Anschlüsse Hüfte 1, Oberschenkel 2, Knie 3; ein Draht pro Eingang. Verdrahten Sie jede WAGO-Klemme, bevor Sie sie in ihren Halter schieben: Vor Ort ist kein Platz, um die Hebel zu öffnen."
+ },
+ "dd66c0f626647185": {
+  "en": "Heat shrink",
+  "de": "Schrumpfschlauch"
+ },
+ "4d4954794d85939b": {
+  "en": "Heat-shrink tubing shrinks to about half its diameter (a common ratio; check your assortment) when heated, insulating and strain-relieving a joint. Choose a size that slides over the joint before shrinking and fits tightly after. Cover every exposed soldered joint in the power path. Use a hot-air tool or the side of the iron shaft rather than a flame near a LiPo.",
+  "de": "Schrumpfschlauch schrumpft beim Erhitzen auf etwa die Hälfte seines Durchmessers (ein gängiges Verhältnis; prüfen Sie Ihr Sortiment) und isoliert und entlastet so eine Verbindung. Wählen Sie eine Größe, die vor dem Schrumpfen über die Verbindung gleitet und danach eng anliegt. Decken Sie jede freiliegende Lötstelle im Leistungspfad ab. Verwenden Sie ein Heißluftgerät oder die Seite des Lötkolbenschafts statt einer Flamme in der Nähe eines LiPo."
+ },
+ "d02e620b9f2c0d84": {
+  "en": "Multimeter checks",
+  "de": "Multimeter-Prüfungen"
+ },
+ "938f39b7adb70466": {
+  "en": "A multimeter is the cheapest insurance in the build. The harness steps prescribe these measurements:",
+  "de": "Ein Multimeter ist die billigste Versicherung beim Bau. Die Kabelbaum-Schritte schreiben diese Messungen vor:"
+ },
+ "2d5649a2879fa4b6": {
+  "en": "| When | Where | Expected | If not |",
+  "de": "| Wann | Wo | Erwartet | Falls nicht |"
+ },
+ "2c641c5a33e2f510": {
+  "en": "| Before connecting any servo | each UBEC output, no load | **5.8–6.0 V** | the servo is rated up to 6.0 V: return a unit that reads higher; check the jumper is open (no 7.4 V setting) |",
+  "de": "| Vor dem Anschließen eines Servos | jeder UBEC-Ausgang, ohne Last | **5,8–6,0 V** | der Servo ist bis 6,0 V spezifiziert: ein Gerät mit höherem Wert zurückgeben; prüfen, ob der Jumper offen ist (keine 7,4-V-Einstellung) |"
+ },
+ "3ce07929560189b5": {
+  "en": "| Before plugging into the Pi | Dupont ends of W12, fuses in, button pressed | **4.8–5.2 V** (D36V50F5: 5 V ± 4 %) | do not plug in; check polarity and the regulator |",
+  "de": "| Vor dem Anstecken an den Pi | Dupont-Enden von W12, Sicherungen eingesetzt, Taster gedrückt | **4,8–5,2 V** (D36V50F5: 5 V ± 4 %) | nicht anstecken; Polarität und Spannungsregler prüfen |"
+ },
+ "91cbf61c00b818e8": {
+  "en": "| Smoke test | PCA9685 OE while the XIAO is in its bootloader (hold BOOT, press RESET) | **≥ 2.4 V** (outputs off) | the 2.2 kΩ pull-up is missing or not on VCC |",
+  "de": "| Rauchtest | PCA9685 OE, während der XIAO im Bootloader ist (BOOT halten, RESET drücken) | **≥ 2,4 V** (Ausgänge aus) | der 2,2-kΩ-Pull-up fehlt oder liegt nicht an VCC |"
+ },
+ "76e6d537d280af1d": {
+  "en": "| Before first power-up (good practice) | resistance between + and − at the battery input, no pack connected | not near 0 Ω | a short: find it before connecting the battery |",
+  "de": "| Vor dem ersten Einschalten (gute Praxis) | Widerstand zwischen + und − am Akkueingang, kein Akkupack angeschlossen | nicht nahe 0 Ω | ein Kurzschluss: finden Sie ihn, bevor Sie den Akku anschließen |"
+ },
+ "d27fc2a9e862790e": {
+  "en": "| Before bridging the loop key | try the *unbridged* key housing on the pack connector | must **not** fit | wrong contact type: see the XT60 rule in [electronics.md](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery) |",
+  "de": "| Vor dem Überbrücken des Loop-Keys | das *nicht überbrückte* Steckergehäuse am Akkustecker probieren | darf **nicht** passen | falscher Kontakttyp: siehe die XT60-Regel in [electronics.md](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery) |"
+ },
+ "3cfddce4abace373": {
+  "en": "Measure voltage with the black probe on ground (COM) and the red probe on the point; set the meter to DC volts in a range above 8.4 V (the full 2S pack). Continuity mode (beep) is handy for checking that a wire goes where the wiring list says.",
+  "de": "Messen Sie Spannung mit der schwarzen Messspitze an Masse (COM) und der roten am Messpunkt; stellen Sie das Messgerät auf Gleichspannung in einem Bereich über 8,4 V (der volle 2S-Akkupack). Der Durchgangsmodus (Piepton) ist praktisch, um zu prüfen, ob ein Draht dorthin führt, wo die Verdrahtungsliste es angibt."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbstkontrolle"
+ },
+ "a704ee17ab1f6330": {
+  "en": "Why must heat-shrink go onto the wire before soldering the XT60?",
+  "de": "Warum muss der Schrumpfschlauch vor dem Löten des XT60 auf den Draht?"
+ },
+ "3c611bc756b7fc72": {
+  "en": "Which three hex key sizes do you need, and why exactly these?",
+  "de": "Welche drei Innensechskant-Größen brauchen Sie, und warum genau diese?"
+ },
+ "4a3c1a60ce1096fb": {
+  "en": "What does the rear pair of wings on a Dupont crimp do?",
+  "de": "Was macht das hintere Flügelpaar eines Dupont-Crimps?"
+ },
+ "4697d557d41a721c": {
+  "en": "What voltage must a UBEC show before any servo is connected, and why does a higher reading disqualify it?",
+  "de": "Welche Spannung muss ein UBEC zeigen, bevor ein Servo angeschlossen wird, und warum disqualifiziert ihn ein höherer Wert?"
+ },
+ "96ce838e93953c84": {
+  "en": "Why chase tight holes with a pin vice rather than a power drill?",
+  "de": "Warum bohrt man enge Löcher mit einem Stiftenklöbchen statt mit einer Bohrmaschine nach?"
+ },
+ "2888082cca1d7884": {
+  "en": "Why is each servo's orange signal wire cut and re-crimped instead of plugged in with an extension lead?",
+  "de": "Warum wird die orange Signalader jedes Servos abgelängt und neu gecrimpt, statt mit einem Verlängerungskabel angesteckt zu werden?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "c184d27d6aab7de7": {
+  "en": "Once the connector is soldered on, the tubing cannot be slid over it.",
+  "de": "Sobald der Steckverbinder angelötet ist, lässt sich der Schlauch nicht mehr darüberschieben."
+ },
+ "f0a8da1f560d21e5": {
+  "en": "1.5, 2.0 and 2.5 mm: the socket sizes of the M2, M2.5 and M3 socket head screws.",
+  "de": "1,5, 2,0 und 2,5 mm: die Schlüsselweiten der M2-, M2.5- und M3-Zylinderschrauben."
+ },
+ "e76b0093df523724": {
+  "en": "It grips the insulation for strain relief; the front pair grips the conductor.",
+  "de": "Es greift die Isolierung als Zugentlastung; das vordere Paar greift den Leiter."
+ },
+ "2798871502cd6d29": {
+  "en": "5.8–6.0 V unloaded. The SPT5435LV is rated for 4.8–6.0 V only, so anything above 6.0 V over-stresses the servos.",
+  "de": "5,8–6,0 V ohne Last. Der SPT5435LV ist nur für 4,8–6,0 V spezifiziert, alles über 6,0 V überlastet also die Servos."
+ },
+ "914955c8df2eef8c": {
+  "en": "Only 0.1–0.2 mm needs removing; a power drill heats and grabs the plastic and can crack thin bosses.",
+  "de": "Nur 0,1–0,2 mm müssen weg; eine Bohrmaschine erhitzt den Kunststoff, verhakt sich und kann dünne Dome sprengen."
+ },
+ "903dc2ae76352102": {
+  "en": "An extension adds a plug-and-socket pair per servo that vibration can work loose, plus extra wire to stow. Cut to length, the lead goes straight to its PCA9685 channel with one contact.",
+  "de": "Eine Verlängerung fügt pro Servo ein Stecker-Buchse-Paar hinzu, das sich durch Vibration lockern kann, plus zusätzlichen Draht zum Verstauen. Abgelängt führt die Leitung mit einem Kontakt direkt zu ihrem PCA9685-Kanal."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "2a9100de244fc2d5": {
+  "en": "[Adafruit Guide to Excellent Soldering](https://learn.adafruit.com/adafruit-guide-excellent-soldering)",
+  "de": "[Adafruit Guide to Excellent Soldering](https://learn.adafruit.com/adafruit-guide-excellent-soldering)"
+ },
+ "ff7a414321c83025": {
+  "en": "[Pololu D36V50F5 step-down regulator](https://www.pololu.com/product/4091)",
+  "de": "[Pololu D36V50F5 Abwärtsspannungsregler](https://www.pololu.com/product/4091)"
+ },
+ "442e7e0c2dfbcc2f": {
+  "en": "[Electronics, wiring and power](../../electronics.md) and the [assembly manual](../../assembly/README.md)",
+  "de": "[Elektronik, Verkabelung und Versorgung](../../electronics.md) und die [Montageanleitung](../../assembly/README.md)"
+ },
+ "db292e5b4baa2d1f": {
+  "en": "[WAGO 221-415 data sheet](https://wago.priintcloud.com/datasheets/221-415/en)",
+  "de": "[WAGO 221-415 Datenblatt](https://wago.priintcloud.com/datasheets/221-415/en)"
+ },
+ "4c01471d2c6bbe7b": {
+  "en": "[Molex Quality Crimping Handbook](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/commercialcrimpbookpdf/638/63800/TM-638000029-001.pdf)",
+  "de": "[Molex Quality Crimping Handbook](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/commercialcrimpbookpdf/638/63800/TM-638000029-001.pdf)"
+ },
+ "c0ebb3c7961e9573": {
+  "en": "Related in this wiki: [cable management](cable-management.md), [safety](safety.md), [power](../hardware/power.md), [fasteners](fasteners.md)",
+  "de": "Verwandt in diesem Wiki: [Kabelmanagement](cable-management.md), [Sicherheit](safety.md), [Versorgung](../hardware/power.md), [Befestigungselemente](fasteners.md)"
+ }
+}

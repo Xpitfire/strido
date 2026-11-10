@@ -1,0 +1,322 @@
+{
+ "c01cfbcd8a9d57e6": {
+  "en": "CAD as code",
+  "de": "CAD als Code"
+ },
+ "ea1beaabd9bc663b": {
+  "en": "In code-CAD, parts are not drawn by clicking in a GUI; they are Python programs that produce geometry. Strido takes this further: every physical claim about the robot (screws fit, legs do not collide, parts print, the wiring is within its ratings) is an executable check that can fail the build. This page explains the pipeline, the gates and why it is built this way.",
+  "de": "Bei Code-CAD werden Teile nicht per Mausklick in einer GUI gezeichnet; sie sind Python-Programme, die Geometrie erzeugen. Strido geht noch weiter: Jede physische Aussage über den Roboter (Schrauben passen, Beine kollidieren nicht, Teile lassen sich drucken, die Verkabelung liegt innerhalb ihrer Nennwerte) ist eine ausführbare Prüfung, die den Build scheitern lassen kann. Diese Seite erklärt die Pipeline, die Prüfungen und warum sie so aufgebaut ist."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "f59e7301d7de0af8": {
+  "en": "**CAD package:** `packages/strido-cad` (CadQuery 2.8 for solids, manifold3d for robust mesh booleans, trimesh for mesh work).",
+  "de": "**CAD-Paket:** `packages/strido-cad` (CadQuery 2.8 für Volumenkörper, manifold3d für robuste Mesh-Booleans, trimesh für Mesh-Arbeit)."
+ },
+ "cea875ef1e76ce2c": {
+  "en": "**Verification package:** `packages/strido-verify` (interference, range of motion, fits, clearance, sensor field of view, printability, electronics).",
+  "de": "**Verifikationspaket:** `packages/strido-verify` (Durchdringung, Bewegungsbereich, Passungen, Freigang, Sensor-Sichtfeld, Druckbarkeit, Elektronik)."
+ },
+ "827224565bddb923": {
+  "en": "**Publication package:** `packages/strido-publish` (print kit, BOM, manual, renders, 3D viewer, catalogue book).",
+  "de": "**Veröffentlichungspaket:** `packages/strido-publish` (Druckpaket, Stückliste, Anleitung, Renderings, 3D-Ansicht, Katalogbuch)."
+ },
+ "a750db648cfcd3a9": {
+  "en": "**Data:** `hardware/*.yaml` (kinematics, joint limits, BOM, electronics, fasteners), tolerance bands in `hardware/verification/tolerances.yaml`.",
+  "de": "**Daten:** `hardware/*.yaml` (Kinematik, Gelenkgrenzen, Stückliste, Elektronik, Befestigungselemente), Toleranzbänder in `hardware/verification/tolerances.yaml`."
+ },
+ "12df7446fe054c72": {
+  "en": "**Decision record:** ADR-002 \"CAD as code, verification as gates\" in [decisions](../../decisions.md); evidence in [verification](../../verification.md).",
+  "de": "**Entscheidungsprotokoll:** ADR-002 „CAD as code, verification as gates“ in [Entscheidungen](../../decisions.md); Nachweise in [Verifikation](../../verification.md)."
+ },
+ "190cfde01a2d2b5d": {
+  "en": "Why code instead of a GUI CAD file",
+  "de": "Warum Code statt einer GUI-CAD-Datei"
+ },
+ "0ac40475f98354ca": {
+  "en": "A GUI CAD file records *what* the geometry is. Code also records *why*: the constant `PEDESTAL_PILOT_DEPTH = 11.0` sits next to its comment \"screw tip at 10.0 mm into the pedestal\". Code-CAD brings software habits to hardware:",
+  "de": "Eine GUI-CAD-Datei hält fest, *was* die Geometrie ist. Code hält auch fest, *warum*: Die Konstante `PEDESTAL_PILOT_DEPTH = 11.0` steht neben ihrem Kommentar „Schraubenspitze 10,0 mm tief im Sockel“. Code-CAD überträgt Software-Gewohnheiten auf Hardware:"
+ },
+ "19d906eb4a744687": {
+  "en": "| Software habit | Effect on the robot |",
+  "de": "| Software-Gewohnheit | Wirkung auf den Roboter |"
+ },
+ "e32c3affe29e066a": {
+  "en": "| Version control with readable diffs | A changed hole depth is one line in a review, not an opaque binary file |",
+  "de": "| Versionskontrolle mit lesbaren Diffs | Eine geänderte Lochtiefe ist eine Zeile im Review, keine undurchsichtige Binärdatei |"
+ },
+ "8c8e5aad469550bc": {
+  "en": "| Single source of truth | Link lengths are measured once and *generated* into Python and C++; nobody types them twice |",
+  "de": "| Eine einzige Quelle der Wahrheit | Koppellängen werden einmal gemessen und in Python und C++ *generiert*; niemand tippt sie zweimal ein |"
+ },
+ "70375cd0a7001f99": {
+  "en": "| Automated tests | A wrong hole fails a check before anyone prints it |",
+  "de": "| Automatisierte Tests | Ein falsches Loch scheitert an einer Prüfung, bevor es jemand druckt |"
+ },
+ "060ece605255cd22": {
+  "en": "| Reproducible builds | `make publish` regenerates every STL, plate, BOM and manual page from the same inputs |",
+  "de": "| Reproduzierbare Builds | `make publish` erzeugt jede STL, Druckplatte, Stückliste und Anleitungsseite aus denselben Eingaben neu |"
+ },
+ "079ade4549d440d8": {
+  "en": "The motivation in ADR-002 is concrete: people print and assemble from this repository alone, and a wrong hole costs a reprint.",
+  "de": "Die Motivation in ADR-002 ist konkret: Menschen drucken und montieren allein auf Basis dieses Repositorys, und ein falsches Loch kostet einen Neudruck."
+ },
+ "50a46c183637c29d": {
+  "en": "Start from a real, built design",
+  "de": "Von einem realen, gebauten Design ausgehen"
+ },
+ "97f2811ac8072f79": {
+  "en": "Strido does not re-model the robot. The mechanics come from the upstream Yertle project: its STEP assembly (`upstream/yertle/design/CAD/Yertle_Single_v2.step`) and its published print STLs, which people have actually printed and assembled. Those files are kept byte-identical (ADR-004); every Strido change is a boolean operation on top of them, and fixes to upstream defects are expressed as data (`hardware/assembly/corrections.yaml`) or derived parts (`left_servo_mount_fl`, `right_servo_mount_fr`).",
+  "de": "Strido modelliert den Roboter nicht neu. Die Mechanik stammt aus dem Upstream-Projekt Yertle: dessen STEP-Baugruppe (`upstream/yertle/design/CAD/Yertle_Single_v2.step`) und dessen veröffentlichte Druck-STLs, die tatsächlich gedruckt und montiert wurden. Diese Dateien bleiben byteidentisch (ADR-004); jede Strido-Änderung ist eine Boolesche Operation darauf, und Korrekturen von Upstream-Fehlern werden als Daten (`hardware/assembly/corrections.yaml`) oder abgeleitete Teile (`left_servo_mount_fl`, `right_servo_mount_fr`) ausgedrückt."
+ },
+ "940e5ca338cc92bb": {
+  "en": "The pipeline",
+  "de": "Die Pipeline"
+ },
+ "b9df1c0e1c1f994d": {
+  "en": "flowchart TD\n  STEP[\"upstream STEP + STLs\"] --> CACHE[\"step_cache: tessellate once\"]\n  CACHE --> REG[\"register_upstream: STL ↔ STEP\"]\n  CACHE --> KIN[\"extract_kinematics\"] --> KY[\"hardware/kinematics.yaml\"]\n  KY --> ROM[\"strido_verify.rom\"] --> JL[\"hardware/joint_limits.yaml\"]\n  KY --> GEN[\"codegen\"]\n  JL --> GEN\n  GEN --> PY[\"strido/geometry.py\"]\n  GEN --> H[\"geometry_generated.h\"]\n  REG --> PARTS[\"parts + catalog: new/modified parts,<br/>vendor models, fasteners\"]\n  PARTS --> ASM[\"assembly: posed with the exact leg linkage\"]\n  ASM --> GATES[\"verification gates\"]\n  ASM --> MODELS[\"models: URDF, MJCF, meshes\"]\n  ASM --> PUB[\"publish: print kit, BOM, manual,<br/>renders, viewer, catalogue\"]",
+  "de": "flowchart TD\n  STEP[\"upstream STEP + STLs\"] --> CACHE[\"step_cache: einmal tessellieren\"]\n  CACHE --> REG[\"register_upstream: STL ↔ STEP\"]\n  CACHE --> KIN[\"extract_kinematics\"] --> KY[\"hardware/kinematics.yaml\"]\n  KY --> ROM[\"strido_verify.rom\"] --> JL[\"hardware/joint_limits.yaml\"]\n  KY --> GEN[\"codegen\"]\n  JL --> GEN\n  GEN --> PY[\"strido/geometry.py\"]\n  GEN --> H[\"geometry_generated.h\"]\n  REG --> PARTS[\"Teile + Katalog: neue/geänderte Teile,<br/>Herstellermodelle, Befestigungselemente\"]\n  PARTS --> ASM[\"Baugruppe: posiert mit dem exakten Bein-Koppelgetriebe\"]\n  ASM --> GATES[\"Verifikationsprüfungen\"]\n  ASM --> MODELS[\"Modelle: URDF, MJCF, Meshes\"]\n  ASM --> PUB[\"Veröffentlichung: Druckpaket, Stückliste, Anleitung,<br/>Renderings, Ansicht, Katalog\"]"
+ },
+ "dc478d0e7f7611ba": {
+  "en": "Key steps:",
+  "de": "Wichtige Schritte:"
+ },
+ "1a4ffe337b8f4c6d": {
+  "en": "**`step_cache`** tessellates every solid of the 32 MB STEP once and caches the meshes, keyed by the file hash so it never goes stale silently.",
+  "de": "**`step_cache`** tesselliert jeden Volumenkörper der 32-MB-STEP-Datei einmal und speichert die Meshes im Cache, mit dem Datei-Hash als Schlüssel, damit er nie unbemerkt veraltet."
+ },
+ "c12796943565b522": {
+  "en": "**`extract_kinematics`** measures the robot from cylinder axes in the CAD (servo splines, bearing bores, link pins): hip/thigh/knee axes, link lengths, the two knee linkages. \"Nothing is typed in by hand.\" It found, for example, a 1.02 mm link-length mismatch in the upstream STEP ([design](../../design.md#kinematics)).",
+  "de": "**`extract_kinematics`** vermisst den Roboter anhand von Zylinderachsen im CAD (Servoverzahnungen, Lagerbohrungen, Koppelbolzen): Hüft-/Oberschenkel-/Knieachsen, Koppellängen, die beiden Knie-Koppelgetriebe. „Nichts wird von Hand eingetippt.“ So fand es zum Beispiel eine Koppellängen-Abweichung von 1,02 mm in der Upstream-STEP ([Design](../../design.md#kinematics))."
+ },
+ "e7214b29256d000d": {
+  "en": "**`rom`** sweeps every leg through its range on a 5° grid, posing the whole assembly with the exact knee linkage, and writes the collision-free joint limits.",
+  "de": "**`rom`** fährt jedes Bein in einem 5°-Raster durch seinen Bereich, posiert dabei die gesamte Baugruppe mit dem exakten Knie-Koppelgetriebe und schreibt die kollisionsfreien Gelenkgrenzen."
+ },
+ "14e71ef15ebcf69b": {
+  "en": "**`codegen`** writes those numbers into `packages/strido-core/src/strido/geometry.py` and `firmware/.../geometry_generated.h`. The gait, simulation, NT-X adapter and firmware all read the same generated values ([kinematics](kinematics-and-gaits.md)).",
+  "de": "**`codegen`** schreibt diese Zahlen in `packages/strido-core/src/strido/geometry.py` und `firmware/.../geometry_generated.h`. Gait, Simulation, NT-X-Adapter und Firmware lesen alle dieselben generierten Werte ([Kinematik](kinematics-and-gaits.md))."
+ },
+ "cbc2d7e11c56a630": {
+  "en": "**`parts`** builds the Strido parts. A real example, the LiDAR pedestal (abridged from `parts.py`):",
+  "de": "**`parts`** baut die Strido-Teile. Ein reales Beispiel, der LiDAR-Sockel (gekürzt aus `parts.py`):"
+ },
+ "ca0b8aa356b91d11": {
+  "en": "`box` and `cylinder` return CadQuery workplanes; `boolean` converts to manifold3d solids for the final cuts, which stay watertight even on the tessellated upstream meshes.",
+  "de": "`box` und `cylinder` liefern CadQuery-Workplanes; `boolean` wandelt für die finalen Schnitte in manifold3d-Volumenkörper um, die selbst auf den tessellierten Upstream-Meshes wasserdicht bleiben."
+ },
+ "2a45d11967a2ff70": {
+  "en": "**`assembly`** places every instance (printed, purchased, fastener) on a rigid body (`base`, `FL.thigh`, `FL.crank` …) and can pose the robot at any joint angles. Every check runs on this real mechanism, not on a simplified URDF.",
+  "de": "**`assembly`** platziert jede Instanz (gedruckt, zugekauft, Befestigungselement) auf einem Starrkörper (`base`, `FL.thigh`, `FL.crank` …) und kann den Roboter in beliebigen Gelenkwinkeln posieren. Jede Prüfung läuft auf diesem realen Mechanismus, nicht auf einer vereinfachten URDF."
+ },
+ "80f2f3f2d0c9e4d6": {
+  "en": "The verification gates",
+  "de": "Die Verifikationsprüfungen"
+ },
+ "98b77809c809dab2": {
+  "en": "A **gate** is a program that exits with code 1 when a rule is violated, so `make` stops. Each writes a tracked report under `docs/verification/`. Tolerance bands and contact rules live in YAML with their rationale; ADR-002 says a gate may only be relaxed by a recorded decision.",
+  "de": "Eine **Prüfung** ist ein Programm, das mit Code 1 endet, wenn eine Regel verletzt ist, sodass `make` stoppt. Jede schreibt einen versionierten Bericht unter `docs/verification/`. Toleranzbänder und Kontaktregeln liegen samt Begründung in YAML; laut ADR-002 darf eine Prüfung nur durch eine dokumentierte Entscheidung gelockert werden."
+ },
+ "27510f931d15c08d": {
+  "en": "| Gate | Command | What it proves |",
+  "de": "| Prüfung | Befehl | Was sie beweist |"
+ },
+ "723ed0d324de87b4": {
+  "en": "| Hole stacks and fasteners | `python -m strido_cad.hole_stacks`, `python -m strido_cad.fasteners` | Every coaxial hole group in the upstream parts matches exactly one fastener rule; unmatched holes fail |",
+  "de": "| Lochstapel und Befestigungselemente | `python -m strido_cad.hole_stacks`, `python -m strido_cad.fasteners` | Jede koaxiale Lochgruppe in den Upstream-Teilen passt zu genau einer Befestigungsregel; nicht zugeordnete Löcher scheitern |"
+ },
+ "98bc4517b07a0195": {
+  "en": "| Interference | `python -m strido_verify.contacts` | No solids overlap in 4 poses, except classified contacts (thread engagement, designed seating ≤ 0.2 mm, joints) |",
+  "de": "| Durchdringung | `python -m strido_verify.contacts` | Keine Volumenkörper überlappen in 4 Posen, außer klassifizierten Kontakten (Gewindeeingriff, konstruktive Auflage ≤ 0,2 mm, Gelenke) |"
+ },
+ "65de46618ce2cd41": {
+  "en": "| Range of motion | `python -m strido_verify.rom` | Joint limits free of collision, transmission angle ≥ 25°, servo within ±85° |",
+  "de": "| Bewegungsbereich | `python -m strido_verify.rom` | Gelenkgrenzen kollisionsfrei, Übertragungswinkel ≥ 25°, Servo innerhalb ±85° |"
+ },
+ "06403dc53f7494fe": {
+  "en": "| **Fits** | `python -m strido_verify.fits` | Every screw and bearing seat has a fit that will work after FDM printing |",
+  "de": "| **Passungen** | `python -m strido_verify.fits` | Jeder Schrauben- und Lagersitz hat eine Passung, die nach dem FDM-Druck funktioniert |"
+ },
+ "d0baff5af0337bdf": {
+  "en": "| **Clearance** | `python -m strido_verify.clearance` | Moving parts keep a running gap in every operating pose |",
+  "de": "| **Freigang** | `python -m strido_verify.clearance` | Bewegte Teile halten in jeder Betriebspose einen Laufspalt |"
+ },
+ "2c6e9ef6c6c42758": {
+  "en": "| Sensor field of view | `python -m strido_verify.sensor_fov` | 720 LiDAR rays unblocked; camera does not see the robot |",
+  "de": "| Sensor-Sichtfeld | `python -m strido_verify.sensor_fov` | 720 LiDAR-Strahlen frei; die Kamera sieht den Roboter nicht |"
+ },
+ "a80b244d5adc084a": {
+  "en": "| **Electronics** | `python -m strido_verify.electronics` | Pins, buses, channels and power ratings agree between YAML and firmware |",
+  "de": "| **Elektronik** | `python -m strido_verify.electronics` | Pins, Busse, Kanäle und Leistungswerte stimmen zwischen YAML und Firmware überein |"
+ },
+ "dfb950bac7f2250f": {
+  "en": "| **Printability** | `make printability` | Every part and plate slices in PrusaSlicer without stability issues; walls thick enough |",
+  "de": "| **Druckbarkeit** | `make printability` | Jedes Teil und jede Druckplatte lässt sich in PrusaSlicer ohne Stabilitätsprobleme slicen; Wände dick genug |"
+ },
+ "0a7dc55992c82120": {
+  "en": "| BOM coverage | `make bom` | Every purchased part and fastener in the CAD is bought, with spares |",
+  "de": "| Stücklistenabdeckung | `make bom` | Jedes Zukaufteil und Befestigungselement im CAD wird gekauft, mit Reserve |"
+ },
+ "e7ed8a3acaeb6556": {
+  "en": "| Drift | `make drift` | Generated files equal what the generators would write now |",
+  "de": "| Drift | `make drift` | Generierte Dateien entsprechen dem, was die Generatoren jetzt schreiben würden |"
+ },
+ "4b386adc082b8e16": {
+  "en": "`make verify` runs the mechanical gates; `make check` runs everything (about 10 minutes).",
+  "de": "`make verify` führt die mechanischen Prüfungen aus; `make check` führt alles aus (etwa 10 Minuten)."
+ },
+ "71d396e03e4b6a2f": {
+  "en": "Fits",
+  "de": "Passungen"
+ },
+ "1ec661897107515c": {
+  "en": "The fit gate samples every screw's shank axis every 0.5 mm and cuts each printed part around it to measure the hole. FDM prints holes roughly 0.1–0.2 mm undersize, so the gate assumes 0.15 mm of shrink and checks the *printed* size:",
+  "de": "Die Passungsprüfung tastet die Schaftachse jeder Schraube alle 0,5 mm ab und schneidet jedes gedruckte Teil darum herum, um das Loch zu vermessen. FDM druckt Löcher etwa 0,1–0,2 mm zu klein, daher nimmt die Prüfung 0,15 mm Schrumpfung an und prüft die *gedruckte* Größe:"
+ },
+ "66676112698d0856": {
+  "en": "| Fit | Rule ($d$ = screw diameter) |",
+  "de": "| Passung | Regel ($d$ = Schraubendurchmesser) |"
+ },
+ "8a085b410749e648": {
+  "en": "| Clearance hole | $\\ge d + 0.05\\,\\mathrm{mm}$ (warn below $d + 0.20\\,\\mathrm{mm}$: chase with a drill) |",
+  "de": "| Durchgangsloch | $\\ge d + 0.05\\,\\mathrm{mm}$ (Warnung unter $d + 0.20\\,\\mathrm{mm}$: mit einem Bohrer nacharbeiten) |"
+ },
+ "0a78538043ac0f01": {
+  "en": "| Thread-forming pilot | printed pilot $0.70$–$0.90\\,d$ ($0.93\\,d$ warn: weak grip), engaged length $\\ge 1.5\\,d$ |",
+  "de": "| Kernloch für gewindeformende Schraube | gedrucktes Kernloch $0.70$–$0.90\\,d$ ($0.93\\,d$ Warnung: schwacher Halt), Einschraublänge $\\ge 1.5\\,d$ |"
+ },
+ "6654a21177cea435": {
+  "en": "| Bearing seat | bore −0.15 … +0.30 mm relative to the bearing outer diameter |",
+  "de": "| Lagersitz | Bohrung −0,15 … +0,30 mm relativ zum Lageraußendurchmesser |"
+ },
+ "899764f48103adad": {
+  "en": "Every screw must also end in something that holds it: a nut, a printed pilot or a threaded part. The recorded run checked 223 screws and 32 bearing seats: 0 fail, 137 with a builder action (drill this hole, CA-harden a weak pilot). It found real defects, such as LiDAR pedestal pilots 9 mm deep for screws that protrude 10 mm, which is why `PEDESTAL_PILOT_DEPTH` is now 11 mm. See [fasteners](../making/fasteners.md).",
+  "de": "Jede Schraube muss außerdem in etwas enden, das sie hält: einer Mutter, einem gedruckten Kernloch oder einem Gewindeteil. Der dokumentierte Lauf prüfte 223 Schrauben und 32 Lagersitze: 0 Fehler, 137 mit einer Aufgabe für den Erbauer (dieses Loch aufbohren, ein schwaches Kernloch mit CA-Kleber härten). Er fand echte Fehler, etwa 9 mm tiefe Kernlöcher im LiDAR-Sockel für Schrauben, die 10 mm herausragen; deshalb beträgt `PEDESTAL_PILOT_DEPTH` jetzt 11 mm. Siehe [Befestigungselemente](../making/fasteners.md)."
+ },
+ "3b937ae179bb984d": {
+  "en": "Clearance",
+  "de": "Freigang"
+ },
+ "71262bb9028e9fe9": {
+  "en": "Interference proves nothing overlaps; clearance proves nothing *rubs*. Two printed surfaces can each be ~0.15 mm off, so moving parts on different rigid bodies must keep ≥ 0.3 mm in all 13 operating poses (stand, crouch, tall, eight trot phases, hips out and in), and below 1.0 mm they are reported as tight. This gate caught both front feet colliding in the `hips_in` pose, which led to the narrower inward hip limits (ADR-005).",
+  "de": "Die Durchdringungsprüfung beweist, dass nichts überlappt; die Freigangsprüfung beweist, dass nichts *schleift*. Zwei gedruckte Flächen können jeweils ~0,15 mm abweichen, daher müssen bewegte Teile auf verschiedenen Starrkörpern in allen 13 Betriebsposen (Stehen, Hocken, Hoch, acht Trot-Phasen, Hüften außen und innen) ≥ 0,3 mm Abstand halten, und unter 1,0 mm werden sie als knapp gemeldet. Diese Prüfung entdeckte, dass beide Vorderfüße in der Pose `hips_in` kollidierten, was zu den engeren Hüftgrenzen nach innen führte (ADR-005)."
+ },
+ "7ae9c23d65928182": {
+  "en": "Electronics",
+  "de": "Elektronik"
+ },
+ "fee71df502da093e": {
+  "en": "`hardware/electronics.yaml` is the source of truth for wiring. The gate checks that the firmware header `board_config.h` defines exactly its pins, I²C addresses, servo channels and frequencies (in both directions), that no GPIO or I²C address is used twice, and that every converter, switch, fuse and wire carries its load (`load ≤ fuse ≤ wire ampacity`). Its tests prove that a swapped pin, a duplicate channel, an address clash or an undersized wire fail. See [power](../hardware/power.md).",
+  "de": "`hardware/electronics.yaml` ist die Quelle der Wahrheit für die Verkabelung. Die Prüfung stellt sicher, dass der Firmware-Header `board_config.h` genau deren Pins, I²C-Adressen, Servokanäle und Frequenzen definiert (in beide Richtungen), dass kein GPIO und keine I²C-Adresse doppelt verwendet wird und dass jeder Wandler, Schalter, jede Sicherung und jeder Draht seine Last trägt (`load ≤ fuse ≤ wire ampacity`). Ihre Tests beweisen, dass ein vertauschter Pin, ein doppelter Kanal, ein Adresskonflikt oder ein zu dünner Draht scheitern. Siehe [Stromversorgung](../hardware/power.md)."
+ },
+ "e1c8eefd071f179b": {
+  "en": "Printability",
+  "de": "Druckbarkeit"
+ },
+ "7019536c4e3c8947": {
+  "en": "Static checks (closed manifold, fits a 220 × 220 × 250 mm bed, resting on z = 0) run in `make print`. The printability gate goes further: it slices every part with the real PrusaSlicer and the repo's profile (`hardware/print/prusaslicer.ini`), with supports and brim exactly as the print list prescribes, and fails on slicer errors or stability warnings (floating bridge anchors, collapsing overhangs, low bed adhesion). A ray-based scan fails walls thinner than one extrusion line or skins thinner than one layer. It also slices every 3MF plate as arranged. Result: 34 part types and 13 plates, 0 fail, 958 g of PETG and 100 h of printing. See [3D printing](../making/3d-printing.md).",
+  "de": "Statische Prüfungen (geschlossene Mannigfaltigkeit, passt auf ein 220 × 220 × 250 mm großes Druckbett, liegt auf z = 0) laufen in `make print`. Die Druckbarkeitsprüfung geht weiter: Sie slict jedes Teil mit dem echten PrusaSlicer und dem Profil des Repos (`hardware/print/prusaslicer.ini`), mit Stützen und Brim genau wie in der Druckliste vorgeschrieben, und scheitert bei Slicer-Fehlern oder Stabilitätswarnungen (frei schwebende Brückenanker, einbrechende Überhänge, geringe Betthaftung). Ein strahlbasierter Scan lässt Wände dünner als eine Extrusionslinie oder Häute dünner als eine Schicht scheitern. Außerdem slict sie jede 3MF-Druckplatte so, wie sie angeordnet ist. Ergebnis: 34 Teiletypen und 13 Druckplatten, 0 Fehler, 958 g PETG und 100 h Druckzeit. Siehe [3D-Druck](../making/3d-printing.md)."
+ },
+ "a5c3f1ba83cda951": {
+  "en": "Seen red",
+  "de": "Rot gesehen"
+ },
+ "3518a0c5c19daf87": {
+  "en": "Every gate in the verification ledger records a case where it *failed* on a real problem or a deliberate break. A check that has never failed may not be checking anything.",
+  "de": "Jede Prüfung im Verifikationsprotokoll dokumentiert einen Fall, in dem sie bei einem echten Problem oder einem absichtlichen Defekt *gescheitert* ist. Eine Prüfung, die nie gescheitert ist, prüft womöglich gar nichts."
+ },
+ "422f6bf890d23f2e": {
+  "en": "The publish pipeline",
+  "de": "Die Veröffentlichungs-Pipeline"
+ },
+ "f44b7f9dd289bc66": {
+  "en": "The same verified assembly feeds every artefact you download:",
+  "de": "Dieselbe verifizierte Baugruppe speist jedes Artefakt, das Sie herunterladen:"
+ },
+ "1902a0ede68183c4": {
+  "en": "Order matters: the catalogue book reads the print list, manual and render output. Because each instance in the assembly is assigned to exactly one manual step (the build fails otherwise), the parts in the manual, the BOM, the viewer and the [catalogue](../../catalog.md) always add up to the same robot. The simulation models come from the same assembly too (`make models`, see [simulation and RL](simulation-and-rl.md)).",
+  "de": "Die Reihenfolge zählt: Das Katalogbuch liest die Druckliste, die Anleitung und die Rendering-Ausgabe. Da jede Instanz der Baugruppe genau einem Anleitungsschritt zugeordnet ist (sonst scheitert der Build), ergeben die Teile in Anleitung, Stückliste, 3D-Ansicht und [Katalog](../../catalog.md) stets denselben Roboter. Auch die Simulationsmodelle stammen aus derselben Baugruppe (`make models`, siehe [Simulation und RL](simulation-and-rl.md))."
+ },
+ "8b819ba736a347a9": {
+  "en": "Limits of the approach",
+  "de": "Grenzen des Ansatzes"
+ },
+ "390ea5656b0ca81c": {
+  "en": "The gates check the CAD, not reality. The [verification](../../verification.md) ledger states it plainly: nothing has been printed, assembled, wired or powered yet (no Q3 hardware tier). Fits assume a 0.15 mm shrink model; your printer may differ, which is why the fit report includes builder actions. Code-CAD moves errors earlier and makes them visible; it does not replace the first physical build.",
+  "de": "Die Prüfungen prüfen das CAD, nicht die Realität. Das [Verifikationsprotokoll](../../verification.md) sagt es klar: Noch wurde nichts gedruckt, montiert, verkabelt oder eingeschaltet (keine Q3-Hardware-Stufe). Passungen nehmen ein Schrumpfmodell von 0,15 mm an; Ihr Drucker kann abweichen, weshalb der Passungsbericht Aufgaben für den Erbauer enthält. Code-CAD verlagert Fehler nach vorne und macht sie sichtbar; den ersten physischen Aufbau ersetzt es nicht."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "abdddabda622c456": {
+  "en": "Why does Strido build on the upstream STEP instead of re-modelling the robot?",
+  "de": "Warum baut Strido auf der Upstream-STEP auf, statt den Roboter neu zu modellieren?"
+ },
+ "b5270905da7e8272": {
+  "en": "How does a measured link length reach the firmware without anyone typing it?",
+  "de": "Wie gelangt eine gemessene Koppellänge in die Firmware, ohne dass jemand sie eintippt?"
+ },
+ "e2e36ebc4dac7db7": {
+  "en": "What is the difference between the interference gate and the clearance gate?",
+  "de": "Was ist der Unterschied zwischen der Durchdringungs- und der Freigangsprüfung?"
+ },
+ "13b69aebcfd05fcc": {
+  "en": "Why does the fit gate subtract 0.15 mm from CAD hole sizes?",
+  "de": "Warum zieht die Passungsprüfung 0,15 mm von den CAD-Lochgrößen ab?"
+ },
+ "96cffbde45a3d989": {
+  "en": "Why does `make catalog` have to run after `make print`, `make manual` and `make renders`?",
+  "de": "Warum muss `make catalog` nach `make print`, `make manual` und `make renders` laufen?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "4bc9da7c8fa44441": {
+  "en": "The upstream mechanics have actually been printed and built; modifying them by booleans keeps that history and lets upstream changes be diffed (ADR-001, ADR-004).",
+  "de": "Die Upstream-Mechanik wurde tatsächlich gedruckt und gebaut; sie per Boolescher Operation zu verändern, bewahrt diese Geschichte und erlaubt Diffs gegen Upstream-Änderungen (ADR-001, ADR-004)."
+ },
+ "e52fc3c1d1053e3a": {
+  "en": "`extract_kinematics` writes it to `hardware/kinematics.yaml`; `codegen` generates `geometry_generated.h`; `make drift` fails if the header is stale.",
+  "de": "`extract_kinematics` schreibt sie nach `hardware/kinematics.yaml`; `codegen` erzeugt `geometry_generated.h`; `make drift` scheitert, wenn der Header veraltet ist."
+ },
+ "a00890eae90cfaf5": {
+  "en": "Interference checks that no solids overlap; clearance checks that moving parts keep at least 0.3 mm in every operating pose, so they will not rub after printing.",
+  "de": "Die Durchdringungsprüfung stellt sicher, dass sich keine Volumenkörper überlappen; die Freigangsprüfung stellt sicher, dass bewegte Teile in jeder Betriebspose mindestens 0,3 mm Abstand halten, damit sie nach dem Druck nicht schleifen."
+ },
+ "def98deef9c93c62": {
+  "en": "FDM prints holes about 0.1–0.2 mm undersize; the gate judges the hole as it will be printed.",
+  "de": "FDM druckt Löcher etwa 0,1–0,2 mm zu klein; die Prüfung bewertet das Loch so, wie es gedruckt wird."
+ },
+ "6668e3ae65dadbbd": {
+  "en": "The book lays out the print list, manual steps and renders those targets produce.",
+  "de": "Das Buch setzt die Druckliste, die Anleitungsschritte und die Renderings, die diese Targets erzeugen."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "18d247d92baf4534": {
+  "en": "[CadQuery documentation](https://cadquery.readthedocs.io/en/latest/)",
+  "de": "[CadQuery-Dokumentation](https://cadquery.readthedocs.io/en/latest/)"
+ },
+ "cd6a224f25ee9b99": {
+  "en": "[Manifold geometry library](https://github.com/elalish/manifold)",
+  "de": "[Geometriebibliothek Manifold](https://github.com/elalish/manifold)"
+ },
+ "6417abc49cacd4fa": {
+  "en": "[trimesh documentation](https://trimesh.org/)",
+  "de": "[trimesh-Dokumentation](https://trimesh.org/)"
+ },
+ "fe9118c3f2507a67": {
+  "en": "[PrusaSlicer command-line interface](https://github.com/prusa3d/PrusaSlicer/wiki/Command-Line-Interface)",
+  "de": "[PrusaSlicer-Kommandozeilenschnittstelle](https://github.com/prusa3d/PrusaSlicer/wiki/Command-Line-Interface)"
+ },
+ "898b278488ed40d5": {
+  "en": "[Prusa knowledge base: dimensional accuracy and hole compensation](https://help.prusa3d.com/article/dimensional-accuracy_2207)",
+  "de": "[Prusa-Wissensdatenbank: Maßgenauigkeit und Lochkompensation](https://help.prusa3d.com/article/dimensional-accuracy_2207)"
+ }
+}

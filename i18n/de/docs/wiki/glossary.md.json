@@ -1,0 +1,962 @@
+{
+ "4c4e436f9a453c77": {
+  "en": "Glossary",
+  "de": "Glossar"
+ },
+ "49d395b4ee853d0b": {
+  "en": "Terms used on the Strido site and in this wiki, A–Z. Each entry says what the term means and, where it matters, how it applies to this robot; follow the link for the wiki page that explains it in depth.",
+  "de": "Begriffe, die auf der Strido-Seite und in diesem Wiki verwendet werden, von A–Z. Jeder Eintrag erklärt, was der Begriff bedeutet und, wo es darauf ankommt, wie er auf diesen Roboter zutrifft; folgen Sie dem Link zur Wiki-Seite, die ihn ausführlich erklärt."
+ },
+ "208b2389c3eaf6d8": {
+  "en": "Abduction",
+  "de": "Abduktion"
+ },
+ "da292ee6829e0ca0": {
+  "en": "Sideways swing of a leg away from or towards the body's centre line. On Strido it is the hip joint, driven by the servo in the body; see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Seitliches Schwenken eines Beins von der Körpermittellinie weg oder zu ihr hin. Bei Strido ist das das Hüftgelenk, angetrieben vom Servo im Körper; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "e492cb32955ca530": {
+  "en": "Accepted deviation",
+  "de": "Akzeptierte Abweichung"
+ },
+ "e08c4919c7c718c2": {
+  "en": "A hole that misses a verification band but is deliberately kept, recorded in `accepted_deviations` of `hardware/verification/tolerances.yaml` with an ADR and a builder action. The only one is ADR-009, the servo-mount M3 pilots; see [fasteners](making/fasteners.md).",
+  "de": "Eine Bohrung, die ein Verifikationsband verfehlt, aber bewusst beibehalten wird, festgehalten in `accepted_deviations` von `hardware/verification/tolerances.yaml` mit einem ADR und einer Maßnahme für Bauende. Die einzige ist ADR-009, die M3-Vorbohrungen der Servohalterungen; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "43889b6766387056": {
+  "en": "ADR (architecture decision record)",
+  "de": "ADR (Architekturentscheidung)"
+ },
+ "1f5013d30df76fb0": {
+  "en": "A short record of a design decision: context, options, decision, consequences and when to reconsider. Strido keeps them in [decisions.md](../decisions.md).",
+  "de": "Eine kurze Aufzeichnung einer Konstruktionsentscheidung: Kontext, Optionen, Entscheidung, Konsequenzen und wann sie neu zu bewerten ist. Strido führt sie in [decisions.md](../decisions.md)."
+ },
+ "8760bbb3349d87e3": {
+  "en": "Arachne",
+  "de": "Arachne"
+ },
+ "6ae694f0a7c86370": {
+  "en": "PrusaSlicer's variable-width perimeter generator, enabled in the kit profile, which fills thin walls instead of leaving gaps; see [3D printing](making/3d-printing.md).",
+  "de": "Der Perimeter-Generator mit variabler Breite von PrusaSlicer, im Profil des Bausatzes aktiviert, der dünne Wände füllt, statt Lücken zu lassen; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "beea2f315b4b08a7": {
+  "en": "Arming port",
+  "de": "Arming-Port"
+ },
+ "bd5365a970b6ea7a": {
+  "en": "The XT60H jack in the back shell (`arming_port_bezel`): W02 from the main fuse on one contact, W03 to the UBECs on the other. It connects the servo power branch only when the loop key is inserted; see [safety](making/safety.md).",
+  "de": "Die XT60H-Buchse in der Rückschale (`arming_port_bezel`): W02 von der Hauptsicherung an einem Kontakt, W03 zu den UBECs am anderen. Sie verbindet den Servo-Versorgungszweig nur, wenn der Loop-Key eingesteckt ist; siehe [Sicherheit](making/safety.md)."
+ },
+ "cb01184fdecbf2ce": {
+  "en": "AWG (American Wire Gauge)",
+  "de": "AWG (American Wire Gauge)"
+ },
+ "0c1e6f1c59b18444": {
+  "en": "Wire size scale where a smaller number means a thicker wire. Strido uses 14 AWG for the battery trunk, 18 AWG for UBEC outputs, bus jumpers and the logic branch, 22 AWG for the servo leads, signals and the Pi 5 V feed; see [power](hardware/power.md).",
+  "de": "Skala für Drahtquerschnitte, bei der eine kleinere Zahl einen dickeren Draht bedeutet. Strido verwendet 14 AWG für die Akku-Hauptleitung, 18 AWG für UBEC-Ausgänge, Bus-Brücken und den Logikzweig, 22 AWG für Servokabel, Signale und die 5-V-Versorgung des Pi; siehe [Versorgung](hardware/power.md)."
+ },
+ "ff8d34022aabf2e9": {
+  "en": "Balance charger",
+  "de": "Balancer-Ladegerät"
+ },
+ "71900eac2788ef9e": {
+  "en": "A LiPo charger that monitors and equalises each cell through the pack's balance lead. The BOM includes a B6AC-class charger; see [batteries](hardware/batteries.md).",
+  "de": "Ein LiPo-Ladegerät, das jede Zelle über den Balancer-Anschluss des Akkupacks überwacht und ausgleicht. Die Stückliste enthält ein Ladegerät der B6AC-Klasse; siehe [Akkus](hardware/batteries.md)."
+ },
+ "92f7f001cab94022": {
+  "en": "Bed adhesion",
+  "de": "Betthaftung"
+ },
+ "c93dd9473d32924c": {
+  "en": "How firmly the first layer sticks to the print bed. Too little and the part detaches; with PETG on smooth PEI, too much can damage the sheet; see [3D printing](making/3d-printing.md).",
+  "de": "Wie fest die erste Schicht auf dem Druckbett haftet. Zu wenig, und das Teil löst sich; bei PETG auf glattem PEI kann zu viel die Platte beschädigen; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "419f802c38069431": {
+  "en": "Bearing seat",
+  "de": "Lagersitz"
+ },
+ "21f345ffc1eaceb3": {
+  "en": "A printed bore into which a ball bearing or sleeve is pressed. The fit gate accepts a seat from 0.15 mm under to 0.30 mm over the bearing's outer diameter; see [mechanics](hardware/mechanics.md).",
+  "de": "Eine gedruckte Bohrung, in die ein Kugellager oder eine Gleitbuchse eingepresst wird. Die Passungsprüfung akzeptiert einen Sitz von 0,15 mm unter bis 0,30 mm über dem Außendurchmesser des Lagers; siehe [Mechanik](hardware/mechanics.md)."
+ },
+ "88b928324048a9b3": {
+  "en": "BEC / UBEC",
+  "de": "BEC / UBEC"
+ },
+ "bf37df965d9a89ea": {
+  "en": "(Universal) battery eliminator circuit: a switching regulator from RC models that turns pack voltage into servo voltage. Strido uses two Hobbywing UBEC-10A at 6.0 V, each feeding two legs; see [power](hardware/power.md).",
+  "de": "(Universal) Battery Eliminator Circuit: ein Schaltregler aus dem RC-Modellbau, der die Akkuspannung in Servospannung umwandelt. Strido verwendet zwei Hobbywing UBEC-10A mit 6,0 V, die jeweils zwei Beine versorgen; siehe [Versorgung](hardware/power.md)."
+ },
+ "020df3c65bc639fc": {
+  "en": "BOM (bill of materials)",
+  "de": "BOM (Stückliste)"
+ },
+ "4e195306f834942b": {
+  "en": "The list of everything to buy, with quantities and offers. Source: `hardware/bom.yaml`; published as the [BOM page](../bom/README.md).",
+  "de": "Die Liste aller zu kaufenden Teile mit Mengen und Angeboten. Quelle: `hardware/bom.yaml`; veröffentlicht als [Stücklisten-Seite](../bom/README.md)."
+ },
+ "cf36a072f166b626": {
+  "en": "Brim",
+  "de": "Brim"
+ },
+ "fbc237e24df423c8": {
+  "en": "Extra lines around a part's first layer that increase bed contact. In the kit: 5 mm brim on parts taller than 40 mm; see [3D printing](making/3d-printing.md).",
+  "de": "Zusätzliche Linien um die erste Schicht eines Teils, die den Kontakt zum Bett vergrößern. Im Bausatz: 5 mm Brim bei Teilen, die höher als 40 mm sind; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "09cdad123baeaddf": {
+  "en": "Buck regulator (step-down)",
+  "de": "Abwärtswandler (Step-down)"
+ },
+ "9220c7632b4680ab": {
+  "en": "A switching converter that lowers a voltage efficiently. The Pololu D36V50F5 makes the 5 V logic rail from the 2S pack; see [power](hardware/power.md).",
+  "de": "Ein Schaltwandler, der eine Spannung effizient absenkt. Der Pololu D36V50F5 erzeugt die 5-V-Logikschiene aus dem 2S-Akkupack; siehe [Versorgung](hardware/power.md)."
+ },
+ "83c7e3b761d72dc9": {
+  "en": "Build kit",
+  "de": "Bausatz"
+ },
+ "5f97d893aa70900d": {
+  "en": "The downloadable ZIP with everything needed to print and build a robot; see [downloads](../downloads.md).",
+  "de": "Das herunterladbare ZIP mit allem, was zum Drucken und Bauen eines Roboters nötig ist; siehe [Downloads](../downloads.md)."
+ },
+ "76827959e6906b90": {
+  "en": "C rating",
+  "de": "C-Rate"
+ },
+ "43008ea7ae89053d": {
+  "en": "A LiPo's maximum discharge current as a multiple of its capacity, $I = C \\cdot Q / 1\\,\\mathrm{h}$ (e.g. $60 \\times 5\\,\\mathrm{A} = 300\\,\\mathrm{A}$ continuous for the 5 Ah Strido pack, 100C burst). See [batteries](hardware/batteries.md).",
+  "de": "Der maximale Entladestrom eines LiPo als Vielfaches seiner Kapazität, $I = C \\cdot Q / 1\\,\\mathrm{h}$ (z. B. $60 \\times 5\\,\\mathrm{A} = 300\\,\\mathrm{A}$ Dauerstrom für den 5-Ah-Akkupack von Strido, 100C kurzzeitig). Siehe [Akkus](hardware/batteries.md)."
+ },
+ "e71fa72237fd4baa": {
+  "en": "CadQuery",
+  "de": "CadQuery"
+ },
+ "b4c296027ef24179": {
+  "en": "A Python library for parametric CAD. All new and modified Strido parts are CadQuery booleans on the upstream geometry; see [CAD as code](software/cad-as-code.md).",
+  "de": "Eine Python-Bibliothek für parametrisches CAD. Alle neuen und geänderten Teile von Strido sind CadQuery-Boolesche Operationen auf der Upstream-Geometrie; siehe [CAD als Code](software/cad-as-code.md)."
+ },
+ "103451395067d389": {
+  "en": "Catalogue",
+  "de": "Katalog"
+ },
+ "9e2a4a6a083f37a5": {
+  "en": "The browsable list of all 76 part types (printed, purchased and fasteners) with images, sizes and assembly steps; see the [catalogue](../catalog.md).",
+  "de": "Die durchsuchbare Liste aller 76 Teiletypen (gedruckt, gekauft und Befestigungselemente) mit Bildern, Größen und Montageschritten; siehe den [Katalog](../catalog.md)."
+ },
+ "de2ae33a52ffcc31": {
+  "en": "Clearance hole",
+  "de": "Durchgangsbohrung"
+ },
+ "cd6cf22f4efef182": {
+  "en": "A hole a screw passes through freely. ISO 273 sizes for M3 are 3.2 mm (fine) and 3.4 mm (medium); printed holes are chased with these drills; see [fasteners](making/fasteners.md).",
+  "de": "Eine Bohrung, durch die eine Schraube frei hindurchgeht. Die ISO-273-Größen für M3 sind 3,2 mm (fein) und 3,4 mm (mittel); gedruckte Bohrungen werden mit diesen Bohrern nachgebohrt; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "7e346c9ddb3fac4c": {
+  "en": "COBS",
+  "de": "COBS"
+ },
+ "e9bbb0458da5dc2d": {
+  "en": "Consistent Overhead Byte Stuffing: an encoding that removes zero bytes from a message so `0x00` can mark the end of each frame. Used on the USB link between the Pi and the XIAO; see [firmware](software/firmware.md).",
+  "de": "Consistent Overhead Byte Stuffing: eine Codierung, die Null-Bytes aus einer Nachricht entfernt, sodass `0x00` das Ende jedes Rahmens markieren kann. Verwendet auf der USB-Verbindung zwischen dem Pi und dem XIAO; siehe [Firmware](software/firmware.md)."
+ },
+ "a466ba8a50b1eb3e": {
+  "en": "CRC16",
+  "de": "CRC16"
+ },
+ "1667ab39bf7bdd1c": {
+  "en": "A 16-bit checksum appended to every protocol frame (CRC16-CCITT-FALSE) so corrupted frames are rejected; see [firmware](software/firmware.md).",
+  "de": "Eine 16-Bit-Prüfsumme, die an jeden Protokollrahmen angehängt wird (CRC16-CCITT-FALSE), damit beschädigte Rahmen verworfen werden; siehe [Firmware](software/firmware.md)."
+ },
+ "8c57fdafeb2315b0": {
+  "en": "CSI",
+  "de": "CSI"
+ },
+ "25a5caf4218c3c84": {
+  "en": "Camera Serial Interface: the ribbon-cable camera connector on the Raspberry Pi 5, used by the Camera Module 3 Wide via a 22→15-pin cable; see [sensors](hardware/sensors.md).",
+  "de": "Camera Serial Interface: der Flachbandkabel-Kameraanschluss am Raspberry Pi 5, genutzt vom Camera Module 3 Wide über ein 22→15-Pin-Kabel; siehe [Sensoren](hardware/sensors.md)."
+ },
+ "c4e4be9bd37b5f25": {
+  "en": "Cut list",
+  "de": "Zuschnittliste"
+ },
+ "0ede441fa6660c54": {
+  "en": "The table in the [wiring check](../verification/wiring.md) that gives every wire's routed length and the length to cut: routed length + a termination allowance per end (WAGO strip 11 mm, solder 6 mm, crimp 3 mm, screw terminal 7 mm) + slack of 8 %, at least 10 mm. Builders cut every wire from it; see [cable management](making/cable-management.md).",
+  "de": "Die Tabelle in der [Verkabelungsprüfung](../verification/wiring.md), die für jeden Draht die verlegte Länge und die Zuschnittlänge angibt: verlegte Länge + ein Anschlusszuschlag pro Ende (WAGO abisolieren 11 mm, Löten 6 mm, Crimpen 3 mm, Schraubklemme 7 mm) + 8 % Reserve, mindestens 10 mm. Bauende schneiden jeden Draht danach zu; siehe [Kabelmanagement](making/cable-management.md)."
+ },
+ "e6169e958b37ce86": {
+  "en": "Docker",
+  "de": "Docker"
+ },
+ "8cb858440cd89fd6": {
+  "en": "A tool that runs software in containers with all its dependencies. The ROS 2 Jazzy image for the Pi and for Gazebo is built from `docker/compose.yaml`; see [Docker](software/docker.md).",
+  "de": "Ein Werkzeug, das Software mit allen Abhängigkeiten in Containern ausführt. Das ROS-2-Jazzy-Image für den Pi und für Gazebo wird aus `docker/compose.yaml` gebaut; siehe [Docker](software/docker.md)."
+ },
+ "06fabf7ee2ad9fe9": {
+  "en": "Domain randomisation",
+  "de": "Domain Randomisation"
+ },
+ "dd4970b7f3cad39c": {
+  "en": "Varying simulation parameters (friction, servo stiffness, mass, IMU noise) during training so a learned policy copes with the real robot; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Das Variieren von Simulationsparametern (Reibung, Servosteifigkeit, Masse, IMU-Rauschen) während des Trainings, damit eine gelernte Policy mit dem realen Roboter zurechtkommt; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "3ba00320020aaaa8": {
+  "en": "Dupont connector",
+  "de": "Dupont-Steckverbinder"
+ },
+ "09e54d81069afaf6": {
+  "en": "A 2.54 mm pitch crimp contact and housing that plugs onto header pins and holds by friction. Used for the Pi 5 V feed (W12), W17/W20 at the PCA9685 and the twelve servo signal wires (re-crimped into 1-pin housings); see [tools and workshop](making/tools-and-workshop.md).",
+  "de": "Ein Crimpkontakt mit Gehäuse im 2,54-mm-Raster, der auf Stiftleisten gesteckt wird und durch Reibung hält. Verwendet für die 5-V-Versorgung des Pi (W12), W17/W20 am PCA9685 und die zwölf Servo-Signalleitungen (neu in 1-polige Gehäuse gecrimpt); siehe [Werkzeuge und Werkstatt](making/tools-and-workshop.md)."
+ },
+ "896c9379ecbf2338": {
+  "en": "E-stop (emergency stop)",
+  "de": "Not-Aus (E-Stop)"
+ },
+ "7be75a336e740ea3": {
+  "en": "A latched stop. On Strido, `/strido/estop` makes the firmware pull PCA9685 OE high and stop all pulses; the physical servo kill is the loop key. See [safety](making/safety.md).",
+  "de": "Ein verriegelnder Stopp. Bei Strido bringt `/strido/estop` die Firmware dazu, PCA9685 OE auf High zu ziehen und alle Pulse zu stoppen; die physische Servo-Abschaltung ist der Loop-Key. Siehe [Sicherheit](making/safety.md)."
+ },
+ "627e2515e4fe8e1f": {
+  "en": "Elephant foot",
+  "de": "Elefantenfuß"
+ },
+ "28f60e6d30c62474": {
+  "en": "The flared bottom edge of a print caused by the squashed first layer; it tightens bottom-facing holes; see [3D printing](making/3d-printing.md).",
+  "de": "Die ausgestellte Unterkante eines Drucks, verursacht durch die gequetschte erste Schicht; sie verengt nach unten gerichtete Bohrungen; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "327c863a376bdc11": {
+  "en": "Engagement length",
+  "de": "Einschraublänge"
+ },
+ "25f2770b666400ea": {
+  "en": "The length of a screw that actually forms or engages thread. The fit gate wants at least 1.5 d in printed pilots (4.5 mm for M3); see [fasteners](making/fasteners.md).",
+  "de": "Die Länge einer Schraube, die tatsächlich Gewinde formt oder in Gewinde greift. Die Passungsprüfung verlangt mindestens 1,5 d in gedruckten Vorbohrungen (4,5 mm für M3); siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "0658f4e52a12bdbb": {
+  "en": "ESD (electrostatic discharge)",
+  "de": "ESD (elektrostatische Entladung)"
+ },
+ "82c94c4758f78043": {
+  "en": "A static spark that can damage chips. Handle the Pi, XIAO and sensor boards by their edges after touching grounded metal; see [safety](making/safety.md).",
+  "de": "Ein statischer Funke, der Chips beschädigen kann. Fassen Sie Pi, XIAO und Sensorplatinen an den Kanten an, nachdem Sie geerdetes Metall berührt haben; siehe [Sicherheit](making/safety.md)."
+ },
+ "d3d3936964aba0d7": {
+  "en": "ESP32-S3",
+  "de": "ESP32-S3"
+ },
+ "2b8e7b50994086cf": {
+  "en": "Espressif's dual-core microcontroller with USB, used on the Seeed XIAO ESP32-S3 motion controller; see [microcontrollers](hardware/microcontrollers.md).",
+  "de": "Der Dual-Core-Mikrocontroller von Espressif mit USB, verwendet auf dem Bewegungscontroller Seeed XIAO ESP32-S3; siehe [Mikrocontroller](hardware/microcontrollers.md)."
+ },
+ "b03ed4bba0677a0e": {
+  "en": "FDM (fused deposition modelling)",
+  "de": "FDM (Fused Deposition Modelling)"
+ },
+ "8edacfef13a94af6": {
+  "en": "3D printing by extruding molten plastic line by line and layer by layer; see [3D printing](making/3d-printing.md).",
+  "de": "3D-Druck durch Extrudieren von geschmolzenem Kunststoff Linie für Linie und Schicht für Schicht; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "cd5cd5d70e8108cb": {
+  "en": "Femur",
+  "de": "Femur"
+ },
+ "1fc1b94c8e7fdc02": {
+  "en": "The thigh link of a leg, between the leg servo module and the knee; four are printed (`femur`).",
+  "de": "Das Oberschenkelglied eines Beins, zwischen dem Bein-Servomodul und dem Knie; vier werden gedruckt (`femur`)."
+ },
+ "bd709b7812bb1302": {
+  "en": "FFC (flat flexible cable)",
+  "de": "FFC (flexibles Flachbandkabel)"
+ },
+ "37f84e46383b247d": {
+  "en": "The flat ribbon cable that connects the camera to the Pi's CSI port (300 mm in Strido).",
+  "de": "Das flache Flachbandkabel, das die Kamera mit dem CSI-Anschluss des Pi verbindet (300 mm bei Strido)."
+ },
+ "c2a314c3b32b319c": {
+  "en": "Firmware",
+  "de": "Firmware"
+ },
+ "4d0526a36564fdc7": {
+  "en": "The program running on the microcontroller. Strido's firmware (`firmware/strido_esp32s3`, PlatformIO) runs the 200 Hz control loop and the safety logic; see [firmware](software/firmware.md).",
+  "de": "Das Programm, das auf dem Mikrocontroller läuft. Die Firmware von Strido (`firmware/strido_esp32s3`, PlatformIO) führt die 200-Hz-Regelschleife und die Sicherheitslogik aus; siehe [Firmware](software/firmware.md)."
+ },
+ "90fc56278d47d1cf": {
+  "en": "Fit gate",
+  "de": "Passungsprüfung"
+ },
+ "fb17b48562413950": {
+  "en": "The verification step `python -m strido_verify.fits` that measures every screw hole and bearing seat in the CAD against the bands in `tolerances.yaml`; see [fasteners](making/fasteners.md).",
+  "de": "Der Verifikationsschritt `python -m strido_verify.fits`, der jede Schraubenbohrung und jeden Lagersitz im CAD mit den Bändern in `tolerances.yaml` vergleicht; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "5334646636871fe7": {
+  "en": "Four-bar linkage",
+  "de": "Viergelenkgetriebe"
+ },
+ "c066a1eccc8ba8d4": {
+  "en": "Four links joined in a loop by four pivots. Strido's knee uses a parallelogram and a four-bar to drive the tibia from the knee crank; see [mechanics](hardware/mechanics.md).",
+  "de": "Vier Glieder, durch vier Drehgelenke zu einer Schleife verbunden. Das Knie von Strido verwendet ein Parallelogramm und ein Viergelenk, um die Tibia von der Kniekurbel aus anzutreiben; siehe [Mechanik](hardware/mechanics.md)."
+ },
+ "8d2f97503969e386": {
+  "en": "Fuse",
+  "de": "Sicherung"
+ },
+ "fdd651f24a8e0b40": {
+  "en": "A wire link that melts above its rated current and so protects the wire after it. Strido uses a 25 A main and a 7.5 A logic ATO blade fuse; see [safety](making/safety.md).",
+  "de": "Ein Leiterstück, das oberhalb seines Nennstroms schmilzt und so die nachfolgende Leitung schützt. Strido verwendet eine 25-A-Haupt- und eine 7,5-A-Logik-ATO-Flachsicherung; siehe [Sicherheit](making/safety.md)."
+ },
+ "cb9a69f740d615fc": {
+  "en": "Gait",
+  "de": "Gait"
+ },
+ "d1ecc86e8cb0ea0c": {
+  "en": "The pattern in which legs move. Strido's default is a trot (diagonal leg pairs together) in `packages/strido-core`; see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Das Muster, in dem sich die Beine bewegen. Standard bei Strido ist ein Trot (diagonale Beinpaare gemeinsam) in `packages/strido-core`; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "fa77a5252d38a04c": {
+  "en": "Gate",
+  "de": "Prüfung (Gate)"
+ },
+ "351bba4ae95a1353": {
+  "en": "An executable check that must pass before a change is accepted (interference, ROM, fits, clearance, printability, electronics, wiring, BOM). See the [verification](../verification.md) page.",
+  "de": "Eine ausführbare Prüfung, die bestehen muss, bevor eine Änderung akzeptiert wird (Durchdringung, Bewegungsbereich, Passungen, Freigang, Druckbarkeit, Elektronik, Verkabelung, Stückliste). Siehe die Seite [Verifikation](../verification.md)."
+ },
+ "c12c1d0636c44fce": {
+  "en": "Gazebo Harmonic",
+  "de": "Gazebo Harmonic"
+ },
+ "7554d434e601dbb4": {
+  "en": "A robot simulator that runs the ROS 2 stack unchanged against a simulated Strido; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Ein Robotersimulator, der den ROS-2-Stack unverändert gegen einen simulierten Strido ausführt; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "8c01ffdb672833b9": {
+  "en": "Go2 convention",
+  "de": "Go2-Konvention"
+ },
+ "c027fc84287e94ff": {
+  "en": "Joint names, signs, frames and topics copied from the Unitree Go2's ROS 2 interface, so code written for a Go2 can drive Strido; see [ROS 2](software/ros2.md).",
+  "de": "Gelenknamen, Vorzeichen, Koordinatensysteme und Topics, übernommen von der ROS-2-Schnittstelle des Unitree Go2, sodass für einen Go2 geschriebener Code Strido steuern kann; siehe [ROS 2](software/ros2.md)."
+ },
+ "4ef14117a8414775": {
+  "en": "Ground star",
+  "de": "Massesternpunkt"
+ },
+ "dd6f9a31ee2dd875": {
+  "en": "The single point where all grounds join. On Strido it is a heat-shrunk splice beside the battery input, from which W04 runs to both UBEC inputs (14 AWG) and the switch ground (18 AWG); one point keeps the servo return currents out of the logic grounds; see [power](hardware/power.md).",
+  "de": "Der einzige Punkt, an dem alle Massen zusammenlaufen. Bei Strido ist das eine mit Schrumpfschlauch isolierte Spleißstelle neben dem Akkueingang, von der W04 zu beiden UBEC-Eingängen (14 AWG) und zur Schaltermasse (18 AWG) führt; ein einziger Punkt hält die Servo-Rückströme aus den Logikmassen heraus; siehe [Versorgung](hardware/power.md)."
+ },
+ "d9c2571dba1225c9": {
+  "en": "Gyroid",
+  "de": "Gyroid"
+ },
+ "86748cc09148afb9": {
+  "en": "A wavy, self-supporting infill pattern that is strong in all directions; the kit uses 30 % gyroid; see [3D printing](making/3d-printing.md).",
+  "de": "Ein welliges, selbsttragendes Füllmuster, das in alle Richtungen fest ist; der Bausatz verwendet 30 % Gyroid; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "dd66c0f626647185": {
+  "en": "Heat shrink",
+  "de": "Schrumpfschlauch"
+ },
+ "0b71b63b1f72d9df": {
+  "en": "Tubing that shrinks when heated to insulate and strain-relieve a soldered joint; see [tools and workshop](making/tools-and-workshop.md).",
+  "de": "Schlauch, der beim Erhitzen schrumpft, um eine Lötstelle zu isolieren und zugzuentlasten; siehe [Werkzeuge und Werkstatt](making/tools-and-workshop.md)."
+ },
+ "2e9d67574976cd81": {
+  "en": "High-side shunt",
+  "de": "High-Side-Shunt"
+ },
+ "7534b26aa21c6c16": {
+  "en": "A current-measuring resistor placed in the positive supply line. The INA260 measures the logic branch this way (VIN+ in, VIN− out); see [sensors](hardware/sensors.md).",
+  "de": "Ein Strommesswiderstand in der positiven Versorgungsleitung. Der INA260 misst den Logikzweig auf diese Weise (VIN+ hinein, VIN− hinaus); siehe [Sensoren](hardware/sensors.md)."
+ },
+ "6dcd15ae8444a028": {
+  "en": "Hole compensation",
+  "de": "Lochkompensation"
+ },
+ "bfef6cefcac2a57f": {
+  "en": "A slicer setting that shrinks or grows printed holes. The print list asks for X-Y hole compensation −0.15 mm on the servo mounts (ADR-009); see [3D printing](making/3d-printing.md).",
+  "de": "Eine Slicer-Einstellung, die gedruckte Bohrungen verkleinert oder vergrößert. Die Druckliste verlangt eine X-Y-Lochkompensation von −0,15 mm bei den Servohalterungen (ADR-009); siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "9ebf503462b39881": {
+  "en": "Horn",
+  "de": "Servohorn"
+ },
+ "caea2045e320e565": {
+  "en": "The arm or disc that fits on a servo's splined output shaft and transmits its torque. Strido uses 25-tooth (25T) aluminium disc and clamping arm horns; see [servos](hardware/servos.md).",
+  "de": "Der Arm oder die Scheibe, die auf die verzahnte Abtriebswelle eines Servos passt und dessen Drehmoment überträgt. Strido verwendet Aluminium-Scheiben- und Klemmarm-Servohörner mit 25 Zähnen (25T); siehe [Servos](hardware/servos.md)."
+ },
+ "99bffd6717e9b1a8": {
+  "en": "A two-wire bus (SDA data, SCL clock) where each device has an address. On Strido: PCA9685 0x40, LSM6DSOX 0x6A, INA260 0x41 at 400 kHz; see [buses](hardware/buses.md).",
+  "de": "Ein Zweidrahtbus (SDA Daten, SCL Takt), bei dem jedes Gerät eine Adresse hat. Bei Strido: PCA9685 0x40, LSM6DSOX 0x6A, INA260 0x41 mit 400 kHz; siehe [Busse](hardware/buses.md)."
+ },
+ "0908d0b13189a742": {
+  "en": "IMU (inertial measurement unit)",
+  "de": "IMU (inertiale Messeinheit)"
+ },
+ "c205be8f00a13763": {
+  "en": "A sensor measuring acceleration and rotation rate. The LSM6DSOX gives the robot its orientation (Mahony filter on the XIAO); see [sensors](hardware/sensors.md).",
+  "de": "Ein Sensor, der Beschleunigung und Drehrate misst. Der LSM6DSOX liefert dem Roboter seine Orientierung (Mahony-Filter auf dem XIAO); siehe [Sensoren](hardware/sensors.md)."
+ },
+ "612f80ce6dde8e64": {
+  "en": "INA260",
+  "de": "INA260"
+ },
+ "054d5c1a029042d2": {
+  "en": "Texas Instruments' current/voltage/power monitor with an integrated shunt (Adafruit 4226). It reports pack voltage for the low-battery cut-off; the firmware will not drive without it; see [sensors](hardware/sensors.md).",
+  "de": "Der Strom-/Spannungs-/Power-Monitor von Texas Instruments mit integriertem Shunt (Adafruit 4226). Er meldet die Akkuspannung für die Unterspannungsabschaltung; ohne ihn steuert die Firmware nicht an; siehe [Sensoren](hardware/sensors.md)."
+ },
+ "1248b5e7347a1066": {
+  "en": "Infill",
+  "de": "Füllung (Infill)"
+ },
+ "8abdc2cbf4961ea4": {
+  "en": "The internal fill of a printed part, given as a density and a pattern (kit: 30 % gyroid); see [3D printing](making/3d-printing.md).",
+  "de": "Die innere Füllung eines gedruckten Teils, angegeben als Dichte und Muster (Bausatz: 30 % Gyroid); siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "79dfb372edddaa30": {
+  "en": "Interference check",
+  "de": "Durchdringungsprüfung"
+ },
+ "abc45b4d116ba6f6": {
+  "en": "The gate that tests the assembled CAD for parts that overlap in space; report in [verification/interference.md](../verification/interference.md).",
+  "de": "Die Prüfung, die das montierte CAD auf Teile untersucht, die sich räumlich überlappen; Bericht in [verification/interference.md](../verification/interference.md)."
+ },
+ "85333da8254925c8": {
+  "en": "ISO 4762 / DIN 912",
+  "de": "ISO 4762 / DIN 912"
+ },
+ "f829f4ef56a8d8a0": {
+  "en": "The standard for socket head cap screws, the only screw head type in Strido; see [fasteners](making/fasteners.md).",
+  "de": "Die Norm für Zylinderschrauben mit Innensechskant, die einzige Schraubenkopfform bei Strido; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "a1850cf758a83e38": {
+  "en": "Joint limits",
+  "de": "Gelenkgrenzen"
+ },
+ "87f1dd89340bd9e1": {
+  "en": "The safe range of each joint, from a collision sweep of the full assembly (e.g. calf −150…−45°), shared by firmware, gait and simulation; see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Der sichere Bereich jedes Gelenks, ermittelt aus einem Kollisions-Sweep der gesamten Baugruppe (z. B. Unterschenkel −150…−45°), gemeinsam genutzt von Firmware, Gait und Simulation; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "3c44d96f7f5bea9f": {
+  "en": "Kinematics",
+  "de": "Kinematik"
+ },
+ "02de1d6f6fe67a04": {
+  "en": "The geometry that relates joint angles to foot positions (forward) and foot positions to joint angles (inverse); see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Die Geometrie, die Gelenkwinkel mit Fußpositionen (vorwärts) und Fußpositionen mit Gelenkwinkeln (invers) verknüpft; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "e96d8e09a1b22516": {
+  "en": "Knee crank",
+  "de": "Kniekurbel"
+ },
+ "f935169060c337ec": {
+  "en": "The arm on the knee servo that drives the knee linkage; its angle maps non-linearly to the calf angle; see [mechanics](hardware/mechanics.md).",
+  "de": "Der Arm am Knieservo, der das Kniekoppelgetriebe antreibt; sein Winkel bildet sich nichtlinear auf den Unterschenkelwinkel ab; siehe [Mechanik](hardware/mechanics.md)."
+ },
+ "8e4386a62e070230": {
+  "en": "Layer height",
+  "de": "Schichthöhe"
+ },
+ "545c3641ee77355d": {
+  "en": "The thickness of each printed layer; 0.2 mm in the kit, half the 0.4 mm nozzle; see [3D printing](making/3d-printing.md).",
+  "de": "Die Dicke jeder gedruckten Schicht; 0,2 mm im Bausatz, die Hälfte der 0,4-mm-Düse; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "48683370c0ab32be": {
+  "en": "LiDAR",
+  "de": "LiDAR"
+ },
+ "48a173d347d2c40a": {
+  "en": "A sensor that measures distances with a rotating laser. The Slamtec RPLIDAR C1 publishes `/scan` at 10 Hz from the top pedestal; see [sensors](hardware/sensors.md).",
+  "de": "Ein Sensor, der Entfernungen mit einem rotierenden Laser misst. Der Slamtec RPLIDAR C1 veröffentlicht `/scan` mit 10 Hz vom oberen Sockel aus; siehe [Sensoren](hardware/sensors.md)."
+ },
+ "576b79b21a050179": {
+  "en": "LiPo (lithium polymer)",
+  "de": "LiPo (Lithium-Polymer)"
+ },
+ "534e28eaa98b03d2": {
+  "en": "The rechargeable battery chemistry of the robot's 2S 5000 mAh pack: high power, but dangerous if shorted, overcharged or over-discharged; see [batteries](hardware/batteries.md).",
+  "de": "Die Akkuchemie des 2S-5000-mAh-Akkupacks des Roboters: hohe Leistung, aber gefährlich bei Kurzschluss, Überladung oder Tiefentladung; siehe [Akkus](hardware/batteries.md)."
+ },
+ "cc62f0d277d7a85d": {
+  "en": "Lock nut (DIN 985)",
+  "de": "Sicherungsmutter (DIN 985)"
+ },
+ "8ce30f0df48b0b82": {
+  "en": "A nut with a nylon insert that grips the thread, used at moving joints so they can turn freely without the nut backing off; see [fasteners](making/fasteners.md).",
+  "de": "Eine Mutter mit Nyloneinsatz, die das Gewinde klemmt, verwendet an beweglichen Gelenken, damit sie sich frei drehen können, ohne dass sich die Mutter löst; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "3cfd81fceab0ac88": {
+  "en": "Loop key",
+  "de": "Loop-Key"
+ },
+ "10ef3383cbefb8dc": {
+  "en": "A shorted XT60 plug that arms the servo branch when inserted in the arming port; pulling it is the servo kill; see [safety](making/safety.md).",
+  "de": "Ein kurzgeschlossener XT60-Stecker, der den Servozweig scharf schaltet, wenn er in den Arming-Port gesteckt wird; Abziehen schaltet die Servos ab; siehe [Sicherheit](making/safety.md)."
+ },
+ "55248253d8cc1635": {
+  "en": "mAh (milliampere-hour)",
+  "de": "mAh (Milliamperestunde)"
+ },
+ "8a11d301483385d1": {
+  "en": "Battery capacity: 5000 mAh can supply 5 A for one hour. With 7.4 V nominal it stores about 37 Wh; see [batteries](hardware/batteries.md).",
+  "de": "Akkukapazität: 5000 mAh können eine Stunde lang 5 A liefern. Bei 7,4 V Nennspannung speichert der Akku etwa 37 Wh; siehe [Akkus](hardware/batteries.md)."
+ },
+ "580d1a22d80d36da": {
+  "en": "Mahony filter",
+  "de": "Mahony-Filter"
+ },
+ "6c2ea3ade90b6b76": {
+  "en": "A lightweight algorithm that fuses gyroscope and accelerometer data into an orientation estimate; runs on the XIAO for `/imu/data`; see [sensors](hardware/sensors.md).",
+  "de": "Ein schlanker Algorithmus, der Gyroskop- und Beschleunigungsdaten zu einer Orientierungsschätzung fusioniert; läuft auf dem XIAO für `/imu/data`; siehe [Sensoren](hardware/sensors.md)."
+ },
+ "17dbcc8584b38dc1": {
+  "en": "Manifold (closed)",
+  "de": "Manifold (geschlossen)"
+ },
+ "9c1ecdecc0fb4098": {
+  "en": "A mesh with no holes or loose faces, so it has a well-defined inside; every kit STL is checked to be closed; see [CAD as code](software/cad-as-code.md).",
+  "de": "Ein Netz ohne Löcher oder lose Flächen, sodass es ein wohldefiniertes Inneres hat; jede STL des Bausatzes wird auf Geschlossenheit geprüft; siehe [CAD als Code](software/cad-as-code.md)."
+ },
+ "6d3cb555d77141bc": {
+  "en": "Microcontroller (MCU)",
+  "de": "Mikrocontroller (MCU)"
+ },
+ "b7da8cf8d1407280": {
+  "en": "A small single-chip computer for real-time tasks. The XIAO ESP32-S3 is Strido's MCU; see [microcontrollers](hardware/microcontrollers.md).",
+  "de": "Ein kleiner Ein-Chip-Computer für Echtzeitaufgaben. Der XIAO ESP32-S3 ist die MCU von Strido; siehe [Mikrocontroller](hardware/microcontrollers.md)."
+ },
+ "dcd0df63338043b1": {
+  "en": "MJCF",
+  "de": "MJCF"
+ },
+ "72d54fa477a58d60": {
+  "en": "MuJoCo's XML model format; `models/mujoco/strido.xml` is generated from the CAD; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Das XML-Modellformat von MuJoCo; `models/mujoco/strido.xml` wird aus dem CAD generiert; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "eed814896836b6e9": {
+  "en": "MuJoCo",
+  "de": "MuJoCo"
+ },
+ "de0f6ece1ee1fd64": {
+  "en": "A fast physics simulator used for the walking demo and reinforcement learning; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Ein schneller Physiksimulator, der für die Laufdemo und Reinforcement Learning verwendet wird; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "ab93e48ac0b51b04": {
+  "en": "Nav2",
+  "de": "Nav2"
+ },
+ "9195e5b65cecb090": {
+  "en": "The ROS 2 navigation stack. It talks to the robot through `/cmd_vel` and `/scan`, so it runs unchanged on Strido; see [ROS 2](software/ros2.md).",
+  "de": "Der ROS-2-Navigationsstack. Er kommuniziert über `/cmd_vel` und `/scan` mit dem Roboter und läuft daher unverändert auf Strido; siehe [ROS 2](software/ros2.md)."
+ },
+ "9758a254cd3cde95": {
+  "en": "NT-X",
+  "de": "NT-X"
+ },
+ "cffcf8fc1cdfd36a": {
+  "en": "The robotics platform Strido integrates with through the `strido-ntx` extension; see [NT-X integration](../ntx-integration.md).",
+  "de": "Die Robotikplattform, in die Strido über die Erweiterung `strido-ntx` integriert ist; siehe [NT-X-Integration](../ntx-integration.md)."
+ },
+ "b1fa0726142d97b3": {
+  "en": "N·m and kg·cm",
+  "de": "N·m und kg·cm"
+ },
+ "79a27b210c5f99a0": {
+  "en": "Units of torque. Servo makers quote kg·cm; $1\\,\\mathrm{kg\\,cm} = 9.81\\,\\mathrm{N} \\times 0.01\\,\\mathrm{m} \\approx 0.098\\,\\mathrm{N\\,m}$, so $35\\,\\mathrm{kg\\,cm} \\approx 3.43\\,\\mathrm{N\\,m}$; see [servos](hardware/servos.md).",
+  "de": "Drehmomenteinheiten. Servohersteller geben kg·cm an; $1\\,\\mathrm{kg\\,cm} = 9.81\\,\\mathrm{N} \\times 0.01\\,\\mathrm{m} \\approx 0.098\\,\\mathrm{N\\,m}$, also $35\\,\\mathrm{kg\\,cm} \\approx 3.43\\,\\mathrm{N\\,m}$; siehe [Servos](hardware/servos.md)."
+ },
+ "7f4e4af66d1ec96e": {
+  "en": "OE (output enable)",
+  "de": "OE (Output Enable)"
+ },
+ "787951c6daf1e56c": {
+  "en": "The PCA9685 pin that switches all 16 outputs off when high. The XIAO holds it high until armed, and a 2.2 kΩ pull-up keeps it high during resets; see [safety](making/safety.md).",
+  "de": "Der PCA9685-Pin, der bei High alle 16 Ausgänge abschaltet. Der XIAO hält ihn High, bis scharf geschaltet wird, und ein 2,2-kΩ-Pull-up hält ihn während Resets High; siehe [Sicherheit](making/safety.md)."
+ },
+ "b357cf29b71d28c3": {
+  "en": "Overhang",
+  "de": "Überhang"
+ },
+ "ff5ba178aaec126b": {
+  "en": "A surface printed over empty space. Beyond about 45° from vertical it usually needs supports; the print list gives each part's overhang share; see [3D printing](making/3d-printing.md).",
+  "de": "Eine Fläche, die über leerem Raum gedruckt wird. Ab etwa 45° zur Senkrechten braucht sie meist Stützen; die Druckliste gibt den Überhanganteil jedes Teils an; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "0622ee861a3210ae": {
+  "en": "PCA9685",
+  "de": "PCA9685"
+ },
+ "e0dd6bd7c5b0f42f": {
+  "en": "A 16-channel, 12-bit PWM driver on I²C. It generates the 12 servo signals at 200 Hz but carries none of the servo current; see [buses](hardware/buses.md).",
+  "de": "Ein 16-Kanal-PWM-Treiber mit 12 Bit an I²C. Er erzeugt die 12 Servosignale mit 200 Hz, führt aber keinen Servostrom; siehe [Busse](hardware/buses.md)."
+ },
+ "e015df51e98adda5": {
+  "en": "Perimeter",
+  "de": "Perimeter"
+ },
+ "eef5a22b4049eca6": {
+  "en": "An outline line of a printed layer; the kit prints 3 perimeters (≈ 1.2 mm wall); see [3D printing](making/3d-printing.md).",
+  "de": "Eine Umrisslinie einer gedruckten Schicht; der Bausatz druckt 3 Perimeter (≈ 1,2 mm Wand); siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "74503838e0a5142a": {
+  "en": "Polyethylene terephthalate glycol: a tough, heat-resistant filament and the kit profile's material; PLA+ is the alternative; see [3D printing](making/3d-printing.md).",
+  "de": "Polyethylenterephthalat-Glykol: ein zähes, hitzebeständiges Filament und das Material des Bausatzprofils; PLA+ ist die Alternative; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "43fbd3f8fdbccf49": {
+  "en": "Pilot hole",
+  "de": "Vorbohrung"
+ },
+ "20c889ae3727d42f": {
+  "en": "A hole smaller than the screw, into which a thread-forming screw cuts its thread (about 0.8 d after printing); see [fasteners](making/fasteners.md).",
+  "de": "Eine Bohrung, kleiner als die Schraube, in die eine gewindeformende Schraube ihr Gewinde schneidet (etwa 0,8 d nach dem Druck); siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "71643c291538bf33": {
+  "en": "PlatformIO",
+  "de": "PlatformIO"
+ },
+ "917ac71ba8cc4821": {
+  "en": "The build system for the firmware: `pio run` to compile and upload, `pio test -e native` for host unit tests; see [firmware](software/firmware.md).",
+  "de": "Das Build-System der Firmware: `pio run` zum Kompilieren und Hochladen, `pio test -e native` für Unit-Tests auf dem Host; siehe [Firmware](software/firmware.md)."
+ },
+ "a1ac70bd68811034": {
+  "en": "A tougher variant of PLA filament allowed by the print list as an alternative to PETG; see [3D printing](making/3d-printing.md).",
+  "de": "Eine zähere Variante von PLA-Filament, die die Druckliste als Alternative zu PETG zulässt; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "a7cd5d8f8422554b": {
+  "en": "Plate",
+  "de": "Druckplatte"
+ },
+ "6a157d324f2b7e70": {
+  "en": "A ready-arranged 220 × 220 mm build plate (3MF file); the kit has 10 graphite and 3 lime plates; see [3D printing](making/3d-printing.md).",
+  "de": "Eine fertig angeordnete Druckplatte von 220 × 220 mm (3MF-Datei); der Bausatz hat 10 Druckplatten in Graphit und 3 in Limette; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "c611981fab983bc6": {
+  "en": "Policy",
+  "de": "Policy"
+ },
+ "7c65159c53005b65": {
+  "en": "A learned controller that maps observations (IMU, command, previous action, gait clock) to joint actions; stored as `policy.npz` and run with numpy; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Ein gelernter Controller, der Observations (IMU, Kommando, vorherige Action, Gait-Takt) auf Gelenk-Actions abbildet; gespeichert als `policy.npz` und mit numpy ausgeführt; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "b4bf945b0087a4e3": {
+  "en": "PPO (proximal policy optimisation)",
+  "de": "PPO (Proximal Policy Optimization)"
+ },
+ "f09a7029d6e5c809": {
+  "en": "The reinforcement-learning algorithm used to train Strido's walking policy in MuJoCo; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Der Algorithmus für Reinforcement Learning, mit dem die Lauf-Policy von Strido in MuJoCo trainiert wird; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "d42c60192eb21de6": {
+  "en": "Print kit",
+  "de": "Druckpaket"
+ },
+ "05ae022304b1ea61": {
+  "en": "The package of oriented STLs, slicer profile, parts sheet and plates; build one on the [print kit](../print-kit.md) page.",
+  "de": "Das Paket aus orientierten STLs, Slicer-Profil, Teileblatt und Druckplatten; stellen Sie eines auf der Seite [Druckpaket](../print-kit.md) zusammen."
+ },
+ "a838d0c82cfde671": {
+  "en": "Printability gate",
+  "de": "Druckbarkeitsprüfung"
+ },
+ "3157fed7b8f4efe1": {
+  "en": "The check that slices every part and plate with PrusaSlicer and scans wall thickness; report in [verification/printability.md](../verification/printability.md); see [3D printing](making/3d-printing.md).",
+  "de": "Die Prüfung, die jedes Teil und jede Druckplatte mit PrusaSlicer slict und die Wandstärke scannt; Bericht in [verification/printability.md](../verification/printability.md); siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "546ca60956d4714e": {
+  "en": "Pull-up resistor",
+  "de": "Pull-up-Widerstand"
+ },
+ "7953c207fa391735": {
+  "en": "A resistor that holds a signal at a defined high level when nothing drives it, like the 2.2 kΩ on PCA9685 OE; see [buses](hardware/buses.md).",
+  "de": "Ein Widerstand, der ein Signal auf einem definierten High-Pegel hält, wenn nichts es treibt, wie die 2,2 kΩ an PCA9685 OE; siehe [Busse](hardware/buses.md)."
+ },
+ "9bbb65e29b2a71e1": {
+  "en": "PWM (pulse-width modulation)",
+  "de": "PWM (Pulsweitenmodulation)"
+ },
+ "8dfc1de252c65abe": {
+  "en": "A signal whose pulse length carries information. Hobby servos read the position from the pulse width: 500–2500 µs for 180° on the SPT5435LV, 1500 µs being the centre; see [servos](hardware/servos.md).",
+  "de": "Ein Signal, dessen Pulslänge Information trägt. Hobby-Servos lesen die Position aus der Pulsbreite: 500–2500 µs für 180° beim SPT5435LV, wobei 1500 µs die Mitte ist; siehe [Servos](hardware/servos.md)."
+ },
+ "c4403d6edd305a52": {
+  "en": "Range of motion (ROM)",
+  "de": "Bewegungsbereich (ROM)"
+ },
+ "fd682465a5b3fb29": {
+  "en": "How far each joint can move without collisions; the ROM sweep produces the joint limits; see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Wie weit sich jedes Gelenk ohne Kollisionen bewegen kann; der Bewegungsbereichs-Sweep liefert die Gelenkgrenzen; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "b9558e619d32a38f": {
+  "en": "Raspberry Pi 5",
+  "de": "Raspberry Pi 5"
+ },
+ "672f05776a1fd8db": {
+  "en": "The robot's main computer (4 GB) running Linux and ROS 2; see [Linux on the Pi](software/linux-on-the-pi.md).",
+  "de": "Der Hauptrechner des Roboters (4 GB) mit Linux und ROS 2; siehe [Linux auf dem Pi](software/linux-on-the-pi.md)."
+ },
+ "ee5c145b93cf78d8": {
+  "en": "REP-103",
+  "de": "REP-103"
+ },
+ "c48d462632e98a95": {
+  "en": "The ROS convention for units and frames: x forward, y left, z up, SI units; see [ROS 2](software/ros2.md).",
+  "de": "Die ROS-Konvention für Einheiten und Koordinatensysteme: x nach vorn, y nach links, z nach oben, SI-Einheiten; siehe [ROS 2](software/ros2.md)."
+ },
+ "ac21cfa81facd441": {
+  "en": "Reinforcement learning (RL)",
+  "de": "Reinforcement Learning (RL)"
+ },
+ "40d756d01f10a836": {
+  "en": "Training a controller by trial and error in simulation, rewarding good behaviour; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Das Trainieren eines Controllers durch Versuch und Irrtum in der Simulation, wobei gutes Verhalten belohnt wird; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "479d8a00d7bbca62": {
+  "en": "ROS 2",
+  "de": "ROS 2"
+ },
+ "2e05f278cfaec2b2": {
+  "en": "Robot Operating System 2: a middleware where nodes exchange messages on topics. Strido runs ROS 2 Jazzy; see [ROS 2](software/ros2.md).",
+  "de": "Robot Operating System 2: eine Middleware, in der Nodes Messages über Topics austauschen. Strido verwendet ROS 2 Jazzy; siehe [ROS 2](software/ros2.md)."
+ },
+ "18b682d0e5b9bf49": {
+  "en": "ros2_control",
+  "de": "ros2_control"
+ },
+ "474d8510d534453c": {
+  "en": "The ROS 2 framework for controllers and hardware interfaces; in Gazebo it consumes `/leg_controller/commands`; see [ROS 2](software/ros2.md).",
+  "de": "Das ROS-2-Framework für Controller und Hardware-Schnittstellen; in Gazebo verarbeitet es `/leg_controller/commands`; siehe [ROS 2](software/ros2.md)."
+ },
+ "af7fe9a63a85bba6": {
+  "en": "Service loop",
+  "de": "Bewegungsschlaufe"
+ },
+ "f01c46a362adaed4": {
+  "en": "A deliberate length of free cable between two ties that lets a cable cross a moving joint without pulling on its terminations. Strido's thigh and knee servo leads cross the hip joint with 36 mm and 40 mm loops, at least 1.2 × the largest tie-to-tie distance over the hip range; see [cable management](making/cable-management.md).",
+  "de": "Eine bewusst freie Kabellänge zwischen zwei Kabelbindern, mit der ein Kabel ein bewegliches Gelenk überqueren kann, ohne an seinen Anschlüssen zu ziehen. Die Servokabel von Oberschenkel und Knie bei Strido überqueren das Hüftgelenk mit Schlaufen von 36 mm und 40 mm, mindestens das 1,2-Fache des größten Abstands zwischen Kabelbindern über den Hüftbereich; siehe [Kabelmanagement](making/cable-management.md)."
+ },
+ "a87927192590dee7": {
+  "en": "Servo (hobby servo)",
+  "de": "Servo (Hobby-Servo)"
+ },
+ "4f850caf8929b1a9": {
+  "en": "A motor, gearbox, position sensor and controller in one case that moves to the angle given by a PWM pulse. Strido uses twelve SPT5435LV-180W, without position feedback to the controller; see [servos](hardware/servos.md).",
+  "de": "Motor, Getriebe, Positionssensor und Regler in einem Gehäuse, das den durch einen PWM-Puls vorgegebenen Winkel anfährt. Strido verwendet zwölf SPT5435LV-180W ohne Positionsrückmeldung an den Controller; siehe [Servos](hardware/servos.md)."
+ },
+ "c47f7a4391a5320d": {
+  "en": "Slew limit",
+  "de": "Anstiegsbegrenzung"
+ },
+ "02aff5e76d796b54": {
+  "en": "The maximum speed at which the firmware lets a commanded joint angle change (6 rad/s), to avoid violent jumps; see [firmware](software/firmware.md).",
+  "de": "Die maximale Geschwindigkeit, mit der die Firmware einen kommandierten Gelenkwinkel sich ändern lässt (6 rad/s), um heftige Sprünge zu vermeiden; siehe [Firmware](software/firmware.md)."
+ },
+ "f8f1fff141214eac": {
+  "en": "Slicer",
+  "de": "Slicer"
+ },
+ "635ec5dfdcbf3cb2": {
+  "en": "Software that turns a 3D model into printer instructions (G-code) layer by layer, e.g. PrusaSlicer; see [3D printing](making/3d-printing.md).",
+  "de": "Software, die ein 3D-Modell Schicht für Schicht in Druckeranweisungen (G-Code) umwandelt, z. B. PrusaSlicer; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "4ebe6dcee2b23ba9": {
+  "en": "SLAM",
+  "de": "SLAM"
+ },
+ "a608a28da25d87a2": {
+  "en": "Simultaneous localisation and mapping: building a map while tracking the robot's position in it, here from `/scan`; see [ROS 2](software/ros2.md).",
+  "de": "Simultane Lokalisierung und Kartierung: Aufbau einer Karte bei gleichzeitiger Verfolgung der Roboterposition darin, hier anhand von `/scan`; siehe [ROS 2](software/ros2.md)."
+ },
+ "340128ddbdf792a8": {
+  "en": "Smoke test",
+  "de": "Smoke-Test"
+ },
+ "b16861f67de98808": {
+  "en": "The first power-up with the loop key out: check boot, `/battery_state`, `/diagnostics` and the OE voltage before any servo can move; see [safety](making/safety.md).",
+  "de": "Das erste Einschalten mit abgezogenem Loop-Key: Prüfen Sie Boot, `/battery_state`, `/diagnostics` und die OE-Spannung, bevor sich ein Servo bewegen kann; siehe [Sicherheit](making/safety.md)."
+ },
+ "22c9f955e3deef55": {
+  "en": "Snug",
+  "de": "Handfest"
+ },
+ "6956982f31242bb0": {
+  "en": "Tightening a screw only until the head seats and the parts stop moving, the rule for screws into printed parts; see [fasteners](making/fasteners.md).",
+  "de": "Eine Schraube nur so weit anziehen, bis der Kopf aufliegt und sich die Teile nicht mehr bewegen – die Regel für Schrauben in gedruckten Teilen; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "60c5158ae1887e3e": {
+  "en": "SPI",
+  "de": "SPI"
+ },
+ "32fa520b28fdb074": {
+  "en": "A fast synchronous bus with clock, data and chip-select lines. The XIAO drives the ST7789 LCD over SPI, with an extra DC (data/command) line; see [buses](hardware/buses.md).",
+  "de": "Ein schneller synchroner Bus mit Takt-, Daten- und Chip-Select-Leitungen. Der XIAO steuert das ST7789-LCD über SPI an, mit einer zusätzlichen DC-Leitung (Data/Command); siehe [Busse](hardware/buses.md)."
+ },
+ "592fd69eacfc7a91": {
+  "en": "Spiral wrap",
+  "de": "Spiralschlauch"
+ },
+ "f0ca1a830d341102": {
+  "en": "A plastic spiral wound around a bundle of cables that holds and protects it while letting single cables branch out anywhere. Strido puts it on every bundle of three or more cables (`spiral_wrap`); see [cable management](making/cable-management.md).",
+  "de": "Eine Kunststoffspirale, die um ein Kabelbündel gewickelt wird, es hält und schützt und dabei einzelne Kabel überall abzweigen lässt. Strido setzt ihn an jedem Bündel aus drei oder mehr Kabeln ein (`spiral_wrap`); siehe [Kabelmanagement](making/cable-management.md)."
+ },
+ "a2fc2b5b16c5894e": {
+  "en": "Stall torque / stall current",
+  "de": "Blockiermoment / Blockierstrom"
+ },
+ "ed424973637fbd0e": {
+  "en": "The torque a motor produces and the current it draws when blocked. SPT5435LV: about 3.43 N·m and 3.5 A at 6 V; see [servos](hardware/servos.md).",
+  "de": "Das Drehmoment, das ein Motor erzeugt, und der Strom, den er aufnimmt, wenn er blockiert ist. SPT5435LV: etwa 3,43 N·m und 3,5 A bei 6 V; siehe [Servos](hardware/servos.md)."
+ },
+ "192f5750ae5d8748": {
+  "en": "Stand-off",
+  "de": "Abstandsbolzen"
+ },
+ "0fc0582e064016e4": {
+  "en": "A threaded spacer that lifts a circuit board off the deck (M2.5 × 6 mm and M2 × 8 mm brass, female-female); see [fasteners](making/fasteners.md).",
+  "de": "Ein Distanzstück mit Gewinde, das eine Platine vom Deck abhebt (M2.5 × 6 mm und M2 × 8 mm Messing, Innen-Innengewinde); siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "5e2f859ee215156c": {
+  "en": "STEMMA QT",
+  "de": "STEMMA QT"
+ },
+ "bd873f054fca87e1": {
+  "en": "Adafruit's 4-pin JST-SH I²C connector system. Two STEMMA QT → female-socket cables connect the IMU to the PCA9685 (W18; the IMU sits too close under the Pi for Dupont housings) and to the INA260 (W19); see [buses](hardware/buses.md).",
+  "de": "Das 4-polige JST-SH-I²C-Steckverbindersystem von Adafruit. Zwei Kabel STEMMA QT → Buchse verbinden die IMU mit dem PCA9685 (W18; die IMU sitzt zu dicht unter dem Pi für Dupont-Gehäuse) und mit dem INA260 (W19); siehe [Busse](hardware/buses.md)."
+ },
+ "a265b465288adcd3": {
+  "en": "STEP, STL and 3MF",
+  "de": "STEP, STL und 3MF"
+ },
+ "175ab7cf3c6d7d0e": {
+  "en": "STEP: exact CAD solids (the upstream Yertle assembly). STL: triangle meshes for printing. 3MF: a package of meshes plus arrangement, used for the plates; see [CAD as code](software/cad-as-code.md).",
+  "de": "STEP: exakte CAD-Volumenkörper (die Upstream-Yertle-Baugruppe). STL: Dreiecksnetze für den Druck. 3MF: ein Paket aus Netzen plus Anordnung, verwendet für die Druckplatten; siehe [CAD als Code](software/cad-as-code.md)."
+ },
+ "4768951e30ed47a6": {
+  "en": "Strain relief",
+  "de": "Zugentlastung"
+ },
+ "cff8814ec2c2def2": {
+  "en": "Anything that keeps pull and bending away from a wire's termination: the insulation grip of a crimp, heat-shrink over a solder joint, a cable tie close to a connector. It matters most where solder has wicked into the strands and made them stiff; see [cable management](making/cable-management.md).",
+  "de": "Alles, was Zug und Biegung vom Anschluss eines Drahts fernhält: die Isolationskrimpung eines Crimpkontakts, Schrumpfschlauch über einer Lötstelle, ein Kabelbinder nahe an einem Steckverbinder. Am wichtigsten ist sie dort, wo Lot in die Litzen gezogen ist und sie steif gemacht hat; siehe [Kabelmanagement](making/cable-management.md)."
+ },
+ "f52bdea88ef9b226": {
+  "en": "Supports",
+  "de": "Stützstrukturen"
+ },
+ "ee6213b49cb257bb": {
+  "en": "Temporary printed structures under overhangs, removed after printing; the kit uses snug supports on listed parts; see [3D printing](making/3d-printing.md).",
+  "de": "Temporär gedruckte Strukturen unter Überhängen, die nach dem Druck entfernt werden; der Bausatz verwendet anliegende Stützen bei den aufgeführten Teilen; siehe [3D-Druck](making/3d-printing.md)."
+ },
+ "0d4cd2c7bc8997f3": {
+  "en": "The ROS 2 transform system that tracks coordinate frames (`odom`, `base_link`, `imu_link`, `lidar_link`); see [ROS 2](software/ros2.md).",
+  "de": "Das ROS-2-Transformationssystem, das Koordinatensysteme verfolgt (`odom`, `base_link`, `imu_link`, `lidar_link`); siehe [ROS 2](software/ros2.md)."
+ },
+ "c123b0b83f273783": {
+  "en": "Thread-forming screw",
+  "de": "Gewindeformende Schraube"
+ },
+ "c9f8ce088e967504": {
+  "en": "A screw that cuts or forms its own thread in a plain pilot hole. 78 of Strido's screws do this in printed parts; see [fasteners](making/fasteners.md).",
+  "de": "Eine Schraube, die ihr eigenes Gewinde in eine glatte Vorbohrung schneidet oder formt. 78 Schrauben von Strido tun dies in gedruckten Teilen; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "99ac048ea18b4fbb": {
+  "en": "Threadlocker",
+  "de": "Schraubensicherung"
+ },
+ "9e85a2a07edb9a7d": {
+  "en": "An anaerobic adhesive that stops screws from loosening. Medium (blue) strength is used on screws into metal horns; see [fasteners](making/fasteners.md).",
+  "de": "Ein anaerober Klebstoff, der das Lösen von Schrauben verhindert. Mittelfeste (blaue) wird bei Schrauben in Metall-Servohörner verwendet; siehe [Befestigungselemente](making/fasteners.md)."
+ },
+ "431f649179ee4a11": {
+  "en": "Tibia",
+  "de": "Tibia"
+ },
+ "8d52bd091707dd51": {
+  "en": "The lower leg link (calf). Each leg has an `inner_tibia` and `outer_tibia` printed half with a 633ZZ bearing each; see [mechanics](hardware/mechanics.md).",
+  "de": "Das Unterschenkelglied. Jedes Bein hat eine gedruckte Hälfte `inner_tibia` und `outer_tibia` mit je einem 633ZZ-Lager; siehe [Mechanik](hardware/mechanics.md)."
+ },
+ "7e61847d61d65d9e": {
+  "en": "Topic",
+  "de": "Topic"
+ },
+ "23c86758d06bf463": {
+  "en": "A named ROS 2 message channel, such as `/cmd_vel`, `/joint_states` or `/battery_state`; see [ROS 2](software/ros2.md).",
+  "de": "Ein benannter ROS-2-Message-Kanal, etwa `/cmd_vel`, `/joint_states` oder `/battery_state`; siehe [ROS 2](software/ros2.md)."
+ },
+ "a66d9f3af23f5be8": {
+  "en": "Trot",
+  "de": "Trot"
+ },
+ "ce9529b532ed7d64": {
+  "en": "A gait in which diagonal leg pairs (front-left with rear-right, front-right with rear-left) move together; see [kinematics and gaits](software/kinematics-and-gaits.md).",
+  "de": "Ein Gait, bei der sich diagonale Beinpaare (vorn links mit hinten rechts, vorn rechts mit hinten links) gemeinsam bewegen; siehe [Kinematik und Gaits](software/kinematics-and-gaits.md)."
+ },
+ "57ef21276a95d0b2": {
+  "en": "udev rule",
+  "de": "udev-Regel"
+ },
+ "2f14be49bfd35235": {
+  "en": "A Linux rule that gives a device a stable name when it is plugged in; `99-strido.rules` names the XIAO and LiDAR; see [Linux on the Pi](software/linux-on-the-pi.md).",
+  "de": "Eine Linux-Regel, die einem Gerät beim Einstecken einen stabilen Namen gibt; `99-strido.rules` benennt den XIAO und das LiDAR; siehe [Linux auf dem Pi](software/linux-on-the-pi.md)."
+ },
+ "fc91fc64eebe3d48": {
+  "en": "Upstream (Yertle)",
+  "de": "Upstream (Yertle)"
+ },
+ "75ff622f8dfa641e": {
+  "en": "The original open-source Yertle robot whose STEP and STL files Strido builds on, kept unchanged in `upstream/yertle/`; see [design](../design.md).",
+  "de": "Der ursprüngliche Open-Source-Roboter Yertle, auf dessen STEP- und STL-Dateien Strido aufbaut, unverändert in `upstream/yertle/` aufbewahrt; siehe [Design](../design.md)."
+ },
+ "f49206efe3990226": {
+  "en": "URDF / xacro",
+  "de": "URDF / xacro"
+ },
+ "7988f2935c5c2b01": {
+  "en": "The ROS robot description format (URDF) and its macro language (xacro); `strido.urdf.xacro` is generated from the CAD; see [simulation and RL](software/simulation-and-rl.md).",
+  "de": "Das ROS-Format zur Roboterbeschreibung (URDF) und seine Makrosprache (xacro); `strido.urdf.xacro` wird aus dem CAD generiert; siehe [Simulation und RL](software/simulation-and-rl.md)."
+ },
+ "59b7336f2c5a42b4": {
+  "en": "USB CDC",
+  "de": "USB CDC"
+ },
+ "6bad499fed236aa3": {
+  "en": "USB's communication device class: the XIAO appears as a serial port to the Pi, carrying the COBS-framed protocol; see [firmware](software/firmware.md).",
+  "de": "Die Communication Device Class von USB: Der XIAO erscheint für den Pi als serieller Port und überträgt das COBS-gerahmte Protokoll; siehe [Firmware](software/firmware.md)."
+ },
+ "57d60c4ce002c284": {
+  "en": "A Python package and workspace manager; Strido's Python packages are a uv workspace; see [CAD as code](software/cad-as-code.md).",
+  "de": "Ein Python-Paket- und Workspace-Manager; die Python-Pakete von Strido bilden einen uv-Workspace; siehe [CAD als Code](software/cad-as-code.md)."
+ },
+ "ceb3937d05a462dc": {
+  "en": "VitePress",
+  "de": "VitePress"
+ },
+ "b41eabefab49f6ed": {
+  "en": "The static site generator that builds this documentation site.",
+  "de": "Der statische Seitengenerator, der diese Dokumentationsseite baut."
+ },
+ "06f142ee2cc5f53a": {
+  "en": "WAGO 221-415",
+  "de": "WAGO 221-415"
+ },
+ "6f1e34ff812aeedd": {
+  "en": "A five-way lever connector (32 A, 0.2–4 mm², strip 11 mm) used to build the servo power bus in the front and rear cavities; see [cable management](making/cable-management.md).",
+  "de": "Eine fünfpolige Hebelklemme (32 A, 0,2–4 mm², abisolieren 11 mm), mit der der Servo-Versorgungsbus im vorderen und hinteren Hohlraum aufgebaut wird; siehe [Kabelmanagement](making/cable-management.md)."
+ },
+ "da0ccfeab090c58a": {
+  "en": "Watchdog",
+  "de": "Watchdog"
+ },
+ "e1b2f6dca09865c2": {
+  "en": "A timer that triggers a safe action if no command arrives: no joint command for 200 ms → hold, 2 s more → relax; see [firmware](software/firmware.md).",
+  "de": "Ein Timer, der eine sichere Aktion auslöst, wenn kein Kommando eintrifft: 200 ms kein Gelenkkommando → halten, weitere 2 s → entspannen; siehe [Firmware](software/firmware.md)."
+ },
+ "741e5b1836d84c08": {
+  "en": "XIAO ESP32-S3",
+  "de": "XIAO ESP32-S3"
+ },
+ "06d532c0c4f0f426": {
+  "en": "Seeed's thumb-sized ESP32-S3 board: the robot's motion controller, talking USB to the Pi and I²C/SPI to the PCA9685, sensors and LCD; see [microcontrollers](hardware/microcontrollers.md).",
+  "de": "Das daumengroße ESP32-S3-Board von Seeed: der Bewegungscontroller des Roboters, der per USB mit dem Pi und per I²C/SPI mit PCA9685, Sensoren und LCD kommuniziert; siehe [Mikrocontroller](hardware/microcontrollers.md)."
+ },
+ "35b7fd068e034620": {
+  "en": "A two-pole power connector (Amass XT series) rated 30 A continuous, used for the battery input (under the deck), the arming port and the loop key; describe halves by pins or sockets, not male/female; see [power](hardware/power.md).",
+  "de": "Ein zweipoliger Leistungssteckverbinder (Amass-XT-Serie) für 30 A Dauerstrom, verwendet für den Akkueingang (unter dem Deck), den Arming-Port und den Loop-Key; bezeichnen Sie die Hälften nach Stiften oder Buchsen, nicht als männlich/weiblich; siehe [Versorgung](hardware/power.md)."
+ }
+}

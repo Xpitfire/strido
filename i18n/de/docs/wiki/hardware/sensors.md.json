@@ -1,0 +1,366 @@
+{
+ "76140e34f635bb94": {
+  "en": "Sensors",
+  "de": "Sensoren"
+ },
+ "d5907796dd068d6c": {
+  "en": "Sensors are how the robot knows anything about itself and its surroundings. Hobby servos report nothing back, so Strido relies on four sensors: an IMU for body orientation, a 2D LiDAR for distances, a wide-angle camera for images and a power monitor for the battery. This page explains how each one works, where it sits and which software uses its data.",
+  "de": "Über Sensoren weiß der Roboter überhaupt etwas über sich und seine Umgebung. Hobby-Servos melden nichts zurück, daher setzt Strido auf vier Sensoren: eine IMU für die Körperlage, ein 2D-LiDAR für Abstände, eine Weitwinkelkamera für Bilder und einen Power-Monitor für den Akku. Diese Seite erklärt, wie jeder davon funktioniert, wo er sitzt und welche Software seine Daten nutzt."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "060584789e41cacb": {
+  "en": "| Sensor | BOM line | Connected to | ROS 2 topic | Frame |",
+  "de": "| Sensor | Stücklistenzeile | Angeschlossen an | ROS-2-Topic | Frame |"
+ },
+ "e2119f1b6b65e5de": {
+  "en": "| Adafruit LSM6DSOX 6-DoF IMU (4438) | `lsm6dsox` | XIAO, I²C 0x6A | `/imu/data` | `imu_link` |",
+  "de": "| Adafruit LSM6DSOX 6-DoF IMU (4438) | `lsm6dsox` | XIAO, I²C 0x6A | `/imu/data` | `imu_link` |"
+ },
+ "5464bd91d14aad1a": {
+  "en": "| Slamtec RPLIDAR C1 + USB adapter | `rplidar_c1` | Pi USB, `/dev/rplidar` | `/scan` | `lidar_link` |",
+  "de": "| Slamtec RPLIDAR C1 + USB-Adapter | `rplidar_c1` | Pi USB, `/dev/rplidar` | `/scan` | `lidar_link` |"
+ },
+ "6eb9ad8ab18ccbf3": {
+  "en": "| Raspberry Pi Camera Module 3 Wide | `camera_module_3_wide` | Pi CSI, 22→15 pin FFC | `/camera/image_raw` | `camera_optical_frame` |",
+  "de": "| Raspberry Pi Camera Module 3 Wide | `camera_module_3_wide` | Pi CSI, FFC 22→15 Pin | `/camera/image_raw` | `camera_optical_frame` |"
+ },
+ "cb8e2777de7a96b6": {
+  "en": "| Adafruit INA260 power monitor (4226) | `ina260` | XIAO, I²C 0x41 | `/battery_state` | — |",
+  "de": "| Adafruit INA260 Power-Monitor (4226) | `ina260` | XIAO, I²C 0x41 | `/battery_state` | — |"
+ },
+ "3ede2ac433dab74b": {
+  "en": "Field-of-view checks: `docs/verification/sensors.md`. Firmware set-up: `firmware/strido_esp32s3/src/main.cpp`.",
+  "de": "Sichtfeldprüfungen: `docs/verification/sensors.md`. Firmware-Einrichtung: `firmware/strido_esp32s3/src/main.cpp`."
+ },
+ "d37b22e6b2959ae2": {
+  "en": "IMU: LSM6DSOX accelerometer and gyroscope",
+  "de": "IMU: LSM6DSOX Beschleunigungssensor und Gyroskop"
+ },
+ "bf29ab4d151b49d0": {
+  "en": "An **IMU** (inertial measurement unit) measures motion from the inside, with no external reference. The LSM6DSOX is a 6-DoF IMU: two 3-axis MEMS sensors in one chip.",
+  "de": "Eine **IMU** (inertiale Messeinheit) misst Bewegung von innen, ohne externe Referenz. Der LSM6DSOX ist eine 6-DoF-IMU: zwei 3-Achsen-MEMS-Sensoren in einem Chip."
+ },
+ "dde55036dd7b089b": {
+  "en": "| Sensor | Measures | Unit | Strido setting |",
+  "de": "| Sensor | Misst | Einheit | Einstellung in Strido |"
+ },
+ "6b23f57d2499872c": {
+  "en": "| Accelerometer | specific force: gravity plus any acceleration | m/s² (g) | ±8 g range, 416 Hz output data rate |",
+  "de": "| Beschleunigungssensor | spezifische Kraft: Schwerkraft plus jede Beschleunigung | m/s² (g) | Bereich ±8 g, Ausgabedatenrate 416 Hz |"
+ },
+ "e80856748564803a": {
+  "en": "| Gyroscope | angular velocity about each axis | rad/s (°/s) | ±1000 °/s range, 416 Hz output data rate |",
+  "de": "| Gyroskop | Winkelgeschwindigkeit um jede Achse | rad/s (°/s) | Bereich ±1000 °/s, Ausgabedatenrate 416 Hz |"
+ },
+ "5ad8e6b663345799": {
+  "en": "The firmware reads both every 5 ms (200 Hz). Running the chip at 416 Hz means every read gets a fresh sample.",
+  "de": "Die Firmware liest beide alle 5 ms (200 Hz). Da der Chip mit 416 Hz läuft, liefert jeder Lesevorgang einen frischen Messwert."
+ },
+ "da58f0ed9b9a81b5": {
+  "en": "Mounting and axes",
+  "de": "Montage und Achsen"
+ },
+ "db14b02ebdbf8246": {
+  "en": "The IMU sits in a pocket in the `electronics_deck`, chip side up with its STEMMA QT sockets towards the rear, held by two M2.5 × 6 screws. Mounted that way, its x axis points to the robot's left and its y axis to the rear. The firmware rotates every reading into the robot's `base_link` convention (x forward, y left, z up, REP-103):",
+  "de": "Die IMU sitzt in einer Tasche im `electronics_deck`, Chipseite oben, die STEMMA-QT-Buchsen nach hinten, gehalten von zwei M2.5 × 6 Schrauben. So montiert zeigt ihre x-Achse zur linken Seite des Roboters und ihre y-Achse nach hinten. Die Firmware dreht jeden Messwert in die `base_link`-Konvention des Roboters (x nach vorne, y nach links, z nach oben, REP-103):"
+ },
+ "e5618a4ccdf07c2d": {
+  "en": "that is, $x_\\mathrm{base} = -y_\\mathrm{imu}$, $y_\\mathrm{base} = x_\\mathrm{imu}$, $z_\\mathrm{base} = z_\\mathrm{imu}$. The matrix $\\mathbf{R}_\\mathrm{base,imu}$ is a rotation of $+90^\\circ$ about $z$; the same matrix is applied to both the accelerometer and the gyro vectors. Rotation matrices are explained in [frames and rotations](../theory/frames-and-rotations.md).",
+  "de": "also $x_\\mathrm{base} = -y_\\mathrm{imu}$, $y_\\mathrm{base} = x_\\mathrm{imu}$, $z_\\mathrm{base} = z_\\mathrm{imu}$. Die Matrix $\\mathbf{R}_\\mathrm{base,imu}$ ist eine Drehung um $+90^\\circ$ um $z$; dieselbe Matrix wird auf die Vektoren von Beschleunigungssensor und Gyroskop angewendet. Rotationsmatrizen werden unter [Koordinatensysteme und Rotationen](../theory/frames-and-rotations.md) erklärt."
+ },
+ "fca313a2c398430f": {
+  "en": "A wrong sign here would make the robot believe it is tilting the other way, the classic first bug in any balance controller.",
+  "de": "Ein falsches Vorzeichen ließe den Roboter glauben, er kippe in die andere Richtung – der klassische erste Fehler in jedem Balance-Controller."
+ },
+ "62fce84c7d3d4045": {
+  "en": "From two sensors to one orientation",
+  "de": "Von zwei Sensoren zu einer Orientierung"
+ },
+ "ea009615fbd24a24": {
+  "en": "Neither sensor alone gives a good orientation:",
+  "de": "Keiner der beiden Sensoren allein liefert eine gute Orientierung:"
+ },
+ "c7b291712ac3d119": {
+  "en": "**The accelerometer** at rest measures only gravity, so roll and pitch follow directly from which way \"down\" points. While walking, every footstep adds acceleration, so this estimate is noisy.",
+  "de": "**Der Beschleunigungssensor** misst in Ruhe nur die Schwerkraft, daher folgen Roll- und Nickwinkel direkt daraus, wohin „unten“ zeigt. Beim Gehen fügt jeder Schritt Beschleunigung hinzu, daher ist diese Schätzung verrauscht."
+ },
+ "be88883e8ba567fe": {
+  "en": "**The gyroscope** is smooth and fast. Integrating angular velocity over time gives the angle change, but any small bias integrates into a steadily growing **drift**.",
+  "de": "**Das Gyroskop** ist glatt und schnell. Die Integration der Winkelgeschwindigkeit über die Zeit ergibt die Winkeländerung, doch jeder kleine Offset integriert sich zu einer stetig wachsenden **Drift**."
+ },
+ "211c8b6361a5831e": {
+  "en": "**Sensor fusion** combines the two: trust the gyro over short times, and let the accelerometer slowly pull the estimate back towards true \"down\". The simplest version is the **complementary filter** for one angle $\\theta$ (say pitch), updated every time step $\\Delta t$:",
+  "de": "**Sensorfusion** kombiniert beide: Über kurze Zeiten dem Gyroskop vertrauen und den Beschleunigungssensor die Schätzung langsam zurück zum wahren „unten“ ziehen lassen. Die einfachste Form ist der **Komplementärfilter** für einen Winkel $\\theta$ (etwa den Nickwinkel), aktualisiert in jedem Zeitschritt $\\Delta t$:"
+ },
+ "7c6122cc261a6e29": {
+  "en": "The first term integrates the gyro rate $\\omega$; the second is the tilt computed from the gravity direction in the accelerometer reading $\\mathbf{a}$. With $\\alpha$ close to 1 the filter is a high-pass on the gyro and a low-pass on the accelerometer, which is where the name comes from: the two filters add up to one. The crossover time constant is $\\tau = \\alpha\\,\\Delta t / (1 - \\alpha)$; for example $\\alpha = 0.98$ at $\\Delta t = 5\\,\\mathrm{ms}$ gives $\\tau \\approx 0.25\\,\\mathrm{s}$, so gyro drift is corrected within about a quarter of a second while footstep jolts shorter than that are smoothed out.",
+  "de": "Der erste Term integriert die Gyro-Rate $\\omega$; der zweite ist die Neigung, berechnet aus der Schwerkraftrichtung im Messwert $\\mathbf{a}$ des Beschleunigungssensors. Mit $\\alpha$ nahe 1 ist der Filter ein Hochpass für das Gyroskop und ein Tiefpass für den Beschleunigungssensor, daher der Name: Die beiden Filter ergänzen sich zu eins. Die Übergangszeitkonstante ist $\\tau = \\alpha\\,\\Delta t / (1 - \\alpha)$; zum Beispiel ergibt $\\alpha = 0.98$ bei $\\Delta t = 5\\,\\mathrm{ms}$ den Wert $\\tau \\approx 0.25\\,\\mathrm{s}$, sodass Gyro-Drift innerhalb etwa einer Viertelsekunde korrigiert wird, während kürzere Erschütterungen durch Schritte geglättet werden."
+ },
+ "9f1b7a6165e75983": {
+  "en": "Strido runs a **Mahony filter** (`Adafruit_Mahony`) on the XIAO at 200 Hz, the 3D, quaternion form of the same idea. It integrates the gyro and feeds the error $\\mathbf{e} = \\mathbf{g}_\\mathrm{meas} \\times \\hat{\\mathbf{g}}$ between the predicted and measured gravity direction back as a correction to the rate:",
+  "de": "Strido betreibt auf dem XIAO einen **Mahony-Filter** (`Adafruit_Mahony`) mit 200 Hz, die 3D-Quaternionen-Form derselben Idee. Er integriert das Gyroskop und führt den Fehler $\\mathbf{e} = \\mathbf{g}_\\mathrm{meas} \\times \\hat{\\mathbf{g}}$ zwischen vorhergesagter und gemessener Schwerkraftrichtung als Korrektur auf die Rate zurück:"
+ },
+ "2a6dcfdf457c66d4": {
+  "en": "The proportional gain $K_\\mathrm{p}$ sets how hard the accelerometer pulls, and the optional integral gain $K_\\mathrm{i}$ can learn a constant gyro bias. The firmware uses the library defaults: $K_\\mathrm{p} = 0.5$ and $K_\\mathrm{i} = 0$, so no bias learning. [State estimation](../theory/state-estimation.md) derives both filters and compares them with the Kalman filter.",
+  "de": "Die Proportionalverstärkung $K_\\mathrm{p}$ legt fest, wie stark der Beschleunigungssensor zieht, und die optionale Integralverstärkung $K_\\mathrm{i}$ kann einen konstanten Gyro-Offset lernen. Die Firmware nutzt die Standardwerte der Bibliothek: $K_\\mathrm{p} = 0.5$ und $K_\\mathrm{i} = 0$, also kein Lernen des Offsets. [State Estimation](../theory/state-estimation.md) leitet beide Filter her und vergleicht sie mit dem Kalman-Filter."
+ },
+ "dc4e2fd75e0d112f": {
+  "en": "The result is a **quaternion**, a four-number representation of 3D orientation that has no gimbal-lock problems. It travels in the `STATE` frame at 100 Hz and is published as `/imu/data` together with the raw gyro and acceleration.",
+  "de": "Das Ergebnis ist ein **Quaternion**, eine Darstellung der 3D-Orientierung mit vier Zahlen ohne Gimbal-Lock-Probleme. Es wird im `STATE`-Frame mit 100 Hz übertragen und zusammen mit den Roh-Gyro- und Beschleunigungswerten als `/imu/data` veröffentlicht."
+ },
+ "b01b003b139aa2ce": {
+  "en": "Yaw is not observable",
+  "de": "Der Gierwinkel ist nicht beobachtbar"
+ },
+ "e5f093012dcc1279": {
+  "en": "Gravity tells you roll and pitch but says nothing about heading (yaw). Without a magnetometer, the IMU's yaw estimate drifts. For heading over time, use the LiDAR (scan matching / SLAM).",
+  "de": "Die Schwerkraft liefert Roll- und Nickwinkel, sagt aber nichts über die Ausrichtung (Gierwinkel). Ohne Magnetometer driftet die Gierwinkel-Schätzung der IMU. Für die Ausrichtung über längere Zeit verwenden Sie das LiDAR (Scan-Matching / SLAM)."
+ },
+ "0932a559613ceb22": {
+  "en": "Who uses it",
+  "de": "Wer sie nutzt"
+ },
+ "ec0ce5ce2d932192": {
+  "en": "**`policy_node`** (learned controller) turns the quaternion into the gravity direction in the body frame and feeds it, with the gyro rates, into the policy's observation every 50 Hz step. It does not start until it has seen IMU data.",
+  "de": "**`policy_node`** (gelernter Controller) wandelt das Quaternion in die Schwerkraftrichtung im Körperkoordinatensystem um und speist sie zusammen mit den Gyro-Raten in jedem 50-Hz-Schritt in die Observation der Policy ein. Er startet erst, wenn er IMU-Daten gesehen hat."
+ },
+ "21d187039c381f85": {
+  "en": "**`strido-cli monitor`** shows roll and pitch on the bench.",
+  "de": "**`strido-cli monitor`** zeigt Roll- und Nickwinkel am Prüfstand."
+ },
+ "73168eb6792bc1d8": {
+  "en": "**`mcu_bridge`** never publishes a fake upright orientation: if the IMU reports a fault (`imu_ok` false), `/imu/data` is simply not published.",
+  "de": "**`mcu_bridge`** veröffentlicht nie eine vorgetäuschte aufrechte Orientierung: Meldet die IMU einen Fehler (`imu_ok` false), wird `/imu/data` einfach nicht veröffentlicht."
+ },
+ "3b7c94d06a849a73": {
+  "en": "LiDAR: RPLIDAR C1",
+  "de": "LiDAR: RPLIDAR C1"
+ },
+ "1d670c6bed221820": {
+  "en": "A **2D LiDAR** spins a laser rangefinder and measures the distance to the nearest object at each angle in one horizontal plane. The C1 measures **time of flight** (DTOF): it times how long a 905 nm infrared laser pulse takes to come back.",
+  "de": "Ein **2D-LiDAR** dreht einen Laser-Entfernungsmesser und misst unter jedem Winkel in einer horizontalen Ebene den Abstand zum nächsten Objekt. Der C1 misst die **Laufzeit** (DTOF): Er misst, wie lange ein 905-nm-Infrarot-Laserpuls für den Rückweg braucht."
+ },
+ "e80cf64332c40e45": {
+  "en": "| Specification (Slamtec datasheet) | Value |",
+  "de": "| Spezifikation (Slamtec-Datenblatt) | Wert |"
+ },
+ "0856c8c01f1fc3a7": {
+  "en": "| Range | 0.05–12 m (white target), 0.05–6 m (black target) |",
+  "de": "| Reichweite | 0,05–12 m (weißes Ziel), 0,05–6 m (schwarzes Ziel) |"
+ },
+ "23925bbbdbdfb24b": {
+  "en": "| Sample rate | 5000 samples/s |",
+  "de": "| Abtastrate | 5000 Messpunkte/s |"
+ },
+ "b54313baaae27726": {
+  "en": "| Scan frequency | 10 Hz typical (8–12 Hz) |",
+  "de": "| Scanfrequenz | typisch 10 Hz (8–12 Hz) |"
+ },
+ "0554981777548c60": {
+  "en": "| Angular resolution | 0.72° at 10 Hz |",
+  "de": "| Winkelauflösung | 0,72° bei 10 Hz |"
+ },
+ "3c59a3a956cbc256": {
+  "en": "| Accuracy | ±30 mm |",
+  "de": "| Genauigkeit | ±30 mm |"
+ },
+ "af1abd5430084a5f": {
+  "en": "| Interface | 3.3 V TTL UART, 460 800 baud (here via a USB adapter) |",
+  "de": "| Schnittstelle | 3,3 V TTL-UART, 460 800 Baud (hier über einen USB-Adapter) |"
+ },
+ "7ef4abb4640f61c3": {
+  "en": "| Supply | 5 V, about 230 mA running, about 800 mA at start-up |",
+  "de": "| Versorgung | 5 V, etwa 230 mA im Betrieb, etwa 800 mA beim Anlauf |"
+ },
+ "7c80941f0c478174": {
+  "en": "| Laser safety | IEC 60825 Class 1 |",
+  "de": "| Lasersicherheit | IEC 60825 Klasse 1 |"
+ },
+ "cc4df695dfa9cbe8": {
+  "en": "The numbers fit together: $\\dfrac{5000\\,\\mathrm{samples/s}}{10\\,\\mathrm{scans/s}} = 500$ points per scan, and $360^\\circ / 500 = 0.72^\\circ$ between points. Time of flight turns into distance as $d = c\\,\\Delta t / 2$ (the light travels out and back); at the 12 m maximum range the round trip lasts only $\\Delta t = 2d/c \\approx 80\\,\\mathrm{ns}$.",
+  "de": "Die Zahlen passen zusammen: $\\dfrac{5000\\,\\mathrm{samples/s}}{10\\,\\mathrm{scans/s}} = 500$ Punkte pro Scan und $360^\\circ / 500 = 0.72^\\circ$ zwischen den Punkten. Die Laufzeit ergibt den Abstand als $d = c\\,\\Delta t / 2$ (das Licht läuft hin und zurück); bei der maximalen Reichweite von 12 m dauert der Hin- und Rückweg nur $\\Delta t = 2d/c \\approx 80\\,\\mathrm{ns}$."
+ },
+ "4df9939944a7b324": {
+  "en": "Placement",
+  "de": "Platzierung"
+ },
+ "f804839b33136c65": {
+  "en": "A LiDAR sees nothing below or above its scan plane, and anything of the robot's own that crosses the plane blinds part of the scan. Strido lifts the C1 on a 14 mm `lidar_pedestal` on `top_shell_sensor`. Its scan plane sits 71.6 mm above the hip axes, about 254 mm above ground when standing at 170 mm. The ray-cast check in `docs/verification/sensors.md` blocks **0 of 720** test rays in every pose: stand, crouch, trot swing apex, maximum stride and hips abducted.",
+  "de": "Ein LiDAR sieht nichts unterhalb oder oberhalb seiner Scanebene, und alles am Roboter selbst, was die Ebene kreuzt, blendet einen Teil des Scans aus. Strido hebt den C1 auf einem 14 mm hohen `lidar_pedestal` auf `top_shell_sensor` an. Seine Scanebene liegt 71,6 mm über den Hüftachsen, im Stand bei 170 mm etwa 254 mm über dem Boden. Die Raycast-Prüfung in `docs/verification/sensors.md` blockiert in jeder Pose **0 von 720** Teststrahlen: Stand, Hocke, Scheitel der Trot-Schwungphase, maximale Schrittweite und abgespreizte Hüften."
+ },
+ "0868fd9539a1632b": {
+  "en": "`sllidar_ros2` publishes `/scan` (`sensor_msgs/LaserScan`) at 10 Hz in `lidar_link`. The `/scan` topic follows the Go2 conventions, so standard ROS 2 tools run unchanged: SLAM to build a map, Nav2 for obstacle avoidance and path planning. This matters because `gait_node`'s `/odom` integrates only the *commanded* velocity (dead reckoning, no slip model). For real navigation, a LiDAR-based odometry or SLAM source should replace it (`gait_node.py` docstring).",
+  "de": "`sllidar_ros2` veröffentlicht `/scan` (`sensor_msgs/LaserScan`) mit 10 Hz in `lidar_link`. Das Topic `/scan` folgt den Go2-Konventionen, daher laufen Standard-ROS-2-Werkzeuge unverändert: SLAM zum Kartenaufbau, Nav2 für Hindernisvermeidung und Pfadplanung. Das ist wichtig, weil `/odom` von `gait_node` nur die *befohlene* Geschwindigkeit integriert (Koppelnavigation, kein Schlupfmodell). Für echte Navigation sollte eine LiDAR-basierte Odometrie- oder SLAM-Quelle sie ersetzen (Docstring von `gait_node.py`)."
+ },
+ "1666a76a730d54f2": {
+  "en": "Camera: Camera Module 3 Wide",
+  "de": "Kamera: Camera Module 3 Wide"
+ },
+ "cd2c8e953843d7d7": {
+  "en": "| Specification (Raspberry Pi product brief) | Value |",
+  "de": "| Spezifikation (Raspberry-Pi-Produktbeschreibung) | Wert |"
+ },
+ "a18dc345beeff27f": {
+  "en": "| Sensor | Sony IMX708, 11.9 MP (4608 × 2592), back-illuminated, stacked |",
+  "de": "| Sensor | Sony IMX708, 11,9 MP (4608 × 2592), rückseitig belichtet, gestapelt |"
+ },
+ "c2e47f8b7adb86de": {
+  "en": "| Lens | 2.75 mm, F2.2 |",
+  "de": "| Objektiv | 2,75 mm, F2.2 |"
+ },
+ "3b4976f9a3ba970c": {
+  "en": "| Field of view | 120° diagonal, 102° horizontal, 67° vertical |",
+  "de": "| Sichtfeld | 120° diagonal, 102° horizontal, 67° vertikal |"
+ },
+ "0250def498eb0bab": {
+  "en": "| Focus | phase-detection autofocus, 5 cm to infinity |",
+  "de": "| Fokus | Phasenerkennungs-Autofokus, 5 cm bis unendlich |"
+ },
+ "71b3d7b91c39868b": {
+  "en": "| Video modes | 1080p50, 720p100, 480p120 |",
+  "de": "| Videomodi | 1080p50, 720p100, 480p120 |"
+ },
+ "c013c5a671dc37f5": {
+  "en": "| Interface | MIPI CSI-2, 15-pin 1 mm FPC |",
+  "de": "| Schnittstelle | MIPI CSI-2, 15-Pin-FPC 1 mm |"
+ },
+ "dea6120a03c0c79a": {
+  "en": "The **Wide** variant was chosen because a small robot close to the ground sees more of its surroundings with a 102° horizontal view than with the standard module's 66°.",
+  "de": "Die **Wide**-Variante wurde gewählt, weil ein kleiner, bodennaher Roboter mit 102° horizontalem Sichtfeld mehr von seiner Umgebung sieht als mit den 66° des Standardmoduls."
+ },
+ "640e8730ff022a7f": {
+  "en": "The camera sits on a tilting mount (`camera_mount_base` and `camera_tilt_plate`) on the flat top of the front shell. An M3 × 40 pivot with a lock nut gives a friction tilt. The first design put the camera on the top shell, where the ray-cast check found the robot's own nose filling **42 %** of the image. The new position shows **0 %** in every checked pose (`docs/design.md`, `docs/verification/sensors.md`).",
+  "de": "Die Kamera sitzt auf einer neigbaren Halterung (`camera_mount_base` und `camera_tilt_plate`) auf der flachen Oberseite der Frontschale. Ein M3 × 40 Drehbolzen mit Sicherungsmutter ergibt eine Reibungsneigung. Im ersten Entwurf saß die Kamera auf der Oberschale, wo die Raycast-Prüfung ergab, dass die eigene Nase des Roboters **42 %** des Bilds füllte. Die neue Position zeigt in jeder geprüften Pose **0 %** (`docs/design.md`, `docs/verification/sensors.md`)."
+ },
+ "0eb2a8f076cc9338": {
+  "en": "`camera_ros` publishes `/camera/image_raw` in `camera_optical_frame`. On the Pi 5 the camera needs the Raspberry Pi fork of libcamera, so the node is built on the host and enabled with `camera:=true` (default false; the Docker image has no camera node). The camera is there for your own perception nodes: teleoperation video, object detection, visual navigation.",
+  "de": "`camera_ros` veröffentlicht `/camera/image_raw` in `camera_optical_frame`. Auf dem Pi 5 benötigt die Kamera den Raspberry-Pi-Fork von libcamera, daher wird der Node auf dem Host gebaut und mit `camera:=true` aktiviert (Standard false; das Docker-Image hat keinen Kamera-Node). Die Kamera ist für Ihre eigenen Wahrnehmungs-Nodes da: Video für die Fernsteuerung, Objekterkennung, visuelle Navigation."
+ },
+ "7ea9b93953c4214b": {
+  "en": "Power monitor: INA260",
+  "de": "Power-Monitor: INA260"
+ },
+ "fa3ec888add85ee8": {
+  "en": "The INA260 measures **voltage and current** with a built-in 2 mΩ shunt resistor, 1.25 mA current resolution, up to 15 A and 36 V. In Strido it sits high-side in the logic branch (see [Power](power.md)):",
+  "de": "Der INA260 misst **Spannung und Strom** mit einem eingebauten 2-mΩ-Shunt-Widerstand, 1,25 mA Stromauflösung, bis 15 A und 36 V. In Strido sitzt er High-Side im Logikzweig (siehe [Stromversorgung](power.md)):"
+ },
+ "8cbec96c10563ad9": {
+  "en": "**Bus voltage = pack voltage** (minus tiny losses). The firmware reads it every 100 ms. It warns at 6.8 V and relaxes the servos after 5 consecutive readings below 6.4 V.",
+  "de": "**Busspannung = Akkuspannung** (abzüglich winziger Verluste). Die Firmware liest sie alle 100 ms. Sie warnt bei 6,8 V und entspannt die Servos nach 5 aufeinanderfolgenden Messwerten unter 6,4 V."
+ },
+ "d0ef0d90e2c95f8f": {
+  "en": "**Current = logic-branch current only.** The servo current bypasses it.",
+  "de": "**Strom = nur Strom des Logikzweigs.** Der Servostrom fließt an ihm vorbei."
+ },
+ "c016cd340612fd57": {
+  "en": "`mcu_bridge` publishes both as `/battery_state` (`sensor_msgs/BatteryState`, technology LiPo, negative current = discharging). The firmware refuses to drive the servos without it, because a robot with no voltage sensor can drain its LiPo into damage.",
+  "de": "`mcu_bridge` veröffentlicht beides als `/battery_state` (`sensor_msgs/BatteryState`, Technologie LiPo, negativer Strom = Entladen). Die Firmware verweigert ohne ihn die Ansteuerung der Servos, weil ein Roboter ohne Spannungssensor seinen LiPo bis zur Schädigung entladen kann."
+ },
+ "eb734885c932cbf3": {
+  "en": "Summary: sensor to software",
+  "de": "Zusammenfassung: vom Sensor zur Software"
+ },
+ "8210dc13fb0703b7": {
+  "en": "| Sensor | Read by | Rate | Software that uses it |",
+  "de": "| Sensor | Gelesen von | Rate | Software, die ihn nutzt |"
+ },
+ "911ab4388269f5ab": {
+  "en": "| LSM6DSOX | XIAO, I²C | 200 Hz, published at 100 Hz | Mahony filter → `/imu/data` → `policy_node`, monitoring |",
+  "de": "| LSM6DSOX | XIAO, I²C | 200 Hz, veröffentlicht mit 100 Hz | Mahony-Filter → `/imu/data` → `policy_node`, Überwachung |"
+ },
+ "8e06ac66c87962c3": {
+  "en": "| INA260 | XIAO, I²C | 10 Hz | low-battery warning and cut-off, `/battery_state` |",
+  "de": "| INA260 | XIAO, I²C | 10 Hz | Unterspannungswarnung und -abschaltung, `/battery_state` |"
+ },
+ "3aa684272fa7701f": {
+  "en": "| RPLIDAR C1 | Pi, USB serial | 10 Hz scans | `/scan` → SLAM, Nav2, obstacle avoidance |",
+  "de": "| RPLIDAR C1 | Pi, USB seriell | 10 Hz Scans | `/scan` → SLAM, Nav2, Hindernisvermeidung |"
+ },
+ "1b2bb3bcd1960b8a": {
+  "en": "| Camera Module 3 Wide | Pi, CSI | video rate | `/camera/image_raw` → your perception nodes |",
+  "de": "| Camera Module 3 Wide | Pi, CSI | Videorate | `/camera/image_raw` → Ihre Wahrnehmungs-Nodes |"
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "b42c7f10f9b488d1": {
+  "en": "Why can the accelerometer alone not give a reliable orientation while the robot trots?",
+  "de": "Warum liefert der Beschleunigungssensor allein keine zuverlässige Orientierung, während der Roboter trabt?"
+ },
+ "f78e3fa5f83d1597": {
+  "en": "In the Mahony filter, what does the proportional gain decide, and what would a non-zero integral gain add?",
+  "de": "Was bestimmt im Mahony-Filter die Proportionalverstärkung, und was würde eine Integralverstärkung ungleich null hinzufügen?"
+ },
+ "96154ebd6e39a9ba": {
+  "en": "How many points does one C1 scan contain at 10 Hz, and what is their angular spacing?",
+  "de": "Wie viele Punkte enthält ein C1-Scan bei 10 Hz, und wie groß ist ihr Winkelabstand?"
+ },
+ "38d1b1146dfbaf8f": {
+  "en": "Why was the camera moved from the top shell to the front shell?",
+  "de": "Warum wurde die Kamera von der Oberschale auf die Frontschale verlegt?"
+ },
+ "8224d703e3772afa": {
+  "en": "Which robot heading information can the IMU *not* provide, and which sensor fills the gap?",
+  "de": "Welche Ausrichtungsinformation kann die IMU *nicht* liefern, und welcher Sensor schließt die Lücke?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "2170bb328f37d616": {
+  "en": "While moving, it measures footstep accelerations on top of gravity, so the \"down\" direction it reports is noisy.",
+  "de": "In Bewegung misst er zusätzlich zur Schwerkraft die Beschleunigungen der Schritte, daher ist die gemeldete Richtung „unten“ verrauscht."
+ },
+ "8d2b664e5eec89e9": {
+  "en": "The proportional gain decides how strongly the accelerometer's gravity direction pulls the gyro-integrated estimate back. A non-zero integral gain would also learn a constant gyro bias; Strido leaves it at 0.",
+  "de": "Die Proportionalverstärkung bestimmt, wie stark die Schwerkraftrichtung des Beschleunigungssensors die vom Gyroskop integrierte Schätzung zurückzieht. Eine Integralverstärkung ungleich null würde zusätzlich einen konstanten Gyro-Offset lernen; Strido belässt sie bei 0."
+ },
+ "e295818eeb41e3a1": {
+  "en": "$5000 / 10 = 500$ points, $0.72^\\circ$ apart.",
+  "de": "$5000 / 10 = 500$ Punkte, $0.72^\\circ$ voneinander entfernt."
+ },
+ "44504892f6fdb61a": {
+  "en": "On the top shell the robot's nose filled 42 % of the image; on the front shell it fills 0 %.",
+  "de": "Auf der Oberschale füllte die Nase des Roboters 42 % des Bilds; auf der Frontschale füllt sie 0 %."
+ },
+ "12d9bff3b07495b4": {
+  "en": "Yaw (heading) is not observable from gravity and drifts; the LiDAR (scan matching or SLAM) provides it.",
+  "de": "Der Gierwinkel (Ausrichtung) ist aus der Schwerkraft nicht beobachtbar und driftet; das LiDAR (Scan-Matching oder SLAM) liefert ihn."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "69054f3c3333c629": {
+  "en": "[LSM6DSOX product page (STMicroelectronics)](https://www.st.com/en/mems-and-sensors/lsm6dsox.html)",
+  "de": "[LSM6DSOX-Produktseite (STMicroelectronics)](https://www.st.com/en/mems-and-sensors/lsm6dsox.html)"
+ },
+ "6000d80a17b27289": {
+  "en": "[Adafruit LSM6DSOX guide](https://learn.adafruit.com/lsm6dsox-and-ism330dhc-6-dof-imu)",
+  "de": "[Adafruit-LSM6DSOX-Anleitung](https://learn.adafruit.com/lsm6dsox-and-ism330dhc-6-dof-imu)"
+ },
+ "af0cd8ea840fd0e6": {
+  "en": "[RPLIDAR C1 datasheet (Slamtec)](https://wiki.slamtec.com/download/attachments/83066883/SLAMTEC_rplidar_datasheet_C1_v1.0_en.pdf?api=v2&modificationDate=1700531479533&version=1)",
+  "de": "[RPLIDAR-C1-Datenblatt (Slamtec)](https://wiki.slamtec.com/download/attachments/83066883/SLAMTEC_rplidar_datasheet_C1_v1.0_en.pdf?api=v2&modificationDate=1700531479533&version=1)"
+ },
+ "e5c29421ccf72f74": {
+  "en": "[Camera Module 3 product brief (Raspberry Pi)](https://pip.raspberrypi.com/documents/RP-008151-DS-camera-module-3-product-brief.pdf)",
+  "de": "[Produktbeschreibung Camera Module 3 (Raspberry Pi)](https://pip.raspberrypi.com/documents/RP-008151-DS-camera-module-3-product-brief.pdf)"
+ },
+ "c426e6e9b628e44b": {
+  "en": "[Open-source IMU and AHRS algorithms (x-io, includes Mahony)](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)",
+  "de": "[Open-Source-Algorithmen für IMU und AHRS (x-io, inkl. Mahony)](https://x-io.co.uk/open-source-imu-and-ahrs-algorithms/)"
+ },
+ "2bbccb591786f7ed": {
+  "en": "Related pages: [Buses](buses.md), [Power](power.md), [ROS 2](../software/ros2.md), [Kinematics and gaits](../software/kinematics-and-gaits.md)",
+  "de": "Verwandte Seiten: [Busse](buses.md), [Stromversorgung](power.md), [ROS 2](../software/ros2.md), [Kinematik und Gaits](../software/kinematics-and-gaits.md)"
+ },
+ "7418d868551aa006": {
+  "en": "Theory: [Frames and rotations](../theory/frames-and-rotations.md), [State estimation](../theory/state-estimation.md)",
+  "de": "Theorie: [Koordinatensysteme und Rotationen](../theory/frames-and-rotations.md), [State Estimation](../theory/state-estimation.md)"
+ }
+}

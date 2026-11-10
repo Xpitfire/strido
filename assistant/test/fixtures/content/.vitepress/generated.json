@@ -1,0 +1,38 @@
+{
+ "sidebar": {
+  "/": [
+   {
+    "text": "Build",
+    "items": [
+     {
+      "text": "Electronics",
+      "link": "/docs/electronics"
+     }
+    ]
+   }
+  ],
+  "/docs/wiki/": [
+   {
+    "text": "Learn",
+    "items": [
+     {
+      "text": "Learn",
+      "link": "/docs/wiki/"
+     }
+    ]
+   }
+  ],
+  "/de/": [
+   {
+    "text": "Bauen",
+    "items": [
+     {
+      "text": "Elektronik",
+      "link": "/de/docs/electronics"
+     }
+    ]
+   }
+  ]
+ },
+ "sources": {}
+}

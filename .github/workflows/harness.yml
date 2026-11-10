@@ -1,0 +1,84 @@
+# harness:generated — materialized into consuming projects as
+# .github/workflows/harness.yml by .agents/scripts/install.mjs. Edit this template in
+# the harness repo; local copies are overwritten by
+# `make -f .harness/Makefile harness-update`.
+name: Harness
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: harness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      # The .harness submodule is typically a PRIVATE repo the default Actions
+      # token cannot read, and `submodules: recursive` in checkout dies inside
+      # the action with "Repository not found" (it also drags in unrelated
+      # sibling submodules this job never needs). Initialize ONLY .harness,
+      # over ssh when the consumer provides HARNESS_SUBMODULE_SSH_KEY (the
+      # private half of a READ-ONLY deploy key on the harness repo); a public
+      # harness repo still initializes fine without any secret.
+      - name: Check out the harness submodule
+        env:
+          HARNESS_SUBMODULE_SSH_KEY: ${{ secrets.HARNESS_SUBMODULE_SSH_KEY }}
+        run: |
+          if [ -n "$HARNESS_SUBMODULE_SSH_KEY" ]; then
+            mkdir -p ~/.ssh
+            printf '%s\n' "$HARNESS_SUBMODULE_SSH_KEY" > ~/.ssh/harness_submodule_key
+            chmod 600 ~/.ssh/harness_submodule_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null || true
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh/harness_submodule_key -o IdentitiesOnly=yes'
+            # --global, NOT --local: the submodule clone is a CHILD git process
+            # creating a new repo, so the superproject's local config never
+            # reaches it (observed live: the clone still went https and died on
+            # "could not read Username"). The runner is ephemeral; the global
+            # config is unset right after the init either way.
+            git config --global url."git@github.com:".insteadOf "https://github.com/"
+          fi
+          git submodule update --init .harness || {
+            echo "::error::.harness could not be checked out. If it is private, add the repo secret HARNESS_SUBMODULE_SSH_KEY (private half of a read-only deploy key on the harness repo)."
+            exit 1
+          }
+          # Unset the rewrite BEFORE the nested init. The vendored skill
+          # libraries are PUBLIC submodules of the harness, and a deploy key
+          # is scoped to one repo - leaving the rewrite in place would send
+          # those public clones over ssh with a key that cannot read them.
+          # Plain https needs no credentials here.
+          git config --global --unset-all url."git@github.com:".insteadOf 2>/dev/null || true
+          git -C .harness submodule update --init .agents/vendor/mattpocock-skills .agents/vendor/impeccable || {
+            echo "::error::the vendored skill libraries could not be checked out from inside .harness."
+            exit 1
+          }
+          # Trim impeccable to its client-neutral build; a full tree also
+          # works, so this is best-effort.
+          git -C .harness/.agents/vendor/impeccable sparse-checkout set .agents/skills/impeccable || true
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version-file: .harness/.nvmrc
+      - run: npm ci --prefix .harness
+      - run: make -f .harness/Makefile harness-check-imported
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: false
+          GITLEAKS_ENABLE_SUMMARY: true

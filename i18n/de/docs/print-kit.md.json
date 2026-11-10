@@ -1,0 +1,10 @@
+{
+ "d42c60192eb21de6": {
+  "en": "Print kit",
+  "de": "Druckpaket"
+ },
+ "d19a43064430a15a": {
+  "en": "Choose the printed parts and quantities (or complete robots) and download a ready-to-print package: every STL oriented for printing and named with its quantity, the PrusaSlicer profile every part was verified with, a parts sheet with filament, time, supports and brims, and for complete robots the ready 220 × 220 mm build plates. Open any part for what it does and where it goes. The whole kit is also in the [build kit ZIP](downloads.md).",
+  "de": "Wählen Sie die Druckteile und Stückzahlen (oder komplette Roboter) und laden Sie ein druckfertiges Paket herunter: jede STL für den Druck ausgerichtet und mit ihrer Stückzahl benannt, das PrusaSlicer-Profil, mit dem jedes Teil verifiziert wurde, ein Teileblatt mit Filament, Zeit, Stützen und Brims sowie für komplette Roboter die fertigen Druckplatten mit 220 × 220 mm. Öffnen Sie ein beliebiges Teil, um zu sehen, was es tut und wo es hingehört. Das gesamte Paket ist auch im [Bausatz-ZIP](downloads.md) enthalten."
+ }
+}

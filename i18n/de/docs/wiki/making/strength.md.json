@@ -1,0 +1,274 @@
+{
+ "5db0f7e532871d4b": {
+  "en": "Strength, torque and failure",
+  "de": "Festigkeit, Drehmoment und Versagen"
+ },
+ "6fa218637899d410": {
+  "en": "Will a printed leg break, bend or tear out its screws? This page covers the mechanics behind that question: torque, stress and strain, bending, buckling, joints and safety factors. Each formula is worked through with Strido's own numbers. The same formulas run as an automatic check on every design change.",
+  "de": "Bricht ein gedrucktes Bein, verbiegt es sich oder reißt es seine Schrauben aus? Diese Seite behandelt die Mechanik hinter dieser Frage: Drehmoment, Spannung und Dehnung, Biegung, Knickung, Verbindungen und Sicherheitsfaktoren. Jede Formel wird mit den eigenen Zahlen von Strido durchgerechnet. Dieselben Formeln laufen bei jeder Konstruktionsänderung als automatische Prüfung."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "d65cbe97eb94c746": {
+  "en": "**Gate:** `python -m strido_verify.strength` (part of `make verify`) computes 19 checks from the printed STLs, the leg geometry and the fit report; results in the [strength report](../../verification/strength.md). **Inputs:** `hardware/strength.yaml` (loads, PETG and screw data with sources). **Decision:** [ADR-010](../../decisions.md): the long link's buckling, once the one known weak point, fixed by the stiff long link (no check needs an exception now). **Each part's results** appear on its page in the [print kit](../../print-kit.md) and the [shop](../../shop.md). The forces in the legs come from [statics and dynamics](../theory/statics-and-dynamics.md).",
+  "de": "**Prüfung:** `python -m strido_verify.strength` (Teil von `make verify`) berechnet 19 Prüfungen aus den gedruckten STLs, der Beingeometrie und dem Passungsbericht; Ergebnisse im [Festigkeitsbericht](../../verification/strength.md). **Eingaben:** `hardware/strength.yaml` (Lasten, PETG- und Schraubendaten mit Quellen). **Entscheidung:** [ADR-010](../../decisions.md): das Knicken der langen Koppel, einst die eine bekannte Schwachstelle, ist mit der steifen langen Koppel behoben (keine Prüfung braucht mehr eine Ausnahme). **Die Ergebnisse jedes Teils** stehen auf seiner Seite im [Druckpaket](../../print-kit.md) und im [Shop](../../shop.md). Die Kräfte in den Beinen stammen aus [Statik und Dynamik](../theory/statics-and-dynamics.md)."
+ },
+ "d7c22fbd129a743f": {
+  "en": "Torque: force times lever",
+  "de": "Drehmoment: Kraft mal Hebel"
+ },
+ "0da8375b8ee8668c": {
+  "en": "A torque $T$ (German *Drehmoment*) is a force $F$ acting at a distance $r$ from an axis. Only the force component at right angles to the lever turns the axis. With $\\alpha$ the angle between lever and force:",
+  "de": "Ein Drehmoment $T$ (englisch *torque*) ist eine Kraft $F$, die im Abstand $r$ von einer Achse wirkt. Nur der Kraftanteil im rechten Winkel zum Hebel dreht die Achse. Mit $\\alpha$ als Winkel zwischen Hebel und Kraft:"
+ },
+ "5be1e053871314dd": {
+  "en": "In vector form this is the cross product $\\mathbf{T} = \\mathbf{r}\\times\\mathbf{F}$. Servo datasheets give torque in kg·cm: the weight of 1 kg hanging 1 cm from the axis. With $g = 9.81\\,\\mathrm{m/s^2}$:",
+  "de": "In Vektorform ist das das Kreuzprodukt $\\mathbf{T} = \\mathbf{r}\\times\\mathbf{F}$. Servo-Datenblätter geben das Drehmoment in kg·cm an: das Gewicht von 1 kg, das 1 cm von der Achse entfernt hängt. Mit $g = 9.81\\,\\mathrm{m/s^2}$:"
+ },
+ "0bd57bd4dcf82aa0": {
+  "en": "Read backwards, the same formula gives the force a servo can push through an arm. The knee-drive arm horn is $r = 24\\,\\mathrm{mm}$:",
+  "de": "Rückwärts gelesen liefert dieselbe Formel die Kraft, die ein Servo über einen Arm drücken kann. Das Armhorn des Knieantriebs hat $r = 24\\,\\mathrm{mm}$:"
+ },
+ "fcb8702d9e4b0e5e": {
+  "en": "Small levers and flat angles turn modest torques into large forces. As $\\alpha \\to 0$ the force grows without bound: that is the *dead point* (toggle) of a linkage. The check sweeps every pose inside the joint limits and keeps the largest force.",
+  "de": "Kleine Hebel und flache Winkel machen aus moderaten Drehmomenten große Kräfte. Für $\\alpha \\to 0$ wächst die Kraft unbegrenzt: Das ist der *Totpunkt* (Kniehebel) eines Koppelgetriebes. Die Prüfung durchläuft jede Stellung innerhalb der Gelenkgrenzen und behält die größte Kraft."
+ },
+ "afbce8bdff0c231a": {
+  "en": "Where the loads come from",
+  "de": "Woher die Lasten kommen"
+ },
+ "b6866ecb035b4160": {
+  "en": "**Weight and landings.** The robot weighs $m g = 3.07 \\cdot 9.81 = 30.1\\,\\mathrm{N}$. While it trots, one diagonal pair of feet carries it. A hard landing multiplies the force by an impact factor $k$. The check assumes $k = 3$ on two feet:",
+  "de": "**Gewicht und Landungen.** Der Roboter wiegt $m g = 3.07 \\cdot 9.81 = 30.1\\,\\mathrm{N}$. Im Trot trägt ihn ein diagonales Fußpaar. Eine harte Landung vervielfacht die Kraft um einen Stoßfaktor $k$. Die Prüfung nimmt $k = 3$ auf zwei Füßen an:"
+ },
+ "3794f23e194d89ca": {
+  "en": "(an assumption; measured trotting dogs peak at about 1–1.2 × their weight per front leg).",
+  "de": "(eine Annahme; gemessene trabende Hunde erreichen Spitzen von etwa 1–1,2 × ihres Gewichts pro Vorderbein)."
+ },
+ "8e42a52e80657214": {
+  "en": "**The servos themselves.** Each servo pushes with at most its stall torque $T_\\text{stall}$, and that is the design load for the joints. A landing would need $F_\\text{foot}\\,L_\\text{tibia} = 45.2 \\cdot 0.124 = 5.6\\,\\mathrm{N\\,m}$ at the knee. The knee servo applies only $3.07\\,\\mathrm{N\\,m}$ there, so the knee gives way and the servo is back-driven. Back-driving a geared servo takes more than its stall torque, though. With forward and reverse gear efficiencies $\\eta_f$ and $\\eta_r$ it takes roughly $T_\\text{stall}/(\\eta_f\\,\\eta_r)$, about 1.5–3 × (an estimate). Hard impacts can therefore exceed the design loads, and the safety factors have to cover that. Pins and bearings carry the full landing force along the leg.",
+  "de": "**Die Servos selbst.** Jedes Servo drückt höchstens mit seinem Blockiermoment $T_\\text{stall}$, und das ist die Auslegungslast für die Gelenke. Eine Landung würde $F_\\text{foot}\\,L_\\text{tibia} = 45.2 \\cdot 0.124 = 5.6\\,\\mathrm{N\\,m}$ am Knie erfordern. Das Knieservo bringt dort nur $3.07\\,\\mathrm{N\\,m}$ auf, also gibt das Knie nach und das Servo wird rückwärts angetrieben. Ein Getriebeservo rückwärts anzutreiben erfordert allerdings mehr als sein Blockiermoment. Mit den Getriebewirkungsgraden vorwärts und rückwärts $\\eta_f$ und $\\eta_r$ sind es etwa $T_\\text{stall}/(\\eta_f\\,\\eta_r)$, rund 1,5–3 × (eine Schätzung). Harte Stöße können daher die Auslegungslasten überschreiten, und die Sicherheitsfaktoren müssen das abdecken. Bolzen und Lager tragen die volle Landekraft entlang des Beins."
+ },
+ "b2053b783e05bcbf": {
+  "en": "Stress and strain",
+  "de": "Spannung und Dehnung"
+ },
+ "29b9018711cb2cb6": {
+  "en": "Load on a part is spread over its cross-section. **Stress** $\\sigma$ is force per area, in $\\mathrm{N/mm^2} = \\mathrm{MPa}$. **Strain** $\\varepsilon$ is the relative stretch $\\Delta L / L$. For small strains most materials are linear-elastic (Hooke's law), with Young's modulus $E$:",
+  "de": "Die Last auf einem Teil verteilt sich über seinen Querschnitt. **Spannung** $\\sigma$ ist Kraft pro Fläche, in $\\mathrm{N/mm^2} = \\mathrm{MPa}$. **Dehnung** $\\varepsilon$ ist die relative Verlängerung $\\Delta L / L$. Bei kleinen Dehnungen sind die meisten Werkstoffe linear-elastisch (Hookesches Gesetz), mit dem Elastizitätsmodul $E$:"
+ },
+ "35e596ba412107e7": {
+  "en": "PETG has $E \\approx 1.5\\,\\mathrm{GPa}$ and yields at about $47\\,\\mathrm{MPa}$; Hooke's law would put that at $\\varepsilon = 47/1500 \\approx 3\\,\\%$, the data sheet measures $5\\,\\%$ because PETG softens before it yields. Steel has $E \\approx 200\\,\\mathrm{GPa}$, so for the same stress it stretches 130 times less. Beyond the **yield strength** the part deforms permanently. Beyond the **tensile strength** it breaks.",
+  "de": "PETG hat $E \\approx 1.5\\,\\mathrm{GPa}$ und fließt bei etwa $47\\,\\mathrm{MPa}$; nach dem Hookeschen Gesetz läge das bei $\\varepsilon = 47/1500 \\approx 3\\,\\%$, das Datenblatt misst $5\\,\\%$, weil PETG vor dem Fließen weicher wird. Stahl hat $E \\approx 200\\,\\mathrm{GPa}$ und dehnt sich bei gleicher Spannung daher 130-mal weniger. Oberhalb der **Streckgrenze** verformt sich das Teil bleibend. Oberhalb der **Zugfestigkeit** bricht es."
+ },
+ "24fae27ac7b32ffb": {
+  "en": "Real parts carry several stresses at once (tension, bending, shear). The **von Mises** equivalent stress turns them into one number to compare with the tensile yield strength. For normal stress $\\sigma$ plus shear $\\tau$:",
+  "de": "Reale Teile tragen mehrere Spannungen gleichzeitig (Zug, Biegung, Schub). Die Vergleichsspannung nach **von Mises** fasst sie zu einer Zahl zusammen, die mit der Zug-Streckgrenze verglichen wird. Für Normalspannung $\\sigma$ plus Schub $\\tau$:"
+ },
+ "f06729161e6bac85": {
+  "en": "Bending",
+  "de": "Biegung"
+ },
+ "226c74aa25242274": {
+  "en": "A beam bent by a moment $M$ stretches on one side and compresses on the other. The stress grows linearly from the neutral axis (zero stress) to the outermost fibre at distance $c$. Euler–Bernoulli beam theory gives:",
+  "de": "Ein durch ein Moment $M$ gebogener Balken wird auf einer Seite gedehnt und auf der anderen gestaucht. Die Spannung wächst linear von der neutralen Faser (Spannung null) bis zur äußersten Faser im Abstand $c$. Die Euler-Bernoulli-Balkentheorie ergibt:"
+ },
+ "75f8a388c40a3006": {
+  "en": "$I$ is the **second moment of area**: it measures how far the material sits from the neutral axis. $W$ is the **section modulus**. For a solid rectangle of width $b$ and height $h$, bent across $h$:",
+  "de": "$I$ ist das **Flächenträgheitsmoment**: Es misst, wie weit das Material von der neutralen Faser entfernt liegt. $W$ ist das **Widerstandsmoment**. Für ein massives Rechteck der Breite $b$ und Höhe $h$, gebogen über $h$:"
+ },
+ "17256e799abf7625": {
+  "en": "Height counts with its cube: doubling the height makes a link 8 times stiffer and 4 times stronger in bending. That is why I-beams put their material far from the middle.",
+  "de": "Die Höhe geht mit der dritten Potenz ein: Doppelte Höhe macht eine Koppel 8-mal steifer und 4-mal biegefester. Deshalb legen I-Träger ihr Material weit weg von der Mitte."
+ },
+ "1697c42127b4d8bd": {
+  "en": "**Printed parts are mostly shells.** The slicer profile prints 3 perimeters (1.2 mm) and only 30 % gyroid infill. The check computes $I$ and $W$ for the 1.2 mm walls only and ignores the infill, which is conservative. It takes 41 sections along each link and uses the weakest one. Example: the femur's weakest section has $W = 236\\,\\mathrm{mm^3}$ in the leg plane, and the thigh servo applies $M = 3430\\,\\mathrm{N\\,mm}$:",
+  "de": "**Gedruckte Teile sind überwiegend Schalen.** Das Slicer-Profil druckt 3 Perimeter (1,2 mm) und nur 30 % Gyroid-Füllung. Die Prüfung berechnet $I$ und $W$ nur für die 1,2-mm-Wände und ignoriert die Füllung, was konservativ ist. Sie nimmt 41 Schnitte entlang jeder Koppel und verwendet den schwächsten. Beispiel: Der schwächste Schnitt des Femurs hat $W = 236\\,\\mathrm{mm^3}$ in der Beinebene, und das Oberschenkelservo bringt $M = 3430\\,\\mathrm{N\\,mm}$ auf:"
+ },
+ "76d56cab0529b8c1": {
+  "en": "Printed plastic is anisotropic",
+  "de": "Gedruckter Kunststoff ist anisotrop"
+ },
+ "0c79f8ba68cfbdc5": {
+  "en": "An FDM part is a stack of welded layers. Prusament's PETG data sheet gives:",
+  "de": "Ein FDM-Teil ist ein Stapel verschweißter Schichten. Das PETG-Datenblatt von Prusament gibt an:"
+ },
+ "699aea185ea7eda7": {
+  "en": "| Direction | Strength |",
+  "de": "| Richtung | Festigkeit |"
+ },
+ "a7ae54bd8a09a67d": {
+  "en": "| Along the layers (printed flat) | $47\\,\\mathrm{MPa}$ tensile yield |",
+  "de": "| Entlang der Schichten (flach gedruckt) | $47\\,\\mathrm{MPa}$ Zug-Streckgrenze |"
+ },
+ "294963780fe0695f": {
+  "en": "| Across the layers (layer adhesion) | $18 \\pm 4\\,\\mathrm{MPa}$ |",
+  "de": "| Quer zu den Schichten (Schichthaftung) | $18 \\pm 4\\,\\mathrm{MPa}$ |"
+ },
+ "b8cf846706f8db61": {
+  "en": "Printed parts usually fail by pulling layers apart. They tear (German *reißen*) along a layer line, often at a sharp corner where the stress concentrates. That is why the print list lays the links, femurs and tibias flat. Their bending stress then runs along the layers. The check uses $47\\,\\mathrm{MPa}$ when a link lies flat and $18\\,\\mathrm{MPa}$ when its long axis points up in its print orientation.",
+  "de": "Gedruckte Teile versagen meist dadurch, dass Schichten auseinandergezogen werden. Sie reißen (englisch *tear*) entlang einer Schichtlinie, oft an einer scharfen Ecke, an der sich die Spannung konzentriert. Deshalb legt die Druckliste die Koppeln, Femurs und Tibias flach. Ihre Biegespannung verläuft dann entlang der Schichten. Die Prüfung verwendet $47\\,\\mathrm{MPa}$, wenn eine Koppel flach liegt, und $18\\,\\mathrm{MPa}$, wenn ihre Längsachse in der Druckausrichtung nach oben zeigt."
+ },
+ "a13d86f44b1139ce": {
+  "en": "Safety factor",
+  "de": "Sicherheitsfaktor"
+ },
+ "07e44380f870c9bb": {
+  "en": "The check fails below $S = 1.5$ and warns below $2.0$. FDM strength scatters from printer to printer and PETG creeps under a standing load. Repeated loading also causes **fatigue**: millions of steps at a stress well below the static strength can grow a crack. None of that is in a static calculation, so the margin covers it. On the robot the lowest factors are the tibia halves ($S = 2.2$) and the long link's buckling ($S = 2.5$, next section), which was far below everything else until the link was redesigned.",
+  "de": "Die Prüfung schlägt unter $S = 1.5$ fehl und warnt unter $2.0$. Die FDM-Festigkeit streut von Drucker zu Drucker, und PETG kriecht unter Dauerlast. Wiederholte Belastung verursacht außerdem **Ermüdung**: Millionen Schritte bei einer Spannung weit unter der statischen Festigkeit können einen Riss wachsen lassen. Nichts davon steckt in einer statischen Rechnung, also deckt es die Reserve ab. Am Roboter sind die kleinsten Faktoren die Tibia-Hälften ($S = 2.2$) und das Knicken der langen Koppel ($S = 2.5$, nächster Abschnitt), das bis zur Neukonstruktion der Koppel weit unter allem anderen lag."
+ },
+ "2090400e6fb05a3f": {
+  "en": "Buckling",
+  "de": "Knickung"
+ },
+ "4b3e50dc7e3e6925": {
+  "en": "A slender bar in compression does not crush. It suddenly bows sideways once the force reaches Euler's critical load. The deflected bar is in equilibrium when $E I\\,w'' + F\\,w = 0$. The smallest non-zero solution of this equation gives:",
+  "de": "Ein schlanker Stab unter Druck wird nicht zerquetscht. Er weicht plötzlich seitlich aus, sobald die Kraft die Eulersche Knicklast erreicht. Der ausgelenkte Stab ist im Gleichgewicht, wenn $E I\\,w'' + F\\,w = 0$. Die kleinste von null verschiedene Lösung dieser Gleichung ergibt:"
+ },
+ "cf7f367718940316": {
+  "en": "$L$ is the pin spacing and $K$ the effective-length factor of the end conditions: $1.0$ for pinned ends, $0.5$ for clamped ends, $0.7$ for one of each. Below $F_\\text{cr}$ nothing visible happens. At $F_\\text{cr}$ the bar loses its stiffness against sideways deflection.",
+  "de": "$L$ ist der Bolzenabstand und $K$ der Knicklängenbeiwert der Randbedingungen: $1.0$ für gelenkige Enden, $0.5$ für eingespannte Enden, $0.7$ für je eines davon. Unterhalb von $F_\\text{cr}$ passiert nichts Sichtbares. Bei $F_\\text{cr}$ verliert der Stab seine Steifigkeit gegen seitliche Auslenkung."
+ },
+ "b737476ab3f4327a": {
+  "en": "The upstream long knee link is a bar $5\\,\\mathrm{mm}$ wide in the leg plane and $8\\,\\mathrm{mm}$ across it, $130\\,\\mathrm{mm}$ between its pins. In the leg plane its ends turn freely on pins ($K = 1$), and its walls give $I \\approx 75\\,\\mathrm{mm^4}$:",
+  "de": "Die lange Upstream-Kniekoppel ist ein Stab, $5\\,\\mathrm{mm}$ breit in der Beinebene und $8\\,\\mathrm{mm}$ quer dazu, mit $130\\,\\mathrm{mm}$ zwischen den Bolzen. In der Beinebene drehen sich ihre Enden frei auf Bolzen ($K = 1$), und ihre Wände ergeben $I \\approx 75\\,\\mathrm{mm^4}$:"
+ },
+ "80abc895433b15bc": {
+  "en": "That made it the robot's weakest point by far. Standing loads it with about $0.70\\,\\mathrm{N\\,m} / (0.024\\,\\mathrm{m}\\cdot\\sin 86^\\circ) \\approx 29\\,\\mathrm{N}$ ($S \\approx 2.2$; see [statics and dynamics](../theory/statics-and-dynamics.md)), so it held in normal walking, but a knee pushing at stall against a blocked foot or a hard stop bends it sideways ([ADR-010](../../decisions.md)).",
+  "de": "Damit war sie mit Abstand die schwächste Stelle des Roboters. Im Stand belastet es sie mit etwa $0.70\\,\\mathrm{N\\,m} / (0.024\\,\\mathrm{m}\\cdot\\sin 86^\\circ) \\approx 29\\,\\mathrm{N}$ ($S \\approx 2.2$; siehe [Statik und Dynamik](../theory/statics-and-dynamics.md)), im normalen Gehen hielt sie also, aber ein Knie, das im Blockierzustand gegen einen blockierten Fuß oder einen harten Anschlag drückt, biegt sie seitlich aus ([ADR-010](../../decisions.md))."
+ },
+ "df70f78a84df48db": {
+  "en": "Because $I \\propto h^3$, width in the leg plane is what buys stiffness. Strido therefore prints a **stiff long link** (`stiff_long_link`): the same pins and bushing eyes, but a $10 \\times 10\\,\\mathrm{mm}$ shaft. With $1.2\\,\\mathrm{mm}$ walls only, a hollow square gives $I = (10^4 - 7.6^4)/12 \\approx 555\\,\\mathrm{mm^4}$, more than seven times the upstream bar:",
+  "de": "Weil $I \\propto h^3$ gilt, bringt Breite in der Beinebene die Steifigkeit. Strido druckt deshalb eine **steife lange Koppel** (`stiff_long_link`): gleiche Bolzen und Buchsenaugen, aber ein Schaft von $10 \\times 10\\,\\mathrm{mm}$. Nur mit $1.2\\,\\mathrm{mm}$ Wänden ergibt ein Hohlquadrat $I = (10^4 - 7.6^4)/12 \\approx 555\\,\\mathrm{mm^4}$, mehr als das Siebenfache des Upstream-Stabs:"
+ },
+ "148265b085001a8e": {
+  "en": "The gate measures the printed STL section by section and reports $S = 2.53$. A wider part also needs room: centred on the pin line, the link came within $0.25\\,\\mathrm{mm}$ of the femur at the stretched knee, so its shaft sits $2\\,\\mathrm{mm}$ off the pin line, away from the femur. Every neighbour keeps at least $1\\,\\mathrm{mm}$, and the joint limits did not change.",
+  "de": "Die Prüfung misst die gedruckte STL Schnitt für Schnitt und meldet $S = 2.53$. Ein breiteres Teil braucht auch Platz: mittig auf der Bolzenlinie kam die Koppel dem Femur bei gestrecktem Knie bis auf $0.25\\,\\mathrm{mm}$ nahe, daher liegt ihr Schaft $2\\,\\mathrm{mm}$ neben der Bolzenlinie, vom Femur weg. Jeder Nachbar behält mindestens $1\\,\\mathrm{mm}$, und die Gelenkgrenzen haben sich nicht geändert."
+ },
+ "6eef9760fe695449": {
+  "en": "Screws in shear and in printed holes",
+  "de": "Schrauben unter Schub und in gedruckten Bohrungen"
+ },
+ "913c21e5793ab826": {
+  "en": "A screw that clamps two parts which try to slide past each other is loaded in **shear**. The stress is spread over the tensile stress area $A_s$ ($5.03\\,\\mathrm{mm^2}$ for M3). When a torque $T$ is carried by $n$ screws on a bolt circle of radius $r$:",
+  "de": "Eine Schraube, die zwei Teile klemmt, die aneinander vorbeigleiten wollen, wird auf **Schub** belastet. Die Spannung verteilt sich über den Spannungsquerschnitt $A_s$ ($5.03\\,\\mathrm{mm^2}$ für M3). Wenn ein Drehmoment $T$ von $n$ Schrauben auf einem Lochkreis mit Radius $r$ getragen wird:"
+ },
+ "a430b74880270c67": {
+  "en": "The kit's DIN 912 A2-70 stainless screws have a yield strength of $R_{p0.2} = 450\\,\\mathrm{MPa}$, so $\\tau_\\text{allow} = 0.577 \\cdot 450 = 260\\,\\mathrm{MPa}$. The femur is bolted to its horn with $4 \\times$ M3 on $r = 7\\,\\mathrm{mm}$:",
+  "de": "Die Edelstahlschrauben DIN 912 A2-70 des Sortiments haben eine Streckgrenze von $R_{p0.2} = 450\\,\\mathrm{MPa}$, also $\\tau_\\text{allow} = 0.577 \\cdot 450 = 260\\,\\mathrm{MPa}$. Der Femur ist mit $4 \\times$ M3 auf $r = 7\\,\\mathrm{mm}$ an sein Horn geschraubt:"
+ },
+ "2c8804a34602f518": {
+  "en": "The screw is rarely the problem. The plastic around it is. The **hole bearing pressure** is the force over the projected area of the hole (diameter $d$, material thickness $t$):",
+  "de": "Die Schraube ist selten das Problem. Der Kunststoff um sie herum schon. Die **Lochleibung** ist die Kraft über der projizierten Fläche der Bohrung (Durchmesser $d$, Materialdicke $t$):"
+ },
+ "8979d2ff5c3e9cdb": {
+  "en": "For the hip horn screws in the servo mount this is $17.9\\,\\mathrm{MPa}$ against $47\\,\\mathrm{MPa}$ ($S = 2.6$), the lowest of the screw joints.",
+  "de": "Für die Hornschrauben der Hüfte in der Servohalterung sind das $17.9\\,\\mathrm{MPa}$ gegenüber $47\\,\\mathrm{MPa}$ ($S = 2.6$), der niedrigste Wert der Schraubverbindungen."
+ },
+ "f20ffaa437640fed": {
+  "en": "Pull-out and tightening torque",
+  "de": "Ausreißen und Anziehdrehmoment"
+ },
+ "de8634dedd53a320": {
+  "en": "A thread-forming screw in a printed pilot hole holds by the plastic thread it cuts. Pulled hard enough, it shears out a cylinder of plastic (*ausreißen*) of diameter $d$ and engaged length $L_e$. The shear strength across the layers is $\\tau = 0.577 \\cdot 18 = 10.4\\,\\mathrm{MPa}$:",
+  "de": "Eine gewindeformende Schraube in einer gedruckten Vorbohrung hält über das Kunststoffgewinde, das sie schneidet. Wird stark genug gezogen, schert sie einen Kunststoffzylinder heraus (*ausreißen*) mit Durchmesser $d$ und Einschraublänge $L_e$. Die Scherfestigkeit quer zu den Schichten beträgt $\\tau = 0.577 \\cdot 18 = 10.4\\,\\mathrm{MPa}$:"
+ },
+ "fff5083cc79c8b06": {
+  "en": "Tightening turns torque into axial preload. Most of the torque goes into friction in the thread and under the head. The *nut factor* $k$ (about 0.2 for dry stainless threads) lumps all of that into one number:",
+  "de": "Das Anziehen wandelt Drehmoment in axiale Vorspannkraft um. Der größte Teil des Drehmoments geht in Reibung im Gewinde und unter dem Kopf. Der *Mutternfaktor* $k$ (etwa 0,2 für trockene Edelstahlgewinde) fasst all das in einer Zahl zusammen:"
+ },
+ "496e8bd74b7964cf": {
+  "en": "So every printed pilot has a torque that strips it. Example: the knee axle screws engage $L_e = 4.0\\,\\mathrm{mm}$ of the femur:",
+  "de": "Jede gedruckte Vorbohrung hat also ein Drehmoment, bei dem sie ausreißt. Beispiel: Die Schrauben der Knieachse greifen $L_e = 4.0\\,\\mathrm{mm}$ in den Femur ein:"
+ },
+ "80ccfefbca5f380a": {
+  "en": "**Tighten to at most half of that, about $0.12\\,\\mathrm{N\\,m}$.** That is a gentle two-finger turn on the short arm of a 2.5 mm hex key: snug, not tight. The [strength report](../../verification/strength.md#tightening-torque-into-printed-pilots) lists the limit for every printed pilot (0.05–0.35 N·m). For comparison, an M3 A2-70 screw into a steel nut may take up to about $1.26\\,\\mathrm{N\\,m}$ (Bossard, $\\mu = 0.2$), ten times more.",
+  "de": "**Ziehen Sie höchstens mit der Hälfte davon an, etwa $0.12\\,\\mathrm{N\\,m}$.** Das ist eine sanfte Zwei-Finger-Drehung am kurzen Arm eines 2,5-mm-Innensechskantschlüssels: satt, nicht fest. Der [Festigkeitsbericht](../../verification/strength.md#tightening-torque-into-printed-pilots) listet die Grenze für jede gedruckte Vorbohrung (0,05–0,35 N·m). Zum Vergleich: Eine M3-A2-70-Schraube in einer Stahlmutter verträgt bis etwa $1.26\\,\\mathrm{N\\,m}$ (Bossard, $\\mu = 0.2$), zehnmal mehr."
+ },
+ "7c35ebce2e0dbdb4": {
+  "en": "Bearings",
+  "de": "Lager"
+ },
+ "587fd3994cd3796e": {
+  "en": "Ball bearings have a **static load rating** $C_0$: the load that dents the races permanently. The static safety factor is $S_0 = C_0 / F_r$. The two knee bearings share the knee force (237 N: landing plus the largest link force). Each 633ZZ therefore sees $118\\,\\mathrm{N}$ against $C_0 = 490\\,\\mathrm{N}$ (Koyo), $S_0 = 4.2$.",
+  "de": "Kugellager haben eine **statische Tragzahl** $C_0$: die Last, bei der die Laufbahnen bleibend eingedrückt werden. Der statische Sicherheitsfaktor ist $S_0 = C_0 / F_r$. Die beiden Kniegelenklager teilen sich die Kniekraft (237 N: Landung plus die größte Koppelkraft). Jedes 633ZZ sieht daher $118\\,\\mathrm{N}$ gegenüber $C_0 = 490\\,\\mathrm{N}$ (Koyo), $S_0 = 4.2$."
+ },
+ "bfc0f2c4bb04ea76": {
+  "en": "Rotating bearings also wear out by fatigue. Their **rating life** in millions of revolutions follows from the dynamic rating $C$ and the equivalent load $P$:",
+  "de": "Drehende Lager verschleißen außerdem durch Ermüdung. Ihre **nominelle Lebensdauer** in Millionen Umdrehungen folgt aus der dynamischen Tragzahl $C$ und der äquivalenten Last $P$:"
+ },
+ "ab50de8cefdfec4f": {
+  "en": "90 % of bearings reach this life. The knee joints only oscillate through a small angle, so the static rating matters more here. The kit's unbranded bearings are assumed no better than the branded ratings.",
+  "de": "90 % der Lager erreichen diese Lebensdauer. Die Kniegelenke schwingen nur über einen kleinen Winkel, daher zählt hier die statische Tragzahl mehr. Für die No-Name-Lager des Sortiments wird angenommen, dass sie nicht besser sind als die Tragzahlen der Markenlager."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Prüfen Sie sich selbst"
+ },
+ "c0aa3f95bb4176c6": {
+  "en": "A servo is rated 25 kg·cm. What force can it push through a 20 mm arm at right angles?",
+  "de": "Ein Servo ist mit 25 kg·cm angegeben. Welche Kraft kann es im rechten Winkel über einen 20-mm-Arm drücken?"
+ },
+ "ca6fdf818dc112ca": {
+  "en": "Why does a printed link lie flat on the bed rather than stand up?",
+  "de": "Warum liegt eine gedruckte Koppel flach auf dem Druckbett, statt aufrecht zu stehen?"
+ },
+ "ad7a0c0b726c6960": {
+  "en": "You make a link 1.5 × thicker. How do its bending strength and its buckling load change?",
+  "de": "Sie machen eine Koppel 1,5 × dicker. Wie ändern sich ihre Biegefestigkeit und ihre Knicklast?"
+ },
+ "6a3634f957860eb3": {
+  "en": "What limits the bending moment in the legs, the landing or the servo?",
+  "de": "Was begrenzt das Biegemoment in den Beinen, die Landung oder das Servo?"
+ },
+ "58f1ca61474f9562": {
+  "en": "A pilot hole engages 6 mm of an M3 screw. What is the maximum tightening torque by this page's rule?",
+  "de": "Eine Vorbohrung fasst 6 mm einer M3-Schraube. Wie groß ist nach der Regel dieser Seite das maximale Anziehdrehmoment?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "765e9fe1e0fddfa7": {
+  "en": "So that bending stress runs along the layers ($47\\,\\mathrm{MPa}$) instead of across them ($18\\,\\mathrm{MPa}$ layer adhesion).",
+  "de": "Damit die Biegespannung entlang der Schichten ($47\\,\\mathrm{MPa}$) verläuft statt quer zu ihnen ($18\\,\\mathrm{MPa}$ Schichthaftung)."
+ },
+ "218b1d58319e425e": {
+  "en": "Bending across that thickness: $W \\propto h^2$, so $2.25\\times$. Buckling across it: $I \\propto h^3$, so $3.4\\times$.",
+  "de": "Biegung über diese Dicke: $W \\propto h^2$, also $2.25\\times$. Knickung darüber: $I \\propto h^3$, also $3.4\\times$."
+ },
+ "0dfa82a38fc0dc8c": {
+  "en": "The servo's stall torque is the design load: the knee gives way above it. Back-driving a geared servo takes more than its stall torque, so hard impacts can exceed the design load; pins and bearings always see the full landing force.",
+  "de": "Das Blockiermoment des Servos ist die Auslegungslast: Darüber gibt das Knie nach. Ein Getriebeservo rückwärts anzutreiben erfordert mehr als sein Blockiermoment, daher können harte Stöße die Auslegungslast überschreiten; Bolzen und Lager sehen immer die volle Landekraft."
+ },
+ "f1dcf63fd81c8622": {
+  "en": "$F = 10.4 \\cdot \\pi \\cdot 3 \\cdot 6 = 588\\,\\mathrm{N}$; $T_\\text{strip} = 0.2 \\cdot 588 \\cdot 0.003 = 0.35\\,\\mathrm{N\\,m}$; tighten to at most about $0.18\\,\\mathrm{N\\,m}$.",
+  "de": "$F = 10.4 \\cdot \\pi \\cdot 3 \\cdot 6 = 588\\,\\mathrm{N}$; $T_\\text{strip} = 0.2 \\cdot 588 \\cdot 0.003 = 0.35\\,\\mathrm{N\\,m}$; ziehen Sie mit höchstens etwa $0.18\\,\\mathrm{N\\,m}$ an."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "80882e2e5175286a": {
+  "en": "R. C. Hibbeler, *Mechanics of Materials*: stress, bending, buckling, the textbook treatment of every formula above.",
+  "de": "R. C. Hibbeler, *Mechanics of Materials*: Spannung, Biegung, Knickung, die Lehrbuchbehandlung jeder Formel oben."
+ },
+ "bc9da07e088e9f80": {
+  "en": "[Prusament PETG technical data sheet](https://www.prusa3d.com/file/3464616/prusament-petg-technical-data-sheet.pdf): printed tensile and layer-adhesion values used here.",
+  "de": "[Technisches Datenblatt Prusament PETG](https://www.prusa3d.com/file/3464616/prusament-petg-technical-data-sheet.pdf): die hier verwendeten Werte für gedruckte Zugfestigkeit und Schichthaftung."
+ },
+ "66a7007901b9d275": {
+  "en": "[Bossard: preload and tightening torques (VDI 2230)](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf).",
+  "de": "[Bossard: Vorspannkraft und Anziehdrehmomente (VDI 2230)](https://assets.eu.ctfassets.net/0vp0u5uh75zd/3S40LEUM235Qk3rJk2phR1/c715f9f45232756c12b59aa681c7fede/060_074_Preload_tightening_torques_Fastening_EN_01_2025.pdf)."
+ },
+ "4ac34f73d966b505": {
+  "en": "[SKF deep groove ball bearings](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings): load ratings, static safety and rating life.",
+  "de": "[SKF-Rillenkugellager](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings): Tragzahlen, statische Sicherheit und nominelle Lebensdauer."
+ },
+ "10064cd531ea7a21": {
+  "en": "Related in this wiki: [statics and dynamics](../theory/statics-and-dynamics.md), [fasteners](fasteners.md), [3D printing](3d-printing.md), [mechanics and bearings](../hardware/mechanics.md), [servos](../hardware/servos.md).",
+  "de": "Verwandt in diesem Wiki: [Statik und Dynamik](../theory/statics-and-dynamics.md), [Befestigungselemente](fasteners.md), [3D-Druck](3d-printing.md), [Mechanik und Lager](../hardware/mechanics.md), [Servos](../hardware/servos.md)."
+ }
+}

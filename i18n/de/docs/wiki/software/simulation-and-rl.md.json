@@ -1,0 +1,406 @@
+{
+ "8f63639eea6c05aa": {
+  "en": "Simulation and reinforcement learning",
+  "de": "Simulation und Reinforcement Learning"
+ },
+ "212b5104e90e3365": {
+  "en": "A simulator lets you walk the robot thousands of times without breaking a part; reinforcement learning (RL) lets the computer discover a walking controller by trial and error inside that simulator. Strido uses MuJoCo for fast physics and training, Gazebo for testing the complete ROS 2 stack, and PPO to train a walking policy that runs on the Pi with plain NumPy.",
+  "de": "Ein Simulator lässt den Roboter tausende Male laufen, ohne dass ein Teil bricht; Reinforcement Learning (RL) lässt den Computer in diesem Simulator durch Versuch und Irrtum einen Lauf-Controller finden. Strido verwendet MuJoCo für schnelle Physik und Training, Gazebo zum Testen des kompletten ROS-2-Stacks und PPO, um eine Lauf-Policy zu trainieren, die auf dem Pi mit reinem NumPy läuft."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "588a66686e0a82f0": {
+  "en": "**MuJoCo model:** `models/mujoco/strido.xml` + `scene.xml`, generated from the CAD by `make models`.",
+  "de": "**MuJoCo-Modell:** `models/mujoco/strido.xml` + `scene.xml`, von `make models` aus dem CAD erzeugt."
+ },
+ "73222ee86c090527": {
+  "en": "**Gazebo model:** `ros2/strido_description/urdf/strido.urdf.xacro` (with `sim:=true`), world `ros2/strido_bringup/worlds/flat.sdf`, launched by `gazebo.launch.py`.",
+  "de": "**Gazebo-Modell:** `ros2/strido_description/urdf/strido.urdf.xacro` (mit `sim:=true`), Welt `ros2/strido_bringup/worlds/flat.sdf`, gestartet über `gazebo.launch.py`."
+ },
+ "aafd3a841d7a1b73": {
+  "en": "**RL code:** `packages/strido-sim/src/strido_sim/rl/` (`env.py`, `train.py`, `evaluate.py`); policy runtime `packages/strido-core/src/strido/policy.py`.",
+  "de": "**RL-Code:** `packages/strido-sim/src/strido_sim/rl/` (`env.py`, `train.py`, `evaluate.py`); Policy-Laufzeit `packages/strido-core/src/strido/policy.py`."
+ },
+ "36bc266a2435c277": {
+  "en": "**Released policy:** `models/policies/ppo-v1/policy.npz` (MLP 23 → 128 → 128 → 12).",
+  "de": "**Veröffentlichte Policy:** `models/policies/ppo-v1/policy.npz` (MLP 23 → 128 → 128 → 12)."
+ },
+ "330506e6de9fd9d2": {
+  "en": "**Commands:** `make sim-walk`, `make sim-gazebo`, `make rl-smoke`, `make rl-train`, `make rl-eval` ([simulation](../../simulation.md)).",
+  "de": "**Befehle:** `make sim-walk`, `make sim-gazebo`, `make rl-smoke`, `make rl-train`, `make rl-eval` ([Simulation](../../simulation.md))."
+ },
+ "aebafd2277cbcc69": {
+  "en": "Why two simulators",
+  "de": "Warum zwei Simulatoren"
+ },
+ "bf6b23d079db349a": {
+  "en": "| | MuJoCo 3 | Gazebo Harmonic |",
+  "de": "| | MuJoCo 3 | Gazebo Harmonic |"
+ },
+ "45ee7284956c6adb": {
+  "en": "| Runs | Python process (`mujoco==3.17.0`) | Docker container with ROS 2 Jazzy |",
+  "de": "| Läuft als | Python-Prozess (`mujoco==3.17.0`) | Docker-Container mit ROS 2 Jazzy |"
+ },
+ "33c741a83bb9bcbb": {
+  "en": "| Strength | Fast, deterministic contact physics; easy to step thousands of times per second from Python | Simulates sensors (IMU, GPU LiDAR, camera) and runs the real ROS 2 nodes and controllers |",
+  "de": "| Stärke | Schnelle, deterministische Kontaktphysik; lässt sich aus Python leicht tausende Male pro Sekunde schrittweise ausführen | Simuliert Sensoren (IMU, GPU-LiDAR, Kamera) und führt die echten ROS-2-Nodes und Controller aus |"
+ },
+ "087f72761b054d31": {
+  "en": "| Used for | Gait demo, PPO training and evaluation | End-to-end test of `gait_node` / `policy_node` with the same topics as the robot |",
+  "de": "| Verwendet für | Gait-Demo, PPO-Training und -Auswertung | End-to-End-Test von `gait_node` / `policy_node` mit denselben Topics wie am Roboter |"
+ },
+ "81f4929627693ced": {
+  "en": "| Command | `make sim-walk`, `make rl-*` | `make sim-gazebo` |",
+  "de": "| Befehl | `make sim-walk`, `make rl-*` | `make sim-gazebo` |"
+ },
+ "a9d9fed102d7b71d": {
+  "en": "Running a policy trained in MuJoCo through Gazebo is a cheap **sim-to-sim** check: if it only works in the simulator it was trained in, it has learned that simulator's quirks, and it will not survive the real robot either.",
+  "de": "Eine in MuJoCo trainierte Policy in Gazebo laufen zu lassen, ist eine günstige **Sim-to-Sim**-Prüfung: Funktioniert sie nur im Simulator, in dem sie trainiert wurde, hat sie dessen Eigenheiten gelernt und wird auch den echten Roboter nicht überstehen."
+ },
+ "d8055ef455a3d76b": {
+  "en": "The models, generated from CAD",
+  "de": "Die Modelle, aus dem CAD erzeugt"
+ },
+ "4aedf1a2018eacbc": {
+  "en": "`strido_cad.models` builds all simulation models from the verified CAD assembly, so the simulated robot has the real link lengths, masses and joint limits:",
+  "de": "`strido_cad.models` erstellt alle Simulationsmodelle aus der verifizierten CAD-Baugruppe, sodass der simulierte Roboter die echten Gliedlängen, Massen und Gelenkgrenzen hat:"
+ },
+ "4fc1fdadd401fd37": {
+  "en": "13 link meshes (`ros2/strido_description/meshes/`), decimated to 25 k faces each;",
+  "de": "13 Glied-Meshes (`ros2/strido_description/meshes/`), jeweils auf 25 k Flächen reduziert;"
+ },
+ "78d722b7d57c09ab": {
+  "en": "masses from part volumes and densities, inertias from the meshes, cables by routed length: 3.07 kg in total (`ros2/strido_description/config/mass_report.yaml`);",
+  "de": "Massen aus Teilevolumen und Dichten, Trägheiten aus den Meshes, Kabel nach verlegter Länge: insgesamt 3,07 kg (`ros2/strido_description/config/mass_report.yaml`);"
+ },
+ "bdc5459ccf95256b": {
+  "en": "MJCF with 12 position actuators (`kp 25`, `kv 0.4`, torque limit ±3.432 N·m = SPT5435LV stall torque at 6 V), an IMU site with quaternion, gyro and accelerometer sensors, and foot sites;",
+  "de": "MJCF mit 12 Positionsaktoren (`kp 25`, `kv 0.4`, Momentgrenze ±3,432 N·m = Blockiermoment des SPT5435LV bei 6 V), ein IMU-Site mit Quaternion-, Gyro- und Beschleunigungssensoren sowie Fuß-Sites;"
+ },
+ "d46ead9c2eb498ce": {
+  "en": "physics step 0.002 s (500 Hz) with the `implicitfast` integrator.",
+  "de": "Physikschritt 0,002 s (500 Hz) mit dem Integrator `implicitfast`."
+ },
+ "955aa584eb520e30": {
+  "en": "One simplification: the knee is modelled as a direct revolute joint on the calf. The four-bar linkage is solved in software (gait, firmware) and its limits are applied before commands reach the joint ([kinematics](kinematics-and-gaits.md)).",
+  "de": "Eine Vereinfachung: Das Knie ist als direktes Drehgelenk am Unterschenkel modelliert. Das Viergelenk-Koppelgetriebe wird in Software gelöst (Gait, Firmware), und seine Grenzen werden angewendet, bevor Befehle das Gelenk erreichen ([Kinematik](kinematics-and-gaits.md))."
+ },
+ "ef0b62fd2f1472a0": {
+  "en": "In Gazebo, the xacro with `sim:=true` adds `gz_ros2_control` with a `position` command interface per joint, an IMU (200 Hz), a GPU LiDAR (360 samples, 10 Hz, 0.05–12 m, Gaussian noise σ 0.01 m), a camera (640 × 360, 15 Hz) and a ground-truth odometry publisher (`/ground_truth/odom`, 50 Hz).",
+  "de": "In Gazebo ergänzt das Xacro mit `sim:=true` `gz_ros2_control` mit einer `position`-Befehlsschnittstelle je Gelenk, eine IMU (200 Hz), ein GPU-LiDAR (360 Messpunkte, 10 Hz, 0,05–12 m, Gaußsches Rauschen σ 0,01 m), eine Kamera (640 × 360, 15 Hz) und einen Ground-Truth-Odometrie-Publisher (`/ground_truth/odom`, 50 Hz)."
+ },
+ "140274b28df92674": {
+  "en": "MuJoCo: the gait walk",
+  "de": "MuJoCo: der Gait-Lauf"
+ },
+ "5582dcb15514fa28": {
+  "en": "This runs `strido.gait`, the same trot the robot runs through ROS 2, at 100 Hz like the real command stream. It adds a heading hold using the simulator's yaw, which the robot does not have. Recorded result: 1.10 m in 10 s at 0.15 m/s, body height 0.174 m ([verification](../../verification.md)).",
+  "de": "Dies führt `strido.gait` aus, denselben Trot, den der Roboter über ROS 2 ausführt, mit 100 Hz wie der echte Befehlsstrom. Zusätzlich hält es die Richtung mithilfe des Gierwinkels aus dem Simulator, den der Roboter nicht hat. Aufgezeichnetes Ergebnis: 1,10 m in 10 s bei 0,15 m/s, Körperhöhe 0,174 m ([Verifikation](../../verification.md))."
+ },
+ "92c836435324f483": {
+  "en": "Gazebo: the full ROS 2 stack",
+  "de": "Gazebo: der vollständige ROS-2-Stack"
+ },
+ "2c280c6f6f19ecda": {
+  "en": "`walk_smoke` waits 6 s for the robot to stand, sends 0.15 m/s on `/cmd_vel` for 8 s and passes if the base moved ≥ 0.4 m forward (ground truth), stayed upright (|roll|, |pitch| < 0.5 rad, height > 0.10 m) and `/joint_states`, `/imu/data`, `/scan`, `/camera/image_raw` and `/ground_truth/odom` all published. Recorded: 0.98 m in 8 s with the gait node.",
+  "de": "`walk_smoke` wartet 6 s, bis der Roboter steht, sendet 8 s lang 0,15 m/s auf `/cmd_vel` und besteht, wenn sich die Basis ≥ 0,4 m vorwärts bewegt hat (Ground Truth), aufrecht geblieben ist (|Roll|, |Pitch| < 0,5 rad, Höhe > 0,10 m) und `/joint_states`, `/imu/data`, `/scan`, `/camera/image_raw` sowie `/ground_truth/odom` alle veröffentlicht wurden. Aufgezeichnet: 0,98 m in 8 s mit dem Gait-Node."
+ },
+ "b2ede3aa6f322143": {
+  "en": "Reinforcement learning in one paragraph",
+  "de": "Reinforcement Learning in einem Absatz"
+ },
+ "c4fc21dcc1cadaa4": {
+  "en": "An **agent** (here: a neural network, the *policy* $\\pi_\\theta(a \\mid s)$ with weights $\\theta$) observes the state $s_t$, chooses an **action** $a_t$, and receives a **reward** $r_t$. Over millions of trials it adjusts itself to maximise the expected discounted return",
+  "de": "Ein **Agent** (hier: ein neuronales Netz, die *Policy* $\\pi_\\theta(a \\mid s)$ mit Gewichten $\\theta$) beobachtet den Zustand $s_t$, wählt eine **Action** $a_t$ und erhält einen **Reward** $r_t$. Über Millionen von Versuchen passt er sich an, um den erwarteten diskontierten Ertrag zu maximieren"
+ },
+ "e97350b01966eceb": {
+  "en": "where the discount $\\gamma < 1$ makes near rewards count more than distant ones. With the repo's $\\gamma = 0.99$ and 50 policy steps per second, rewards about $1/(1-\\gamma) = 100$ steps (2 s) ahead still matter. **PPO** (Proximal Policy Optimisation) is a widely used algorithm for this: it collects a batch of experience with the current policy, then improves the policy in small, *clipped* steps so one bad batch cannot wreck it. It maximises",
+  "de": "wobei der Diskontfaktor $\\gamma < 1$ nahe Rewards stärker gewichtet als ferne. Mit dem $\\gamma = 0.99$ des Repos und 50 Policy-Schritten pro Sekunde zählen Rewards etwa $1/(1-\\gamma) = 100$ Schritte (2 s) voraus noch. **PPO** (Proximal Policy Optimisation) ist ein dafür weit verbreiteter Algorithmus: Er sammelt mit der aktuellen Policy einen Batch an Erfahrung und verbessert die Policy dann in kleinen, *begrenzten* (clipped) Schritten, sodass ein schlechter Batch sie nicht zerstören kann. Er maximiert"
+ },
+ "fdcfa72cb7aeab99": {
+  "en": "where $\\hat A_t$ is the advantage (how much better the action was than the critic expected) and $\\epsilon = 0.2$ here: once the new policy makes an action more than 20 % more or less likely than the old one did, the objective stops rewarding further change. The repo uses the PPO implementation of Stable-Baselines3 on the CPU. The full derivation is in [reinforcement learning](../theory/reinforcement-learning.md).",
+  "de": "wobei $\\hat A_t$ der Advantage ist (um wie viel besser die Action war, als der Critic erwartet hat) und hier $\\epsilon = 0.2$ gilt: Sobald die neue Policy eine Action um mehr als 20 % wahrscheinlicher oder unwahrscheinlicher macht als die alte, belohnt das Ziel keine weitere Änderung. Das Repo verwendet die PPO-Implementierung von Stable-Baselines3 auf der CPU. Die vollständige Herleitung steht unter [Reinforcement Learning](../theory/reinforcement-learning.md)."
+ },
+ "ece7f3a209302177": {
+  "en": "The environment, as implemented",
+  "de": "Die Umgebung, wie implementiert"
+ },
+ "ed805ec742663f3e": {
+  "en": "`StridoEnv` (`strido_sim/rl/env.py`) is a Gymnasium environment: \"walk at the commanded velocity\".",
+  "de": "`StridoEnv` (`strido_sim/rl/env.py`) ist eine Gymnasium-Umgebung: „mit der befohlenen Geschwindigkeit laufen“."
+ },
+ "c4d53f52bfdb3d1c": {
+  "en": "Observations (23 numbers)",
+  "de": "Observations (23 Zahlen)"
+ },
+ "742a4d90c0fda6dc": {
+  "en": "| Part | Size | Source on the robot |",
+  "de": "| Teil | Größe | Quelle am Roboter |"
+ },
+ "e894a4842a1ba355": {
+  "en": "| Angular velocity (gyro) | 3 | IMU (`/imu/data`) |",
+  "de": "| Winkelgeschwindigkeit (Gyro) | 3 | IMU (`/imu/data`) |"
+ },
+ "ae695bd4eb1a44b4": {
+  "en": "| Gravity direction in the body frame | 3 | IMU orientation quaternion |",
+  "de": "| Schwerkraftrichtung im Körperkoordinatensystem | 3 | Orientierungsquaternion der IMU |"
+ },
+ "c9a236c4380665af": {
+  "en": "| Command vx, vy, ωz | 3 | `/cmd_vel` |",
+  "de": "| Befehl vx, vy, ωz | 3 | `/cmd_vel` |"
+ },
+ "6e5677b8e44cbaf1": {
+  "en": "| Previous action | 12 | the policy's own output |",
+  "de": "| Vorherige Action | 12 | eigene Ausgabe der Policy |"
+ },
+ "4e539722d9d48c36": {
+  "en": "| Gait clock sin, cos (0.4 s period) | 2 | a timer |",
+  "de": "| Gangtakt sin, cos (Periode 0,4 s) | 2 | ein Timer |"
+ },
+ "921ee5743726b3a4": {
+  "en": "There are **no joint angles or velocities**. The SPT5435LV servos report nothing, so a policy that relied on joint feedback could not run on the robot (ADR-006 in [decisions](../../decisions.md)). The observation holds only what the robot can measure or knows.",
+  "de": "Es gibt **keine Gelenkwinkel oder -geschwindigkeiten**. Die SPT5435LV-Servos melden nichts zurück, eine Policy, die sich auf Gelenkrückmeldung stützt, könnte also nicht auf dem Roboter laufen (ADR-006 in [Entscheidungen](../../decisions.md)). Die Observation enthält nur, was der Roboter messen kann oder weiß."
+ },
+ "0796ad5199075fe8": {
+  "en": "Actions (12 numbers)",
+  "de": "Actions (12 Zahlen)"
+ },
+ "818ec739b301b836": {
+  "en": "Each action is in $[-1, 1]$. The joint target is $\\mathbf{q}_\\mathrm{target} = \\mathbf{q}_\\mathrm{stand} + 0.3\\,\\mathbf{a}$ (rad), then:",
+  "de": "Jede Action liegt in $[-1, 1]$. Das Gelenkziel ist $\\mathbf{q}_\\mathrm{target} = \\mathbf{q}_\\mathrm{stand} + 0.3\\,\\mathbf{a}$ (rad), danach folgen:"
+ },
+ "b99e09df8fb176dc": {
+  "en": "the firmware's 6 rad/s slew limit ($6\\,\\mathrm{rad/s} \\times 0.02\\,\\mathrm{s} = 0.12\\,\\mathrm{rad}$ per policy step),",
+  "de": "die Anstiegsbegrenzung der Firmware von 6 rad/s ($6\\,\\mathrm{rad/s} \\times 0.02\\,\\mathrm{s} = 0.12\\,\\mathrm{rad}$ pro Policy-Schritt),"
+ },
+ "e6fed2a4f03a788e": {
+  "en": "the joint and knee-crank clamp, exactly as the firmware does it.",
+  "de": "die Gelenk- und Kniekurbel-Begrenzung, genau wie in der Firmware."
+ },
+ "a6710c096025f025": {
+  "en": "Modelling these inside training means the policy learns with the same limits the robot will impose, instead of discovering them on hardware.",
+  "de": "Werden diese im Training modelliert, lernt die Policy mit denselben Grenzen, die der Roboter vorgibt, statt sie erst auf der Hardware zu entdecken."
+ },
+ "fc4e84255a41a3a2": {
+  "en": "Timing",
+  "de": "Timing"
+ },
+ "a34cca87b3020b48": {
+  "en": "Policy at 50 Hz (`CONTROL_DT = 0.02` s), physics at 500 Hz: $0.02\\,\\mathrm{s} / 0.002\\,\\mathrm{s} = 10$ physics steps per action. An episode lasts at most 1000 steps ($1000 \\times 0.02\\,\\mathrm{s} = 20\\,\\mathrm{s}$).",
+  "de": "Policy mit 50 Hz (`CONTROL_DT = 0.02` s), Physik mit 500 Hz: $0.02\\,\\mathrm{s} / 0.002\\,\\mathrm{s} = 10$ Physikschritte pro Action. Eine Episode dauert höchstens 1000 Schritte ($1000 \\times 0.02\\,\\mathrm{s} = 20\\,\\mathrm{s}$)."
+ },
+ "b269dc4e81a528a4": {
+  "en": "Commands",
+  "de": "Befehle"
+ },
+ "1b70b014af22486c": {
+  "en": "Each episode samples a command: 20 % of episodes stand still (zero command); the rest draw uniformly from vx −0.15…0.30 m/s, vy −0.10…0.10 m/s, ωz −0.6…0.6 rad/s. `policy_node` clips `/cmd_vel` to these ranges on the robot, because the policy has never seen anything outside them.",
+  "de": "Jede Episode zieht einen Befehl: 20 % der Episoden stehen still (Nullbefehl); die übrigen ziehen gleichverteilt aus vx −0,15…0,30 m/s, vy −0,10…0,10 m/s, ωz −0,6…0,6 rad/s. `policy_node` begrenzt `/cmd_vel` am Roboter auf diese Bereiche, weil die Policy nie etwas außerhalb davon gesehen hat."
+ },
+ "55ac8cbae095aacc": {
+  "en": "Reward",
+  "de": "Reward"
+ },
+ "47ce8b09188bf9cc": {
+  "en": "Per step, scaled so perfect tracking gives at most $1.0 + 0.8 = 1.8$:",
+  "de": "Pro Schritt, so skaliert, dass perfektes Folgen höchstens $1.0 + 0.8 = 1.8$ ergibt:"
+ },
+ "767e5363ee66162b": {
+  "en": "Here $\\mathbf{v}$ and $\\boldsymbol{\\omega}$ are the base's linear and angular velocity, $\\mathbf{c}$ the command, $\\mathbf{a}$ the action, $\\tau_j$ the joint torques and $h$ the base height.",
+  "de": "Dabei sind $\\mathbf{v}$ und $\\boldsymbol{\\omega}$ die Linear- und Winkelgeschwindigkeit der Basis, $\\mathbf{c}$ der Befehl, $\\mathbf{a}$ die Action, $\\tau_j$ die Gelenkmomente und $h$ die Höhe der Basis."
+ },
+ "1c7b4eab36ff4030": {
+  "en": "An episode ends with a −2 penalty if the base drops below 0.09 m or tilts beyond about 53°.",
+  "de": "Eine Episode endet mit einer Strafe von −2, wenn die Basis unter 0,09 m sinkt oder sich über etwa 53° neigt."
+ },
+ "70e81d6b3ee682d4": {
+  "en": "The exponential \"tracking kernels\" give a smooth reward that is 1 for perfect tracking and fades with error: with the width 0.01, a speed error of $0.1\\,\\mathrm{m/s}$ already drops the term to $e^{-1} \\approx 0.37$. Penalties shape *how* the robot walks. The torque and action-rate terms matter more than they look: a hobby servo asked to jitter at 50 Hz heats up and wears its gears.",
+  "de": "Die exponentiellen „Tracking-Kerne“ liefern einen glatten Reward, der bei perfektem Folgen 1 ist und mit dem Fehler abklingt: Bei der Breite 0,01 senkt ein Geschwindigkeitsfehler von $0.1\\,\\mathrm{m/s}$ den Term bereits auf $e^{-1} \\approx 0.37$. Strafen formen, *wie* der Roboter läuft. Die Moment- und Action-Rate-Terme sind wichtiger, als sie aussehen: Ein Hobby-Servo, das mit 50 Hz zittern soll, erhitzt sich und verschleißt sein Getriebe."
+ },
+ "06fabf7ee2ad9fe9": {
+  "en": "Domain randomisation",
+  "de": "Domain Randomisation"
+ },
+ "323d5556ee2c21ef": {
+  "en": "The real robot will not match the model. Rather than hoping it does, training varies the model each episode so the policy learns to cope with a range:",
+  "de": "Der echte Roboter wird nicht genau dem Modell entsprechen. Statt darauf zu hoffen, variiert das Training das Modell in jeder Episode, damit die Policy lernt, mit einer Bandbreite zurechtzukommen:"
+ },
+ "05425c45fb46d0d4": {
+  "en": "| Randomised | Range |",
+  "de": "| Randomisiert | Bereich |"
+ },
+ "745c5bc18658634e": {
+  "en": "| Servo stiffness (kp, and the matching bias) | × 0.85 … 1.15 |",
+  "de": "| Servosteifigkeit (kp und der passende Bias) | × 0,85 … 1,15 |"
+ },
+ "eaf6545638b91b62": {
+  "en": "| Base mass | × 0.90 … 1.15 |",
+  "de": "| Masse der Basis | × 0,90 … 1,15 |"
+ },
+ "f2d8d85bdd818e0c": {
+  "en": "| Contact friction, floor and feet together | × 0.6 … 1.2 |",
+  "de": "| Kontaktreibung, Boden und Füße gemeinsam | × 0,6 … 1,2 |"
+ },
+ "aba47f36caca20c2": {
+  "en": "| IMU noise | gyro σ 0.05 rad/s, gravity σ 0.02 |",
+  "de": "| IMU-Rauschen | Gyro σ 0,05 rad/s, Schwerkraft σ 0,02 |"
+ },
+ "37563aa2e7e09256": {
+  "en": "| Initial joint angles | stand pose + σ 0.02 rad |",
+  "de": "| Anfangsgelenkwinkel | Stehpose + σ 0,02 rad |"
+ },
+ "f697d69bdce57653": {
+  "en": "Floor and feet are scaled together because MuJoCo uses the larger friction of the two contacting geoms; scaling one alone would often change nothing.",
+  "de": "Boden und Füße werden gemeinsam skaliert, weil MuJoCo die größere Reibung der beiden sich berührenden Geoms verwendet; nur eines zu skalieren, würde oft nichts ändern."
+ },
+ "fbf958faa0c1c8cc": {
+  "en": "Training, exporting and evaluating",
+  "de": "Training, Export und Auswertung"
+ },
+ "805bba8b81dd7df2": {
+  "en": "Key PPO settings in `train.py`: 1024 steps per env per update, batch 2048, 5 epochs, learning rate $3 \\times 10^{-4}$, $\\gamma = 0.99$, GAE $\\lambda = 0.95$, clip $\\epsilon = 0.2$; actor `[128, 128]`, critic `[256, 256]`; observations and rewards normalised (`VecNormalize`, clip 10). The recorded `ppo-v1` run took 1734 s on a CPU.",
+  "de": "Wichtige PPO-Einstellungen in `train.py`: 1024 Schritte je Umgebung je Update, Batch 2048, 5 Epochen, Lernrate $3 \\times 10^{-4}$, $\\gamma = 0.99$, GAE $\\lambda = 0.95$, Clip $\\epsilon = 0.2$; Actor `[128, 128]`, Critic `[256, 256]`; Observations und Rewards normalisiert (`VecNormalize`, Clip 10). Der aufgezeichnete Lauf `ppo-v1` dauerte 1734 s auf einer CPU."
+ },
+ "3f32fd0977fec83b": {
+  "en": "Training writes `policy.zip` (Stable-Baselines3), `vecnormalize.pkl`, `progress.csv` and **`policy.npz`**: the actor's weights, biases and the observation mean/variance as plain arrays. `strido.policy.MlpPolicy` re-implements the forward pass in a dozen lines of NumPy: normalise $\\tilde{\\mathbf{o}} = \\operatorname{clip}\\left((\\mathbf{o} - \\boldsymbol{\\mu})/\\sqrt{\\boldsymbol{\\sigma}^2 + 10^{-8}},\\ -10,\\ 10\\right)$, then $\\mathbf{h}_1 = \\tanh(\\mathbf{W}_1 \\tilde{\\mathbf{o}} + \\mathbf{b}_1)$, $\\mathbf{h}_2 = \\tanh(\\mathbf{W}_2 \\mathbf{h}_1 + \\mathbf{b}_2)$, $\\mathbf{a} = \\operatorname{clip}(\\mathbf{W}_3 \\mathbf{h}_2 + \\mathbf{b}_3,\\ -1,\\ 1)$. The same code runs in `evaluate.py` and in `policy_node`, so what is evaluated is bit-for-bit the function the robot runs, and the Pi needs no PyTorch.",
+  "de": "Das Training schreibt `policy.zip` (Stable-Baselines3), `vecnormalize.pkl`, `progress.csv` und **`policy.npz`**: die Gewichte und Biases des Actors sowie Mittelwert/Varianz der Observations als einfache Arrays. `strido.policy.MlpPolicy` implementiert den Vorwärtsdurchlauf in einem Dutzend Zeilen NumPy neu: normalisieren $\\tilde{\\mathbf{o}} = \\operatorname{clip}\\left((\\mathbf{o} - \\boldsymbol{\\mu})/\\sqrt{\\boldsymbol{\\sigma}^2 + 10^{-8}},\\ -10,\\ 10\\right)$, then $\\mathbf{h}_1 = \\tanh(\\mathbf{W}_1 \\tilde{\\mathbf{o}} + \\mathbf{b}_1)$, $\\mathbf{h}_2 = \\tanh(\\mathbf{W}_2 \\mathbf{h}_1 + \\mathbf{b}_2)$, $\\mathbf{a} = \\operatorname{clip}(\\mathbf{W}_3 \\mathbf{h}_2 + \\mathbf{b}_3,\\ -1,\\ 1)$. Derselbe Code läuft in `evaluate.py` und in `policy_node`, das Ausgewertete ist also Bit für Bit die Funktion, die der Roboter ausführt, und der Pi benötigt kein PyTorch."
+ },
+ "4cc5419d26468381": {
+  "en": "What ppo-v1 achieves",
+  "de": "Was ppo-v1 erreicht"
+ },
+ "3eaed07ce5ed8b92": {
+  "en": "| Test | Result |",
+  "de": "| Test | Ergebnis |"
+ },
+ "614e4c30dc931211": {
+  "en": "| MuJoCo, vx 0.2 m/s command (current limits) | 0.215 m/s mean, 2.15 m in 10 s, upright |",
+  "de": "| MuJoCo, Befehl vx 0,2 m/s (aktuelle Grenzen) | 0,215 m/s im Mittel, 2,15 m in 10 s, aufrecht |"
+ },
+ "7d421aed8965dec7": {
+  "en": "| MuJoCo, v0.1 sweep | vx 0.15 → 0.152 m/s; 0 → stands; −0.1 → −0.068 m/s; vy 0.1 → 0.023 m/s (weak); ωz 0.5 → 232° in 10 s |",
+  "de": "| MuJoCo, v0.1-Durchlauf | vx 0,15 → 0,152 m/s; 0 → steht; −0,1 → −0,068 m/s; vy 0,1 → 0,023 m/s (schwach); ωz 0,5 → 232° in 10 s |"
+ },
+ "2fcf98bb4fecdb5c": {
+  "en": "| Gazebo through `policy_node` (sim-to-sim) | 0.82 m in 8 s at 0.15 m/s, upright |",
+  "de": "| Gazebo über `policy_node` (Sim-to-Sim) | 0,82 m in 8 s bei 0,15 m/s, aufrecht |"
+ },
+ "c17e8e49a46cd529": {
+  "en": "Lateral and reverse tracking are weak: expected from a policy without joint feedback (ADR-006).",
+  "de": "Seitliches und rückwärtiges Folgen ist schwach: zu erwarten bei einer Policy ohne Gelenkrückmeldung (ADR-006)."
+ },
+ "d962ba9c9b75fde3": {
+  "en": "The sim-to-real gap",
+  "de": "Die Sim-to-Real-Lücke"
+ },
+ "fc7c662b91ae22e9": {
+  "en": "Everything above is simulation. Nothing has yet run on a physical Strido. The known gaps:",
+  "de": "Alles oben ist Simulation. Auf einem physischen Strido ist noch nichts gelaufen. Die bekannten Lücken:"
+ },
+ "537393e13a09e922": {
+  "en": "**Servo response.** kp 25 / kv 0.4 and zero latency are estimates; real hobby servos have dead band, backlash, gear compliance and a voltage-dependent speed.",
+  "de": "**Servoverhalten.** kp 25 / kv 0,4 und null Latenz sind Schätzungen; echte Hobby-Servos haben Totzone, Spiel, Getriebenachgiebigkeit und eine spannungsabhängige Geschwindigkeit."
+ },
+ "19e107802eb66935": {
+  "en": "**Battery sag.** Servo speed and torque drop with pack voltage; the model assumes 6 V.",
+  "de": "**Spannungseinbruch des Akkus.** Servogeschwindigkeit und -moment sinken mit der Akkuspannung; das Modell nimmt 6 V an."
+ },
+ "4d092dc0880bf82d": {
+  "en": "**IMU.** Training reads a perfect quaternion plus Gaussian noise; the robot's comes from a Mahony filter with its own lag and bias.",
+  "de": "**IMU.** Das Training liest ein perfektes Quaternion plus Gaußsches Rauschen; das des Roboters stammt aus einem Mahony-Filter mit eigener Verzögerung und eigenem Bias."
+ },
+ "4f334ce07c03b44d": {
+  "en": "**Contacts.** Printed feet on a real floor, not a uniform plane with randomised friction.",
+  "de": "**Kontakte.** Gedruckte Füße auf einem echten Boden, keine gleichmäßige Ebene mit randomisierter Reibung."
+ },
+ "6a54cdf088609f9a": {
+  "en": "**Unmodelled mechanics.** The knee linkage is a direct joint in simulation; print tolerances and flex are not modelled.",
+  "de": "**Nicht modellierte Mechanik.** Das Knie-Koppelgetriebe ist in der Simulation ein direktes Gelenk; Drucktoleranzen und Biegung sind nicht modelliert."
+ },
+ "c50b16cac4cdfc95": {
+  "en": "The repo's procedure for a first hardware run: evaluate in MuJoCo and Gazebo, start with the robot on a stand, keep `/strido/estop` at hand, and expect to retrain with measured servo response (kp/kv, latency) once the robot exists.",
+  "de": "Das Vorgehen des Repos für einen ersten Hardwarelauf: in MuJoCo und Gazebo auswerten, mit dem Roboter auf einem Ständer beginnen, `/strido/estop` griffbereit halten und damit rechnen, mit gemessenem Servoverhalten (kp/kv, Latenz) neu zu trainieren, sobald der Roboter existiert."
+ },
+ "ddc389877c374906": {
+  "en": "A learned policy can command fast, large motions the scripted gait never would. The firmware's slew limit, joint clamps and watchdog still apply, but they cannot stop a leg hitting your hand. Test on a stand first ([safety](../making/safety.md)).",
+  "de": "Eine gelernte Policy kann schnelle, große Bewegungen befehlen, die der programmierte Gait nie ausführen würde. Anstiegsbegrenzung, Gelenkbegrenzungen und Watchdog der Firmware gelten weiterhin, können aber nicht verhindern, dass ein Bein Ihre Hand trifft. Testen Sie zuerst auf einem Ständer ([Sicherheit](../making/safety.md))."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "27dc136a67ae1c40": {
+  "en": "Why does the policy observe no joint angles?",
+  "de": "Warum beobachtet die Policy keine Gelenkwinkel?"
+ },
+ "b62a8784bef22be6": {
+  "en": "What two firmware behaviours are reproduced inside `env.step()`, and why?",
+  "de": "Welche zwei Firmware-Verhalten werden in `env.step()` nachgebildet, und warum?"
+ },
+ "4b8de70451de851e": {
+  "en": "Why are floor and foot friction randomised together?",
+  "de": "Warum werden Boden- und Fußreibung gemeinsam randomisiert?"
+ },
+ "7d42eef09a3cb02f": {
+  "en": "Why is `policy.npz` exported instead of running the Stable-Baselines3 model on the Pi?",
+  "de": "Warum wird `policy.npz` exportiert, statt das Stable-Baselines3-Modell auf dem Pi auszuführen?"
+ },
+ "79d0a94b6667a164": {
+  "en": "What does running the MuJoCo-trained policy in Gazebo tell you?",
+  "de": "Was sagt Ihnen das Ausführen der in MuJoCo trainierten Policy in Gazebo?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "14a69df9237e27d0": {
+  "en": "The SPT5435LV servos have no position feedback; a policy must use only what the real robot measures (IMU, command, its own previous action, a clock).",
+  "de": "Die SPT5435LV-Servos haben keine Positionsrückmeldung; eine Policy darf nur verwenden, was der echte Roboter misst (IMU, Befehl, ihre eigene vorherige Action, einen Takt)."
+ },
+ "d22b4ec9c8a34262": {
+  "en": "The 6 rad/s slew limit and the joint/knee-crank clamp, so the policy trains under the same constraints the robot imposes.",
+  "de": "Die Anstiegsbegrenzung von 6 rad/s und die Gelenk-/Kniekurbel-Begrenzung, damit die Policy unter denselben Einschränkungen trainiert, die der Roboter vorgibt."
+ },
+ "6e9f0cc56dcc9576": {
+  "en": "MuJoCo uses the larger friction of the two contacting geoms; scaling only one would often have no effect.",
+  "de": "MuJoCo verwendet die größere Reibung der beiden sich berührenden Geoms; nur eine zu skalieren, hätte oft keine Wirkung."
+ },
+ "7bb6f66320deddec": {
+  "en": "The robot would need PyTorch; the NumPy runtime is small, and the same code is used in evaluation, so the deployed function is exactly the evaluated one.",
+  "de": "Der Roboter bräuchte PyTorch; die NumPy-Laufzeit ist klein, und derselbe Code wird in der Auswertung verwendet, sodass die eingesetzte Funktion genau die ausgewertete ist."
+ },
+ "432b036b5e40acd7": {
+  "en": "Whether the policy depends on MuJoCo-specific quirks: a sim-to-sim gap is a warning sign for the sim-to-real gap.",
+  "de": "Ob die Policy von MuJoCo-spezifischen Eigenheiten abhängt: Eine Sim-to-Sim-Lücke ist ein Warnzeichen für die Sim-to-Real-Lücke."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "79d6e30177b7bdca": {
+  "en": "[MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/overview.html)",
+  "de": "[MuJoCo-Dokumentation](https://mujoco.readthedocs.io/en/stable/overview.html)"
+ },
+ "1a62729510d11774": {
+  "en": "[Gazebo Harmonic documentation](https://gazebosim.org/docs/harmonic/getstarted/)",
+  "de": "[Gazebo-Harmonic-Dokumentation](https://gazebosim.org/docs/harmonic/getstarted/)"
+ },
+ "687bfe510a56bbb4": {
+  "en": "[Stable-Baselines3 PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html)",
+  "de": "[Stable-Baselines3 PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html)"
+ },
+ "7f0c076e4ed610a4": {
+  "en": "[Schulman et al., Proximal Policy Optimization Algorithms (2017)](https://arxiv.org/abs/1707.06347)",
+  "de": "[Schulman et al., Proximal Policy Optimization Algorithms (2017)](https://arxiv.org/abs/1707.06347)"
+ },
+ "893f0d209d8e2aa7": {
+  "en": "[Tobin et al., Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World (2017)](https://arxiv.org/abs/1703.06907)",
+  "de": "[Tobin et al., Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World (2017)](https://arxiv.org/abs/1703.06907)"
+ },
+ "746c2b9aad8ca6b4": {
+  "en": "Theory: [Reinforcement learning](../theory/reinforcement-learning.md), [Legged locomotion](../theory/legged-locomotion.md)",
+  "de": "Theorie: [Reinforcement Learning](../theory/reinforcement-learning.md), [Fortbewegung mit Beinen](../theory/legged-locomotion.md)"
+ }
+}

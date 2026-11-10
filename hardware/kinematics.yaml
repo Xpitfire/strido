@@ -1,0 +1,333 @@
+description: Measured from upstream/yertle/design/CAD/Yertle_Single_v2.step by strido_cad.extract_kinematics
+units: mm, degrees
+base_frame:
+  convention: 'REP-103: x forward, y left, z up; origin = centre of the four hip axis intersections'
+  origin_in_step_mm:
+  - -5.0
+  - 20.843
+  - 78.6833
+  rotation_step_to_base:
+  - - 0.0
+    - -1.0
+    - 0.0
+  - - 1.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 1.0
+legs_step_raw:
+  FR:
+    servo_output_axis_step:
+      hip:
+      - -0.0
+      - -1.0
+      - 0.0
+      thigh:
+      - -1.0
+      - -0.0
+      - 0.0
+      knee_drive:
+      - -1.0
+      - 0.0
+      - 0.0
+    hip_axis_point_step_mm:
+    - -43.99999975664726
+    - 2.842170943040401e-14
+    - 78.7031977887319
+    femur_pivot_yz:
+    - -98.83010357566347
+    - 78.6832650894728
+    knee_yz:
+    - -6.88810509690848
+    - -13.220683765516911
+    drive_servo_yz:
+    - -118.8119866511607
+    - 58.70319778873359
+    arm_pin_yz:
+    - -135.79764609609614
+    - 75.65684806599418
+    crank_pin_a_yz:
+    - -115.80066632414064
+    - 95.6538278379498
+    crank_pin_b_yz:
+    - -79.75954025733456
+    - 97.68324354898112
+    tibia_link_end_yz:
+    - 10.746055593733873
+    - 2.974547434827686
+    tibia_pin_yz:
+    - 10.082457651568447
+    - 3.7498789829593613
+    foot_yz:
+    - -106.96841445142658
+    - -86.53783692714795
+    foot_radius_mm: 11.9801796760372
+    foot_x_span_mm:
+    - -93.30685320696796
+    - -71.20685339770283
+    leg_plane_x_mm: -82.2568533023354
+  RR:
+    servo_output_axis_step:
+      hip:
+      - 0.0
+      - 1.0
+      - -0.0
+      thigh:
+      - -1.0
+      - 0.0
+      - 0.0
+      knee_drive:
+      - -1.0
+      - 0.0
+      - 0.0
+    hip_axis_point_step_mm:
+    - -43.99999975664525
+    - 1.6342482922482304e-13
+    - 78.7031975839325
+    femur_pivot_yz:
+    - 140.51604351760355
+    - 78.6832648846709
+    knee_yz:
+    - 232.4580419963586
+    - -13.220683970318811
+    drive_servo_yz:
+    - 120.53416044210634
+    - 58.703197583931676
+    arm_pin_yz:
+    - 103.54850099717088
+    - 75.65684786119228
+    crank_pin_a_yz:
+    - 123.5454807691264
+    - 95.65382763314788
+    crank_pin_b_yz:
+    - 159.58660683593249
+    - 97.6832433441792
+    tibia_link_end_yz:
+    - 250.09220268700096
+    - 2.9745472300258156
+    tibia_pin_yz:
+    - 249.42860474483547
+    - 3.749878778157449
+    foot_yz:
+    - 132.37773264184045
+    - -86.53783713194987
+    foot_radius_mm: 11.9801796760372
+    foot_x_span_mm:
+    - -95.2999996135942
+    - -73.19999980432908
+    leg_plane_x_mm: -84.24999970896164
+  FL:
+    servo_output_axis_step:
+      hip:
+      - 0.0
+      - -1.0
+      - 0.0
+      thigh:
+      - 1.0
+      - 0.0
+      - 0.0
+      knee_drive:
+      - 1.0
+      - 0.0
+      - 0.0
+    hip_axis_point_step_mm:
+    - 33.99999689558173
+    - 4.050093593832571e-13
+    - 78.7031977887319
+    femur_pivot_yz:
+    - -98.83010357566341
+    - 78.68326508947281
+    knee_yz:
+    - -6.8881050969084106
+    - -13.220683765516897
+    drive_servo_yz:
+    - -118.81198665116062
+    - 58.703197788733625
+    arm_pin_yz:
+    - -135.79764609609612
+    - 75.65684806599417
+    crank_pin_a_yz:
+    - -115.80066632414056
+    - 95.65382783794979
+    crank_pin_b_yz:
+    - -79.7595402573345
+    - 97.68324354898112
+    tibia_link_end_yz:
+    - 10.746055593733937
+    - 2.9745474348276844
+    tibia_pin_yz:
+    - 10.082457651568516
+    - 3.749878982959365
+    foot_yz:
+    - -106.96841445142651
+    - -86.53783692714795
+    foot_radius_mm: 11.9801796760372
+    foot_x_span_mm:
+    - 61.20685053663728
+    - 83.3068503459024
+    leg_plane_x_mm: 72.25685044126985
+  RL:
+    servo_output_axis_step:
+      hip:
+      - -0.0
+      - 1.0
+      - -0.0
+      thigh:
+      - 1.0
+      - 0.0
+      - 0.0
+      knee_drive:
+      - 1.0
+      - 0.0
+      - 0.0
+    hip_axis_point_step_mm:
+    - 33.999996895579706
+    - 5.329070518200751e-13
+    - 78.70319758393248
+    femur_pivot_yz:
+    - 140.51604351760363
+    - 78.6832648846709
+    knee_yz:
+    - 232.45804199635862
+    - -13.220683970318811
+    drive_servo_yz:
+    - 120.53416044210641
+    - 58.7031975839317
+    arm_pin_yz:
+    - 103.54850099717093
+    - 75.65684786119226
+    crank_pin_a_yz:
+    - 123.54548076912647
+    - 95.65382763314788
+    crank_pin_b_yz:
+    - 159.5866068359325
+    - 97.68324334417922
+    tibia_link_end_yz:
+    - 250.09220268700096
+    - 2.974547230025785
+    tibia_pin_yz:
+    - 249.42860474483558
+    - 3.749878778157555
+    foot_yz:
+    - 132.37773264184054
+    - -86.53783713194977
+    foot_radius_mm: 11.9801796760372
+    foot_x_span_mm:
+    - 63.19999694326351
+    - 85.29999675252863
+    leg_plane_x_mm: 74.24999684789607
+legs_linkage:
+  FR:
+    thigh_length_mm: 129.99871883756376
+    calf_length_mm: 124.06237652174049
+    drive_to_pivot_mm: 28.257366129646805
+    arm_radius_mm: 23.998726726703293
+    short_link_mm: 28.280000000000005
+    crank_radius_a_mm: 23.999999999999925
+    crank_radius_b_mm: 26.919984523401432
+    crank_ab_angle_deg: -90.10622937539335
+    long_link_mm: 131.0
+    long_link_to_tibia_pin_mm: 129.9810046389721
+    tibia_crank_radius_mm: 23.999999999999233
+    tibia_pin_mismatch_mm: 1.0205396799607784
+    tibia_crank_to_foot_angle_deg: 188.7741213874493
+  RR:
+    thigh_length_mm: 129.99871883756379
+    calf_length_mm: 124.06237652174053
+    drive_to_pivot_mm: 28.25736612964681
+    arm_radius_mm: 23.998726726703307
+    short_link_mm: 28.280000000000005
+    crank_radius_a_mm: 23.99999999999989
+    crank_radius_b_mm: 26.919984523401432
+    crank_ab_angle_deg: -90.10622937539345
+    long_link_mm: 131.0
+    long_link_to_tibia_pin_mm: 129.98100463897208
+    tibia_crank_radius_mm: 23.999999999999194
+    tibia_pin_mismatch_mm: 1.0205396799607918
+    tibia_crank_to_foot_angle_deg: 188.77412138744936
+  FL:
+    thigh_length_mm: 129.99871883756376
+    calf_length_mm: 124.0623765217405
+    drive_to_pivot_mm: 28.25736612964678
+    arm_radius_mm: 23.99872672670329
+    short_link_mm: 28.280000000000033
+    crank_radius_a_mm: 23.99999999999989
+    crank_radius_b_mm: 26.919984523401418
+    crank_ab_angle_deg: -90.1062293753934
+    long_link_mm: 131.0
+    long_link_to_tibia_pin_mm: 129.9810046389721
+    tibia_crank_radius_mm: 23.99999999999923
+    tibia_pin_mismatch_mm: 1.020539679960779
+    tibia_crank_to_foot_angle_deg: 188.77412138744927
+  RL:
+    thigh_length_mm: 129.99871883756376
+    calf_length_mm: 124.06237652174043
+    drive_to_pivot_mm: 28.257366129646805
+    arm_radius_mm: 23.998726726703293
+    short_link_mm: 28.280000000000022
+    crank_radius_a_mm: 23.999999999999904
+    crank_radius_b_mm: 26.9199845234014
+    crank_ab_angle_deg: -90.10622937539335
+    long_link_mm: 131.0
+    long_link_to_tibia_pin_mm: 129.98100463897208
+    tibia_crank_radius_mm: 23.99999999999933
+    tibia_pin_mismatch_mm: 1.0205396799608217
+    tibia_crank_to_foot_angle_deg: 188.7741213874494
+legs_base:
+  FR:
+    hip_mm:
+    - 119.673
+    - -39.0
+    - 0.0
+    leg_plane_offset_mm: -38.25685354568814
+    knee_in_step_pose_mm:
+    - 27.731
+    - -77.257
+    - -91.904
+    foot_in_step_pose_mm:
+    - 127.811
+    - -77.257
+    - -165.221
+  RR:
+    hip_mm:
+    - -119.673
+    - -39.0
+    - -0.0
+    leg_plane_offset_mm: -40.24999995231639
+    knee_in_step_pose_mm:
+    - -211.615
+    - -79.25
+    - -91.904
+    foot_in_step_pose_mm:
+    - -111.535
+    - -79.25
+    - -165.221
+  FL:
+    hip_mm:
+    - 119.673
+    - 39.0
+    - 0.0
+    leg_plane_offset_mm: 38.25685354568812
+    knee_in_step_pose_mm:
+    - 27.731
+    - 77.257
+    - -91.904
+    foot_in_step_pose_mm:
+    - 127.811
+    - 77.257
+    - -165.221
+  RL:
+    hip_mm:
+    - -119.673
+    - 39.0
+    - -0.0
+    leg_plane_offset_mm: 40.249999952316365
+    knee_in_step_pose_mm:
+    - -211.615
+    - 79.25
+    - -91.904
+    foot_in_step_pose_mm:
+    - -111.535
+    - 79.25
+    - -165.221

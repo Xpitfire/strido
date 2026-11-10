@@ -1,0 +1,67 @@
+/*
+* Yertle Quadruped Robot - Firmware for ESP32
+* 
+* Written by Jerome Graves
+* 2022
+* Jeromegraves.com    
+*/
+#include "yertle_lib.h"
+#include <Wire.h>
+
+TaskHandle_t Task1;
+TaskHandle_t Task2;
+
+ServoClass Servos;
+CommClass Comms;
+SensorClass Sensors;
+
+
+
+const TickType_t hardwareDelay = 10 / portTICK_PERIOD_MS;
+const TickType_t commDelay = 10 / portTICK_PERIOD_MS;
+
+void setup() {
+  Serial.begin(115200);
+  Serial.setTimeout(10);
+  
+  Wire.setClock(1000000);
+  Wire.begin();
+  delay(500);
+
+  xTaskCreatePinnedToCore(hardwareTask, "Task1",5000,NULL,2, &Task1,1);
+  delay(500);
+
+  xTaskCreatePinnedToCore(commTask, "Task2",5000,NULL,1, &Task2, 0);
+  delay(500);
+}
+
+// Task pinned to core 1: I2C, servos and sensors.
+
+void hardwareTask(void* parameter) {
+  Serial.print("\nHardwareTask is running on core ");
+  Serial.println(xPortGetCoreID());
+
+  Sensors.start();
+  Servos.start();
+  Servos.tick();
+  
+  for (;;) {
+    Servos.tick();
+    Sensors.tick();
+    vTaskDelay(hardwareDelay);
+  }
+}
+
+
+// Task pinned to core 0: WiFi and serial communication.
+void commTask(void* parameter) {
+  Serial.print("\ncommTask is running on core ");
+  Serial.println(xPortGetCoreID());
+  Comms.start();
+  for (;;) {
+    Comms.listen();
+    vTaskDelay(commDelay);
+  }
+}
+
+void loop(){};

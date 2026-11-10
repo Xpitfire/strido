@@ -1,0 +1,3 @@
+# Strido
+
+> Fixture llms.txt

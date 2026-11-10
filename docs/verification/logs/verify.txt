@@ -1,0 +1,22 @@
+# 2026-10-30T21:01Z make verify
+.venv/bin/python tools/verify/hole_stacks.py
+.venv/bin/python tools/verify/fasteners.py
+counts: {'din985_m3': 16, 'iso4032_m3': 56, 'iso4762_m3x10': 84, 'iso4762_m3x12': 8, 'iso4762_m3x16': 4, 'iso4762_m3x20': 28, 'iso4762_m3x25': 12, 'iso4762_m3x8': 36, 'iso7089_m3': 16}
+.venv/bin/python tools/verify/interference_check.py
+stand_170mm: 479 solids, 307 overlaps -> {'upstream fit': 28, 'upstream joint': 163, 'seating contact': 8, 'joint': 67, 'thread engagement': 41}
+crouch_120mm: 479 solids, 307 overlaps -> {'upstream fit': 28, 'upstream joint': 163, 'seating contact': 8, 'joint': 67, 'thread engagement': 41}
+tall_210mm: 479 solids, 305 overlaps -> {'upstream fit': 28, 'upstream joint': 163, 'seating contact': 8, 'joint': 67, 'thread engagement': 39}
+cad_reference: 479 solids, 305 overlaps -> {'upstream fit': 28, 'upstream joint': 163, 'seating contact': 8, 'joint': 67, 'thread engagement': 39}
+.venv/bin/python tools/verify/sensor_fov.py
+stand            lidar blocked rays:   0   camera image showing the robot: 0.0 %
+crouch           lidar blocked rays:   0   camera image showing the robot: 0.0 %
+trot_swing_apex  lidar blocked rays:   0   camera image showing the robot: 0.0 %
+trot_max_stride  lidar blocked rays:   0   camera image showing the robot: 0.0 %
+hips_abducted    lidar blocked rays:   0   camera image showing the robot: 0.0 %
+.venv/bin/python tools/verify/rom_sweep.py
+FL {'hip_deg': [-25.0, 57.5], 'thigh_deg': [-45.0, 125.0], 'calf_deg': [-150.0, -45.0], 'crank_deg': [-2.5, 75.0]}
+FR {'hip_deg': [-57.5, 20.0], 'thigh_deg': [-45.0, 125.0], 'calf_deg': [-150.0, -45.0], 'crank_deg': [-2.5, 75.0]}
+RL {'hip_deg': [-30.0, 52.5], 'thigh_deg': [-15.0, 125.0], 'calf_deg': [-150.0, -45.0], 'crank_deg': [-2.5, 75.0]}
+RR {'hip_deg': [-50.0, 25.0], 'thigh_deg': [-15.0, 125.0], 'calf_deg': [-150.0, -45.0], 'crank_deg': [-2.5, 75.0]}
+.venv/bin/python tools/codegen.py --check
+make verify exit: 0

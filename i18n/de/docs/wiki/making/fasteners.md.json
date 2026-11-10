@@ -1,0 +1,314 @@
+{
+ "2002edff70c64a18": {
+  "en": "Fasteners",
+  "de": "Befestigungselemente"
+ },
+ "422370f9b647239f": {
+  "en": "Strido is held together by 223 screws in three sizes (M2, M2.5, M3), all with socket heads. This page explains how to read a screw designation, how a screw holds in a printed hole, why the pilot holes are sized as they are, and how tight is tight enough in plastic.",
+  "de": "Strido wird von 223 Schrauben in drei Größen (M2, M2.5, M3) zusammengehalten, alle mit Innensechskant-Zylinderkopf. Diese Seite erklärt, wie man eine Schraubenbezeichnung liest, wie eine Schraube in einem gedruckten Loch hält, warum die Vorbohrungen so bemessen sind und wie fest in Kunststoff fest genug ist."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "46be1b1c6f3ecd6c": {
+  "en": "The fastener list is in the BOM ([bom/README.md](../../bom/README.md), sections *Fasteners* and *Fasteners by joint*); each assembly step lists its screws in the parts box ([assembly manual](../../assembly/README.md)). The fit gate (`python -m strido_verify.fits`, report [verification/fits.md](../../verification/fits.md)) checks every screw against the bands in `hardware/verification/tolerances.yaml`. ADR-009 in [decisions.md](../../decisions.md) covers the servo-mount pilots.",
+  "de": "Die Liste der Befestigungselemente steht in der Stückliste ([bom/README.md](../../bom/README.md), Abschnitte *Fasteners* und *Fasteners by joint*); jeder Montageschritt führt seine Schrauben im Teilekasten auf ([Montageanleitung](../../assembly/README.md)). Die Passungsprüfung (`python -m strido_verify.fits`, Bericht [verification/fits.md](../../verification/fits.md)) prüft jede Schraube gegen die Bereiche in `hardware/verification/tolerances.yaml`. ADR-009 in [decisions.md](../../decisions.md) behandelt die Vorbohrungen der Servohalterungen."
+ },
+ "004fc153efb8efbd": {
+  "en": "Reading a screw designation",
+  "de": "Eine Schraubenbezeichnung lesen"
+ },
+ "a414abd9de95313a": {
+  "en": "`M3 × 10 DIN 912 A2` means:",
+  "de": "`M3 × 10 DIN 912 A2` bedeutet:"
+ },
+ "dba5f0cc4efb72e2": {
+  "en": "| Part | Meaning |",
+  "de": "| Teil | Bedeutung |"
+ },
+ "77682612bac63f03": {
+  "en": "| `M3` | Metric ISO thread, 3 mm nominal (outer) diameter. Coarse pitch unless stated: M2 = 0.4 mm, M2.5 = 0.45 mm, M3 = 0.5 mm per turn |",
+  "de": "| `M3` | Metrisches ISO-Gewinde, 3 mm Nenndurchmesser (Außendurchmesser). Regelgewinde, sofern nicht anders angegeben: M2 = 0,4 mm, M2.5 = 0,45 mm, M3 = 0,5 mm pro Umdrehung |"
+ },
+ "d5417ad695345032": {
+  "en": "| `× 10` | Length in mm, measured from under the head to the tip |",
+  "de": "| `× 10` | Länge in mm, gemessen von unter dem Kopf bis zur Spitze |"
+ },
+ "e2ce6fbe8a692da2": {
+  "en": "| `DIN 912` / `ISO 4762` | Socket head cap screw: cylindrical head with a hex socket. DIN 912 and ISO 4762 are the same shape; the BOM orders DIN 912, the CAD calls them `iso4762_…` |",
+  "de": "| `DIN 912` / `ISO 4762` | Zylinderschraube mit Innensechskant: zylindrischer Kopf mit Sechskantöffnung. DIN 912 und ISO 4762 haben dieselbe Form; die Stückliste bestellt DIN 912, das CAD nennt sie `iso4762_…` |"
+ },
+ "14788a9fa6a867b0": {
+  "en": "| `A2` | Stainless steel grade (A2 = 304-type austenitic) |",
+  "de": "| `A2` | Edelstahlgüte (A2 = austenitisch, Typ 304) |"
+ },
+ "438448e3233e5fc2": {
+  "en": "The fasteners in this robot",
+  "de": "Die Befestigungselemente in diesem Roboter"
+ },
+ "ef6e3656994069ce": {
+  "en": "All screws are socket head cap screws. One hex key size per thread:",
+  "de": "Alle Schrauben sind Zylinderschrauben mit Innensechskant. Eine Inbusschlüsselgröße pro Gewinde:"
+ },
+ "64ff774e25d1e981": {
+  "en": "| Thread | Hex key | Nut (across flats) | Lengths used | Typical use |",
+  "de": "| Gewinde | Inbusschlüssel | Mutter (Schlüsselweite) | Verwendete Längen | Typische Verwendung |"
+ },
+ "4774795468a39b41": {
+  "en": "| M2 | 1.5 mm | 4.0 mm | 5, 10 mm | LCD bracket, regulator stand-offs, camera PCB |",
+  "de": "| M2 | 1,5 mm | 4,0 mm | 5, 10 mm | LCD-Halter, Abstandsbolzen des Spannungsreglers, Kameraplatine |"
+ },
+ "e4edbc6644f39ace": {
+  "en": "| M2.5 | 2.0 mm | 5.0 mm | 5, 6 mm | Pi 5 / PCA9685 / INA260 stand-offs, IMU, LiDAR |",
+  "de": "| M2.5 | 2,0 mm | 5,0 mm | 5, 6 mm | Abstandsbolzen für Pi 5 / PCA9685 / INA260, IMU, LiDAR |"
+ },
+ "5424f4765e91d467": {
+  "en": "| M3 | 2.5 mm | 5.5 mm | 8, 10, 12, 16, 20, 25, 40 mm | everything structural: frames, servos, legs, shells |",
+  "de": "| M3 | 2,5 mm | 5,5 mm | 8, 10, 12, 16, 20, 25, 40 mm | alles Tragende: Rahmen, Servos, Beine, Schalen |"
+ },
+ "601cdd6f7a044eb4": {
+  "en": "The M3 × 10 is by far the most common (86 in the CAD: servo ears, shoulder frames, chassis, knee axles). The longest is the single M3 × 40 camera tilt pivot.",
+  "de": "Die M3 × 10 ist mit Abstand die häufigste (86 im CAD: Servolaschen, Schulterrahmen, Chassis, Knieachsen). Die längste ist die einzelne M3 × 40 des Kamera-Neigegelenks."
+ },
+ "a165277e44cb8507": {
+  "en": "Other fastener types in the BOM:",
+  "de": "Weitere Befestigungselemente in der Stückliste:"
+ },
+ "eced32e424eba2b1": {
+  "en": "**Hex nuts** ISO 4032 / DIN 934 (M2, M2.5, M3): plain nuts, 56 of them M3. Some sit in moulded pockets in the printed part (for example the captive nut in `upper_shoulder_frame`), so you tighten from the screw side only.",
+  "de": "**Sechskantmuttern** ISO 4032 / DIN 934 (M2, M2.5, M3): einfache Muttern, davon 56 in M3. Einige sitzen in eingeformten Taschen im gedruckten Teil (zum Beispiel die unverlierbare Mutter in `upper_shoulder_frame`), sodass Sie nur von der Schraubenseite festziehen."
+ },
+ "9292d23aaa86a92b": {
+  "en": "**Nylon-insert lock nuts** DIN 985 M3 (17 in the CAD): a nylon ring grips the thread so the nut does not back off even when it is *not* tight. That is why they are used at moving joints (tibia joints, tibia link pins, camera pivot).",
+  "de": "**Sicherungsmuttern mit Nylonring** DIN 985 M3 (17 im CAD): Ein Nylonring klemmt das Gewinde, sodass sich die Mutter nicht löst, selbst wenn sie *nicht* fest angezogen ist. Deshalb werden sie an beweglichen Gelenken verwendet (Tibia-Gelenke, Bolzen der Tibia-Koppel, Kameragelenk)."
+ },
+ "466f8f927ad74359": {
+  "en": "**Washers** ISO 7089 M3 (16): spread the load under a head or nut at the knee axles, hip pivots and arm pins.",
+  "de": "**Unterlegscheiben** ISO 7089 M3 (16): verteilen die Last unter einem Kopf oder einer Mutter an den Knieachsen, Hüftdrehpunkten und Armbolzen."
+ },
+ "0ab0cfe2bfb76142": {
+  "en": "**Stand-offs**, female-female: brass M2.5 × 6 mm (boards) and M2 × 8 mm (regulator). They lift circuit boards off the deck.",
+  "de": "**Abstandsbolzen**, Innen-Innen: Messing M2.5 × 6 mm (Platinen) und M2 × 8 mm (Spannungsregler). Sie heben Platinen vom Deck ab."
+ },
+ "58c9200306583968": {
+  "en": "No heat-set inserts are used: every screw ends in a nut, a printed pilot, or a metal thread.",
+  "de": "Es werden keine Gewindeeinsätze (Einschmelzmuttern) verwendet: Jede Schraube endet in einer Mutter, einer gedruckten Vorbohrung oder einem Metallgewinde."
+ },
+ "a2ddb73788e3d565": {
+  "en": "Three ways a screw ends",
+  "de": "Drei Arten, wie eine Schraube endet"
+ },
+ "29cdd540cac7daa0": {
+  "en": "The fit report counts how each of the 223 screws terminates:",
+  "de": "Der Passungsbericht zählt, wie jede der 223 Schrauben endet:"
+ },
+ "6828bd877082f233": {
+  "en": "| Termination | Count | What holds the screw |",
+  "de": "| Abschluss | Anzahl | Was die Schraube hält |"
+ },
+ "34a328af1428fb0d": {
+  "en": "| Nut | 105 | A hex nut, lock nut or brass stand-off; the printed parts are clamped between head and nut |",
+  "de": "| Mutter | 105 | Eine Sechskantmutter, Sicherungsmutter oder ein Messing-Abstandsbolzen; die gedruckten Teile werden zwischen Kopf und Mutter geklemmt |"
+ },
+ "88090a0a423f4e00": {
+  "en": "| Thread-forming | 78 | The screw cuts its own thread into a printed pilot hole (servo ears, servo brackets, knee axles, crank pins, hip horns, shell bosses) |",
+  "de": "| Gewindeformend | 78 | Die Schraube schneidet ihr eigenes Gewinde in eine gedruckte Vorbohrung (Servolaschen, Servohalter, Knieachsen, Kurbelbolzen, Hüfthörner, Schalendome) |"
+ },
+ "e67779ae454d74e7": {
+  "en": "| Vendor thread | 40 | A metal thread in a bought part: aluminium horns (femur-to-horn), servo output shafts (centre screws), LCD hex studs, LiDAR body |",
+  "de": "| Herstellergewinde | 40 | Ein Metallgewinde in einem Kaufteil: Aluminiumhörner (Femur-an-Horn), Servoabtriebswellen (Mittelschrauben), LCD-Sechskantbolzen, LiDAR-Gehäuse |"
+ },
+ "a6fa96cd1b5b2f24": {
+  "en": "A nut joint is the strongest and can be retightened indefinitely. A thread-forming joint is convenient (no nut to hold) but plastic threads wear out if you take the screw out and in many times.",
+  "de": "Eine Mutterverbindung ist die stärkste und lässt sich beliebig oft nachziehen. Eine gewindeformende Verbindung ist bequem (keine Mutter zum Gegenhalten), aber Kunststoffgewinde verschleißen, wenn Sie die Schraube oft heraus- und wieder eindrehen."
+ },
+ "a0a9e5acf30d2352": {
+  "en": "Thread-forming screws in printed pilots",
+  "de": "Gewindeformende Schrauben in gedruckten Vorbohrungen"
+ },
+ "e2f089d27e7bcbad": {
+  "en": "The BOM's ordinary machine screws are used as thread-forming screws: driven into a hole smaller than the screw, they push plastic aside and form a matching thread. Two numbers decide whether that works.",
+  "de": "Die normalen Maschinenschrauben der Stückliste werden als gewindeformende Schrauben verwendet: In ein Loch eingedreht, das kleiner als die Schraube ist, verdrängen sie Kunststoff und formen ein passendes Gewinde. Zwei Zahlen entscheiden, ob das funktioniert."
+ },
+ "9136249723b20543": {
+  "en": "Pilot diameter",
+  "de": "Vorbohrungsdurchmesser"
+ },
+ "dffdb5ba3f685c69": {
+  "en": "Guides for thread-forming screws in thermoplastics recommend a pilot of about $0.8\\,d$ ($d$ = nominal diameter). Strido grades the **printed** pilot as a ratio of $d$, taking the expected print shrink into account:",
+  "de": "Leitfäden für gewindeformende Schrauben in Thermoplasten empfehlen eine Vorbohrung von etwa $0.8\\,d$ ($d$ = Nenndurchmesser). Strido bewertet die **gedruckte** Vorbohrung als Verhältnis zu $d$ und berücksichtigt dabei den erwarteten Druckschwund:"
+ },
+ "88c97780a726f770": {
+  "en": "| Printed pilot / d | Grade | Why |",
+  "de": "| Gedruckte Vorbohrung / d | Bewertung | Begründung |"
+ },
+ "cf596a5888ae209f": {
+  "en": "| < 0.70 | fail | too much material to displace: the boss splits or the screw head strips |",
+  "de": "| < 0,70 | fail | zu viel Material zu verdrängen: der Dom platzt oder der Schraubenkopf dreht durch |"
+ },
+ "8d1823b274e7b5ec": {
+  "en": "| 0.70 – 0.90 | ok | full grip |",
+  "de": "| 0,70 – 0,90 | ok | voller Halt |"
+ },
+ "7c72e7538a95053a": {
+  "en": "| 0.90 – 0.93 | warn | weak grip: tighten by feel; if a screw spins, harden the pilot with thin CA glue and re-drive |",
+  "de": "| 0,90 – 0,93 | warn | schwacher Halt: nach Gefühl festziehen; dreht eine Schraube durch, die Vorbohrung mit dünnflüssigem Sekundenkleber härten und erneut eindrehen |"
+ },
+ "15e2516d708f9122": {
+  "en": "| > 0.93 | fail | no grip |",
+  "de": "| > 0,93 | fail | kein Halt |"
+ },
+ "3b69c4358d2d5306": {
+  "en": "For M3 that means a CAD pilot of about 2.25–2.85 mm is ok and 2.85–2.94 mm is a warning. Example: the `femur` M3 pilots are 2.80–2.85 mm in CAD, so they print at about 2.65–2.70 mm, and $2.70\\,\\mathrm{mm} / 3\\,\\mathrm{mm} = 0.90$ (range $0.88$–$0.90\\,d$): ok.",
+  "de": "Für M3 bedeutet das: Eine CAD-Vorbohrung von etwa 2,25–2,85 mm ist ok, 2,85–2,94 mm ergibt eine Warnung. Beispiel: Die M3-Vorbohrungen des `femur` messen im CAD 2,80–2,85 mm, werden also mit etwa 2,65–2,70 mm gedruckt, und $2.70\\,\\mathrm{mm} / 3\\,\\mathrm{mm} = 0.90$ (Bereich $0.88$–$0.90\\,d$): ok."
+ },
+ "327c863a376bdc11": {
+  "en": "Engagement length",
+  "de": "Einschraublänge"
+ },
+ "2a2dc2ae0ea1c936": {
+  "en": "Engagement is the length over which the hole is narrower than the screw, i.e. how much thread is formed. Rule: at least $1.5\\,d$ is ok ($1.5 \\times 3\\,\\mathrm{mm} = 4.5\\,\\mathrm{mm}$ for M3), $1.0$–$1.5\\,d$ is a warning (do not over-tighten), below $1.0\\,d$ fails. The `femur` pilots have 4.0 mm engagement ($4.0 / 3 \\approx 1.33\\,d$) and the `arming_port_bezel` M2.5 pilots 2.5 mm ($1.0\\,d$): both warn, so tighten gently. Why engagement matters (thread shear area grows with engaged length) is worked through in [strength, torque and failure](strength.md).",
+  "de": "Die Einschraublänge ist die Länge, über die das Loch enger als die Schraube ist, also wie viel Gewinde geformt wird. Regel: mindestens $1.5\\,d$ ist ok ($1.5 \\times 3\\,\\mathrm{mm} = 4.5\\,\\mathrm{mm}$ für M3), $1.0$–$1.5\\,d$ ergibt eine Warnung (nicht zu fest anziehen), unter $1.0\\,d$ schlägt fehl. Die Vorbohrungen des `femur` haben 4,0 mm Einschraublänge ($4.0 / 3 \\approx 1.33\\,d$) und die M2.5-Vorbohrungen des `arming_port_bezel` 2,5 mm ($1.0\\,d$): beide ergeben eine Warnung, also behutsam festziehen. Warum die Einschraublänge wichtig ist (die Scherfläche des Gewindes wächst mit der eingeschraubten Länge), wird in [Festigkeit, Drehmoment und Versagen](strength.md) durchgerechnet."
+ },
+ "86debf74d9fb1868": {
+  "en": "ADR-009: the servo-mount pilots",
+  "de": "ADR-009: die Vorbohrungen der Servohalterungen"
+ },
+ "05e1173dbd9a1d14": {
+  "en": "29 screws of the upstream servo-mount family (`left_servo_mount`, `right_servo_mount`, the derived `_fl`/`_fr` variants and `servo_mount_top_bracket`) thread into 2.94–2.97 mm CAD pilots: 0.93–0.94 d after printing, just above the weak-grip band, with 4–12 mm engagement. Upstream Yertle robots are built with exactly these holes, so instead of redesigning them the project records an accepted deviation with a builder action:",
+  "de": "29 Schrauben der Upstream-Servohalterungsfamilie (`left_servo_mount`, `right_servo_mount`, die abgeleiteten Varianten `_fl`/`_fr` und `servo_mount_top_bracket`) greifen in CAD-Vorbohrungen von 2,94–2,97 mm: nach dem Druck 0,93–0,94 d, knapp über dem Bereich für schwachen Halt, mit 4–12 mm Einschraublänge. Upstream-Yertle-Roboter werden mit genau diesen Löchern gebaut; statt sie neu zu konstruieren, dokumentiert das Projekt daher eine akzeptierte Abweichung mit einer Maßnahme für den Erbauer:"
+ },
+ "7b46611e7eadb80b": {
+  "en": "**Preferred:** print these five parts with **X-Y hole compensation −0.15 mm**, which brings the pilot to about 2.65 mm (see [3D printing](3d-printing.md)).",
+  "de": "**Bevorzugt:** Drucken Sie diese fünf Teile mit **X-Y-Lochkompensation −0,15 mm**; damit misst die Vorbohrung etwa 2,65 mm (siehe [3D-Druck](3d-printing.md))."
+ },
+ "3d77c84bd73796f4": {
+  "en": "**Otherwise:** before driving each screw, wick a drop of thin CA (cyanoacrylate) glue into the pilot and let it cure; it hardens the hole wall so the screw forms a firmer thread. Check that each screw bites before the joint carries load.",
+  "de": "**Andernfalls:** Lassen Sie vor dem Eindrehen jeder Schraube einen Tropfen dünnflüssigen Sekundenkleber (Cyanacrylat) in die Vorbohrung laufen und aushärten; er härtet die Lochwand, sodass die Schraube ein festeres Gewinde formt. Prüfen Sie, dass jede Schraube greift, bevor die Verbindung Last trägt."
+ },
+ "62d8e8bad0d85337": {
+  "en": "If a mount ever strips a thread, the ADR's fallback is a re-pilot variant with a Ø 2.5 mm hole.",
+  "de": "Reißt in einer Halterung jemals ein Gewinde aus, sieht das ADR als Ausweichlösung eine Variante mit neuer Vorbohrung von Ø 2,5 mm vor."
+ },
+ "99ac048ea18b4fbb": {
+  "en": "Threadlocker",
+  "de": "Schraubensicherung"
+ },
+ "da633717b72dee85": {
+  "en": "Medium-strength (blue) threadlocker is an anaerobic adhesive: it cures in the absence of air between **metal** threads (the metal ions catalyse the cure) and stops vibration from loosening a screw, while still allowing removal with a hand tool. Strido uses it only on **metal-to-metal screws**: the screws into the servo output shafts and the tapped aluminium 25T horns: the horn centre screws, the femur-to-horn M3 × 20, the hip-horn M3 × 8 through the servo mount into the disc horn and the arm-pin M3 × 16 into the knee-drive arm horn. Every step reverses the load on a horn, and metal on metal has no plastic to grip the thread, so these are the screws most likely to work loose.",
+  "de": "Mittelfeste (blaue) Schraubensicherung ist ein anaerober Klebstoff: Sie härtet unter Luftabschluss zwischen **Metall**gewinden aus (die Metallionen katalysieren die Aushärtung) und verhindert, dass Vibrationen eine Schraube lösen, erlaubt aber weiterhin das Lösen mit Handwerkzeug. Strido verwendet sie nur bei **Metall-auf-Metall-Schrauben**: den Schrauben in die Servoabtriebswellen und in die Aluminium-25T-Hörner mit Gewinde: die Mittelschrauben der Hörner, die Femur-an-Horn-M3 × 20, die Hüfthorn-M3 × 8 durch die Servohalterung in das Scheibenhorn und die Armbolzen-M3 × 16 in das Armhorn des Knieantriebs. Jeder Schritt kehrt die Last an einem Horn um, und bei Metall auf Metall gibt es keinen Kunststoff, der das Gewinde klemmt; daher lösen sich diese Schrauben am ehesten."
+ },
+ "42c1f47d1db99aa4": {
+  "en": "One drop on the screw thread is enough.",
+  "de": "Ein Tropfen auf das Schraubengewinde genügt."
+ },
+ "ad2af009733ac90c": {
+  "en": "No threadlocker in printed holes",
+  "de": "Keine Schraubensicherung in gedruckten Löchern"
+ },
+ "2e4d547848e305e4": {
+  "en": "Henkel's data sheet for Loctite 243 states that it is not normally recommended on plastics, particularly thermoplastics, because stress cracking can result; between a steel screw and plastic it also lacks the metal surfaces it needs to cure. For weak printed pilots use hole compensation or a CA-hardened pilot instead.",
+  "de": "Laut Henkels Datenblatt wird Loctite 243 auf Kunststoffen, insbesondere Thermoplasten, normalerweise nicht empfohlen, da Spannungsrisse entstehen können; zwischen Stahlschraube und Kunststoff fehlen ihr außerdem die Metallflächen, die sie zum Aushärten braucht. Verwenden Sie für schwache gedruckte Vorbohrungen stattdessen Lochkompensation oder eine mit Sekundenkleber gehärtete Vorbohrung."
+ },
+ "b6152b2eb6040f6c": {
+  "en": "Tightening in plastic",
+  "de": "Festziehen in Kunststoff"
+ },
+ "537ececa2653ec35": {
+  "en": "A steel M3 screw can easily produce more clamping force than a printed boss can take. The [strength report](../../verification/strength.md#tightening-torque-into-printed-pilots) gives a torque limit for every printed pilot (0.05–0.35 N·m; the formulas are in [strength, torque and failure](strength.md)). The rules from the assembly manual:",
+  "de": "Eine M3-Stahlschraube kann leicht mehr Klemmkraft erzeugen, als ein gedruckter Dom aufnehmen kann. Der [Festigkeitsbericht](../../verification/strength.md#tightening-torque-into-printed-pilots) gibt für jede gedruckte Vorbohrung ein Drehmomentlimit an (0,05–0,35 N·m; die Formeln stehen in [Festigkeit, Drehmoment und Versagen](strength.md)). Die Regeln aus der Montageanleitung:"
+ },
+ "cd2e4c7b9ddb978c": {
+  "en": "**Screws into printed pilots (marked self-tapping):** turn until snug, never to full torque. \"Snug\" means the head has just seated and the parts no longer move; stop there.",
+  "de": "**Schrauben in gedruckte Vorbohrungen (als selbstschneidend markiert):** drehen, bis sie satt anliegen, niemals mit vollem Drehmoment. „Satt“ heißt, der Kopf liegt gerade auf und die Teile bewegen sich nicht mehr; hier aufhören."
+ },
+ "90d00ef01f242a8f": {
+  "en": "**Through thin parts:** the electronics deck is 3 mm thick in the centre; its screw heads sit in counterbores, so do not over-tighten.",
+  "de": "**Durch dünne Teile:** Das Elektronikdeck ist in der Mitte 3 mm dick; seine Schraubenköpfe sitzen in Senkungen, also nicht zu fest anziehen."
+ },
+ "9e1641f6b449f2b6": {
+  "en": "**Lock nuts at moving joints:** tighten only until the joint has no play; the knee links must swing under their own weight (Step 12). A lock nut holds its position without being tight.",
+  "de": "**Sicherungsmuttern an beweglichen Gelenken:** nur so weit festziehen, bis das Gelenk kein Spiel mehr hat; die Kniekoppeln müssen unter ihrem Eigengewicht schwingen (Schritt 12). Eine Sicherungsmutter hält ihre Position, ohne fest angezogen zu sein."
+ },
+ "ae2e64c39fb34a82": {
+  "en": "**Friction joints:** the camera pivot (M3 × 40 with a lock nut) is tightened until the camera holds its angle, 15° down being the reference.",
+  "de": "**Reibgelenke:** Das Kameragelenk (M3 × 40 mit Sicherungsmutter) wird festgezogen, bis die Kamera ihren Winkel hält; Referenz ist 15° nach unten."
+ },
+ "0d45b9496de95231": {
+  "en": "**Short hex keys:** hold a hex key by its long arm only for loosening; use the short arm (or finger pressure on a screwdriver handle) for tightening into plastic, so you cannot apply much torque by accident.",
+  "de": "**Kurze Inbusschlüssel:** Halten Sie einen Inbusschlüssel nur zum Lösen am langen Schenkel; verwenden Sie zum Festziehen in Kunststoff den kurzen Schenkel (oder Fingerdruck auf einen Schraubendrehergriff), damit Sie nicht versehentlich zu viel Drehmoment aufbringen."
+ },
+ "366b031180d760c5": {
+  "en": "Signs you went too far: the screw keeps turning without getting tighter (thread stripped), a white stress mark appears around the hole, or a layer line opens up next to the boss.",
+  "de": "Anzeichen, dass Sie zu weit gegangen sind: Die Schraube dreht weiter, ohne fester zu werden (Gewinde ausgerissen), um das Loch erscheint eine weiße Spannungsmarke, oder neben dem Dom öffnet sich eine Schichtlinie."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "14ba1974d3734981": {
+  "en": "What do `M2.5 × 6` and `ISO 4762` tell you?",
+  "de": "Was sagen Ihnen `M2.5 × 6` und `ISO 4762`?"
+ },
+ "ef1b0c44c83c8035": {
+  "en": "An M3 pilot is drawn at 2.80 mm. What will it print at, and what grade does it get?",
+  "de": "Eine M3-Vorbohrung ist mit 2,80 mm gezeichnet. Mit welchem Maß wird sie gedruckt, und welche Bewertung erhält sie?"
+ },
+ "324839d88b9d9325": {
+  "en": "Why do the knee joints use DIN 985 lock nuts rather than plain nuts?",
+  "de": "Warum verwenden die Kniegelenke Sicherungsmuttern DIN 985 statt einfacher Muttern?"
+ },
+ "be4f61b57ce1034f": {
+  "en": "Which screws in Strido get thread locker as standard?",
+  "de": "Welche Schrauben in Strido erhalten standardmäßig Schraubensicherung?"
+ },
+ "727a644aafde7b98": {
+  "en": "What is the preferred builder action for the servo-mount pilots under ADR-009?",
+  "de": "Was ist die bevorzugte Maßnahme für den Erbauer bei den Vorbohrungen der Servohalterungen nach ADR-009?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "780dcafadbcfd6ac": {
+  "en": "Metric thread 2.5 mm diameter, 6 mm long under the head; a socket head cap screw.",
+  "de": "Metrisches Gewinde mit 2,5 mm Durchmesser, 6 mm lang unter dem Kopf; eine Zylinderschraube mit Innensechskant."
+ },
+ "15a4ffef46bd7535": {
+  "en": "About 2.65 mm (2.80 − 0.15), i.e. 0.88 d: ok, full grip.",
+  "de": "Etwa 2,65 mm (2,80 − 0,15), also 0,88 d: ok, voller Halt."
+ },
+ "7e51080b926db08c": {
+  "en": "The joint must turn freely, so the nut cannot be tightened hard; the nylon insert keeps it from backing off anyway.",
+  "de": "Das Gelenk muss sich frei drehen, daher kann die Mutter nicht fest angezogen werden; der Nyloneinsatz verhindert trotzdem, dass sie sich löst."
+ },
+ "f6f8438fb35aeb80": {
+  "en": "Only the metal-to-metal screws into the servo horns; printed pilots never get anaerobic thread locker.",
+  "de": "Nur die Metall-auf-Metall-Schrauben in die Servohörner; gedruckte Vorbohrungen erhalten niemals anaerobe Schraubensicherung."
+ },
+ "d5d03d9fbbfc16fc": {
+  "en": "Print those parts with X-Y hole compensation −0.15 mm, giving a pilot of about 2.65 mm.",
+  "de": "Diese Teile mit X-Y-Lochkompensation −0,15 mm drucken, was eine Vorbohrung von etwa 2,65 mm ergibt."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "69be0348d1237c5a": {
+  "en": "[Henkel: LOCTITE 243 technical data sheet](https://datasheets.tdx.henkel.com/LOCTITE-243-en_GL.pdf)",
+  "de": "[Henkel: Technisches Datenblatt LOCTITE 243](https://datasheets.tdx.henkel.com/LOCTITE-243-en_GL.pdf)"
+ },
+ "174c7b5934e1cb89": {
+  "en": "[Fit report: verification/fits.md](../../verification/fits.md) and [decisions (ADR-009)](../../decisions.md)",
+  "de": "[Passungsbericht: verification/fits.md](../../verification/fits.md) und [Entscheidungen (ADR-009)](../../decisions.md)"
+ },
+ "527ab6135a3c8185": {
+  "en": "[Prusa Knowledge Base: PETG](https://help.prusa3d.com/article/petg_2059) (material the pilots are printed in)",
+  "de": "[Prusa Knowledge Base: PETG](https://help.prusa3d.com/article/petg_2059) (Material, in dem die Vorbohrungen gedruckt werden)"
+ },
+ "8ce1cea79c61a947": {
+  "en": "Related in this wiki: [3D printing](3d-printing.md), [mechanics](../hardware/mechanics.md), [tools and workshop](tools-and-workshop.md)",
+  "de": "Verwandt in diesem Wiki: [3D-Druck](3d-printing.md), [Mechanik](../hardware/mechanics.md), [Werkzeug und Werkstatt](tools-and-workshop.md)"
+ }
+}

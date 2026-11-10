@@ -1,0 +1,430 @@
+{
+ "ca31a362dc13e377": {
+  "en": "Servos",
+  "de": "Servos"
+ },
+ "a9a8e2a448bf5210": {
+  "en": "A hobby servo is a small gearmotor with its own position controller: you send it a pulse width, it turns its output shaft to the matching angle and holds it there. Strido uses twelve of them, one per joint, and everything about how the robot moves starts with how these servos are driven.",
+  "de": "Ein Hobby-Servo ist ein kleiner Getriebemotor mit eigenem Positionsregler: Sie senden ihm eine Pulsbreite, er dreht seine Abtriebswelle auf den passenden Winkel und hält ihn dort. Strido verwendet zwölf davon, einen pro Gelenk, und alles an der Bewegung des Roboters beginnt damit, wie diese Servos angesteuert werden."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "290e61563ab54c7b": {
+  "en": "**Part:** SPT5435LV-180W digital servo, 13 bought (12 + 1 spare), BOM line `servo_spt5435lv` in `hardware/bom.yaml`.",
+  "de": "**Teil:** Digitalservo SPT5435LV-180W, 13 gekauft (12 + 1 Reserve), Stücklistenposition `servo_spt5435lv` in `hardware/bom.yaml`."
+ },
+ "f6ceaab760d74b5e": {
+  "en": "**Joints:** hip (abduction), thigh and knee crank on each leg, FL, FR, RL, RR. PCA9685 channels 4–15 (`hardware/electronics.yaml`, `servos.channels`).",
+  "de": "**Gelenke:** Hüfte (Abduktion), Oberschenkel und Kniekurbel an jedem Bein, FL, FR, RL, RR. PCA9685-Kanäle 4–15 (`hardware/electronics.yaml`, `servos.channels`)."
+ },
+ "b1ed0633b6d6e600": {
+  "en": "**Signal:** PCA9685 PWM driver at 200 Hz, 500–2500 µs, 3.3 V logic level, enabled through the XIAO D3 → PCA9685 OE line.",
+  "de": "**Signal:** PCA9685-PWM-Treiber mit 200 Hz, 500–2500 µs, 3,3-V-Logikpegel, freigegeben über die Leitung XIAO D3 → PCA9685 OE."
+ },
+ "84ee31991dbec23d": {
+  "en": "**Power:** the 6.0 V servo rail from two Hobbywing UBEC-10A, six servos each, through the WAGO buses in the front and rear cavities.",
+  "de": "**Stromversorgung:** die 6,0-V-Servoschiene aus zwei Hobbywing UBEC-10A, je sechs Servos, über die WAGO-Busse im vorderen und hinteren Hohlraum."
+ },
+ "f74c4c587f3bbcc0": {
+  "en": "**Horns:** 25T aluminium disc horns (8) for hip and thigh, 25T aluminium clamping arm horns (4) for the knee crank.",
+  "de": "**Servohörner:** 25T-Aluminium-Scheibenhörner (8) für Hüfte und Oberschenkel, 25T-Aluminium-Klemmarmhörner (4) für die Kniekurbel."
+ },
+ "59230243ac3889da": {
+  "en": "**Code:** `firmware/strido_esp32s3/lib/strido_core/src/servo_map.cpp` (angle → pulse), `strido-cli center` / `calibrate`.",
+  "de": "**Code:** `firmware/strido_esp32s3/lib/strido_core/src/servo_map.cpp` (Winkel → Puls), `strido-cli center` / `calibrate`."
+ },
+ "d08416a6f9cf23ee": {
+  "en": "What is inside a hobby servo",
+  "de": "Was in einem Hobby-Servo steckt"
+ },
+ "2a1137409a07e8fe": {
+  "en": "A servo packs four things into a 40.5 × 20 × 40.5 mm case (72 g for the SPT5435LV):",
+  "de": "Ein Servo packt vier Dinge in ein Gehäuse von 40,5 × 20 × 40,5 mm (72 g beim SPT5435LV):"
+ },
+ "fab152858255ad2b": {
+  "en": "**DC motor.** The SPT5435LV uses a cored (iron-armature) motor.",
+  "de": "**DC-Motor.** Der SPT5435LV verwendet einen Motor mit Eisenanker (cored)."
+ },
+ "df14bad50dd656c3": {
+  "en": "**Gearbox.** All-metal gears trade speed for torque. The output shaft carries a 25-tooth spline (Futaba 25T) and runs in two ball bearings (2BB).",
+  "de": "**Getriebe.** Ganzmetall-Zahnräder tauschen Geschwindigkeit gegen Drehmoment. Die Abtriebswelle trägt eine Verzahnung mit 25 Zähnen (Futaba 25T) und läuft in zwei Kugellagern (2BB)."
+ },
+ "6462933c6ea2d659": {
+  "en": "**Potentiometer.** It sits on the output shaft and turns shaft angle into a voltage, so the servo always knows where its output is.",
+  "de": "**Potentiometer.** Es sitzt auf der Abtriebswelle und wandelt den Wellenwinkel in eine Spannung, sodass der Servo immer weiß, wo sein Abtrieb steht."
+ },
+ "ccc20353f96a5d48": {
+  "en": "**Control board.** It compares the commanded angle (from the pulse width) with the measured angle (from the potentiometer) and drives the motor to close the gap. This is a closed position loop *inside* the servo.",
+  "de": "**Steuerplatine.** Sie vergleicht den befohlenen Winkel (aus der Pulsbreite) mit dem gemessenen Winkel (vom Potentiometer) und treibt den Motor, um die Differenz zu schließen. Das ist ein geschlossener Positionsregelkreis *im* Servo."
+ },
+ "3408bd459b31562b": {
+  "en": "The control loop never leaves the servo. The robot only *commands* angles and cannot read them back, so `/joint_states` reports the angles the firmware commanded after clamping, not measured ones (`docs/software.md`).",
+  "de": "Der Regelkreis verlässt den Servo nie. Der Roboter *befiehlt* nur Winkel und kann sie nicht zurücklesen, daher meldet `/joint_states` die von der Firmware nach der Begrenzung befohlenen Winkel, keine gemessenen (`docs/software.md`)."
+ },
+ "de5b1698128e6eab": {
+  "en": "Analogue vs digital",
+  "de": "Analog vs. digital"
+ },
+ "4f32b0081db0dfa8": {
+  "en": "An analogue servo updates its motor drive at the rate the pulses arrive. A digital servo has a microcontroller that samples the pulse and re-drives the motor at a much higher internal rate. The result is a stiffer hold, a smaller dead band and faster response. The cost is a higher idle current: the SPT page lists 100 mA quiescent. For a walking robot, the stiff hold is what keeps a leg from sagging under load.",
+  "de": "Ein Analogservo aktualisiert seine Motoransteuerung im Takt der eintreffenden Pulse. Ein Digitalservo hat einen Mikrocontroller, der den Puls abtastet und den Motor mit einer viel höheren internen Rate neu ansteuert. Das Ergebnis ist ein steiferes Halten, ein kleinerer Totbereich und schnellere Reaktion. Der Preis ist ein höherer Ruhestrom: Die SPT-Seite nennt 100 mA Ruhestrom. Bei einem laufenden Roboter verhindert gerade das steife Halten, dass ein Bein unter Last absackt."
+ },
+ "36da0aeccbb99360": {
+  "en": "The pulse-width signal (PWM)",
+  "de": "Das Pulsbreitensignal (PWM)"
+ },
+ "73fbef66b6bff5c5": {
+  "en": "The servo reads the **width** of a repeating logic pulse, not its frequency or duty cycle:",
+  "de": "Der Servo liest die **Breite** eines sich wiederholenden Logikpulses, nicht seine Frequenz oder sein Tastverhältnis:"
+ },
+ "4489c136d05ebcc3": {
+  "en": "| Pulse width | SPT5435LV-180W shaft |",
+  "de": "| Pulsbreite | Welle des SPT5435LV-180W |"
+ },
+ "d7b6806172258c89": {
+  "en": "| 500 µs | one end (−90° from neutral) |",
+  "de": "| 500 µs | ein Ende (−90° von neutral) |"
+ },
+ "768ad04eafbf78f9": {
+  "en": "| 1500 µs | neutral point (centre) |",
+  "de": "| 1500 µs | Neutralpunkt (Mitte) |"
+ },
+ "f5d08d128b133eec": {
+  "en": "| 2500 µs | other end (+90°) |",
+  "de": "| 2500 µs | anderes Ende (+90°) |"
+ },
+ "a45367f0512e1f28": {
+  "en": "Inside that window the mapping is linear: the angle $\\theta$ away from neutral is proportional to how far the pulse width $t_\\mathrm{p}$ is from $1500\\,\\mu\\mathrm{s}$,",
+  "de": "Innerhalb dieses Fensters ist die Zuordnung linear: Der Winkel $\\theta$ aus der Neutralstellung ist proportional dazu, wie weit die Pulsbreite $t_\\mathrm{p}$ von $1500\\,\\mu\\mathrm{s}$ entfernt ist,"
+ },
+ "deb98cf7bdfa3efa": {
+  "en": "The radian form of $k$ is the constant `kUsPerRad` in `servo_map.h`.",
+  "de": "Die Radiant-Form von $k$ ist die Konstante `kUsPerRad` in `servo_map.h`."
+ },
+ "2f75525ce059a6d0": {
+  "en": "The pulse repeats at a fixed rate. Classic RC gear sends one pulse every 20 ms (50 Hz). The SPT5435LV accepts up to 330 Hz, and Strido runs at **200 Hz** (`kServoFrequencyHz`), one new pulse every $T = 1/f = 5\\,\\mathrm{ms}$. That matches the firmware's 200 Hz control loop, so every new joint target reaches the servo in the next frame.",
+  "de": "Der Puls wiederholt sich mit fester Rate. Klassische RC-Technik sendet alle 20 ms einen Puls (50 Hz). Der SPT5435LV akzeptiert bis zu 330 Hz, und Strido läuft mit **200 Hz** (`kServoFrequencyHz`), ein neuer Puls alle $T = 1/f = 5\\,\\mathrm{ms}$. Das passt zur 200-Hz-Regelschleife der Firmware, sodass jedes neue Gelenkziel den Servo im nächsten Frame erreicht."
+ },
+ "c6a7de8d13d51dfd": {
+  "en": "In general PWM terms, a pulse of width $t_\\mathrm{p}$ repeated every $T$ has a **duty cycle** $D = t_\\mathrm{p}/T$. The neutral pulse at 200 Hz is $D = 1500\\,\\mu\\mathrm{s} / 5000\\,\\mu\\mathrm{s} = 30\\,\\%$, the extremes 10 % and 50 %. The servo ignores $D$ and times only $t_\\mathrm{p}$, which is why changing the frame rate from 50 Hz to 200 Hz does not move the shaft, as long as the gap between pulses stays long enough for the servo to see each one separately.",
+  "de": "Allgemein in PWM-Begriffen hat ein Puls der Breite $t_\\mathrm{p}$, der alle $T$ wiederholt wird, ein **Tastverhältnis** $D = t_\\mathrm{p}/T$. Der Neutralpuls bei 200 Hz ist $D = 1500\\,\\mu\\mathrm{s} / 5000\\,\\mu\\mathrm{s} = 30\\,\\%$, die Extreme 10 % und 50 %. Der Servo ignoriert $D$ und misst nur $t_\\mathrm{p}$, weshalb der Wechsel der Framerate von 50 Hz auf 200 Hz die Welle nicht bewegt, solange die Lücke zwischen den Pulsen lang genug bleibt, damit der Servo jeden einzeln erkennt."
+ },
+ "19a422bdfe730c7f": {
+  "en": "Buy the right angle variant",
+  "de": "Kaufen Sie die richtige Winkelvariante"
+ },
+ "ba44cb7d22d18278": {
+  "en": "The same pulse range means different angles on different variants. On a 270° servo, 500–2500 µs would cover 270°, and every joint mapping would be wrong. The BOM requires the **-180W** variant; confirm the angle with any non-SPT seller (`hardware/bom.yaml`, note on `servo_spt5435lv`).",
+  "de": "Derselbe Pulsbereich bedeutet bei verschiedenen Varianten unterschiedliche Winkel. Bei einem 270°-Servo würden 500–2500 µs 270° abdecken, und jede Gelenkzuordnung wäre falsch. Die Stückliste verlangt die Variante **-180W**; bestätigen Sie den Winkel bei jedem Nicht-SPT-Händler (`hardware/bom.yaml`, Hinweis zu `servo_spt5435lv`)."
+ },
+ "7df0831e84cb9d32": {
+  "en": "Resolution and dead band",
+  "de": "Auflösung und Totbereich"
+ },
+ "67dd912a8189721d": {
+  "en": "The **dead band** is the smallest change in pulse width the servo reacts to. The SPT page gives 4 µs, about 0.36°.",
+  "de": "Der **Totbereich** ist die kleinste Änderung der Pulsbreite, auf die der Servo reagiert. Die SPT-Seite nennt 4 µs, etwa 0,36°."
+ },
+ "f7625979e591bae3": {
+  "en": "The PCA9685 that generates the pulses divides each period into 4096 steps (12-bit):",
+  "de": "Der PCA9685, der die Pulse erzeugt, teilt jede Periode in 4096 Schritte (12 Bit):"
+ },
+ "e39d8443e1d6062d": {
+  "en": "At 200 Hz one step is $1.22\\,\\mu\\mathrm{s} / 636.6\\,\\mu\\mathrm{s/rad} \\approx 1.9\\,\\mathrm{mrad} \\approx 0.11^\\circ$ of shaft travel.",
+  "de": "Bei 200 Hz entspricht ein Schritt $1.22\\,\\mu\\mathrm{s} / 636.6\\,\\mu\\mathrm{s/rad} \\approx 1.9\\,\\mathrm{mrad} \\approx 0.11^\\circ$ Wellenweg."
+ },
+ "22dcea27957334bf": {
+  "en": "At 50 Hz one step would already be wider than the dead band; at 200 Hz the driver resolves about three steps inside it. The higher frame rate buys both faster updates and finer positioning.",
+  "de": "Bei 50 Hz wäre ein Schritt bereits breiter als der Totbereich; bei 200 Hz löst der Treiber etwa drei Schritte darin auf. Die höhere Framerate bringt sowohl schnellere Aktualisierungen als auch feinere Positionierung."
+ },
+ "342efdb6a3c1bc86": {
+  "en": "Signal level",
+  "de": "Signalpegel"
+ },
+ "257efeb4418fda17": {
+  "en": "The SPT page specifies a PWM signal level of 3.3–5.0 V. The PCA9685 runs from the XIAO's 3.3 V regulator, so its pulses are exactly 3.3 V high: in spec, but with no margin. `docs/verification/electronics.md` flags this check as \"pass, no margin\". If a servo jitters, measure the XIAO 3V3 rail first.",
+  "de": "Die SPT-Seite spezifiziert einen PWM-Signalpegel von 3,3–5,0 V. Der PCA9685 läuft am 3,3-V-Spannungsregler des XIAO, daher sind seine Pulse genau 3,3 V hoch: innerhalb der Spezifikation, aber ohne Reserve. `docs/verification/electronics.md` markiert diese Prüfung als „bestanden, keine Reserve“. Wenn ein Servo zittert, messen Sie zuerst die 3V3-Schiene des XIAO."
+ },
+ "8082fb3930992c19": {
+  "en": "Torque, speed and current",
+  "de": "Drehmoment, Geschwindigkeit und Strom"
+ },
+ "9def853c2cbda734": {
+  "en": "| Specification (SPT spec page) | 4.8 V | 6.0 V |",
+  "de": "| Spezifikation (SPT-Datenblattseite) | 4,8 V | 6,0 V |"
+ },
+ "5104d1e5c084a7ec": {
+  "en": "| Stall torque | 29 kg·cm | 35 kg·cm |",
+  "de": "| Blockiermoment | 29 kg·cm | 35 kg·cm |"
+ },
+ "e97cec4ea2035be0": {
+  "en": "| Speed (no load) | 0.16 s / 60° | 0.14 s / 60° |",
+  "de": "| Geschwindigkeit (ohne Last) | 0,16 s / 60° | 0,14 s / 60° |"
+ },
+ "ba44b24f5ea1688d": {
+  "en": "| Rated current | | 1.4 A |",
+  "de": "| Nennstrom | | 1,4 A |"
+ },
+ "7b1f6a243d71e4f9": {
+  "en": "| Stall (blocking) current | | 3.5 A |",
+  "de": "| Blockierstrom | | 3,5 A |"
+ },
+ "86d2170408d75a6d": {
+  "en": "Stall torque in SI units",
+  "de": "Blockiermoment in SI-Einheiten"
+ },
+ "405440f8e131172c": {
+  "en": "Hobby servos quote torque in kg·cm: the weight of a mass in kilograms hanging from an arm in centimetres. Torque is force times lever arm, $\\tau = F r$, and the force of 1 kg is its weight $m g$, so",
+  "de": "Hobby-Servos geben das Drehmoment in kg·cm an: das Gewicht einer Masse in Kilogramm an einem Arm in Zentimetern. Drehmoment ist Kraft mal Hebelarm, $\\tau = F r$, und die Kraft von 1 kg ist ihr Gewicht $m g$, also"
+ },
+ "71e17ffe756ead47": {
+  "en": "**Stall torque** is the most the servo can push when it is not moving at all. It is a limit, not a working point. In MuJoCo the standing knee needs about **0.7 N·m**, roughly a fifth of stall (`docs/electronics.md`). That margin is what lets the robot trot, recover from a stumble and carry its 3.07 kg (`docs/design.md`).",
+  "de": "Das **Blockiermoment** ist das Maximum, das der Servo drücken kann, wenn er sich gar nicht bewegt. Es ist eine Grenze, kein Arbeitspunkt. In MuJoCo braucht das stehende Knie etwa **0,7 N·m**, grob ein Fünftel des Blockiermoments (`docs/electronics.md`). Diese Reserve erlaubt dem Roboter zu traben, sich von einem Stolpern zu erholen und seine 3,07 kg zu tragen (`docs/design.md`)."
+ },
+ "99e78446db9ccbf0": {
+  "en": "Current follows torque",
+  "de": "Der Strom folgt dem Drehmoment"
+ },
+ "3450f9d7121ca6b2": {
+  "en": "A DC motor's torque is proportional to its current, $\\tau_\\mathrm{m} = k_\\mathrm{t}\\, I$, with the motor's torque constant $k_\\mathrm{t}$; the gearbox multiplies the motor torque by its ratio. So the current rises roughly in proportion to the torque the servo delivers, and at full stall torque the SPT5435LV draws its **stall current**, 3.5 A. This is why the power design counts stalls:",
+  "de": "Das Drehmoment eines DC-Motors ist proportional zu seinem Strom, $\\tau_\\mathrm{m} = k_\\mathrm{t}\\, I$, mit der Drehmomentkonstante $k_\\mathrm{t}$ des Motors; das Getriebe multipliziert das Motormoment mit seiner Übersetzung. Der Strom steigt also grob proportional zum gelieferten Drehmoment, und beim vollen Blockiermoment zieht der SPT5435LV seinen **Blockierstrom**, 3,5 A. Deshalb berücksichtigt die Auslegung der Stromversorgung Blockierfälle:"
+ },
+ "f32ac367404be71f": {
+  "en": "A servo pushing into a hard stop, or fighting another leg, sits at stall current and heats up fast. Two rules in the docs follow from this:",
+  "de": "Ein Servo, der gegen einen harten Anschlag drückt oder gegen ein anderes Bein arbeitet, liegt beim Blockierstrom und erhitzt sich schnell. Daraus folgen zwei Regeln in der Dokumentation:"
+ },
+ "2b3ba64caaf26b5b": {
+  "en": "**Never** insert the arming key while position commands are running: all twelve servos would jump at once.",
+  "de": "Stecken Sie den Loop-Key **nie** ein, während Positionsbefehle laufen: Alle zwölf Servos würden gleichzeitig springen."
+ },
+ "dd6132a43dbec679": {
+  "en": "**Never** command all legs into hard stops.",
+  "de": "Befehlen Sie **nie** alle Beine in harte Anschläge."
+ },
+ "5a3d15f757e453c8": {
+  "en": "The firmware also limits joint speed to **6 rad/s** (`max_joint_speed_rad_s` in `safety.h`), below the servo's no-load speed at 6 V, $\\omega_0 = 60^\\circ / 0.14\\,\\mathrm{s} = (\\pi/3)\\,\\mathrm{rad} / 0.14\\,\\mathrm{s} \\approx 7.5\\,\\mathrm{rad/s}$. Sudden steps would otherwise pull bursts of near-stall current. A DC motor's torque falls roughly linearly from stall at zero speed to zero at $\\omega_0$, $\\tau(\\omega) \\approx \\tau_\\mathrm{stall}(1 - \\omega/\\omega_0)$; see [statics and dynamics](../theory/statics-and-dynamics.md).",
+  "de": "Die Firmware begrenzt außerdem die Gelenkgeschwindigkeit auf **6 rad/s** (`max_joint_speed_rad_s` in `safety.h`), unter der Leerlaufgeschwindigkeit des Servos bei 6 V, $\\omega_0 = 60^\\circ / 0.14\\,\\mathrm{s} = (\\pi/3)\\,\\mathrm{rad} / 0.14\\,\\mathrm{s} \\approx 7.5\\,\\mathrm{rad/s}$. Plötzliche Sprünge würden sonst Stromstöße nahe dem Blockierstrom ziehen. Das Drehmoment eines DC-Motors fällt grob linear vom Blockiermoment bei Drehzahl null auf null bei $\\omega_0$, $\\tau(\\omega) \\approx \\tau_\\mathrm{stall}(1 - \\omega/\\omega_0)$; siehe [Statik und Dynamik](../theory/statics-and-dynamics.md)."
+ },
+ "dc9d5e83ad409368": {
+  "en": "The 6 V servo rail",
+  "de": "Die 6-V-Servoschiene"
+ },
+ "31d0e34da5c7b390": {
+  "en": "The SPT5435LV is rated **4.8–6.0 V only**. The 2S LiPo swings from 8.4 V (full) to 6.4 V (cut-off), which is always above that range. A connection straight to the pack would over-volt every servo. Two Hobbywing UBEC-10A regulators therefore step the pack down to 6.0 V:",
+  "de": "Der SPT5435LV ist **nur für 4,8–6,0 V** ausgelegt. Der 2S-LiPo schwankt zwischen 8,4 V (voll) und 6,4 V (Abschaltung), also immer über diesem Bereich. Ein direkter Anschluss an den Akkupack würde jeden Servo mit Überspannung betreiben. Zwei Hobbywing-UBEC-10A-Spannungsregler setzen den Akkupack daher auf 6,0 V herab:"
+ },
+ "d888721bcfe15b48": {
+  "en": "The UBEC's **output jumper stays open**: that selects 6.0 V. The 7.4 V setting would destroy the servos.",
+  "de": "Der **Ausgangs-Jumper des UBEC bleibt offen**: Das wählt 6,0 V. Die Einstellung 7,4 V würde die Servos zerstören."
+ },
+ "5a76cf6b11708f7f": {
+  "en": "Measure every UBEC unloaded before connecting servos and accept only **5.8–6.0 V** ([electronics › wiring harness](../../electronics.md#wiring-harness), step 2).",
+  "de": "Messen Sie jeden UBEC ohne Last, bevor Sie Servos anschließen, und akzeptieren Sie nur **5,8–6,0 V** ([Elektronik › Kabelbaum](../../electronics.md#wiring-harness), Schritt 2)."
+ },
+ "e6c01af4a883a935": {
+  "en": "Under load near an empty pack, the rail is expected to sag to about **5.4 V** (estimate in `hardware/electronics.yaml`). The servo is still in range but weaker: torque falls roughly with voltage (29 kg·cm at 4.8 V vs 35 kg·cm at 6 V).",
+  "de": "Unter Last bei fast leerem Akkupack wird erwartet, dass die Schiene auf etwa **5,4 V** einbricht (Schätzung in `hardware/electronics.yaml`). Der Servo ist dann noch im Bereich, aber schwächer: Das Drehmoment fällt grob mit der Spannung (29 kg·cm bei 4,8 V gegenüber 35 kg·cm bei 6 V)."
+ },
+ "7ff6cb3e05061df3": {
+  "en": "The PCA9685 carries **only the signal**. Servo current flows UBEC → WAGO bus → the servo's red/brown wires, and never through a logic board. The V+ pin on the PCA9685 header stays unused. More detail is in [Power](power.md).",
+  "de": "Der PCA9685 führt **nur das Signal**. Der Servostrom fließt UBEC → WAGO-Bus → rote/braune Drähte des Servos und nie durch eine Logikplatine. Der V+-Pin an der PCA9685-Stiftleiste bleibt unbenutzt. Mehr Details unter [Stromversorgung](power.md)."
+ },
+ "bc0743d7557f54fc": {
+  "en": "Horns and the 25T spline",
+  "de": "Servohörner und die 25T-Verzahnung"
+ },
+ "840bdfb9b35da7a0": {
+  "en": "The **horn** couples the servo's output spline to the robot's structure. Strido uses aluminium horns because printed parts bolted to a plastic horn would strip the spline or flex.",
+  "de": "Das **Servohorn** koppelt die Abtriebsverzahnung des Servos mit der Struktur des Roboters. Strido verwendet Aluminiumhörner, weil gedruckte Teile, die an ein Kunststoffhorn geschraubt sind, die Verzahnung abscheren oder sich verbiegen würden."
+ },
+ "603d7338387afdca": {
+  "en": "| Horn | Qty | Joint | Fixed with |",
+  "de": "| Servohorn | Anz. | Gelenk | Befestigt mit |"
+ },
+ "ebc1178ccfca4e77": {
+  "en": "| 25T aluminium disc horn | 4 | thigh: femur and femur servo connector, 4 × M3 × 20 | M3 × 8 centre screw |",
+  "de": "| 25T-Aluminium-Scheibenhorn | 4 | Oberschenkel: Femur und Femur-Servoverbinder, 4 × M3 × 20 | M3 × 8 Zentralschraube |"
+ },
+ "b0621233ce98f852": {
+  "en": "| 25T aluminium disc horn | 4 | hip: leg module, 2 × M3 × 8 | M3 × 8 centre screw |",
+  "de": "| 25T-Aluminium-Scheibenhorn | 4 | Hüfte: Beinmodul, 2 × M3 × 8 | M3 × 8 Zentralschraube |"
+ },
+ "5a09009244483fb7": {
+  "en": "| 25T aluminium clamping arm horn | 4 | knee drive crank | M3 × 8 centre screw |",
+  "de": "| 25T-Aluminium-Klemmarmhorn | 4 | Kniekurbel | M3 × 8 Zentralschraube |"
+ },
+ "8769c51e38595a4b": {
+  "en": "**25T** means 25 teeth on the spline. Each tooth is $360^\\circ / 25 = 14.4^\\circ$, so the horn can only sit in 14.4° steps. A horn pushed on \"one tooth off\" is 14.4° wrong, about $14.4^\\circ \\times 11.1\\,\\mu\\mathrm{s}/^\\circ \\approx 160\\,\\mu\\mathrm{s}$ of pulse. Horns from another spline standard (for example 24T or 23T) do not fit properly and will strip.",
+  "de": "**25T** bedeutet 25 Zähne an der Verzahnung. Jeder Zahn entspricht $360^\\circ / 25 = 14.4^\\circ$, das Servohorn kann also nur in Schritten von 14,4° sitzen. Ein „um einen Zahn versetzt“ aufgestecktes Servohorn ist um 14,4° falsch, etwa $14.4^\\circ \\times 11.1\\,\\mu\\mathrm{s}/^\\circ \\approx 160\\,\\mu\\mathrm{s}$ Puls. Servohörner eines anderen Verzahnungsstandards (zum Beispiel 24T oder 23T) passen nicht richtig und scheren ab."
+ },
+ "272f91a6e31fa8ed": {
+  "en": "Screws that go from steel into the aluminium horn get one drop of **medium thread locker**: metal-to-metal joints vibrate loose otherwise (`docs/assembly/README.md`).",
+  "de": "Schrauben, die aus Stahl in das Aluminium-Servohorn gehen, erhalten einen Tropfen **mittelfeste Schraubensicherung**: Metall-Metall-Verbindungen vibrieren sich sonst los (`docs/assembly/README.md`)."
+ },
+ "6c7b95a6a925eede": {
+  "en": "Centring and calibration",
+  "de": "Zentrieren und Kalibrieren"
+ },
+ "6ced371ba6f04ba2": {
+  "en": "Step 1: centre before you fit a horn",
+  "de": "Schritt 1: zentrieren, bevor Sie ein Servohorn montieren"
+ },
+ "472ae8529b5f2afa": {
+  "en": "Before any horn goes on, every servo is driven to **1500 µs**, its neutral:",
+  "de": "Bevor ein Servohorn aufgesteckt wird, wird jeder Servo auf **1500 µs** gefahren, seine Neutralstellung:"
+ },
+ "c87e170f279f31cf": {
+  "en": "With the shaft at neutral, each horn goes on at the **assembly reference pose**:",
+  "de": "Bei Welle in Neutralstellung wird jedes Servohorn in der **Montage-Referenzpose** aufgesteckt:"
+ },
+ "1ddbf70b98f7fe4f": {
+  "en": "| Joint | Reference at 1500 µs |",
+  "de": "| Gelenk | Referenz bei 1500 µs |"
+ },
+ "e59b6106f37828a9": {
+  "en": "| Hip | leg vertical |",
+  "de": "| Hüfte | Bein senkrecht |"
+ },
+ "6d26bd6c9377a7f7": {
+  "en": "| Thigh | femur 45° backwards |",
+  "de": "| Oberschenkel | Femur 45° nach hinten |"
+ },
+ "64b393b9799c803d": {
+  "en": "| Knee crank | 35° |",
+  "de": "| Kniekurbel | 35° |"
+ },
+ "d739557f4463da3b": {
+  "en": "These are the `neutral_hip`, `neutral_thigh` and `neutral_crank` values in the generated geometry (0, 0.785 and 0.611 rad). Because the spline only allows 14.4° steps, pick the tooth that comes closest; the remainder is fixed in software.",
+  "de": "Das sind die Werte `neutral_hip`, `neutral_thigh` und `neutral_crank` in der generierten Geometrie (0, 0,785 und 0,611 rad). Da die Verzahnung nur Schritte von 14,4° erlaubt, wählen Sie den Zahn, der am nächsten kommt; der Rest wird in Software korrigiert."
+ },
+ "da8bc7c834eda316": {
+  "en": "Step 2: trim in firmware",
+  "de": "Schritt 2: Feinabgleich in der Firmware"
+ },
+ "dc651b56e034bbe0": {
+  "en": "Each joint has a `ServoCalibration` record stored in the ESP32 flash (`Preferences`):",
+  "de": "Jedes Gelenk hat einen `ServoCalibration`-Datensatz, der im Flash des ESP32 gespeichert ist (`Preferences`):"
+ },
+ "b862b79fb0b7e58d": {
+  "en": "| Field | Meaning |",
+  "de": "| Feld | Bedeutung |"
+ },
+ "9ec6a1a2cbb34492": {
+  "en": "| `direction` | +1 or −1: mirrored servos on the left and right turn the opposite way for the same joint motion |",
+  "de": "| `direction` | +1 oder −1: Gespiegelte Servos links und rechts drehen sich für dieselbe Gelenkbewegung entgegengesetzt |"
+ },
+ "6873f893ff588990": {
+  "en": "| `neutral_us` | pulse that puts the joint at its reference angle (default 1500) |",
+  "de": "| `neutral_us` | Puls, der das Gelenk auf seinen Referenzwinkel stellt (Standard 1500) |"
+ },
+ "99f3e5d6224d3438": {
+  "en": "| `zero_rad` | the reference angle itself |",
+  "de": "| `zero_rad` | der Referenzwinkel selbst |"
+ },
+ "cef992a6ea3e9236": {
+  "en": "| `min_us`, `max_us` | hard pulse window |",
+  "de": "| `min_us`, `max_us` | hartes Pulsfenster |"
+ },
+ "8b3b39ea19cead30": {
+  "en": "The firmware converts an actuator angle to a pulse with:",
+  "de": "Die Firmware wandelt einen Aktuatorwinkel in einen Puls um mit:"
+ },
+ "2a381342071af0f4": {
+  "en": "with $t_\\mathrm{neutral}$ = `neutral_us`, the sign $s$ = `direction`, $k = 636.6\\,\\mu\\mathrm{s/rad}$ and the reference angle $\\theta_0$ = `zero_rad`; the result is clamped to `[min_us, max_us]`.",
+  "de": "mit $t_\\mathrm{neutral}$ = `neutral_us`, dem Vorzeichen $s$ = `direction`, $k = 636.6\\,\\mu\\mathrm{s/rad}$ und dem Referenzwinkel $\\theta_0$ = `zero_rad`; das Ergebnis wird auf `[min_us, max_us]` begrenzt."
+ },
+ "ee8099e2dcfae4ae": {
+  "en": "Worked example: to move a thigh with `direction = +1` from its 45° reference to 60°:",
+  "de": "Rechenbeispiel: Um einen Oberschenkel mit `direction = +1` von seiner 45°-Referenz auf 60° zu bewegen:"
+ },
+ "54faa81c93a30e38": {
+  "en": "`strido-cli calibrate` lets you nudge each `neutral_us` in ±5 µs or ±25 µs steps until the joint sits exactly at its reference, then saves to flash. The robot should be on a stand with its legs free. A half-tooth error (7.2°) is about 80 µs, well within the trim range. Calibration also absorbs small per-chip differences in the PCA9685 clock, which scale every pulse.",
+  "de": "Mit `strido-cli calibrate` können Sie jedes `neutral_us` in Schritten von ±5 µs oder ±25 µs verschieben, bis das Gelenk genau in seiner Referenz sitzt, und dann in den Flash speichern. Der Roboter sollte dabei auf einem Ständer mit frei hängenden Beinen stehen. Ein Fehler von einem halben Zahn (7,2°) entspricht etwa 80 µs, gut innerhalb des Abgleichbereichs. Die Kalibrierung gleicht auch kleine chipspezifische Unterschiede im PCA9685-Takt aus, die jeden Puls skalieren."
+ },
+ "492205a99298fa0d": {
+  "en": "Raw pulses bypass joint limits",
+  "de": "Rohpulse umgehen die Gelenkgrenzen"
+ },
+ "43ae4571b1e19853": {
+  "en": "`strido-cli center` and `pulse` send raw pulse widths. They skip the joint and knee-crank limits from the CAD range-of-motion sweep. Use them only while horns are off or the legs are free to move.",
+  "de": "`strido-cli center` und `pulse` senden rohe Pulsbreiten. Sie überspringen die Gelenk- und Kniekurbelgrenzen aus dem CAD-Bewegungsbereichs-Sweep. Verwenden Sie sie nur, solange die Servohörner abgenommen sind oder sich die Beine frei bewegen können."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "af76d7c967c9321f": {
+  "en": "Why can the robot not report the true angle of a joint?",
+  "de": "Warum kann der Roboter den wahren Winkel eines Gelenks nicht melden?"
+ },
+ "a1bc8c8de62370fe": {
+  "en": "What pulse width does the firmware send for a joint 10° past its reference, with `direction = −1` and `neutral_us = 1500`?",
+  "de": "Welche Pulsbreite sendet die Firmware für ein Gelenk 10° über seiner Referenz, mit `direction = −1` und `neutral_us = 1500`?"
+ },
+ "62e4d329e6d3577d": {
+  "en": "Why is the servo rail regulated to 6.0 V instead of taken straight from the 7.4 V pack?",
+  "de": "Warum wird die Servoschiene auf 6,0 V geregelt, statt direkt vom 7,4-V-Akkupack versorgt zu werden?"
+ },
+ "08622e547b5a68c5": {
+  "en": "A horn ends up visibly crooked even after centring. How big can the error be before you should move it one tooth?",
+  "de": "Ein Servohorn sitzt auch nach dem Zentrieren sichtbar schief. Wie groß darf der Fehler sein, bevor Sie es um einen Zahn versetzen sollten?"
+ },
+ "1e901f07ae130bed": {
+  "en": "Why does each UBEC carry a stall warning in `docs/verification/electronics.md`?",
+  "de": "Warum trägt jeder UBEC in `docs/verification/electronics.md` eine Blockierwarnung?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "6a5ef3bdf99ef37f": {
+  "en": "The position feedback (potentiometer) is used only inside the servo. Nothing reads it back, so the firmware reports the angles it commanded.",
+  "de": "Die Positionsrückmeldung (Potentiometer) wird nur im Servo verwendet. Nichts liest sie zurück, daher meldet die Firmware die von ihr befohlenen Winkel."
+ },
+ "ea817e6735e04ca2": {
+  "en": "$10^\\circ = 0.1745\\,\\mathrm{rad}$; $0.1745 \\times 636.6\\,\\mu\\mathrm{s} \\approx 111\\,\\mu\\mathrm{s}$; with direction $-1$ the pulse is $1500 - 111 \\approx 1389\\,\\mu\\mathrm{s}$.",
+  "de": "$10^\\circ = 0.1745\\,\\mathrm{rad}$; $0.1745 \\times 636.6\\,\\mu\\mathrm{s} \\approx 111\\,\\mu\\mathrm{s}$; mit Richtung $-1$ ist der Puls $1500 - 111 \\approx 1389\\,\\mu\\mathrm{s}$."
+ },
+ "985c0ab62ccb40e9": {
+  "en": "The SPT5435LV is rated 4.8–6.0 V only; the pack is 6.4–8.4 V in use and would over-volt it.",
+  "de": "Der SPT5435LV ist nur für 4,8–6,0 V ausgelegt; der Akkupack liegt im Betrieb bei 6,4–8,4 V und würde ihn mit Überspannung betreiben."
+ },
+ "61b16d79323b38bf": {
+  "en": "Up to half a tooth, 7.2° (≈ 80 µs), is a job for `strido-cli calibrate`. Beyond that, move the horn one tooth (14.4°).",
+  "de": "Bis zu einem halben Zahn, 7,2° (≈ 80 µs), ist das eine Aufgabe für `strido-cli calibrate`. Darüber hinaus versetzen Sie das Servohorn um einen Zahn (14,4°)."
+ },
+ "83a603984b9ddbe6": {
+  "en": "Six stalled servos draw $6 \\times 3.5\\,\\mathrm{A} = 21\\,\\mathrm{A}$, above the UBEC's 15 A peak rating.",
+  "de": "Sechs blockierte Servos ziehen $6 \\times 3.5\\,\\mathrm{A} = 21\\,\\mathrm{A}$, mehr als der Spitzenwert des UBEC von 15 A."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "8367b627172fce1f": {
+  "en": "[SPT5435LV-180W specification (SPT Servo)](http://www.spt-servo.com/Product/015234339.html)",
+  "de": "[SPT5435LV-180W-Spezifikation (SPT Servo)](http://www.spt-servo.com/Product/015234339.html)"
+ },
+ "4ba3dc575cb8d3e8": {
+  "en": "[PCA9685 datasheet (NXP, Adafruit mirror)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)",
+  "de": "[PCA9685-Datenblatt (NXP, Adafruit-Spiegel)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)"
+ },
+ "e963c6bdca7feb6c": {
+  "en": "[Adafruit 16-channel PWM/servo driver guide](https://learn.adafruit.com/16-channel-pwm-servo-driver)",
+  "de": "[Adafruit-Anleitung zum 16-Kanal-PWM/Servo-Treiber](https://learn.adafruit.com/16-channel-pwm-servo-driver)"
+ },
+ "2dd24b01b9bc8adf": {
+  "en": "[Servo spline reference (ServoCity)](https://www.servocity.com/servo-spline-info/)",
+  "de": "[Referenz zu Servoverzahnungen (ServoCity)](https://www.servocity.com/servo-spline-info/)"
+ },
+ "df9cad7faefe195f": {
+  "en": "Related pages: [Power](power.md), [Microcontrollers](microcontrollers.md), [Mechanics](mechanics.md), [Electronics, wiring and power](../../electronics.md)",
+  "de": "Verwandte Seiten: [Stromversorgung](power.md), [Mikrocontroller](microcontrollers.md), [Mechanik](mechanics.md), [Elektronik, Verkabelung und Stromversorgung](../../electronics.md)"
+ },
+ "bfe2dfbbbdd321bd": {
+  "en": "Theory: [Control](../theory/control.md) (the PD loop inside the servo), [Statics and dynamics](../theory/statics-and-dynamics.md) (joint torques)",
+  "de": "Theorie: [Regelung](../theory/control.md) (der PD-Regelkreis im Servo), [Statik und Dynamik](../theory/statics-and-dynamics.md) (Gelenkmomente)"
+ }
+}

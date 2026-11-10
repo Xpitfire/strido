@@ -1,0 +1,286 @@
+{
+ "5863cb35288cfa7c": {
+  "en": "Reinforcement learning for locomotion",
+  "de": "Reinforcement Learning für die Fortbewegung"
+ },
+ "eb6713ad1e9a70c1": {
+  "en": "How a walking controller can be learned by trial and error in simulation: Markov decision processes, returns and value functions, the policy-gradient theorem, GAE, PPO, and the exact observation, action and reward used for Strido, plus how domain randomisation narrows the sim-to-real gap.",
+  "de": "Wie sich ein Lauf-Controller in der Simulation durch Versuch und Irrtum lernen lässt: Markov-Entscheidungsprozesse, Returns und Value Functions, das Policy-Gradient-Theorem, GAE, PPO sowie die genaue Observation, Action und Reward für Strido, dazu, wie Domain Randomization die Sim-to-Real-Lücke verkleinert."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "82c363860b64dde3": {
+  "en": "The environment is `StridoEnv` in `packages/strido-sim/src/strido_sim/rl/env.py` (Gymnasium + MuJoCo); training is `rl/train.py` (stable-baselines3 PPO on CPU). Shared constants (`CONTROL_DT`, `ACTION_SCALE`, `COMMAND_RANGES`) live in `packages/strido-core/src/strido/policy.py`, and the robot runs the exported network in `ros2/strido_control/strido_control/policy_node.py`. Workflow: [Simulation and RL](../software/simulation-and-rl.md) and [docs/simulation.md](../../simulation.md).",
+  "de": "Die Umgebung ist `StridoEnv` in `packages/strido-sim/src/strido_sim/rl/env.py` (Gymnasium + MuJoCo); das Training ist `rl/train.py` (stable-baselines3 PPO auf der CPU). Gemeinsame Konstanten (`CONTROL_DT`, `ACTION_SCALE`, `COMMAND_RANGES`) liegen in `packages/strido-core/src/strido/policy.py`, und der Roboter führt das exportierte Netz in `ros2/strido_control/strido_control/policy_node.py` aus. Arbeitsablauf: [Simulation und RL](../software/simulation-and-rl.md) und [docs/simulation.md](../../simulation.md)."
+ },
+ "6f1360af547c3a8c": {
+  "en": "The Markov decision process",
+  "de": "Der Markov-Entscheidungsprozess"
+ },
+ "af2c2a448afde6a6": {
+  "en": "An MDP is a tuple $(\\mathcal{S}, \\mathcal{A}, P, r, \\gamma)$: states, actions, transition probabilities $P(s' \\mid s, a)$, reward $r(s, a)$ and discount $\\gamma \\in [0, 1)$. At each step the agent observes $s_t$, samples $a_t \\sim \\pi_\\theta(a \\mid s_t)$ from a **policy** with parameters $\\theta$ (a neural network), and the environment returns $r_t$ and $s_{t+1}$. *Markov* means $s_{t+1}$ depends only on $(s_t, a_t)$, not on earlier history. A real robot only sees part of the state (a POMDP); in practice we add enough history (here, the previous action and a gait clock) to make the observation nearly Markov.",
+  "de": "Ein MDP ist ein Tupel $(\\mathcal{S}, \\mathcal{A}, P, r, \\gamma)$: Zustände, Actions, Übergangswahrscheinlichkeiten $P(s' \\mid s, a)$, Reward $r(s, a)$ und Diskontfaktor $\\gamma \\in [0, 1)$. In jedem Schritt beobachtet der Agent $s_t$, zieht $a_t \\sim \\pi_\\theta(a \\mid s_t)$ aus einer **Policy** mit Parametern $\\theta$ (einem neuronalen Netz), und die Umgebung liefert $r_t$ und $s_{t+1}$. *Markov* bedeutet, dass $s_{t+1}$ nur von $(s_t, a_t)$ abhängt, nicht von der früheren Geschichte. Ein realer Roboter sieht nur einen Teil des Zustands (ein POMDP); in der Praxis fügen wir genug Geschichte hinzu (hier die vorherige Action und einen Gait-Takt), damit die Observation nahezu markovsch wird."
+ },
+ "3276b39a386fd285": {
+  "en": "Returns and discounting",
+  "de": "Returns und Diskontierung"
+ },
+ "2cb7860556203472": {
+  "en": "The **return** from time $t$ is the discounted sum of future rewards:",
+  "de": "Der **Return** ab Zeitpunkt $t$ ist die diskontierte Summe künftiger Rewards:"
+ },
+ "c8eb779a2d3e9489": {
+  "en": "Discounting keeps the sum finite and expresses a preference for sooner reward. The effective horizon is about $1/(1-\\gamma)$ steps. **Worked example:** Strido trains with $\\gamma = 0.99$ (`train.py`) at a policy rate of $50\\,\\mathrm{Hz}$ ($\\Delta t = 0.02\\,\\mathrm{s}$), so the horizon is about $100$ steps $= 2\\,\\mathrm{s}$, i.e. five gait cycles of $0.4\\,\\mathrm{s}$: long enough to value not falling over, short enough to learn quickly.",
+  "de": "Die Diskontierung hält die Summe endlich und drückt eine Präferenz für früheren Reward aus. Der effektive Horizont beträgt etwa $1/(1-\\gamma)$ Schritte. **Rechenbeispiel:** Strido trainiert mit $\\gamma = 0.99$ (`train.py`) bei einer Policy-Rate von $50\\,\\mathrm{Hz}$ ($\\Delta t = 0.02\\,\\mathrm{s}$), der Horizont beträgt also etwa $100$ Schritte $= 2\\,\\mathrm{s}$, d. h. fünf Gangzyklen zu $0.4\\,\\mathrm{s}$: lang genug, um Nicht-Umfallen zu bewerten, kurz genug, um schnell zu lernen."
+ },
+ "e6662e8aa3ba664c": {
+  "en": "The objective is the expected return $J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta}[G_0]$ over trajectories $\\tau$.",
+  "de": "Das Ziel ist der erwartete Return $J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta}[G_0]$ über Trajektorien $\\tau$."
+ },
+ "85c1fd9afbab3928": {
+  "en": "Value functions",
+  "de": "Value Functions"
+ },
+ "0a72504f325294f0": {
+  "en": "They satisfy the **Bellman equation**",
+  "de": "Sie erfüllen die **Bellman-Gleichung**"
+ },
+ "14382ff1e515919a": {
+  "en": "The **advantage** $A^\\pi(s, a) = Q^\\pi(s, a) - V^\\pi(s)$ measures how much better action $a$ is than the policy's average in state $s$.",
+  "de": "Der **Advantage** $A^\\pi(s, a) = Q^\\pi(s, a) - V^\\pi(s)$ misst, um wie viel besser die Action $a$ als der Durchschnitt der Policy im Zustand $s$ ist."
+ },
+ "168b367bde9ffb22": {
+  "en": "The policy-gradient theorem",
+  "de": "Das Policy-Gradient-Theorem"
+ },
+ "73d1f53058676a7a": {
+  "en": "We want $\\nabla_\\theta J$ without differentiating through the (unknown, non-differentiable) physics. The likelihood-ratio trick gives",
+  "de": "Wir wollen $\\nabla_\\theta J$, ohne durch die (unbekannte, nicht differenzierbare) Physik zu differenzieren. Der Likelihood-Ratio-Trick liefert"
+ },
+ "e353afe864163bb7": {
+  "en": "In words: increase the log-probability of actions that turned out better than average, decrease it for worse ones. Only samples from the simulator and the gradient of the network's own log-probability are needed. Using the advantage (rather than $G_t$) subtracts a baseline $V(s)$, which leaves the gradient unbiased but greatly reduces its variance.",
+  "de": "In Worten: Erhöhe die Log-Wahrscheinlichkeit von Actions, die sich als besser als der Durchschnitt erwiesen haben, und senke sie für schlechtere. Benötigt werden nur Stichproben aus dem Simulator und der Gradient der eigenen Log-Wahrscheinlichkeit des Netzes. Die Verwendung des Advantage (statt $G_t$) zieht eine Baseline $V(s)$ ab, was den Gradienten erwartungstreu lässt, aber seine Varianz stark verringert."
+ },
+ "45622d7d89d816ae": {
+  "en": "Generalised advantage estimation (GAE)",
+  "de": "Generalised Advantage Estimation (GAE)"
+ },
+ "340f89f6c64f0397": {
+  "en": "The advantage is estimated from a learned critic $V_\\phi$. The one-step **TD error** is",
+  "de": "Der Advantage wird aus einem gelernten Critic $V_\\phi$ geschätzt. Der einstufige **TD-Fehler** ist"
+ },
+ "b2e71cb6534d42a2": {
+  "en": "GAE takes an exponentially weighted sum of these:",
+  "de": "GAE bildet eine exponentiell gewichtete Summe davon:"
+ },
+ "790a6b56903b73bc": {
+  "en": "$\\lambda = 0$ gives the low-variance but biased one-step estimate; $\\lambda = 1$ gives the unbiased but high-variance Monte Carlo return minus $V$. Strido uses $\\lambda = 0.95$ (`gae_lambda` in `train.py`). On termination (a fall) the bootstrap $V_\\phi(s_{t+1})$ is zero; on time-limit truncation it is kept, since the robot could have continued.",
+  "de": "$\\lambda = 0$ ergibt die varianzarme, aber verzerrte einstufige Schätzung; $\\lambda = 1$ ergibt den erwartungstreuen, aber varianzreichen Monte-Carlo-Return minus $V$. Strido verwendet $\\lambda = 0.95$ (`gae_lambda` in `train.py`). Bei Abbruch (einem Sturz) ist der Bootstrap $V_\\phi(s_{t+1})$ null; bei Kürzung durch das Zeitlimit bleibt er erhalten, da der Roboter hätte weitermachen können."
+ },
+ "6742ebf940cf9ac9": {
+  "en": "PPO: proximal policy optimisation",
+  "de": "PPO: Proximal Policy Optimisation"
+ },
+ "b95223cb5f4503e4": {
+  "en": "Plain policy gradient takes one step per batch, and a step that is too large can wreck the policy. PPO reuses each batch for several epochs while preventing the new policy from drifting far from the one that collected the data. With the probability ratio",
+  "de": "Der einfache Policy Gradient macht einen Schritt pro Batch, und ein zu großer Schritt kann die Policy ruinieren. PPO verwendet jeden Batch für mehrere Epochen wieder und verhindert dabei, dass sich die neue Policy weit von derjenigen entfernt, die die Daten gesammelt hat. Mit dem Wahrscheinlichkeitsverhältnis"
+ },
+ "f1bb47378dbffdc2": {
+  "en": "the **clipped surrogate objective** is",
+  "de": "lautet das **geclippte Surrogat-Ziel**"
+ },
+ "eef27abe07a9745b": {
+  "en": "For a good action ($\\hat{A} > 0$) the gain stops once $\\rho > 1 + \\epsilon$; for a bad one ($\\hat{A} < 0$) once $\\rho < 1 - \\epsilon$. The $\\min$ makes it a pessimistic bound, so there is no incentive to move further. The full loss adds a critic regression term and, optionally, an entropy bonus that rewards keeping the policy random enough to explore:",
+  "de": "Für eine gute Action ($\\hat{A} > 0$) endet der Gewinn, sobald $\\rho > 1 + \\epsilon$; für eine schlechte ($\\hat{A} < 0$), sobald $\\rho < 1 - \\epsilon$. Das $\\min$ macht es zu einer pessimistischen Schranke, sodass kein Anreiz besteht, sich weiter zu bewegen. Der vollständige Verlust ergänzt einen Regressionsterm für den Critic und optional einen Entropiebonus, der belohnt, die Policy zufällig genug für die Exploration zu halten:"
+ },
+ "06ac9616d226d8ab": {
+  "en": "For continuous actions the policy is a diagonal Gaussian $\\pi_\\theta(a \\mid s) = \\mathcal{N}(\\mu_\\theta(s), \\operatorname{diag}(\\boldsymbol{\\sigma}^2))$; at deployment the mean $\\mu_\\theta(s)$ is used.",
+  "de": "Für kontinuierliche Actions ist die Policy eine diagonale Gaußverteilung $\\pi_\\theta(a \\mid s) = \\mathcal{N}(\\mu_\\theta(s), \\operatorname{diag}(\\boldsymbol{\\sigma}^2))$; im Einsatz wird der Mittelwert $\\mu_\\theta(s)$ verwendet."
+ },
+ "024a47b9c3a321c7": {
+  "en": "**Strido's settings** (`train.py`): $\\epsilon = 0.2$, $\\gamma = 0.99$, $\\lambda = 0.95$, learning rate $3 \\times 10^{-4}$, $1024$ steps per environment per rollout, minibatch $2048$, 5 epochs per rollout, $c_2 = 0$ (`ent_coef=0.0`: exploration comes only from the Gaussian's own spread, `log_std_init=-1.0`), $2 \\times 10^7$ total steps by default. Observations and rewards are normalised with running statistics (`VecNormalize`, observations clipped at $\\pm 10$); the normaliser's mean and variance are exported with the weights so the robot applies the same scaling.",
+  "de": "**Einstellungen von Strido** (`train.py`): $\\epsilon = 0.2$, $\\gamma = 0.99$, $\\lambda = 0.95$, Lernrate $3 \\times 10^{-4}$, $1024$ Schritte pro Umgebung pro Rollout, Minibatch $2048$, 5 Epochen pro Rollout, $c_2 = 0$ (`ent_coef=0.0`: Exploration kommt nur aus der eigenen Streuung der Gaußverteilung, `log_std_init=-1.0`), standardmäßig insgesamt $2 \\times 10^7$ Schritte. Observations und Rewards werden mit laufenden Statistiken normiert (`VecNormalize`, Observations bei $\\pm 10$ begrenzt); Mittelwert und Varianz des Normierers werden mit den Gewichten exportiert, damit der Roboter dieselbe Skalierung anwendet."
+ },
+ "1563a2afba82beea": {
+  "en": "**Worked example.** Suppose an action had $\\hat{A}_t = 0.5$ and after an update $\\rho_t = 1.35$. Unclipped the term would be $0.675$; clipped it is $1.2 \\times 0.5 = 0.6$, and the gradient through this sample is zero, so PPO stops pushing that action's probability up.",
+  "de": "**Rechenbeispiel.** Angenommen, eine Action hatte $\\hat{A}_t = 0.5$ und nach einem Update $\\rho_t = 1.35$. Ungeclippt wäre der Term $0.675$; geclippt ist er $1.2 \\times 0.5 = 0.6$, und der Gradient durch diese Stichprobe ist null, also hört PPO auf, die Wahrscheinlichkeit dieser Action nach oben zu drücken."
+ },
+ "d9a5f313a2bd7083": {
+  "en": "The Strido environment",
+  "de": "Die Strido-Umgebung"
+ },
+ "74c0807b2d97ddc9": {
+  "en": "**Timing.** Policy at $50\\,\\mathrm{Hz}$ (`CONTROL_DT = 0.02`), physics at $500\\,\\mathrm{Hz}$ (10 substeps). Episodes last at most $1000$ steps ($20\\,\\mathrm{s}$). Servos are modelled as MJCF position actuators with a $3.43\\,\\mathrm{N\\,m}$ torque limit (SPT5435LV stall torque at $6\\,\\mathrm{V}$).",
+  "de": "**Timing.** Policy mit $50\\,\\mathrm{Hz}$ (`CONTROL_DT = 0.02`), Physik mit $500\\,\\mathrm{Hz}$ (10 Teilschritte). Episoden dauern höchstens $1000$ Schritte ($20\\,\\mathrm{s}$). Die Servos werden als MJCF-Positionsaktuatoren mit einer Drehmomentgrenze von $3.43\\,\\mathrm{N\\,m}$ modelliert (Blockiermoment des SPT5435LV bei $6\\,\\mathrm{V}$)."
+ },
+ "d75d61b3c35e5ffa": {
+  "en": "**Observation** ($23$ values, `OBSERVATION_SIZE`):",
+  "de": "**Observation** ($23$ Werte, `OBSERVATION_SIZE`):"
+ },
+ "cadd7b03f6c3226f": {
+  "en": "$\\boldsymbol{\\omega}_b$: body angular velocity from the IMU gyro;",
+  "de": "$\\boldsymbol{\\omega}_b$: Winkelgeschwindigkeit des Körpers vom IMU-Gyroskop;"
+ },
+ "07d6d3fe3cba7547": {
+  "en": "$\\mathbf{g}_b = \\mathbf{R}^\\top (0, 0, -1)^\\top$: the unit gravity direction in the base frame, from the IMU quaternion (encodes roll and pitch, not yaw);",
+  "de": "$\\mathbf{g}_b = \\mathbf{R}^\\top (0, 0, -1)^\\top$: die Richtung der Schwerkraft als Einheitsvektor im Basis-Frame, aus der IMU-Quaternion (kodiert Rollen und Nicken, nicht Gieren);"
+ },
+ "1a15c4677c0c5419": {
+  "en": "$\\mathbf{c} = (v_x, v_y, \\omega_z)$: the velocity command, sampled per episode from $v_x \\in [-0.15, 0.30]\\,\\mathrm{m/s}$, $v_y \\in [-0.10, 0.10]\\,\\mathrm{m/s}$, $\\omega_z \\in [-0.6, 0.6]\\,\\mathrm{rad/s}$, and zero with probability $0.2$;",
+  "de": "$\\mathbf{c} = (v_x, v_y, \\omega_z)$: das Geschwindigkeitskommando, pro Episode gezogen aus $v_x \\in [-0.15, 0.30]\\,\\mathrm{m/s}$, $v_y \\in [-0.10, 0.10]\\,\\mathrm{m/s}$, $\\omega_z \\in [-0.6, 0.6]\\,\\mathrm{rad/s}$, und mit Wahrscheinlichkeit $0.2$ null;"
+ },
+ "c56d2f1d82a94649": {
+  "en": "$\\mathbf{a}_{t-1}$: the previous action;",
+  "de": "$\\mathbf{a}_{t-1}$: die vorherige Action;"
+ },
+ "633239e6681d8262": {
+  "en": "a gait clock $\\varphi_t = 2\\pi t / T$ with $T = 0.4\\,\\mathrm{s}$ (`GAIT_PERIOD_S`), matching the scripted trot.",
+  "de": "ein Gait-Takt $\\varphi_t = 2\\pi t / T$ mit $T = 0.4\\,\\mathrm{s}$ (`GAIT_PERIOD_S`), passend zum geskripteten Trot."
+ },
+ "914980cedc4c2b73": {
+  "en": "Every input is available on the real robot from `/imu/data` and `/cmd_vel`; there is no base velocity or joint feedback (the servos have none).",
+  "de": "Jede Eingabe ist auf dem realen Roboter aus `/imu/data` und `/cmd_vel` verfügbar; es gibt keine Basisgeschwindigkeit und keine Gelenkrückmeldung (die Servos haben keine)."
+ },
+ "0676cd29735bd304": {
+  "en": "**Action.** $\\mathbf{a}_t \\in [-1, 1]^{12}$ are offsets from the stand pose $\\mathbf{q}_0$:",
+  "de": "**Action.** $\\mathbf{a}_t \\in [-1, 1]^{12}$ sind Abweichungen von der Standpose $\\mathbf{q}_0$:"
+ },
+ "97855d4ca56e1d8b": {
+  "en": "`ACTION_SCALE` $= 0.3\\,\\mathrm{rad}$; `slew_limit` caps joint speed at $6\\,\\mathrm{rad/s}$ (the firmware's limit), and `clamp_targets` applies the joint and knee-crank limits in the same order as the firmware, so the policy never learns to rely on motions the robot would refuse.",
+  "de": "`ACTION_SCALE` $= 0.3\\,\\mathrm{rad}$; `slew_limit` begrenzt die Gelenkgeschwindigkeit auf $6\\,\\mathrm{rad/s}$ (die Grenze der Firmware), und `clamp_targets` wendet die Gelenk- und Kniekurbelgrenzen in derselben Reihenfolge wie die Firmware an, sodass die Policy nie lernt, sich auf Bewegungen zu verlassen, die der Roboter verweigern würde."
+ },
+ "c7fa518889d252c0": {
+  "en": "**Reward.** With base-frame linear velocity $\\mathbf{v}_b$, angular velocity $\\boldsymbol{\\omega}_b$, actuator forces $\\boldsymbol{\\tau}$ and base height $z$:",
+  "de": "**Reward.** Mit der linearen Geschwindigkeit im Basis-Frame $\\mathbf{v}_b$, der Winkelgeschwindigkeit $\\boldsymbol{\\omega}_b$, den Aktuatorkräften $\\boldsymbol{\\tau}$ und der Basishöhe $z$:"
+ },
+ "d56425388688282a": {
+  "en": "The two exponential terms reward tracking the command (at most $1.8$ per step); the penalties discourage bouncing, wobbling, jerky actions, high torque (heat, battery) and crouching below $0.15\\,\\mathrm{m}$. The code multiplies by `CONTROL_DT * 50`, which equals $1$ at $50\\,\\mathrm{Hz}$.",
+  "de": "Die beiden Exponentialterme belohnen das Verfolgen des Kommandos (höchstens $1.8$ pro Schritt); die Strafterme verhindern Hüpfen, Wackeln, ruckartige Actions, hohes Drehmoment (Wärme, Akku) und Ducken unter $0.15\\,\\mathrm{m}$. Der Code multipliziert mit `CONTROL_DT * 50`, was bei $50\\,\\mathrm{Hz}$ gleich $1$ ist."
+ },
+ "b10c99c9f52fbb00": {
+  "en": "**Termination.** The episode ends with a $-2$ penalty when the base drops below $0.09\\,\\mathrm{m}$ or the body tilts so that $-g_{b,z} < 0.6$ (about $53^\\circ$ roll or pitch).",
+  "de": "**Abbruch.** Die Episode endet mit einer Strafe von $-2$, wenn die Basis unter $0.09\\,\\mathrm{m}$ sinkt oder sich der Körper so neigt, dass $-g_{b,z} < 0.6$ (etwa $53^\\circ$ Rollen oder Nicken)."
+ },
+ "7d5b6c824f75012f": {
+  "en": "**Worked example.** Commanded $v_x = 0.20\\,\\mathrm{m/s}$, achieved $0.15\\,\\mathrm{m/s}$: the tracking term is $\\exp(-0.05^2/0.01) = \\exp(-0.25) \\approx 0.78$. The width $0.01$ means errors around $0.1\\,\\mathrm{m/s}$ already cost most of the reward ($\\exp(-1) \\approx 0.37$).",
+  "de": "**Rechenbeispiel.** Kommandiert $v_x = 0.20\\,\\mathrm{m/s}$, erreicht $0.15\\,\\mathrm{m/s}$: Der Tracking-Term ist $\\exp(-0.05^2/0.01) = \\exp(-0.25) \\approx 0.78$. Die Breite $0.01$ bedeutet, dass Fehler um $0.1\\,\\mathrm{m/s}$ bereits den Großteil des Rewards kosten ($\\exp(-1) \\approx 0.37$)."
+ },
+ "7c4482752198f5a6": {
+  "en": "Domain randomisation and the sim-to-real gap",
+  "de": "Domain Randomization und die Sim-to-Real-Lücke"
+ },
+ "ca67f21c92a883f7": {
+  "en": "A policy that exploits simulator quirks fails on hardware: the **sim-to-real gap**. Sources include unmodelled servo dynamics and backlash, friction, mass and inertia errors, sensor noise and latency. **Domain randomisation** trains on a distribution of simulators so the real robot is, hopefully, just one more sample:",
+  "de": "Eine Policy, die Eigenheiten des Simulators ausnutzt, versagt auf der Hardware: die **Sim-to-Real-Lücke**. Ursachen sind unter anderem nicht modellierte Servodynamik und Spiel, Reibung, Fehler bei Masse und Trägheit, Sensorrauschen und Latenz. **Domain Randomization** trainiert auf einer Verteilung von Simulatoren, sodass der reale Roboter hoffentlich nur eine weitere Stichprobe ist:"
+ },
+ "49011639c6efaf5c": {
+  "en": "where $\\xi$ are physics parameters. `StridoEnv._randomise` samples per episode:",
+  "de": "wobei $\\xi$ Physikparameter sind. `StridoEnv._randomise` zieht pro Episode:"
+ },
+ "60ddfb78dcc74a11": {
+  "en": "| Parameter | Range |",
+  "de": "| Parameter | Bereich |"
+ },
+ "e556bfcc0945d579": {
+  "en": "| servo stiffness $k_p$ | $\\times\\, U(0.85, 1.15)$ |",
+  "de": "| Servosteifigkeit $k_p$ | $\\times\\, U(0.85, 1.15)$ |"
+ },
+ "752b2384b7fc0a63": {
+  "en": "| base mass | $\\times\\, U(0.90, 1.15)$ |",
+  "de": "| Basismasse | $\\times\\, U(0.90, 1.15)$ |"
+ },
+ "99e208219749c757": {
+  "en": "| floor and foot friction | $\\times\\, U(0.6, 1.2)$ |",
+  "de": "| Boden- und Fußreibung | $\\times\\, U(0.6, 1.2)$ |"
+ },
+ "2f7278505ecf3d84": {
+  "en": "| gyro noise | $\\mathcal{N}(0, 0.05^2)$ per step |",
+  "de": "| Gyroskoprauschen | $\\mathcal{N}(0, 0.05^2)$ pro Schritt |"
+ },
+ "e9e1ea3681ebb066": {
+  "en": "| gravity-vector noise | $\\mathcal{N}(0, 0.02^2)$ per step |",
+  "de": "| Rauschen des Schwerkraftvektors | $\\mathcal{N}(0, 0.02^2)$ pro Schritt |"
+ },
+ "6bd7754a15617fec": {
+  "en": "| initial joint angles | $\\mathbf{q}_0 + \\mathcal{N}(0, 0.02^2)$ |",
+  "de": "| anfängliche Gelenkwinkel | $\\mathbf{q}_0 + \\mathcal{N}(0, 0.02^2)$ |"
+ },
+ "98302bc34e2ed3ef": {
+  "en": "Because the policy cannot identify which $\\xi$ it is in from a single observation, it learns behaviour that is robust across all of them. Other tools against the gap (not all used here): actuator models fitted to measured servo responses, observation latency, push perturbations, and terrain curricula.",
+  "de": "Da die Policy aus einer einzelnen Observation nicht erkennen kann, in welchem $\\xi$ sie sich befindet, lernt sie ein Verhalten, das über alle hinweg robust ist. Weitere Mittel gegen die Lücke (hier nicht alle verwendet): an gemessene Servoantworten angepasste Aktuatormodelle, Observation-Latenz, Stoßstörungen und Gelände-Curricula."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Prüfen Sie sich selbst"
+ },
+ "04bad2dd6aac2ae7": {
+  "en": "What is the effective horizon in seconds for $\\gamma = 0.99$ at $50\\,\\mathrm{Hz}$, and what if the policy ran at $100\\,\\mathrm{Hz}$ with the same $\\gamma$?",
+  "de": "Wie groß ist der effektive Horizont in Sekunden für $\\gamma = 0.99$ bei $50\\,\\mathrm{Hz}$, und wie, wenn die Policy mit demselben $\\gamma$ bei $100\\,\\mathrm{Hz}$ liefe?"
+ },
+ "895859b5f9085b5c": {
+  "en": "   <details><summary>Answer</summary>",
+  "de": "   <details><summary>Antwort</summary>"
+ },
+ "1bdb5ccc6b08d88d": {
+  "en": "About $100$ steps $= 2\\,\\mathrm{s}$; at $100\\,\\mathrm{Hz}$ it halves to $1\\,\\mathrm{s}$, so $\\gamma$ should rise to about $0.995$ to keep the same horizon.",
+  "de": "Etwa $100$ Schritte $= 2\\,\\mathrm{s}$; bei $100\\,\\mathrm{Hz}$ halbiert er sich auf $1\\,\\mathrm{s}$, daher sollte $\\gamma$ auf etwa $0.995$ steigen, um denselben Horizont zu behalten."
+ },
+ "0a166bf863568061": {
+  "en": "Why does subtracting $V(s)$ in the policy gradient not bias it?",
+  "de": "Warum verzerrt das Abziehen von $V(s)$ den Policy Gradient nicht?"
+ },
+ "1d87247cc6418918": {
+  "en": "$\\mathbb{E}_{a \\sim \\pi}[\\nabla_\\theta \\log \\pi_\\theta(a \\mid s)] = \\nabla_\\theta \\sum_a \\pi_\\theta(a \\mid s) = \\nabla_\\theta 1 = 0$, so any state-only baseline has zero expected contribution.",
+  "de": "$\\mathbb{E}_{a \\sim \\pi}[\\nabla_\\theta \\log \\pi_\\theta(a \\mid s)] = \\nabla_\\theta \\sum_a \\pi_\\theta(a \\mid s) = \\nabla_\\theta 1 = 0$, daher hat jede nur vom Zustand abhängige Baseline einen erwarteten Beitrag von null."
+ },
+ "d3f12dfb582205fc": {
+  "en": "With $\\epsilon = 0.2$ and $\\hat{A}_t < 0$, for which $\\rho_t$ does the PPO term stop giving a gradient?",
+  "de": "Bei $\\epsilon = 0.2$ und $\\hat{A}_t < 0$: Für welche $\\rho_t$ liefert der PPO-Term keinen Gradienten mehr?"
+ },
+ "8b9cbc4172729bf7": {
+  "en": "For $\\rho_t < 0.8$: the action's probability has already been reduced enough.",
+  "de": "Für $\\rho_t < 0.8$: Die Wahrscheinlichkeit der Action wurde bereits genug verringert."
+ },
+ "5f8daecea7277f7d": {
+  "en": "Why does the observation contain the gravity direction rather than Euler angles including yaw?",
+  "de": "Warum enthält die Observation die Schwerkraftrichtung statt Euler-Winkeln einschließlich Gieren?"
+ },
+ "b2109165a5695b84": {
+  "en": "Walking does not depend on heading, and yaw from a magnetometer-less IMU drifts; the gravity vector is drift-free and continuous.",
+  "de": "Gehen hängt nicht von der Blickrichtung ab, und das Gieren aus einer IMU ohne Magnetometer driftet; der Schwerkraftvektor ist driftfrei und stetig."
+ },
+ "db7e78fe56846523": {
+  "en": "Name two sim-to-real effects not covered by Strido's randomisation.",
+  "de": "Nennen Sie zwei Sim-to-Real-Effekte, die die Randomisierung von Strido nicht abdeckt."
+ },
+ "b4bda734ccae021b": {
+  "en": "For example sensor and actuation latency, servo backlash or deadband, external pushes, uneven terrain.",
+  "de": "Zum Beispiel Sensor- und Aktuatorlatenz, Servospiel oder Totzone, äußere Stöße, unebenes Gelände."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "5abbdf23bd22954e": {
+  "en": "R. S. Sutton and A. G. Barto, *Reinforcement Learning: An Introduction*, 2nd ed., MIT Press, 2018.",
+  "de": "R. S. Sutton und A. G. Barto, *Reinforcement Learning: An Introduction*, 2. Aufl., MIT Press, 2018."
+ },
+ "ea1349db107ee7c4": {
+  "en": "J. Schulman, F. Wolski, P. Dhariwal, A. Radford and O. Klimov, \"Proximal Policy Optimization Algorithms\", arXiv:1707.06347, 2017.",
+  "de": "J. Schulman, F. Wolski, P. Dhariwal, A. Radford und O. Klimov, „Proximal Policy Optimization Algorithms“, arXiv:1707.06347, 2017."
+ },
+ "2243b13a66b98234": {
+  "en": "J. Schulman, P. Moritz, S. Levine, M. Jordan and P. Abbeel, \"High-Dimensional Continuous Control Using Generalized Advantage Estimation\", *ICLR*, 2016.",
+  "de": "J. Schulman, P. Moritz, S. Levine, M. Jordan und P. Abbeel, „High-Dimensional Continuous Control Using Generalized Advantage Estimation“, *ICLR*, 2016."
+ },
+ "6a951ae542bdad0e": {
+  "en": "J. Tobin et al., \"Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World\", *IROS*, 2017.",
+  "de": "J. Tobin et al., „Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World“, *IROS*, 2017."
+ },
+ "0dc2e75627e6ee66": {
+  "en": "J. Hwangbo et al., \"Learning agile and dynamic motor skills for legged robots\", *Science Robotics*, 2019.",
+  "de": "J. Hwangbo et al., „Learning agile and dynamic motor skills for legged robots“, *Science Robotics*, 2019."
+ }
+}

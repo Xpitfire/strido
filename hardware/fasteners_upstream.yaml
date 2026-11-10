@@ -1,0 +1,131 @@
+# Fasteners of the upstream Yertle mechanics, derived from coaxial hole stacks in
+# the upstream STEP (strido_cad.hole_stacks). The upstream project lists only
+# "M3 screws, nuts and washers x100"; every joint below is matched to measured
+# hole stacks by strido_cad.fasteners, which fails on any unmatched stack.
+#
+# match.parts: tokens that must ALL appear in the stack's part names
+# match.axis: dominant axis of the hole line in the STEP frame
+# match.stack_mm: measured stack length window [min, max]
+# per_stack: fasteners used for one matched stack
+# head: where the screw head sits (counterbore | outer | min | max)
+#
+# Thread conventions in printed parts: D3.0 (r1.5) and D2.7-2.9 (r1.35-1.45) holes are
+# self-tapping for M3; D3.2 (r1.6-1.7) is clearance; D2.6 (r1.3) in aluminium horns is tapped M3.
+
+joints:
+  - id: shell_to_shoulder_top
+    what: top shell, front/back shell top edge -> upper shoulder frame (captive nut in frame pocket)
+    match: {parts: [Top_Shoulder], axis: z, stack_mm: [4.5, 5.5]}
+    per_stack: [{spec: iso4762_m3x8, qty: 1}, {spec: iso4032_m3, qty: 1}]
+    head: max
+  - id: shell_to_shoulder_bottom
+    what: bottom shell, front/back shell bottom edge -> lower shoulder frame (captive nut)
+    match: {parts: [Bottom_Shoulder], axis: z, stack_mm: [4.5, 5.5]}
+    per_stack: [{spec: iso4762_m3x8, qty: 1}, {spec: iso4032_m3, qty: 1}]
+    head: min
+  - id: shoulder_frames
+    what: upper/lower shoulder frame -> inner or outer shoulder frame (head in counterbore, nut in frame pocket)
+    match: {parts: [Shoulder], axis: y, stack_mm: [12.5, 13.5]}
+    per_stack: [{spec: iso4762_m3x10, qty: 1}, {spec: iso4032_m3, qty: 1}]
+    head: counterbore
+  - id: chassis_side
+    what: side body beam -> inner shoulder frame (nut in beam pocket)
+    match: {parts: [Chassis_Side], axis: y, stack_mm: [3.5, 12.5]}
+    per_stack: [{spec: iso4762_m3x10, qty: 1}, {spec: iso4032_m3, qty: 1}]
+    head: outer
+    note: "one beam end registers as split stacks (4.0 + 5.0 mm); counted once via count_override"
+  - id: hip_servo_ears
+    what: hip (abduction) servo ears -> inner shoulder frame (nut behind the frame)
+    match: {parts: [Inner_Shoulder], axis: y, stack_mm: [2.0, 3.0]}
+    per_stack: [{spec: iso4762_m3x10, qty: 1}, {spec: iso4032_m3, qty: 1}]
+    head: inner
+  - id: leg_servo_ears_and_bracket
+    what: femur/knee servo ears (32) and top bracket (8) -> servo mount, self-tapping in D3.0
+    match: {parts: [servoholder], axis: x, stack_mm: [18.5, 19.5]}
+    per_stack: [{spec: iso4762_m3x10, qty: 1}]
+    head: outer
+    note: "8 of the 40 stacks are the top-bracket screws, which need M3x20 - see count_override"
+  - id: hip_pivot
+    what: hip pivot pin through the 625 bearing -> servo mount
+    match: {parts: [Shoulder_Joint_Ball_Bearing_Pin], axis: y, stack_mm: [4.5, 11.0]}
+    per_stack: [{spec: iso4762_m3x10, qty: 1}, {spec: iso7089_m3, qty: 1}]
+    head: outer
+  - id: hip_pivot_mount_side
+    what: servo-mount half of the hip pivot stack (front legs register separately)
+    match: {parts: [servoholder], axis: y, stack_mm: [5.0, 6.0]}
+    per_stack: []
+    head: outer
+  - id: hip_horn
+    what: hip servo disc horn -> servo mount (2 per leg, into the tapped horn)
+    match: {parts: [servoholder], axis: y, stack_mm: [4.0, 11.5]}
+    per_stack: [{spec: iso4762_m3x8, qty: 1}]
+    head: counterbore
+  - id: horn_centre_screw
+    what: horn centre screw into the servo spline (hip and thigh servos through the mount/femur pocket)
+    match: {parts: [servo_blue], axis: any, stack_mm: [13.5, 22.5]}
+    per_stack: [{spec: iso4762_m3x8, qty: 1}]
+    head: counterbore
+  - id: knee_drive_centre_screw
+    what: arm horn centre screw into the knee-drive servo spline
+    match: {parts: [servo_blue], axis: x, stack_mm: [3.5, 4.5]}
+    per_stack: [{spec: iso4762_m3x8, qty: 1}]
+    head: outer
+  - id: femur_to_horn
+    what: femur (+ femur servo connector) -> thigh disc horn, 4 per leg into the tapped horn
+    match: {parts: [femur, servo arm round], axis: x, stack_mm: [19.0, 20.0]}
+    per_stack: [{spec: iso4762_m3x20, qty: 1}]
+    head: outer
+    note: "tip ends 0.5 mm behind the horn; add an M3 washer under the head if it touches the servo case"
+  - id: crank_pins
+    what: crank (Left/Right_Shoulder) pins through the short/long link sleeve bearings, self-tapping into the crank
+    match: {parts: [SOLID], axis: x, stack_mm: [25.5, 26.5]}
+    per_stack: [{spec: iso4762_m3x25, qty: 1}]
+    head: counterbore
+  - id: arm_pin
+    what: short link -> knee-drive arm horn (tapped)
+    match: {parts: [28mm link rod, Arm Metal Standard], axis: x, stack_mm: [18.0, 19.0]}
+    per_stack: [{spec: iso4762_m3x16, qty: 1}, {spec: iso7089_m3, qty: 1}]
+    head: outer
+  - id: knee_axle
+    what: knee - two screws through the 633 bearings into the femur bore (self-tapping D2.9)
+    match: {parts: [bearing_13mm, femur], axis: x, stack_mm: [22.0, 23.0]}
+    per_stack: [{spec: iso4762_m3x10, qty: 2}, {spec: iso7089_m3, qty: 2}]
+    head: outer
+  - id: tibia_foot
+    what: foot - tibia halves + foot spacer
+    match: {parts: [COMPOUND], axis: x, stack_mm: [14.5, 15.5]}
+    per_stack: [{spec: iso4762_m3x20, qty: 1}, {spec: din985_m3, qty: 1}]
+    head: outer
+  - id: tibia_joints
+    what: tibia halves joined (two places per leg)
+    match: {parts: [COMPOUND], axis: x, stack_mm: [6.0, 7.5]}
+    per_stack: [{spec: iso4762_m3x12, qty: 1}, {spec: din985_m3, qty: 1}]
+    head: outer
+  - id: tibia_link_pin
+    what: long link -> tibia pin through both tibia halves and the link sleeve bearings
+    match: {parts: [COMPOUND], axis: x, stack_mm: [1.5, 2.5]}
+    per_stack: [{spec: iso4762_m3x25, qty: 1}, {spec: din985_m3, qty: 1}]
+    head: outer
+    nut: tip  # the gap between the tibia halves is the link eye, not a nut pocket
+    note: "two short clearance stacks (1.7/2.2 mm) per leg are the two halves of one pin; merged via count_override.merge_mm"
+
+# Stacks that are not separate joints (counted inside another joint) or replaced by Strido.
+ignore:
+  - {parts: [Circuitry_Mountingplate], why: "Pi/PCA holes of the replaced plate; Strido stand-offs are listed with the deck"}
+  - {parts: [bushing], stack_mm: [9.5, 10.5], why: "sleeve bearing bores alone - part of the crank/tibia pins"}
+  - {parts: [Arm Metal Standard], axis: x, stack_mm: [3.0, 6.5], why: "unused arm-horn holes / clamp screw (supplied with the horn)"}
+  - {parts: [servo arm round], axis: y, stack_mm: [2.5, 3.5], why: "unused disc-horn holes"}
+
+# Final per-robot quantities where stack splitting/merging needs a correction.
+count_override:
+  chassis_side: {stacks: 8, why: "8 beam-to-frame joints (2 beams x 2 ends x 2); one end registers as 2 split stacks"}
+  leg_servo_ears_and_bracket: {stacks: 40, why: "40 stacks: 32 servo ear screws (8 servos x 4) + 8 top-bracket screws, re-specified as M3x20 by `extra: bracket_screws`"}
+  tibia_link_pin: {stacks: 4, merge_mm: 20.0, why: "one pin per leg; each registers as two short clearance stacks (heads 16.4 mm apart)"}
+  hip_horn: {stacks: 8, why: "2 screws per leg into the tapped disc horn"}
+
+extra:
+  - id: bracket_screws
+    what: servo-mount top bracket -> servo mount along x through 19 mm (self-tapping D3.0)
+    qty: 8
+    replaces: iso4762_m3x10  # 8 of the leg_servo_ears_and_bracket stacks, re-specified as M3x20
+    per_item: [{spec: iso4762_m3x20, qty: 1}]

@@ -1,0 +1,1894 @@
+{
+ "ca4d8d872cf8efbe": {
+  "en": "Quad-core Linux computer that runs ROS 2, perception and the gait planner",
+  "de": "Vierkern-Linux-Computer, der ROS 2, die Wahrnehmung und den Gait-Planer ausführt"
+ },
+ "c535ac4919b759e5": {
+  "en": "The Raspberry Pi 5 is the high-level brain of Strido. It runs Linux, Docker and ROS 2, reads the LiDAR and camera, and streams joint targets over USB to the XIAO ESP32-S3. The 4 GB model is enough for the ROS 2 stack and keeps the logic power budget near 7 W typical.",
+  "de": "Der Raspberry Pi 5 ist das übergeordnete Gehirn von Strido. Er führt Linux, Docker und ROS 2 aus, liest LiDAR und Kamera aus und sendet Gelenk-Sollwerte über USB an den XIAO ESP32-S3. Das 4-GB-Modell reicht für den ROS-2-Stack und hält das Leistungsbudget der Logik typisch bei etwa 7 W."
+ },
+ "baed9f998d597f5c": {
+  "en": "Quad-core Arm Cortex-A76",
+  "de": "Vierkern-Arm-Cortex-A76"
+ },
+ "e52ef49351dec9fe": {
+  "en": "Two MIPI camera/display connectors",
+  "de": "Zwei MIPI-Anschlüsse für Kamera/Display"
+ },
+ "78e78bc6bb302b22": {
+  "en": "PCIe 2.0 x1 and USB 3.0",
+  "de": "PCIe 2.0 x1 und USB 3.0"
+ },
+ "e41648c6de1228b4": {
+  "en": "Official long-term availability",
+  "de": "Offizielle Langzeitverfügbarkeit"
+ },
+ "7d62361a2506d50f": {
+  "en": "Broadcom BCM2712",
+  "de": "Broadcom BCM2712"
+ },
+ "dd5a5f7869dc46ed": {
+  "en": "4 × Cortex-A76 at 2.4 GHz",
+  "de": "4 × Cortex-A76 mit 2,4 GHz"
+ },
+ "a932c852531d92d1": {
+  "en": "4 GB LPDDR4X",
+  "de": "4 GB LPDDR4X"
+ },
+ "762aa0d440900214": {
+  "en": "Sits on M2.5 × 6 stand-offs on the electronics deck, fed from the 5 V regulator through GPIO pins 2/4 and 6/14.",
+  "de": "Sitzt auf M2.5 × 6-Abstandsbolzen auf dem Elektronikdeck und wird vom 5-V-Spannungsregler über die GPIO-Pins 2/4 und 6/14 versorgt."
+ },
+ "535b24ea1515e9ae": {
+  "en": "Official clip-on heatsink and PWM fan for the Raspberry Pi 5",
+  "de": "Offizieller aufsteckbarer Kühlkörper mit PWM-Lüfter für den Raspberry Pi 5"
+ },
+ "5feb25c4428ec52f": {
+  "en": "Clip-on aluminium heatsink with a temperature-controlled fan that plugs into the Pi 5 fan header. Inside a closed shell the Pi would throttle under ROS 2 load; the cooler keeps it at full clock.",
+  "de": "Aufsteckbarer Aluminium-Kühlkörper mit temperaturgesteuertem Lüfter, der am Lüfteranschluss des Pi 5 eingesteckt wird. In einer geschlossenen Schale würde der Pi unter ROS-2-Last drosseln; der Kühler hält ihn auf vollem Takt."
+ },
+ "3d6cc4d8e8d1aa87": {
+  "en": "Push-pin mounting",
+  "de": "Befestigung mit Spreizstiften"
+ },
+ "093a534134897045": {
+  "en": "Thermal pads included",
+  "de": "Wärmeleitpads im Lieferumfang"
+ },
+ "6e8bfca2f7e5da93": {
+  "en": "Fan speed controlled by the Pi firmware",
+  "de": "Lüfterdrehzahl von der Pi-Firmware geregelt"
+ },
+ "b9558e619d32a38f": {
+  "en": "Raspberry Pi 5",
+  "de": "Raspberry Pi 5"
+ },
+ "fb2592acb37e8350": {
+  "en": "4-pin fan header",
+  "de": "4-poliger Lüfteranschluss"
+ },
+ "f660cc6f53360dd7": {
+  "en": "Mounted on top of the Raspberry Pi 5 on the electronics deck.",
+  "de": "Oben auf dem Raspberry Pi 5 auf dem Elektronikdeck montiert."
+ },
+ "c478154494734f29": {
+  "en": "Fast A2 microSD card holding the Pi operating system and containers",
+  "de": "Schnelle A2-microSD-Karte mit dem Pi-Betriebssystem und den Containern"
+ },
+ "fb0032acd2ae4e0b": {
+  "en": "The boot and root storage for the Raspberry Pi 5. The A2 application-performance class gives the random I/O that Docker images and ROS 2 logs need. Buy from retailer stock: fake cards are common.",
+  "de": "Boot- und Root-Speicher für den Raspberry Pi 5. Die Anwendungsleistungsklasse A2 liefert die Random-I/O-Leistung, die Docker-Images und ROS-2-Logs benötigen. Kaufen Sie aus Händlerbestand: Fälschungen sind verbreitet."
+ },
+ "cb86af3b75a21fbe": {
+  "en": "A2 application performance class",
+  "de": "Anwendungsleistungsklasse A2"
+ },
+ "8e5631eb752495d1": {
+  "en": "U3 / V30 speed class",
+  "de": "Geschwindigkeitsklasse U3 / V30"
+ },
+ "f1a996aae431c172": {
+  "en": "64 GB room for images and bags",
+  "de": "64 GB Platz für Images und Bags"
+ },
+ "ac5c1f7307d564af": {
+  "en": "Inserted in the Raspberry Pi 5 card slot.",
+  "de": "Im Kartensteckplatz des Raspberry Pi 5 eingesteckt."
+ },
+ "d60409cb47a8f2b3": {
+  "en": "12 MP wide-angle autofocus camera for the robot's face",
+  "de": "12-MP-Weitwinkelkamera mit Autofokus für das Gesicht des Roboters"
+ },
+ "88cc0b0f9252a18b": {
+  "en": "Official Raspberry Pi camera with a Sony IMX708 sensor, autofocus and a wide lens. It looks forward from a printed tilt mount behind the front shell and feeds the Pi over MIPI CSI-2. The wide variant sees more of the floor right in front of the feet.",
+  "de": "Offizielle Raspberry-Pi-Kamera mit Sony-IMX708-Sensor, Autofokus und Weitwinkelobjektiv. Sie blickt von einer gedruckten Neigehalterung hinter der Frontschale nach vorn und speist den Pi über MIPI CSI-2. Die Weitwinkelvariante erfasst mehr vom Boden direkt vor den Füßen."
+ },
+ "357684f3b320d2ea": {
+  "en": "Sony IMX708 sensor",
+  "de": "Sony-IMX708-Sensor"
+ },
+ "bc9dfe36adacbeb9": {
+  "en": "Phase-detect autofocus",
+  "de": "Phasendetektions-Autofokus"
+ },
+ "1649bc7d4367a161": {
+  "en": "HDR mode",
+  "de": "HDR-Modus"
+ },
+ "f3f1d7e0b7002ebc": {
+  "en": "Wide 120° lens",
+  "de": "Weitwinkelobjektiv 120°"
+ },
+ "3cc2b1a74e69eac1": {
+  "en": "Sony IMX708",
+  "de": "Sony IMX708"
+ },
+ "3bec7598d2687c99": {
+  "en": "MIPI CSI-2 (15-pin)",
+  "de": "MIPI CSI-2 (15-polig)"
+ },
+ "e865d7b55e4457e6": {
+  "en": "Held on the camera tilt plate at the front, cabled to the Pi 5 CAM port.",
+  "de": "Vorne auf der Kamera-Neigeplatte gehalten, mit dem CAM-Port des Pi 5 verkabelt."
+ },
+ "313b2310a7ed4874": {
+  "en": "300 mm ribbon from the Pi 5 22-pin camera port to the 15-pin camera",
+  "de": "300-mm-Flachbandkabel vom 22-poligen Kameraport des Pi 5 zur 15-poligen Kamera"
+ },
+ "cb674aaf5dfdee3b": {
+  "en": "The Pi 5 uses the smaller 22-pin (0.5 mm pitch) camera connector while the Camera Module 3 has the 15-pin standard connector. The 300 mm length reaches from the deck to the front camera through the shell slot.",
+  "de": "Der Pi 5 verwendet den kleineren 22-poligen Kameraanschluss (Raster 0,5 mm), während das Camera Module 3 den 15-poligen Standardanschluss hat. Die Länge von 300 mm reicht vom Deck durch den Schalenschlitz bis zur Frontkamera."
+ },
+ "d9fa1a5cbedbe9b8": {
+  "en": "22-pin to 15-pin",
+  "de": "22-polig auf 15-polig"
+ },
+ "3cef65998f2f0ae1": {
+  "en": "300 mm length",
+  "de": "Länge 300 mm"
+ },
+ "ad1d44657eb91d41": {
+  "en": "Official Raspberry Pi part",
+  "de": "Offizielles Raspberry-Pi-Teil"
+ },
+ "078679275f5f2809": {
+  "en": "22-pin 0.5 mm / 15-pin 1 mm",
+  "de": "22-polig 0,5 mm / 15-polig 1 mm"
+ },
+ "e53f1352aec8b1c8": {
+  "en": "Runs from the Pi 5 CAM port through the front-shell slot to the camera.",
+  "de": "Verläuft vom CAM-Port des Pi 5 durch den Schlitz der Frontschale zur Kamera."
+ },
+ "e5834c7226cf3df1": {
+  "en": "Thumb-sized ESP32-S3 board running the real-time servo and sensor firmware",
+  "de": "Daumengroße ESP32-S3-Platine mit der Echtzeit-Firmware für Servos und Sensoren"
+ },
+ "52fc4b310d252c45": {
+  "en": "The motion controller of Strido. It receives joint targets from the Pi over USB, drives the PCA9685 over I²C at 400 kHz, reads the IMU and power monitor, and draws the face on the LCD over SPI. It was chosen for its tiny footprint and native USB.",
+  "de": "Die Bewegungssteuerung von Strido. Sie empfängt Gelenk-Sollwerte vom Pi über USB, steuert den PCA9685 über I²C mit 400 kHz an, liest IMU und Power-Monitor aus und zeichnet das Gesicht über SPI auf das LCD. Sie wurde wegen ihrer winzigen Abmessungen und des nativen USB gewählt."
+ },
+ "414b4f8a2cffc18a": {
+  "en": "Dual-core 240 MHz Xtensa LX7",
+  "de": "Zweikern-Xtensa LX7 mit 240 MHz"
+ },
+ "c2305c8febf03f1f": {
+  "en": "Native USB-C",
+  "de": "Natives USB-C"
+ },
+ "a16c7043afc098e3": {
+  "en": "8 MB flash + 8 MB PSRAM",
+  "de": "8 MB Flash + 8 MB PSRAM"
+ },
+ "d70eea9599ed654c": {
+  "en": "Pre-soldered headers",
+  "de": "Vorgelötete Stiftleisten"
+ },
+ "c4fba57b8f177ec4": {
+  "en": "ESP32-S3R8",
+  "de": "ESP32-S3R8"
+ },
+ "ddf56068c6ddab0a": {
+  "en": "2 × Xtensa LX7 at 240 MHz",
+  "de": "2 × Xtensa LX7 mit 240 MHz"
+ },
+ "425f08d5c8425e97": {
+  "en": "Taped in the front cavity, powered and connected by USB from the Pi, master of the I²C bus.",
+  "de": "Im vorderen Hohlraum festgeklebt, über USB vom Pi versorgt und verbunden, Master des I²C-Busses."
+ },
+ "48b3f16b90be58db": {
+  "en": "16-channel 12-bit PWM driver that generates all twelve servo pulses",
+  "de": "16-Kanal-12-Bit-PWM-Treiber, der alle zwölf Servoimpulse erzeugt"
+ },
+ "edada0536aeec5d2": {
+  "en": "The PCA9685 creates the servo pulses in hardware so the ESP32 only writes registers over I²C. Strido runs it at 200 Hz with 500-2500 µs pulses on channels 4-15. Clones are fine if they keep the Adafruit 815 footprint.",
+  "de": "Der PCA9685 erzeugt die Servoimpulse in Hardware, sodass der ESP32 nur Register über I²C schreibt. Strido betreibt ihn mit 200 Hz und Impulsen von 500-2500 µs auf den Kanälen 4-15. Klone sind in Ordnung, wenn sie das Adafruit-815-Layout beibehalten."
+ },
+ "1fba31bfe96db443": {
+  "en": "16 channels",
+  "de": "16 Kanäle"
+ },
+ "bbb3d2232c86a013": {
+  "en": "12-bit resolution",
+  "de": "12-Bit-Auflösung"
+ },
+ "b6af0d95fb677716": {
+  "en": "I²C address 0x40",
+  "de": "I²C-Adresse 0x40"
+ },
+ "d55607f2a96751d8": {
+  "en": "Active-low OE for a safe start-up",
+  "de": "Low-aktives OE für einen sicheren Start"
+ },
+ "a3a82f404314d510": {
+  "en": "12 bit",
+  "de": "12 Bit"
+ },
+ "590f140ceac0a8a9": {
+  "en": "On the deck between the XIAO (I²C, OE) and the twelve servo signal leads.",
+  "de": "Auf dem Deck zwischen dem XIAO (I²C, OE) und den zwölf Servo-Signalleitungen."
+ },
+ "f134ae0912a5f5cc": {
+  "en": "6-axis accelerometer and gyroscope for body attitude",
+  "de": "6-Achsen-Beschleunigungssensor und Gyroskop für die Körperlage"
+ },
+ "b9603d24a1efaa28": {
+  "en": "The IMU measures acceleration and rotation of the body so the controller can estimate tilt and balance. It sits in a pocket in the electronics deck near the centre of the robot and talks I²C at address 0x6A.",
+  "de": "Die IMU misst Beschleunigung und Drehung des Körpers, damit die Steuerung Neigung und Gleichgewicht schätzen kann. Sie sitzt in einer Tasche des Elektronikdecks nahe der Robotermitte und kommuniziert über I²C an Adresse 0x6A."
+ },
+ "cdef6340814a9cdc": {
+  "en": "3-axis accelerometer",
+  "de": "3-Achsen-Beschleunigungssensor"
+ },
+ "855b33e136c66827": {
+  "en": "3-axis gyroscope",
+  "de": "3-Achsen-Gyroskop"
+ },
+ "942f84fbd3a1b0d8": {
+  "en": "STEMMA QT connectors",
+  "de": "STEMMA-QT-Anschlüsse"
+ },
+ "94534b8a00686093": {
+  "en": "3-5 V input",
+  "de": "Eingang 3-5 V"
+ },
+ "b1610812518cf360": {
+  "en": "ST LSM6DSOX",
+  "de": "ST LSM6DSOX"
+ },
+ "af99f7a7be4ca789": {
+  "en": "±125 to ±2000 dps",
+  "de": "±125 bis ±2000 dps"
+ },
+ "ae15791183d53ad2": {
+  "en": "Pressed into the deck pocket and wired to the XIAO I²C bus.",
+  "de": "In die Tasche des Decks gedrückt und mit dem I²C-Bus des XIAO verbunden."
+ },
+ "71af8e730f2a4bbb": {
+  "en": "Current, voltage and power monitor with an integrated shunt",
+  "de": "Strom-, Spannungs- und Power-Monitor mit integriertem Shunt"
+ },
+ "e632c890d2e77f4c": {
+  "en": "Measures the logic-branch current and the pack voltage so the robot can publish battery state and warn before the LiPo is over-discharged. The A0 jumper is bridged to move it to 0x41, away from the PCA9685.",
+  "de": "Misst den Strom des Logikzweigs und die Akkuspannung, damit der Roboter den Akkuzustand veröffentlichen und warnen kann, bevor der LiPo tiefentladen wird. Die A0-Lötbrücke ist geschlossen, um ihn auf 0x41 zu legen, weg vom PCA9685."
+ },
+ "cdf5c0e2e359fc35": {
+  "en": "Integrated 2 mΩ shunt",
+  "de": "Integrierter 2-mΩ-Shunt"
+ },
+ "e1ab075fc821a3ab": {
+  "en": "Up to 36 V bus",
+  "de": "Bus bis 36 V"
+ },
+ "bb392fa89983125c": {
+  "en": "I²C with alert pin",
+  "de": "I²C mit Alert-Pin"
+ },
+ "1f346b1c35169bd7": {
+  "en": "TI INA260",
+  "de": "TI INA260"
+ },
+ "84e1a7d6a3ecb287": {
+  "en": "2 mΩ internal",
+  "de": "2 mΩ intern"
+ },
+ "02ef32785a91fe91": {
+  "en": "In the logic branch between the logic fuse/switch and the 5 V regulator.",
+  "de": "Im Logikzweig zwischen Logiksicherung/Schalter und dem 5-V-Spannungsregler."
+ },
+ "1eeb935ae0a91be1": {
+  "en": "2-inch 240 × 320 IPS screen that shows the robot's face and status",
+  "de": "2-Zoll-IPS-Bildschirm mit 240 × 320 Pixeln, der Gesicht und Status des Roboters anzeigt"
+ },
+ "48e8428f2556274f": {
+  "en": "A small SPI display behind a window in the front shell. The ESP32 drives it for an animated face and quick status without needing a monitor.",
+  "de": "Ein kleines SPI-Display hinter einem Fenster in der Frontschale. Der ESP32 steuert es für ein animiertes Gesicht und einen schnellen Status an, ohne dass ein Monitor nötig ist."
+ },
+ "0afc639efb8b8499": {
+  "en": "ST7789 controller",
+  "de": "ST7789-Controller"
+ },
+ "11bb6ad7a952bae8": {
+  "en": "SPI interface",
+  "de": "SPI-Schnittstelle"
+ },
+ "3f986a806418c1bd": {
+  "en": "3.3 V / 5 V supply",
+  "de": "Versorgung 3,3 V / 5 V"
+ },
+ "60c5158ae1887e3e": {
+  "en": "SPI",
+  "de": "SPI"
+ },
+ "e050d1f89dc10993": {
+  "en": "Behind the front shell window on the display bracket, wired to the XIAO SPI pins.",
+  "de": "Hinter dem Fenster der Frontschale auf der Displayhalterung, mit den SPI-Pins des XIAO verkabelt."
+ },
+ "162022e99ecbfd5a": {
+  "en": "360° time-of-flight laser scanner for mapping and obstacle detection",
+  "de": "360°-Laufzeit-Laserscanner für Kartierung und Hinderniserkennung"
+ },
+ "dbba770a15301a34": {
+  "en": "The RPLIDAR C1 spins on top of the robot and returns a ring of distance points for SLAM and navigation in ROS 2. The genuine Slamtec unit is recommended because the official ROS driver supports it.",
+  "de": "Der RPLIDAR C1 dreht sich oben auf dem Roboter und liefert einen Ring von Distanzpunkten für SLAM und Navigation in ROS 2. Das Original-Gerät von Slamtec wird empfohlen, weil der offizielle ROS-Treiber es unterstützt."
+ },
+ "5c4acd2589543d48": {
+  "en": "360° scan",
+  "de": "360°-Scan"
+ },
+ "417db4ba1c82927f": {
+  "en": "DTOF ranging",
+  "de": "DTOF-Entfernungsmessung"
+ },
+ "af546d509a2508cb": {
+  "en": "USB adapter included",
+  "de": "USB-Adapter im Lieferumfang"
+ },
+ "25c38d25098714ce": {
+  "en": "Official ROS 2 driver",
+  "de": "Offizieller ROS-2-Treiber"
+ },
+ "6631ccbd6982cfe8": {
+  "en": "DTOF",
+  "de": "DTOF"
+ },
+ "6428163fcd482030": {
+  "en": "10 Hz typical",
+  "de": "typisch 10 Hz"
+ },
+ "b99fcef1a968f26f": {
+  "en": "On the LiDAR pedestal on the top shell, USB to the Pi 5.",
+  "de": "Auf dem LiDAR-Sockel auf der Oberschale, per USB mit dem Pi 5 verbunden."
+ },
+ "bbcd0cb320610911": {
+  "en": "JST SH 4-pin to female jumper cable for the I²C sensors",
+  "de": "JST-SH-4-Pin-auf-Buchse-Jumperkabel für die I²C-Sensoren"
+ },
+ "39dfb5ca8270fcd2": {
+  "en": "Adapts the IMU's STEMMA QT sockets to 0.1 in header pins: one cable from the PCA9685 header to the IMU (W18), one from the IMU to the INA260 header (W19). The IMU sits 2.5 mm under the Pi, where only this low plug fits. It carries 3.3 V, ground, SDA and SCL.",
+  "de": "Adaptiert die STEMMA-QT-Buchsen der IMU auf Stiftleisten im Raster 0,1 in: ein Kabel von der PCA9685-Stiftleiste zur IMU (W18), eines von der IMU zur INA260-Stiftleiste (W19). Die IMU sitzt 2,5 mm unter dem Pi, wo nur dieser niedrige Stecker passt. Es führt 3,3 V, Masse, SDA und SCL."
+ },
+ "4cadaeaf22834035": {
+  "en": "JST SH 4-pin",
+  "de": "JST SH 4-polig"
+ },
+ "15649f4adf26305d": {
+  "en": "Female 0.1 in sockets",
+  "de": "Buchsen im Raster 0,1 in"
+ },
+ "420cb2de1aad8b18": {
+  "en": "JST SH 1.0 mm 4-pin",
+  "de": "JST SH 1,0 mm 4-polig"
+ },
+ "847ff3bc49ea60a2": {
+  "en": "W18 and W19, the I²C daisy chain PCA9685 → LSM6DSOX → INA260.",
+  "de": "W18 und W19, die I²C-Kette PCA9685 → LSM6DSOX → INA260."
+ },
+ "ef104a9d55a6babc": {
+  "en": "Pull-up that keeps the servo outputs disabled while the controller boots",
+  "de": "Pull-up-Widerstand, der die Servoausgänge deaktiviert hält, während die Steuerung bootet"
+ },
+ "97dbabb63e438fb4": {
+  "en": "Holds the PCA9685 OE pin high (outputs off) until the firmware actively pulls it low, so servos cannot twitch at power-up or reset.",
+  "de": "Hält den OE-Pin des PCA9685 auf High (Ausgänge aus), bis die Firmware ihn aktiv auf Low zieht, sodass die Servos beim Einschalten oder Reset nicht zucken können."
+ },
+ "ad3457b3f7a74051": {
+  "en": "Through-hole",
+  "de": "Bedrahtet (THT)"
+ },
+ "de0fd4b31082d80a": {
+  "en": "Soldered across OE and VCC",
+  "de": "Zwischen OE und VCC gelötet"
+ },
+ "37335c8af54411b8": {
+  "en": "Soldered on the PCA9685 header between OE and VCC.",
+  "de": "Auf der PCA9685-Stiftleiste zwischen OE und VCC gelötet."
+ },
+ "0fadaf0dff2e443a": {
+  "en": "35 kg·cm 180° digital servo that drives each of the 12 joints",
+  "de": "Digitales 35-kg·cm-180°-Servo, das jedes der 12 Gelenke antreibt"
+ },
+ "4cb66f1da2a07d0b": {
+  "en": "Every hip, thigh and knee joint is a SPT5435LV-180W servo. It gives high torque on 6 V at a low price and the 180° variant maps 500-2500 µs to the full joint range. Thirteen are ordered: twelve plus one spare.",
+  "de": "Jedes Hüft-, Oberschenkel- und Kniegelenk ist ein SPT5435LV-180W-Servo. Es liefert bei 6 V hohes Drehmoment zu einem niedrigen Preis, und die 180°-Variante bildet 500-2500 µs auf den vollen Gelenkbereich ab. Dreizehn werden bestellt: zwölf plus ein Ersatz."
+ },
+ "ff23ae3699b80749": {
+  "en": "35 kg·cm class torque",
+  "de": "Drehmomentklasse 35 kg·cm"
+ },
+ "fa4e25a6167efa0a": {
+  "en": "180° travel",
+  "de": "180° Stellweg"
+ },
+ "e4307eff9b8be43b": {
+  "en": "25T output spline",
+  "de": "25T-Abtriebsverzahnung"
+ },
+ "5d1174b5b9610ba7": {
+  "en": "Waterproof case",
+  "de": "Wasserdichtes Gehäuse"
+ },
+ "129e573ed90441a3": {
+  "en": "Three per leg, signal from the PCA9685, power from the 6 V UBEC bus.",
+  "de": "Drei pro Bein, Signal vom PCA9685, Versorgung vom 6-V-UBEC-Bus."
+ },
+ "2aadb9bfe46903e4": {
+  "en": "Aluminium 25-tooth disc horn for the hip and thigh joints",
+  "de": "Aluminium-Scheibenhorn mit 25 Zähnen für die Hüft- und Oberschenkelgelenke"
+ },
+ "5915732bbee96c9c": {
+  "en": "A round metal horn that clamps on the servo spline and gives a wide bolt circle for the leg parts. Aluminium does not strip like the plastic horns supplied with most servos.",
+  "de": "Ein rundes Metallhorn, das auf der Servoverzahnung klemmt und einen großen Lochkreis für die Beinteile bietet. Aluminium nutzt sich nicht ab wie die Kunststoffhörner, die den meisten Servos beiliegen."
+ },
+ "061e14cf648e17db": {
+  "en": "25T spline",
+  "de": "25T-Verzahnung"
+ },
+ "3266ed9804f031b7": {
+  "en": "Aluminium",
+  "de": "Aluminium"
+ },
+ "d4129c3ba33ffd23": {
+  "en": "Multiple M3 holes",
+  "de": "Mehrere M3-Bohrungen"
+ },
+ "6fb616fcecc209db": {
+  "en": "aluminium",
+  "de": "Aluminium"
+ },
+ "e78e814166eac67c": {
+  "en": "Joins the femur and each leg module to its servo output.",
+  "de": "Verbindet den Femur und jedes Beinmodul mit seinem Servoabtrieb."
+ },
+ "bac194bdcfdae9e1": {
+  "en": "Clamping aluminium arm horn for the knee drive",
+  "de": "Klemmendes Aluminium-Armhorn für den Knieantrieb"
+ },
+ "9f61b037f0efdf9a": {
+  "en": "A single-arm horn with a clamp screw that drives the knee linkage. The clamp stops backlash on the spline.",
+  "de": "Ein einarmiges Horn mit Klemmschraube, das das Koppelgetriebe des Knies antreibt. Die Klemmung verhindert Spiel auf der Verzahnung."
+ },
+ "e0f9796ae6d01327": {
+  "en": "Clamping hub",
+  "de": "Klemmnabe"
+ },
+ "682fa279b7954443": {
+  "en": "On each knee servo, linked to the knee linkage with an M3 × 16 screw.",
+  "de": "Auf jedem Knieservo, mit einer M3 × 16-Schraube mit dem Koppelgetriebe des Knies verbunden."
+ },
+ "702d97110d5374a9": {
+  "en": "Shielded 5 × 16 × 5 mm ball bearing for the hip pivot",
+  "de": "Abgedichtetes Kugellager 5 × 16 × 5 mm für den Hüftdrehpunkt"
+ },
+ "397b37e1391760f5": {
+  "en": "Supports the outer end of each hip so the servo is not loaded sideways. Pressed into the outer shoulder frames.",
+  "de": "Stützt das äußere Ende jeder Hüfte, damit das Servo nicht seitlich belastet wird. In die äußeren Schulterrahmen eingepresst."
+ },
+ "f3310f08cf5837c9": {
+  "en": "Metal shields",
+  "de": "Metall-Deckscheiben"
+ },
+ "43ca349f20652ebc": {
+  "en": "Press fit in printed seat",
+  "de": "Presspassung im gedruckten Sitz"
+ },
+ "0a550aa93436fcfd": {
+  "en": "In the outer shoulder frames, carrying the hip pivot screw.",
+  "de": "In den äußeren Schulterrahmen, trägt die Hüftdrehschraube."
+ },
+ "6cac3a92e3f7990c": {
+  "en": "Thin-section 25 × 37 × 7 mm sealed bearing for the knee crank",
+  "de": "Abgedichtetes Dünnringlager 25 × 37 × 7 mm für die Kniekurbel"
+ },
+ "e59624e3f7a4cfbb": {
+  "en": "A large thin bearing that lets the shoulder crank turn freely around the thigh axis while carrying the leg load.",
+  "de": "Ein großes, dünnes Lager, das die Schulterkurbel frei um die Oberschenkelachse drehen lässt und dabei die Beinlast trägt."
+ },
+ "cb9835852fe8744d": {
+  "en": "Rubber seals both sides",
+  "de": "Gummidichtungen beidseitig"
+ },
+ "106f53b5374dca4e": {
+  "en": "Thin section",
+  "de": "Dünnring"
+ },
+ "b497ade6d4c74fb2": {
+  "en": "Pressed into the left/right shoulder crank, over the femur servo connector.",
+  "de": "In die linke/rechte Schulterkurbel eingepresst, über dem Anschluss des Femur-Servos."
+ },
+ "868405cd01062f5e": {
+  "en": "Shielded 3 × 13 × 5 mm ball bearing for the knee joint",
+  "de": "Abgedichtetes Kugellager 3 × 13 × 5 mm für das Kniegelenk"
+ },
+ "86ec4d4bc1db8950": {
+  "en": "Two per leg in the tibia halves, giving a low-friction knee pivot on an M3 axle.",
+  "de": "Zwei pro Bein in den Tibia-Hälften, für einen reibungsarmen Kniedrehpunkt auf einer M3-Achse."
+ },
+ "72e701bdc094d911": {
+  "en": "M3 axle",
+  "de": "M3-Achse"
+ },
+ "50f0d360fe398766": {
+  "en": "In the inner and outer tibia, on the knee axle.",
+  "de": "In der inneren und äußeren Tibia, auf der Knieachse."
+ },
+ "3e1507e278fdb76a": {
+  "en": "Sintered bronze bushing for the linkage eyes",
+  "de": "Sinterbronze-Buchse für die Koppelaugen"
+ },
+ "ce9be49a7734d952": {
+  "en": "Small oil-impregnated bushings pressed into each link eye so the M3 pins do not wear the plastic.",
+  "de": "Kleine ölgetränkte Buchsen, die in jedes Koppelauge eingepresst werden, damit die M3-Bolzen den Kunststoff nicht abnutzen."
+ },
+ "34c2fdd5e4ce5c5f": {
+  "en": "Self-lubricating bronze",
+  "de": "Selbstschmierende Bronze"
+ },
+ "f7db65e9918c04aa": {
+  "en": "Press fit",
+  "de": "Presspassung"
+ },
+ "d73d02ad19f8240f": {
+  "en": "Eight per leg in the long and short links.",
+  "de": "Acht pro Bein in der langen und kurzen Koppel."
+ },
+ "a28b7367c8091807": {
+  "en": "10 A switching regulator that powers six servos at 6.0 V",
+  "de": "10-A-Schaltregler, der sechs Servos mit 6,0 V versorgt"
+ },
+ "173cc1b77964f8e8": {
+  "en": "Each UBEC steps the 2S pack down to 6.0 V for one pair of legs. Two units share the servo load so no single converter has to carry all twelve servos.",
+  "de": "Jeder UBEC setzt den 2S-Akkupack auf 6,0 V für ein Beinpaar herab. Zwei Geräte teilen sich die Servolast, sodass kein einzelner Wandler alle zwölf Servos tragen muss."
+ },
+ "d295cd1cc267cd1f": {
+  "en": "2-6S input",
+  "de": "Eingang 2-6S"
+ },
+ "a3dcddb7403b9538": {
+  "en": "Selectable 6.0 / 7.4 / 8.4 V",
+  "de": "Wählbar 6,0 / 7,4 / 8,4 V"
+ },
+ "776a54f00030c3a0": {
+  "en": "Switching regulator",
+  "de": "Schaltregler"
+ },
+ "72e5e21d0bcda424": {
+  "en": "2-6S LiPo",
+  "de": "2-6S LiPo"
+ },
+ "7ef031811bacf555": {
+  "en": "6.0 V (jumpers open)",
+  "de": "6,0 V (Jumper offen)"
+ },
+ "c5613e4827a50927": {
+  "en": "Pack branch in, 6 V out to the front or rear WAGO servo bus.",
+  "de": "Akkuzweig als Eingang, 6 V als Ausgang zum vorderen oder hinteren WAGO-Servobus."
+ },
+ "a5e8b1deb0a33f21": {
+  "en": "7.4 V 5000 mAh hardcase LiPo that powers the whole robot",
+  "de": "7,4-V-5000-mAh-Hardcase-LiPo, der den gesamten Roboter versorgt"
+ },
+ "824a28260cf698c6": {
+  "en": "A two-cell lithium-polymer pack under the deck. It stores about 37 Wh and can deliver far more current than the servos need. The hardcase and the 138 × 47 × 25 mm limit match the battery bay.",
+  "de": "Ein zweizelliger Lithium-Polymer-Akkupack unter dem Deck. Er speichert etwa 37 Wh und kann weit mehr Strom liefern, als die Servos benötigen. Das Hardcase und die Grenze von 138 × 47 × 25 mm passen zum Akkufach."
+ },
+ "a297b7e52c97adb1": {
+  "en": "Hardcase",
+  "de": "Hardcase"
+ },
+ "b5e3597cd8f4fbda": {
+  "en": "XT60 plug",
+  "de": "XT60-Stecker"
+ },
+ "0ab7caae30fde9b9": {
+  "en": "Balance lead",
+  "de": "Balancer-Leitung"
+ },
+ "7609667bdbbc8dd7": {
+  "en": "60C continuous / 100C burst (Gens ace GEA502S60X6HGT)",
+  "de": "60C Dauer / 100C Spitze (Gens ace GEA502S60X6HGT)"
+ },
+ "dea3c0b86b96a54c": {
+  "en": "Strapped under the deck, feeds the main fuse through W01.",
+  "de": "Unter dem Deck festgeschnallt, speist die Hauptsicherung über W01."
+ },
+ "ebe7e294a843aca9": {
+  "en": "Mains-powered balance charger for the LiPo pack",
+  "de": "Netzbetriebenes Balance-Ladegerät für den LiPo-Akkupack"
+ },
+ "e7b4f2a8f55279f3": {
+  "en": "Charges the 2S pack with cell balancing so no cell goes over 4.2 V.",
+  "de": "Lädt den 2S-Akkupack mit Zellenausgleich, sodass keine Zelle über 4,2 V steigt."
+ },
+ "b801798fa939aad7": {
+  "en": "Balance charging",
+  "de": "Balance-Laden"
+ },
+ "795289b96e1b070b": {
+  "en": "AC input",
+  "de": "AC-Eingang"
+ },
+ "ffccb0d6c524d5bf": {
+  "en": "LiPo/LiHV/NiMH modes",
+  "de": "Modi LiPo/LiHV/NiMH"
+ },
+ "f9006e173a7f9d23": {
+  "en": "Bench equipment; connects to the pack's XT60 and balance lead.",
+  "de": "Werkstattausrüstung; wird an XT60 und Balancer-Leitung des Akkupacks angeschlossen."
+ },
+ "905b3de748aa9a9f": {
+  "en": "Fire-resistant bag for charging and storing the LiPo",
+  "de": "Feuerfester Beutel zum Laden und Lagern des LiPo"
+ },
+ "cdd4d31bff7ba799": {
+  "en": "Contains flames and sparks if a damaged pack fails during charging or storage.",
+  "de": "Hält Flammen und Funken zurück, wenn ein beschädigter Akkupack beim Laden oder Lagern versagt."
+ },
+ "528ddbd36cb93f0d": {
+  "en": "Fire-retardant fabric",
+  "de": "Feuerhemmendes Gewebe"
+ },
+ "1c7e91b4438745f8": {
+  "en": "Fits a 2S 5000 mAh pack",
+  "de": "Passend für einen 2S-5000-mAh-Akkupack"
+ },
+ "a37ea8f3bb8f73aa": {
+  "en": "Bench safety equipment used while charging.",
+  "de": "Sicherheitsausrüstung für die Werkbank, beim Laden verwendet."
+ },
+ "a50d6cada0b0b784": {
+  "en": "Cell voltage checker with low-voltage buzzer",
+  "de": "Zellenspannungsprüfer mit Unterspannungssummer"
+ },
+ "8d7cd888bdbbd3e3": {
+  "en": "Shows each cell voltage on the balance lead and beeps before the pack is over-discharged.",
+  "de": "Zeigt jede Zellenspannung an der Balancer-Leitung an und piept, bevor der Akkupack tiefentladen wird."
+ },
+ "078b0bd5711ee58d": {
+  "en": "Per-cell display",
+  "de": "Anzeige pro Zelle"
+ },
+ "f73b6312b2afe864": {
+  "en": "Adjustable alarm",
+  "de": "Einstellbarer Alarm"
+ },
+ "3761870fda8c53e0": {
+  "en": "Plugs into the pack balance lead.",
+  "de": "Wird an der Balancer-Leitung des Akkupacks eingesteckt."
+ },
+ "d6a798df6bcbaf40": {
+  "en": "5 V 5.5 A step-down regulator for the Pi and logic",
+  "de": "5-V-5,5-A-Abwärtsregler für den Pi und die Logik"
+ },
+ "c7ab26495c9b5174": {
+  "en": "A high-efficiency buck regulator that feeds the Raspberry Pi 5 and USB devices. The Pi 5 needs a stiff 5 V; cheap buck modules often overstate their current.",
+  "de": "Ein hocheffizienter Abwärtsregler, der den Raspberry Pi 5 und USB-Geräte speist. Der Pi 5 braucht stabile 5 V; billige Abwärtsmodule geben ihren Strom oft zu hoch an."
+ },
+ "b745985010e20e82": {
+  "en": "Synchronous buck",
+  "de": "Synchroner Abwärtswandler"
+ },
+ "5b27d4752409c639": {
+  "en": "Wide input range",
+  "de": "Großer Eingangsbereich"
+ },
+ "a7f38a782a836a6c": {
+  "en": "Reverse-voltage protection",
+  "de": "Verpolungsschutz"
+ },
+ "c52407e68d714ecd": {
+  "en": "On M2 stand-offs on the deck, between the INA260 and the Pi GPIO 5 V pins.",
+  "de": "Auf M2-Abstandsbolzen auf dem Deck, zwischen dem INA260 und den 5-V-GPIO-Pins des Pi."
+ },
+ "2d36783fcc0854ad": {
+  "en": "MOSFET soft power switch controlled by a pushbutton",
+  "de": "MOSFET-Soft-Power-Schalter, gesteuert über einen Taster"
+ },
+ "cbc279d168ce32e2": {
+  "en": "Switches the logic branch on and off with a small momentary button instead of a heavy toggle. It also gives reverse-voltage protection.",
+  "de": "Schaltet den Logikzweig mit einem kleinen Taster statt eines schweren Kippschalters ein und aus. Er bietet außerdem Verpolungsschutz."
+ },
+ "891daf900b78a96f": {
+  "en": "Momentary pushbutton control",
+  "de": "Steuerung per Taster"
+ },
+ "0209344402267276": {
+  "en": "Electronic off input",
+  "de": "Elektronischer Aus-Eingang"
+ },
+ "995d232c0120b1ea": {
+  "en": "Foam-taped on the deck, in the logic branch after the 7.5 A fuse.",
+  "de": "Mit Schaumklebeband auf dem Deck befestigt, im Logikzweig nach der 7,5-A-Sicherung."
+ },
+ "981decffcd5701e6": {
+  "en": "Stainless 12 mm momentary button for power on/off",
+  "de": "Edelstahl-Taster 12 mm zum Ein-/Ausschalten"
+ },
+ "d471368b7e78e6b3": {
+  "en": "The external power button in the back shell; it drives the Pololu switch A/B pads.",
+  "de": "Der externe Einschalttaster in der Rückschale; er steuert die A/B-Pads des Pololu-Schalters an."
+ },
+ "d27551cbbaa81a4c": {
+  "en": "Stainless steel",
+  "de": "Edelstahl"
+ },
+ "22995b0eca1defc4": {
+  "en": "Momentary normally open",
+  "de": "Taster, Schließer"
+ },
+ "50b849d0b5402ba1": {
+  "en": "Screw terminals",
+  "de": "Schraubklemmen"
+ },
+ "2ddfda81e4d8975e": {
+  "en": "In the back shell, wired to the Pololu switch (W13).",
+  "de": "In der Rückschale, mit dem Pololu-Schalter verkabelt (W13)."
+ },
+ "e04c8749da18192e": {
+  "en": "Genuine Amass XT60H connectors for battery lead, arming port and loop key",
+  "de": "Original-Amass-XT60H-Steckverbinder für Akkuleitung, Arming-Port und Loop-Key"
+ },
+ "d7d0e2771298a495": {
+  "en": "High-current power connectors. One pair joins the battery, one forms the rear arming port and one becomes the loop key that enables the servo branch.",
+  "de": "Hochstrom-Steckverbinder. Ein Paar verbindet den Akku, eines bildet den hinteren Arming-Port und eines wird zum Loop-Key, der den Servozweig freigibt."
+ },
+ "6ea9e1fff20349b0": {
+  "en": "Gold-plated contacts",
+  "de": "Vergoldete Kontakte"
+ },
+ "27b1c0045939f38b": {
+  "en": "Polarised housing",
+  "de": "Verpolungssicheres Gehäuse"
+ },
+ "602865504161754c": {
+  "en": "Housing cap (H version)",
+  "de": "Gehäusekappe (H-Version)"
+ },
+ "05f0b4ad7ae99017": {
+  "en": "Battery lead, rear arming port in the bezel, and the loop key.",
+  "de": "Akkuleitung, hinterer Arming-Port in der Blende und der Loop-Key."
+ },
+ "3ab0b7b8eeba4058": {
+  "en": "Inline ATO blade-fuse holder with 14 AWG leads",
+  "de": "Fliegender ATO-Flachsicherungshalter mit 14-AWG-Leitungen"
+ },
+ "58a91116e2354449": {
+  "en": "One holder protects the whole pack (25 A), the second the logic branch (7.5 A).",
+  "de": "Ein Halter schützt den gesamten Akkupack (25 A), der zweite den Logikzweig (7,5 A)."
+ },
+ "5621f58c6f1473d2": {
+  "en": "ATO/ATC blade fuses",
+  "de": "ATO/ATC-Flachsicherungen"
+ },
+ "947e9ac2adb443d2": {
+  "en": "14 AWG leads",
+  "de": "14-AWG-Leitungen"
+ },
+ "fa8d84566676ee2e": {
+  "en": "Cover",
+  "de": "Abdeckung"
+ },
+ "703986c4f4114f99": {
+  "en": "Main fuse after the battery lead; logic fuse before the power switch.",
+  "de": "Hauptsicherung nach der Akkuleitung; Logiksicherung vor dem Einschalttaster."
+ },
+ "72b057940b13c160": {
+  "en": "25 A blade fuse for the main battery line",
+  "de": "25-A-Flachsicherung für die Hauptakkuleitung"
+ },
+ "0b771543f8db7568": {
+  "en": "Blows before the 14 AWG main wiring overheats in a short circuit.",
+  "de": "Brennt durch, bevor die 14-AWG-Hauptverkabelung bei einem Kurzschluss überhitzt."
+ },
+ "b8693b12d7f5301e": {
+  "en": "ATO standard size",
+  "de": "ATO-Standardgröße"
+ },
+ "2e53c673d54fee2a": {
+  "en": "Colour-coded",
+  "de": "Farbcodiert"
+ },
+ "77be6b4f11ce324c": {
+  "en": "ATO blade",
+  "de": "ATO-Flachsicherung"
+ },
+ "fb72849583254a22": {
+  "en": "In the main fuse holder.",
+  "de": "Im Hauptsicherungshalter."
+ },
+ "cdd7fe6b271a84d4": {
+  "en": "7.5 A blade fuse for the logic branch",
+  "de": "7,5-A-Flachsicherung für den Logikzweig"
+ },
+ "98358e56fc5bec98": {
+  "en": "Protects the 18 AWG logic wiring, switch and 5 V regulator.",
+  "de": "Schützt die 18-AWG-Logikverkabelung, den Schalter und den 5-V-Spannungsregler."
+ },
+ "9f30140f954e1f8a": {
+  "en": "In the logic fuse holder.",
+  "de": "Im Logiksicherungshalter."
+ },
+ "1d45256350e05d23": {
+  "en": "Five-way lever connector for the servo power buses",
+  "de": "Fünffach-Hebelklemme für die Servo-Versorgungsbusse"
+ },
+ "65a88c96d0868605": {
+  "en": "Tool-free splice blocks that distribute 6 V and ground to the servo leads; four per bus.",
+  "de": "Werkzeuglose Verbindungsklemmen, die 6 V und Masse auf die Servokabel verteilen; vier pro Bus."
+ },
+ "8924b123de4301ec": {
+  "en": "5 conductors",
+  "de": "5 Leiter"
+ },
+ "b3eb7c34f7fbc479": {
+  "en": "Lever clamps",
+  "de": "Hebelklemmen"
+ },
+ "0a342d8f767078e8": {
+  "en": "Transparent housing",
+  "de": "Transparentes Gehäuse"
+ },
+ "7363f411cf6b842d": {
+  "en": "Clipped into the front and rear servo-bus holders.",
+  "de": "In die vorderen und hinteren Servobus-Halter eingeclipst."
+ },
+ "b1a8760b50270fe4": {
+  "en": "Flexible 14 AWG silicone wire for the main battery current",
+  "de": "Flexibler 14-AWG-Silikondraht für den Hauptakkustrom"
+ },
+ "c22c009aa4d8f5a6": {
+  "en": "Carries the full pack current from battery to fuse, arming port and UBECs.",
+  "de": "Führt den vollen Akkustrom vom Akku zur Sicherung, zum Arming-Port und zu den UBECs."
+ },
+ "37eaf2242355180e": {
+  "en": "Silicone insulation",
+  "de": "Silikonisolierung"
+ },
+ "188ad2844e88a9c2": {
+  "en": "High strand count",
+  "de": "Hohe Litzenzahl"
+ },
+ "0a63610bfea68964": {
+  "en": "Wires W01-W04.",
+  "de": "Leitungen W01-W04."
+ },
+ "f5168fd4a8a72960": {
+  "en": "18 AWG silicone wire for UBEC outputs and the logic branch",
+  "de": "18-AWG-Silikondraht für die UBEC-Ausgänge und den Logikzweig"
+ },
+ "6e0942dc19ce064f": {
+  "en": "Sized for up to 10 A per UBEC output and the logic branch.",
+  "de": "Ausgelegt für bis zu 10 A pro UBEC-Ausgang und den Logikzweig."
+ },
+ "9622d2850be8f41a": {
+  "en": "Flexible",
+  "de": "Flexibel"
+ },
+ "9de48ed45e7a9e74": {
+  "en": "Wires W04/logic, W05–W11 and W24 (1 m red + 1 m black per unit; two units).",
+  "de": "Leitungen W04/Logik, W05–W11 und W24 (1 m rot + 1 m schwarz pro Einheit; zwei Einheiten)."
+ },
+ "ab1d07ebef6fa2da": {
+  "en": "Thin silicone wire for the Pi 5 V feed, button and jumpers",
+  "de": "Dünner Silikondraht für die 5-V-Versorgung des Pi, den Taster und Brücken"
+ },
+ "df34191596516e6a": {
+  "en": "Used in parallel pairs for the Pi 5 V feed and for low-current signals.",
+  "de": "Wird in parallelen Paaren für die 5-V-Versorgung des Pi und für Signale mit geringem Strom verwendet."
+ },
+ "518e7b701efd0497": {
+  "en": "Six colours",
+  "de": "Sechs Farben"
+ },
+ "59eef06f989b6487": {
+  "en": "W12 Pi feed, button wiring and jumpers.",
+  "de": "W12 Pi-Versorgung, Tasterverkabelung und Brücken."
+ },
+ "255112ebaf9c1f83": {
+  "en": "20 cm angled USB-A to USB-C cable",
+  "de": "20-cm-USB-A-auf-USB-C-Winkelkabel"
+ },
+ "06adb9b83261c3cb": {
+  "en": "Short angled cables for the Pi-to-XIAO and Pi-to-LiDAR adapter links in the tight body.",
+  "de": "Kurze Winkelkabel für die Verbindungen Pi–XIAO und Pi–LiDAR-Adapter im engen Körper."
+ },
+ "9016d0b8a612e641": {
+  "en": "90° plug",
+  "de": "90°-Stecker"
+ },
+ "63ee0a78c1d7233c": {
+  "en": "Pi USB port to the XIAO and to the LiDAR USB adapter.",
+  "de": "USB-Port des Pi zum XIAO und zum USB-Adapter des LiDAR."
+ },
+ "02df2e7cfe113ff0": {
+  "en": "20 cm Dupont jumper assortment",
+  "de": "20-cm-Dupont-Jumperkabel-Sortiment"
+ },
+ "aa22b52e458288e1": {
+  "en": "Jumpers for the bench set-up when centring the servos and testing the boards before they go into the robot.",
+  "de": "Jumperkabel für den Werkbankaufbau beim Zentrieren der Servos und zum Testen der Platinen, bevor sie in den Roboter kommen."
+ },
+ "884474d5ecb5205a": {
+  "en": "F-F",
+  "de": "F-F"
+ },
+ "a234bacdaf3d5a67": {
+  "en": "M-M and F-M",
+  "de": "M-M und F-M"
+ },
+ "935e08c1808c4245": {
+  "en": "0.1 in pitch",
+  "de": "Raster 0,1 in"
+ },
+ "3c7fdb3d5fa676d6": {
+  "en": "Bench wiring.",
+  "de": "Werkbankverkabelung."
+ },
+ "adb2e2eff0368534": {
+  "en": "Heat-shrink tubing assortment",
+  "de": "Schrumpfschlauch-Sortiment"
+ },
+ "d7a4b92c7c0f6ce0": {
+  "en": "Insulates and strain-relieves every solder joint and splice.",
+  "de": "Isoliert und entlastet jede Lötstelle und Verbindung."
+ },
+ "da7083b70d17493d": {
+  "en": "Several diameters",
+  "de": "Mehrere Durchmesser"
+ },
+ "f3e9c5e1eac3e3c4": {
+  "en": "Over all soldered power and signal joints.",
+  "de": "Über allen gelöteten Versorgungs- und Signalverbindungen."
+ },
+ "d0e335451fb5bf12": {
+  "en": "100 mm × 2.5 mm cable ties",
+  "de": "Kabelbinder 100 mm × 2,5 mm"
+ },
+ "d1d93682c6ede5a4": {
+  "en": "Tie the harness at every marked point of the routed wiring and hold the main fuse holder in the rear cavity.",
+  "de": "Binden den Kabelbaum an jeder markierten Stelle der verlegten Verkabelung und halten den Hauptsicherungshalter im hinteren Hohlraum."
+ },
+ "0b87fe6313c0a8dc": {
+  "en": "100 pieces",
+  "de": "100 Stück"
+ },
+ "ec09053a242bd0c4": {
+  "en": "Cable management and fuse holder mounting.",
+  "de": "Kabelmanagement und Befestigung des Sicherungshalters."
+ },
+ "05f9ea08ea3025b8": {
+  "en": "Black spiral wrap for the cable bundles",
+  "de": "Schwarzer Spiralschlauch für die Kabelbündel"
+ },
+ "699caf902c6dc42a": {
+  "en": "Wraps every bundle of three or more cables where it passes a frame opening or runs near a moving part; the wiring check sizes the bundles and their length.",
+  "de": "Umhüllt jedes Bündel aus drei oder mehr Kabeln, wo es eine Rahmenöffnung passiert oder nahe einem beweglichen Teil verläuft; die Verkabelungsprüfung bemisst die Bündel und ihre Länge."
+ },
+ "8f255467ceaf5c4c": {
+  "en": "Black PE",
+  "de": "Schwarzes PE"
+ },
+ "4a6a22df346172b4": {
+  "en": "Bundles 4-10 mm",
+  "de": "Bündel 4-10 mm"
+ },
+ "35e8b09d22e740ef": {
+  "en": "Re-openable",
+  "de": "Wieder zu öffnen"
+ },
+ "fb8ecf64b1b0f221": {
+  "en": "Protects the servo leads and power bundles in the cavities and openings.",
+  "de": "Schützt die Servokabel und Versorgungsbündel in den Hohlräumen und Öffnungen."
+ },
+ "eb732fd7e0f31d3b": {
+  "en": "Small adhesive base for a cable tie",
+  "de": "Kleiner selbstklebender Sockel für einen Kabelbinder"
+ },
+ "3b77167f4021926a": {
+  "en": "Two mounts on the deck side strips hold the logic and signal bundles beside the Pi and the PCA9685.",
+  "de": "Zwei Sockel auf den seitlichen Leisten des Decks halten die Logik- und Signalbündel neben dem Pi und dem PCA9685."
+ },
+ "44fbdc73695d5b5b": {
+  "en": "13 × 13 mm footprint",
+  "de": "Grundfläche 13 × 13 mm"
+ },
+ "e003e534a3ca4019": {
+  "en": "Acrylic adhesive",
+  "de": "Acrylatkleber"
+ },
+ "b9c6e1309a6fc0f8": {
+  "en": "2.5-3.6 mm ties",
+  "de": "Kabelbinder 2,5-3,6 mm"
+ },
+ "d2b8d51c08dad805": {
+  "en": "Tie points on the electronics deck.",
+  "de": "Befestigungspunkte auf dem Elektronikdeck."
+ },
+ "673ec20b55adeccd": {
+  "en": "Loose Dupont contacts and housings for crimping",
+  "de": "Lose Dupont-Kontakte und -Gehäuse zum Crimpen"
+ },
+ "a38a6c069b75fd53": {
+  "en": "The servo signal wires, the I²C wires and the Pi 5 V feed are cut to length and get new female contacts in 1- to 4-pin housings; needs the Dupont crimp tool.",
+  "de": "Die Servo-Signaldrähte, die I²C-Drähte und die 5-V-Versorgung des Pi werden abgelängt und erhalten neue Buchsenkontakte in 1- bis 4-poligen Gehäusen; erfordert die Dupont-Crimpzange."
+ },
+ "6827ce8aff986dc7": {
+  "en": "2.54 mm pitch",
+  "de": "Raster 2,54 mm"
+ },
+ "3cec9ee0c46041cf": {
+  "en": "Female and male contacts",
+  "de": "Buchsen- und Steckerkontakte"
+ },
+ "b09f15cd172704e3": {
+  "en": "1-6 pin housings",
+  "de": "Gehäuse 1-6-polig"
+ },
+ "1dc9b6b4dd37533e": {
+  "en": "Signal connectors at the PCA9685 (servo signals, W17, W20) and the Pi header (W12, W22).",
+  "de": "Signalstecker am PCA9685 (Servosignale, W17, W20) und an der Pi-Stiftleiste (W12, W22)."
+ },
+ "0dd2480698e5e910": {
+  "en": "Lead-free flux-core solder wire",
+  "de": "Bleifreier Lötdraht mit Flussmittelseele"
+ },
+ "8b0f95e1dc07154a": {
+  "en": "For the XT60s, fuse holders, ground star, UBEC leads, switch terminals and the XIAO pins.",
+  "de": "Für die XT60, die Sicherungshalter, den Massesternpunkt, die UBEC-Leitungen, die Schalterklemmen und die XIAO-Pins."
+ },
+ "bee5eea6028fe7d3": {
+  "en": "Flux core",
+  "de": "Flussmittelseele"
+ },
+ "638f0bd8188a7f69": {
+  "en": "Lead-free",
+  "de": "Bleifrei"
+ },
+ "7ebc36193a33230b": {
+  "en": "Every soldered joint of the harness.",
+  "de": "Jede Lötstelle des Kabelbaums."
+ },
+ "b49b2ebbb88f6041": {
+  "en": "Hook-and-loop strap that holds the battery",
+  "de": "Klettband, das den Akku hält"
+ },
+ "37268b45959117b3": {
+  "en": "Holds the LiPo under the deck and allows quick removal for charging.",
+  "de": "Hält den LiPo unter dem Deck und ermöglicht schnelles Abnehmen zum Laden."
+ },
+ "8ded2b384940a83e": {
+  "en": "Reusable",
+  "de": "Wiederverwendbar"
+ },
+ "bc6f9314715b55cc": {
+  "en": "Quick release",
+  "de": "Schnellverschluss"
+ },
+ "b6f843eb239c9c9e": {
+  "en": "Battery strap under the deck.",
+  "de": "Akkugurt unter dem Deck."
+ },
+ "208d8729dc32f65a": {
+  "en": "19 mm double-sided foam mounting tape",
+  "de": "Doppelseitiges Schaum-Montageband 19 mm"
+ },
+ "14818a9380623582": {
+  "en": "Mounts the XIAO, UBECs and power switch while damping vibration.",
+  "de": "Befestigt XIAO, UBECs und Einschalter und dämpft dabei Vibrationen."
+ },
+ "d62ea92fc1c78053": {
+  "en": "Foam carrier",
+  "de": "Schaumträger"
+ },
+ "c78e85ad6fbd079c": {
+  "en": "19 mm width",
+  "de": "Breite 19 mm"
+ },
+ "6d4fefa9d2b791bd": {
+  "en": "Under the XIAO, UBECs and Pololu switch.",
+  "de": "Unter dem XIAO, den UBECs und dem Pololu-Schalter."
+ },
+ "f837e1ca5eac9067": {
+  "en": "Stainless M3 socket head screw kit with nuts and washers",
+  "de": "Edelstahl-Sortiment M3-Zylinderschrauben mit Muttern und Unterlegscheiben"
+ },
+ "616a697889fe8611": {
+  "en": "Covers most of the robot's M3 screws, nuts and washers in one box.",
+  "de": "Deckt die meisten M3-Schrauben, -Muttern und -Unterlegscheiben des Roboters in einer Box ab."
+ },
+ "3d736a756ee45f17": {
+  "en": "6-50 mm lengths",
+  "de": "Längen 6-50 mm"
+ },
+ "1f39d3eed4ff2844": {
+  "en": "360 nuts and 360 washers",
+  "de": "360 Muttern und 360 Unterlegscheiben"
+ },
+ "6a502d836c443630": {
+  "en": "Frame, legs and shells.",
+  "de": "Rahmen, Beine und Schalen."
+ },
+ "64db0fa2ae689944": {
+  "en": "M3 × 10 socket head screws, the most-used screw in the robot",
+  "de": "M3 × 10-Zylinderschrauben, die meistverwendete Schraube im Roboter"
+ },
+ "3bf98a301243520e": {
+  "en": "Used for the frame, servo ears and shoulder frames; a 100-pack covers them all.",
+  "de": "Für Rahmen, Servolaschen und Schulterrahmen; eine 100er-Packung deckt alle ab."
+ },
+ "e5b28c39bc14da6a": {
+  "en": "DIN 912",
+  "de": "DIN 912"
+ },
+ "1e4418ad4bbbf5dc": {
+  "en": "A2 stainless",
+  "de": "Edelstahl A2"
+ },
+ "22bd74bb51dc4751": {
+  "en": "Frame and servo mounting.",
+  "de": "Rahmen- und Servobefestigung."
+ },
+ "afc8dc6b0d62afc3": {
+  "en": "M3 × 20 socket head screws",
+  "de": "M3 × 20-Zylinderschrauben"
+ },
+ "2a77a3795d1454e8": {
+  "en": "Clamp the femur to its disc horn and close the servo mounts.",
+  "de": "Klemmen den Femur an sein Scheibenhorn und schließen die Servohalterungen."
+ },
+ "8b60a2c93ab96657": {
+  "en": "Femur, servo mount top brackets and foot spacer.",
+  "de": "Femur, obere Halterungen der Servohalterung und Fußabstandshalter."
+ },
+ "62cd08bb126398ae": {
+  "en": "M3 nylon-insert lock nuts for moving joints",
+  "de": "M3-Sicherungsmuttern mit Nyloneinsatz für bewegliche Gelenke"
+ },
+ "f68f70601847b537": {
+  "en": "Hold their position on pivot screws that must stay just loose enough to turn.",
+  "de": "Halten ihre Position auf Drehpunktschrauben, die gerade locker genug bleiben müssen, um sich zu drehen."
+ },
+ "a5c35e80bcf0f00b": {
+  "en": "Nylon insert",
+  "de": "Nyloneinsatz"
+ },
+ "f6c382eee0769c29": {
+  "en": "Tibia, knee linkage and camera pivot.",
+  "de": "Tibia, Koppelgetriebe des Knies und Kameradrehpunkt."
+ },
+ "524a0b4ec7ac4835": {
+  "en": "M2.5 × 5 screws for boards and stand-offs",
+  "de": "M2.5 × 5-Schrauben für Platinen und Abstandsbolzen"
+ },
+ "e893c50ee9999ada": {
+  "en": "Fix the stand-offs to the deck and the boards to the stand-offs.",
+  "de": "Befestigen die Abstandsbolzen am Deck und die Platinen an den Abstandsbolzen."
+ },
+ "36a3cb34448d256c": {
+  "en": "Pi 5, PCA9685 and INA260 mounting.",
+  "de": "Befestigung von Pi 5, PCA9685 und INA260."
+ },
+ "109117e47b3bbe88": {
+  "en": "M2.5 × 6 screws for the IMU, arming port and LiDAR",
+  "de": "M2.5 × 6-Schrauben für IMU, Arming-Port und LiDAR"
+ },
+ "e02b7b3402e84000": {
+  "en": "Slightly longer M2.5 screws for parts with thicker clamps.",
+  "de": "Etwas längere M2.5-Schrauben für Teile mit dickeren Klemmen."
+ },
+ "fdaa6a7a961c3716": {
+  "en": "IMU, arming port ring and RPLIDAR C1.",
+  "de": "IMU, Ring des Arming-Ports und RPLIDAR C1."
+ },
+ "3029e3404ecfe8d3": {
+  "en": "M2 × 5 screws for the regulator and display",
+  "de": "M2 × 5-Schrauben für Spannungsregler und Display"
+ },
+ "7b7f37a75948d7f2": {
+  "en": "Small screws for the Pololu regulator stand-offs and the display bracket.",
+  "de": "Kleine Schrauben für die Abstandsbolzen des Pololu-Reglers und die Displayhalterung."
+ },
+ "798a073c81dbe679": {
+  "en": "D36V50F5 stand-offs and LCD bracket.",
+  "de": "D36V50F5-Abstandsbolzen und LCD-Halterung."
+ },
+ "0ea07abfd68016a2": {
+  "en": "M2 × 10 screws for the camera",
+  "de": "M2 × 10-Schrauben für die Kamera"
+ },
+ "583ba52ce1e976e4": {
+  "en": "Fix the Camera Module 3 to its tilt plate.",
+  "de": "Befestigen das Camera Module 3 an seiner Neigeplatte."
+ },
+ "48156ce3b6611b54": {
+  "en": "Camera module mounting.",
+  "de": "Befestigung des Kameramoduls."
+ },
+ "7d7c05c79768503f": {
+  "en": "M2 hex nuts",
+  "de": "M2-Sechskantmuttern"
+ },
+ "341b033780e66dbb": {
+  "en": "Back the camera screws behind the tilt plate.",
+  "de": "Kontern die Kameraschrauben hinter der Neigeplatte."
+ },
+ "c182a0c16f44441e": {
+  "en": "Camera tilt plate.",
+  "de": "Kamera-Neigeplatte."
+ },
+ "11c58b14b9fd6674": {
+  "en": "Hold the IMU screws under the deck.",
+  "de": "Halten die IMU-Schrauben unter dem Deck."
+ },
+ "c142ee0cf9d49e57": {
+  "en": "IMU pocket in the electronics deck.",
+  "de": "IMU-Tasche im Elektronikdeck."
+ },
+ "55916522e7337110": {
+  "en": "6 mm female-female M2.5 stand-off",
+  "de": "6-mm-M2.5-Abstandsbolzen Innen-Innen"
+ },
+ "4c0ef593b0053e15": {
+  "en": "Lift the Pi, PCA9685 and INA260 off the deck for airflow and wiring room.",
+  "de": "Heben Pi, PCA9685 und INA260 vom Deck ab, für Luftstrom und Platz zum Verkabeln."
+ },
+ "6aa66c44f6c941b1": {
+  "en": "Female-female",
+  "de": "Innen-Innen"
+ },
+ "54fb636380fa6abc": {
+  "en": "Brass",
+  "de": "Messing"
+ },
+ "3f108f14a676234c": {
+  "en": "Under the Pi 5, PCA9685 and INA260.",
+  "de": "Unter Pi 5, PCA9685 und INA260."
+ },
+ "fc07c8b8f4374ed9": {
+  "en": "8 mm female-female M2 brass stand-off",
+  "de": "8-mm-M2-Messing-Abstandsbolzen Innen-Innen"
+ },
+ "08fc390a0ccb2378": {
+  "en": "Raise the Pololu regulator above the deck.",
+  "de": "Heben den Pololu-Regler über das Deck."
+ },
+ "8ec4472811e8cacf": {
+  "en": "Under the D36V50F5.",
+  "de": "Unter dem D36V50F5."
+ },
+ "8454f4c8276be945": {
+  "en": "Medium-strength blue thread locker",
+  "de": "Mittelfeste blaue Schraubensicherung"
+ },
+ "b03749bc94ea5f76": {
+  "en": "Keeps metal-to-metal screws such as the horn centre screws from loosening under vibration while staying removable.",
+  "de": "Verhindert, dass sich Metall-auf-Metall-Schrauben wie die Mittelschrauben der Hörner unter Vibration lösen, und bleibt dabei lösbar."
+ },
+ "a7c7bfa713124ee0": {
+  "en": "Medium strength",
+  "de": "Mittelfest"
+ },
+ "fa71341ba52c4662": {
+  "en": "Removable with hand tools",
+  "de": "Mit Handwerkzeug lösbar"
+ },
+ "46a6d409d142681c": {
+  "en": "Servo horn centre screws and other metal threads.",
+  "de": "Mittelschrauben der Servohörner und andere Metallgewinde."
+ },
+ "e6a06d3c65b70ee4": {
+  "en": "Graphite/black filament for the structural parts",
+  "de": "Graphit-/schwarzes Filament für die Strukturteile"
+ },
+ "72c2df83bf6297c6": {
+  "en": "Prints the frame, legs, brackets and mounts; about 1 kg covers the primary-colour parts.",
+  "de": "Druckt Rahmen, Beine, Halterungen und Befestigungen; etwa 1 kg reicht für die Teile in der Primärfarbe."
+ },
+ "fabb6d27a3544e87": {
+  "en": "PETG (the material the slicer profile and the strength check assume)",
+  "de": "PETG (das Material, von dem das Slicer-Profil und die Festigkeitsprüfung ausgehen)"
+ },
+ "34bb10219a424632": {
+  "en": "1 kg spool",
+  "de": "1-kg-Spule"
+ },
+ "76b7ea2614b835ac": {
+  "en": "47 MPa (Prusament PETG TDS)",
+  "de": "47 MPa (Prusament PETG TDS)"
+ },
+ "fac23dd347019d6a": {
+  "en": "18 MPa",
+  "de": "18 MPa"
+ },
+ "0c2be9e8aac9258c": {
+  "en": "All primary (graphite) printed parts.",
+  "de": "Alle primären (graphitfarbenen) Druckteile."
+ },
+ "7ebd87583e9d2947": {
+  "en": "Lime/yellow filament for the shells and shoulders",
+  "de": "Lime-/gelbes Filament für die Schalen und Schultern"
+ },
+ "bc1037436eafd337": {
+  "en": "Prints the body shells and the shoulder cranks in the accent colour.",
+  "de": "Druckt die Körperschalen und die Schulterkurbeln in der Akzentfarbe."
+ },
+ "89a389cb179e2d9a": {
+  "en": "All secondary (lime) printed parts.",
+  "de": "Alle sekundären (limefarbenen) Druckteile."
+ },
+ "6ed6ac16c8728773": {
+  "en": "Official 27 W USB-C supply for bench work without the battery",
+  "de": "Offizielles 27-W-USB-C-Netzteil für die Arbeit an der Werkbank ohne Akku"
+ },
+ "9464f64c4cefa0e0": {
+  "en": "Powers the Pi 5 at full USB current on the bench for software work, without arming the servos.",
+  "de": "Versorgt den Pi 5 an der Werkbank mit vollem USB-Strom für Softwarearbeit, ohne die Servos scharf zu schalten."
+ },
+ "f78deab959f01847": {
+  "en": "USB Power Delivery",
+  "de": "USB Power Delivery"
+ },
+ "780526d7ce83bd57": {
+  "en": "EU plug",
+  "de": "EU-Stecker"
+ },
+ "7a58f0ac83741f04": {
+  "en": "USB-C",
+  "de": "USB-C"
+ },
+ "2397c60a29285708": {
+  "en": "Bench supply into the Pi 5 USB-C port.",
+  "de": "Werkbank-Netzteil am USB-C-Port des Pi 5."
+ },
+ "e22227643aa54e63": {
+  "en": "Rear bezel that holds the XT60 arming port",
+  "de": "Hintere Blende, die den XT60-Arming-Port hält"
+ },
+ "5d90ae300690901c": {
+  "en": "Frames the XT60H arming port in the back shell; the ring clamps it from inside with two M2.5 × 6 screws.",
+  "de": "Fasst den XT60H-Arming-Port in der Rückschale ein; der Ring klemmt ihn von innen mit zwei M2.5 × 6-Schrauben."
+ },
+ "23b871cc166b7ee3": {
+  "en": "No supports",
+  "de": "Keine Stützen"
+ },
+ "1d261a8554d2da69": {
+  "en": "Graphite",
+  "de": "Graphit"
+ },
+ "9e7a87fbc3eec3d2": {
+  "en": "In the back shell, holding the servo arming port (Step 16).",
+  "de": "In der Rückschale, hält den Servo-Arming-Port (Schritt 16)."
+ },
+ "8bd2dea9ed189cde": {
+  "en": "Clamp ring for the arming port",
+  "de": "Klemmring für den Arming-Port"
+ },
+ "eeb53ecffcbd54b2": {
+  "en": "Clamps the bezel and XT60H from inside the back shell.",
+  "de": "Klemmt Blende und XT60H von der Innenseite der Rückschale."
+ },
+ "ef5161053cfbd96d": {
+  "en": "Inside the back shell behind the arming port bezel (Step 16).",
+  "de": "In der Rückschale hinter der Blende des Arming-Ports (Schritt 16)."
+ },
+ "5abaf03d43748de2": {
+  "en": "Rear body shell with the 12 mm power-button hole",
+  "de": "Hintere Körperschale mit der 12-mm-Bohrung für den Einschalttaster"
+ },
+ "95e5e6622749d274": {
+  "en": "Upstream back shell with the hole opened from 11.5 to 12.2 mm for the stainless button; it also carries the arming port.",
+  "de": "Rückschale aus dem Upstream-Projekt mit von 11,5 auf 12,2 mm aufgeweiteter Bohrung für den Edelstahltaster; sie trägt auch den Arming-Port."
+ },
+ "c9665c96a8678e03": {
+  "en": "Lime",
+  "de": "Lime"
+ },
+ "05bffdd14d278788": {
+  "en": "Closes the rear of the body (Step 16).",
+  "de": "Schließt den Körper hinten (Schritt 16)."
+ },
+ "76b4b2cf3a36af97": {
+  "en": "Belly shell that closes the battery bay",
+  "de": "Bauchschale, die das Akkufach schließt"
+ },
+ "ff3d083b1e360385": {
+  "en": "Screws into the nuts of the lower shoulder frames with 8 × M3 × 8 and protects the battery.",
+  "de": "Wird mit 8 × M3 × 8 in die Muttern der unteren Schulterrahmen geschraubt und schützt den Akku."
+ },
+ "54b8d1e5e4b5a025": {
+  "en": "Supports in published orientation",
+  "de": "Stützen in veröffentlichter Ausrichtung"
+ },
+ "23874691620d66ac": {
+  "en": "114 × 208 mm footprint needs a ≥ 220 mm bed",
+  "de": "Grundfläche 114 × 208 mm erfordert ein Druckbett ≥ 220 mm"
+ },
+ "0ce4fe7186810bfc": {
+  "en": "Underside of the body (Step 18).",
+  "de": "Unterseite des Körpers (Schritt 18)."
+ },
+ "d5de3b5a6a661b18": {
+  "en": "Base with cheeks that carries the camera tilt pivot",
+  "de": "Basis mit Wangen, die den Kamera-Neigedrehpunkt trägt"
+ },
+ "7154405a356de4e5": {
+  "en": "Screws to the front upper shoulder frame with 2 × M3 × 12; the tilt plate hangs on an M3 × 40 pivot with a lock nut.",
+  "de": "Wird mit 2 × M3 × 12 an den vorderen oberen Schulterrahmen geschraubt; die Neigeplatte hängt an einem M3 × 40-Drehpunkt mit Sicherungsmutter."
+ },
+ "d0786aea1df62149": {
+  "en": "Printed standing on its base",
+  "de": "Stehend auf der Grundfläche gedruckt"
+ },
+ "5d70321a5bf6a984": {
+  "en": "Horizontal M3 pivot bore",
+  "de": "Waagrechte M3-Drehbohrung"
+ },
+ "2025b14adf05e09b": {
+  "en": "Front of the body, behind the front shell (Step 15).",
+  "de": "Vorderseite des Körpers, hinter der Frontschale (Schritt 15)."
+ },
+ "e73eb9138d47c280": {
+  "en": "Plate that holds the Camera Module 3 at an adjustable tilt",
+  "de": "Platte, die das Camera Module 3 in einstellbarer Neigung hält"
+ },
+ "fa5cbdbda6164602": {
+  "en": "The camera is fixed with 4 × M2 × 10 and nuts; friction on the pivot holds the 15° reference angle.",
+  "de": "Die Kamera wird mit 4 × M2 × 10 und Muttern befestigt; die Reibung am Drehpunkt hält den Referenzwinkel von 15°."
+ },
+ "f52bdea88ef9b226": {
+  "en": "Supports",
+  "de": "Stützen"
+ },
+ "7bcd810335a7574e": {
+  "en": "M2 holes for the camera board",
+  "de": "M2-Bohrungen für die Kameraplatine"
+ },
+ "5091f23da6a6ce0e": {
+  "en": "Between the camera base cheeks (Step 15).",
+  "de": "Zwischen den Wangen der Kamerabasis (Schritt 15)."
+ },
+ "6c0e8fd7a077c4e4": {
+  "en": "Flat bracket that clamps the LCD behind the front shell window",
+  "de": "Flache Halterung, die das LCD hinter dem Fenster der Frontschale klemmt"
+ },
+ "520ddf51aa452af6": {
+  "en": "Fixed to the LCD studs with M2 × 5 and to the shell bosses with self-tapping M3 × 10.",
+  "de": "Mit M2 × 5 an den LCD-Bolzen und mit selbstschneidenden M3 × 10 an den Schalendomen befestigt."
+ },
+ "8602f84c91002291": {
+  "en": "Flat 3 mm plate",
+  "de": "Flache 3-mm-Platte"
+ },
+ "7a828d82307806d5": {
+  "en": "Inside the front shell (Step 14).",
+  "de": "In der Frontschale (Schritt 14)."
+ },
+ "1f5d85e7ec56c060": {
+  "en": "Central plate that carries the boards and slides into the side beams",
+  "de": "Zentrale Platte, die die Platinen trägt und in die Seitenträger geschoben wird"
+ },
+ "f40f0a6b26ba6a95": {
+  "en": "Upstream plate extended with an IMU pocket and stand-off holes for the regulator and INA260. Stand-off screws sit in counterbores underneath.",
+  "de": "Platte aus dem Upstream-Projekt, erweitert um eine IMU-Tasche und Bohrungen für Abstandsbolzen von Regler und INA260. Die Schrauben der Abstandsbolzen sitzen unten in Senkungen."
+ },
+ "36417195ab5992b5": {
+  "en": "Print top face down with supports",
+  "de": "Mit der Oberseite nach unten und mit Stützen drucken"
+ },
+ "3a6cf893de2867d4": {
+  "en": "18 mm bridge over the IMU pocket",
+  "de": "18-mm-Brücke über der IMU-Tasche"
+ },
+ "643c7afd91283ec1": {
+  "en": "Counterbored screw holes",
+  "de": "Gesenkte Schraubenbohrungen"
+ },
+ "dd95b72de3aefde7": {
+  "en": "3 mm thick in the centre",
+  "de": "In der Mitte 3 mm dick"
+ },
+ "76384b1dfaa1490a": {
+  "en": "Spine of the electronics, held in the side body beam grooves (Steps 1-2).",
+  "de": "Rückgrat der Elektronik, gehalten in den Nuten der seitlichen Körperträger (Schritte 1-2)."
+ },
+ "c8c4aed197c14a89": {
+  "en": "Thigh link that carries the knee",
+  "de": "Oberschenkelglied, das das Knie trägt"
+ },
+ "0413f9d9b283570f": {
+  "en": "Bolted to a disc horn on the thigh servo with 4 × M3 × 20; it bends under walking loads so print with solid walls.",
+  "de": "Mit 4 × M3 × 20 an ein Scheibenhorn auf dem Oberschenkelservo geschraubt; es biegt sich unter Gehlasten, daher mit massiven Wänden drucken."
+ },
+ "7d611f6e23f5f05f": {
+  "en": "Printed flat on its side with supports",
+  "de": "Flach auf der Seite gedruckt, mit Stützen"
+ },
+ "b1649ac128264d17": {
+  "en": "151 mm long",
+  "de": "151 mm lang"
+ },
+ "04b63957edd01be3": {
+  "en": "Between the thigh servo and the tibia (Step 9).",
+  "de": "Zwischen Oberschenkelservo und Tibia (Schritt 9)."
+ },
+ "b2ff32d82bafa755": {
+  "en": "Hub that joins the femur to the thigh servo horn",
+  "de": "Nabe, die den Femur mit dem Horn des Oberschenkelservos verbindet"
+ },
+ "bdbdb814ebb4fb28": {
+  "en": "Clamped with the femur to the disc horn; the shoulder crank bearing turns on it.",
+  "de": "Mit dem Femur am Scheibenhorn geklemmt; das Lager der Schulterkurbel dreht sich darauf."
+ },
+ "5222d47abb7ecace": {
+  "en": "Small part",
+  "de": "Kleinteil"
+ },
+ "2f9acdd4dbd4a739": {
+  "en": "Thigh joint, inside the 6805 bearing (Steps 9-10).",
+  "de": "Oberschenkelgelenk, im 6805-Lager (Schritte 9-10)."
+ },
+ "fdeeb968abd1186d": {
+  "en": "Spacer clamped between the tibia halves at the foot",
+  "de": "Abstandshalter, der am Fuß zwischen den Tibia-Hälften geklemmt wird"
+ },
+ "b69cd3600d18975f": {
+  "en": "Holds the two tibia halves at the right distance with an M3 × 20 screw and lock nut.",
+  "de": "Hält die beiden Tibia-Hälften mit einer M3 × 20-Schraube und Sicherungsmutter im richtigen Abstand."
+ },
+ "dc05850d86a89e85": {
+  "en": "Foot end of the tibia (Step 11).",
+  "de": "Fußende der Tibia (Schritt 11)."
+ },
+ "badd4068055f50e2": {
+  "en": "Front shell with display window and camera ribbon slot",
+  "de": "Frontschale mit Displayfenster und Schlitz für das Kamera-Flachbandkabel"
+ },
+ "94a6119d34b91314": {
+  "en": "Upstream front shell with a 43 × 33 mm display window, two display bosses and a camera cable slot.",
+  "de": "Frontschale aus dem Upstream-Projekt mit einem 43 × 33 mm großen Displayfenster, zwei Displaydomen und einem Schlitz für das Kamerakabel."
+ },
+ "938610909aa6e378": {
+  "en": "Self-tapping bosses",
+  "de": "Domen für selbstschneidende Schrauben"
+ },
+ "c29968ac7143bb4b": {
+  "en": "Front of the body, with the LCD face (Step 14).",
+  "de": "Vorderseite des Körpers, mit dem LCD-Gesicht (Schritt 14)."
+ },
+ "1f6d5e68b804b0c2": {
+  "en": "Small pin that takes the hip pivot screw",
+  "de": "Kleiner Bolzen, der die Hüftdrehschraube aufnimmt"
+ },
+ "f26509e84d2bcf1b": {
+  "en": "Pressed into the leg servo mount; the M3 × 10 hip pivot screw passes through the 625 bearing into it.",
+  "de": "In die Bein-Servohalterung eingepresst; die M3 × 10-Hüftdrehschraube führt durch das 625-Lager in ihn hinein."
+ },
+ "bf71b9e49e28fdf5": {
+  "en": "Re-oriented for bed contact",
+  "de": "Für Bettkontakt neu ausgerichtet"
+ },
+ "7cee0f4cdb8d3976": {
+  "en": "5 mm cube",
+  "de": "5-mm-Würfel"
+ },
+ "87e2f261d3fd7577": {
+  "en": "Outer hip pivot of each leg (Steps 8, 13).",
+  "de": "Äußerer Hüftdrehpunkt jedes Beins (Schritte 8, 13)."
+ },
+ "b86bef53c05683b8": {
+  "en": "Bulkhead that holds the two hip servos",
+  "de": "Schott, das die beiden Hüftservos hält"
+ },
+ "ca1324e4f942625a": {
+  "en": "Closes the frame with the side beams and carries the hip servos with M3 screws and nuts.",
+  "de": "Schließt den Rahmen mit den Seitenträgern und trägt die Hüftservos mit M3-Schrauben und Muttern."
+ },
+ "b67526acd0df6304": {
+  "en": "Nut traps",
+  "de": "Mutternfallen"
+ },
+ "b84c0e6c94d67d65": {
+  "en": "Front and rear frame bulkheads (Steps 2-3).",
+  "de": "Vorderes und hinteres Rahmenschott (Schritte 2-3)."
+ },
+ "29fa3fa094f27bfb": {
+  "en": "Inner half of the lower leg",
+  "de": "Innere Hälfte des Unterschenkels"
+ },
+ "35f9a67cba65c7a9": {
+  "en": "Paired with the outer tibia; holds a 633ZZ knee bearing.",
+  "de": "Gepaart mit der äußeren Tibia; hält ein 633ZZ-Kniegelenklager."
+ },
+ "419f802c38069431": {
+  "en": "Bearing seat",
+  "de": "Lagersitz"
+ },
+ "95a049c7c4f7f04b": {
+  "en": "Lower leg (Step 11).",
+  "de": "Unterschenkel (Schritt 11)."
+ },
+ "977060f5cc144f87": {
+  "en": "Leg servo mount for the rear-right leg",
+  "de": "Bein-Servohalterung für das hintere rechte Bein"
+ },
+ "fae6babbc80425d3": {
+  "en": "Holds the thigh and knee servos with 8 × M3 × 10; closed with the top bracket.",
+  "de": "Hält Oberschenkel- und Knieservo mit 8 × M3 × 10; mit der oberen Halterung geschlossen."
+ },
+ "7bbd2303987003b1": {
+  "en": "Printed lying like a U",
+  "de": "Wie ein U liegend gedruckt"
+ },
+ "e8b332a13613433b": {
+  "en": "Rear-right leg module (Step 8).",
+  "de": "Hinteres rechtes Beinmodul (Schritt 8)."
+ },
+ "54b95ff8824e59cc": {
+  "en": "Front-left leg servo mount with hip pivot pilot",
+  "de": "Bein-Servohalterung vorne links mit Vorbohrung für den Hüftdrehpunkt"
+ },
+ "aeafa7c63738b9bd": {
+  "en": "Upstream left mount plus a 2.5 mm pilot for the front hip pivot.",
+  "de": "Linke Halterung aus dem Upstream-Projekt plus eine 2,5-mm-Vorbohrung für den vorderen Hüftdrehpunkt."
+ },
+ "9d62334d9dfcc89f": {
+  "en": "2.5 mm pilot hole",
+  "de": "Vorbohrung 2,5 mm"
+ },
+ "005f260a3b0e0603": {
+  "en": "Front-left leg module (Step 8).",
+  "de": "Vorderes linkes Beinmodul (Schritt 8)."
+ },
+ "81fed69eb5ca112a": {
+  "en": "Left knee drive crank with the 6805 bearing seat",
+  "de": "Linke Kniekurbel mit dem 6805-Lagersitz"
+ },
+ "8f6a0962d78b760e": {
+  "en": "Turns on the 6805-2RS bearing around the thigh axis and drives the knee linkage.",
+  "de": "Dreht sich auf dem 6805-2RS-Lager um die Oberschenkelachse und treibt das Koppelgetriebe des Knies an."
+ },
+ "08fdac7cac39aab4": {
+  "en": "Knee drive on the FL and RL legs (Step 10).",
+  "de": "Knieantrieb an den Beinen FL und RL (Schritt 10)."
+ },
+ "ffe7002c09454e21": {
+  "en": "Raised pedestal that holds the RPLIDAR C1 and its USB adapter",
+  "de": "Erhöhter Sockel, der den RPLIDAR C1 und seinen USB-Adapter hält"
+ },
+ "d7741c304de665c6": {
+  "en": "Self-tapped to the top shell with 4 × M3 × 12; the LiDAR is fixed with 4 × M2.5 × 6.",
+  "de": "Mit 4 × M3 × 12 selbstschneidend an der Oberschale befestigt; der LiDAR wird mit 4 × M2.5 × 6 befestigt."
+ },
+ "da68b02919a55bc4": {
+  "en": "Print upside down",
+  "de": "Kopfüber drucken"
+ },
+ "e16adfb2ab431056": {
+  "en": "Adapter pocket",
+  "de": "Adaptertasche"
+ },
+ "b99d92d26c9f4a72": {
+  "en": "On top of the body (Step 17).",
+  "de": "Oben auf dem Körper (Schritt 17)."
+ },
+ "a92e2b74acf08920": {
+  "en": "Strido long knee linkage rod, 10 mm wide in the leg plane",
+  "de": "Strido-Koppelstange zum Knie, 10 mm breit in der Beinebene"
+ },
+ "35dc5fc622592e45": {
+  "en": "Transfers the knee servo's motion to the tibia. Same pin spacing (131 mm) and bushing eyes as the upstream Long_Link, but a 10 x 10 mm shaft instead of 5 x 8 mm, set 2 mm off the pin line away from the femur, so it no longer buckles when the knee servo stalls (ADR-010); sleeve-bearing pair in each eye.",
+  "de": "Überträgt die Bewegung des Knieservos auf die Tibia. Gleicher Bolzenabstand (131 mm) und gleiche Buchsenaugen wie die Upstream-Long_Link, aber ein Schaft von 10 x 10 mm statt 5 x 8 mm, 2 mm neben der Bolzenlinie vom Femur weg versetzt, sodass sie nicht mehr knickt, wenn der Knieservo blockiert (ADR-010); ein Gleitlagerpaar in jedem Auge."
+ },
+ "943715104ff90f70": {
+  "en": "Printed flat without supports",
+  "de": "Flach ohne Stützen gedruckt"
+ },
+ "d566f4e32c6acf70": {
+  "en": "10 x 10 mm shaft",
+  "de": "Schaft 10 x 10 mm"
+ },
+ "a7279aaa4d1872d4": {
+  "en": "Knee linkage (Step 12).",
+  "de": "Koppelgetriebe des Knies (Schritt 12)."
+ },
+ "47f7334ea4295d5e": {
+  "en": "Front lower shoulder frame with servo-bus pilot hole",
+  "de": "Vorderer unterer Schulterrahmen mit Vorbohrung für den Servobus"
+ },
+ "b3a13cb924f2d3c0": {
+  "en": "Upstream frame plus an M3 pilot for the front servo-bus holder; nut pockets for the bottom shell.",
+  "de": "Rahmen aus dem Upstream-Projekt plus eine M3-Vorbohrung für den vorderen Servobus-Halter; Muttertaschen für die Unterschale."
+ },
+ "6e5e8f4dd08eef33": {
+  "en": "M3 pilot hole",
+  "de": "M3-Vorbohrung"
+ },
+ "05ca1cc9eb6da16f": {
+  "en": "Nut pockets",
+  "de": "Muttertaschen"
+ },
+ "32b43d1c292411a7": {
+  "en": "Front shoulder frame (Step 4).",
+  "de": "Vorderer Schulterrahmen (Schritt 4)."
+ },
+ "1268cbf2729dcbb3": {
+  "en": "Rear lower shoulder frame with servo-bus pilot hole",
+  "de": "Hinterer unterer Schulterrahmen mit Vorbohrung für den Servobus"
+ },
+ "0099ee7a2ecae6dd": {
+  "en": "Same as the front version, for the rear servo-bus holder.",
+  "de": "Wie die vordere Version, für den hinteren Servobus-Halter."
+ },
+ "ebbaf7a8331153ca": {
+  "en": "Rear shoulder frame (Step 4).",
+  "de": "Hinterer Schulterrahmen (Schritt 4)."
+ },
+ "f7f6b1b6d3e40959": {
+  "en": "Outer frame with two 625ZZ hip bearing seats",
+  "de": "Äußerer Rahmen mit zwei 625ZZ-Hüftlagersitzen"
+ },
+ "69d90efadde60daa": {
+  "en": "Supports the outer end of the hips through press-fit bearings.",
+  "de": "Stützt das äußere Ende der Hüften über eingepresste Lager."
+ },
+ "c42f9506fd83bde9": {
+  "en": "Bearing seats",
+  "de": "Lagersitze"
+ },
+ "cc83886abce69e2e": {
+  "en": "Shoulder frames (Step 4).",
+  "de": "Schulterrahmen (Schritt 4)."
+ },
+ "50c056fb1e1851ca": {
+  "en": "Outer half of the lower leg",
+  "de": "Äußere Hälfte des Unterschenkels"
+ },
+ "f68c41fca568f463": {
+  "en": "Paired with the inner tibia; holds a 633ZZ knee bearing.",
+  "de": "Gepaart mit der inneren Tibia; hält ein 633ZZ-Kniegelenklager."
+ },
+ "e96c6a3eaed11976": {
+  "en": "Leg servo mount for the rear-left leg",
+  "de": "Bein-Servohalterung für das hintere linke Bein"
+ },
+ "c4641ebdd896c198": {
+  "en": "Mirror of the left mount; holds thigh and knee servos.",
+  "de": "Spiegelbild der linken Halterung; hält Oberschenkel- und Knieservo."
+ },
+ "fe6cec7522ea64dd": {
+  "en": "Rear-left leg module (Step 8).",
+  "de": "Hinteres linkes Beinmodul (Schritt 8)."
+ },
+ "5fa59eaed95edadd": {
+  "en": "Front-right leg servo mount with hip pivot pilot",
+  "de": "Bein-Servohalterung vorne rechts mit Vorbohrung für den Hüftdrehpunkt"
+ },
+ "54b56bb6db81e257": {
+  "en": "Upstream right mount plus a 2.5 mm pilot for the front hip pivot.",
+  "de": "Rechte Halterung aus dem Upstream-Projekt plus eine 2,5-mm-Vorbohrung für den vorderen Hüftdrehpunkt."
+ },
+ "0d9cf6545173e88b": {
+  "en": "Front-right leg module (Step 8).",
+  "de": "Vorderes rechtes Beinmodul (Schritt 8)."
+ },
+ "a63e5889a3bfed0e": {
+  "en": "Right knee drive crank with the 6805 bearing seat",
+  "de": "Rechte Kniekurbel mit dem 6805-Lagersitz"
+ },
+ "1e1d8cf6951cbc42": {
+  "en": "Mirror of the left shoulder for the FR and RR legs.",
+  "de": "Spiegelbild der linken Schulter für die Beine FR und RR."
+ },
+ "12d67586027cd68a": {
+  "en": "Knee drive on the FR and RR legs (Step 10).",
+  "de": "Knieantrieb an den Beinen FR und RR (Schritt 10)."
+ },
+ "ba6f7394cdf819f3": {
+  "en": "Holder for four WAGO connectors of the front servo bus",
+  "de": "Halter für vier WAGO-Klemmen des vorderen Servobusses"
+ },
+ "9e8643dc48eb942e": {
+  "en": "Self-taps to the front lower shoulder frame with one M3 × 12.",
+  "de": "Wird mit einer M3 × 12 selbstschneidend am vorderen unteren Schulterrahmen befestigt."
+ },
+ "c744d44dfaf5d315": {
+  "en": "WAGO clips",
+  "de": "WAGO-Clips"
+ },
+ "a40a22ccbae81ccd": {
+  "en": "Front servo power distribution (Step 5).",
+  "de": "Vordere Servo-Stromverteilung (Schritt 5)."
+ },
+ "8ee4a6ef7ebef72d": {
+  "en": "Holder for four WAGO connectors of the rear servo bus",
+  "de": "Halter für vier WAGO-Klemmen des hinteren Servobusses"
+ },
+ "40730d711f4cef72": {
+  "en": "Self-taps to the rear lower shoulder frame with one M3 × 12.",
+  "de": "Wird mit einer M3 × 12 selbstschneidend am hinteren unteren Schulterrahmen befestigt."
+ },
+ "a758aba5e030ab83": {
+  "en": "Rear servo power distribution (Step 5).",
+  "de": "Hintere Servo-Stromverteilung (Schritt 5)."
+ },
+ "2ef301268d8250d4": {
+  "en": "Bracket that closes each leg servo mount",
+  "de": "Halterung, die jede Bein-Servohalterung schließt"
+ },
+ "ea3a2f76080fbbbf": {
+  "en": "Clamps both leg servos with 2 × M3 × 20.",
+  "de": "Klemmt beide Beinservos mit 2 × M3 × 20."
+ },
+ "9a6bfb7a0e15a129": {
+  "en": "Printed flat",
+  "de": "Flach gedruckt"
+ },
+ "205e92c4239a4eb3": {
+  "en": "Leg module (Step 8).",
+  "de": "Beinmodul (Schritt 8)."
+ },
+ "771d5308a5ce3829": {
+  "en": "Short knee linkage rod",
+  "de": "Kurze Koppelstange des Knies"
+ },
+ "637a06ce40b85698": {
+  "en": "Second linkage bar with bronze bushings.",
+  "de": "Zweite Koppelstange mit Bronzebuchsen."
+ },
+ "91efd63c2546f8c5": {
+  "en": "Bushing seats",
+  "de": "Buchsensitze"
+ },
+ "b7225ab6e3883b88": {
+  "en": "Long side beam with the deck groove",
+  "de": "Langer Seitenträger mit der Decknut"
+ },
+ "aa0dd591ee6788ab": {
+  "en": "Holds the electronics deck in its groove and joins the shoulder frames.",
+  "de": "Hält das Elektronikdeck in seiner Nut und verbindet die Schulterrahmen."
+ },
+ "7796098e2304e058": {
+  "en": "Body sides (Step 2).",
+  "de": "Körperseiten (Schritt 2)."
+ },
+ "50d4bb87129c0b14": {
+  "en": "Top shell with LiDAR pedestal holes and cable slot",
+  "de": "Oberschale mit Bohrungen für den LiDAR-Sockel und Kabelschlitz"
+ },
+ "593dca95003ca3d6": {
+  "en": "Upstream top shell plus holes for the LiDAR pedestal and a USB cable slot; closed with 6 × M3 × 8.",
+  "de": "Oberschale aus dem Upstream-Projekt plus Bohrungen für den LiDAR-Sockel und einen USB-Kabelschlitz; mit 6 × M3 × 8 geschlossen."
+ },
+ "5aa7c292b1e53bcb": {
+  "en": "Top of the body (Step 17).",
+  "de": "Oberseite des Körpers (Schritt 17)."
+ },
+ "1c981ffba9c3e5ae": {
+  "en": "Upper shoulder frame with shell nut pockets",
+  "de": "Oberer Schulterrahmen mit Muttertaschen für die Schale"
+ },
+ "2c1f580c39fd3f7e": {
+  "en": "Joins the shoulder frames and carries M3 nuts for the top shell and camera base.",
+  "de": "Verbindet die Schulterrahmen und trägt M3-Muttern für die Oberschale und die Kamerabasis."
+ }
+}

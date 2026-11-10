@@ -1,0 +1,410 @@
+{
+ "5e27696fd86a3700": {
+  "en": "3D printing",
+  "de": "3D-Druck"
+ },
+ "072333b83b0cda2f": {
+  "en": "Strido's frame, legs and shells are 67 printed pieces of 34 part types, all made by FDM (fused deposition modelling) on an ordinary 220 × 220 mm printer. This page explains the settings in the kit profile, why each one matters for a walking robot, and how to read the print list and the printability report.",
+  "de": "Rahmen, Beine und Schalen von Strido sind 67 gedruckte Teile aus 34 Teiletypen, alle per FDM (Fused Deposition Modelling) auf einem gewöhnlichen 220 × 220 mm großen Drucker hergestellt. Diese Seite erklärt die Einstellungen im Kit-Profil, warum jede davon für einen Laufroboter wichtig ist und wie Sie die Druckliste und den Druckbarkeitsbericht lesen."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "1000678a92838148": {
+  "en": "Every printed part is listed in the [print list](../../../hardware/print/print_list.md) with its quantity, colour, file, size on the bed, supports and notes. The verified slicer settings are in [prusaslicer.ini](../../../hardware/print/prusaslicer.ini); 13 ready 220 × 220 mm build plates (10 graphite, 3 lime) come with the [print kit](../../print-kit.md) and the build kit. The printability gate (`make printability`, report in [printability](../../verification/printability.md)) slices every part and plate with PrusaSlicer. The [print kit](../../print-kit.md) page packages all of this for download.",
+  "de": "Jedes gedruckte Teil ist in der [Druckliste](../../../hardware/print/print_list.md) mit Anzahl, Farbe, Datei, Größe auf dem Druckbett, Stützen und Hinweisen aufgeführt. Die verifizierten Slicer-Einstellungen stehen in [prusaslicer.ini](../../../hardware/print/prusaslicer.ini); 13 fertige 220 × 220 mm große Druckplatten (10 graphit, 3 limette) sind im [Druckpaket](../../print-kit.md) und im Bausatz enthalten. Die Druckbarkeitsprüfung (`make printability`, Bericht in [Druckbarkeit](../../verification/printability.md)) slict jedes Teil und jede Druckplatte mit PrusaSlicer. Die Seite [Druckpaket](../../print-kit.md) bündelt all das zum Herunterladen."
+ },
+ "518893acd7dd6da0": {
+  "en": "How FDM works",
+  "de": "Wie FDM funktioniert"
+ },
+ "30974bf052fb97e7": {
+  "en": "An FDM printer pushes a 1.75 mm plastic filament through a hot nozzle (0.4 mm in this kit) and lays it down as thin lines. Lines form a layer; layers stack up to form the part. Three consequences follow from this, and every setting below is about one of them:",
+  "de": "Ein FDM-Drucker schiebt ein 1,75 mm dickes Kunststofffilament durch eine heiße Düse (0,4 mm in diesem Kit) und legt es in dünnen Linien ab. Linien bilden eine Schicht; Schichten stapeln sich zum Teil. Daraus folgen drei Konsequenzen, und jede Einstellung unten betrifft eine davon:"
+ },
+ "6830448e395710ca": {
+  "en": "**A part is a stack of welded lines, not a solid block.** It is strongest along the lines and weakest between layers.",
+  "de": "**Ein Teil ist ein Stapel verschweißter Linien, kein massiver Block.** Es ist entlang der Linien am stärksten und zwischen den Schichten am schwächsten."
+ },
+ "d5894801f62c11a9": {
+  "en": "**Each layer needs something underneath.** Steep overhangs and floating features need supports.",
+  "de": "**Jede Schicht braucht etwas darunter.** Steile Überhänge und frei schwebende Elemente brauchen Stützen."
+ },
+ "4962305c72cb2ec5": {
+  "en": "**Molten plastic flows and shrinks.** Holes come out slightly smaller than drawn and the first layer spreads out.",
+  "de": "**Geschmolzener Kunststoff fließt und schrumpft.** Löcher werden etwas kleiner als gezeichnet, und die erste Schicht breitet sich aus."
+ },
+ "2fb1973d6160e6e3": {
+  "en": "The material: PETG (or PLA+)",
+  "de": "Das Material: PETG (oder PLA+)"
+ },
+ "41807c9930b97cc4": {
+  "en": "The print list allows PETG or PLA+; the profile is set up for PETG (`filament_type = PETG`, density 1.27 g/cm³).",
+  "de": "Die Druckliste erlaubt PETG oder PLA+; das Profil ist auf PETG eingestellt (`filament_type = PETG`, Dichte 1,27 g/cm³)."
+ },
+ "bcad7e7c4e69aeda": {
+  "en": "| Property | Why it matters for Strido |",
+  "de": "| Eigenschaft | Warum sie für Strido wichtig ist |"
+ },
+ "963af523ab05ae08": {
+  "en": "| Tough rather than brittle | Legs take impacts at every footfall; PETG tends to bend before it cracks |",
+  "de": "| Zäh statt spröde | Beine nehmen bei jedem Auftreten Stöße auf; PETG biegt sich eher, bevor es bricht |"
+ },
+ "68a1fbe8a04778d1": {
+  "en": "| Good layer adhesion | Fewer splits between layers in thin links such as `short_link` |",
+  "de": "| Gute Schichthaftung | Weniger Risse zwischen den Schichten bei dünnen Koppeln wie `short_link` |"
+ },
+ "d74f6c418240110d": {
+  "en": "| Heat deflection at 68 °C (Prusament PETG data sheet) | Servos and UBECs warm up inside the body; PLA softens at a lower temperature |",
+  "de": "| Wärmeformbeständigkeit bei 68 °C (Prusament-PETG-Datenblatt) | Servos und UBECs erwärmen sich im Körper; PLA erweicht bei niedrigerer Temperatur |"
+ },
+ "4a9865e9dbd60bb7": {
+  "en": "| Low warping | Large flat parts such as `bottom_shell` and `top_shell_sensor` (114 × 208 mm) stay flat |",
+  "de": "| Geringer Verzug | Große flache Teile wie `bottom_shell` und `top_shell_sensor` (114 × 208 mm) bleiben eben |"
+ },
+ "3c60bd50b04e5d9f": {
+  "en": "| Strings and sticks to smooth PEI | Use a textured or satin sheet, or glue stick on smooth PEI |",
+  "de": "| Zieht Fäden und haftet stark auf glattem PEI | Verwenden Sie ein texturiertes oder Satin-Blech oder Klebestift auf glattem PEI |"
+ },
+ "1c336259a326c67e": {
+  "en": "| Supports are hard to remove | Snug supports and careful use of the flush cutters (see [tools](tools-and-workshop.md)) |",
+  "de": "| Stützen sind schwer zu entfernen | Eng anliegende Stützen und sorgfältiger Einsatz des Seitenschneiders (siehe [Werkzeuge](tools-and-workshop.md)) |"
+ },
+ "abf4f833441bca36": {
+  "en": "Kit profile temperatures: nozzle 235 °C for the first layer, then 240 °C; bed 80 °C throughout. Prusa's PETG guide recommends 230/240 °C for the nozzle and 85/90 °C for the bed, so the kit values are in the normal range; adjust the bed to your sheet if the first layer does not stick.",
+  "de": "Temperaturen im Kit-Profil: Düse 235 °C für die erste Schicht, danach 240 °C; Bett durchgehend 80 °C. Prusas PETG-Leitfaden empfiehlt 230/240 °C für die Düse und 85/90 °C für das Bett, die Kit-Werte liegen also im üblichen Bereich; passen Sie das Bett an Ihr Druckblech an, wenn die erste Schicht nicht haftet."
+ },
+ "6f38c983f88704c7": {
+  "en": "Dry filament",
+  "de": "Trockenes Filament"
+ },
+ "2ff17a505a82a620": {
+  "en": "PETG absorbs moisture from the air. Wet filament pops and strings and gives weaker layers. If you hear crackling at the nozzle, dry the spool before printing structural parts.",
+  "de": "PETG nimmt Feuchtigkeit aus der Luft auf. Feuchtes Filament knackt, zieht Fäden und ergibt schwächere Schichten. Wenn Sie an der Düse Knistern hören, trocknen Sie die Spule, bevor Sie tragende Teile drucken."
+ },
+ "0ed9b823e9f8806b": {
+  "en": "The kit profile, setting by setting",
+  "de": "Das Kit-Profil, Einstellung für Einstellung"
+ },
+ "d1c15e2cf1c47499": {
+  "en": "`hardware/print/prusaslicer.ini` mirrors the print list. Load it in PrusaSlicer with *File > Import > Import Config*. If you use another slicer, copy these values by hand.",
+  "de": "`hardware/print/prusaslicer.ini` spiegelt die Druckliste wider. Laden Sie es in PrusaSlicer über *File > Import > Import Config*. Wenn Sie einen anderen Slicer verwenden, übernehmen Sie diese Werte von Hand."
+ },
+ "320c32ba3ec4c5a2": {
+  "en": "| Setting | Value | What it does and why this value |",
+  "de": "| Einstellung | Wert | Was sie bewirkt und warum dieser Wert |"
+ },
+ "a3cbb0a540aeea53": {
+  "en": "| Bed size | 220 × 220 mm, 250 mm tall | The largest parts (shells, 114 × 208 mm) must fit; this is also the plate size |",
+  "de": "| Bettgröße | 220 × 220 mm, 250 mm hoch | Die größten Teile (Schalen, 114 × 208 mm) müssen passen; das ist auch die Druckplattengröße |"
+ },
+ "52cf240fbe2915ed": {
+  "en": "| Nozzle | 0.4 mm | The standard nozzle; one line is about 0.45 mm wide |",
+  "de": "| Düse | 0,4 mm | Die Standarddüse; eine Linie ist etwa 0,45 mm breit |"
+ },
+ "de75252bb1626ef6": {
+  "en": "| Layer height | 0.2 mm (first layer 0.2 mm) | Half the nozzle diameter: good strength and speed; the fit and wall checks assume it |",
+  "de": "| Schichthöhe | 0,2 mm (erste Schicht 0,2 mm) | Halber Düsendurchmesser: gute Festigkeit und Geschwindigkeit; die Passungs- und Wandprüfungen setzen sie voraus |"
+ },
+ "f9632670b900480d": {
+  "en": "| Perimeters | 3 (≈ 1.2 mm wall) | Walls carry most of the load around screw holes; Prusa recommends more perimeters, not more infill, for strong parts |",
+  "de": "| Perimeter | 3 (≈ 1,2 mm Wand) | Die Wände tragen den Großteil der Last um Schraubenlöcher; Prusa empfiehlt für feste Teile mehr Perimeter, nicht mehr Füllung |"
+ },
+ "8e5a21d5f8f6e70c": {
+  "en": "| Perimeter generator | Arachne | Varies the line width so thin walls are filled instead of leaving gaps |",
+  "de": "| Perimeter-Generator | Arachne | Variiert die Linienbreite, sodass dünne Wände gefüllt werden, statt Lücken zu lassen |"
+ },
+ "777497a6f2e943dc": {
+  "en": "| Top / bottom solid layers | 5 / 5 (1.0 mm skin) | Closes the infill with a stiff skin; fewer layers can show infill through the top |",
+  "de": "| Massive Ober-/Unterschichten | 5 / 5 (1,0 mm Haut) | Schließt die Füllung mit einer steifen Haut; mit weniger Schichten kann die Füllung oben durchscheinen |"
+ },
+ "0b123e4cc1f7a50b": {
+  "en": "| Infill | 30 % gyroid | Gyroid is strong in all directions and prints without the nozzle crossing its own lines at the same height |",
+  "de": "| Füllung | 30 % Gyroid | Gyroid ist in alle Richtungen fest und wird gedruckt, ohne dass die Düse ihre eigenen Linien auf gleicher Höhe kreuzt |"
+ },
+ "26920f36de02b619": {
+  "en": "| Supports | off by default, auto-detect, snug style | The gate turns supports on per part as listed; snug supports follow the part outline and are easier to remove |",
+  "de": "| Stützen | standardmäßig aus, automatische Erkennung, Stil „snug“ | Die Prüfung schaltet Stützen laut Liste pro Teil ein; eng anliegende Stützen folgen der Teilekontur und lassen sich leichter entfernen |"
+ },
+ "967c497f9a4d134d": {
+  "en": "| Brim | 0 by default | The gate adds a 5 mm brim to parts taller than 40 mm |",
+  "de": "| Brim | standardmäßig 0 | Die Prüfung fügt Teilen, die höher als 40 mm sind, einen 5-mm-Brim hinzu |"
+ },
+ "1917239776271e20": {
+  "en": "| Skirt | 1 loop | Primes the nozzle before the part starts |",
+  "de": "| Skirt | 1 Umlauf | Füllt die Düse vor, bevor das Teil beginnt |"
+ },
+ "91ffb1c160ead6da": {
+  "en": "| `gcode_label_objects` | firmware | Lets you cancel one failed part on a full plate without stopping the rest |",
+  "de": "| `gcode_label_objects` | firmware | Ermöglicht es, ein einzelnes fehlgeschlagenes Teil auf einer vollen Druckplatte abzubrechen, ohne den Rest zu stoppen |"
+ },
+ "02b70776738eb9f1": {
+  "en": "Orientation and layer-line strength",
+  "de": "Ausrichtung und Festigkeit der Schichtlinien"
+ },
+ "d7e12b88c82f2281": {
+  "en": "Because layers bond less well than lines, a part loaded so that it would peel its layers apart is weakest. The kit STLs are already oriented, and the print list explains each choice in its *Note* column:",
+  "de": "Da Schichten schwächer verbunden sind als Linien, ist ein Teil am schwächsten, wenn es so belastet wird, dass sich seine Schichten voneinander lösen würden. Die Kit-STLs sind bereits ausgerichtet, und die Druckliste erklärt jede Wahl in ihrer Spalte *Note*:"
+ },
+ "e9a94e0c79bb448f": {
+  "en": "**published orientation**: upstream Yertle's own orientation, kept where it already prints well. The note says which face would lower the overhang (e.g. `bottom_shell`: 9 % overhang as published, 1 % on its −Y face, but then 208 mm tall on a narrow edge). Lower overhang means fewer supports, but it also changes the layer direction, so keep the published orientation unless you have a reason.",
+  "de": "**veröffentlichte Ausrichtung**: die eigene Ausrichtung von Upstream-Yertle, beibehalten, wo sie schon gut druckbar ist. Die Notiz nennt, welche Fläche den Überhang verringern würde (z. B. `bottom_shell`: 9 % Überhang wie veröffentlicht, 1 % auf der −Y-Fläche, dann aber 208 mm hoch auf einer schmalen Kante). Weniger Überhang heißt weniger Stützen, ändert aber auch die Schichtrichtung; behalten Sie also die veröffentlichte Ausrichtung, wenn Sie keinen Grund haben."
+ },
+ "806278f46021b105": {
+  "en": "**re-oriented**: the published STL was often the part's CAD pose, tall on a small footprint; the kit lays it on the face with the most bed contact and least overhang, never with a link's long axis upright (e.g. `inner_tibia` and `outer_tibia` on their flat sides, `short_link`, `femur`, `femur_servo_connector`, `servo_mount_top_bracket`, `side_body_beam`). The femur's and the femur servo connector's bores come out vertical this way. The servo mounts lie like a U (open side up): 19 mm instead of 56 mm tall, 2 % instead of 13 % overhang, and 10 of their 13 M3 pilots (servo ears, bracket) vertical; the two hip-horn pilots and the hip-pivot pilot lie horizontal.",
+  "de": "**neu ausgerichtet**: die veröffentlichte STL war oft die CAD-Lage des Teils, hoch auf kleiner Grundfläche; das Druckpaket legt es auf die Fläche mit dem meisten Bettkontakt und dem geringsten Überhang, nie mit der Längsachse einer Koppel senkrecht (z. B. `inner_tibia` und `outer_tibia` auf ihren flachen Seiten, `short_link`, `femur`, `femur_servo_connector`, `servo_mount_top_bracket`, `side_body_beam`). So kommen die Bohrungen von Femur und Femur-Servoverbinder senkrecht heraus. Die Servohalter liegen wie ein U (offene Seite oben): 19 mm statt 56 mm hoch, 2 % statt 13 % Überhang, und 10 ihrer 13 M3-Vorbohrungen (Servolaschen, Halterung) senkrecht; die zwei Vorbohrungen für das Hüfthorn und die für den Hüftdrehpunkt liegen waagrecht."
+ },
+ "da64dbe010a7f390": {
+  "en": "**print on its base / upside down**: `camera_mount_base` stands on its base (its M3 pivot is a friction pivot, so a slightly flattened horizontal bore is fine; drill 3.4 mm if it is tight); `lidar_pedestal` is printed top plate down; `electronics_deck` top face down; `stiff_long_link` lies flat with both bushing bores vertical.",
+  "de": "**auf der Grundfläche / kopfüber drucken**: `camera_mount_base` steht auf seiner Grundfläche (sein M3-Drehpunkt ist ein Reibgelenk, eine leicht abgeflachte waagrechte Bohrung ist daher in Ordnung; bei Bedarf mit 3,4 mm aufbohren); `lidar_pedestal` wird mit der Deckplatte nach unten gedruckt; `electronics_deck` mit der Oberseite nach unten; `stiff_long_link` liegt flach, beide Buchsenbohrungen senkrecht."
+ },
+ "d3af6c5b2daef54c": {
+  "en": "Why a vertical bore? A hole whose axis is vertical is printed as a stack of circles and comes out round. A horizontal hole is built from layers, so its top has to bridge or be supported and comes out slightly flattened. Bores that carry a pivot or bearing should be vertical whenever possible.",
+  "de": "Warum eine senkrechte Bohrung? Ein Loch mit senkrechter Achse wird als Stapel von Kreisen gedruckt und wird rund. Ein waagrechtes Loch entsteht aus Schichten, daher muss seine Oberseite überbrückt oder gestützt werden und wird leicht abgeflacht. Bohrungen, die einen Drehpunkt oder ein Lager aufnehmen, sollten nach Möglichkeit senkrecht stehen."
+ },
+ "b095bf07b3980e5f": {
+  "en": "Supports and brims",
+  "de": "Stützen und Brims"
+ },
+ "a04ed6770ded6ea0": {
+  "en": "**Supports** are temporary structures under overhangs (surfaces steeper than the printer can bridge). The print list column *Supports* gives `yes (N % overhang)`, where N is the share of the part's surface that needs support. The profile uses `support_material_threshold = 0`, i.e. automatic overhang detection, and the snug style.",
+  "de": "**Stützen** sind temporäre Strukturen unter Überhängen (Flächen, die steiler sind, als der Drucker überbrücken kann). Die Spalte *Supports* der Druckliste gibt `yes (N % overhang)` an, wobei N der Anteil der Teileoberfläche ist, der Stützen braucht. Das Profil verwendet `support_material_threshold = 0`, also automatische Überhangerkennung, und den Stil „snug“."
+ },
+ "462574f08211814c": {
+  "en": "**Brims** are a few extra lines around the first layer that increase bed contact. A tall, narrow part acts as a lever on its small footprint: the nozzle knocks it loose before it is finished. Rule in this kit: brim on parts taller than 40 mm, 5 mm wide. In the printability report this applies, for example, to the shells; the servo mounts (19 mm, lying like a U) and `servo_mount_top_bracket` (6 mm, flat) need none.",
+  "de": "**Brims** sind ein paar zusätzliche Linien um die erste Schicht, die den Bettkontakt vergrößern. Ein hohes, schmales Teil wirkt als Hebel auf seiner kleinen Grundfläche: Die Düse stößt es los, bevor es fertig ist. Regel in diesem Druckpaket: Brim bei Teilen über 40 mm Höhe, 5 mm breit. Im Druckbarkeitsbericht gilt das zum Beispiel für die Schalen; die Servohalter (19 mm, wie ein U liegend) und `servo_mount_top_bracket` (6 mm, flach) brauchen keinen."
+ },
+ "d7b261cbf898e22b": {
+  "en": "**Hole steps** are the one overhang the kit removes in the model instead: where a wide hole on the bed side (a bearing seat) narrows to a smaller hole above, the ring between them hangs in the air, and a support inside a bearing seat is hard to dig out. The kit STLs cut the two layers above such a step for bridging (the *hole overhang trick*): layer 1 leaves a slot as wide as the narrow hole across the whole wide hole, so the material either side is a straight bridge between its walls; layer 2 leaves a square as wide as the narrow hole, bridging across the slot; layer 3 is the narrow hole as designed. The seat diameter and the narrow hole do not change; the bearing then rests on the two crescents either side of the slot. `strido_publish.print_bridges` finds these steps in every part as it lies on the bed (today the bearing seats of `inner_tibia`, `outer_tibia` and `outer_shoulder_frame`); the print list notes each one. In `outer_shoulder_frame` the seat opens onto the bed and slices without any support. In the tibias it sits under a boss that floats above the bed, which needs support anyway, and the slicer also fills the bore: block supports in the bearing bore (a support blocker or paint-on) and the step bridges.",
+  "de": "**Lochstufen** sind der eine Überhang, den das Druckpaket stattdessen im Modell beseitigt: Wo ein weites Loch auf der Bettseite (ein Lagersitz) in ein kleineres Loch darüber übergeht, hängt der Ring dazwischen in der Luft, und eine Stütze in einem Lagersitz lässt sich schwer herauspulen. Die STLs des Druckpakets schneiden die zwei Schichten über einer solchen Stufe für Brücken aus (der *Lochüberhang-Trick*): Schicht 1 lässt einen Schlitz so breit wie das enge Loch quer über das ganze weite Loch frei, sodass das Material links und rechts davon eine gerade Brücke zwischen seinen Wänden ist; Schicht 2 lässt ein Quadrat so breit wie das enge Loch frei und überbrückt den Schlitz; Schicht 3 ist das enge Loch wie konstruiert. Der Sitzdurchmesser und das enge Loch ändern sich nicht; das Lager liegt dann auf den zwei Sicheln links und rechts des Schlitzes auf. `strido_publish.print_bridges` findet diese Stufen in jedem Teil, so wie es auf dem Bett liegt (derzeit die Lagersitze von `inner_tibia`, `outer_tibia` und `outer_shoulder_frame`); die Druckliste vermerkt jede. In `outer_shoulder_frame` öffnet sich der Sitz zum Bett und wird ganz ohne Stützen gesliced. In den Tibias liegt er unter einem Auge, das über dem Bett schwebt und ohnehin Stützen braucht, und der Slicer füllt auch die Bohrung: Blockieren Sie Stützen in der Lagerbohrung (Support-Blocker oder Aufmalen), dann wird die Stufe überbrückt."
+ },
+ "21df5f492b6677a8": {
+  "en": "Remove supports and brims before assembly (assembly manual, Step 0), and deburr any edge that touches a moving part.",
+  "de": "Entfernen Sie Stützen und Brims vor der Montage (Montageanleitung, Schritt 0) und entgraten Sie jede Kante, die ein bewegtes Teil berührt."
+ },
+ "4f7b627b396a37f6": {
+  "en": "Bed adhesion and the first layer",
+  "de": "Betthaftung und die erste Schicht"
+ },
+ "5abf5b8f3773b661": {
+  "en": "The first layer decides whether a print succeeds:",
+  "de": "Die erste Schicht entscheidet, ob ein Druck gelingt:"
+ },
+ "bb66957601678f90": {
+  "en": "Clean the sheet (fingerprints are oil; PETG and PLA both release from greasy spots).",
+  "de": "Reinigen Sie das Druckblech (Fingerabdrücke sind Öl; PETG und PLA lösen sich beide von fettigen Stellen)."
+ },
+ "e746c0afb894627b": {
+  "en": "Level/calibrate the first layer so lines are slightly squashed but do not ride up.",
+  "de": "Nivellieren/kalibrieren Sie die erste Schicht, sodass die Linien leicht gequetscht sind, sich aber nicht aufwerfen."
+ },
+ "28dec40198e0b143": {
+  "en": "For PETG on smooth PEI, use glue stick as a release layer: PETG can bond so strongly that it tears the sheet surface (Prusa).",
+  "de": "Für PETG auf glattem PEI verwenden Sie Klebestift als Trennschicht: PETG kann so stark haften, dass es die Blechoberfläche herausreißt (Prusa)."
+ },
+ "c2f88758ab90f616": {
+  "en": "Let the bed cool before removing large parts like `bottom_shell`.",
+  "de": "Lassen Sie das Bett abkühlen, bevor Sie große Teile wie `bottom_shell` abnehmen."
+ },
+ "65fd6ab0943604dd": {
+  "en": "Tolerances: why holes come out small",
+  "de": "Toleranzen: Warum Löcher zu klein werden"
+ },
+ "c1dec521330fc196": {
+  "en": "Molten lines are laid on a polygon approximation of a circle, and the first layer is squashed outwards. Both effects make holes smaller than drawn. The Strido fit check assumes holes print **0.15 mm undersize** (`expected_hole_shrink_mm: 0.15` in `hardware/verification/tolerances.yaml`); ADR-009 notes that most printers print small holes 0.2–0.3 mm undersize.",
+  "de": "Geschmolzene Linien werden auf einer Polygon-Näherung eines Kreises abgelegt, und die erste Schicht wird nach außen gequetscht. Beide Effekte machen Löcher kleiner als gezeichnet. Die Strido-Passungsprüfung nimmt an, dass Löcher **0,15 mm zu klein** gedruckt werden (`expected_hole_shrink_mm: 0.15` in `hardware/verification/tolerances.yaml`); ADR-009 merkt an, dass die meisten Drucker kleine Löcher 0,2–0,3 mm zu klein drucken."
+ },
+ "f2158a6b1f4a5c54": {
+  "en": "What you do about it after printing:",
+  "de": "Was Sie nach dem Druck dagegen tun:"
+ },
+ "48294078f21ee3ee": {
+  "en": "| Hole type | Fix | Example from the fit report |",
+  "de": "| Lochtyp | Abhilfe | Beispiel aus dem Passungsbericht |"
+ },
+ "d5c3a1417391bcb1": {
+  "en": "| Clearance (screw passes through) | Run a drill through once: 3.2 mm for M3, 2.7 mm for M2.5, 2.2 mm for M2 (ISO 273 fine; medium 3.4 / 2.9 / 2.4 mm) | `bottom_shell`, 4 × M3 at 3.05 mm CAD: drill 3.2 mm |",
+  "de": "| Durchgangsloch (Schraube geht hindurch) | Einmal mit einem Bohrer durchbohren: 3,2 mm für M3, 2,7 mm für M2.5, 2,2 mm für M2 (ISO 273 fein; mittel 3,4 / 2,9 / 2,4 mm) | `bottom_shell`, 4 × M3 mit 3,05 mm im CAD: 3,2 mm bohren |"
+ },
+ "11556d233aa1fb66": {
+  "en": "| Thread-forming pilot (screw cuts its own thread) | Leave it; see [fasteners](fasteners.md) | `femur` M3 pilots, 2.80–2.85 mm CAD |",
+  "de": "| Kernloch für gewindeformende Schraube (Schraube schneidet ihr eigenes Gewinde) | So belassen; siehe [Befestigungselemente](fasteners.md) | `femur` M3-Kernlöcher, 2,80–2,85 mm im CAD |"
+ },
+ "70daa7964fe45ae4": {
+  "en": "| Bearing seat (press fit) | Test-fit before assembly; a loose bearing gets a drop of CA glue | `outer_shoulder_frame`, 625ZZ (16 mm OD) in a 16.17–16.21 mm seat |",
+  "de": "| Lagersitz (Presspassung) | Vor der Montage zur Probe einpassen; ein lockeres Lager bekommt einen Tropfen CA-Kleber | `outer_shoulder_frame`, 625ZZ (16 mm Außendurchmesser) in einem 16,17–16,21-mm-Sitz |"
+ },
+ "cfdff260860a5baf": {
+  "en": "**Elephant foot** is the flare at the bottom edge of a part caused by the squashed first layer and the weight of the layers above. It makes bottom-facing holes and slots tighter and can stop a part from sitting flat. Most slicers have an *elephant foot compensation* setting that shrinks the first layer slightly; if a part's bottom edge flares, trim it with a deburring tool.",
+  "de": "**Elefantenfuß** ist die Aufweitung an der Unterkante eines Teils, verursacht durch die gequetschte erste Schicht und das Gewicht der darüberliegenden Schichten. Er macht nach unten weisende Löcher und Schlitze enger und kann verhindern, dass ein Teil plan aufliegt. Die meisten Slicer haben eine Einstellung *Elefantenfuß-Kompensation*, die die erste Schicht leicht verkleinert; wenn die Unterkante eines Teils ausfranst, schneiden Sie sie mit einem Entgratwerkzeug nach."
+ },
+ "653ecc1bf90ff2fa": {
+  "en": "Hole compensation for the servo mounts",
+  "de": "Lochkompensation für die Servohalter"
+ },
+ "a37a87372b66b700": {
+  "en": "The print list asks for **X-Y hole compensation −0.15 mm** on `left_servo_mount`, `right_servo_mount`, `left_servo_mount_fl`, `right_servo_mount_fr` and `servo_mount_top_bracket`, which brings their M3 pilots down to about 2.65 mm so the screws grip (ADR-009). It acts on vertical holes; the servo mounts' hip-horn and hip-pivot pilots lie horizontal, so harden those with thin CA if a screw spins. The option has this name in Bambu Studio and OrcaSlicer; not every slicer has a hole-only compensation. If you print without it, harden those pilots with a drop of thin CA glue before driving the screws, as explained in [fasteners](fasteners.md); anaerobic thread locker is not for plastic.",
+  "de": "Die Druckliste verlangt **X-Y-Lochkompensation −0,15 mm** für `left_servo_mount`, `right_servo_mount`, `left_servo_mount_fl`, `right_servo_mount_fr` und `servo_mount_top_bracket`; damit kommen ihre M3-Vorbohrungen auf etwa 2,65 mm, und die Schrauben greifen (ADR-009). Sie wirkt auf senkrechte Löcher; die Vorbohrungen für Hüfthorn und Hüftdrehpunkt der Servohalter liegen waagrecht, härten Sie diese also mit dünnflüssigem Sekundenkleber, wenn eine Schraube durchdreht. Die Option heißt so in Bambu Studio und OrcaSlicer; nicht jeder Slicer hat eine reine Lochkompensation. Wenn Sie ohne sie drucken, härten Sie diese Vorbohrungen vor dem Eindrehen der Schrauben mit einem Tropfen dünnflüssigem Sekundenkleber, wie in [Verbindungselemente](fasteners.md) erklärt; anaerobe Schraubensicherung ist nicht für Kunststoff."
+ },
+ "ca37b3323d09ea07": {
+  "en": "Plates and colours",
+  "de": "Druckplatten und Farben"
+ },
+ "388b94c402304381": {
+  "en": "The kit uses two colours: **primary (graphite)** for the frame and legs and **secondary (lime)** for the shells and shoulders. The 13 ready plates in `hardware/print/plates/` (`plate_graphite_01…10.3mf`, `plate_lime_01…03.3mf`) are pre-arranged 220 × 220 mm beds, so a whole robot needs no manual arranging. Each plate was sliced as arranged by the printability gate and accepted.",
+  "de": "Das Kit verwendet zwei Farben: **Primär (graphit)** für Rahmen und Beine und **Sekundär (limette)** für Schalen und Schultern. Die 13 fertigen Druckplatten in `hardware/print/plates/` (`plate_graphite_01…10.3mf`, `plate_lime_01…03.3mf`) sind vorab angeordnete 220 × 220 mm große Druckbetten, sodass ein ganzer Roboter kein manuelles Anordnen erfordert. Jede Druckplatte wurde von der Druckbarkeitsprüfung so wie angeordnet geslict und akzeptiert."
+ },
+ "d959b6b5fc6d1864": {
+  "en": "Filament budget: the print list totals 943 cm³ of solid parts (≈ 659 g of PETG at the kit settings). The slicer, including infill, supports and brims for every piece, estimates **958 g and 100 h**. The BOM buys two 1 kg spools (one per colour); the print list budgets 1.2 kg including test prints.",
+  "de": "Filamentbudget: Die Druckliste summiert sich auf 943 cm³ massive Teile (≈ 659 g PETG bei den Kit-Einstellungen). Der Slicer schätzt inklusive Füllung, Stützen und Brims für jedes Teil **958 g und 100 h**. Die Stückliste sieht zwei 1-kg-Spulen vor (eine pro Farbe); die Druckliste plant 1,2 kg inklusive Testdrucken ein."
+ },
+ "20d8716120d0bf9c": {
+  "en": "The printability gate",
+  "de": "Die Druckbarkeitsprüfung"
+ },
+ "cc0df2bb74219816": {
+  "en": "The printability gate (`python -m strido_verify.printability`, `make printability`) checks that the kit really prints with exactly these settings:",
+  "de": "Die Druckbarkeitsprüfung (`python -m strido_verify.printability`, `make printability`) stellt sicher, dass sich das Kit mit genau diesen Einstellungen wirklich drucken lässt:"
+ },
+ "dbc1c70cd4fac4ac": {
+  "en": "flowchart LR\n  STL[\"oriented STLs<br/>+ 3MF plates\"] --> SL[\"PrusaSlicer<br/>prusaslicer.ini + per-part supports/brim\"]\n  SL --> R1[\"slicer warnings?<br/>(overhangs, floating bridges,<br/>low bed adhesion)\"]\n  STL --> W[\"wall-thickness scan\"]\n  W --> R2[\"walls < 1 line / skins < 1 layer?\"]\n  R1 --> REP[\"printability.md<br/>ok / warn / fail\"]\n  R2 --> REP",
+  "de": "flowchart LR\n  STL[\"ausgerichtete STLs<br/>+ 3MF-Druckplatten\"] --> SL[\"PrusaSlicer<br/>prusaslicer.ini + Stützen/Brim pro Teil\"]\n  SL --> R1[\"Slicer-Warnungen?<br/>(Überhänge, schwebende Brücken,<br/>geringe Betthaftung)\"]\n  STL --> W[\"Wandstärken-Scan\"]\n  W --> R2[\"Wände < 1 Linie / Häute < 1 Schicht?\"]\n  R1 --> REP[\"printability.md<br/>ok / warn / fail\"]\n  R2 --> REP"
+ },
+ "10a5f51a1e74c1d2": {
+  "en": "**Slicer stage:** every part is sliced as it lies, with the supports and brim from the print list. It fails if the slicer errors or reports stability problems that those supports and brim do not prevent. Filament mass and time come from the generated G-code.",
+  "de": "**Slicer-Stufe:** Jedes Teil wird so geslict, wie es liegt, mit den Stützen und dem Brim aus der Druckliste. Sie scheitert, wenn der Slicer Fehler liefert oder Stabilitätsprobleme meldet, die diese Stützen und der Brim nicht verhindern. Filamentmasse und Zeit stammen aus dem erzeugten G-Code."
+ },
+ "3712d946ebb0eec4": {
+  "en": "**Wall scan:** a lateral wall is built from lines (≈ 0.45 mm each), a horizontal skin from layers (0.2 mm). Below one line (0.4 mm) or one layer (0.2 mm) the slicer drops the feature: **fail**. Below two lines (0.8 mm) or three layers (0.6 mm) it prints but is fragile: **warn**.",
+  "de": "**Wand-Scan:** Eine seitliche Wand besteht aus Linien (je ≈ 0,45 mm), eine waagrechte Haut aus Schichten (0,2 mm). Unter einer Linie (0,4 mm) oder einer Schicht (0,2 mm) lässt der Slicer das Element weg: **fail**. Unter zwei Linien (0,8 mm) oder drei Schichten (0,6 mm) wird es gedruckt, ist aber zerbrechlich: **warn**."
+ },
+ "8735ef4d3a89e35f": {
+  "en": "**Plates:** each 3MF plate is sliced as arranged and must fit on the bed.",
+  "de": "**Druckplatten:** Jede 3MF-Druckplatte wird so geslict, wie sie angeordnet ist, und muss auf das Bett passen."
+ },
+ "d2aedd5dc1a0ea22": {
+  "en": "Current result: 34 part types and 13 plates, **0 fail, 4 warn**. The warnings are the four servo mounts, with small skin areas only 0.38–0.53 mm thick (two layers): printable, but print them carefully.",
+  "de": "Aktuelles Ergebnis: 34 Teiletypen und 13 Platten, **0 fail, 4 warn**. Die Warnungen betreffen die vier Servohalter mit kleinen Deckschichtbereichen von nur 0,38–0,53 mm Dicke (zwei Schichten): druckbar, aber drucken Sie sie sorgfältig."
+ },
+ "3bb23d90351f589b": {
+  "en": "How to read the print list",
+  "de": "So lesen Sie die Druckliste"
+ },
+ "a385af0116d4bc2e": {
+  "en": "Each row of `hardware/print/print_list.md` has eight columns:",
+  "de": "Jede Zeile von `hardware/print/print_list.md` hat acht Spalten:"
+ },
+ "b8ae754c24c0e30d": {
+  "en": "| Column | Meaning |",
+  "de": "| Spalte | Bedeutung |"
+ },
+ "79b83c0b2a87589d": {
+  "en": "| Part | Part id, the same as in the [catalogue](../../catalog.md) and the [assembly manual](../../assembly/README.md) |",
+  "de": "| Part | Teile-ID, dieselbe wie im [Teilekatalog](../../catalog.md) und in der [Montageanleitung](../../assembly/README.md) |"
+ },
+ "f9f78c0e47ccd7f9": {
+  "en": "| Qty | Pieces per robot (e.g. `femur` 4, one per leg) |",
+  "de": "| Qty | Stück pro Roboter (z. B. `femur` 4, eines pro Bein) |"
+ },
+ "da3304110f3d4262": {
+  "en": "| Colour | primary (graphite) or secondary (lime) |",
+  "de": "| Colour | primär (graphit) oder sekundär (limette) |"
+ },
+ "d55f091e9df97c03": {
+  "en": "| File | STL under `hardware/print/`, already oriented |",
+  "de": "| File | STL unter `hardware/print/`, bereits ausgerichtet |"
+ },
+ "addc5128a739f91d": {
+  "en": "| Size on bed (mm) | X × Y × Z as it lies; Z is the height that decides the brim (> 40 mm) |",
+  "de": "| Size on bed (mm) | X × Y × Z, wie es liegt; Z ist die Höhe, die über den Brim entscheidet (> 40 mm) |"
+ },
+ "967cd7b36a035718": {
+  "en": "| Supports | `no`, or `yes (N % overhang)` |",
+  "de": "| Supports | `no` oder `yes (N % overhang)` |"
+ },
+ "b23dddeeb6fd638c": {
+  "en": "| Source | upstream STL, upstream STEP, new Strido part, or a modified upstream part |",
+  "de": "| Source | Upstream-STL, Upstream-STEP, neues Strido-Teil oder ein geändertes Upstream-Teil |"
+ },
+ "c05508b00b22acce": {
+  "en": "| Note | orientation reasons and what was changed against upstream |",
+  "de": "| Note | Gründe für die Ausrichtung und Änderungen gegenüber Upstream |"
+ },
+ "c95ed835334b18f2": {
+  "en": "Read the two paragraphs above the table too: they contain the global settings and the special instruction for the servo mounts.",
+  "de": "Lesen Sie auch die beiden Absätze über der Tabelle: Sie enthalten die globalen Einstellungen und die besondere Anweisung für die Servohalter."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "f4c85f26f61be550": {
+  "en": "Why does the kit use three perimeters and only 30 % infill rather than more infill?",
+  "de": "Warum verwendet das Kit drei Perimeter und nur 30 % Füllung statt mehr Füllung?"
+ },
+ "367ece0a9c5ac7b6": {
+  "en": "`bottom_shell` is 42 mm tall. Does it get a brim, and why?",
+  "de": "`bottom_shell` ist 42 mm hoch. Bekommt sie einen Brim, und warum?"
+ },
+ "c52a1d4be3ad524c": {
+  "en": "A printed M3 clearance hole is too tight for the screw. What do you do?",
+  "de": "Ein gedrucktes M3-Durchgangsloch ist für die Schraube zu eng. Was tun Sie?"
+ },
+ "c14da3a409164b19": {
+  "en": "What does the kit do where a bearing seat on the bed side narrows to a smaller hole above it?",
+  "de": "Was macht das Druckpaket, wo ein Lagersitz auf der Bettseite in ein kleineres Loch darüber übergeht?"
+ },
+ "e0d12343482f7455": {
+  "en": "What are the two failure criteria of the wall-thickness scan?",
+  "de": "Was sind die beiden Fehlerkriterien des Wandstärken-Scans?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "4a0f587594027a68": {
+  "en": "Loads around screw holes and edges are carried by the walls; extra perimeters add strength where it is needed, whereas infill mostly adds mass and time (Prusa gives the same advice).",
+  "de": "Lasten um Schraubenlöcher und Kanten werden von den Wänden getragen; zusätzliche Perimeter erhöhen die Festigkeit dort, wo sie gebraucht wird, während Füllung hauptsächlich Masse und Zeit hinzufügt (Prusa gibt denselben Rat)."
+ },
+ "4ede30d340595017": {
+  "en": "Yes. Every part taller than 40 mm gets a 5 mm brim because a tall part on a small footprint can be knocked off the bed.",
+  "de": "Ja. Jedes Teil, das höher als 40 mm ist, bekommt einen 5-mm-Brim, weil ein hohes Teil auf kleiner Grundfläche vom Bett gestoßen werden kann."
+ },
+ "dc07c4f27d8dcf17": {
+  "en": "Run a 3.2 mm drill through once (3.4 mm for a looser fit); printed holes come out about 0.15 mm undersize.",
+  "de": "Bohren Sie einmal mit einem 3,2-mm-Bohrer durch (3,4 mm für eine lockerere Passung); gedruckte Löcher fallen etwa 0,15 mm zu klein aus."
+ },
+ "5b15a0edfe92964f": {
+  "en": "It cuts the two layers above the step for bridging (the hole overhang trick): a slot as wide as the small hole across the seat, then a square, then the small hole. Every layer then bridges between walls it rests on, so the seat needs no support of its own (where the slicer still adds some, as in the tibias, block it in the bore).",
+  "de": "Es schneidet die zwei Schichten über der Stufe für Brücken aus (der Lochüberhang-Trick): einen Schlitz so breit wie das kleine Loch quer über den Sitz, dann ein Quadrat, dann das kleine Loch. Jede Schicht überbrückt dann zwischen Wänden, auf denen sie aufliegt, sodass der Sitz keine eigenen Stützen braucht (wo der Slicer trotzdem welche setzt, wie in den Tibias, blockieren Sie sie in der Bohrung)."
+ },
+ "02fd9c587b3ba072": {
+  "en": "A lateral wall thinner than one extrusion line (0.4 mm) or a horizontal skin thinner than one layer (0.2 mm).",
+  "de": "Eine seitliche Wand dünner als eine Extrusionslinie (0,4 mm) oder eine waagrechte Haut dünner als eine Schicht (0,2 mm)."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "524e7ab8f4829693": {
+  "en": "[Prusa Knowledge Base: PETG](https://help.prusa3d.com/article/petg_2059)",
+  "de": "[Prusa-Wissensdatenbank: PETG](https://help.prusa3d.com/article/petg_2059)"
+ },
+ "0f62a07832dfd851": {
+  "en": "[Prusa Knowledge Base: Elephant foot compensation](https://help.prusa3d.com/article/elephant-foot-compensation_114487)",
+  "de": "[Prusa-Wissensdatenbank: Elefantenfuß-Kompensation](https://help.prusa3d.com/article/elephant-foot-compensation_114487)"
+ },
+ "bd3384e3269d05ec": {
+  "en": "[Bambu Lab Wiki: XY hole / contour compensation](https://wiki.bambulab.com/en/software/bambu-studio/xy-hole-contour-compensation)",
+  "de": "[Bambu Lab Wiki: XY-Loch-/Konturkompensation](https://wiki.bambulab.com/en/software/bambu-studio/xy-hole-contour-compensation)"
+ },
+ "a5c9b5e118220469": {
+  "en": "[PrusaSlicer on GitHub](https://github.com/prusa3d/PrusaSlicer)",
+  "de": "[PrusaSlicer auf GitHub](https://github.com/prusa3d/PrusaSlicer)"
+ },
+ "014243e2dea6533a": {
+  "en": "Related in this wiki: [fasteners](fasteners.md), [CAD as code](../software/cad-as-code.md), [mechanics](../hardware/mechanics.md)",
+  "de": "Verwandt in diesem Wiki: [Befestigungselemente](fasteners.md), [CAD als Code](../software/cad-as-code.md), [Mechanik](../hardware/mechanics.md)"
+ }
+}

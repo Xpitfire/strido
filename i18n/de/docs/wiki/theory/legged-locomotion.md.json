@@ -1,0 +1,270 @@
+{
+ "166b391cd5b0d4ca": {
+  "en": "Legged locomotion",
+  "de": "Laufen mit Beinen"
+ },
+ "990fafbae479e54f": {
+  "en": "How a four-legged robot stays up while it moves: gaits and their timing, the support polygon, static and dynamic stability, and the foot-placement rule that Strido's trot generator uses.",
+  "de": "Wie ein vierbeiniger Roboter in Bewegung aufrecht bleibt: Gaits und ihr Timing, das Stützpolygon, statische und dynamische Stabilität sowie die Fußplatzierungsregel, die der Trot-Generator von Strido verwendet."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "d4a0f3d625f644a0": {
+  "en": "The scripted gait is `TrotGait` in `packages/strido-core/src/strido/gait.py`, shared by MuJoCo, Gazebo and the real robot (via `ros2/strido_control/strido_control/gait_node.py`). The learned policy (`packages/strido-sim/`) receives a clock with the same $0.4\\,\\mathrm{s}$ period (`GAIT_PERIOD_S` in `packages/strido-core/src/strido/policy.py`). Practical usage is in [Kinematics and gaits](../software/kinematics-and-gaits.md).",
+  "de": "Der skriptbasierte Gait ist `TrotGait` in `packages/strido-core/src/strido/gait.py`, gemeinsam genutzt von MuJoCo, Gazebo und dem realen Roboter (über `ros2/strido_control/strido_control/gait_node.py`). Die gelernte Policy (`packages/strido-sim/`) erhält einen Takt mit derselben Periode von $0.4\\,\\mathrm{s}$ (`GAIT_PERIOD_S` in `packages/strido-core/src/strido/policy.py`). Die praktische Anwendung steht in [Kinematik und Gaits](../software/kinematics-and-gaits.md)."
+ },
+ "fb5338020f58ece3": {
+  "en": "Gaits as timing patterns",
+  "de": "Gaits als Timing-Muster"
+ },
+ "c48b64c915c4abae": {
+  "en": "A **gait** is a periodic pattern of foot contacts. Each leg $i$ runs through one **cycle** of period $T$ and is described by a phase $\\phi_i \\in [0, 1)$:",
+  "de": "Ein **Gait** ist ein periodisches Muster von Fußkontakten. Jedes Bein $i$ durchläuft einen **Zyklus** der Periode $T$ und wird durch eine Phase $\\phi_i \\in [0, 1)$ beschrieben:"
+ },
+ "4ff826db97a803c2": {
+  "en": "where $\\delta_i$ is that leg's **phase offset**. The leg is in **stance** (foot on the ground, pushing) while $\\phi_i < \\beta$ and in **swing** (foot in the air, returning) otherwise. The **duty factor** $\\beta$ is the fraction of the cycle spent in stance:",
+  "de": "wobei $\\delta_i$ der **Phasenversatz** dieses Beins ist. Das Bein ist in der **Standphase** (Fuß am Boden, schiebend), solange $\\phi_i < \\beta$, andernfalls in der **Schwungphase** (Fuß in der Luft, zurückkehrend). Der **Tastgrad** (Duty Factor) $\\beta$ ist der Anteil des Zyklus in der Standphase:"
+ },
+ "b91fc5529cc9c321": {
+  "en": "Gaits differ only in $\\beta$ and the offsets $\\delta_i$:",
+  "de": "Gaits unterscheiden sich nur in $\\beta$ und den Versätzen $\\delta_i$:"
+ },
+ "2a0d52a51b7e31a3": {
+  "en": "| Gait | Duty factor $\\beta$ | Offsets (FL, FR, RL, RR) | Feet on ground |",
+  "de": "| Gait | Tastgrad $\\beta$ | Versätze (FL, FR, RL, RR) | Füße am Boden |"
+ },
+ "6bfc74f536bd9d1e": {
+  "en": "| Walk (crawl) | $\\ge 0.75$ | $0, \\tfrac12, \\tfrac34, \\tfrac14$ | always $\\ge 3$ |",
+  "de": "| Schritt (Kriechgang) | $\\ge 0.75$ | $0, \\tfrac12, \\tfrac34, \\tfrac14$ | immer $\\ge 3$ |"
+ },
+ "b6aba1203734eefc": {
+  "en": "| Trot | $\\approx 0.5$ | $0, \\tfrac12, \\tfrac12, 0$ | 2 (a diagonal pair) |",
+  "de": "| Trot | $\\approx 0.5$ | $0, \\tfrac12, \\tfrac12, 0$ | 2 (ein diagonales Paar) |"
+ },
+ "b9c2328b7b591e1c": {
+  "en": "| Pace | $\\approx 0.5$ | $0, \\tfrac12, 0, \\tfrac12$ | 2 (a lateral pair) |",
+  "de": "| Passgang | $\\approx 0.5$ | $0, \\tfrac12, 0, \\tfrac12$ | 2 (ein seitliches Paar) |"
+ },
+ "739a55968be9a52d": {
+  "en": "| Bound | $\\approx 0.5$ | $0, 0, \\tfrac12, \\tfrac12$ | 2 (front or rear pair) |",
+  "de": "| Sprunggang | $\\approx 0.5$ | $0, 0, \\tfrac12, \\tfrac12$ | 2 (vorderes oder hinteres Paar) |"
+ },
+ "5335de760b69d0a6": {
+  "en": "With $\\beta \\ge 0.75$ only one leg is ever in the air, so the walk can be **statically stable**. With $\\beta = 0.5$ two legs are always in the air; the trot relies on **dynamic stability**: the body would tip if frozen, but each pair lands before it falls far.",
+  "de": "Mit $\\beta \\ge 0.75$ ist immer nur ein Bein in der Luft, daher kann der Schritt **statisch stabil** sein. Mit $\\beta = 0.5$ sind immer zwei Beine in der Luft; der Trot beruht auf **dynamischer Stabilität**: Eingefroren würde der Körper kippen, doch jedes Paar landet, bevor er weit fällt."
+ },
+ "ecf234fe5355c838": {
+  "en": "Centre of mass and the support polygon",
+  "de": "Schwerpunkt und Stützpolygon"
+ },
+ "7c4c92e4846c6ef2": {
+  "en": "The **centre of mass** (CoM) of bodies with masses $m_k$ at positions $\\mathbf{p}_k$ is",
+  "de": "Der **Schwerpunkt** (CoM) von Körpern mit Massen $m_k$ an Positionen $\\mathbf{p}_k$ ist"
+ },
+ "15667f4e0d5b189b": {
+  "en": "The **support polygon** is the convex hull of the contact points projected onto the ground. A robot standing still (or moving slowly enough that inertia is negligible) is statically stable if the ground projection of the CoM lies inside this polygon: gravity then produces no net tipping moment about any polygon edge.",
+  "de": "Das **Stützpolygon** ist die konvexe Hülle der auf den Boden projizierten Kontaktpunkte. Ein stillstehender Roboter (oder einer, der sich so langsam bewegt, dass die Trägheit vernachlässigbar ist) ist statisch stabil, wenn die Bodenprojektion des CoM innerhalb dieses Polygons liegt: Die Schwerkraft erzeugt dann um keine Polygonkante ein resultierendes Kippmoment."
+ },
+ "5bfa2704ab269648": {
+  "en": "The **static stability margin** is the shortest distance from the projected CoM to the polygon's boundary:",
+  "de": "Die **statische Stabilitätsreserve** ist der kürzeste Abstand vom projizierten CoM zum Rand des Polygons:"
+ },
+ "41366c431e49cd0a": {
+  "en": "$S > 0$ means stable; larger $S$ tolerates bigger pushes and modelling errors. In a trot the support \"polygon\" degenerates to the line segment between the two stance feet, so $S \\le 0$ almost always: static stability is impossible and the gait must be dynamic.",
+  "de": "$S > 0$ bedeutet stabil; ein größeres $S$ toleriert stärkere Stöße und Modellierungsfehler. Im Trot entartet das Stütz-„Polygon“ zur Strecke zwischen den beiden Standfüßen, daher ist fast immer $S \\le 0$: Statische Stabilität ist unmöglich, und der Gait muss dynamisch sein."
+ },
+ "d5a4da36a7fa26c8": {
+  "en": "Beyond statics: ZMP and the capture point",
+  "de": "Über die Statik hinaus: ZMP und Capture Point"
+ },
+ "cf99d1454aff2a2a": {
+  "en": "When the body accelerates, inertial forces add to gravity. The **zero-moment point** (ZMP) is the point on the ground where the horizontal moments of gravity plus inertia vanish. For a point mass at height $h$ with horizontal acceleration $\\ddot{\\mathbf{x}}$ (the *linear inverted pendulum* model, constant height):",
+  "de": "Beschleunigt der Körper, kommen Trägheitskräfte zur Schwerkraft hinzu. Der **Zero-Moment-Point** (ZMP) ist der Punkt am Boden, an dem die horizontalen Momente aus Schwerkraft und Trägheit verschwinden. Für eine Punktmasse in Höhe $h$ mit horizontaler Beschleunigung $\\ddot{\\mathbf{x}}$ (das Modell des *linearen inversen Pendels*, konstante Höhe):"
+ },
+ "1ada180614a9facb": {
+  "en": "The contact forces can only push, so the ZMP must stay inside the support polygon; if the plan demands a ZMP outside it, a foot rolls or lifts and the robot tips. ZMP planning is the classic tool for walking humanoids.",
+  "de": "Die Kontaktkräfte können nur drücken, daher muss der ZMP innerhalb des Stützpolygons bleiben; verlangt die Planung einen ZMP außerhalb, rollt oder hebt ein Fuß ab und der Roboter kippt. ZMP-Planung ist das klassische Werkzeug für gehende Humanoide."
+ },
+ "60523a85a4502d12": {
+  "en": "The same pendulum gives the **capture point** (instantaneous capture point, divergent component of motion). Its dynamics $\\ddot{x} = \\omega^2 (x - p)$ with $\\omega = \\sqrt{g/h}$ have an unstable mode, and the point",
+  "de": "Dasselbe Pendel liefert den **Capture Point** (instantaner Capture Point, divergente Bewegungskomponente). Seine Dynamik $\\ddot{x} = \\omega^2 (x - p)$ mit $\\omega = \\sqrt{g/h}$ hat einen instabilen Modus, und der Punkt"
+ },
+ "a4a18f39605b4258": {
+  "en": "is where a foot must be placed for the body to come to rest above it. Intuition: the faster you are moving, the further ahead you must step to stop.",
+  "de": "ist die Stelle, an der ein Fuß aufgesetzt werden muss, damit der Körper darüber zur Ruhe kommt. Intuition: Je schneller man sich bewegt, desto weiter vorne muss man auftreten, um anzuhalten."
+ },
+ "57ee633c591fada7": {
+  "en": "**Worked example.** Strido's default body height is $h = 0.17\\,\\mathrm{m}$ (hip axis above the feet, `GaitConfig.body_height`). Then",
+  "de": "**Rechenbeispiel.** Die Standard-Körperhöhe von Strido ist $h = 0.17\\,\\mathrm{m}$ (Hüftachse über den Füßen, `GaitConfig.body_height`). Dann"
+ },
+ "6a118aa1b7fd59f8": {
+  "en": "At the maximum forward command $v = 0.30\\,\\mathrm{m/s}$ the capture point is about $0.30 \\times 0.13 \\approx 0.04\\,\\mathrm{m}$ ahead of the CoM. The pendulum's time constant ($0.13\\,\\mathrm{s}$) is comparable to the stance time ($0.2\\,\\mathrm{s}$, below), which is why the gait has to keep stepping: a frozen trot would tip within a fraction of a second.",
+  "de": "Beim maximalen Vorwärtsbefehl $v = 0.30\\,\\mathrm{m/s}$ liegt der Capture Point etwa $0.30 \\times 0.13 \\approx 0.04\\,\\mathrm{m}$ vor dem CoM. Die Zeitkonstante des Pendels ($0.13\\,\\mathrm{s}$) ist vergleichbar mit der Standzeit ($0.2\\,\\mathrm{s}$, siehe unten), weshalb der Gait weiter Schritte machen muss: Ein eingefrorener Trot würde binnen Sekundenbruchteilen kippen."
+ },
+ "bbfeae161872c09a": {
+  "en": "Raibert-style foot placement",
+  "de": "Fußplatzierung nach Raibert"
+ },
+ "96539cd7abf0a34d": {
+  "en": "Marc Raibert's hopping and running machines decomposed control into three parts: hopping height, body attitude, and **forward speed via foot placement**. The idea: during stance the body moves a distance $v\\,T_\\mathrm{stance}$ over the foot. If the foot lands at the centre of that path, the body passes symmetrically over it and speed is preserved (the *neutral point*):",
+  "de": "Marc Raiberts hüpfende und laufende Maschinen zerlegten die Regelung in drei Teile: Sprunghöhe, Körperlage und **Vorwärtsgeschwindigkeit über die Fußplatzierung**. Die Idee: Während der Standphase bewegt sich der Körper um die Strecke $v\\,T_\\mathrm{stance}$ über den Fuß. Landet der Fuß in der Mitte dieses Wegs, passiert der Körper ihn symmetrisch und die Geschwindigkeit bleibt erhalten (der *neutrale Punkt*):"
+ },
+ "ebdcad3e017fe796": {
+  "en": "The feedback term $k(v - v_\\mathrm{des})$ moves the foot further forward to brake and further back to accelerate. It is a capture-point rule in disguise.",
+  "de": "Der Rückführterm $k(v - v_\\mathrm{des})$ setzt den Fuß weiter nach vorne, um zu bremsen, und weiter nach hinten, um zu beschleunigen. Er ist eine verkappte Capture-Point-Regel."
+ },
+ "b022a6a07c64569c": {
+  "en": "How Strido's trot generator works",
+  "de": "So funktioniert der Trot-Generator von Strido"
+ },
+ "2649bd07bb45c134": {
+  "en": "`TrotGait` is a deliberately simple, deterministic, open-loop version of the above (no feedback term, $k = 0$). Its defaults in `GaitConfig`:",
+  "de": "`TrotGait` ist eine bewusst einfache, deterministische, ungeregelte (Open-Loop-)Version des Obigen (kein Rückführterm, $k = 0$). Seine Standardwerte in `GaitConfig`:"
+ },
+ "38c492a1b1c9fd65": {
+  "en": "| Parameter | Value | Meaning |",
+  "de": "| Parameter | Wert | Bedeutung |"
+ },
+ "45959b94bcdc7161": {
+  "en": "| `period` | $T = 0.40\\,\\mathrm{s}$ | full cycle |",
+  "de": "| `period` | $T = 0.40\\,\\mathrm{s}$ | voller Zyklus |"
+ },
+ "5057c451c32d508e": {
+  "en": "| `duty` | $\\beta = 0.5$ | trot: stance and swing equal |",
+  "de": "| `duty` | $\\beta = 0.5$ | Trot: Stand- und Schwungphase gleich lang |"
+ },
+ "b56f29cefbe24dd3": {
+  "en": "| `step_height` | $h_\\mathrm{s} = 0.035\\,\\mathrm{m}$ | swing apex |",
+  "de": "| `step_height` | $h_\\mathrm{s} = 0.035\\,\\mathrm{m}$ | Scheitel der Schwungphase |"
+ },
+ "5b8a70aad3cdabc6": {
+  "en": "| `body_height` | $0.17\\,\\mathrm{m}$ | hip axis above the feet |",
+  "de": "| `body_height` | $0.17\\,\\mathrm{m}$ | Hüftachse über den Füßen |"
+ },
+ "c5fad02d4dd27308": {
+  "en": "| `max_linear` | $\\lvert v_x \\rvert \\le 0.30$, $\\lvert v_y \\rvert \\le 0.15\\,\\mathrm{m/s}$ | command clamp |",
+  "de": "| `max_linear` | $\\lvert v_x \\rvert \\le 0.30$, $\\lvert v_y \\rvert \\le 0.15\\,\\mathrm{m/s}$ | Befehlsbegrenzung |"
+ },
+ "cd01d029df299b51": {
+  "en": "| `max_yaw_rate` | $\\lvert \\omega_z \\rvert \\le 1.0\\,\\mathrm{rad/s}$ | command clamp |",
+  "de": "| `max_yaw_rate` | $\\lvert \\omega_z \\rvert \\le 1.0\\,\\mathrm{rad/s}$ | Befehlsbegrenzung |"
+ },
+ "2f97490199d47e67": {
+  "en": "`PHASE_OFFSET` gives FL and RR $\\delta = 0$ and FR and RL $\\delta = \\tfrac12$: the diagonals alternate.",
+  "de": "`PHASE_OFFSET` gibt FL und RR $\\delta = 0$ sowie FR und RL $\\delta = \\tfrac12$: Die Diagonalen wechseln sich ab."
+ },
+ "4da723c602271ac1": {
+  "en": "**Per-foot velocity.** For a command $(v_x, v_y, \\omega_z)$ and a foot's nominal position $(p_x, p_y)$ in the body frame, the body moves over that foot with the rigid-body velocity $\\mathbf{v} + \\boldsymbol{\\omega} \\times \\mathbf{p}$, so the stance foot moves at $-\\mathbf{v}_i$ relative to the body:",
+  "de": "**Geschwindigkeit je Fuß.** Für einen Befehl $(v_x, v_y, \\omega_z)$ und die Nennposition eines Fußes $(p_x, p_y)$ im Körperkoordinatensystem bewegt sich der Körper mit der Starrkörpergeschwindigkeit $\\mathbf{v} + \\boldsymbol{\\omega} \\times \\mathbf{p}$ über diesen Fuß, daher bewegt sich der Standfuß relativ zum Körper mit $-\\mathbf{v}_i$:"
+ },
+ "be5a05a9f8e4eea5": {
+  "en": "where $\\mathbf{s}_i$ is the stride over one stance.",
+  "de": "wobei $\\mathbf{s}_i$ die Schrittlänge über eine Standphase ist."
+ },
+ "b29aa0a1b89717e7": {
+  "en": "**Stance.** With normalised stance progress $s = \\phi/\\beta \\in [0, 1)$, the foot slides from half a stride ahead to half a stride behind:",
+  "de": "**Standphase.** Mit dem normierten Standfortschritt $s = \\phi/\\beta \\in [0, 1)$ gleitet der Fuß von einer halben Schrittlänge vorne zu einer halben Schrittlänge hinten:"
+ },
+ "d1a10d29ab22ec5b": {
+  "en": "**Swing.** With $s = (\\phi - \\beta)/(1-\\beta)$, the foot returns and lifts on a half-sine:",
+  "de": "**Schwungphase.** Mit $s = (\\phi - \\beta)/(1-\\beta)$ kehrt der Fuß zurück und hebt auf einer Halbsinuskurve ab:"
+ },
+ "6bb627890b7aae41": {
+  "en": "So each foot lands at $+\\mathbf{s}_i/2$: exactly Raibert's neutral point $v T_\\mathrm{stance}/2$. Foot targets are then converted to 12 joint angles by inverse kinematics (see [Kinematics](kinematics.md)) and clamped to the joint and knee-crank limits (`clamp_leg`). With a zero command the feet stay at their nominal stance.",
+  "de": "Jeder Fuß landet also bei $+\\mathbf{s}_i/2$: genau Raiberts neutraler Punkt $v T_\\mathrm{stance}/2$. Die Fußziele werden dann per inverser Kinematik in 12 Gelenkwinkel umgerechnet (siehe [Kinematik](kinematics.md)) und auf die Gelenk- und Kniekurbelgrenzen begrenzt (`clamp_leg`). Bei Nullbefehl bleiben die Füße in ihrer Nennstellung."
+ },
+ "378348741ea88a57": {
+  "en": "**Worked example.** Forward command $v_x = 0.30\\,\\mathrm{m/s}$:",
+  "de": "**Rechenbeispiel.** Vorwärtsbefehl $v_x = 0.30\\,\\mathrm{m/s}$:"
+ },
+ "a84b82b0b1e47e70": {
+  "en": "Each foot sweeps from $+30\\,\\mathrm{mm}$ to $-30\\,\\mathrm{mm}$ about its nominal position, then swings back in $0.20\\,\\mathrm{s}$ peaking $35\\,\\mathrm{mm}$ up. Its swing speed relative to the body is $0.06/0.20 = 0.30\\,\\mathrm{m/s}$ on average and $\\tfrac{\\pi}{2} \\times 0.035 / 0.10 \\approx 0.55\\,\\mathrm{m/s}$ peak vertical speed.",
+  "de": "Jeder Fuß bewegt sich von $+30\\,\\mathrm{mm}$ bis $-30\\,\\mathrm{mm}$ um seine Nennposition und schwingt dann in $0.20\\,\\mathrm{s}$ zurück, mit einem Scheitel $35\\,\\mathrm{mm}$ über dem Boden. Seine Schwunggeschwindigkeit relativ zum Körper beträgt im Mittel $0.06/0.20 = 0.30\\,\\mathrm{m/s}$ und vertikal maximal $\\tfrac{\\pi}{2} \\times 0.035 / 0.10 \\approx 0.55\\,\\mathrm{m/s}$."
+ },
+ "a71d818a1a9320c8": {
+  "en": "For a pure turn, $\\omega_z = 1.0\\,\\mathrm{rad/s}$: the front-left foot sits at $p_x \\approx 0.120\\,\\mathrm{m}$, $p_y \\approx 0.039 + 0.038 = 0.077\\,\\mathrm{m}$ (hip and thigh offsets from `packages/strido-core/src/strido/geometry.py`), so $\\mathbf{v} = (-0.077, 0.120)\\,\\mathrm{m/s}$ and the stride is $(-15, 24)\\,\\mathrm{mm}$: the feet sweep along a circle about the body centre.",
+  "de": "Für eine reine Drehung, $\\omega_z = 1.0\\,\\mathrm{rad/s}$: Der vordere linke Fuß sitzt bei $p_x \\approx 0.120\\,\\mathrm{m}$, $p_y \\approx 0.039 + 0.038 = 0.077\\,\\mathrm{m}$ (Hüft- und Oberschenkelversatz aus `packages/strido-core/src/strido/geometry.py`), also $\\mathbf{v} = (-0.077, 0.120)\\,\\mathrm{m/s}$, und die Schrittlänge ist $(-15, 24)\\,\\mathrm{mm}$: Die Füße bewegen sich entlang eines Kreises um die Körpermitte."
+ },
+ "f9e20cfe5c455ebc": {
+  "en": "gantt\n    dateFormat x\n    axisFormat %L ms\n    title Trot timing (T = 400 ms, duty 0.5)\n    section FL + RR\n    stance :0, 200\n    swing  :200, 400\n    section FR + RL\n    swing  :0, 200\n    stance :200, 400",
+  "de": "gantt\n    dateFormat x\n    axisFormat %L ms\n    title Trot-Timing (T = 400 ms, Tastgrad 0,5)\n    section FL + RR\n    Standphase :0, 200\n    Schwungphase  :200, 400\n    section FR + RL\n    Schwungphase  :0, 200\n    Standphase :200, 400"
+ },
+ "f7a3d6312a4382f8": {
+  "en": "**Limitations.** Being open-loop, the generator does not react to pushes, slips or tilt: nothing moves the foot further forward when the body is too fast. That is the gap the learned policy fills — it sees the IMU and can learn feedback (see [Reinforcement learning](reinforcement-learning.md)).",
+  "de": "**Grenzen.** Als ungeregelter Generator reagiert er nicht auf Stöße, Rutschen oder Neigung: Nichts setzt den Fuß weiter nach vorne, wenn der Körper zu schnell ist. Diese Lücke füllt die gelernte Policy – sie sieht die IMU und kann Rückführung lernen (siehe [Reinforcement Learning](reinforcement-learning.md))."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "1081929a9afcb1fe": {
+  "en": "A gait has $\\beta = 0.8$. How many feet are on the ground at any instant, and can it be statically stable?",
+  "de": "Ein Gait hat $\\beta = 0.8$. Wie viele Füße sind zu jedem Zeitpunkt am Boden, und kann sie statisch stabil sein?"
+ },
+ "895859b5f9085b5c": {
+  "en": "   <details><summary>Answer</summary>",
+  "de": "   <details><summary>Antwort</summary>"
+ },
+ "c37d62056ead2d7e": {
+  "en": "Each leg is airborne for 20 % of the cycle; with staggered offsets only one leg swings at a time, so at least three feet are down. Yes, if the CoM stays inside the support triangle.",
+  "de": "Jedes Bein ist 20 % des Zyklus in der Luft; mit versetzten Phasen schwingt immer nur ein Bein, daher sind mindestens drei Füße am Boden. Ja, wenn der CoM innerhalb des Stützdreiecks bleibt."
+ },
+ "ffc8e9fda50dce3a": {
+  "en": "Why is the static stability margin of a trot almost always non-positive?",
+  "de": "Warum ist die statische Stabilitätsreserve eines Trots fast immer nicht positiv?"
+ },
+ "ee8cb0c58570101a": {
+  "en": "Only two diagonal feet support the body, so the support polygon is a line segment; the CoM projection lies on it only by chance, never strictly inside it.",
+  "de": "Nur zwei diagonale Füße stützen den Körper, daher ist das Stützpolygon eine Strecke; die CoM-Projektion liegt nur zufällig darauf, nie echt innerhalb."
+ },
+ "d23c359d7c25bc3e": {
+  "en": "In `TrotGait`, what is the stride length at $v_x = 0.15\\,\\mathrm{m/s}$, and where does the foot land?",
+  "de": "Wie groß ist in `TrotGait` die Schrittlänge bei $v_x = 0.15\\,\\mathrm{m/s}$, und wo landet der Fuß?"
+ },
+ "1fb455ad1d90b75a": {
+  "en": "$s = 0.15 \\times 0.20 = 0.03\\,\\mathrm{m}$; the foot lands $15\\,\\mathrm{mm}$ ahead of nominal.",
+  "de": "$s = 0.15 \\times 0.20 = 0.03\\,\\mathrm{m}$; der Fuß landet $15\\,\\mathrm{mm}$ vor der Nennposition."
+ },
+ "bb8a7b3757d1dcad": {
+  "en": "What does raising `body_height` do to the capture-point time constant?",
+  "de": "Was bewirkt eine Erhöhung von `body_height` bei der Capture-Point-Zeitkonstante?"
+ },
+ "f191ed996acc8977": {
+  "en": "$1/\\omega = \\sqrt{h/g}$ grows, so the body tips more slowly but the capture point lies further ahead for the same speed.",
+  "de": "$1/\\omega = \\sqrt{h/g}$ wächst, der Körper kippt also langsamer, aber der Capture Point liegt bei gleicher Geschwindigkeit weiter vorne."
+ },
+ "0c986632ec76f578": {
+  "en": "Which Raibert term is missing from Strido's trot, and what does that mean?",
+  "de": "Welcher Raibert-Term fehlt im Trot von Strido, und was bedeutet das?"
+ },
+ "7b0bff1bb0185094": {
+  "en": "The speed-feedback term $k(v - v_\\mathrm{des})$. The gait cannot correct speed errors or disturbances.",
+  "de": "Der Geschwindigkeits-Rückführterm $k(v - v_\\mathrm{des})$. Der Gait kann Geschwindigkeitsfehler oder Störungen nicht korrigieren."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "a47403d3e456bef1": {
+  "en": "M. H. Raibert, *Legged Robots That Balance*, MIT Press, 1986.",
+  "de": "M. H. Raibert, *Legged Robots That Balance*, MIT Press, 1986."
+ },
+ "83b28035c67a13f0": {
+  "en": "B. Siciliano and O. Khatib (eds.), *Springer Handbook of Robotics*, 2nd ed., 2016 — chapters on legged robots and walking.",
+  "de": "B. Siciliano und O. Khatib (Hrsg.), *Springer Handbook of Robotics*, 2. Aufl., 2016 — Kapitel über Laufroboter und Gehen."
+ },
+ "fcbc3fd617e86337": {
+  "en": "J. Pratt, J. Carff, S. Drakunov and A. Goswami, \"Capture Point: A Step toward Humanoid Push Recovery\", *IEEE-RAS Humanoids*, 2006.",
+  "de": "J. Pratt, J. Carff, S. Drakunov und A. Goswami, „Capture Point: A Step toward Humanoid Push Recovery“, *IEEE-RAS Humanoids*, 2006."
+ },
+ "494d3b96461d62cf": {
+  "en": "M. Vukobratović and B. Borovac, \"Zero-Moment Point — Thirty Five Years of Its Life\", *International Journal of Humanoid Robotics*, 2004.",
+  "de": "M. Vukobratović und B. Borovac, „Zero-Moment Point — Thirty Five Years of Its Life“, *International Journal of Humanoid Robotics*, 2004."
+ },
+ "9bcb4d2ccb4b86a6": {
+  "en": "R. B. McGhee and A. A. Frank, \"On the stability properties of quadruped creeping gaits\", *Mathematical Biosciences*, 1968.",
+  "de": "R. B. McGhee und A. A. Frank, „On the stability properties of quadruped creeping gaits“, *Mathematical Biosciences*, 1968."
+ }
+}

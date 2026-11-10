@@ -1,0 +1,54 @@
+{
+ "d5fdc1af021e2d36": {
+  "en": "Downloads",
+  "de": "Downloads"
+ },
+ "687411838fd54360": {
+  "en": "**Status:** generated from the verified CAD assembly; the files below are rebuilt with every documentation deploy. They are served by the documentation site, not by the repository view.",
+  "de": "**Status:** aus der verifizierten CAD-Baugruppe erzeugt; die folgenden Dateien werden bei jedem Deployment der Dokumentation neu gebaut. Sie werden von der Dokumentationswebsite ausgeliefert, nicht von der Repository-Ansicht."
+ },
+ "2e4306b995f42f3d": {
+  "en": "| Download | Contents |",
+  "de": "| Download | Inhalt |"
+ },
+ "858cf3fcb56d321c": {
+  "en": "| **[Build kit (ZIP)](/downloads/strido-build-kit.zip)** | Every printed part as an oriented STL, the ready 3MF build plates, the verified PrusaSlicer profile, the print list, the catalogue & assembly book PDF and the bill of materials |",
+  "de": "| **[Baupaket (ZIP)](/downloads/strido-build-kit.zip)** | Jedes Druckteil als ausgerichtete STL, die fertigen 3MF-Druckplatten, das verifizierte PrusaSlicer-Profil, die Druckliste, das PDF des Katalog- und Montagebuchs und die Stückliste |"
+ },
+ "61bda9ba7e2397de": {
+  "en": "| **[Catalogue & assembly book (A4 PDF)](/catalog/strido-catalog.pdf)** | Printed and purchased parts, hardware drawn at 1:1, shopping plan, tools, every assembly step, wiring, software appendix |",
+  "de": "| **[Katalog- & Montagebuch (A4-PDF)](/catalog/strido-catalog.pdf)** | Druck- und Kaufteile, Kleinteile im Maßstab 1:1, Einkaufsplan, Werkzeuge, jeder Montageschritt, Verkabelung, Software-Anhang |"
+ },
+ "43661805032451f0": {
+  "en": "| <a href=\"/viewer/strido.glb\" download>3D model (GLB)</a> | The complete assembled robot for any glTF viewer or Blender; interactive in the [3D viewer](viewer.md) |",
+  "de": "| <a href=\"/viewer/strido.glb\" download>3D-Modell (GLB)</a> | Der komplett montierte Roboter für jeden glTF-Viewer oder Blender; interaktiv in der [3D-Ansicht](viewer.md) |"
+ },
+ "b89cf54cd30a3246": {
+  "en": "Print everything",
+  "de": "Alles drucken"
+ },
+ "5b9b0d272fda538d": {
+  "en": "Unpack the build kit and load `prusaslicer.ini` (PrusaSlicer: File › Import › Import Config). Other slicers: enter the settings from `print_list.md` (0.4 mm nozzle, 0.2 mm layers, 3 perimeters, 5 top/bottom layers, 30 % gyroid, PETG).",
+  "de": "Entpacken Sie das Baupaket und laden Sie `prusaslicer.ini` (PrusaSlicer: File › Import › Import Config). Andere Slicer: Übernehmen Sie die Einstellungen aus `print_list.md` (0,4-mm-Düse, 0,2-mm-Schichten, 3 Perimeter, 5 obere/untere Schichten, 30 % Gyroid, PETG)."
+ },
+ "39a66eab3e57a415": {
+  "en": "Print the plates in `plates/`: graphite plates for the frame and legs, lime plates for the shells and shoulders. Single parts: `stl/` (quantities in `print_list.md`).",
+  "de": "Drucken Sie die Druckplatten in `plates/`: Graphit-Platten für Rahmen und Beine, Limetten-Platten für Schalen und Schultern. Einzelteile: `stl/` (Stückzahlen in `print_list.md`)."
+ },
+ "6c18f813abeaa074": {
+  "en": "Supports and brims as listed per part; the slicer gate in [printability](verification/printability.md) slices every part and plate with exactly this profile.",
+  "de": "Stützen und Brims wie pro Teil angegeben; die Slicer-Prüfung in [Druckbarkeit](verification/printability.md) slict jedes Teil und jede Druckplatte mit genau diesem Profil."
+ },
+ "5c6417af4258fdb3": {
+  "en": "About 1 kg of PETG (one spool per colour) and roughly 100 hours of printing for the whole robot (slicer estimate).",
+  "de": "Etwa 1 kg PETG (eine Spule pro Farbe) und rund 100 Stunden Druckzeit für den ganzen Roboter (Slicer-Schätzung)."
+ },
+ "0e570ca6fabe24f9": {
+  "en": "Source",
+  "de": "Quellcode"
+ },
+ "2d4a41dc2b7e2043": {
+  "en": "The repository is public: [github.com/Xpitfire/strido](https://github.com/Xpitfire/strido), software under Apache-2.0 and hardware files under CERN-OHL-P-2.0. It holds the CAD pipeline, firmware, ROS 2 packages, simulation and every verification gate; `make publish` regenerates all downloads.",
+  "de": "Das Repository ist öffentlich: [github.com/Xpitfire/strido](https://github.com/Xpitfire/strido), Software unter Apache-2.0, Hardware-Dateien unter CERN-OHL-P-2.0. Es enthält die CAD-Pipeline, Firmware, ROS-2-Pakete, Simulation und jede Verifikationsprüfung; `make publish` erzeugt alle Downloads neu."
+ }
+}

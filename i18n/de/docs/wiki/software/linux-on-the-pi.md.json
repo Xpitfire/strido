@@ -1,0 +1,366 @@
+{
+ "7b74831d81316a21": {
+  "en": "Linux on the Raspberry Pi 5",
+  "de": "Linux auf dem Raspberry Pi 5"
+ },
+ "0268db3a98e6c75a": {
+  "en": "The Raspberry Pi 5 is Strido's \"brain\": a small Linux computer that runs ROS 2 inside Docker and talks to the servo controller over USB. This page covers choosing an operating system, flashing it, logging in without a screen, and the handful of Linux skills you need to keep the robot running.",
+  "de": "Der Raspberry Pi 5 ist das „Gehirn“ von Strido: ein kleiner Linux-Computer, der ROS 2 in Docker ausführt und über USB mit dem Servocontroller kommuniziert. Diese Seite behandelt die Wahl des Betriebssystems, das Flashen, die Anmeldung ohne Bildschirm und die wenigen Linux-Kenntnisse, die Sie brauchen, um den Roboter am Laufen zu halten."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "42767d767a742b0c": {
+  "en": "**Hardware:** Raspberry Pi 5 (4 GB) with the Raspberry Pi Active Cooler and a 64 GB A2 microSD card (SanDisk Extreme), all in `hardware/bom.yaml`. It is fed with 5 V through the GPIO header, not through USB-C.",
+  "de": "**Hardware:** Raspberry Pi 5 (4 GB) mit dem Raspberry Pi Active Cooler und einer 64-GB-A2-microSD-Karte (SanDisk Extreme), alle in `hardware/bom.yaml`. Er wird mit 5 V über die GPIO-Stiftleiste versorgt, nicht über USB-C."
+ },
+ "ae6d724c12e2a9a7": {
+  "en": "**OS:** Ubuntu Server 24.04 (arm64) or Raspberry Pi OS Bookworm 64-bit, plus Docker Engine ([software](../../software.md#raspberry-pi-setup)).",
+  "de": "**Betriebssystem:** Ubuntu Server 24.04 (arm64) oder Raspberry Pi OS Bookworm 64-Bit, dazu Docker Engine ([Software](../../software.md#raspberry-pi-setup))."
+ },
+ "806badbd8bb957f1": {
+  "en": "**Robot software:** runs in the `strido-ros:jazzy` container built from `docker/ros2/Dockerfile`, so the host OS only needs Docker, udev rules and a few firmware settings.",
+  "de": "**Robotersoftware:** läuft im Container `strido-ros:jazzy`, gebaut aus `docker/ros2/Dockerfile`; das Host-Betriebssystem braucht daher nur Docker, udev-Regeln und einige Firmware-Einstellungen."
+ },
+ "3a6074988d9bfc2a": {
+  "en": "**Devices:** the XIAO ESP32-S3 (USB CDC) and the RPLIDAR C1 (CP210x USB adapter) appear as `/dev/strido_mcu` and `/dev/rplidar` through `ros2/strido_bringup/config/99-strido.rules`.",
+  "de": "**Geräte:** Der XIAO ESP32-S3 (USB CDC) und der RPLIDAR C1 (CP210x-USB-Adapter) erscheinen über `ros2/strido_bringup/config/99-strido.rules` als `/dev/strido_mcu` und `/dev/rplidar`."
+ },
+ "405eee85c3e3738b": {
+  "en": "What the Pi does, and what it does not",
+  "de": "Was der Pi macht und was nicht"
+ },
+ "1d31d158dcacfbac": {
+  "en": "The Pi runs everything above the servo loop: the gait or policy node, the `mcu_bridge`, the LiDAR driver and (optionally) the camera. It does **not** drive servos or read the IMU itself. Those are on the ESP32-S3, which owns the I²C bus (PCA9685, LSM6DSOX, INA260) and runs a hard 200 Hz loop. The split exists because Linux is not a real-time OS: a busy Pi can pause a process for tens of milliseconds, which is harmless for planning but would make servos twitch. See [firmware](firmware.md).",
+  "de": "Der Pi führt alles oberhalb der Servoschleife aus: den Gait- oder Policy-Node, die `mcu_bridge`, den LiDAR-Treiber und (optional) die Kamera. Er steuert **keine** Servos und liest die IMU nicht selbst. Das übernimmt der ESP32-S3, dem der I²C-Bus gehört (PCA9685, LSM6DSOX, INA260) und der eine harte 200-Hz-Schleife ausführt. Die Aufteilung existiert, weil Linux kein Echtzeitbetriebssystem ist: Ein ausgelasteter Pi kann einen Prozess für Dutzende Millisekunden anhalten, was für die Planung harmlos ist, Servos aber zucken ließe. Siehe [Firmware](firmware.md)."
+ },
+ "5ac8e7de39305599": {
+  "en": "So the Pi needs only USB serial access, not I²C or SPI. That keeps the Linux setup short.",
+  "de": "Der Pi braucht also nur USB-Seriell-Zugriff, weder I²C noch SPI. Das hält die Linux-Einrichtung kurz."
+ },
+ "ca7e1ce664621896": {
+  "en": "Choosing the operating system",
+  "de": "Wahl des Betriebssystems"
+ },
+ "39570a33ba5b617a": {
+  "en": "| | Ubuntu Server 24.04 (arm64) | Raspberry Pi OS Bookworm 64-bit |",
+  "de": "| | Ubuntu Server 24.04 (arm64) | Raspberry Pi OS Bookworm 64-Bit |"
+ },
+ "9021d1077d802420": {
+  "en": "| Base | Ubuntu \"Noble\" | Debian 12 |",
+  "de": "| Basis | Ubuntu „Noble“ | Debian 12 |"
+ },
+ "cc85711833b7bc0c": {
+  "en": "| ROS 2 Jazzy natively | Yes: Ubuntu 24.04 is Jazzy's Tier 1 platform (apt packages) | No official binary packages; use Docker |",
+  "de": "| ROS 2 Jazzy nativ | Ja: Ubuntu 24.04 ist Jazzys Tier-1-Plattform (apt-Pakete) | Keine offiziellen Binärpakete; Docker verwenden |"
+ },
+ "38742800a22d5a09": {
+  "en": "| Pi 5 camera (libcamera fork) | Must be built yourself | Ships with it (`rpicam-apps`) |",
+  "de": "| Pi-5-Kamera (libcamera-Fork) | Muss selbst gebaut werden | Enthalten (`rpicam-apps`) |"
+ },
+ "d5f9a7b1e173da0b": {
+  "en": "| Tools such as `raspi-config`, `vcgencmd` | Partly | Yes |",
+  "de": "| Werkzeuge wie `raspi-config`, `vcgencmd` | Teilweise | Ja |"
+ },
+ "150423e5dc349a79": {
+  "en": "Either works because the repo puts ROS 2 in a container (`FROM ros:jazzy-ros-base`, itself built on Ubuntu 24.04). The container brings its own Ubuntu userland; the host only provides the kernel, USB devices and networking. Pick **Raspberry Pi OS** if you want the camera (the Pi 5 camera stack needs the Raspberry Pi libcamera fork, which the Docker image does not include); pick **Ubuntu Server** if you want the option of installing ROS 2 natively later.",
+  "de": "Beides funktioniert, weil das Repo ROS 2 in einen Container packt (`FROM ros:jazzy-ros-base`, selbst auf Ubuntu 24.04 aufgebaut). Der Container bringt sein eigenes Ubuntu-Userland mit; der Host stellt nur Kernel, USB-Geräte und Netzwerk bereit. Wählen Sie **Raspberry Pi OS**, wenn Sie die Kamera nutzen wollen (der Kamera-Stack des Pi 5 braucht den libcamera-Fork von Raspberry Pi, den das Docker-Image nicht enthält); wählen Sie **Ubuntu Server**, wenn Sie ROS 2 später nativ installieren möchten."
+ },
+ "d331be8722f17c14": {
+  "en": "Always use the **64-bit** image. The ROS image, NumPy wheels and Docker's arm64 builds all assume `aarch64`.",
+  "de": "Verwenden Sie immer das **64-Bit**-Image. Das ROS-Image, die NumPy-Wheels und Dockers arm64-Builds setzen alle `aarch64` voraus."
+ },
+ "c166e62fe857f4bd": {
+  "en": "Flashing the card with Raspberry Pi Imager",
+  "de": "Karte mit Raspberry Pi Imager flashen"
+ },
+ "7ce95cfc8c48e3bd": {
+  "en": "Install Raspberry Pi Imager on your laptop and insert the microSD card.",
+  "de": "Installieren Sie Raspberry Pi Imager auf Ihrem Laptop und stecken Sie die microSD-Karte ein."
+ },
+ "916fc89d436ed629": {
+  "en": "Choose device **Raspberry Pi 5**, then the OS (under \"Other general-purpose OS → Ubuntu\" for Ubuntu Server 24.04, or \"Raspberry Pi OS (64-bit)\"; the Lite variant has no desktop and is enough for a headless robot).",
+  "de": "Wählen Sie das Gerät **Raspberry Pi 5**, dann das Betriebssystem (unter „Other general-purpose OS → Ubuntu“ für Ubuntu Server 24.04 oder „Raspberry Pi OS (64-bit)“; die Lite-Variante hat keinen Desktop und genügt für einen Roboter ohne Bildschirm)."
+ },
+ "8565e869240fd717": {
+  "en": "When asked, open **OS customisation** (Edit settings) and set:",
+  "de": "Öffnen Sie auf Nachfrage die **OS-Anpassung** (Edit settings) und legen Sie fest:"
+ },
+ "b60fc8a84e909445": {
+  "en": "hostname, for example `strido`;",
+  "de": "Hostname, zum Beispiel `strido`;"
+ },
+ "a301a50dbcfbf96d": {
+  "en": "a user name and password (do not keep a default user);",
+  "de": "einen Benutzernamen und ein Passwort (keinen Standardbenutzer beibehalten);"
+ },
+ "91d815c330895fe8": {
+  "en": "Wi-Fi SSID, password and country;",
+  "de": "WLAN-SSID, Passwort und Land;"
+ },
+ "5c062af7988fd19a": {
+  "en": "on the **Services** tab: enable SSH, ideally with \"public-key authentication only\" and your public key pasted in.",
+  "de": "im Reiter **Services**: SSH aktivieren, idealerweise mit „public-key authentication only“ und eingefügtem öffentlichem Schlüssel."
+ },
+ "87562018a8aeca54": {
+  "en": "Write, eject, insert the card into the Pi.",
+  "de": "Schreiben, auswerfen, Karte in den Pi stecken."
+ },
+ "a42fd8758ac78283": {
+  "en": "Why customise in the Imager",
+  "de": "Warum im Imager anpassen"
+ },
+ "bfc4c3df0b95013c": {
+  "en": "A walking robot has no keyboard or monitor. Pre-seeding user, Wi-Fi and SSH lets the Pi join your network on first boot so you can reach it from a laptop: this is a *headless* setup.",
+  "de": "Ein laufender Roboter hat weder Tastatur noch Monitor. Durch Vorbelegen von Benutzer, WLAN und SSH tritt der Pi beim ersten Start Ihrem Netzwerk bei, sodass Sie ihn vom Laptop erreichen: Das ist eine *Headless*-Einrichtung."
+ },
+ "d32d825a9b2eec6e": {
+  "en": "First boot and SSH",
+  "de": "Erster Start und SSH"
+ },
+ "4e9f45775cbebb9b": {
+  "en": "Power the Pi (logic power only, servo loop key out). After a minute it should be on the network:",
+  "de": "Versorgen Sie den Pi mit Strom (nur Logikversorgung, Loop-Key der Servoschleife gezogen). Nach einer Minute sollte er im Netzwerk sein:"
+ },
+ "23be8d9a626a191d": {
+  "en": "Use key-based login rather than passwords:",
+  "de": "Verwenden Sie schlüsselbasierte Anmeldung statt Passwörtern:"
+ },
+ "8db402f6cbc824be": {
+  "en": "Then bring the system up to date before installing anything:",
+  "de": "Bringen Sie dann das System auf den neuesten Stand, bevor Sie etwas installieren:"
+ },
+ "85e6c2085cc73a04": {
+  "en": "On Raspberry Pi OS, also keep the bootloader EEPROM current (`sudo rpi-eeprom-update`); it holds power settings you will change below.",
+  "de": "Halten Sie unter Raspberry Pi OS auch das Bootloader-EEPROM aktuell (`sudo rpi-eeprom-update`); es enthält Stromeinstellungen, die Sie unten ändern."
+ },
+ "5f5ee9b3cbeab1b2": {
+  "en": "Pi-specific configuration for this robot",
+  "de": "Pi-spezifische Konfiguration für diesen Roboter"
+ },
+ "5b8d2711ea855aa2": {
+  "en": "Two settings from [electronics](../../electronics.md#raspberry-pi-configuration) matter because Strido powers the Pi through the GPIO 5 V pins. That path bypasses USB-C Power Delivery negotiation, so the Pi would otherwise assume a weak supply and limit USB current:",
+  "de": "Zwei Einstellungen aus [Elektronik](../../electronics.md#raspberry-pi-configuration) sind wichtig, weil Strido den Pi über die GPIO-5-V-Pins versorgt. Dieser Weg umgeht die USB-C-Power-Delivery-Aushandlung, sodass der Pi sonst eine schwache Versorgung annehmen und den USB-Strom begrenzen würde:"
+ },
+ "a00c58b07e2b31dd": {
+  "en": "`PSU_MAX_CURRENT=5000` tells the bootloader the supply delivers 5 A; `usb_max_current_enable=1` lets the USB ports supply their full current (the LiDAR and ESP32 are USB powered). `config.txt` lives in `/boot/firmware/` on both Bookworm and Ubuntu 24.04.",
+  "de": "`PSU_MAX_CURRENT=5000` teilt dem Bootloader mit, dass die Versorgung 5 A liefert; `usb_max_current_enable=1` erlaubt den USB-Ports ihren vollen Strom (LiDAR und ESP32 werden über USB versorgt). `config.txt` liegt sowohl unter Bookworm als auch unter Ubuntu 24.04 in `/boot/firmware/`."
+ },
+ "b2c390ba9f84ff46": {
+  "en": "The optional self power-off overlay (`dtoverlay=gpio-poweroff,gpiopin=26`) is marked [UNVERIFIED on Pi 5] in the repo. Test it with the servos disarmed before relying on it.",
+  "de": "Das optionale Overlay zur Selbstabschaltung (`dtoverlay=gpio-poweroff,gpiopin=26`) ist im Repo als [UNVERIFIED on Pi 5] markiert. Testen Sie es mit entschärften Servos, bevor Sie sich darauf verlassen."
+ },
+ "3c17660c43895e09": {
+  "en": "Users, groups and device permissions",
+  "de": "Benutzer, Gruppen und Geräteberechtigungen"
+ },
+ "f137abbf8feed43b": {
+  "en": "Linux controls hardware access through files in `/dev` and their owner group:",
+  "de": "Linux steuert den Hardwarezugriff über Dateien in `/dev` und deren Eigentümergruppe:"
+ },
+ "1d8cf8a12cf6e375": {
+  "en": "| Device | Typical name | Default group | Used by Strido? |",
+  "de": "| Gerät | Typischer Name | Standardgruppe | Von Strido verwendet? |"
+ },
+ "4f9853c60f03bef2": {
+  "en": "| USB CDC serial (XIAO ESP32-S3) | `/dev/ttyACM0` | `dialout` | Yes: `mcu_bridge`, `strido-cli` |",
+  "de": "| USB-CDC-Seriell (XIAO ESP32-S3) | `/dev/ttyACM0` | `dialout` | Ja: `mcu_bridge`, `strido-cli` |"
+ },
+ "b9d7940236c1928a": {
+  "en": "| USB-UART bridge (CP210x, LiDAR) | `/dev/ttyUSB0` | `dialout` | Yes: `sllidar_ros2` |",
+  "de": "| USB-UART-Brücke (CP210x, LiDAR) | `/dev/ttyUSB0` | `dialout` | Ja: `sllidar_ros2` |"
+ },
+ "8be27c30618e42d4": {
+  "en": "| I²C on the GPIO header | `/dev/i2c-1` | `i2c` | No: I²C is on the ESP32 |",
+  "de": "| I²C an der GPIO-Stiftleiste | `/dev/i2c-1` | `i2c` | Nein: I²C liegt am ESP32 |"
+ },
+ "6d97f6c234e02e52": {
+  "en": "| GPIO | `/dev/gpiochip*` | `gpio` | Only the optional power-off overlay |",
+  "de": "| GPIO | `/dev/gpiochip*` | `gpio` | Nur das optionale Abschalt-Overlay |"
+ },
+ "f2181dd524c48f12": {
+  "en": "| Docker daemon socket | `/var/run/docker.sock` | `docker` | Yes |",
+  "de": "| Docker-Daemon-Socket | `/var/run/docker.sock` | `docker` | Ja |"
+ },
+ "1fee306d2f1cb4ea": {
+  "en": "Two things make this simple here:",
+  "de": "Zwei Dinge machen das hier einfach:"
+ },
+ "18a2e5ab4311d980": {
+  "en": "**udev rules.** `99-strido.rules` matches the devices by USB vendor/product ID (Espressif `303a:1001`, Silicon Labs `10c4:ea60`), creates stable symlinks and sets `MODE=\"0666\"`. Without them, the ESP32 and LiDAR could swap between `ttyACM0`/`ttyUSB0` names across reboots, and only `dialout` members could open them.",
+  "de": "**udev-Regeln.** `99-strido.rules` erkennt die Geräte anhand der USB-Hersteller-/Produkt-ID (Espressif `303a:1001`, Silicon Labs `10c4:ea60`), legt stabile Symlinks an und setzt `MODE=\"0666\"`. Ohne sie könnten ESP32 und LiDAR über Neustarts hinweg die Namen `ttyACM0`/`ttyUSB0` tauschen, und nur Mitglieder von `dialout` könnten sie öffnen."
+ },
+ "bfdcca47c941b2c5": {
+  "en": "**docker group.** Adding yourself lets you run `docker` without `sudo`:",
+  "de": "**docker-Gruppe.** Wenn Sie sich hinzufügen, können Sie `docker` ohne `sudo` ausführen:"
+ },
+ "2f27304e56cb800a": {
+  "en": "Membership of `docker` is equivalent to root: anyone in it can start a privileged container. Only add trusted users.",
+  "de": "Mitgliedschaft in `docker` ist gleichbedeutend mit root: Jedes Mitglied kann einen privilegierten Container starten. Fügen Sie nur vertrauenswürdige Benutzer hinzu."
+ },
+ "7cddb69af814cd56": {
+  "en": "If you run `strido-cli` or ROS 2 natively (outside Docker) without the udev rule, add yourself to `dialout` instead: `sudo usermod -aG dialout $USER`.",
+  "de": "Wenn Sie `strido-cli` oder ROS 2 nativ (außerhalb von Docker) ohne die udev-Regel ausführen, fügen Sie sich stattdessen zu `dialout` hinzu: `sudo usermod -aG dialout $USER`."
+ },
+ "83951f02dbf456cd": {
+  "en": "Installing Docker and building the robot image",
+  "de": "Docker installieren und das Roboter-Image bauen"
+ },
+ "9c19d4bcd5e8b308": {
+  "en": "Install Docker Engine from Docker's own repository (the Debian or Ubuntu instructions in Further reading), then from a clone of the repository:",
+  "de": "Installieren Sie Docker Engine aus Dockers eigenem Repository (die Debian- oder Ubuntu-Anleitung unter Weiterführende Literatur) und führen Sie dann in einem Klon des Repositorys aus:"
+ },
+ "29fc5145d9741954": {
+  "en": "The second command starts `ros2 launch strido_bringup robot.launch.py`. Follow the start-up order in [electronics](../../electronics.md#safety-rules): robot lying in the rest pose, loop key in, *then* launch. Details are in [Docker](docker.md) and [ROS 2](ros2.md).",
+  "de": "Der zweite Befehl startet `ros2 launch strido_bringup robot.launch.py`. Halten Sie die Startreihenfolge aus [Elektronik](../../electronics.md#safety-rules) ein: Roboter liegt in der Ruhepose, Loop-Key eingesteckt, *dann* starten. Details stehen in [Docker](docker.md) und [ROS 2](ros2.md)."
+ },
+ "8394db79a22d33a7": {
+  "en": "systemd: services that start at boot",
+  "de": "systemd: Dienste, die beim Booten starten"
+ },
+ "0ea7c16d0eae226d": {
+  "en": "systemd is the process that starts and supervises services on both OSs. Docker itself is a systemd service:",
+  "de": "systemd ist der Prozess, der auf beiden Betriebssystemen Dienste startet und überwacht. Docker selbst ist ein systemd-Dienst:"
+ },
+ "3d883f73f5de8784": {
+  "en": "The repo ships **no** systemd unit for the robot, deliberately: the gait node commands the rest pose and stands up within 3 s of launch, and the safety rules require you to insert the loop key *before* launching. Auto-starting the robot at boot would move servos without a human present. If you add your own unit later (a `Type=simple` service running `docker compose -f docker/compose.yaml run --rm robot`, `After=docker.service`), keep the loop key as the arming step and never leave it inserted unattended.",
+  "de": "Das Repo liefert bewusst **keine** systemd-Unit für den Roboter: Der Gait-Node kommandiert die Ruhepose und steht innerhalb von 3 s nach dem Start auf, und die Sicherheitsregeln verlangen, dass Sie den Loop-Key *vor* dem Start einstecken. Ein automatischer Start beim Booten würde Servos ohne anwesende Person bewegen. Wenn Sie später eine eigene Unit hinzufügen (ein `Type=simple`-Dienst, der `docker compose -f docker/compose.yaml run --rm robot` ausführt, `After=docker.service`), behalten Sie den Loop-Key als Arming-Schritt bei und lassen Sie ihn nie unbeaufsichtigt eingesteckt."
+ },
+ "37a8fe9d6774a812": {
+  "en": "Useful commands",
+  "de": "Nützliche Befehle"
+ },
+ "d7c67a95a4aa697d": {
+  "en": "| Command | Tells you |",
+  "de": "| Befehl | Zeigt Ihnen |"
+ },
+ "d2768660b51e265b": {
+  "en": "| `hostname -I`, `ip a` | IP addresses |",
+  "de": "| `hostname -I`, `ip a` | IP-Adressen |"
+ },
+ "efd10673bb55ef33": {
+  "en": "| `lsusb` | USB devices: look for `303a:1001` (XIAO) and `10c4:ea60` (CP210x) |",
+  "de": "| `lsusb` | USB-Geräte: nach `303a:1001` (XIAO) und `10c4:ea60` (CP210x) suchen |"
+ },
+ "be57137f2592e168": {
+  "en": "| `ls -l /dev/strido_mcu /dev/rplidar` | udev symlinks exist and point at a tty |",
+  "de": "| `ls -l /dev/strido_mcu /dev/rplidar` | udev-Symlinks existieren und zeigen auf ein tty |"
+ },
+ "7bddb099c18b0cce": {
+  "en": "| `udevadm info -a -n /dev/ttyACM0` | attributes to match in a udev rule |",
+  "de": "| `udevadm info -a -n /dev/ttyACM0` | Attribute für eine udev-Regel |"
+ },
+ "aa2e13e36d33f6ff": {
+  "en": "| `dmesg -w` | kernel messages live (plug a device in and watch) |",
+  "de": "| `dmesg -w` | Kernel-Meldungen live (Gerät einstecken und beobachten) |"
+ },
+ "4de737234a445cd1": {
+  "en": "| `vcgencmd get_throttled` | `0x0` is good; bit 0 (`0x1`) = under-voltage now, bit 16 (`0x10000`) = under-voltage happened since boot |",
+  "de": "| `vcgencmd get_throttled` | `0x0` ist gut; Bit 0 (`0x1`) = Unterspannung jetzt, Bit 16 (`0x10000`) = Unterspannung seit dem Booten aufgetreten |"
+ },
+ "42cbb43c881bf46c": {
+  "en": "| `vcgencmd measure_temp` | SoC temperature (the Active Cooler keeps it in check under ROS load) |",
+  "de": "| `vcgencmd measure_temp` | SoC-Temperatur (der Active Cooler hält sie unter ROS-Last im Rahmen) |"
+ },
+ "3a2887ff045fd4fd": {
+  "en": "| `htop`, `free -h`, `df -h` | CPU, memory, disk |",
+  "de": "| `htop`, `free -h`, `df -h` | CPU, Arbeitsspeicher, Datenträger |"
+ },
+ "67c1fe06f8c00cb5": {
+  "en": "| `docker ps`, `docker logs <id>` | running containers and their output |",
+  "de": "| `docker ps`, `docker logs <id>` | laufende Container und ihre Ausgabe |"
+ },
+ "34d68fff45e6ab21": {
+  "en": "`vcgencmd` is part of Raspberry Pi OS; on Ubuntu it may need installing (`libraspberrypi-bin`) or may be unavailable.",
+  "de": "`vcgencmd` ist Teil von Raspberry Pi OS; unter Ubuntu muss es eventuell installiert werden (`libraspberrypi-bin`) oder ist nicht verfügbar."
+ },
+ "97e45b72c12c34ed": {
+  "en": "Keeping it maintainable",
+  "de": "Wartbar halten"
+ },
+ "2e2f812817a98955": {
+  "en": "Update the host regularly (`apt full-upgrade`); ROS 2 lives in the image, so a host update cannot break ROS.",
+  "de": "Aktualisieren Sie den Host regelmäßig (`apt full-upgrade`); ROS 2 lebt im Image, ein Host-Update kann ROS also nicht beschädigen."
+ },
+ "065420e1ae00d951": {
+  "en": "Rebuild the image after pulling repo changes: the Dockerfile copies `packages/strido-core` and the three ROS packages at build time.",
+  "de": "Bauen Sie das Image nach dem Pullen von Repo-Änderungen neu: Das Dockerfile kopiert `packages/strido-core` und die drei ROS-Pakete zur Build-Zeit."
+ },
+ "68d104042e1f7cb7": {
+  "en": "Shut down cleanly (`sudo poweroff`) before pulling power: an SD card written to during power loss can corrupt the file system.",
+  "de": "Fahren Sie sauber herunter (`sudo poweroff`), bevor Sie den Strom trennen: Eine SD-Karte, auf die während eines Stromausfalls geschrieben wird, kann das Dateisystem beschädigen."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "8d43847746ad70fa": {
+  "en": "Why does the Pi not need I²C enabled in Strido?",
+  "de": "Warum braucht der Pi in Strido kein aktiviertes I²C?"
+ },
+ "d6dd98fcafa2a2a8": {
+  "en": "What do `PSU_MAX_CURRENT=5000` and `usb_max_current_enable=1` fix, and why does this robot need them?",
+  "de": "Was beheben `PSU_MAX_CURRENT=5000` und `usb_max_current_enable=1`, und warum braucht dieser Roboter sie?"
+ },
+ "eda357a0910e4ffa": {
+  "en": "Which file gives the ESP32-S3 a stable device name, and what is that name?",
+  "de": "Welche Datei gibt dem ESP32-S3 einen stabilen Gerätenamen, und wie lautet dieser Name?"
+ },
+ "cc17d87fd3bcb458": {
+  "en": "Why is Raspberry Pi OS the better choice if you want the camera?",
+  "de": "Warum ist Raspberry Pi OS die bessere Wahl, wenn Sie die Kamera nutzen wollen?"
+ },
+ "12e7d1d32f618bed": {
+  "en": "Why does the repo not start the robot automatically at boot?",
+  "de": "Warum startet das Repo den Roboter nicht automatisch beim Booten?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "7cbd19734d8c9af1": {
+  "en": "All I²C devices (PCA9685, LSM6DSOX, INA260) hang off the ESP32-S3; the Pi talks to the ESP32 over USB serial only.",
+  "de": "Alle I²C-Geräte (PCA9685, LSM6DSOX, INA260) hängen am ESP32-S3; der Pi kommuniziert mit dem ESP32 nur über USB-Seriell."
+ },
+ "064ffe00ac203b32": {
+  "en": "Powering through the GPIO 5 V pins skips USB-C PD negotiation, so the Pi would assume a weak supply and limit USB current. The settings declare a 5 A supply and allow full USB current for the LiDAR and ESP32.",
+  "de": "Die Versorgung über die GPIO-5-V-Pins überspringt die USB-C-PD-Aushandlung, sodass der Pi eine schwache Versorgung annehmen und den USB-Strom begrenzen würde. Die Einstellungen deklarieren eine 5-A-Versorgung und erlauben vollen USB-Strom für LiDAR und ESP32."
+ },
+ "6f3776842b4bd95b": {
+  "en": "`ros2/strido_bringup/config/99-strido.rules`, copied to `/etc/udev/rules.d/`; it creates `/dev/strido_mcu`.",
+  "de": "`ros2/strido_bringup/config/99-strido.rules`, kopiert nach `/etc/udev/rules.d/`; sie legt `/dev/strido_mcu` an."
+ },
+ "61210711d2d1e576": {
+  "en": "The Pi 5 camera stack needs the Raspberry Pi libcamera fork, which Raspberry Pi OS ships and the Docker image does not contain.",
+  "de": "Der Kamera-Stack des Pi 5 braucht den libcamera-Fork von Raspberry Pi, den Raspberry Pi OS mitliefert und das Docker-Image nicht enthält."
+ },
+ "f69b21692dfc9c01": {
+  "en": "Launch makes the robot stand up within 3 s; the start-up order requires a person to arm the servos with the loop key just before launching.",
+  "de": "Der Start lässt den Roboter innerhalb von 3 s aufstehen; die Startreihenfolge verlangt, dass eine Person die Servos unmittelbar vor dem Start mit dem Loop-Key scharf schaltet."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "6cd76b94ad1f40b6": {
+  "en": "[Raspberry Pi documentation: getting started and Imager](https://www.raspberrypi.com/documentation/computers/getting-started.html)",
+  "de": "[Raspberry-Pi-Dokumentation: Erste Schritte und Imager](https://www.raspberrypi.com/documentation/computers/getting-started.html)"
+ },
+ "8314cc67bcacbfd1": {
+  "en": "[Raspberry Pi documentation: `config.txt` and EEPROM settings](https://www.raspberrypi.com/documentation/computers/config_txt.html)",
+  "de": "[Raspberry-Pi-Dokumentation: `config.txt` und EEPROM-Einstellungen](https://www.raspberrypi.com/documentation/computers/config_txt.html)"
+ },
+ "b03babc3e1b4b4b7": {
+  "en": "[Docker Engine on Debian](https://docs.docker.com/engine/install/debian/) and [on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)",
+  "de": "[Docker Engine unter Debian](https://docs.docker.com/engine/install/debian/) und [unter Ubuntu](https://docs.docker.com/engine/install/ubuntu/)"
+ },
+ "6692923ed38fb0e0": {
+  "en": "[ROS 2 Jazzy installation and supported platforms](https://docs.ros.org/en/jazzy/Installation.html)",
+  "de": "[ROS-2-Jazzy-Installation und unterstützte Plattformen](https://docs.ros.org/en/jazzy/Installation.html)"
+ },
+ "7ba2946fea4f4cde": {
+  "en": "[systemd.service manual](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)",
+  "de": "[systemd.service-Handbuch](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)"
+ }
+}

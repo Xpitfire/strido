@@ -1,0 +1,12 @@
+{
+ "purchased": {
+  "fuse_25a": {
+   "summary": "Main fuse of the servo branch",
+   "role": "In the rear cavity",
+   "specs": {
+    "Rating": "25 A"
+   }
+  }
+ },
+ "printed": {}
+}

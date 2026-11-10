@@ -1,0 +1,402 @@
+{
+ "3f404a6ee9b42dd8": {
+  "en": "Kinematics and gaits",
+  "de": "Kinematik und Gaits"
+ },
+ "d9d8c9cfaaedda13": {
+  "en": "Kinematics is the geometry of motion: given joint angles, where is the foot (forward kinematics), and given a foot position, which joint angles put it there (inverse kinematics). A gait is the rhythm in which the four feet lift, swing and push. This page works through both for the Strido leg, using the code that actually drives the robot.",
+  "de": "Kinematik ist die Geometrie der Bewegung: Wo ist der Fuß bei gegebenen Gelenkwinkeln (Vorwärtskinematik), und welche Gelenkwinkel bringen ihn an eine gegebene Fußposition (inverse Kinematik)? Ein Gait ist der Rhythmus, in dem die vier Füße abheben, schwingen und abstoßen. Diese Seite arbeitet beides für das Strido-Bein durch, mit dem Code, der den Roboter tatsächlich steuert."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "40f4c0859c9a250a": {
+  "en": "**Leg kinematics and knee linkage:** `packages/strido-core/src/strido/leg.py` (Python) and its C++ mirror `firmware/strido_esp32s3/lib/strido_core/src/kinematics.cpp` + `servo_map.cpp`.",
+  "de": "**Beinkinematik und Kniekoppelgetriebe:** `packages/strido-core/src/strido/leg.py` (Python) und sein C++-Gegenstück `firmware/strido_esp32s3/lib/strido_core/src/kinematics.cpp` + `servo_map.cpp`."
+ },
+ "2d4fe927bfba4783": {
+  "en": "**Gait:** `packages/strido-core/src/strido/gait.py` (`TrotGait`, `GaitConfig`, `stand_pose`, `clamp_leg`), used unchanged by `gait_node` (ROS 2), `strido_sim.walk` (MuJoCo) and as the stand pose for the learned policy.",
+  "de": "**Gait:** `packages/strido-core/src/strido/gait.py` (`TrotGait`, `GaitConfig`, `stand_pose`, `clamp_leg`), unverändert verwendet von `gait_node` (ROS 2), `strido_sim.walk` (MuJoCo) und als Standpose für die gelernte Policy."
+ },
+ "fed7938ce5518508": {
+  "en": "**Dimensions and limits:** measured from the CAD into `hardware/kinematics.yaml` and `hardware/joint_limits.yaml`, then generated into `packages/strido-core/src/strido/geometry.py` and `geometry_generated.h` ([CAD as code](cad-as-code.md)).",
+  "de": "**Maße und Grenzen:** aus dem CAD in `hardware/kinematics.yaml` und `hardware/joint_limits.yaml` gemessen, dann in `packages/strido-core/src/strido/geometry.py` und `geometry_generated.h` generiert ([CAD als Code](cad-as-code.md))."
+ },
+ "8230bac6cc7fe2cd": {
+  "en": "**Servos:** 12 × SPT5435LV-180W position servos ([servos](../hardware/servos.md)).",
+  "de": "**Servos:** 12 × SPT5435LV-180W Positionsservos ([Servos](../hardware/servos.md))."
+ },
+ "69a9af6185d09801": {
+  "en": "The leg",
+  "de": "Das Bein"
+ },
+ "b2175ff59e629e18": {
+  "en": "Each leg has three joints, named and signed like the Unitree Go2 so that tools and policies transfer:",
+  "de": "Jedes Bein hat drei Gelenke, benannt und mit Vorzeichen wie beim Unitree Go2, damit Werkzeuge und Policies übertragbar sind:"
+ },
+ "71effa6f0714591d": {
+  "en": "| Joint | Axis | Zero | Positive direction | Actuated by |",
+  "de": "| Gelenk | Achse | Null | Positive Richtung | Angetrieben von |"
+ },
+ "b7317e926f0fbb13": {
+  "en": "| hip (q1) | +x (forward) | leg vertical | foot moves to +y (left) | hip servo, direct |",
+  "de": "| Hüfte (q1) | +x (vorwärts) | Bein senkrecht | Fuß bewegt sich nach +y (links) | Hüftservo, direkt |"
+ },
+ "bac010f0646efb26": {
+  "en": "| thigh (q2) | +y | femur straight down | knee moves backwards | thigh servo, direct (coaxial with the femur pivot) |",
+  "de": "| Oberschenkel (q2) | +y | Femur gerade nach unten | Knie bewegt sich nach hinten | Oberschenkelservo, direkt (koaxial zum Femur-Drehpunkt) |"
+ },
+ "6e360442434877fc": {
+  "en": "| calf (q3) | +y, relative to the femur | calf in line with femur | negative = knee bent | knee servo, **through two linkages** |",
+  "de": "| Unterschenkel (q3) | +y, relativ zum Femur | Unterschenkel in Linie mit Femur | negativ = Knie gebeugt | Knieservo, **über zwei Koppelgetriebe** |"
+ },
+ "cb4ffc1b5cf654e5": {
+  "en": "Measured dimensions (front-left leg, generated values rounded):",
+  "de": "Gemessene Maße (Bein vorne links, generierte Werte gerundet):"
+ },
+ "110816786b4f2ecf": {
+  "en": "| Quantity | Value |",
+  "de": "| Größe | Wert |"
+ },
+ "47c1f40a19b0f936": {
+  "en": "| Hip axis position in `base_link` | x = ±0.120 m, y = ±0.039 m |",
+  "de": "| Position der Hüftachse in `base_link` | x = ±0,120 m, y = ±0,039 m |"
+ },
+ "d2fb9d38db84bc9d": {
+  "en": "| Lateral offset hip axis → leg plane (`thigh_offset_y`) | 0.038 m front, 0.040 m rear |",
+  "de": "| Seitlicher Versatz Hüftachse → Beinebene (`thigh_offset_y`) | 0,038 m vorne, 0,040 m hinten |"
+ },
+ "d4b6ded0fbdff3db": {
+  "en": "| Thigh (femur) length l1 | 0.130 m |",
+  "de": "| Länge Oberschenkel (Femur) l1 | 0,130 m |"
+ },
+ "f264055fc351b323": {
+  "en": "| Calf (tibia) length l2, to foot centre | 0.124 m |",
+  "de": "| Länge Unterschenkel (Tibia) l2, bis Fußmitte | 0,124 m |"
+ },
+ "149fc7a39249f19a": {
+  "en": "| Foot sphere radius | 0.012 m |",
+  "de": "| Radius der Fußkugel | 0,012 m |"
+ },
+ "574f5f020fbd0704": {
+  "en": "Full extension is $l_1 + l_2 \\approx 0.254\\,\\mathrm{m}$; the robot stands with the hip axes 0.17 m above the foot centres.",
+  "de": "Die volle Streckung beträgt $l_1 + l_2 \\approx 0.254\\,\\mathrm{m}$; der Roboter steht mit den Hüftachsen 0,17 m über den Fußmitten."
+ },
+ "63187eaaf0a81162": {
+  "en": "The knee linkage",
+  "de": "Das Kniekoppelgetriebe"
+ },
+ "61d36d204b3d4427": {
+  "en": "The knee servo does not sit at the knee: it is up in the leg module. It turns an arm; a **parallelogram** (arm 24 mm, short link 28.3 mm, crank) copies the arm angle onto a crank coaxial with the femur pivot; a **four-bar** (crank 26.9 mm, long link 131 mm, tibia crank 24 mm, femur) turns the tibia. Keeping the servo mass near the body makes the leg lighter to swing.",
+  "de": "Der Knieservo sitzt nicht am Knie, sondern oben im Beinmodul. Er dreht einen Arm; ein **Parallelogramm** (Arm 24 mm, kurze Koppel 28,3 mm, Kurbel) überträgt den Armwinkel auf eine Kurbel koaxial zum Femur-Drehpunkt; ein **Viergelenk** (Kurbel 26,9 mm, lange Koppel 131 mm, Tibiakurbel 24 mm, Femur) dreht die Tibia. Weil die Servomasse nahe am Körper bleibt, lässt sich das Bein leichter schwingen."
+ },
+ "56ceeb256108be57": {
+  "en": "The cost: the knee angle $q_3$ depends on **both** the crank angle $\\psi$ and the thigh angle $q_2$. Moving only the thigh servo also changes the knee angle. So software must solve the linkage:",
+  "de": "Der Preis: Der Kniewinkel $q_3$ hängt **sowohl** vom Kurbelwinkel $\\psi$ als auch vom Oberschenkelwinkel $q_2$ ab. Bewegt man nur den Oberschenkelservo, ändert sich auch der Kniewinkel. Die Software muss daher das Koppelgetriebe lösen:"
+ },
+ "048558f8c187f6f6": {
+  "en": "`crank_from_calf(leg, q2, q3)` gives the crank angle the knee servo must hold (inverse linkage), by intersecting two circles: one around the femur pivot with the crank radius, one around the tibia pin with the long-link length.",
+  "de": "`crank_from_calf(leg, q2, q3)` liefert den Kurbelwinkel, den der Knieservo halten muss (inverses Koppelgetriebe), durch Schnitt zweier Kreise: einer um den Femur-Drehpunkt mit dem Kurbelradius, einer um den Tibia-Bolzen mit der Länge der langen Koppel."
+ },
+ "36d42b677c5d6f43": {
+  "en": "`calf_from_crank(leg, q2, ψ)` is the forward linkage.",
+  "de": "`calf_from_crank(leg, q2, ψ)` ist das Vorwärts-Koppelgetriebe."
+ },
+ "2ba794a454e2b8ce": {
+  "en": "Two circles intersect in two points; the code picks the branch the CAD assembly is in (`_branches`), so the solver never flips to the mirror configuration.",
+  "de": "Zwei Kreise schneiden sich in zwei Punkten; der Code wählt den Zweig, in dem sich die CAD-Baugruppe befindet (`_branches`), damit der Löser nie in die gespiegelte Konfiguration umspringt."
+ },
+ "ce378e885f52d972": {
+  "en": "**Transmission angle** is the angle between the long link and the crank (or tibia crank). Near 0° or 180° the linkage is near a singularity: a small servo motion produces a huge knee motion and the servo loses leverage. The range-of-motion sweep keeps it at or above 25°; in the standing pose it is about 84–86°, close to the ideal 90°.",
+  "de": "Der **Übertragungswinkel** ist der Winkel zwischen der langen Koppel und der Kurbel (bzw. Tibiakurbel). Nahe 0° oder 180° ist das Koppelgetriebe nahe einer Singularität: Eine kleine Servobewegung erzeugt eine riesige Kniebewegung, und der Servo verliert Hebelwirkung. Die Bewegungsbereichs-Analyse hält ihn bei mindestens 25°; in der Standpose beträgt er etwa 84–86°, nahe am Ideal von 90°."
+ },
+ "506ed0ab744debd6": {
+  "en": "Forward kinematics",
+  "de": "Vorwärtskinematik"
+ },
+ "e03351cf518a7533": {
+  "en": "In the leg plane ($u$ forward, $v$ up, origin at the thigh pivot):",
+  "de": "In der Beinebene ($u$ vorwärts, $v$ nach oben, Ursprung im Oberschenkel-Drehpunkt):"
+ },
+ "fed9009e7818449e": {
+  "en": "The calf's absolute angle is $q_2 + q_3$ because $q_3$ is measured relative to the femur: angles of a serial chain add.",
+  "de": "Der absolute Winkel des Unterschenkels ist $q_2 + q_3$, weil $q_3$ relativ zum Femur gemessen wird: Die Winkel einer seriellen Kette addieren sich."
+ },
+ "07c3b89de1f3e818": {
+  "en": "Place the plane point at lateral offset `thigh_offset_y`, rotate it about $x$ by the hip angle $q_1$, then add the hip position in `base_link`: $\\mathbf{p} = \\mathbf{p}_\\mathrm{hip} + \\mathbf{R}_x(q_1)\\,(u,\\ d_y,\\ v)^\\top$. The general method (homogeneous transforms) is in [kinematics](../theory/kinematics.md) and [frames and rotations](../theory/frames-and-rotations.md).",
+  "de": "Setzen Sie den Ebenenpunkt mit dem seitlichen Versatz `thigh_offset_y` an, drehen Sie ihn um den Hüftwinkel $q_1$ um $x$ und addieren Sie dann die Hüftposition in `base_link`: $\\mathbf{p} = \\mathbf{p}_\\mathrm{hip} + \\mathbf{R}_x(q_1)\\,(u,\\ d_y,\\ v)^\\top$. Die allgemeine Methode (homogene Transformationen) steht in [Kinematik](../theory/kinematics.md) und [Koordinatensysteme und Rotationen](../theory/frames-and-rotations.md)."
+ },
+ "069e0c021fbfa61d": {
+  "en": "Example from the code: the stand pose for the front-left leg is $\\mathbf{q} = (0,\\ 0.812,\\ -1.676)\\,\\mathrm{rad} = (0^\\circ,\\ 46.5^\\circ,\\ -96.0^\\circ)$, and forward kinematics returns the foot at $(0.120,\\ 0.077,\\ -0.170)\\,\\mathrm{m}$: right under the hip, 0.170 m down. Check the height in the plane: $v = -0.130\\cos(0.812) - 0.124\\cos(0.812 - 1.676) \\approx -0.089 - 0.081 = -0.170\\,\\mathrm{m}$. The $y$ value 0.077 m is the hip's 0.039 m plus the 0.038 m leg-plane offset.",
+  "de": "Beispiel aus dem Code: Die Standpose für das Bein vorne links ist $\\mathbf{q} = (0,\\ 0.812,\\ -1.676)\\,\\mathrm{rad} = (0^\\circ,\\ 46.5^\\circ,\\ -96.0^\\circ)$, und die Vorwärtskinematik liefert den Fuß bei $(0.120,\\ 0.077,\\ -0.170)\\,\\mathrm{m}$: direkt unter der Hüfte, 0,170 m tiefer. Prüfen Sie die Höhe in der Ebene: $v = -0.130\\cos(0.812) - 0.124\\cos(0.812 - 1.676) \\approx -0.089 - 0.081 = -0.170\\,\\mathrm{m}$. Der $y$-Wert 0,077 m setzt sich aus den 0,039 m der Hüfte plus dem Beinebenen-Versatz von 0,038 m zusammen."
+ },
+ "4f332917ce85e082": {
+  "en": "Inverse kinematics",
+  "de": "Inverse Kinematik"
+ },
+ "c0c293d8a845e798": {
+  "en": "`inverse_kinematics(name, foot)` solves the reverse, analytically (no iteration):",
+  "de": "`inverse_kinematics(name, foot)` löst die Umkehrung analytisch (ohne Iteration):"
+ },
+ "a1c6bb599ecd8663": {
+  "en": "**Hip.** Look at the leg from the front. The foot must lie on a circle of radius $d_y$ (`thigh_offset_y`) around the hip axis plus a \"depth\" $d$ along the leg, by Pythagoras: $d = \\sqrt{y^2 + z^2 - d_y^2}$. The hip angle is the rotation that aligns the leg plane with the foot: $q_1 = \\operatorname{atan2}(z, y) - \\operatorname{atan2}(-d, d_y)$.",
+  "de": "**Hüfte.** Betrachten Sie das Bein von vorne. Der Fuß muss auf einem Kreis mit Radius $d_y$ (`thigh_offset_y`) um die Hüftachse liegen, plus einer „Tiefe“ $d$ entlang des Beins, nach Pythagoras: $d = \\sqrt{y^2 + z^2 - d_y^2}$. Der Hüftwinkel ist die Drehung, die die Beinebene auf den Fuß ausrichtet: $q_1 = \\operatorname{atan2}(z, y) - \\operatorname{atan2}(-d, d_y)$."
+ },
+ "8d04c94fc6b01a26": {
+  "en": "**Knee from the law of cosines.** In the leg plane the foot is at $(u, v) = (x, -d)$. The triangle thigh–calf–(pivot to foot) has sides $l_1$, $l_2$ and $r = \\sqrt{u^2 + v^2}$, so $r^2 = l_1^2 + l_2^2 + 2 l_1 l_2 \\cos q_3$, which gives",
+  "de": "**Knie aus dem Kosinussatz.** In der Beinebene liegt der Fuß bei $(u, v) = (x, -d)$. Das Dreieck Oberschenkel–Unterschenkel–(Drehpunkt zu Fuß) hat die Seiten $l_1$, $l_2$ und $r = \\sqrt{u^2 + v^2}$, also $r^2 = l_1^2 + l_2^2 + 2 l_1 l_2 \\cos q_3$, woraus folgt"
+ },
+ "801e437116cc4233": {
+  "en": "(negative: the knee bends backwards). If $\\lvert \\cos q_3 \\rvert > 1$ the target is out of reach and the function returns `None`.",
+  "de": "(negativ: Das Knie beugt sich nach hinten). Ist $\\lvert \\cos q_3 \\rvert > 1$, liegt das Ziel außer Reichweite und die Funktion gibt `None` zurück."
+ },
+ "ea40f440b5318aa0": {
+  "en": "**Thigh.** The direction to the foot minus the angle the bent calf adds:",
+  "de": "**Oberschenkel.** Die Richtung zum Fuß minus den Winkel, den der gebeugte Unterschenkel hinzufügt:"
+ },
+ "6a7ad0a1b198390c": {
+  "en": "Then `clamp_leg` applies the joint limits and the knee-crank window. If the crank needed is outside its window, it is clamped and the calf angle recomputed from the clamped crank: the firmware does exactly the same in actuator space, so simulation and robot agree.",
+  "de": "Danach wendet `clamp_leg` die Gelenkgrenzen und das Kniekurbelfenster an. Liegt die benötigte Kurbelstellung außerhalb ihres Fensters, wird sie begrenzt und der Unterschenkelwinkel aus der begrenzten Kurbel neu berechnet: Die Firmware tut im Aktorraum genau dasselbe, sodass Simulation und Roboter übereinstimmen."
+ },
+ "a1850cf758a83e38": {
+  "en": "Joint limits",
+  "de": "Gelenkgrenzen"
+ },
+ "3704ccbaae98f23c": {
+  "en": "Generated from the CAD range-of-motion sweep (collisions with all parts, a mirrored partner leg with 0.3 mm clearance, transmission angle ≥ 25°, and ±85° servo travel around the assembly neutral):",
+  "de": "Generiert aus der CAD-Bewegungsbereichs-Analyse (Kollisionen mit allen Teilen, ein gespiegeltes Partnerbein mit 0,3 mm Abstand, Übertragungswinkel ≥ 25° und ±85° Servoweg um die Montage-Neutralstellung):"
+ },
+ "b09ea996db21fecc": {
+  "en": "| Joint | FL | FR | RL | RR |",
+  "de": "| Gelenk | FL | FR | RL | RR |"
+ },
+ "3207bcc24496cb36": {
+  "en": "| Hip | −17.5…50° | −50…17.5° | −17.5…45° | −45…17.5° |",
+  "de": "| Hüfte | −17,5…50° | −50…17,5° | −17,5…45° | −45…17,5° |"
+ },
+ "944b1272b4d6678c": {
+  "en": "| Thigh | −40…125° | −40…125° | −15…125° | −15…125° |",
+  "de": "| Oberschenkel | −40…125° | −40…125° | −15…125° | −15…125° |"
+ },
+ "0c33311c2962034c": {
+  "en": "| Calf | −150…−45° | −150…−45° | −150…−45° | −150…−45° |",
+  "de": "| Unterschenkel | −150…−45° | −150…−45° | −150…−45° | −150…−45° |"
+ },
+ "ec620179a04c3f92": {
+  "en": "| Knee crank | −2.5…75° | −2.5…75° | −2.5…75° | −2.5…75° |",
+  "de": "| Kniekurbel | −2,5…75° | −2,5…75° | −2,5…75° | −2,5…75° |"
+ },
+ "5dd300c84d152ddf": {
+  "en": "The inward hip limits (±17.5°) are small because both front (and both rear) feet could otherwise meet under the body (ADR-005 in [decisions](../../decisions.md)). The front thigh sweep allowed −45°, but the servo can only reach −40° within ±85° of its 45° neutral. Limits are applied in three places (gait, policy environment, firmware) from the same generated numbers.",
+  "de": "Die inneren Hüftgrenzen (±17,5°) sind klein, weil sich sonst beide Vorderfüße (und beide Hinterfüße) unter dem Körper treffen könnten (ADR-005 in [Entscheidungen](../../decisions.md)). Die Analyse erlaubte für den vorderen Oberschenkel −45°, doch der Servo erreicht innerhalb von ±85° um seine 45°-Neutralstellung nur −40°. Die Grenzen werden an drei Stellen (Gait, Policy-Umgebung, Firmware) aus denselben generierten Zahlen angewendet."
+ },
+ "6cb5c5b89c34dac6": {
+  "en": "From angles to servo pulses",
+  "de": "Von Winkeln zu Servopulsen"
+ },
+ "213366cc06451be5": {
+  "en": "Joint space and servo space differ only for the knee: hip and thigh servos hold $q_1$ and $q_2$ directly, the knee servo holds the crank angle $\\psi$. The firmware then maps each actuator angle $\\theta$ to a pulse width $t_\\mathrm{p}$, with calibration sign $s$ (`direction`), `neutral_us` $t_\\mathrm{neutral}$ and reference angle $\\theta_0$ (`zero_rad`):",
+  "de": "Gelenkraum und Servoraum unterscheiden sich nur beim Knie: Hüft- und Oberschenkelservo halten $q_1$ und $q_2$ direkt, der Knieservo hält den Kurbelwinkel $\\psi$. Die Firmware bildet dann jeden Aktorwinkel $\\theta$ auf eine Pulsbreite $t_\\mathrm{p}$ ab, mit Kalibriervorzeichen $s$ (`direction`), `neutral_us` $t_\\mathrm{neutral}$ und Referenzwinkel $\\theta_0$ (`zero_rad`):"
+ },
+ "9212f43258fef654": {
+  "en": "with per-joint calibration from flash ([firmware](firmware.md)). At the assembly reference (all servos at 1500 µs) the legs are vertical in abduction, the femur is 45° backwards and the knee crank at 35°.",
+  "de": "mit gelenkweiser Kalibrierung aus dem Flash ([Firmware](firmware.md)). In der Montagereferenz (alle Servos bei 1500 µs) stehen die Beine in der Abduktion senkrecht, der Femur ist 45° nach hinten geneigt und die Kniekurbel steht bei 35°."
+ },
+ "f7e840ba4fbf997c": {
+  "en": "Gaits: stance, swing and the gait cycle",
+  "de": "Gaits: Stand, Schwung und der Gangzyklus"
+ },
+ "d451522102de8291": {
+  "en": "A gait repeats with a **period** $T$. Each leg spends a fraction of it on the ground (**stance**, pushing the body) and the rest in the air (**swing**, moving forward to its next foothold). The stance fraction is the **duty factor** $\\beta = T_\\mathrm{stance}/T$. **Phase offsets** say when each leg starts its cycle. The theory behind gaits, support polygons and Raibert foot placement is in [legged locomotion](../theory/legged-locomotion.md).",
+  "de": "Ein Gait wiederholt sich mit einer **Periode** $T$. Jedes Bein verbringt einen Teil davon am Boden (**Standphase**, schiebt den Körper) und den Rest in der Luft (**Schwungphase**, bewegt sich zum nächsten Auftrittspunkt vor). Der Standanteil ist der **Belastungsfaktor** $\\beta = T_\\mathrm{stance}/T$. **Phasenversätze** geben an, wann jedes Bein seinen Zyklus beginnt. Die Theorie zu Gaits, Stützpolygonen und Raibert-Fußplatzierung steht in [Laufende Fortbewegung](../theory/legged-locomotion.md)."
+ },
+ "5cd97a76f5e426a7": {
+  "en": "| Gait | Duty factor | Phase pattern | Character |",
+  "de": "| Gait | Belastungsfaktor | Phasenmuster | Charakter |"
+ },
+ "15584c9cd8b88a32": {
+  "en": "| Walk | ≥ 0.75 | one leg at a time (e.g. FL, RR, FR, RL) | at least three feet down: statically stable, slow |",
+  "de": "| Schritt | ≥ 0,75 | ein Bein nach dem anderen (z. B. FL, RR, FR, RL) | mindestens drei Füße am Boden: statisch stabil, langsam |"
+ },
+ "4f30038f40872e19": {
+  "en": "| Trot | 0.5 | diagonal pairs together (FL+RR, then FR+RL) | two feet down: needs momentum and a short period; robust and simple |",
+  "de": "| Trot | 0,5 | diagonale Paare gemeinsam (FL+RR, dann FR+RL) | zwei Füße am Boden: braucht Schwung und eine kurze Periode; robust und einfach |"
+ },
+ "30396bbda570dc12": {
+  "en": "**Static stability:** a robot standing still does not fall if its centre of mass projects inside the **support polygon** formed by the feet on the ground. With three feet down (walk) that triangle can be kept under the body. With two diagonal feet (trot) the polygon is a line, so the body is briefly unsupported in roll and pitch; a 0.4 s cycle switches pairs before it tips noticeably.",
+  "de": "**Statische Stabilität:** Ein stillstehender Roboter fällt nicht um, wenn sein Schwerpunkt innerhalb des **Stützpolygons** liegt, das die Füße am Boden bilden. Mit drei Füßen am Boden (Schritt) lässt sich dieses Dreieck unter dem Körper halten. Mit zwei diagonalen Füßen (Trot) ist das Polygon eine Linie, sodass der Körper in Rollen und Nicken kurz ungestützt ist; ein Zyklus von 0,4 s wechselt die Paare, bevor er merklich kippt."
+ },
+ "0cc9c312cd3ae8a1": {
+  "en": "**Strido implements a trot only** (`TrotGait`, `PHASE_OFFSET = {\"FL\": 0.0, \"RR\": 0.0, \"FR\": 0.5, \"RL\": 0.5}`). A walk would need a new phase table and a duty factor ≥ 0.75; nothing in the repo provides one.",
+  "de": "**Strido implementiert nur einen Trot** (`TrotGait`, `PHASE_OFFSET = {\"FL\": 0.0, \"RR\": 0.0, \"FR\": 0.5, \"RL\": 0.5}`). Ein Schritt bräuchte eine neue Phasentabelle und einen Belastungsfaktor ≥ 0,75; nichts im Repository stellt das bereit."
+ },
+ "1f4e75f3fb467655": {
+  "en": "The trot in numbers",
+  "de": "Der Trot in Zahlen"
+ },
+ "84e8e0f1bdffe41a": {
+  "en": "`GaitConfig` defaults:",
+  "de": "Standardwerte von `GaitConfig`:"
+ },
+ "fd1fa7d2f8259103": {
+  "en": "| Parameter | Value |",
+  "de": "| Parameter | Wert |"
+ },
+ "eb871673bc69ab96": {
+  "en": "| `period` | 0.40 s (2.5 steps per second per leg pair) |",
+  "de": "| `period` | 0,40 s (2,5 Schritte pro Sekunde je Beinpaar) |"
+ },
+ "5f79b06585613b45": {
+  "en": "| `duty` | 0.5 (0.2 s stance, 0.2 s swing) |",
+  "de": "| `duty` | 0,5 (0,2 s Stand, 0,2 s Schwung) |"
+ },
+ "ae214950abc417cc": {
+  "en": "| `step_height` | 0.035 m swing apex |",
+  "de": "| `step_height` | 0,035 m Scheitel der Schwungphase |"
+ },
+ "5250f09884fd6cca": {
+  "en": "| `max_linear` | 0.30 m/s forward, 0.15 m/s sideways |",
+  "de": "| `max_linear` | 0,30 m/s vorwärts, 0,15 m/s seitwärts |"
+ },
+ "3ceb4ba02743fc3c": {
+  "en": "| `max_yaw_rate` | 1.0 rad/s |",
+  "de": "| `max_yaw_rate` | 1,0 rad/s |"
+ },
+ "e7c5436a7121c637": {
+  "en": "How `foot_targets()` places each foot:",
+  "de": "Wie `foot_targets()` jeden Fuß platziert:"
+ },
+ "8e01032362002bd0": {
+  "en": "**Per-leg velocity.** For body command $(v_x, v_y, \\omega_z)$, a foot at $(x, y)$ must move at $\\mathbf{v}_\\mathrm{foot} = (v_x - \\omega_z y,\\ v_y + \\omega_z x)$, the planar form of $\\mathbf{v} + \\boldsymbol{\\omega} \\times \\mathbf{r}$: turning on the spot makes the left feet move backward and the right feet forward.",
+  "de": "**Geschwindigkeit pro Bein.** Für den Körperbefehl $(v_x, v_y, \\omega_z)$ muss sich ein Fuß bei $(x, y)$ mit $\\mathbf{v}_\\mathrm{foot} = (v_x - \\omega_z y,\\ v_y + \\omega_z x)$ bewegen, der ebenen Form von $\\mathbf{v} + \\boldsymbol{\\omega} \\times \\mathbf{r}$: Beim Drehen auf der Stelle bewegen sich die linken Füße nach hinten und die rechten nach vorne."
+ },
+ "ca1c0e5386d0207b": {
+  "en": "**Stride** = velocity × stance time, $L = v\\,\\beta T$. At 0.15 m/s: $0.15\\,\\mathrm{m/s} \\times 0.2\\,\\mathrm{s} = 0.03\\,\\mathrm{m}$. At the 0.30 m/s limit: 0.06 m.",
+  "de": "**Schrittlänge** = Geschwindigkeit × Standzeit, $L = v\\,\\beta T$. Bei 0,15 m/s: $0.15\\,\\mathrm{m/s} \\times 0.2\\,\\mathrm{s} = 0.03\\,\\mathrm{m}$. Am Limit von 0,30 m/s: 0,06 m."
+ },
+ "0789fca66655505d": {
+  "en": "**Stance** (phase $< \\beta$): the foot slides from $+L/2$ to $-L/2$ relative to its nominal position at body speed, so the body moves forward over it.",
+  "de": "**Standphase** (Phase $< \\beta$): Der Fuß gleitet relativ zu seiner Nennposition mit Körpergeschwindigkeit von $+L/2$ nach $-L/2$, sodass sich der Körper über ihn hinweg nach vorne bewegt."
+ },
+ "a85ec9972168fd3b": {
+  "en": "**Swing**: the foot returns from $-L/2$ to $+L/2$ and lifts on a half-sine, $h(s) = 0.035\\,\\mathrm{m} \\cdot \\sin(\\pi s)$ with swing progress $s \\in [0, 1]$. Landing half a stride ahead of the hip is the Raibert-style foot placement: the touchdown point is symmetric about the hip, so the stance phase neither accelerates nor brakes the body on average.",
+  "de": "**Schwungphase**: Der Fuß kehrt von $-L/2$ nach $+L/2$ zurück und hebt sich auf einer Halbsinuskurve, $h(s) = 0.035\\,\\mathrm{m} \\cdot \\sin(\\pi s)$ mit Schwungfortschritt $s \\in [0, 1]$. Eine halbe Schrittlänge vor der Hüfte aufzusetzen ist die Fußplatzierung nach Raibert: Der Aufsetzpunkt liegt symmetrisch zur Hüfte, sodass die Standphase den Körper im Mittel weder beschleunigt noch bremst."
+ },
+ "8c4c83b71676580c": {
+  "en": "**Inverse kinematics** turns the four foot targets into 12 angles, then `clamp_leg` applies the limits.",
+  "de": "**Inverse Kinematik** wandelt die vier Fußziele in 12 Winkel um, danach wendet `clamp_leg` die Grenzen an."
+ },
+ "b48a6bf6c07b65fe": {
+  "en": "With a zero command the feet stay at their nominal positions: the robot stands still rather than trotting in place.",
+  "de": "Bei einem Nullbefehl bleiben die Füße an ihren Nennpositionen: Der Roboter steht still, statt auf der Stelle zu traben."
+ },
+ "327c10ac31fd409a": {
+  "en": "`gait_node` adds a ramp (velocity changes at most 0.5 m/s² and 0.5 rad/s²) and a smooth 3 s stand-up from the rest pose (0.07 m: thigh 69.4°, calf −148.1°) to the stand pose.",
+  "de": "`gait_node` ergänzt eine Rampe (Geschwindigkeitsänderungen höchstens 0,5 m/s² und 0,5 rad/s²) und ein sanftes Aufstehen in 3 s von der Ruhepose (0,07 m: Oberschenkel 69,4°, Unterschenkel −148,1°) in die Standpose."
+ },
+ "58de1832ea3c70d3": {
+  "en": "This gait is **open-loop**: it does not read the IMU and makes no balance corrections. It works because the trot is short-period and the robot is light (3.01 kg). The learned policy ([simulation and RL](simulation-and-rl.md)) is the closed-loop alternative: it observes the IMU.",
+  "de": "Dieser Gait ist **gesteuert (Open Loop)**: Sie liest die IMU nicht und nimmt keine Balancekorrekturen vor. Sie funktioniert, weil der Trot eine kurze Periode hat und der Roboter leicht ist (3,01 kg). Die gelernte Policy ([Simulation und RL](simulation-and-rl.md)) ist die geregelte Alternative: Sie beobachtet die IMU."
+ },
+ "2c60632b36762750": {
+  "en": "PD control: what holds a joint at its target",
+  "de": "PD-Regelung: Was ein Gelenk an seinem Ziel hält"
+ },
+ "208b5580886825bf": {
+  "en": "A position servo is a small feedback controller. The usual model is a **PD** (proportional-derivative) law:",
+  "de": "Ein Positionsservo ist ein kleiner Regelkreis. Das übliche Modell ist ein **PD**-Gesetz (proportional-differenzierend):"
+ },
+ "88b397b2cd94aa89": {
+  "en": "The P term pulls towards the target like a spring; the D term damps motion like a shock absorber. Large $k_\\mathrm{p}$ gives stiff, accurate joints but can oscillate; $k_\\mathrm{d}$ suppresses the oscillation. For a joint with inertia $I$ the closed loop is a mass–spring–damper, $I\\ddot q + k_\\mathrm{d}\\dot q + k_\\mathrm{p} q = k_\\mathrm{p} q_\\mathrm{target}$, with natural frequency $\\omega_n = \\sqrt{k_\\mathrm{p}/I}$ and damping ratio $\\zeta = k_\\mathrm{d} / (2\\sqrt{k_\\mathrm{p} I})$; see [control](../theory/control.md).",
+  "de": "Der P-Anteil zieht wie eine Feder zum Ziel; der D-Anteil dämpft die Bewegung wie ein Stoßdämpfer. Ein großes $k_\\mathrm{p}$ ergibt steife, genaue Gelenke, kann aber schwingen; $k_\\mathrm{d}$ unterdrückt die Schwingung. Für ein Gelenk mit Trägheit $I$ ist der geschlossene Kreis ein Masse-Feder-Dämpfer-System, $I\\ddot q + k_\\mathrm{d}\\dot q + k_\\mathrm{p} q = k_\\mathrm{p} q_\\mathrm{target}$, mit Eigenfrequenz $\\omega_n = \\sqrt{k_\\mathrm{p}/I}$ und Dämpfungsgrad $\\zeta = k_\\mathrm{d} / (2\\sqrt{k_\\mathrm{p} I})$; siehe [Regelung](../theory/control.md)."
+ },
+ "55c7f057fd019063": {
+  "en": "In Strido:",
+  "de": "In Strido:"
+ },
+ "c5a2950fd9351b37": {
+  "en": "**On the robot** the PD loop lives *inside each SPT5435LV*: its electronics compare the commanded pulse with an internal potentiometer and drive the motor. The ESP32 sends only targets; nothing outside the servo knows the real angle or torque.",
+  "de": "**Am Roboter** sitzt der PD-Regelkreis *in jedem SPT5435LV*: Seine Elektronik vergleicht den befohlenen Puls mit einem internen Potentiometer und treibt den Motor an. Der ESP32 sendet nur Sollwerte; außerhalb des Servos kennt nichts den tatsächlichen Winkel oder das Drehmoment."
+ },
+ "154d7321d9972010": {
+  "en": "**In MuJoCo** each servo is a position actuator with $k_\\mathrm{p} = 25\\,\\mathrm{N\\,m/rad}$, $k_\\mathrm{v} = 0.4\\,\\mathrm{N\\,m\\,s/rad}$ and a torque limit of $\\pm 3.43\\,\\mathrm{N\\,m}$, the SPT5435LV stall torque at 6 V. So 0.1 rad of error gives $25 \\times 0.1 = 2.5\\,\\mathrm{N\\,m}$; beyond $3.43 / 25 \\approx 0.14\\,\\mathrm{rad}$ the servo saturates, as a real one would.",
+  "de": "**In MuJoCo** ist jeder Servo ein Positionsaktor mit $k_\\mathrm{p} = 25\\,\\mathrm{N\\,m/rad}$, $k_\\mathrm{v} = 0.4\\,\\mathrm{N\\,m\\,s/rad}$ und einer Drehmomentgrenze von $\\pm 3.43\\,\\mathrm{N\\,m}$, dem Blockiermoment des SPT5435LV bei 6 V. 0,1 rad Fehler ergeben also $25 \\times 0.1 = 2.5\\,\\mathrm{N\\,m}$; jenseits von $3.43 / 25 \\approx 0.14\\,\\mathrm{rad}$ geht der Servo in die Sättigung, wie ein echter es täte."
+ },
+ "d1dfdb3267be9434": {
+  "en": "**In Gazebo** `gz_ros2_control` exposes a `position` command interface per joint, driven by `leg_controller` (`position_controllers/JointGroupPositionController`, 200 Hz).",
+  "de": "**In Gazebo** stellt `gz_ros2_control` pro Gelenk eine `position`-Befehlsschnittstelle bereit, angesteuert von `leg_controller` (`position_controllers/JointGroupPositionController`, 200 Hz)."
+ },
+ "1d4708eae7fbca76": {
+  "en": "These gains are modelling estimates; [simulation](../../simulation.md) notes they should be refitted to measured servo response once a robot exists.",
+  "de": "Diese Verstärkungen sind Modellschätzungen; [Simulation](../../simulation.md) merkt an, dass sie an das gemessene Servoverhalten angepasst werden sollten, sobald ein Roboter existiert."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "a37cd6a4518c2b80": {
+  "en": "Why does moving only the thigh servo also change the knee angle?",
+  "de": "Warum ändert sich der Kniewinkel, wenn man nur den Oberschenkelservo bewegt?"
+ },
+ "8c558f5bb1d17d18": {
+  "en": "Using the law of cosines, what is $\\cos q_3$ for a foot at full extension (distance $l_1 + l_2$)?",
+  "de": "Was ergibt der Kosinussatz für $\\cos q_3$ bei einem Fuß in voller Streckung (Abstand $l_1 + l_2$)?"
+ },
+ "963a9a86b3da97f3": {
+  "en": "What is the stride length at 0.20 m/s with the default trot?",
+  "de": "Wie groß ist die Schrittlänge bei 0,20 m/s mit dem Standard-Trot?"
+ },
+ "e1f6442539c79b2e": {
+  "en": "Why is a trot not statically stable, and why does it still work?",
+  "de": "Warum ist ein Trot nicht statisch stabil, und warum funktioniert er trotzdem?"
+ },
+ "2d62c477afdbe17b": {
+  "en": "In MuJoCo, what torque does a joint produce at 0.05 rad error and zero velocity?",
+  "de": "Welches Drehmoment erzeugt ein Gelenk in MuJoCo bei 0,05 rad Fehler und Geschwindigkeit null?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "efedb66e2078a5d8": {
+  "en": "The knee servo drives the tibia through a parallelogram and four-bar attached to the femur; the knee angle depends on the crank angle and the thigh angle.",
+  "de": "Der Knieservo treibt die Tibia über ein Parallelogramm und ein Viergelenk an, die am Femur befestigt sind; der Kniewinkel hängt vom Kurbelwinkel und vom Oberschenkelwinkel ab."
+ },
+ "0e229e0d58a947af": {
+  "en": "$(l_1 + l_2)^2 - l_1^2 - l_2^2 = 2 l_1 l_2$, so $\\cos q_3 = 1$ and $q_3 = 0$: the leg is straight (and the calf limit $-45^\\circ$ forbids it).",
+  "de": "$(l_1 + l_2)^2 - l_1^2 - l_2^2 = 2 l_1 l_2$, also $\\cos q_3 = 1$ und $q_3 = 0$: Das Bein ist gestreckt (und die Unterschenkelgrenze $-45^\\circ$ verbietet das)."
+ },
+ "009f923aa730f1c7": {
+  "en": "Only two diagonal feet support the body, so the centre of mass is not inside a support polygon; the short 0.4 s period switches pairs before the body tips far.",
+  "de": "Nur zwei diagonale Füße stützen den Körper, daher liegt der Schwerpunkt nicht innerhalb eines Stützpolygons; die kurze Periode von 0,4 s wechselt die Paare, bevor der Körper weit kippt."
+ },
+ "bfd834ded2d9e5bd": {
+  "en": "$25\\,\\mathrm{N\\,m/rad} \\times 0.05\\,\\mathrm{rad} = 1.25\\,\\mathrm{N\\,m}$ (below the 3.43 N·m limit).",
+  "de": "$25\\,\\mathrm{N\\,m/rad} \\times 0.05\\,\\mathrm{rad} = 1.25\\,\\mathrm{N\\,m}$ (unter der Grenze von 3,43 N·m)."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "8fbafcb05e7fc0bc": {
+  "en": "[Modern Robotics (Lynch and Park), free textbook and videos](https://hades.mech.northwestern.edu/index.php/Modern_Robotics)",
+  "de": "[Modern Robotics (Lynch und Park), freies Lehrbuch und Videos](https://hades.mech.northwestern.edu/index.php/Modern_Robotics)"
+ },
+ "423279d6cee0e968": {
+  "en": "[M. H. Raibert, Legged Robots That Balance (MIT Press)](https://mitpress.mit.edu/9780262681193/legged-robots-that-balance/)",
+  "de": "[M. H. Raibert, Legged Robots That Balance (MIT Press)](https://mitpress.mit.edu/9780262681193/legged-robots-that-balance/)"
+ },
+ "374530ece6c0fdd4": {
+  "en": "[MuJoCo XML reference: position actuators](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position)",
+  "de": "[MuJoCo-XML-Referenz: Positionsaktoren](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position)"
+ },
+ "520ce6119ec9c541": {
+  "en": "[ros2_control: position controllers](https://control.ros.org/jazzy/doc/ros2_controllers/position_controllers/doc/userdoc.html)",
+  "de": "[ros2_control: Positionsregler](https://control.ros.org/jazzy/doc/ros2_controllers/position_controllers/doc/userdoc.html)"
+ },
+ "4cf08d62ec1142b0": {
+  "en": "Theory: [Frames and rotations](../theory/frames-and-rotations.md), [Kinematics](../theory/kinematics.md), [Legged locomotion](../theory/legged-locomotion.md), [Control](../theory/control.md)",
+  "de": "Theorie: [Koordinatensysteme und Rotationen](../theory/frames-and-rotations.md), [Kinematik](../theory/kinematics.md), [Laufende Fortbewegung](../theory/legged-locomotion.md), [Regelung](../theory/control.md)"
+ }
+}

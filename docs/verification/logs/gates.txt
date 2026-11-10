@@ -1,0 +1,29 @@
+# 2026-10-30 gate demonstrations: each check was broken on purpose, observed failing, then restored.
+# Output lines are copied verbatim from the runs.
+
+## pytest: knee-crank clamp removed from strido.gait.clamp_leg
+1 failed, 24 passed in 0.32s
+(restored: 25 passed in 0.32s)
+
+## pio test -e native: clampf reverted to the NaN-unsafe form
+test/test_core/test_main.cpp:172: test_non_finite_joint_command_is_rejected: Expected -0.4363323 Was nan	[FAILED]
+============ 15 test cases: 1 failed, 13 succeeded in 00:00:00.735 ============
+(restored: 14 test cases: 14 succeeded)
+
+## build_bom coverage: M3 x 10 supply removed from the lowest-total strategy
+['iso4762_m3x10: CAD needs 95 (incl. spares), BOM supplies 30']
+
+## fasteners.py placement gate: tibia-pin halves not merged (merge window 10 mm)
+PLACEMENT/COUNT MISMATCH: placed {'din985_m3': 20, 'iso4032_m3': 56, 'iso4762_m3x10': 84, 'iso4762_m3x12': 8, 'iso4762_m
+exit 1
+
+## tools/cad/fetch_vendor_cad.py downloads (SHA-256 against the pinned values)
+raspberry_pi_5                     OK 77627469
+rpi_camera_module_3                OK 29900214
+adafruit_pca9685_815               OK 1803975
+waveshare_2inch_lcd                OK 1293273
+rplidar_c1                         OK 7907390
+pololu_d36v50f5                    OK 4981347
+pololu_pushbutton_switch_hp_2813   OK 4385103
+xiao_esp32s3                       OK 1335902
+littelfuse_fhac0001zxj ERROR HTTPError HTTP Error 403: Forbidden

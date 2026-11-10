@@ -1,0 +1,154 @@
+{
+ "ba9d5a9694f43365": {
+  "en": "A 12-DoF quadruped you can print, buy, build and train",
+  "de": "Ein Vierbeiner mit 12 Freiheitsgraden zum Drucken, Kaufen, Bauen und Trainieren"
+ },
+ "30c0fa3afd06c109": {
+  "en": "Mini-Pupper-class robot on proven Yertle legs, with a face display, 360° LiDAR, wide camera, Raspberry Pi 5 + ESP32-S3, ROS 2 and a learned controller. Every part, bolt, pin and joint limit comes from a verified CAD model.",
+  "de": "Roboter der Mini-Pupper-Klasse auf bewährten Yertle-Beinen, mit Gesichtsdisplay, 360°-LiDAR, Weitwinkelkamera, Raspberry Pi 5 + ESP32-S3, ROS 2 und gelerntem Controller. Jedes Teil, jede Schraube, jeder Pin und jede Gelenkgrenze stammt aus einem verifizierten CAD-Modell."
+ },
+ "6f4d19ea37c85b71": {
+  "en": "Rendering of the assembled Strido",
+  "de": "Rendering des montierten Strido"
+ },
+ "c5d0453e23e49add": {
+  "en": "Start building",
+  "de": "Mit dem Bau beginnen"
+ },
+ "fc7841091cd176cf": {
+  "en": "Shop the parts",
+  "de": "Teile kaufen"
+ },
+ "d42c60192eb21de6": {
+  "en": "Print kit",
+  "de": "Druckpaket"
+ },
+ "49b79fb496038819": {
+  "en": "Learn the engineering",
+  "de": "Die Technik verstehen"
+ },
+ "5b55d012df05f3ab": {
+  "en": "3D viewer",
+  "de": "3D-Ansicht"
+ },
+ "df0fe79898ef413e": {
+  "en": "Print",
+  "de": "Drucken"
+ },
+ "cf4089dbf2b1e99f": {
+  "en": "Pick complete robots or single parts and download a ready-to-print package — oriented STLs, ready 220 × 220 mm plates and the PrusaSlicer profile every part was verified with.",
+  "de": "Wählen Sie komplette Roboter oder einzelne Teile und laden Sie ein druckfertiges Paket herunter — ausgerichtete STLs, fertige Druckplatten 220 × 220 mm und das PrusaSlicer-Profil, mit dem jedes Teil verifiziert wurde."
+ },
+ "1d554e1d19a5add8": {
+  "en": "Open the print kit",
+  "de": "Druckpaket öffnen"
+ },
+ "64e3cb0e4960ba69": {
+  "en": "Buy",
+  "de": "Kaufen"
+ },
+ "1a90ca57eb14db0e": {
+  "en": "The complete robot as one cart, priced at real shops with shipping. Choose one of four buying plans or change the shop per part; check out per shop, Amazon in one click.",
+  "de": "Der komplette Roboter in einem Warenkorb, mit echten Shop-Preisen inkl. Versand. Wählen Sie einen von vier Einkaufsplänen oder ändern Sie den Shop pro Teil; Kasse pro Shop, Amazon mit einem Klick."
+ },
+ "4ffc2fbc00e98937": {
+  "en": "Open the shop",
+  "de": "Shop öffnen"
+ },
+ "cfc3f8e950bb812b": {
+  "en": "Assemble",
+  "de": "Montieren"
+ },
+ "5415afd1dedf15f8": {
+  "en": "IKEA-style steps generated from the CAD — each part and fastener appears in exactly one parts box; fasteners drawn at 1:1 in the PDF.",
+  "de": "Schritte im IKEA-Stil, aus dem CAD generiert — jedes Teil und Befestigungselement erscheint in genau einer Teilebox; Befestigungselemente im PDF im Maßstab 1:1."
+ },
+ "3cc05e6df44479cd": {
+  "en": "Assembly manual",
+  "de": "Montageanleitung"
+ },
+ "149987d3bbcb5128": {
+  "en": "Wire",
+  "de": "Verkabeln"
+ },
+ "9a086f5b7e3204fa": {
+  "en": "Power tree, wiring list, pin map and power budget, checked against the firmware pin header and every fuse and wire rating.",
+  "de": "Versorgungsbaum, Verkabelungsliste, Pinbelegung und Leistungsbudget, geprüft gegen die Pin-Header-Datei der Firmware und jeden Sicherungs- und Drahtnennwert."
+ },
+ "7ae9c23d65928182": {
+  "en": "Electronics",
+  "de": "Elektronik"
+ },
+ "9473a6e1c7b0ed02": {
+  "en": "Program, simulate, train",
+  "de": "Programmieren, simulieren, trainieren"
+ },
+ "be663c516e73a631": {
+  "en": "ESP32-S3 firmware with watchdog and e-stop, ROS 2 Jazzy bringup, MuJoCo and Gazebo models from the CAD, PPO training and an NT-X extension.",
+  "de": "ESP32-S3-Firmware mit Watchdog und Not-Halt, ROS-2-Jazzy-Bringup, MuJoCo- und Gazebo-Modelle aus dem CAD, PPO-Training und eine NT-X-Erweiterung."
+ },
+ "9b3289a385a5301e": {
+  "en": "Software",
+  "de": "Software"
+ },
+ "ce78afd0e6a225ec": {
+  "en": "Learn",
+  "de": "Lernen"
+ },
+ "7c933bd230e68724": {
+  "en": "A wiki on the engineering behind the robot — servos, LiPo power, buses, sensors, Linux, Docker, ROS 2, kinematics, reinforcement learning, 3D printing and fasteners.",
+  "de": "Ein Wiki zur Technik hinter dem Roboter — Servos, LiPo-Stromversorgung, Busse, Sensoren, Linux, Docker, ROS 2, Kinematik, Reinforcement Learning, 3D-Druck und Befestigungselemente."
+ },
+ "ac1796280ca0f3c1": {
+  "en": "Start learning",
+  "de": "Jetzt lernen"
+ },
+ "b8a0da07d9e7d396": {
+  "en": "The robot in 3D",
+  "de": "Der Roboter in 3D"
+ },
+ "9f1b8ca87b093611": {
+  "en": "  <div><strong>430&nbsp;×&nbsp;188&nbsp;×&nbsp;264&nbsp;mm</strong><span>standing, LiDAR on top</span></div>",
+  "de": "  <div><strong>430&nbsp;×&nbsp;188&nbsp;×&nbsp;264&nbsp;mm</strong><span>stehend, LiDAR oben</span></div>"
+ },
+ "786c3808ebeac560": {
+  "en": "  <div><strong>≈ 3.0 kg</strong><span>CAD mass incl. 2S 5000 mAh battery</span></div>",
+  "de": "  <div><strong>≈ 3,0 kg</strong><span>CAD-Masse inkl. 2S-Akku 5000 mAh</span></div>"
+ },
+ "0971b42814a9dd36": {
+  "en": "  <div><strong>12 × 35 kg·cm</strong><span>SPT5435LV servos, linkage-driven knees</span></div>",
+  "de": "  <div><strong>12 × 35 kg·cm</strong><span>SPT5435LV-Servos, Knie über Koppelgetriebe</span></div>"
+ },
+ "d1e152cba6786865": {
+  "en": "  <div><strong>Pi&nbsp;5 + ESP32&#8209;S3</strong><span>ROS 2 Jazzy · 200 Hz motion loop</span></div>",
+  "de": "  <div><strong>Pi&nbsp;5 + ESP32&#8209;S3</strong><span>ROS 2 Jazzy · 200-Hz-Bewegungsschleife</span></div>"
+ },
+ "4126797067504e74": {
+  "en": "  <div><strong>360° LiDAR · camera · LCD</strong><span>RPLIDAR C1, Camera Module 3 Wide, 2\" face</span></div>",
+  "de": "  <div><strong>360°-LiDAR · Kamera · LCD</strong><span>RPLIDAR C1, Camera Module 3 Wide, 2\"-Gesicht</span></div>"
+ },
+ "3913ce8f22fdc4f3": {
+  "en": "  <div><strong>0 collisions</strong><span>interference, clearance, fits: see <a href=\"/docs/verification\">Verification</a></span></div>",
+  "de": "  <div><strong>0 Kollisionen</strong><span>Durchdringung, Freigang, Passungen: siehe <a href=\"/docs/verification\">Verifikation</a></span></div>"
+ },
+ "dc1fd0678f9e508e": {
+  "en": "What it takes",
+  "de": "Was es braucht"
+ },
+ "c49abe903b95dc3e": {
+  "en": "  <a href=\"/docs/print-kit\"><span>1 · Print</span><strong>≈ 1.0 kg PETG</strong><small>34 parts, 67 pieces, about 100 h on a 220 × 220 mm printer</small></a>",
+  "de": "  <a href=\"/docs/print-kit\"><span>1 · Drucken</span><strong>≈ 1,0 kg PETG</strong><small>34 Teile, 67 Stück, etwa 100 h auf einem 220 × 220 mm Drucker</small></a>"
+ },
+ "0fe67b11cb8bf178": {
+  "en": "  <a href=\"/docs/shop\"><span>2 · Buy</span><strong>from €979</strong><small>62 items from 8 shops incl. shipping to Austria (plan A)</small></a>",
+  "de": "  <a href=\"/docs/shop\"><span>2 · Kaufen</span><strong>ab 979 €</strong><small>62 Artikel aus 8 Shops inkl. Versand nach Österreich (Plan A)</small></a>"
+ },
+ "b6fbe0e5b4396adf": {
+  "en": "  <a href=\"/docs/assembly/\"><span>3 · Assemble</span><strong>22 steps</strong><small>hex keys, a soldering iron and a crimp tool</small></a>",
+  "de": "  <a href=\"/docs/assembly/\"><span>3 · Montieren</span><strong>22 Schritte</strong><small>Innensechskantschlüssel, ein Lötkolben und eine Crimpzange</small></a>"
+ },
+ "a86f93141940270e": {
+  "en": "  <a href=\"/docs/software\"><span>4 · Run</span><strong>flash · calibrate · walk</strong><small>firmware, ROS 2 in Docker, teleop or the learned policy</small></a>",
+  "de": "  <a href=\"/docs/software\"><span>4 · Betreiben</span><strong>flashen · kalibrieren · laufen</strong><small>Firmware, ROS 2 in Docker, Teleoperation oder die gelernte Policy</small></a>"
+ }
+}

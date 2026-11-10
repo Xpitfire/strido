@@ -1,0 +1,627 @@
+{
+ "loads": {
+  "foot_n": 45.18,
+  "thigh_nm": 3.43,
+  "hip_nm": 3.43,
+  "short_link_n": 211.49,
+  "long_link_n": 192.1,
+  "knee_nm": 3.07,
+  "knee_landing_nm": 5.6,
+  "knee_joint_n": 237.27
+ },
+ "geometry_mm": {
+  "femur": 130.0,
+  "tibia": 124.1,
+  "arm": 24.0,
+  "crank_a": 24.0,
+  "crank_b": 26.9,
+  "knee_crank": 24.0,
+  "short_link": 28.3,
+  "long_link": 130.0,
+  "hip_lever": 40.2
+ },
+ "sections": {
+  "femur": {
+   "area_mm2": 58.5,
+   "w_bend_mm3": 236.0,
+   "i_in_mm4": 2869.3,
+   "i_out_mm4": 1457.2,
+   "length_mm": 151.2,
+   "across_layers": false,
+   "pin_offset_mm": 14.0
+  },
+  "inner_tibia": {
+   "area_mm2": 33.0,
+   "w_bend_mm3": 72.6,
+   "i_in_mm4": 712.6,
+   "i_out_mm4": 275.7,
+   "length_mm": 162.2,
+   "across_layers": false,
+   "pin_offset_mm": 0.4
+  },
+  "outer_tibia": {
+   "area_mm2": 32.5,
+   "w_bend_mm3": 72.5,
+   "i_in_mm4": 707.6,
+   "i_out_mm4": 269.0,
+   "length_mm": 162.2,
+   "across_layers": false,
+   "pin_offset_mm": 0.2
+  },
+  "short_link": {
+   "area_mm2": 24.5,
+   "w_bend_mm3": 28.0,
+   "i_in_mm4": 108.2,
+   "i_out_mm4": 252.7,
+   "length_mm": 35.3,
+   "across_layers": false,
+   "pin_offset_mm": 0.0
+  },
+  "long_link": {
+   "area_mm2": 42.2,
+   "w_bend_mm3": 111.1,
+   "i_in_mm4": 555.3,
+   "i_out_mm4": 555.3,
+   "length_mm": 141.0,
+   "across_layers": false,
+   "pin_offset_mm": 2.0
+  }
+ },
+ "checks": [
+  {
+   "id": "femur_bending",
+   "parts": [
+    "femur"
+   ],
+   "what": "femur bending at its weakest section (thigh servo stall torque)",
+   "formula": "σ = T_thigh / W",
+   "actual": 14.54,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 3.23,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "tibia_bending",
+   "parts": [
+    "inner_tibia",
+    "outer_tibia"
+   ],
+   "what": "tibia halves bending (knee torque, shared by the two halves)",
+   "formula": "σ = T_knee / (W_inner + W_outer)",
+   "actual": 21.16,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 2.22,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "short_link_axial",
+   "parts": [
+    "short_link"
+   ],
+   "what": "short link tension/compression (pin-line offset e = 0.0 mm)",
+   "formula": "σ = F / A + F · e · sec(L/2 · √(F / E I)) / W",
+   "actual": 8.65,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 5.44,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "short_link_buckling",
+   "parts": [
+    "short_link"
+   ],
+   "what": "short link buckling (pinned in the leg plane, K = 0.7 across it)",
+   "formula": "F_cr = π² · E · I / (K · L)²",
+   "actual": 211.49,
+   "allowable": 2002.8,
+   "unit": "N",
+   "safety": 9.47,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "short_link_eye",
+   "parts": [
+    "short_link"
+   ],
+   "what": "short link pin hole bearing pressure",
+   "formula": "p = F / (d · t)",
+   "actual": 4.28,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 10.97,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "long_link_axial",
+   "parts": [
+    "stiff_long_link"
+   ],
+   "what": "long link tension/compression (pin-line offset e = 2.0 mm)",
+   "formula": "σ = F / A + F · e · sec(L/2 · √(F / E I)) / W",
+   "actual": 10.82,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 4.34,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "long_link_buckling",
+   "parts": [
+    "stiff_long_link"
+   ],
+   "what": "long link buckling (pinned in the leg plane, K = 0.7 across it)",
+   "formula": "F_cr = π² · E · I / (K · L)²",
+   "actual": 192.1,
+   "allowable": 486.6,
+   "unit": "N",
+   "safety": 2.53,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "long_link_eye",
+   "parts": [
+    "stiff_long_link"
+   ],
+   "what": "long link pin hole bearing pressure",
+   "formula": "p = F / (d · t)",
+   "actual": 6.61,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 7.11,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "femur_to_horn_screws",
+   "parts": [
+    "femur",
+    "femur_servo_connector"
+   ],
+   "what": "4 × M3 shear, femur on the thigh horn (r = 7.0 mm)",
+   "formula": "τ = T / (n · r · A_s)",
+   "actual": 24.35,
+   "allowable": 259.6,
+   "unit": "MPa",
+   "safety": 10.66,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "femur_to_horn_holes",
+   "parts": [
+    "femur",
+    "femur_servo_connector"
+   ],
+   "what": "printed hole bearing pressure, femur on the thigh horn",
+   "formula": "p = T / (n · r · d · t)",
+   "actual": 8.48,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 5.55,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "hip_horn_screws",
+   "parts": [
+    "left_servo_mount",
+    "left_servo_mount_fl",
+    "right_servo_mount",
+    "right_servo_mount_fr"
+   ],
+   "what": "2 × M3 shear, hip horn on the servo mount (r = 7.3 mm)",
+   "formula": "τ = T / (n · r · A_s)",
+   "actual": 46.51,
+   "allowable": 259.6,
+   "unit": "MPa",
+   "safety": 5.58,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "hip_horn_holes",
+   "parts": [
+    "left_servo_mount",
+    "left_servo_mount_fl",
+    "right_servo_mount",
+    "right_servo_mount_fr"
+   ],
+   "what": "printed hole bearing pressure, hip horn on the servo mount",
+   "formula": "p = T / (n · r · d · t)",
+   "actual": 17.93,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 2.62,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "arm_pin_shear",
+   "parts": [
+    "short_link"
+   ],
+   "what": "M3 shear, arm pin (short link)",
+   "formula": "τ = F / (1 · A_s)",
+   "actual": 42.04,
+   "allowable": 259.6,
+   "unit": "MPa",
+   "safety": 6.18,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "tibia_link_pin_shear",
+   "parts": [
+    "inner_tibia",
+    "outer_tibia",
+    "stiff_long_link"
+   ],
+   "what": "M3 shear, tibia link pin (long link)",
+   "formula": "τ = F / (2 · A_s)",
+   "actual": 19.1,
+   "allowable": 259.6,
+   "unit": "MPa",
+   "safety": 13.6,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "knee_axle_shear",
+   "parts": [
+    "femur",
+    "inner_tibia",
+    "outer_tibia"
+   ],
+   "what": "M3 shear, knee axle screw (one per side)",
+   "formula": "τ = F / (1 · A_s)",
+   "actual": 23.59,
+   "allowable": 259.6,
+   "unit": "MPa",
+   "safety": 11.01,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "knee_axle_bore",
+   "parts": [
+    "femur"
+   ],
+   "what": "knee axle bearing pressure in the femur pilot",
+   "formula": "p = F / (d · L_e)",
+   "actual": 10.59,
+   "allowable": 47,
+   "unit": "MPa",
+   "safety": 4.44,
+   "status": "ok",
+   "note": ""
+  },
+  {
+   "id": "bearing_633zz_static",
+   "parts": [
+    "bearing_633zz"
+   ],
+   "what": "633ZZ static radial load (knee, two per leg)",
+   "formula": "S = C0 / F_r",
+   "actual": 118.64,
+   "allowable": 490,
+   "unit": "N",
+   "safety": 4.13,
+   "status": "ok",
+   "note": "Koyo 633 ZZ"
+  },
+  {
+   "id": "bearing_6805_static",
+   "parts": [
+    "bearing_6805"
+   ],
+   "what": "6805-2RS static radial load (shoulder crank)",
+   "formula": "S = C0 / F_r",
+   "actual": 403.58,
+   "allowable": 2600,
+   "unit": "N",
+   "safety": 6.44,
+   "status": "ok",
+   "note": "SKF 61805-2RS1"
+  },
+  {
+   "id": "bearing_625zz_static",
+   "parts": [
+    "bearing_625zz"
+   ],
+   "what": "625ZZ static radial load (hip pivot)",
+   "formula": "S = C0 / F_r",
+   "actual": 45.18,
+   "allowable": 380,
+   "unit": "N",
+   "safety": 8.41,
+   "status": "ok",
+   "note": "SKF 625-2Z"
+  }
+ ],
+ "thread_torques": [
+  {
+   "joint": "bracket -> front shell boss (self-tapping)",
+   "part": "front_shell_display",
+   "thread": "M3",
+   "engaged_mm": 6.5,
+   "pull_out_n": 636,
+   "strip_torque_nm": 0.38,
+   "recommended_torque_nm": 0.19
+  },
+  {
+   "joint": "bracket_screws",
+   "part": "left_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 12.0,
+   "pull_out_n": 1175,
+   "strip_torque_nm": 0.7,
+   "recommended_torque_nm": 0.35
+  },
+  {
+   "joint": "bracket_screws",
+   "part": "left_servo_mount_fl",
+   "thread": "M3",
+   "engaged_mm": 12.0,
+   "pull_out_n": 1175,
+   "strip_torque_nm": 0.7,
+   "recommended_torque_nm": 0.35
+  },
+  {
+   "joint": "bracket_screws",
+   "part": "right_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 12.0,
+   "pull_out_n": 1175,
+   "strip_torque_nm": 0.7,
+   "recommended_torque_nm": 0.35
+  },
+  {
+   "joint": "bracket_screws",
+   "part": "right_servo_mount_fr",
+   "thread": "M3",
+   "engaged_mm": 12.0,
+   "pull_out_n": 1175,
+   "strip_torque_nm": 0.7,
+   "recommended_torque_nm": 0.35
+  },
+  {
+   "joint": "bracket_screws",
+   "part": "servo_mount_top_bracket",
+   "thread": "M3",
+   "engaged_mm": 7.0,
+   "pull_out_n": 685,
+   "strip_torque_nm": 0.41,
+   "recommended_torque_nm": 0.21
+  },
+  {
+   "joint": "bus holder -> lower shoulder frame (self-tapping)",
+   "part": "lower_shoulder_frame_front",
+   "thread": "M3",
+   "engaged_mm": 5.0,
+   "pull_out_n": 489,
+   "strip_torque_nm": 0.29,
+   "recommended_torque_nm": 0.15
+  },
+  {
+   "joint": "bus holder -> lower shoulder frame (self-tapping)",
+   "part": "lower_shoulder_frame_rear",
+   "thread": "M3",
+   "engaged_mm": 5.0,
+   "pull_out_n": 489,
+   "strip_torque_nm": 0.29,
+   "recommended_torque_nm": 0.15
+  },
+  {
+   "joint": "clamp ring -> bezel through the D20 hole",
+   "part": "arming_port_bezel",
+   "thread": "M2.5",
+   "engaged_mm": 2.5,
+   "pull_out_n": 204,
+   "strip_torque_nm": 0.1,
+   "recommended_torque_nm": 0.05
+  },
+  {
+   "joint": "crank_pins",
+   "part": "left_shoulder",
+   "thread": "M3",
+   "engaged_mm": 11.5,
+   "pull_out_n": 1126,
+   "strip_torque_nm": 0.68,
+   "recommended_torque_nm": 0.34
+  },
+  {
+   "joint": "crank_pins",
+   "part": "right_shoulder",
+   "thread": "M3",
+   "engaged_mm": 11.5,
+   "pull_out_n": 1126,
+   "strip_torque_nm": 0.68,
+   "recommended_torque_nm": 0.34
+  },
+  {
+   "joint": "hip_horn",
+   "part": "left_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 4.5,
+   "pull_out_n": 440,
+   "strip_torque_nm": 0.26,
+   "recommended_torque_nm": 0.13
+  },
+  {
+   "joint": "hip_horn",
+   "part": "left_servo_mount_fl",
+   "thread": "M3",
+   "engaged_mm": 4.5,
+   "pull_out_n": 440,
+   "strip_torque_nm": 0.26,
+   "recommended_torque_nm": 0.13
+  },
+  {
+   "joint": "hip_horn",
+   "part": "right_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 4.5,
+   "pull_out_n": 440,
+   "strip_torque_nm": 0.26,
+   "recommended_torque_nm": 0.13
+  },
+  {
+   "joint": "hip_horn",
+   "part": "right_servo_mount_fr",
+   "thread": "M3",
+   "engaged_mm": 4.5,
+   "pull_out_n": 440,
+   "strip_torque_nm": 0.26,
+   "recommended_torque_nm": 0.13
+  },
+  {
+   "joint": "hip_pivot",
+   "part": "left_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 4.0,
+   "pull_out_n": 392,
+   "strip_torque_nm": 0.23,
+   "recommended_torque_nm": 0.12
+  },
+  {
+   "joint": "hip_pivot",
+   "part": "left_servo_mount_fl",
+   "thread": "M3",
+   "engaged_mm": 4.0,
+   "pull_out_n": 392,
+   "strip_torque_nm": 0.23,
+   "recommended_torque_nm": 0.12
+  },
+  {
+   "joint": "hip_pivot",
+   "part": "right_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 4.0,
+   "pull_out_n": 392,
+   "strip_torque_nm": 0.23,
+   "recommended_torque_nm": 0.12
+  },
+  {
+   "joint": "hip_pivot",
+   "part": "right_servo_mount_fr",
+   "thread": "M3",
+   "engaged_mm": 4.0,
+   "pull_out_n": 392,
+   "strip_torque_nm": 0.23,
+   "recommended_torque_nm": 0.12
+  },
+  {
+   "joint": "knee_axle",
+   "part": "femur",
+   "thread": "M3",
+   "engaged_mm": 4.0,
+   "pull_out_n": 392,
+   "strip_torque_nm": 0.23,
+   "recommended_torque_nm": 0.12
+  },
+  {
+   "joint": "leg_servo_ears_and_bracket",
+   "part": "left_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 9.5,
+   "pull_out_n": 930,
+   "strip_torque_nm": 0.56,
+   "recommended_torque_nm": 0.28
+  },
+  {
+   "joint": "leg_servo_ears_and_bracket",
+   "part": "left_servo_mount_fl",
+   "thread": "M3",
+   "engaged_mm": 9.5,
+   "pull_out_n": 930,
+   "strip_torque_nm": 0.56,
+   "recommended_torque_nm": 0.28
+  },
+  {
+   "joint": "leg_servo_ears_and_bracket",
+   "part": "right_servo_mount",
+   "thread": "M3",
+   "engaged_mm": 9.5,
+   "pull_out_n": 930,
+   "strip_torque_nm": 0.56,
+   "recommended_torque_nm": 0.28
+  },
+  {
+   "joint": "leg_servo_ears_and_bracket",
+   "part": "right_servo_mount_fr",
+   "thread": "M3",
+   "engaged_mm": 9.5,
+   "pull_out_n": 930,
+   "strip_torque_nm": 0.56,
+   "recommended_torque_nm": 0.28
+  },
+  {
+   "joint": "pedestal -> top shell (from below, self-tapping)",
+   "part": "lidar_pedestal",
+   "thread": "M3",
+   "engaged_mm": 9.5,
+   "pull_out_n": 930,
+   "strip_torque_nm": 0.56,
+   "recommended_torque_nm": 0.28
+  }
+ ],
+ "config": {
+  "loads": {
+   "servo_stall_torque_nm": 3.43,
+   "robot_mass_kg": 3.07,
+   "impact_factor": 3.0,
+   "buckling_out_of_plane_k": 0.7
+  },
+  "material": {
+   "name": "PETG (Prusament PETG technical data sheet v1.1, printed specimens, 0.2 mm layers)",
+   "tensile_xy_mpa": 47,
+   "layer_adhesion_mpa": 18,
+   "modulus_gpa": 1.5,
+   "shear_factor": 0.577
+  },
+  "print": {
+   "wall_mm": 1.2
+  },
+  "screws": {
+   "name": "DIN 912 A2-70 (ISO 3506, Bossard tables)",
+   "rm_mpa": 700,
+   "rp02_mpa": 450,
+   "stress_area_mm2": {
+    "M2": 2.07,
+    "M2.5": 3.39,
+    "M3": 5.03
+   },
+   "torque_factor": 0.2
+  },
+  "bearings": {
+   "633ZZ": {
+    "c0_n": 490,
+    "source": "Koyo 633 ZZ"
+   },
+   "625ZZ": {
+    "c0_n": 380,
+    "source": "SKF 625-2Z"
+   },
+   "6805-2RS": {
+    "c0_n": 2600,
+    "source": "SKF 61805-2RS1"
+   }
+  },
+  "safety": {
+   "fail_below": 1.5,
+   "warn_below": 2.0,
+   "thread_torque_factor": 2.0
+  },
+  "accepted": {}
+ }
+}

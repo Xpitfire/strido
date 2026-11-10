@@ -1,0 +1,178 @@
+{
+ "ce78afd0e6a225ec": {
+  "en": "Learn",
+  "de": "Lernen"
+ },
+ "a5ae983596f03461": {
+  "en": "The Learn wiki explains the engineering behind Strido. You don't need it to build the robot, but it covers why the robot is built this way. Every article starts from the real robot: the servos, rails and parts you hold, the firmware and ROS 2 code in this repository, and the numbers the verification gates check. Each one ends with a few self-check questions and links to the primary sources.",
+  "de": "Das Lern-Wiki erklärt die Technik hinter Strido. Sie brauchen es nicht, um den Roboter zu bauen, aber es erklärt, warum der Roboter so gebaut ist. Jeder Artikel geht vom realen Roboter aus: den Servos, Schienen und Teilen in Ihrer Hand, dem Firmware- und ROS-2-Code in diesem Repository und den Zahlen, die die Verifikationsprüfungen kontrollieren. Jeder endet mit einigen Fragen zur Selbstkontrolle und Links zu den Primärquellen."
+ },
+ "5f23abd855e5f4fa": {
+  "en": "Learning paths",
+  "de": "Lernpfade"
+ },
+ "3608de9571a4fb43": {
+  "en": "| If you want to… | Read in this order |",
+  "de": "| Wenn Sie … wollen | Lesen Sie in dieser Reihenfolge |"
+ },
+ "2820d1d3bd2dcf7a": {
+  "en": "| Build the robot with confidence | [3D printing](making/3d-printing.md) → [Fasteners](making/fasteners.md) → [Tools and workshop](making/tools-and-workshop.md) → [Cable management](making/cable-management.md) → [Safety](making/safety.md) |",
+  "de": "| Den Roboter sicher bauen | [3D-Druck](making/3d-printing.md) → [Befestigungselemente](making/fasteners.md) → [Werkzeuge und Werkstatt](making/tools-and-workshop.md) → [Kabelmanagement](making/cable-management.md) → [Sicherheit](making/safety.md) |"
+ },
+ "64ffe8d62d6ebf6f": {
+  "en": "| Understand the electronics | [Power electronics](hardware/power.md) → [LiPo batteries](hardware/batteries.md) → [Servos](hardware/servos.md) → [Buses](hardware/buses.md) → [Sensors](hardware/sensors.md) |",
+  "de": "| Die Elektronik verstehen | [Leistungselektronik](hardware/power.md) → [LiPo-Akkus](hardware/batteries.md) → [Servos](hardware/servos.md) → [Busse](hardware/buses.md) → [Sensoren](hardware/sensors.md) |"
+ },
+ "52faf0da377d621d": {
+  "en": "| Get the computers running | [Microcontrollers and the Pi](hardware/microcontrollers.md) → [Linux on the Pi](software/linux-on-the-pi.md) → [Docker](software/docker.md) → [Firmware](software/firmware.md) → [ROS 2](software/ros2.md) |",
+  "de": "| Die Computer zum Laufen bringen | [Mikrocontroller und der Pi](hardware/microcontrollers.md) → [Linux auf dem Pi](software/linux-on-the-pi.md) → [Docker](software/docker.md) → [Firmware](software/firmware.md) → [ROS 2](software/ros2.md) |"
+ },
+ "0129f1ceb87fefcf": {
+  "en": "| Know what can break | [Strength, torque and failure](making/strength.md) → [Fasteners](making/fasteners.md) → [Mechanics and bearings](hardware/mechanics.md) |",
+  "de": "| Wissen, was brechen kann | [Festigkeit, Drehmoment und Versagen](making/strength.md) → [Befestigungselemente](making/fasteners.md) → [Mechanik und Lager](hardware/mechanics.md) |"
+ },
+ "23418596e156650e": {
+  "en": "| Make it walk better | [Mechanics and bearings](hardware/mechanics.md) → [Kinematics and gaits](software/kinematics-and-gaits.md) → [Simulation and RL](software/simulation-and-rl.md) |",
+  "de": "| Ihn besser laufen lassen | [Mechanik und Lager](hardware/mechanics.md) → [Kinematik und Gaits](software/kinematics-and-gaits.md) → [Simulation und RL](software/simulation-and-rl.md) |"
+ },
+ "71fe95f7fe650a89": {
+  "en": "| Learn robotics from the ground up | [Frames and rotations](theory/frames-and-rotations.md) → [Kinematics](theory/kinematics.md) → [Statics and dynamics](theory/statics-and-dynamics.md) → [Control](theory/control.md) → [Legged locomotion](theory/legged-locomotion.md) → [State estimation](theory/state-estimation.md) → [Reinforcement learning](theory/reinforcement-learning.md) |",
+  "de": "| Robotik von Grund auf lernen | [Koordinatensysteme und Rotationen](theory/frames-and-rotations.md) → [Kinematik](theory/kinematics.md) → [Statik und Dynamik](theory/statics-and-dynamics.md) → [Regelung](theory/control.md) → [Laufende Fortbewegung](theory/legged-locomotion.md) → [State Estimation](theory/state-estimation.md) → [Reinforcement Learning](theory/reinforcement-learning.md) |"
+ },
+ "307da21fbc917039": {
+  "en": "| Change the design | [CAD as code](software/cad-as-code.md) → [Mechanics and bearings](hardware/mechanics.md) → [3D printing](making/3d-printing.md) |",
+  "de": "| Das Design ändern | [CAD als Code](software/cad-as-code.md) → [Mechanik und Lager](hardware/mechanics.md) → [3D-Druck](making/3d-printing.md) |"
+ },
+ "c78c7d6925331798": {
+  "en": "Robotics theory",
+  "de": "Robotik-Theorie"
+ },
+ "1b89e6964ca84322": {
+  "en": "The mathematics behind a walking robot, each worked on Strido's own leg, servos and sensors.",
+  "de": "Die Mathematik hinter einem laufenden Roboter, jeweils an Bein, Servos und Sensoren von Strido durchgerechnet."
+ },
+ "1d7c9e84fe20ce70": {
+  "en": "[Frames and rotations](theory/frames-and-rotations.md): coordinate frames, rotation matrices, quaternions, homogeneous transforms and the robot's tf tree.",
+  "de": "[Koordinatensysteme und Rotationen](theory/frames-and-rotations.md): Koordinatensysteme, Rotationsmatrizen, Quaternionen, homogene Transformationen und der tf-Baum des Roboters."
+ },
+ "7a90b61c44db0131": {
+  "en": "[Kinematics](theory/kinematics.md): forward and inverse kinematics of the leg, the knee four-bar, the Jacobian and singularities.",
+  "de": "[Kinematik](theory/kinematics.md): Vorwärts- und inverse Kinematik des Beins, das Knie-Viergelenk, die Jacobi-Matrix und Singularitäten."
+ },
+ "91749f8939a8319e": {
+  "en": "[Statics and dynamics](theory/statics-and-dynamics.md): virtual work, $\\boldsymbol{\\tau} = \\mathbf{J}^\\top \\mathbf{F}$, mechanical advantage, inertia and the torque and power a joint needs.",
+  "de": "[Statik und Dynamik](theory/statics-and-dynamics.md): virtuelle Arbeit, $\\boldsymbol{\\tau} = \\mathbf{J}^\\top \\mathbf{F}$, mechanischer Vorteil, Trägheit sowie das Drehmoment und die Leistung, die ein Gelenk braucht."
+ },
+ "e4e76e987bf3c7d8": {
+  "en": "[Control](theory/control.md): feedback, PD and PID control, sampling rates and the servo's own position loop.",
+  "de": "[Regelung](theory/control.md): Rückkopplung, PD- und PID-Regelung, Abtastraten und der eigene Positionsregelkreis des Servos."
+ },
+ "01dd19612b442dd7": {
+  "en": "[Legged locomotion](theory/legged-locomotion.md): gaits, support polygons, stability and how the trot generator places the feet.",
+  "de": "[Laufende Fortbewegung](theory/legged-locomotion.md): Gaits, Stützpolygone, Stabilität und wie der Trot-Generator die Füße setzt."
+ },
+ "bee2cb2aab6eac45": {
+  "en": "[State estimation](theory/state-estimation.md): IMU models, complementary and Mahony filters, the Kalman filter and odometry.",
+  "de": "[State Estimation](theory/state-estimation.md): IMU-Modelle, Komplementär- und Mahony-Filter, das Kalman-Filter und Odometrie."
+ },
+ "a535c9517a32ffda": {
+  "en": "[Reinforcement learning](theory/reinforcement-learning.md): Markov decision processes, policy gradients, PPO and sim-to-real.",
+  "de": "[Reinforcement Learning](theory/reinforcement-learning.md): Markov-Entscheidungsprozesse, Policy-Gradienten, PPO und Sim-to-Real."
+ },
+ "7975300f01bc46f8": {
+  "en": "Hardware",
+  "de": "Hardware"
+ },
+ "25f31dc6d401849d": {
+  "en": "[Servos](hardware/servos.md): pulse widths, torque, stall current, and centring the 12 SPT5435LV joints.",
+  "de": "[Servos](hardware/servos.md): Pulsbreiten, Drehmoment, Blockierstrom und das Zentrieren der 12 SPT5435LV-Gelenke."
+ },
+ "4e889c9207aaf60f": {
+  "en": "[LiPo batteries](hardware/batteries.md): the 2S pack, its voltage window, charging, storage and handling.",
+  "de": "[LiPo-Akkus](hardware/batteries.md): der 2S-Akkupack, sein Spannungsfenster, Laden, Lagerung und Handhabung."
+ },
+ "8d49bb3332219b44": {
+  "en": "[Power electronics](hardware/power.md): from XT60 to fuses, UBECs and the regulator, wire gauges and power monitoring.",
+  "de": "[Leistungselektronik](hardware/power.md): von XT60 zu Sicherungen, UBECs und dem Spannungsregler, Drahtquerschnitte und Leistungsüberwachung."
+ },
+ "2ee510052e1e9eab": {
+  "en": "[Microcontrollers and the Pi](hardware/microcontrollers.md): why a real-time ESP32-S3 sits next to a Linux Raspberry Pi 5.",
+  "de": "[Mikrocontroller und der Pi](hardware/microcontrollers.md): warum ein echtzeitfähiger ESP32-S3 neben einem Linux-Raspberry-Pi-5 sitzt."
+ },
+ "a4fd07da06194a14": {
+  "en": "[Buses: I²C, UART, SPI, PWM](hardware/buses.md): how the boards talk to each other.",
+  "de": "[Busse: I²C, UART, SPI, PWM](hardware/buses.md): wie die Boards miteinander kommunizieren."
+ },
+ "9cb15b914f2b90f3": {
+  "en": "[Sensors](hardware/sensors.md): IMU, LiDAR, camera and power monitor, and what the software does with them.",
+  "de": "[Sensoren](hardware/sensors.md): IMU, LiDAR, Kamera und Power-Monitor und was die Software damit macht."
+ },
+ "e3956e2e612bab86": {
+  "en": "[Mechanics and bearings](hardware/mechanics.md): the leg linkage, bearings, fits and joint limits.",
+  "de": "[Mechanik und Lager](hardware/mechanics.md): das Koppelgetriebe des Beins, Lager, Passungen und Gelenkgrenzen."
+ },
+ "9b3289a385a5301e": {
+  "en": "Software",
+  "de": "Software"
+ },
+ "b138317c5272bb80": {
+  "en": "[Linux on the Pi](software/linux-on-the-pi.md): the operating system, headless setup, SSH, permissions and services.",
+  "de": "[Linux auf dem Pi](software/linux-on-the-pi.md): das Betriebssystem, Headless-Einrichtung, SSH, Berechtigungen und Dienste."
+ },
+ "80cf88f5af6a0d52": {
+  "en": "[Docker](software/docker.md): containers and how the robot software runs in one.",
+  "de": "[Docker](software/docker.md): Container und wie die Robotersoftware in einem davon läuft."
+ },
+ "d2d2906bfeb6620d": {
+  "en": "[ROS 2](software/ros2.md): nodes, topics, launch files and tf, using the robot's own packages.",
+  "de": "[ROS 2](software/ros2.md): Nodes, Topics, Launch-Dateien und tf, anhand der eigenen Pakete des Roboters."
+ },
+ "50fac5d0631891a6": {
+  "en": "[Firmware](software/firmware.md): the ESP32-S3 control loop, the serial protocol, calibration and failsafes.",
+  "de": "[Firmware](software/firmware.md): die ESP32-S3-Regelschleife, das serielle Protokoll, Kalibrierung und Failsafes."
+ },
+ "047e5dccbc4ce4fb": {
+  "en": "[Kinematics and gaits](software/kinematics-and-gaits.md): leg geometry, inverse kinematics and the trot.",
+  "de": "[Kinematik und Gaits](software/kinematics-and-gaits.md): Beingeometrie, inverse Kinematik und der Trot."
+ },
+ "b94ad4a4568817e7": {
+  "en": "[Simulation and RL](software/simulation-and-rl.md): MuJoCo, Gazebo, PPO training and the sim-to-real gap.",
+  "de": "[Simulation und RL](software/simulation-and-rl.md): MuJoCo, Gazebo, PPO-Training und die Sim-to-Real-Lücke."
+ },
+ "e11cdcf9b588e497": {
+  "en": "[CAD as code](software/cad-as-code.md): how the robot is designed, verified and published from code.",
+  "de": "[CAD als Code](software/cad-as-code.md): wie der Roboter aus Code entworfen, verifiziert und veröffentlicht wird."
+ },
+ "a88c972fa2c32acb": {
+  "en": "Making",
+  "de": "Fertigung"
+ },
+ "d4fa4b92d009b0cf": {
+  "en": "[3D printing](making/3d-printing.md): PETG, orientation, supports and the verified slicer profile.",
+  "de": "[3D-Druck](making/3d-printing.md): PETG, Ausrichtung, Stützen und das verifizierte Slicer-Profil."
+ },
+ "5f546099a7c4c7b7": {
+  "en": "[Fasteners](making/fasteners.md): screws into printed plastic, pilot holes, engagement and threadlocker.",
+  "de": "[Befestigungselemente](making/fasteners.md): Schrauben in gedrucktem Kunststoff, Vorbohrungen, Einschraubtiefe und Schraubensicherung."
+ },
+ "8ebff34f875a1002": {
+  "en": "[Tools and workshop](making/tools-and-workshop.md): what you need and how to solder, crimp and measure.",
+  "de": "[Werkzeuge und Werkstatt](making/tools-and-workshop.md): was Sie brauchen und wie Sie löten, crimpen und messen."
+ },
+ "ea863aec5b9e0dff": {
+  "en": "[Cable management and the wiring harness](making/cable-management.md): wire sizing, fuses, service loops across the hip, bend radius, bundling, connectors and the CAD-routed cut list.",
+  "de": "[Kabelmanagement und der Kabelbaum](making/cable-management.md): Drahtquerschnitte, Sicherungen, Bewegungsschlaufen über die Hüfte, Biegeradius, Bündelung, Steckverbinder und die im CAD geroutete Zuschnittliste."
+ },
+ "27a84b56f6ccbb60": {
+  "en": "[Strength, torque and failure](making/strength.md): torque, stress, layer tear-out, buckling, screw shear and tightening torques, worked on the robot's own parts.",
+  "de": "[Festigkeit, Drehmoment und Versagen](making/strength.md): Drehmoment, Spannung, Schichtausriss, Knicken, Schraubenabscherung und Anzugsmomente, an den eigenen Teilen des Roboters durchgerechnet."
+ },
+ "9a12428ce4e0c3c5": {
+  "en": "[Safety](making/safety.md): LiPo safety, first power-up, fuses and moving legs.",
+  "de": "[Sicherheit](making/safety.md): LiPo-Sicherheit, erstes Einschalten, Sicherungen und bewegte Beine."
+ },
+ "d3d6ea6f505cd853": {
+  "en": "The [glossary](glossary.md) defines every term used on this site.",
+  "de": "Das [Glossar](glossary.md) definiert jeden auf dieser Website verwendeten Begriff."
+ }
+}

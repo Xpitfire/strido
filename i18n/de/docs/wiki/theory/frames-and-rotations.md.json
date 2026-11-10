@@ -1,0 +1,214 @@
+{
+ "e31ffddb59e13163": {
+  "en": "Frames and rotations",
+  "de": "Koordinatensysteme und Rotationen"
+ },
+ "409a9cead34c9d98": {
+  "en": "Every number a robot uses for position or orientation is relative to some coordinate frame. This page covers frames, rotation matrices, roll–pitch–yaw angles and gimbal lock, quaternions, and homogeneous transforms, then shows how they fit together in the Strido transform (tf) tree.",
+  "de": "Jede Zahl, die ein Roboter für Position oder Orientierung verwendet, bezieht sich auf ein Koordinatensystem (Frame). Diese Seite behandelt Frames, Rotationsmatrizen, Roll-Nick-Gier-Winkel und Gimbal Lock, Quaternionen und homogene Transformationen und zeigt dann, wie sie im Transformationsbaum (tf) von Strido zusammenspielen."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "00aa343ad54439f8": {
+  "en": "**Base frame:** REP-103 (`x` forward, `y` left, `z` up), with the origin at the centre of the four hip-axis intersections. It is defined in `hardware/kinematics.yaml` (`base_frame`), together with the rotation from the CAD (STEP) frame.",
+  "de": "**Basis-Frame:** REP-103 (`x` vorwärts, `y` links, `z` oben), mit dem Ursprung im Mittelpunkt der vier Schnittpunkte der Hüftachsen. Er ist in `hardware/kinematics.yaml` (`base_frame`) definiert, zusammen mit der Rotation aus dem CAD-Frame (STEP)."
+ },
+ "bcc250eb549aa5b8": {
+  "en": "**Frame tree:** `ros2/strido_description/urdf/strido.urdf.xacro` defines `base_link`, `imu_link`, `lidar_link`, `camera_link`, `camera_optical_frame` and, for each leg, `*_hip`, `*_thigh`, `*_calf` and `*_foot`.",
+  "de": "**Frame-Baum:** `ros2/strido_description/urdf/strido.urdf.xacro` definiert `base_link`, `imu_link`, `lidar_link`, `camera_link`, `camera_optical_frame` und für jedes Bein `*_hip`, `*_thigh`, `*_calf` und `*_foot`."
+ },
+ "37cdb0a7fa4e7e42": {
+  "en": "**Orientation:** the firmware runs a Mahony filter and outputs a quaternion (`firmware/strido_esp32s3/src/main.cpp`). `mcu_bridge` publishes it as `/imu/data` in `imu_link`.",
+  "de": "**Orientierung:** Die Firmware führt einen Mahony-Filter aus und gibt eine Quaternion aus (`firmware/strido_esp32s3/src/main.cpp`). `mcu_bridge` veröffentlicht sie als `/imu/data` in `imu_link`."
+ },
+ "bade6147c5974afb": {
+  "en": "**Leg transforms in code:** `foot_position` in `packages/strido-core/src/strido/leg.py`.",
+  "de": "**Beintransformationen im Code:** `foot_position` in `packages/strido-core/src/strido/leg.py`."
+ },
+ "2c447e8d05985055": {
+  "en": "Frames",
+  "de": "Frames"
+ },
+ "55ec18bd44134ff8": {
+  "en": "A **frame** is an origin plus three orthogonal unit axes. A point $\\mathbf{p}$ has no coordinates on its own; it only has coordinates *in* a frame. We write ${}^{A}\\mathbf{p}$ for \"the coordinates of $\\mathbf{p}$ in frame $A$\". All frames here are right-handed: $\\hat{\\mathbf{x}} \\times \\hat{\\mathbf{y}} = \\hat{\\mathbf{z}}$.",
+  "de": "Ein **Frame** ist ein Ursprung plus drei orthogonale Einheitsachsen. Ein Punkt $\\mathbf{p}$ hat für sich allein keine Koordinaten; er hat nur Koordinaten *in* einem Frame. Wir schreiben ${}^{A}\\mathbf{p}$ für „die Koordinaten von $\\mathbf{p}$ im Frame $A$“. Alle Frames hier sind rechtshändig: $\\hat{\\mathbf{x}} \\times \\hat{\\mathbf{y}} = \\hat{\\mathbf{z}}$."
+ },
+ "e9c8977757786d11": {
+  "en": "ROS fixes the conventions in [REP-103](https://www.ros.org/reps/rep-0103.html). Body frames use $x$ forward, $y$ left and $z$ up. Units are metres and radians. Strido follows this. Its `base_link` origin is the centre of the four hip-axis intersections, so the hips sit at $(\\pm 0.120, \\pm 0.039, 0)\\,\\mathrm{m}$ (`legs_base` in `hardware/kinematics.yaml`).",
+  "de": "ROS legt die Konventionen in [REP-103](https://www.ros.org/reps/rep-0103.html) fest. Körper-Frames verwenden $x$ vorwärts, $y$ links und $z$ oben. Einheiten sind Meter und Radiant. Strido folgt dem. Sein `base_link`-Ursprung ist der Mittelpunkt der vier Schnittpunkte der Hüftachsen, daher liegen die Hüften bei $(\\pm 0.120, \\pm 0.039, 0)\\,\\mathrm{m}$ (`legs_base` in `hardware/kinematics.yaml`)."
+ },
+ "847092355752a0ff": {
+  "en": "The CAD model uses a different frame. `hardware/kinematics.yaml` stores the rotation that maps STEP coordinates into base coordinates:",
+  "de": "Das CAD-Modell verwendet einen anderen Frame. `hardware/kinematics.yaml` speichert die Rotation, die STEP-Koordinaten in Basiskoordinaten abbildet:"
+ },
+ "c640105fb9385597": {
+  "en": "This is a $+90^\\circ$ turn about $z$: the STEP $y$ axis points backwards, so STEP $-y$ becomes base $+x$.",
+  "de": "Das ist eine Drehung um $+90^\\circ$ um $z$: Die STEP-$y$-Achse zeigt nach hinten, daher wird STEP $-y$ zu Basis $+x$."
+ },
+ "6a17a9f692fcd75c": {
+  "en": "Rotation matrices",
+  "de": "Rotationsmatrizen"
+ },
+ "ce96a81363f19c19": {
+  "en": "The orientation of frame $B$ relative to frame $A$ is a $3\\times 3$ matrix ${}^{A}\\mathbf{R}_{B}$. Its columns are $B$'s unit axes written in $A$ coordinates. A vector converts as ${}^{A}\\mathbf{v} = {}^{A}\\mathbf{R}_{B}\\,{}^{B}\\mathbf{v}$. Because the columns are orthonormal:",
+  "de": "Die Orientierung von Frame $B$ relativ zu Frame $A$ ist eine $3\\times 3$-Matrix ${}^{A}\\mathbf{R}_{B}$. Ihre Spalten sind die Einheitsachsen von $B$, ausgedrückt in $A$-Koordinaten. Ein Vektor wird umgerechnet als ${}^{A}\\mathbf{v} = {}^{A}\\mathbf{R}_{B}\\,{}^{B}\\mathbf{v}$. Da die Spalten orthonormal sind:"
+ },
+ "3da72b44920262df": {
+  "en": "Rotation matrices with these properties form the group $SO(3)$. The three elementary rotations are:",
+  "de": "Rotationsmatrizen mit diesen Eigenschaften bilden die Gruppe $SO(3)$. Die drei elementaren Rotationen sind:"
+ },
+ "40ee2fe14300d0db": {
+  "en": "Rotations combine by multiplication, ${}^{A}\\mathbf{R}_{C} = {}^{A}\\mathbf{R}_{B}\\,{}^{B}\\mathbf{R}_{C}$. The order matters, because rotations do not commute: $\\mathbf{R}_x\\mathbf{R}_y \\neq \\mathbf{R}_y\\mathbf{R}_x$ in general.",
+  "de": "Rotationen werden durch Multiplikation verknüpft, ${}^{A}\\mathbf{R}_{C} = {}^{A}\\mathbf{R}_{B}\\,{}^{B}\\mathbf{R}_{C}$. Die Reihenfolge zählt, weil Rotationen nicht kommutieren: im Allgemeinen gilt $\\mathbf{R}_x\\mathbf{R}_y \\neq \\mathbf{R}_y\\mathbf{R}_x$."
+ },
+ "d088f40b637f75e3": {
+  "en": "Roll, pitch, yaw and gimbal lock",
+  "de": "Rollen, Nicken, Gieren und Gimbal Lock"
+ },
+ "4e7c7225838ae08a": {
+  "en": "A rotation has three degrees of freedom, but its matrix has nine numbers. **Euler angles** describe it with three successive elementary rotations. ROS and URDF use **roll–pitch–yaw** (RPY): roll $\\phi$ about $x$, pitch $\\theta$ about $y$, yaw $\\psi$ about $z$, applied about the fixed axes in that order. That gives:",
+  "de": "Eine Rotation hat drei Freiheitsgrade, ihre Matrix aber neun Zahlen. **Euler-Winkel** beschreiben sie mit drei aufeinanderfolgenden elementaren Rotationen. ROS und URDF verwenden **Roll-Nick-Gier** (RPY): Rollen $\\phi$ um $x$, Nicken $\\theta$ um $y$, Gieren $\\psi$ um $z$, in dieser Reihenfolge um die festen Achsen angewendet. Das ergibt:"
+ },
+ "0f94fe41df95d9ab": {
+  "en": "RPY is easy to read. The Strido camera is mounted with `rpy=\"0 0.261799 0\"`, a $15^\\circ$ downward pitch. A body \"rolled $5^\\circ$\" is easy to picture.",
+  "de": "RPY ist leicht zu lesen. Die Kamera von Strido ist mit `rpy=\"0 0.261799 0\"` montiert, einer Neigung von $15^\\circ$ nach unten. Ein um $5^\\circ$ „gerollter“ Körper ist leicht vorstellbar."
+ },
+ "353a6f15c1803a57": {
+  "en": "RPY angles have a singularity. At $\\theta = \\pm 90^\\circ$ the roll and yaw axes line up, and only $\\phi \\pm \\psi$ is defined. One degree of freedom has gone. This is **gimbal lock**. Near it, a small change in orientation can cause a large jump in the angles, and the angle rates",
+  "de": "RPY-Winkel haben eine Singularität. Bei $\\theta = \\pm 90^\\circ$ fallen Roll- und Gierachse zusammen, und nur $\\phi \\pm \\psi$ ist definiert. Ein Freiheitsgrad ist verloren. Das ist der **Gimbal Lock**. In seiner Nähe kann eine kleine Orientierungsänderung einen großen Sprung der Winkel verursachen, und die Winkelraten"
+ },
+ "bf962c6a82693761": {
+  "en": "blow up. That is because the matrix that maps body angular velocity to $(\\dot\\phi,\\dot\\theta,\\dot\\psi)$ contains $1/\\cos\\theta$. No set of three angles avoids this everywhere; it is a topological property of $SO(3)$. A walking robot rarely pitches $90^\\circ$, but a fall can. This is one reason estimators store orientation as a quaternion.",
+  "de": "gehen gegen unendlich. Das liegt daran, dass die Matrix, die die Winkelgeschwindigkeit des Körpers auf $(\\dot\\phi,\\dot\\theta,\\dot\\psi)$ abbildet, $1/\\cos\\theta$ enthält. Kein Satz aus drei Winkeln vermeidet das überall; es ist eine topologische Eigenschaft von $SO(3)$. Ein gehender Roboter nickt selten um $90^\\circ$, ein Sturz kann es aber. Das ist ein Grund, warum Schätzer die Orientierung als Quaternion speichern."
+ },
+ "84caff25cae51166": {
+  "en": "Quaternions",
+  "de": "Quaternionen"
+ },
+ "4d801293d28a0bb7": {
+  "en": "A unit quaternion $\\mathbf{q} = (w, x, y, z)$ with $w^2+x^2+y^2+z^2 = 1$ encodes a rotation by angle $\\alpha$ about the unit axis $\\hat{\\mathbf{n}}$:",
+  "de": "Eine Einheitsquaternion $\\mathbf{q} = (w, x, y, z)$ mit $w^2+x^2+y^2+z^2 = 1$ kodiert eine Rotation um den Winkel $\\alpha$ um die Einheitsachse $\\hat{\\mathbf{n}}$:"
+ },
+ "4606f69902009720": {
+  "en": "Rotations compose by the quaternion (Hamilton) product. $\\mathbf{q}$ and $-\\mathbf{q}$ give the same rotation. The representation has no singularity, needs four numbers instead of nine, and can be renormalised cheaply after numerical drift. The equivalent rotation matrix is:",
+  "de": "Rotationen werden durch das Quaternionenprodukt (Hamilton-Produkt) verknüpft. $\\mathbf{q}$ und $-\\mathbf{q}$ ergeben dieselbe Rotation. Die Darstellung hat keine Singularität, braucht vier statt neun Zahlen und lässt sich nach numerischer Drift günstig renormieren. Die äquivalente Rotationsmatrix ist:"
+ },
+ "d3b316317c405981": {
+  "en": "The Strido firmware gets $\\mathbf{q}$ from `orientation.getQuaternion` and sends it to the Pi. The learned policy does not use the raw angles. It uses the direction of gravity seen from the body, ${}^{B}\\mathbf{g} = \\mathbf{R}(\\mathbf{q})^\\top (0,0,-1)^\\top$ (see `packages/strido-sim/src/strido_sim/rl/env.py`). This vector is smooth for every orientation and has no gimbal lock. See [state estimation](state-estimation.md) for how the filter produces $\\mathbf{q}$.",
+  "de": "Die Firmware von Strido erhält $\\mathbf{q}$ aus `orientation.getQuaternion` und sendet sie an den Pi. Die gelernte Policy verwendet nicht die rohen Winkel. Sie verwendet die Richtung der Schwerkraft aus Sicht des Körpers, ${}^{B}\\mathbf{g} = \\mathbf{R}(\\mathbf{q})^\\top (0,0,-1)^\\top$ (siehe `packages/strido-sim/src/strido_sim/rl/env.py`). Dieser Vektor ist für jede Orientierung glatt und hat keinen Gimbal Lock. Siehe [State Estimation](state-estimation.md), wie der Filter $\\mathbf{q}$ erzeugt."
+ },
+ "64ddd11996389e15": {
+  "en": "Homogeneous transforms",
+  "de": "Homogene Transformationen"
+ },
+ "3ec6cee57731027b": {
+  "en": "A **pose** combines a rotation and a translation. A $4\\times 4$ homogeneous transform packs both together:",
+  "de": "Eine **Pose** kombiniert eine Rotation und eine Translation. Eine homogene $4\\times 4$-Transformation fasst beide zusammen:"
+ },
+ "359d8de7d98948ba": {
+  "en": "Here ${}^{A}\\mathbf{t}_{B}$ is the origin of $B$ expressed in $A$. Transforms chain by multiplication, ${}^{A}\\mathbf{T}_{C} = {}^{A}\\mathbf{T}_{B}\\,{}^{B}\\mathbf{T}_{C}$. The inverse is:",
+  "de": "Hier ist ${}^{A}\\mathbf{t}_{B}$ der Ursprung von $B$, ausgedrückt in $A$. Transformationen werden durch Multiplikation verkettet, ${}^{A}\\mathbf{T}_{C} = {}^{A}\\mathbf{T}_{B}\\,{}^{B}\\mathbf{T}_{C}$. Die Inverse ist:"
+ },
+ "675c87b4745fba50": {
+  "en": "Each URDF joint is exactly one such transform. The fixed `<origin xyz rpy>` comes first. For a revolute joint, it is followed by a rotation about `<axis>` by the joint angle.",
+  "de": "Jedes URDF-Gelenk ist genau eine solche Transformation. Zuerst kommt der feste `<origin xyz rpy>`. Bei einem Drehgelenk folgt eine Rotation um `<axis>` um den Gelenkwinkel."
+ },
+ "8144046009d4a083": {
+  "en": "The Strido tf tree",
+  "de": "Der tf-Baum von Strido"
+ },
+ "49eac99f47b0d2c4": {
+  "en": "graph TD\n  odom --> base_link\n  base_link --> imu_link\n  base_link --> lidar_link\n  base_link --> camera_link --> camera_optical_frame\n  base_link --> FL_hip --> FL_thigh --> FL_calf --> FL_foot\n  base_link --> FR_hip --> FR_thigh --> FR_calf --> FR_foot\n  base_link --> RL_hip --> RL_thigh --> RL_calf --> RL_foot\n  base_link --> RR_hip --> RR_thigh --> RR_calf --> RR_foot",
+  "de": "graph TD\n  odom --> base_link\n  base_link --> imu_link\n  base_link --> lidar_link\n  base_link --> camera_link --> camera_optical_frame\n  base_link --> FL_hip --> FL_thigh --> FL_calf --> FL_foot\n  base_link --> FR_hip --> FR_thigh --> FR_calf --> FR_foot\n  base_link --> RL_hip --> RL_thigh --> RL_calf --> RL_foot\n  base_link --> RR_hip --> RR_thigh --> RR_calf --> RR_foot"
+ },
+ "84a5e064b5d83db2": {
+  "en": "`robot_state_publisher` computes the leg transforms from the joint angles. The sensor frames are fixed. For example, `imu_link` sits at $(0.042, -0.004, -0.011)\\,\\mathrm{m}$ with its axes aligned to `base_link`. `camera_optical_frame` uses `rpy=\"-π/2 0 -π/2\"` so that its $z$ axis points along the view direction, which is the optical convention in REP-103. `odom → base_link` comes from `gait_node`, which integrates the *commanded* body velocity. It is not measured odometry (see the docstring of `ros2/strido_control/strido_control/gait_node.py`).",
+  "de": "`robot_state_publisher` berechnet die Beintransformationen aus den Gelenkwinkeln. Die Sensor-Frames sind fest. Zum Beispiel liegt `imu_link` bei $(0.042, -0.004, -0.011)\\,\\mathrm{m}$, mit Achsen parallel zu `base_link`. `camera_optical_frame` verwendet `rpy=\"-π/2 0 -π/2\"`, damit seine $z$-Achse entlang der Blickrichtung zeigt, was die optische Konvention in REP-103 ist. `odom → base_link` kommt von `gait_node`, das die *kommandierte* Körpergeschwindigkeit integriert. Es ist keine gemessene Odometrie (siehe den Docstring von `ros2/strido_control/strido_control/gait_node.py`)."
+ },
+ "5d9955f4a40498a8": {
+  "en": "For the front-left leg, the URDF chain is:",
+  "de": "Für das vordere linke Bein lautet die URDF-Kette:"
+ },
+ "25adda202db4a05b": {
+  "en": "Worked example: abducting the front-left leg",
+  "de": "Rechenbeispiel: Abduktion des vorderen linken Beins"
+ },
+ "10a1cfa95a2456b1": {
+  "en": "In the stand pose (`stand_pose()` in `strido/gait.py`, body height $0.17\\,\\mathrm{m}$), the front-left joint angles are $q_1 = 0$, $q_2 = 46.5^\\circ$ and $q_3 = -96.0^\\circ$. The thigh and calf rotations place the foot at $\\mathbf{p}_{\\text{hip}} = (0,\\ 0.0383,\\ -0.170)\\,\\mathrm{m}$ relative to the hip-joint origin. The $0.0383\\,\\mathrm{m}$ is the lateral offset to the leg plane, and the foot sits straight below the hip.",
+  "de": "In der Standpose (`stand_pose()` in `strido/gait.py`, Körperhöhe $0.17\\,\\mathrm{m}$) sind die Gelenkwinkel vorne links $q_1 = 0$, $q_2 = 46.5^\\circ$ und $q_3 = -96.0^\\circ$. Die Rotationen von Oberschenkel und Unterschenkel platzieren den Fuß bei $\\mathbf{p}_{\\text{hip}} = (0,\\ 0.0383,\\ -0.170)\\,\\mathrm{m}$ relativ zum Ursprung des Hüftgelenks. Die $0.0383\\,\\mathrm{m}$ sind der seitliche Versatz zur Beinebene, und der Fuß steht senkrecht unter der Hüfte."
+ },
+ "5d4a5ff58d0a148c": {
+  "en": "Now abduct by $q_1 = 10^\\circ$ ($\\cos = 0.9848$, $\\sin = 0.1736$):",
+  "de": "Nun Abduktion um $q_1 = 10^\\circ$ ($\\cos = 0.9848$, $\\sin = 0.1736$):"
+ },
+ "c565c924e3544814": {
+  "en": "Adding the hip origin $(0.1197, 0.039, 0)$ gives the foot at $(0.1197,\\ 0.1062,\\ -0.1608)\\,\\mathrm{m}$ in `base_link`. `foot_position(\"FL\", (0.1745, 0.8121, -1.6761))` returns the same point. The same rotation as a quaternion is $(\\cos 5^\\circ, \\sin 5^\\circ, 0, 0) = (0.9962, 0.0872, 0, 0)$.",
+  "de": "Addiert man den Hüftursprung $(0.1197, 0.039, 0)$, liegt der Fuß bei $(0.1197,\\ 0.1062,\\ -0.1608)\\,\\mathrm{m}$ in `base_link`. `foot_position(\"FL\", (0.1745, 0.8121, -1.6761))` liefert denselben Punkt. Dieselbe Rotation als Quaternion ist $(\\cos 5^\\circ, \\sin 5^\\circ, 0, 0) = (0.9962, 0.0872, 0, 0)$."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Prüfen Sie sich selbst"
+ },
+ "d599a7999725c5bb": {
+  "en": "Why is ${}^{A}\\mathbf{R}_{B}^{-1}$ just the transpose?",
+  "de": "Warum ist ${}^{A}\\mathbf{R}_{B}^{-1}$ einfach die Transponierte?"
+ },
+ "7d0443509a763b3a": {
+  "en": "The IMU frame is aligned with `base_link` but offset by a few centimetres. Does the offset change the measured angular velocity? Does it change the measured acceleration?",
+  "de": "Der IMU-Frame ist parallel zu `base_link`, aber um einige Zentimeter versetzt. Ändert der Versatz die gemessene Winkelgeschwindigkeit? Ändert er die gemessene Beschleunigung?"
+ },
+ "6fdebb38b2af3b98": {
+  "en": "Why does the policy observe the gravity vector rather than roll, pitch and yaw?",
+  "de": "Warum beobachtet die Policy den Schwerkraftvektor statt Rollen, Nicken und Gieren?"
+ },
+ "489e5404930d89cd": {
+  "en": "Write ${}^{\\text{camera\\_optical}}\\mathbf{T}_{\\text{base}}$ in terms of the URDF transforms.",
+  "de": "Schreiben Sie ${}^{\\text{camera\\_optical}}\\mathbf{T}_{\\text{base}}$ mithilfe der URDF-Transformationen."
+ },
+ "aba3ef6e76362946": {
+  "en": "<details><summary>Answers</summary>",
+  "de": "<details><summary>Antworten</summary>"
+ },
+ "5c7b0d81a38c9da3": {
+  "en": "The columns are orthonormal, so $\\mathbf{R}^\\top\\mathbf{R} = \\mathbf{I}$.",
+  "de": "Die Spalten sind orthonormal, daher gilt $\\mathbf{R}^\\top\\mathbf{R} = \\mathbf{I}$."
+ },
+ "31f9f50aba4db4dd": {
+  "en": "Angular velocity is the same everywhere on a rigid body, so the offset does not change it. Linear acceleration does change: an offset point sees extra $\\boldsymbol{\\omega}\\times(\\boldsymbol{\\omega}\\times\\mathbf{r}) + \\dot{\\boldsymbol{\\omega}}\\times\\mathbf{r}$ terms.",
+  "de": "Die Winkelgeschwindigkeit ist überall auf einem starren Körper gleich, daher ändert der Versatz sie nicht. Die lineare Beschleunigung ändert sich: Ein versetzter Punkt sieht zusätzliche Terme $\\boldsymbol{\\omega}\\times(\\boldsymbol{\\omega}\\times\\mathbf{r}) + \\dot{\\boldsymbol{\\omega}}\\times\\mathbf{r}$."
+ },
+ "294caeb02a6041bd": {
+  "en": "It is continuous and has no singularity. Yaw is also unobservable from an IMU without a magnetometer, and walking does not need it.",
+  "de": "Er ist stetig und hat keine Singularität. Außerdem ist das Gieren mit einer IMU ohne Magnetometer nicht beobachtbar, und das Gehen braucht es nicht."
+ },
+ "b0a943aff7b4b9be": {
+  "en": "$\\left({}^{\\text{base}}\\mathbf{T}_{\\text{camera}}\\,{}^{\\text{camera}}\\mathbf{T}_{\\text{optical}}\\right)^{-1}$, with each factor built from the joint's `xyz` and `rpy`.",
+  "de": "$\\left({}^{\\text{base}}\\mathbf{T}_{\\text{camera}}\\,{}^{\\text{camera}}\\mathbf{T}_{\\text{optical}}\\right)^{-1}$, wobei jeder Faktor aus `xyz` und `rpy` des Gelenks gebildet wird."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "6e2ec11d29bbca3f": {
+  "en": "K. M. Lynch and F. C. Park, *Modern Robotics: Mechanics, Planning, and Control*, Cambridge University Press, 2017, ch. 3 (rigid-body motions). [Free PDF](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)",
+  "de": "K. M. Lynch und F. C. Park, *Modern Robotics: Mechanics, Planning, and Control*, Cambridge University Press, 2017, Kap. 3 (Starrkörperbewegungen). [Kostenloses PDF](http://hades.mech.northwestern.edu/index.php/Modern_Robotics)"
+ },
+ "396aa733de620593": {
+  "en": "B. Siciliano, L. Sciavicco, L. Villani and G. Oriolo, *Robotics: Modelling, Planning and Control*, Springer, 2009, ch. 2.",
+  "de": "B. Siciliano, L. Sciavicco, L. Villani und G. Oriolo, *Robotics: Modelling, Planning and Control*, Springer, 2009, Kap. 2."
+ },
+ "ae5fe63a30d47f34": {
+  "en": "[REP-103: Standard Units of Measure and Coordinate Conventions](https://www.ros.org/reps/rep-0103.html) and [REP-105: Coordinate Frames for Mobile Platforms](https://www.ros.org/reps/rep-0105.html).",
+  "de": "[REP-103: Standard Units of Measure and Coordinate Conventions](https://www.ros.org/reps/rep-0103.html) und [REP-105: Coordinate Frames for Mobile Platforms](https://www.ros.org/reps/rep-0105.html)."
+ },
+ "40a30a47cc257727": {
+  "en": "J. Solà, \"Quaternion kinematics for the error-state Kalman filter\", arXiv:1711.02508, 2017.",
+  "de": "J. Solà, „Quaternion kinematics for the error-state Kalman filter“, arXiv:1711.02508, 2017."
+ },
+ "b730a073709c0e95": {
+  "en": "[ROS 2 and the robot description](../software/ros2.md) in this wiki.",
+  "de": "[ROS 2 und die Roboterbeschreibung](../software/ros2.md) in diesem Wiki."
+ }
+}

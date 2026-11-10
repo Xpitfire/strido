@@ -1,0 +1,706 @@
+{
+ "3cc05e6df44479cd": {
+  "en": "Assembly manual",
+  "de": "Montageanleitung"
+ },
+ "a67e7188724de50f": {
+  "en": "Generated from the verified CAD assembly by `strido_publish.manual`: every printed part, purchased part and fastener modelled in the CAD appears in exactly one parts box (cables are drawn in the steps that lay them; their lengths are in the [cut list](../verification/wiring.md#cut-list), consumables in the [shop](../shop.md)). Leg steps show the front-left leg; build all four (quantities are per leg). Highlighted parts are new in the step; arrows show where they go.",
+  "de": "Generiert aus der verifizierten CAD-Baugruppe durch `strido_publish.manual`: Jedes im CAD modellierte gedruckte Teil, Kaufteil und Befestigungselement erscheint in genau einer Teilebox (Kabel werden in den Schritten gezeichnet, in denen sie verlegt werden; ihre Längen stehen in der [Zuschnittliste](../verification/wiring.md#cut-list), Verbrauchsmaterial im [Shop](../shop.md)). Die Bein-Schritte zeigen das linke Vorderbein; bauen Sie alle vier (Mengen gelten pro Bein). Hervorgehobene Teile sind im Schritt neu; Pfeile zeigen, wohin sie gehören."
+ },
+ "7efed81d201961eb": {
+  "en": "Step 0 – Before you start",
+  "de": "Schritt 0 – Bevor Sie beginnen"
+ },
+ "a18e918789f42cb0": {
+  "en": "Print every part in the [print list](../../hardware/print/print_list.md) (easiest: the [print kit](../print-kit.md) package with the ready plates). Remove supports and brims; test-fit bearings (625ZZ, 633ZZ, 6805-2RS) and sleeves before assembly.",
+  "de": "Drucken Sie jedes Teil der [Druckliste](../../hardware/print/print_list.md) (am einfachsten: das [Druckpaket](../print-kit.md) mit den fertigen Druckplatten). Entfernen Sie Stützen und Brims; prüfen Sie die Passung von Lagern (625ZZ, 633ZZ, 6805-2RS) und Gleitlagerbuchsen vor der Montage."
+ },
+ "e465876f21636879": {
+  "en": "Wiring: every cable is drawn in the steps that install it; lengths are in the [cut list](../verification/wiring.md#cut-list) and the build order in [electronics › wiring harness](../electronics.md#wiring-harness). Set both UBECs to 6.0 V and measure them before any servo is connected.",
+  "de": "Verkabelung: Jedes Kabel ist in den Schritten gezeichnet, in denen es installiert wird; die Längen stehen in der [Zuschnittliste](../verification/wiring.md#cut-list) und die Baureihenfolge unter [Elektronik › Kabelbaum](../electronics.md#wiring-harness). Stellen Sie beide UBECs auf 6,0 V ein und messen Sie sie, bevor ein Servo angeschlossen wird."
+ },
+ "673764176302f126": {
+  "en": "**Centre all 12 servos** before fitting any horn. Bench set-up: XIAO (flashed with `firmware/strido_esp32s3`) on USB to your computer, PCA9685 on I²C with its OE pull-up, servo power from one UBEC at 6.0 V (or a 6 V bench supply) to the servo's red/black wires, signal to the PCA9685 channel it will use. Run `strido-cli --port <usb port> center` (1500 µs on every channel; works without the INA260 and stops with an error if the controller is not driving). A centred servo is the assembly reference: hip leg vertical, femur 45° backwards, knee crank 35°.",
+  "de": "**Zentrieren Sie alle 12 Servos**, bevor Sie ein Servohorn montieren. Aufbau auf der Werkbank: XIAO (geflasht mit `firmware/strido_esp32s3`) per USB am Computer, PCA9685 an I²C mit seinem OE-Pull-up, Servoversorgung aus einem UBEC mit 6,0 V (oder einem 6-V-Labornetzteil) an die roten/schwarzen Drähte des Servos, Signal an den PCA9685-Kanal, den er verwenden wird. Führen Sie `strido-cli --port <usb port> center` aus (1500 µs auf jedem Kanal; funktioniert ohne den INA260 und bricht mit einem Fehler ab, wenn der Controller nicht ansteuert). Ein zentrierter Servo ist die Montagereferenz: Hüfte Bein senkrecht, Femur 45° nach hinten, Kniekurbel 35°."
+ },
+ "35b9f0ad549b34ce": {
+  "en": "Tools: hex keys 1.5 / 2.0 / 2.5 mm, nut drivers 4.0 / 5.0 / 5.5 mm, flush cutters, soldering iron and solder, multimeter, crimp tool for Dupont, medium thread locker for screws into metal horns.",
+  "de": "Werkzeug: Innensechskantschlüssel 1,5 / 2,0 / 2,5 mm, Steckschlüssel 4,0 / 5,0 / 5,5 mm, Seitenschneider, Lötkolben und Lötzinn, Multimeter, Crimpzange für Dupont, mittelfeste Schraubensicherung für Schrauben in Metall-Servohörner."
+ },
+ "1ed2059f743dc5cd": {
+  "en": "Screws into printed holes marked *self-tapping*: turn until snug, never to full torque. Metal-to-metal screws (horns): one drop of medium thread locker.",
+  "de": "Schrauben in gedruckte Löcher, die als *selbstschneidend* markiert sind: drehen, bis sie anliegen, nie mit vollem Drehmoment. Metall-Metall-Schrauben (Servohörner): ein Tropfen mittelfeste Schraubensicherung."
+ },
+ "d3dab1379cb04364": {
+  "en": "Step 1 – Prepare the electronics deck",
+  "de": "Schritt 1 – Elektronikdeck vorbereiten"
+ },
+ "d6688f7a0592265e": {
+  "en": "![Step 1](img/step_01.png)",
+  "de": "![Schritt 1](img/step_01.png)"
+ },
+ "e6dd4f4ba6629cc8": {
+  "en": "<tr><td><img src=\"./img/parts/electronics_deck.png\" width=\"56\"></td><td><b>1×</b></td><td>Electronics deck (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/electronics_deck.png\" width=\"56\"></td><td><b>1×</b></td><td>Elektronikdeck (gedruckt)</td></tr>"
+ },
+ "6d674852a56aa50b": {
+  "en": "<tr><td><img src=\"./img/parts/adafruit_lsm6dsox.png\" width=\"56\"></td><td><b>1×</b></td><td>LSM6DSOX IMU</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/adafruit_lsm6dsox.png\" width=\"56\"></td><td><b>1×</b></td><td>LSM6DSOX-IMU</td></tr>"
+ },
+ "f5c3b5949262c713": {
+  "en": "<tr><td><img src=\"./img/parts/iso4032_m2_5.png\" width=\"56\"></td><td><b>2×</b></td><td>M2.5 hex nut (ISO 4032)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/iso4032_m2_5.png\" width=\"56\"></td><td><b>2×</b></td><td>M2.5-Sechskantmutter (ISO 4032)</td></tr>"
+ },
+ "2af64e23c73c6a79": {
+  "en": "<tr><td><img src=\"./img/parts/iso4762_m2_5x5.png\" width=\"56\"></td><td><b>10×</b></td><td>M2.5 × 5 socket head screw (ISO 4762)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/iso4762_m2_5x5.png\" width=\"56\"></td><td><b>10×</b></td><td>M2.5 × 5 Zylinderschraube mit Innensechskant (ISO 4762)</td></tr>"
+ },
+ "625e199ce03bf2d8": {
+  "en": "<tr><td><img src=\"./img/parts/iso4762_m2x5.png\" width=\"56\"></td><td><b>3×</b></td><td>M2 × 5 socket head screw (ISO 4762)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/iso4762_m2x5.png\" width=\"56\"></td><td><b>3×</b></td><td>M2 × 5 Zylinderschraube mit Innensechskant (ISO 4762)</td></tr>"
+ },
+ "4ebd87c5aacf6ad1": {
+  "en": "<tr><td><img src=\"./img/parts/standoff_m2_5_ff_6.png\" width=\"56\"></td><td><b>10×</b></td><td>M2.5 × 6 stand-off F-F (brass)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/standoff_m2_5_ff_6.png\" width=\"56\"></td><td><b>10×</b></td><td>M2.5 × 6 Abstandsbolzen I-I (Messing)</td></tr>"
+ },
+ "154884d7b295c034": {
+  "en": "<tr><td><img src=\"./img/parts/standoff_m2_ff_8.png\" width=\"56\"></td><td><b>3×</b></td><td>M2 × 8 stand-off F-F (brass)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/standoff_m2_ff_8.png\" width=\"56\"></td><td><b>3×</b></td><td>M2 × 8 Abstandsbolzen I-I (Messing)</td></tr>"
+ },
+ "2d16771a85f77333": {
+  "en": "Press the LSM6DSOX IMU into its pocket (chip side up, STEMMA connectors towards the rear) and fix it with two M2.5 × 6 screws from the top and M2.5 nuts underneath.",
+  "de": "Drücken Sie die LSM6DSOX-IMU in ihre Tasche (Chipseite oben, STEMMA-Stecker nach hinten) und befestigen Sie sie mit zwei M2.5 × 6 Schrauben von oben und M2.5-Muttern darunter."
+ },
+ "658eadd49212beac": {
+  "en": "Fix the stand-offs from below with M2.5 × 5 screws: 8 stand-offs M2.5, 6 mm long (Raspberry Pi 5 and PCA9685) and 2 more for the INA260.",
+  "de": "Befestigen Sie die Abstandsbolzen von unten mit M2.5 × 5 Schrauben: 8 Abstandsbolzen M2.5, 6 mm lang (Raspberry Pi 5 und PCA9685) und 2 weitere für den INA260."
+ },
+ "f6deafc2d8a84729": {
+  "en": "Fix 3 stand-offs M2, 8 mm long, for the 5 V regulator with M2 × 5 screws from below.",
+  "de": "Befestigen Sie 3 Abstandsbolzen M2, 8 mm lang, für den 5-V-Spannungsregler mit M2 × 5 Schrauben von unten."
+ },
+ "5ba2dd395cfbfc69": {
+  "en": "The screw heads sit in the counterbores under the deck. Do not over-tighten: the deck is 3 mm thick in the centre.",
+  "de": "Die Schraubenköpfe sitzen in den Senkungen unter dem Deck. Nicht zu fest anziehen: Das Deck ist in der Mitte 3 mm dick."
+ },
+ "59e5d88a29be2427": {
+  "en": "Step 2 – Chassis frame",
+  "de": "Schritt 2 – Rahmen des Chassis"
+ },
+ "4f853ceec36ec947": {
+  "en": "<tr><td><img src=\"./img/parts/inner_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Inner shoulder frame (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/inner_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Innerer Schulterrahmen (gedruckt)</td></tr>"
+ },
+ "213eda4261cc5d71": {
+  "en": "<tr><td><img src=\"./img/parts/side_body_beam.png\" width=\"56\"></td><td><b>2×</b></td><td>Side body beam (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/side_body_beam.png\" width=\"56\"></td><td><b>2×</b></td><td>Seitlicher Rumpfträger (gedruckt)</td></tr>"
+ },
+ "89c1cdc969e67a86": {
+  "en": "<tr><td><img src=\"./img/parts/iso4032_m3.png\" width=\"56\"></td><td><b>8×</b></td><td>M3 hex nut (ISO 4032)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/iso4032_m3.png\" width=\"56\"></td><td><b>8×</b></td><td>M3-Sechskantmutter (ISO 4032)</td></tr>"
+ },
+ "5f08d7de4e4c7f71": {
+  "en": "Slide the prepared deck into the grooves of both side body beams.",
+  "de": "Schieben Sie das vorbereitete Deck in die Nuten beider seitlicher Rumpfträger."
+ },
+ "c46c636796248d4b": {
+  "en": "Close the frame with the two inner shoulder frames: 8 × M3 × 10 screws with hex nuts (nut side inside the bay).",
+  "de": "Schließen Sie den Rahmen mit den beiden inneren Schulterrahmen: 8 × M3 × 10 Schrauben mit Sechskantmuttern (Mutterseite innen im Schacht)."
+ },
+ "2aeeeca68d6b40a1": {
+  "en": "Check that the frame sits flat on the table and the deck cannot move.",
+  "de": "Prüfen Sie, dass der Rahmen flach auf dem Tisch liegt und sich das Deck nicht bewegen kann."
+ },
+ "a2d213d50aa4939f": {
+  "en": "Step 3 – Hip servos",
+  "de": "Schritt 3 – Hüftservos"
+ },
+ "0e596087d624b03f": {
+  "en": "<tr><td><img src=\"./img/parts/servo_spt5435lv.png\" width=\"56\"></td><td><b>4×</b></td><td>Servo SPT5435LV-180W</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_spt5435lv.png\" width=\"56\"></td><td><b>4×</b></td><td>Servo SPT5435LV-180W</td></tr>"
+ },
+ "7abb5c5423217bbe": {
+  "en": "Centre all twelve servos before mounting any horn or servo (see Step 0).",
+  "de": "Zentrieren Sie alle zwölf Servos, bevor Sie ein Servohorn oder einen Servo montieren (siehe Schritt 0)."
+ },
+ "30d5dd6312334902": {
+  "en": "Insert the four hip servos through the inner shoulder frames from the bay side; output shafts point outwards (front pair to the front, rear pair to the rear).",
+  "de": "Setzen Sie die vier Hüftservos von der Schachtseite durch die inneren Schulterrahmen ein; die Abtriebswellen zeigen nach außen (vorderes Paar nach vorne, hinteres Paar nach hinten)."
+ },
+ "a6e88edf4e9c8f37": {
+  "en": "Fix each servo with 4 × M3 × 10 screws and hex nuts through the servo ears (16 in total).",
+  "de": "Befestigen Sie jeden Servo mit 4 × M3 × 10 Schrauben und Sechskantmuttern durch die Servolaschen (insgesamt 16)."
+ },
+ "e39dd7d64e771a9f": {
+  "en": "Route the servo leads into the bay, they will run to the front and rear cavities later.",
+  "de": "Führen Sie die Servokabel in den Schacht, sie laufen später zum vorderen und hinteren Hohlraum."
+ },
+ "b1b9954395c09df1": {
+  "en": "Step 4 – Hip bearings and shoulder frames",
+  "de": "Schritt 4 – Hüftlager und Schulterrahmen"
+ },
+ "fea50c1dbc5a57c3": {
+  "en": "<tr><td><img src=\"./img/parts/lower_shoulder_frame_front.png\" width=\"56\"></td><td><b>1×</b></td><td>Lower shoulder frame front (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/lower_shoulder_frame_front.png\" width=\"56\"></td><td><b>1×</b></td><td>Unterer Schulterrahmen vorne (gedruckt)</td></tr>"
+ },
+ "a5ec4f06fb8b2259": {
+  "en": "<tr><td><img src=\"./img/parts/lower_shoulder_frame_rear.png\" width=\"56\"></td><td><b>1×</b></td><td>Lower shoulder frame rear (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/lower_shoulder_frame_rear.png\" width=\"56\"></td><td><b>1×</b></td><td>Unterer Schulterrahmen hinten (gedruckt)</td></tr>"
+ },
+ "039b276bae1ffb0c": {
+  "en": "<tr><td><img src=\"./img/parts/outer_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Outer shoulder frame (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/outer_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Äußerer Schulterrahmen (gedruckt)</td></tr>"
+ },
+ "87b87a2112a2a733": {
+  "en": "<tr><td><img src=\"./img/parts/upper_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Upper shoulder frame (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/upper_shoulder_frame.png\" width=\"56\"></td><td><b>2×</b></td><td>Oberer Schulterrahmen (gedruckt)</td></tr>"
+ },
+ "47500acdee70e79d": {
+  "en": "<tr><td><img src=\"./img/parts/bearing_625zz.png\" width=\"56\"></td><td><b>4×</b></td><td>Ball bearing 625ZZ</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/bearing_625zz.png\" width=\"56\"></td><td><b>4×</b></td><td>Kugellager 625ZZ</td></tr>"
+ },
+ "92595f63a8d1be52": {
+  "en": "Press two 625ZZ bearings into each outer shoulder frame (4 in total).",
+  "de": "Drücken Sie zwei 625ZZ-Lager in jeden äußeren Schulterrahmen (insgesamt 4)."
+ },
+ "6d106b8191562e53": {
+  "en": "Assemble outer, upper and lower shoulder frames front and rear with 16 × M3 × 10 screws and hex nuts.",
+  "de": "Montieren Sie äußere, obere und untere Schulterrahmen vorne und hinten mit 16 × M3 × 10 Schrauben und Sechskantmuttern."
+ },
+ "fc9e08a8d3faf253": {
+  "en": "Use the Strido lower shoulder frames: `lower_shoulder_frame_front` and `_rear` have the extra pilot hole for the servo-bus holder.",
+  "de": "Verwenden Sie die unteren Schulterrahmen von Strido: `lower_shoulder_frame_front` und `_rear` haben das zusätzliche Vorbohrloch für den Servobus-Halter."
+ },
+ "5efb1937287f6909": {
+  "en": "Push M3 nuts into the nut pockets now, while they are reachable: 6 on top of the upper shoulder frames and 8 under the lower shoulder frames for the shell screws (Steps 21 and 22), and 2 more on top of the front upper shoulder frame for the camera base (Step 18).",
+  "de": "Drücken Sie jetzt M3-Muttern in die Muttertaschen, solange sie erreichbar sind: 6 oben auf den oberen Schulterrahmen und 8 unter den unteren Schulterrahmen für die Schalenschrauben (Schritte 21 und 22) sowie 2 weitere oben auf den vorderen oberen Schulterrahmen für die Kamerabasis (Schritt 18)."
+ },
+ "b4848e4c3be85dcc": {
+  "en": "Step 5 – Servo power bus and motion controller",
+  "de": "Schritt 5 – Servo-Strombus und Bewegungscontroller"
+ },
+ "fa50716e2f485f6f": {
+  "en": "<tr><td><img src=\"./img/parts/servo_bus_holder_front.png\" width=\"56\"></td><td><b>1×</b></td><td>Servo bus holder front (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_bus_holder_front.png\" width=\"56\"></td><td><b>1×</b></td><td>Servobus-Halter vorne (gedruckt)</td></tr>"
+ },
+ "909a7e332e9182f3": {
+  "en": "<tr><td><img src=\"./img/parts/servo_bus_holder_rear.png\" width=\"56\"></td><td><b>1×</b></td><td>Servo bus holder rear (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_bus_holder_rear.png\" width=\"56\"></td><td><b>1×</b></td><td>Servobus-Halter hinten (gedruckt)</td></tr>"
+ },
+ "2e2817ac954b3869": {
+  "en": "<tr><td><img src=\"./img/parts/seeed_xiao_esp32s3.png\" width=\"56\"></td><td><b>1×</b></td><td>Seeed XIAO ESP32-S3</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/seeed_xiao_esp32s3.png\" width=\"56\"></td><td><b>1×</b></td><td>Seeed XIAO ESP32-S3</td></tr>"
+ },
+ "7cb520a5d50f081c": {
+  "en": "<tr><td><img src=\"./img/parts/wago_221_415.png\" width=\"56\"></td><td><b>8×</b></td><td>WAGO 221-415</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/wago_221_415.png\" width=\"56\"></td><td><b>8×</b></td><td>WAGO 221-415</td></tr>"
+ },
+ "d505336c6ff9d2d5": {
+  "en": "Clip four WAGO 221-415 connectors into each servo-bus holder.",
+  "de": "Klipsen Sie vier WAGO-221-415-Klemmen in jeden Servobus-Halter."
+ },
+ "acdead8998cc9585": {
+  "en": "Screw each holder to its lower shoulder frame with one M3 × 12 screw (self-tapping into the printed pilot hole).",
+  "de": "Schrauben Sie jeden Halter mit einer M3 × 12 Schraube an seinen unteren Schulterrahmen (selbstschneidend in das gedruckte Vorbohrloch)."
+ },
+ "d5e60a852c200536": {
+  "en": "Place the XIAO ESP32-S3 in the front cavity, USB-C towards the bay (foam tape).",
+  "de": "Setzen Sie den XIAO ESP32-S3 in den vorderen Hohlraum, USB-C zum Schacht (Schaumklebeband)."
+ },
+ "babdd5470447529e": {
+  "en": "Step 6 – Servo UBECs",
+  "de": "Schritt 6 – Servo-UBECs"
+ },
+ "1aa251d4e89ddcc2": {
+  "en": "<tr><td><img src=\"./img/parts/hobbywing_ubec_10a.png\" width=\"56\"></td><td><b>2×</b></td><td>Hobbywing UBEC-10A</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/hobbywing_ubec_10a.png\" width=\"56\"></td><td><b>2×</b></td><td>Hobbywing UBEC-10A</td></tr>"
+ },
+ "eb023caea4108876": {
+  "en": "Leave both UBEC output jumpers open (6.0 V). Measure 6.0 V before any servo is connected.",
+  "de": "Lassen Sie beide UBEC-Ausgangs-Jumper offen (6,0 V). Messen Sie 6,0 V, bevor ein Servo angeschlossen wird."
+ },
+ "f3ebfed08e11945d": {
+  "en": "Foam-tape one UBEC into each side pocket next to the battery bay, standing on its long edge, leads towards the deck.",
+  "de": "Kleben Sie je einen UBEC mit Schaumklebeband in jede Seitentasche neben dem Akkuschacht, hochkant auf der langen Kante, Leitungen zum Deck."
+ },
+ "840ea9669c6f54f1": {
+  "en": "Step 7 – Boards on the deck",
+  "de": "Schritt 7 – Platinen auf dem Deck"
+ },
+ "1962bf4a734783a2": {
+  "en": "<tr><td><img src=\"./img/parts/adafruit_ina260.png\" width=\"56\"></td><td><b>1×</b></td><td>INA260 power monitor</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/adafruit_ina260.png\" width=\"56\"></td><td><b>1×</b></td><td>INA260-Power-Monitor</td></tr>"
+ },
+ "6ee5e70858a7d713": {
+  "en": "<tr><td><img src=\"./img/parts/adafruit_pca9685.png\" width=\"56\"></td><td><b>1×</b></td><td>PCA9685 servo driver</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/adafruit_pca9685.png\" width=\"56\"></td><td><b>1×</b></td><td>PCA9685-Servotreiber</td></tr>"
+ },
+ "0667c35956022c6e": {
+  "en": "<tr><td><img src=\"./img/parts/pololu_d36v50f5.png\" width=\"56\"></td><td><b>1×</b></td><td>Pololu D36V50F5 5 V regulator</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/pololu_d36v50f5.png\" width=\"56\"></td><td><b>1×</b></td><td>Pololu D36V50F5 5-V-Spannungsregler</td></tr>"
+ },
+ "53086fc44b08eb58": {
+  "en": "<tr><td><img src=\"./img/parts/pololu_power_switch_hp.png\" width=\"56\"></td><td><b>1×</b></td><td>Pololu #2813 pushbutton switch</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/pololu_power_switch_hp.png\" width=\"56\"></td><td><b>1×</b></td><td>Pololu #2813 Tasterschalter</td></tr>"
+ },
+ "7ec2e53f32135d7b": {
+  "en": "<tr><td><img src=\"./img/parts/raspberry_pi_5.png\" width=\"56\"></td><td><b>1×</b></td><td>Raspberry Pi 5 + Active Cooler</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/raspberry_pi_5.png\" width=\"56\"></td><td><b>1×</b></td><td>Raspberry Pi 5 + Active Cooler</td></tr>"
+ },
+ "7915821f7e45557a": {
+  "en": "Raspberry Pi 5 with Active Cooler: ports to the front, 4 × M2.5 × 5 screws.",
+  "de": "Raspberry Pi 5 mit Active Cooler: Anschlüsse nach vorne, 4 × M2.5 × 5 Schrauben."
+ },
+ "aae32a17c1c306b7": {
+  "en": "PCA9685: first solder the 2.2 kΩ OE pull-up (OE to VCC on the header, wiring W20), then mount it with the servo headers towards the right side, 4 × M2.5 × 5 screws. Leave its V+ terminal unconnected.",
+  "de": "PCA9685: Löten Sie zuerst den 2,2-kΩ-OE-Pull-up (OE an VCC an der Stiftleiste, Verkabelung W20), montieren Sie ihn dann mit den Servo-Stiftleisten zur rechten Seite, 4 × M2.5 × 5 Schrauben. Lassen Sie seine V+-Klemme unbeschaltet."
+ },
+ "39d905e41f1ec0bb": {
+  "en": "INA260 (bridge A0 first, address 0x41): 2 × M2.5 × 5 screws. Pololu D36V50F5: 3 × M2 × 5 screws.",
+  "de": "INA260 (zuerst A0 brücken, Adresse 0x41): 2 × M2.5 × 5 Schrauben. Pololu D36V50F5: 3 × M2 × 5 Schrauben."
+ },
+ "5a0ae149e337eff2": {
+  "en": "Pololu pushbutton switch on foam tape in the right side strip, its two 5 mm terminal blocks soldered on (VIN/GND and VOUT/GND).",
+  "de": "Pololu-Tasterschalter auf Schaumklebeband im rechten Seitenstreifen, seine zwei 5-mm-Schraubklemmen angelötet (VIN/GND und VOUT/GND)."
+ },
+ "c98f75840384c1ec": {
+  "en": "Step 8 – Leg servo module (×4 legs)",
+  "de": "Schritt 8 – Bein-Servomodul (×4 Beine)"
+ },
+ "8a446f89c8019019": {
+  "en": "<tr><td><img src=\"./img/parts/hip_bearing_pin.png\" width=\"56\"></td><td><b>1×</b></td><td>Hip bearing pin (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/hip_bearing_pin.png\" width=\"56\"></td><td><b>1×</b></td><td>Hüftlagerbolzen (gedruckt)</td></tr>"
+ },
+ "35df400e4ad27c3f": {
+  "en": "<tr><td><img src=\"./img/parts/left_servo_mount.png\" width=\"56\"></td><td><b>1×</b></td><td>Left servo mount (printed) – legs RR only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/left_servo_mount.png\" width=\"56\"></td><td><b>1×</b></td><td>Linke Servohalterung (gedruckt) – nur Bein RR</td></tr>"
+ },
+ "fe48c3d1c0bec169": {
+  "en": "<tr><td><img src=\"./img/parts/left_servo_mount_fl.png\" width=\"56\"></td><td><b>1×</b></td><td>Left servo mount fl (printed) – legs FL only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/left_servo_mount_fl.png\" width=\"56\"></td><td><b>1×</b></td><td>Linke Servohalterung fl (gedruckt) – nur Bein FL</td></tr>"
+ },
+ "c38928bb6bd0cdf5": {
+  "en": "<tr><td><img src=\"./img/parts/right_servo_mount.png\" width=\"56\"></td><td><b>1×</b></td><td>Right servo mount (printed) – legs RL only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/right_servo_mount.png\" width=\"56\"></td><td><b>1×</b></td><td>Rechte Servohalterung (gedruckt) – nur Bein RL</td></tr>"
+ },
+ "e3ec7cd763a11285": {
+  "en": "<tr><td><img src=\"./img/parts/right_servo_mount_fr.png\" width=\"56\"></td><td><b>1×</b></td><td>Right servo mount fr (printed) – legs FR only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/right_servo_mount_fr.png\" width=\"56\"></td><td><b>1×</b></td><td>Rechte Servohalterung fr (gedruckt) – nur Bein FR</td></tr>"
+ },
+ "66bf6e6a118fa582": {
+  "en": "<tr><td><img src=\"./img/parts/servo_mount_top_bracket.png\" width=\"56\"></td><td><b>1×</b></td><td>Servo mount top bracket (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_mount_top_bracket.png\" width=\"56\"></td><td><b>1×</b></td><td>Obere Halteklammer der Servohalterung (gedruckt)</td></tr>"
+ },
+ "64213c6041386778": {
+  "en": "Build one leg at a time; the drawing shows the front-left leg. Front-left and rear-right legs use the *left* servo mount, front-right and rear-left the *right* one. The front legs use the Strido variants `left_servo_mount_fl` / `right_servo_mount_fr` (extra hip-pivot pilot).",
+  "de": "Bauen Sie ein Bein nach dem anderen; die Zeichnung zeigt das linke Vorderbein. Linkes Vorder- und rechtes Hinterbein verwenden die *linke* Servohalterung, rechtes Vorder- und linkes Hinterbein die *rechte*. Die Vorderbeine verwenden die Strido-Varianten `left_servo_mount_fl` / `right_servo_mount_fr` (zusätzliches Vorbohrloch für den Hüftdrehpunkt)."
+ },
+ "0940c409a472a690": {
+  "en": "Mount the thigh servo and the knee servo in the servo mount with 8 × M3 × 10 screws through the servo ears, then close it with the top bracket: 2 × M3 × 20 screws.",
+  "de": "Montieren Sie den Oberschenkelservo und den Knieservo mit 8 × M3 × 10 Schrauben durch die Servolaschen in der Servohalterung und schließen Sie sie dann mit der oberen Halteklammer: 2 × M3 × 20 Schrauben."
+ },
+ "11e73dcb40dce90c": {
+  "en": "Press the hip bearing pin into the mount; the hip disc horn is fitted in Step 13.",
+  "de": "Drücken Sie den Hüftlagerbolzen in die Halterung; das Hüft-Scheibenhorn wird in Schritt 13 montiert."
+ },
+ "8a29ebb4806f3571": {
+  "en": "Step 9 – Thigh (×4 legs)",
+  "de": "Schritt 9 – Oberschenkel (×4 Beine)"
+ },
+ "c6c0d6a0941181af": {
+  "en": "<tr><td><img src=\"./img/parts/femur.png\" width=\"56\"></td><td><b>1×</b></td><td>Femur (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/femur.png\" width=\"56\"></td><td><b>1×</b></td><td>Femur (gedruckt)</td></tr>"
+ },
+ "65de29da45b70df6": {
+  "en": "<tr><td><img src=\"./img/parts/femur_servo_connector.png\" width=\"56\"></td><td><b>1×</b></td><td>Femur servo connector (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/femur_servo_connector.png\" width=\"56\"></td><td><b>1×</b></td><td>Femur-Servoverbinder (gedruckt)</td></tr>"
+ },
+ "50dec271d56d1f89": {
+  "en": "<tr><td><img src=\"./img/parts/servo_disc_horn_25t.png\" width=\"56\"></td><td><b>1×</b></td><td>25T aluminium disc horn</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_disc_horn_25t.png\" width=\"56\"></td><td><b>1×</b></td><td>25T-Aluminium-Scheibenhorn</td></tr>"
+ },
+ "7d06c05ec2328e82": {
+  "en": "Fix the femur and the femur servo connector to a 25T aluminium disc horn with 4 × M3 × 20 screws.",
+  "de": "Befestigen Sie den Femur und den Femur-Servoverbinder mit 4 × M3 × 20 Schrauben an einem 25T-Aluminium-Scheibenhorn."
+ },
+ "06eaae5f6c2bc373": {
+  "en": "With the thigh servo centred, push the horn on the spline with the femur pointing 45° backwards (assembly reference) and fix it with the M3 × 8 centre screw.",
+  "de": "Stecken Sie bei zentriertem Oberschenkelservo das Servohorn so auf die Verzahnung, dass der Femur 45° nach hinten zeigt (Montagereferenz), und befestigen Sie es mit der M3 × 8 Zentralschraube."
+ },
+ "bc5a164d47ef0aed": {
+  "en": "Step 10 – Knee drive crank (×4 legs)",
+  "de": "Schritt 10 – Kniekurbel (×4 Beine)"
+ },
+ "04dc265fd7d590ab": {
+  "en": "<tr><td><img src=\"./img/parts/left_shoulder.png\" width=\"56\"></td><td><b>1×</b></td><td>Left shoulder (printed) – legs FL, RL only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/left_shoulder.png\" width=\"56\"></td><td><b>1×</b></td><td>Linke Schulter (gedruckt) – nur Beine FL, RL</td></tr>"
+ },
+ "f837966b81679251": {
+  "en": "<tr><td><img src=\"./img/parts/right_shoulder.png\" width=\"56\"></td><td><b>1×</b></td><td>Right shoulder (printed) – legs FR, RR only</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/right_shoulder.png\" width=\"56\"></td><td><b>1×</b></td><td>Rechte Schulter (gedruckt) – nur Beine FR, RR</td></tr>"
+ },
+ "191fcfd634e9ed55": {
+  "en": "<tr><td><img src=\"./img/parts/bearing_6805_2rs.png\" width=\"56\"></td><td><b>1×</b></td><td>Ball bearing 6805-2RS</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/bearing_6805_2rs.png\" width=\"56\"></td><td><b>1×</b></td><td>Kugellager 6805-2RS</td></tr>"
+ },
+ "912c25faff2f9c60": {
+  "en": "<tr><td><img src=\"./img/parts/servo_arm_horn_25t.png\" width=\"56\"></td><td><b>1×</b></td><td>25T aluminium arm horn</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/servo_arm_horn_25t.png\" width=\"56\"></td><td><b>1×</b></td><td>25T-Aluminium-Armhorn</td></tr>"
+ },
+ "f80103873b40d9d0": {
+  "en": "Press the 6805-2RS bearing into the shoulder crank (left or right version per leg) and fit it over the femur servo connector: it turns freely about the thigh axis.",
+  "de": "Drücken Sie das 6805-2RS-Lager in die Schulterkurbel (linke oder rechte Version je Bein) und setzen Sie sie über den Femur-Servoverbinder: Sie dreht sich frei um die Oberschenkelachse."
+ },
+ "750189a1cc82aaa3": {
+  "en": "With the knee servo centred, push the 25T aluminium arm horn on its spline at 35° (assembly reference) and fix it with the M3 × 8 centre screw.",
+  "de": "Stecken Sie bei zentriertem Knieservo das 25T-Aluminium-Armhorn bei 35° auf seine Verzahnung (Montagereferenz) und befestigen Sie es mit der M3 × 8 Zentralschraube."
+ },
+ "bfe0b02fd20bd5cf": {
+  "en": "Step 11 – Lower leg (×4 legs)",
+  "de": "Schritt 11 – Unterschenkel (×4 Beine)"
+ },
+ "fb3c5e53c641f8db": {
+  "en": "<tr><td><img src=\"./img/parts/foot_spacer.png\" width=\"56\"></td><td><b>1×</b></td><td>Foot spacer (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/foot_spacer.png\" width=\"56\"></td><td><b>1×</b></td><td>Fuß-Distanzstück (gedruckt)</td></tr>"
+ },
+ "ff54bb724089f81f": {
+  "en": "<tr><td><img src=\"./img/parts/inner_tibia.png\" width=\"56\"></td><td><b>1×</b></td><td>Inner tibia (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/inner_tibia.png\" width=\"56\"></td><td><b>1×</b></td><td>Innere Tibia (gedruckt)</td></tr>"
+ },
+ "60165669a0413c1e": {
+  "en": "<tr><td><img src=\"./img/parts/outer_tibia.png\" width=\"56\"></td><td><b>1×</b></td><td>Outer tibia (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/outer_tibia.png\" width=\"56\"></td><td><b>1×</b></td><td>Äußere Tibia (gedruckt)</td></tr>"
+ },
+ "afa3c21435ea3759": {
+  "en": "<tr><td><img src=\"./img/parts/din985_m3.png\" width=\"56\"></td><td><b>3×</b></td><td>M3 lock nut (nylon insert) (DIN 985)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/din985_m3.png\" width=\"56\"></td><td><b>3×</b></td><td>M3-Sicherungsmutter (Nylonring) (DIN 985)</td></tr>"
+ },
+ "c6f0248b4e4af30f": {
+  "en": "<tr><td><img src=\"./img/parts/iso7089_m3.png\" width=\"56\"></td><td><b>2×</b></td><td>M3 washer (ISO 7089)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/iso7089_m3.png\" width=\"56\"></td><td><b>2×</b></td><td>M3-Unterlegscheibe (ISO 7089)</td></tr>"
+ },
+ "6effb12cf6412c55": {
+  "en": "Press two 633ZZ bearings into the tibia halves.",
+  "de": "Drücken Sie zwei 633ZZ-Lager in die Tibia-Hälften."
+ },
+ "5c758fbe2053e035": {
+  "en": "Join inner and outer tibia with 2 × M3 × 12 screws and lock nuts; clamp the foot spacer with the M3 × 20 screw and lock nut.",
+  "de": "Verbinden Sie innere und äußere Tibia mit 2 × M3 × 12 Schrauben und Sicherungsmuttern; klemmen Sie das Fuß-Distanzstück mit der M3 × 20 Schraube und Sicherungsmutter."
+ },
+ "ceac5d962b819973": {
+  "en": "Fit the knee axle: 2 × M3 × 10 screws with washers from both sides through the femur.",
+  "de": "Montieren Sie die Knieachse: 2 × M3 × 10 Schrauben mit Unterlegscheiben von beiden Seiten durch den Femur."
+ },
+ "c09e1684e061852a": {
+  "en": "Step 12 – Knee linkage (×4 legs)",
+  "de": "Schritt 12 – Knie-Koppelgetriebe (×4 Beine)"
+ },
+ "6cee4c00935c1018": {
+  "en": "<tr><td><img src=\"./img/parts/short_link.png\" width=\"56\"></td><td><b>1×</b></td><td>Short link (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/short_link.png\" width=\"56\"></td><td><b>1×</b></td><td>Kurze Koppel (gedruckt)</td></tr>"
+ },
+ "c98bba73916d00df": {
+  "en": "<tr><td><img src=\"./img/parts/stiff_long_link.png\" width=\"56\"></td><td><b>1×</b></td><td>Stiff long link (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/stiff_long_link.png\" width=\"56\"></td><td><b>1×</b></td><td>Steife lange Koppel (gedruckt)</td></tr>"
+ },
+ "468db7a12769870e": {
+  "en": "<tr><td><img src=\"./img/parts/sleeve_bearing_3x5x5_pair.png\" width=\"56\"></td><td><b>4×</b></td><td>Sleeve bearings 3×5×5 (pair)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/sleeve_bearing_3x5x5_pair.png\" width=\"56\"></td><td><b>4×</b></td><td>Gleitlager 3×5×5 (Paar)</td></tr>"
+ },
+ "d6bdd2477d4e2311": {
+  "en": "Press two 3 × 5 × 5 sleeve bearings into every link eye (8 per leg).",
+  "de": "Drücken Sie zwei 3 × 5 × 5 Gleitlager in jedes Koppelauge (8 pro Bein)."
+ },
+ "7e56d13b0b940b42": {
+  "en": "Connect the links as drawn: 2 × M3 × 25 crank pins through the shoulder crank, the M3 × 16 screw with washer at the arm horn, and 1 × M3 × 25 with a lock nut at the tibia.",
+  "de": "Verbinden Sie die Koppeln wie gezeichnet: 2 × M3 × 25 Kurbelbolzen durch die Schulterkurbel, die M3 × 16 Schraube mit Unterlegscheibe am Armhorn und 1 × M3 × 25 mit Sicherungsmutter an der Tibia."
+ },
+ "67f78dfb570e3333": {
+  "en": "Tighten the lock nuts only until the joint is free of play: the links must swing under their own weight.",
+  "de": "Ziehen Sie die Sicherungsmuttern nur an, bis das Gelenk spielfrei ist: Die Koppeln müssen unter ihrem Eigengewicht schwingen."
+ },
+ "e199082db8efc7ef": {
+  "en": "Step 13 – Mount the legs",
+  "de": "Schritt 13 – Beine montieren"
+ },
+ "ff56912fe0d2632d": {
+  "en": "Fix a disc horn to each leg module with 2 × M3 × 8 screws.",
+  "de": "Befestigen Sie an jedem Beinmodul ein Scheibenhorn mit 2 × M3 × 8 Schrauben."
+ },
+ "f74b0c931792331e": {
+  "en": "With the hip servo centred, push the leg on the hip servo spline (leg vertical) and fix it with the M3 × 8 centre screw.",
+  "de": "Stecken Sie bei zentriertem Hüftservo das Bein auf die Verzahnung des Hüftservos (Bein senkrecht) und befestigen Sie es mit der M3 × 8 Zentralschraube."
+ },
+ "9e1ad048c935d046": {
+  "en": "Insert the hip pivot screw (M3 × 10 with washer) through the 625 bearing into the hip bearing pin.",
+  "de": "Setzen Sie die Hüftdrehpunktschraube (M3 × 10 mit Unterlegscheibe) durch das 625-Lager in den Hüftlagerbolzen."
+ },
+ "640f36fb69efc74e": {
+  "en": "Step 14 – Power entry",
+  "de": "Schritt 14 – Stromeingang"
+ },
+ "781bc94360d2af7f": {
+  "en": "<tr><td><img src=\"./img/parts/fuse_holder_ato.png\" width=\"56\"></td><td><b>1×</b></td><td>ATO fuse holder</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/fuse_holder_ato.png\" width=\"56\"></td><td><b>1×</b></td><td>ATO-Sicherungshalter</td></tr>"
+ },
+ "2aca1ed635a80700": {
+  "en": "<tr><td><img src=\"./img/parts/xt60h_female.png\" width=\"56\"></td><td><b>1×</b></td><td>XT60H female</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/xt60h_female.png\" width=\"56\"></td><td><b>1×</b></td><td>XT60H Buchse</td></tr>"
+ },
+ "093f2927ba1c1c5c": {
+  "en": "Cut every wire to its length in the cut list ([wiring check](../verification/wiring.md#cut-list)); strip, tin and heat-shrink every solder joint.",
+  "de": "Schneiden Sie jeden Draht auf seine Länge laut Zuschnittliste zu ([Verkabelungsprüfung](../verification/wiring.md#cut-list)); abisolieren, verzinnen und jede Lötstelle mit Schrumpfschlauch versehen."
+ },
+ "56385e0ba8511be8": {
+  "en": "Battery input: solder W01 (14 AWG red) and W04 (14 AWG black) to an XT60H with sockets (check the contact rule in [electronics](../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery)) and lay it in the pocket beside the battery under the deck, hood towards the rear. Slide spiral wrap over W01 (it is unfused).",
+  "de": "Akkueingang: Löten Sie W01 (14 AWG rot) und W04 (14 AWG schwarz) an eine XT60H mit Buchsenkontakten (prüfen Sie die Kontaktregel unter [Elektronik](../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery)) und legen Sie sie in die Tasche neben dem Akku unter dem Deck, Haube nach hinten. Schieben Sie Spiralschlauch über W01 (es ist ungesichert)."
+ },
+ "d6a7aeb5f8332819": {
+  "en": "Ground star beside it: splice W04 to the black inputs of both UBECs (14 AWG) and to the logic ground (18 AWG black, on to the switch GND).",
+  "de": "Masse-Sternpunkt daneben: Spleißen Sie W04 an die schwarzen Eingänge beider UBECs (14 AWG) und an die Logikmasse (18 AWG schwarz, weiter zum GND des Schalters)."
+ },
+ "6405a8f44761ff07": {
+  "en": "Main fuse: trim both leads of a 25 A in-line holder to 20 mm, splice W01 to one and W02 to the other, lay the holder on the rear WAGO bus with its leads out through the inner and outer frame openings and tie it to the upper shoulder frame. No fuse yet.",
+  "de": "Hauptsicherung: Kürzen Sie beide Leitungen eines 25-A-Inline-Halters auf 20 mm, spleißen Sie W01 an die eine und W02 an die andere, legen Sie den Halter auf den hinteren WAGO-Bus, die Leitungen durch die Öffnungen des inneren und äußeren Rahmens nach außen, und binden Sie ihn am oberen Schulterrahmen fest. Noch keine Sicherung einsetzen."
+ },
+ "4ad39f25b0c09678": {
+  "en": "W02 and W03 (to both UBEC red inputs, spliced under the deck) end behind the rear outer frame: they are soldered to the arming jack in Step 19. W09 (18 AWG red, logic feed) runs from there through the rear cavity and over the deck to the switch VIN; its other end waits for the logic fuse holder (Step 19).",
+  "de": "W02 und W03 (zu beiden roten UBEC-Eingängen, unter dem Deck gespleißt) enden hinter dem hinteren äußeren Rahmen: Sie werden in Schritt 19 an den Arming-Port gelötet. W09 (18 AWG rot, Logikversorgung) läuft von dort durch den hinteren Hohlraum und über das Deck zum VIN des Schalters; sein anderes Ende wartet auf den Logik-Sicherungshalter (Schritt 19)."
+ },
+ "690272a2a99ca573": {
+  "en": "Step 15 – Servo leads and servo bus",
+  "de": "Schritt 15 – Servokabel und Servobus"
+ },
+ "f786d43a4e2e67a9": {
+  "en": "Thigh and knee servo leads: tie each to its servo mount plate at the marked point (close to the hip axis), leave the free loop (front: 30 mm thigh, 32 mm knee; rear: 22 mm; it takes up the hip motion) and tie it again at the shoulder frame (thigh) or the bus holder (knee).",
+  "de": "Servokabel von Oberschenkel und Knie: Binden Sie jedes an der markierten Stelle (nahe der Hüftachse) an seiner Servohalterungsplatte fest, lassen Sie die freie Schlaufe (vorne: 30 mm Oberschenkel, 32 mm Knie; hinten: 22 mm; sie nimmt die Hüftbewegung auf) und binden Sie es erneut am Schulterrahmen (Oberschenkel) oder am Bus-Halter (Knie) fest."
+ },
+ "cd3e4d476cc4391a": {
+  "en": "Unclip each WAGO pair from its holder before clamping (the XIAO platform blocks the levers in bay 0). At the tie peel the red and brown wires off the lead, cut them to the cut-list length, strip 11 mm and clamp them into the leg's WAGO pair: red into the upper (V+) connector, brown into the lower (GND), ports hip 1, thigh 2, knee 3; refit the pair. Hip servo leads split at the inner frame opening.",
+  "de": "Klipsen Sie jedes WAGO-Paar vor dem Klemmen aus seinem Halter (die XIAO-Plattform blockiert die Hebel in Schacht 0). Lösen Sie am Kabelbinder die roten und braunen Drähte vom Servokabel, schneiden Sie sie auf die Länge laut Zuschnittliste, isolieren Sie 11 mm ab und klemmen Sie sie in das WAGO-Paar des Beins: Rot in die obere Klemme (V+), Braun in die untere (GND), Anschlüsse Hüfte 1, Oberschenkel 2, Knie 3; setzen Sie das Paar wieder ein. Die Servokabel der Hüfte teilen sich an der Öffnung des inneren Rahmens."
+ },
+ "a1fbdbb71b415daf": {
+  "en": "Cut the orange signal wire to its cut-list length (measured from the tie), crimp a female Dupont contact, push it into a 1-pin housing and plug it onto the PWM pin of its PCA9685 channel (channel map in [electronics](../electronics.md#pin-maps)).",
+  "de": "Schneiden Sie den orangen Signaldraht auf seine Länge laut Zuschnittliste (gemessen ab dem Kabelbinder), crimpen Sie einen Dupont-Buchsenkontakt, schieben Sie ihn in ein 1-poliges Gehäuse und stecken Sie es auf den PWM-Pin seines PCA9685-Kanals (Kanalbelegung unter [Elektronik](../electronics.md#pin-maps))."
+ },
+ "b05259a53c1b0f13": {
+  "en": "UBEC outputs (W05 front, W06 rear): extend with 18 AWG into port 0 of bay 0. Jumpers W07/W08: 18 AWG from port 4 of bay 0 to port 0 of bay 1, V+ and GND separately along the WAGO faces.",
+  "de": "UBEC-Ausgänge (W05 vorne, W06 hinten): mit 18 AWG verlängern in Anschluss 0 von Schacht 0. Brücken W07/W08: 18 AWG von Anschluss 4 in Schacht 0 zu Anschluss 0 in Schacht 1, V+ und GND getrennt entlang der WAGO-Stirnseiten."
+ },
+ "038fe2d8a6878931": {
+  "en": "Step 16 – Logic and signal wiring",
+  "de": "Schritt 16 – Logik- und Signalverkabelung"
+ },
+ "02b50b293e07f66c": {
+  "en": "18 AWG: switch VOUT to INA260 VIN+ (W10, red), INA260 VIN- to the regulator VIN (W11, red), switch GND to the regulator GND (W24, black; the INA260 terminal block takes only VIN+ and VIN-).",
+  "de": "18 AWG: Schalter VOUT an INA260 VIN+ (W10, rot), INA260 VIN- an den VIN des Spannungsreglers (W11, rot), Schalter GND an den GND des Spannungsreglers (W24, schwarz; die Schraubklemme des INA260 nimmt nur VIN+ und VIN- auf)."
+ },
+ "40027868de04e4e8": {
+  "en": "W12: four 22 AWG wires from the regulator VOUT/GND, Dupont crimps at the Pi end. Leave them unplugged: they go onto the Pi header only after the supply check in Step 20.",
+  "de": "W12: vier 22-AWG-Drähte vom VOUT/GND des Spannungsreglers, Dupont-Crimpkontakte am Pi-Ende. Lassen Sie sie abgesteckt: Sie kommen erst nach der Versorgungsprüfung in Schritt 20 auf die Pi-Stiftleiste."
+ },
+ "776c6a1082d4efb5": {
+  "en": "I²C: W17 (3V3, GND, SDA, SCL) and W20 (D3 to OE) are 22 AWG wires soldered to the XIAO pins and crimped (Dupont) for the PCA9685 left header. STEMMA QT cables: PCA9685 right header to the IMU (W18), IMU to the INA260 header (W19).",
+  "de": "I²C: W17 (3V3, GND, SDA, SCL) und W20 (D3 an OE) sind 22-AWG-Drähte, an die XIAO-Pins gelötet und für die linke PCA9685-Stiftleiste gecrimpt (Dupont). STEMMA-QT-Kabel: rechte PCA9685-Stiftleiste zur IMU (W18), IMU zum INA260-Anschluss (W19)."
+ },
+ "cb006a59901ca3ca": {
+  "en": "USB: Pi lower port to the XIAO (W14, fold the spare length and tie it in the front cavity). Optional W22: Pi GPIO 26 to the switch OFF pad (22 AWG, Dupont crimp at the Pi, soldered at the switch).",
+  "de": "USB: unterer Pi-Anschluss zum XIAO (W14, Überlänge falten und im vorderen Hohlraum festbinden). Optional W22: Pi GPIO 26 an das OFF-Pad des Schalters (22 AWG, Dupont-Crimpkontakt am Pi, am Schalter gelötet)."
+ },
+ "48c82706b72f0ab7": {
+  "en": "Step 17 – Front display",
+  "de": "Schritt 17 – Frontdisplay"
+ },
+ "09b0881136c0bafe": {
+  "en": "<tr><td><img src=\"./img/parts/display_bracket.png\" width=\"56\"></td><td><b>1×</b></td><td>Display bracket (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/display_bracket.png\" width=\"56\"></td><td><b>1×</b></td><td>Displayhalter (gedruckt)</td></tr>"
+ },
+ "3241e6f36bb981c9": {
+  "en": "<tr><td><img src=\"./img/parts/front_shell_display.png\" width=\"56\"></td><td><b>1×</b></td><td>Front shell display (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/front_shell_display.png\" width=\"56\"></td><td><b>1×</b></td><td>Frontschale Display (gedruckt)</td></tr>"
+ },
+ "bf733bc07f3818f9": {
+  "en": "<tr><td><img src=\"./img/parts/waveshare_lcd_2inch.png\" width=\"56\"></td><td><b>1×</b></td><td>Waveshare 2&quot; LCD (ST7789)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/waveshare_lcd_2inch.png\" width=\"56\"></td><td><b>1×</b></td><td>Waveshare 2&quot;-LCD (ST7789)</td></tr>"
+ },
+ "e1b396a0238a841b": {
+  "en": "Put the 2-inch LCD into the front shell window from the inside, screen outwards, header pins down.",
+  "de": "Setzen Sie das 2-Zoll-LCD von innen in das Fenster der Frontschale, Bildschirm nach außen, Stiftleiste nach unten."
+ },
+ "5d69a0dfdfabff36": {
+  "en": "Fix the bracket to the LCD hex studs with 4 × M2 × 5 screws, then to the shell bosses with 2 × M3 × 10 (self-tapping).",
+  "de": "Befestigen Sie den Halter mit 4 × M2 × 5 Schrauben an den Sechskantbolzen des LCD und dann mit 2 × M3 × 10 (selbstschneidend) an den Domen der Schale."
+ },
+ "38f7bdf6319cc78e": {
+  "en": "Plug the display cable (W21, supplied with the LCD) into the display, run it through the outer shoulder frame opening and solder its 8 wires to the XIAO pins (no room for Dupont housings under the upper shoulder frame); fold the spare length (cut list) and tie it at the opening.",
+  "de": "Stecken Sie das Displaykabel (W21, beim LCD mitgeliefert) in das Display, führen Sie es durch die Öffnung des äußeren Schulterrahmens und löten Sie seine 8 Drähte an die XIAO-Pins (kein Platz für Dupont-Gehäuse unter dem oberen Schulterrahmen); falten Sie die Überlänge (Zuschnittliste) und binden Sie sie an der Öffnung fest."
+ },
+ "2522b9be1125f32d": {
+  "en": "Step 18 – Front camera",
+  "de": "Schritt 18 – Frontkamera"
+ },
+ "176a2b1f2804383f": {
+  "en": "<tr><td><img src=\"./img/parts/camera_mount_base.png\" width=\"56\"></td><td><b>1×</b></td><td>Camera mount base (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/camera_mount_base.png\" width=\"56\"></td><td><b>1×</b></td><td>Kamerahalter-Basis (gedruckt)</td></tr>"
+ },
+ "24004716c43b4fe7": {
+  "en": "<tr><td><img src=\"./img/parts/camera_tilt_plate.png\" width=\"56\"></td><td><b>1×</b></td><td>Camera tilt plate (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/camera_tilt_plate.png\" width=\"56\"></td><td><b>1×</b></td><td>Kamera-Neigeplatte (gedruckt)</td></tr>"
+ },
+ "a7fdfd96cd4b76fa": {
+  "en": "<tr><td><img src=\"./img/parts/rpi_camera_module_3_wide.png\" width=\"56\"></td><td><b>1×</b></td><td>Camera Module 3 Wide</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/rpi_camera_module_3_wide.png\" width=\"56\"></td><td><b>1×</b></td><td>Camera Module 3 Wide</td></tr>"
+ },
+ "6ead4b668feaca4c": {
+  "en": "Fix the Camera Module 3 Wide to the tilt plate: 4 × M2 × 10 screws, M2 nuts behind the plate.",
+  "de": "Befestigen Sie das Camera Module 3 Wide an der Neigeplatte: 4 × M2 × 10 Schrauben, M2-Muttern hinter der Platte."
+ },
+ "dd7642b24607f29b": {
+  "en": "Hang the tilt plate between the base cheeks with the M3 × 40 pivot screw and a lock nut; tighten until the camera holds its angle (15° down is the reference).",
+  "de": "Hängen Sie die Neigeplatte mit der M3 × 40 Drehpunktschraube und einer Sicherungsmutter zwischen die Wangen der Basis; ziehen Sie an, bis die Kamera ihren Winkel hält (15° nach unten ist die Referenz)."
+ },
+ "914aeb4a669a1d85": {
+  "en": "Plug the 300 mm camera ribbon (W16) into CAM/DISP 0 of the Pi, run it through both shoulder frame openings and up through the front-shell slot to the camera; fold the spare length flat (no creases). Then put the front shell on and screw the camera base and shell to the upper shoulder frame with 2 × M3 × 12.",
+  "de": "Stecken Sie das 300-mm-Kamera-Flachbandkabel (W16) in CAM/DISP 0 des Pi, führen Sie es durch beide Öffnungen der Schulterrahmen und durch den Schlitz der Frontschale nach oben zur Kamera; falten Sie die Überlänge flach (ohne Knicke). Setzen Sie dann die Frontschale auf und schrauben Sie Kamerabasis und Schale mit 2 × M3 × 12 an den oberen Schulterrahmen."
+ },
+ "a925bde64958eb13": {
+  "en": "Step 19 – Rear panel",
+  "de": "Schritt 19 – Rückwand"
+ },
+ "4c7dfd6174ec2017": {
+  "en": "<tr><td><img src=\"./img/parts/arming_port_bezel.png\" width=\"56\"></td><td><b>1×</b></td><td>Arming port bezel (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/arming_port_bezel.png\" width=\"56\"></td><td><b>1×</b></td><td>Blende des Arming-Ports (gedruckt)</td></tr>"
+ },
+ "879f0e24f4c9b24e": {
+  "en": "<tr><td><img src=\"./img/parts/arming_port_ring.png\" width=\"56\"></td><td><b>1×</b></td><td>Arming port ring (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/arming_port_ring.png\" width=\"56\"></td><td><b>1×</b></td><td>Ring des Arming-Ports (gedruckt)</td></tr>"
+ },
+ "632a96b3522f500c": {
+  "en": "<tr><td><img src=\"./img/parts/back_shell_button.png\" width=\"56\"></td><td><b>1×</b></td><td>Back shell button (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/back_shell_button.png\" width=\"56\"></td><td><b>1×</b></td><td>Rückschale Taster (gedruckt)</td></tr>"
+ },
+ "d554a51330416f5f": {
+  "en": "<tr><td><img src=\"./img/parts/pushbutton_12mm.png\" width=\"56\"></td><td><b>1×</b></td><td>12 mm push button</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/pushbutton_12mm.png\" width=\"56\"></td><td><b>1×</b></td><td>12-mm-Drucktaster</td></tr>"
+ },
+ "63e2ee361d2f3bac": {
+  "en": "Mount the 12 mm power button in the small hole of the back shell and solder W13 (22 AWG pair, routed to the switch A/B pads).",
+  "de": "Montieren Sie den 12-mm-Einschalttaster im kleinen Loch der Rückschale und löten Sie W13 an (22-AWG-Paar, zu den A/B-Pads des Schalters geführt)."
+ },
+ "471d4da52287aa49": {
+  "en": "Insert the XT60 arming port into the printed bezel from outside, clamp it with the ring from inside: 2 × M2.5 × 6.",
+  "de": "Setzen Sie den XT60-Arming-Port von außen in die gedruckte Blende und klemmen Sie ihn von innen mit dem Ring: 2 × M2.5 × 6."
+ },
+ "3db6cad48dd4a764": {
+  "en": "Solder W02 and W03 to the two contacts of the arming jack. Logic fuse: trim the input lead of a second in-line holder to its cut length and splice it to W02 (heat-shrink); trim its output lead to 20 mm and splice W09 to it. Lay the holder in the shell between the jack and the button. No fuse yet.",
+  "de": "Löten Sie W02 und W03 an die beiden Kontakte des Arming-Ports. Logiksicherung: Kürzen Sie die Eingangsleitung eines zweiten Inline-Halters auf ihre Zuschnittlänge und spleißen Sie sie an W02 (Schrumpfschlauch); kürzen Sie die Ausgangsleitung auf 20 mm und spleißen Sie W09 daran. Legen Sie den Halter in der Schale zwischen Buchse und Taster ab. Noch keine Sicherung einsetzen."
+ },
+ "4aea2a7540646837": {
+  "en": "Put the back shell on. The loop key stays out until first power-up (final step).",
+  "de": "Setzen Sie die Rückschale auf. Der Loop-Key bleibt bis zum ersten Einschalten (letzter Schritt) draußen."
+ },
+ "3d958b8701464261": {
+  "en": "Step 20 – Dress the harness and check the logic supply",
+  "de": "Schritt 20 – Kabelbaum ordnen und Logikversorgung prüfen"
+ },
+ "32e87a9e190aebe7": {
+  "en": "<tr><td><img src=\"./img/parts/cable_tie_mount.png\" width=\"56\"></td><td><b>2×</b></td><td>Adhesive cable-tie mount 13 × 13 mm</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/cable_tie_mount.png\" width=\"56\"></td><td><b>2×</b></td><td>Selbstklebender Kabelbinder-Sockel 13 × 13 mm</td></tr>"
+ },
+ "d304fae982ba5df4": {
+  "en": "Supply check before the Pi is connected: plug a charged pack into the battery input (W00) for a moment, insert both fuses, loop key out, press the button and measure 4.8–5.2 V at the W12 Dupont ends (D36V50F5: 5 V ± 4 %). Press again, pull the fuses, unplug the pack. Then plug W12 onto Pi pins 2/4 (5 V) and 6/14 (GND).",
+  "de": "Versorgungsprüfung, bevor der Pi angeschlossen wird: Stecken Sie kurz einen geladenen Akkupack an den Akkueingang (W00), setzen Sie beide Sicherungen ein, Loop-Key draußen, drücken Sie den Taster und messen Sie 4,8–5,2 V an den Dupont-Enden von W12 (D36V50F5: 5 V ± 4 %). Drücken Sie erneut, ziehen Sie die Sicherungen, stecken Sie den Akkupack ab. Stecken Sie dann W12 auf die Pi-Pins 2/4 (5 V) und 6/14 (GND)."
+ },
+ "909dd1877377f5f4": {
+  "en": "Spiral-wrap every bundle of three or more cables and W01 where the drawing shows a sleeve; it protects the leads where they pass frames and moving parts.",
+  "de": "Umwickeln Sie jedes Bündel aus drei oder mehr Kabeln sowie W01 dort mit Spiralschlauch, wo die Zeichnung eine Hülle zeigt; er schützt die Leitungen, wo sie an Rahmen und beweglichen Teilen vorbeiführen."
+ },
+ "0b98d6d677ce40d2": {
+  "en": "Tie at every marked point (2.5 × 100 mm ties, cut flush); two adhesive tie mounts on the deck carry the bundles in the side strips.",
+  "de": "Binden Sie an jeder markierten Stelle fest (Kabelbinder 2,5 × 100 mm, bündig abschneiden); zwei selbstklebende Kabelbinder-Sockel auf dem Deck tragen die Bündel in den Seitenstreifen."
+ },
+ "67aaa1a0497a5c04": {
+  "en": "Move every leg through its full range by hand: no cable may be pulled tight, pinched or touch a horn or link ([wiring check](../verification/wiring.md)).",
+  "de": "Bewegen Sie jedes Bein von Hand durch seinen vollen Bewegungsbereich: Kein Kabel darf straff gezogen, eingeklemmt werden oder ein Servohorn oder eine Koppel berühren ([Verkabelungsprüfung](../verification/wiring.md))."
+ },
+ "0d8429e4b2ecef30": {
+  "en": "Step 21 – Top shell and LiDAR",
+  "de": "Schritt 21 – Oberschale und LiDAR"
+ },
+ "0a74414c6e9032bc": {
+  "en": "<tr><td><img src=\"./img/parts/lidar_pedestal.png\" width=\"56\"></td><td><b>1×</b></td><td>Lidar pedestal (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/lidar_pedestal.png\" width=\"56\"></td><td><b>1×</b></td><td>LiDAR-Sockel (gedruckt)</td></tr>"
+ },
+ "d9c504b27f02e79b": {
+  "en": "<tr><td><img src=\"./img/parts/top_shell_sensor.png\" width=\"56\"></td><td><b>1×</b></td><td>Top shell sensor (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/top_shell_sensor.png\" width=\"56\"></td><td><b>1×</b></td><td>Oberschale Sensor (gedruckt)</td></tr>"
+ },
+ "766967bb905affe2": {
+  "en": "<tr><td><img src=\"./img/parts/rplidar_c1.png\" width=\"56\"></td><td><b>1×</b></td><td>RPLIDAR C1</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/rplidar_c1.png\" width=\"56\"></td><td><b>1×</b></td><td>RPLIDAR C1</td></tr>"
+ },
+ "f6175f8c95fd5b8d": {
+  "en": "<tr><td><img src=\"./img/parts/rplidar_usb_adapter.png\" width=\"56\"></td><td><b>1×</b></td><td>RPLIDAR USB adapter</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/rplidar_usb_adapter.png\" width=\"56\"></td><td><b>1×</b></td><td>RPLIDAR-USB-Adapter</td></tr>"
+ },
+ "b0f93fc1ac30f48f": {
+  "en": "Screw the LiDAR pedestal to the top shell from below: 4 × M3 × 12 (self-tapping).",
+  "de": "Schrauben Sie den LiDAR-Sockel von unten an die Oberschale: 4 × M3 × 12 (selbstschneidend)."
+ },
+ "aa902692fe8642a6": {
+  "en": "Put the LiDAR USB adapter into the pedestal, behind the cable slot, USB end towards the slot (foam tape). Lead the LiDAR's own cable (W23) through the notch at the pedestal front into the adapter, then fix the RPLIDAR C1 with 4 × M2.5 × 6 (max. 4 mm into the LiDAR).",
+  "de": "Setzen Sie den LiDAR-USB-Adapter in den Sockel, hinter den Kabelschlitz, USB-Ende zum Schlitz (Schaumklebeband). Führen Sie das eigene Kabel des LiDAR (W23) durch die Kerbe vorne am Sockel in den Adapter und befestigen Sie dann den RPLIDAR C1 mit 4 × M2.5 × 6 (max. 4 mm in den LiDAR)."
+ },
+ "418350d61a4c75da": {
+  "en": "Plug the second USB cable (W15, from the Pi's upper USB port, routed over the Pi beside the cooler fan) into the adapter through the top-shell slot, then close the top shell over the front and back shells: 6 × M3 × 8 into the nuts inserted in Step 4.",
+  "de": "Stecken Sie das zweite USB-Kabel (W15, vom oberen USB-Anschluss des Pi, über den Pi neben dem Kühlerlüfter geführt) durch den Schlitz der Oberschale in den Adapter und schließen Sie dann die Oberschale über Front- und Rückschale: 6 × M3 × 8 in die in Schritt 4 eingesetzten Muttern."
+ },
+ "698d0d8ea3cfec37": {
+  "en": "Step 22 – Battery and bottom shell",
+  "de": "Schritt 22 – Akku und Unterschale"
+ },
+ "a61aaa506380adda": {
+  "en": "<tr><td><img src=\"./img/parts/bottom_shell.png\" width=\"56\"></td><td><b>1×</b></td><td>Bottom shell (printed)</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/bottom_shell.png\" width=\"56\"></td><td><b>1×</b></td><td>Unterschale (gedruckt)</td></tr>"
+ },
+ "78ab3f4cadf61920": {
+  "en": "<tr><td><img src=\"./img/parts/lipo_2s_5000_gensace.png\" width=\"56\"></td><td><b>1×</b></td><td>LiPo 2S 5000 mAh</td></tr>",
+  "de": "<tr><td><img src=\"./img/parts/lipo_2s_5000_gensace.png\" width=\"56\"></td><td><b>1×</b></td><td>LiPo 2S 5000 mAh</td></tr>"
+ },
+ "1e02ed09598e8be0": {
+  "en": "Strap the 2S LiPo under the deck (hook-and-loop strap), lead end to the rear.",
+  "de": "Schnallen Sie den 2S-LiPo unter das Deck (Klettband), Leitungsende nach hinten."
+ },
+ "a7a9fd4c70048f73": {
+  "en": "Plug the pack's own lead (W00) into the battery input XT60H in the pocket beside the battery (the lead turns forward along the left side under the rear hip servo). Keep the loop key out.",
+  "de": "Stecken Sie die eigene Leitung des Akkupacks (W00) in die XT60H des Akkueingangs in der Tasche neben dem Akku (die Leitung biegt entlang der linken Seite unter dem hinteren Hüftservo nach vorne ab). Lassen Sie den Loop-Key draußen."
+ },
+ "ef2b93b22a6d2c94": {
+  "en": "Close the bottom shell: 8 × M3 × 8 screws into the nuts inserted in Step 4.",
+  "de": "Schließen Sie die Unterschale: 8 × M3 × 8 Schrauben in die in Schritt 4 eingesetzten Muttern."
+ },
+ "6d7fb1990c9c531f": {
+  "en": "Step 23 – Wiring, calibration and first power-up",
+  "de": "Schritt 23 – Verkabelung, Kalibrierung und erstes Einschalten"
+ },
+ "666206af9a3f5f64": {
+  "en": "Check the harness against [electronics › wiring harness](../electronics.md#wiring-harness) (W00–W23, servo leads S-*): every joint soldered and heat-shrunk, no strands outside a WAGO or terminal. Keep the fuses and the arming loop key out.",
+  "de": "Prüfen Sie den Kabelbaum anhand von [Elektronik › Kabelbaum](../electronics.md#wiring-harness) (W00–W23, Servokabel S-*): jede Verbindung gelötet und mit Schrumpfschlauch versehen, keine Litzen außerhalb einer WAGO-Klemme oder Schraubklemme. Lassen Sie die Sicherungen und den Loop-Key draußen."
+ },
+ "93f779c1b199a261": {
+  "en": "Fuses in, press the power button: the Pi boots, the face appears on the LCD, `ros2 topic echo /battery_state` shows the pack voltage. The servos stay limp: the controller keeps the PCA9685 outputs off until it receives position commands.",
+  "de": "Sicherungen einsetzen, Einschalttaster drücken: Der Pi bootet, das Gesicht erscheint auf dem LCD, `ros2 topic echo /battery_state` zeigt die Akkuspannung. Die Servos bleiben schlaff: Der Controller hält die PCA9685-Ausgänge aus, bis er Positionsbefehle erhält."
+ },
+ "1e3f4be21aa905a6": {
+  "en": "Fine-calibrate each joint with `strido-cli calibrate` (robot on a stand, legs free; offsets stored in the ESP32 flash).",
+  "de": "Kalibrieren Sie jedes Gelenk fein mit `strido-cli calibrate` (Roboter auf einem Ständer, Beine frei; Offsets im Flash des ESP32 gespeichert)."
+ },
+ "f62c06418c417ede": {
+  "en": "Lay the robot on its belly with the legs folded (the rest pose), insert the loop key (servos stay limp), then start `ros2 launch strido_bringup robot.launch.py`: the servos move to the rest pose and the robot stands up within 3 s. Never insert the key while position commands are running: all 12 servos would jump at once (up to 6 × 3.5 A stall per cavity against a 15 A UBEC peak).",
+  "de": "Legen Sie den Roboter mit eingeklappten Beinen auf den Bauch (die Ruhepose), stecken Sie den Loop-Key ein (Servos bleiben schlaff) und starten Sie dann `ros2 launch strido_bringup robot.launch.py`: Die Servos fahren in die Ruhepose, und der Roboter steht innerhalb von 3 s auf. Stecken Sie den Loop-Key nie ein, während Positionsbefehle laufen: Alle 12 Servos würden gleichzeitig springen (bis zu 6 × 3,5 A Blockierstrom pro Hohlraum gegenüber 15 A Spitzenwert eines UBEC)."
+ },
+ "a7a8b15315bf7469": {
+  "en": "Teleoperate: `ros2 run teleop_twist_keyboard teleop_twist_keyboard`. Publish `true` on `/strido/estop` to stop. After releasing an e-stop or a relax, restart the launch with the robot lying in the rest pose: the gait node only ramps up on start.",
+  "de": "Fernsteuern: `ros2 run teleop_twist_keyboard teleop_twist_keyboard`. Veröffentlichen Sie `true` auf `/strido/estop`, um zu stoppen. Starten Sie nach dem Lösen eines Not-Halts oder einer Entspannung den Launch mit dem Roboter in der Ruhepose liegend neu: Der Gait-Node fährt nur beim Start hoch."
+ }
+}

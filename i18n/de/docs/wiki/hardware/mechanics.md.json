@@ -1,0 +1,366 @@
+{
+ "81d79bc207a671fc": {
+  "en": "Mechanics: legs, linkages, bearings and fits",
+  "de": "Mechanik: Beine, Koppelgetriebe, Lager und Passungen"
+ },
+ "3e5ad808ab986af2": {
+  "en": "A walking robot is a set of rigid links joined by joints, and how well it walks depends on how those joints are built: what turns on what, where the motors sit, and how much play each joint allows. This page follows one Strido leg from the body to the foot, then explains the bearings, the joint limits and why tenths of a millimetre matter on printed parts.",
+  "de": "Ein Laufroboter ist eine Reihe starrer Glieder, die durch Gelenke verbunden sind, und wie gut er läuft, hängt davon ab, wie diese Gelenke aufgebaut sind: was sich worauf dreht, wo die Motoren sitzen und wie viel Spiel jedes Gelenk zulässt. Diese Seite verfolgt ein Strido-Bein vom Körper bis zum Fuß und erklärt dann die Lager, die Gelenkgrenzen und warum Zehntelmillimeter bei gedruckten Teilen zählen."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "cf0fa8b727f93e09": {
+  "en": "**Kinematic data:** `hardware/kinematics.yaml` (link lengths measured from the upstream STEP), `hardware/joint_limits.yaml` (collision-free limits), generated into `firmware/.../geometry_generated.h` and `packages/strido-core/src/strido/geometry.py`.",
+  "de": "**Kinematische Daten:** `hardware/kinematics.yaml` (Gliederlängen, gemessen am Upstream-STEP), `hardware/joint_limits.yaml` (kollisionsfreie Grenzen), generiert in `firmware/.../geometry_generated.h` und `packages/strido-core/src/strido/geometry.py`."
+ },
+ "4392e07c6573fc37": {
+  "en": "**Printed parts per leg:** `femur`, `femur_servo_connector`, `left_shoulder` / `right_shoulder` (shoulder crank), `short_link`, `stiff_long_link` (Strido, replaces the upstream `long_link`), `inner_tibia`, `outer_tibia`, `foot_spacer`, servo mount and `servo_mount_top_bracket`, `hip_bearing_pin`.",
+  "de": "**Gedruckte Teile je Bein:** `femur`, `femur_servo_connector`, `left_shoulder` / `right_shoulder` (Schulterkurbel), `short_link`, `stiff_long_link` (Strido, ersetzt die Upstream-`long_link`), `inner_tibia`, `outer_tibia`, `foot_spacer`, Servohalter und `servo_mount_top_bracket`, `hip_bearing_pin`."
+ },
+ "ef556ca1e2559a14": {
+  "en": "**Bearings:** 4 × 625ZZ, 4 × 6805-2RS, 8 × 633ZZ, 32 × sintered bronze sleeves 3 × 5 × 5 (BOM lines `bearing_625zz`, `bearing_6805`, `bearing_633zz`, `sleeve_3x5x5`).",
+  "de": "**Lager:** 4 × 625ZZ, 4 × 6805-2RS, 8 × 633ZZ, 32 × Sinterbronze-Gleitlager 3 × 5 × 5 (Stücklistenzeilen `bearing_625zz`, `bearing_6805`, `bearing_633zz`, `sleeve_3x5x5`)."
+ },
+ "622c9f9b1908758d": {
+  "en": "**Verification:** `docs/verification/fits.md` (screws and bearing seats), `clearance.md` (moving parts), `interference.md` (static overlaps), tolerance rules in `hardware/verification/tolerances.yaml`.",
+  "de": "**Verifikation:** `docs/verification/fits.md` (Schrauben und Lagersitze), `clearance.md` (bewegte Teile), `interference.md` (statische Überlappungen), Toleranzregeln in `hardware/verification/tolerances.yaml`."
+ },
+ "0064d00a3bcfa694": {
+  "en": "Degrees of freedom",
+  "de": "Freiheitsgrade"
+ },
+ "20dfa66796f3cbc0": {
+  "en": "Each leg has **three degrees of freedom (DoF)**, one servo each:",
+  "de": "Jedes Bein hat **drei Freiheitsgrade (DoF)**, je einen Servo:"
+ },
+ "6ee8f71fafa958ba": {
+  "en": "| Joint | Moves the leg | Servo location | Drive |",
+  "de": "| Gelenk | Bewegt das Bein | Servoposition | Antrieb |"
+ },
+ "c565360b089b8b9f": {
+  "en": "| Hip (abduction) | sideways, about an axis along the body | in the body, through the inner shoulder frame | direct, via a 25T disc horn |",
+  "de": "| Hüfte (Abduktion) | seitwärts, um eine Achse entlang des Körpers | im Körper, durch den inneren Schulterrahmen | direkt, über ein 25T-Scheibenhorn |"
+ },
+ "a6e6ca7374c5552a": {
+  "en": "| Thigh | forwards and backwards | in the leg module's servo mount | direct, via a 25T disc horn into the femur servo connector |",
+  "de": "| Oberschenkel | vorwärts und rückwärts | in der Servohalterung des Beinmoduls | direkt, über ein 25T-Scheibenhorn in den Femur-Servoverbinder |"
+ },
+ "9bcdb5a48ef56d21": {
+  "en": "| Knee | bends the lower leg | in the same servo mount, beside the thigh servo | indirect, through a crank and two linkages |",
+  "de": "| Knie | beugt das Unterbein | in derselben Servohalterung, neben dem Oberschenkelservo | indirekt, über eine Kurbel und zwei Koppeln |"
+ },
+ "db60ddc28724f1e1": {
+  "en": "Three DoF per leg is the minimum to put a foot anywhere in 3D space within reach. Four legs give 12 servos in total, the same layout as a Unitree Go2. That is why Strido can use the Go2 joint names and conventions.",
+  "de": "Drei DoF pro Bein sind das Minimum, um einen Fuß an jeden erreichbaren Punkt im 3D-Raum zu setzen. Vier Beine ergeben insgesamt 12 Servos, dasselbe Layout wie bei einem Unitree Go2. Deshalb kann Strido die Gelenknamen und Konventionen des Go2 verwenden."
+ },
+ "934734ac834118e3": {
+  "en": "The kinematic chain of one leg",
+  "de": "Die kinematische Kette eines Beins"
+ },
+ "43132d5b59e78d69": {
+  "en": "flowchart LR\n  BODY[\"Body<br/>(shoulder frames)\"] -->|\"hip servo + 625ZZ pivot\"| MOD[\"Leg module<br/>(servo mount)\"]\n  MOD -->|\"thigh servo, disc horn\"| FEM[\"Femur<br/>130 mm\"]\n  MOD -->|\"knee servo, arm horn r 24 mm\"| SL[\"Short link<br/>28.3 mm\"]\n  SL --> SC[\"Shoulder crank<br/>(6805-2RS on thigh axis)\"]\n  SC --> LL[\"Long link<br/>131 mm\"]\n  FEM -->|\"knee axle, 2 × 633ZZ\"| TIB[\"Tibia<br/>124 mm to foot\"]\n  LL --> TIB",
+  "de": "flowchart LR\n  BODY[\"Körper<br/>(Schulterrahmen)\"] -->|\"Hüftservo + 625ZZ-Drehpunkt\"| MOD[\"Beinmodul<br/>(Servohalterung)\"]\n  MOD -->|\"Oberschenkelservo, Scheibenhorn\"| FEM[\"Femur<br/>130 mm\"]\n  MOD -->|\"Knieservo, Armhorn r 24 mm\"| SL[\"Kurze Koppel<br/>28,3 mm\"]\n  SL --> SC[\"Schulterkurbel<br/>(6805-2RS auf Oberschenkelachse)\"]\n  SC --> LL[\"Lange Koppel<br/>131 mm\"]\n  FEM -->|\"Knieachse, 2 × 633ZZ\"| TIB[\"Tibia<br/>124 mm bis zum Fuß\"]\n  LL --> TIB"
+ },
+ "ece4a809e051c190": {
+  "en": "Hip: supported on both sides",
+  "de": "Hüfte: beidseitig gelagert"
+ },
+ "a1683c0523d681dd": {
+  "en": "The hip servo's spline carries one side of the leg module. The other side turns on a **625ZZ** bearing in the outer shoulder frame, on the printed `hip_bearing_pin` and an M3 × 10 pivot screw. Supporting the axis at both ends means the leg's weight and the ground forces are not carried by the servo's own small output bearings alone, as they would be in a cantilever.",
+  "de": "Die Verzahnung des Hüftservos trägt eine Seite des Beinmoduls. Die andere Seite dreht sich auf einem **625ZZ**-Lager im äußeren Schulterrahmen, auf dem gedruckten `hip_bearing_pin` und einer M3 × 10-Drehpunktschraube. Da die Achse an beiden Enden gelagert ist, werden das Gewicht des Beins und die Bodenkräfte nicht allein von den kleinen Abtriebslagern des Servos getragen, wie es bei einer einseitigen Auskragung der Fall wäre."
+ },
+ "d8a99b4c27e70304": {
+  "en": "Thigh: direct drive",
+  "de": "Oberschenkel: Direktantrieb"
+ },
+ "330cfac34cf354a4": {
+  "en": "The thigh servo turns the femur directly. The aluminium disc horn is clamped inside the `femur_servo_connector` and bolted to the femur with 4 × M3 × 20. The femur is 130 mm from thigh axis to knee.",
+  "de": "Der Oberschenkelservo dreht den Femur direkt. Das Aluminium-Scheibenhorn ist im `femur_servo_connector` eingeklemmt und mit 4 × M3 × 20 an den Femur geschraubt. Der Femur misst 130 mm von der Oberschenkelachse bis zum Knie."
+ },
+ "d66f837e9c88fba7": {
+  "en": "Knee: crank, parallelogram and four-bar",
+  "de": "Knie: Kurbel, Parallelogramm und Viergelenk"
+ },
+ "dbcbe5670e35603e": {
+  "en": "Putting the knee servo *at* the knee would hang 72 g of servo at the end of the thigh, where it adds the most inertia to every swing. Strido keeps the knee servo up in the leg module and transmits its motion down the leg:",
+  "de": "Säße der Knieservo *am* Knie, hingen 72 g Servo am Ende des Oberschenkels, wo sie jeder Schwingbewegung die meiste Trägheit hinzufügen. Strido hält den Knieservo oben im Beinmodul und überträgt seine Bewegung das Bein hinunter:"
+ },
+ "d5732f9c689ec86c": {
+  "en": "**Servo arm → shoulder crank (parallelogram).** The knee servo's arm horn (radius 24.0 mm) drives the **short link** (28.28 mm). The short link drives the shoulder crank's first arm (radius 24.0 mm), which turns about the **thigh axis** on a **6805-2RS** bearing. The servo shaft and the thigh axis are 28.26 mm apart. Two equal cranks joined by a link as long as their spacing form a **parallelogram**: the shoulder crank copies the servo's angle exactly onto the thigh axis.",
+  "de": "**Servoarm → Schulterkurbel (Parallelogramm).** Das Armhorn des Knieservos (Radius 24,0 mm) treibt die **kurze Koppel** (28,28 mm) an. Die kurze Koppel treibt den ersten Arm der Schulterkurbel (Radius 24,0 mm) an, die sich auf einem **6805-2RS**-Lager um die **Oberschenkelachse** dreht. Servowelle und Oberschenkelachse liegen 28,26 mm auseinander. Zwei gleiche Kurbeln, verbunden durch eine Koppel von der Länge ihres Abstands, bilden ein **Parallelogramm**: Die Schulterkurbel überträgt den Servowinkel exakt auf die Oberschenkelachse."
+ },
+ "aaebfa4a6282bd9e": {
+  "en": "**Shoulder crank → tibia (four-bar).** The crank's second arm (radius 26.92 mm) pushes the **long link** (131 mm) to a 24 mm crank on the tibia. The tibia turns on two **633ZZ** bearings at the knee axle. Together with the femur (130 mm) this forms a **four-bar linkage**.",
+  "de": "**Schulterkurbel → Tibia (Viergelenk).** Der zweite Arm der Kurbel (Radius 26,92 mm) schiebt die **lange Koppel** (131 mm) zu einer 24-mm-Kurbel an der Tibia. Die Tibia dreht sich auf zwei **633ZZ**-Lagern an der Knieachse. Zusammen mit dem Femur (130 mm) bildet dies ein **Viergelenkgetriebe**."
+ },
+ "eafcca3b7e3b6fdd": {
+  "en": "Because the four-bar's ground link is the femur itself, and the arm lengths are not equal, the calf angle depends **non-linearly** on both the crank angle *and* the thigh angle. Moving the thigh alone changes the knee angle. The firmware (`servo_map.cpp`, `kinematics.cpp`) and `strido-core` (`leg.py`) therefore solve the linkage exactly, converting every requested calf angle into a knee-crank angle.",
+  "de": "Da das Gestell des Viergelenks der Femur selbst ist und die Armlängen nicht gleich sind, hängt der Unterschenkelwinkel **nichtlinear** sowohl vom Kurbelwinkel *als auch* vom Oberschenkelwinkel ab. Eine Bewegung nur des Oberschenkels ändert den Kniewinkel. Die Firmware (`servo_map.cpp`, `kinematics.cpp`) und `strido-core` (`leg.py`) lösen das Koppelgetriebe daher exakt und rechnen jeden angeforderten Unterschenkelwinkel in einen Kniekurbelwinkel um."
+ },
+ "b6013e21186ffbb2": {
+  "en": "The upstream Yertle CAD has a small inconsistency here: the drawn knee (−98.8°) and the angle at which the linkage actually closes (−101.2°) differ, a 1.02 mm link-length mismatch. Strido uses the measured lengths, not the drawn pose (`docs/design.md`).",
+  "de": "Das Upstream-CAD von Yertle hat hier eine kleine Inkonsistenz: Das gezeichnete Knie (−98,8°) und der Winkel, bei dem sich das Koppelgetriebe tatsächlich schließt (−101,2°), unterscheiden sich, eine Abweichung der Koppellänge von 1,02 mm. Strido verwendet die gemessenen Längen, nicht die gezeichnete Pose (`docs/design.md`)."
+ },
+ "bc270764430b5348": {
+  "en": "Transmission angle",
+  "de": "Übertragungswinkel"
+ },
+ "ab066fd106c914f6": {
+  "en": "In a four-bar, the **transmission angle** is the angle between the coupler (long link) and the output crank. Near 0° or 180° the link pushes along the crank instead of turning it. Force transmission collapses there, and the linkage can jam or snap through. The range-of-motion sweep rejects every pose with a transmission angle below **25°** (`transmission_min_deg`).",
+  "de": "In einem Viergelenk ist der **Übertragungswinkel** der Winkel zwischen der Koppel (lange Koppel) und der Abtriebskurbel. Nahe 0° oder 180° schiebt die Koppel entlang der Kurbel, statt sie zu drehen. Die Kraftübertragung bricht dort zusammen, und das Koppelgetriebe kann klemmen oder durchschlagen. Der Durchlauf des Bewegungsbereichs verwirft jede Pose mit einem Übertragungswinkel unter **25°** (`transmission_min_deg`)."
+ },
+ "a1850cf758a83e38": {
+  "en": "Joint limits",
+  "de": "Gelenkgrenzen"
+ },
+ "4444b5c64e594451": {
+  "en": "The limits come from a collision sweep of the complete assembly: every printed part, bearing, horn and Strido fastener. The sweep runs over thigh × calf on a 5° grid at zero abduction, followed by a hip sweep at the standing and mid poses. A further rule keeps every servo within **±85°** of its assembly neutral, inside its ±90° travel. These are the generated values (the sweep result in `hardware/joint_limits.yaml`, clamped to the servo travel in `codegen.py` / `geometry_generated.h`; the front thigh minimum of −40° comes from that clamp):",
+  "de": "Die Grenzen stammen aus einem Kollisionsdurchlauf der vollständigen Baugruppe: jedes gedruckte Teil, Lager, Horn und Strido-Befestigungselement. Der Durchlauf läuft über Oberschenkel × Unterschenkel in einem 5°-Raster bei null Abduktion, gefolgt von einem Hüftdurchlauf in der Steh- und der Mittelpose. Eine weitere Regel hält jeden Servo innerhalb von **±85°** um seine Montage-Neutralstellung, innerhalb seines Stellwegs von ±90°. Dies sind die generierten Werte (das Durchlaufergebnis in `hardware/joint_limits.yaml`, auf den Servostellweg begrenzt in `codegen.py` / `geometry_generated.h`; das vordere Oberschenkelminimum von −40° stammt aus dieser Begrenzung):"
+ },
+ "b09ea996db21fecc": {
+  "en": "| Joint | FL | FR | RL | RR |",
+  "de": "| Gelenk | FL | FR | RL | RR |"
+ },
+ "3207bcc24496cb36": {
+  "en": "| Hip | −17.5…50° | −50…17.5° | −17.5…45° | −45…17.5° |",
+  "de": "| Hüfte | −17,5…50° | −50…17,5° | −17,5…45° | −45…17,5° |"
+ },
+ "944b1272b4d6678c": {
+  "en": "| Thigh | −40…125° | −40…125° | −15…125° | −15…125° |",
+  "de": "| Oberschenkel | −40…125° | −40…125° | −15…125° | −15…125° |"
+ },
+ "0c33311c2962034c": {
+  "en": "| Calf | −150…−45° | −150…−45° | −150…−45° | −150…−45° |",
+  "de": "| Unterschenkel | −150…−45° | −150…−45° | −150…−45° | −150…−45° |"
+ },
+ "ec620179a04c3f92": {
+  "en": "| Knee crank | −2.5…75° | −2.5…75° | −2.5…75° | −2.5…75° |",
+  "de": "| Kniekurbel | −2,5…75° | −2,5…75° | −2,5…75° | −2,5…75° |"
+ },
+ "5bdaa7957bbee906": {
+  "en": "Front thighs sweep collision-free to −45°, but the ±85° travel rule around the 45° neutral cuts them to −40°. On the FL leg, 566 of the thigh × calf grid cells collide and 422 are feasible.",
+  "de": "Die vorderen Oberschenkel schwenken kollisionsfrei bis −45°, doch die ±85°-Stellwegregel um die 45°-Neutralstellung begrenzt sie auf −40°. Am FL-Bein kollidieren 566 der Rasterzellen Oberschenkel × Unterschenkel, 422 sind zulässig."
+ },
+ "5d580ad4c18a19c8": {
+  "en": "The firmware clamps every command to these limits and reports `clamped` in `/diagnostics` when it had to. Sign conventions follow the Go2: thigh positive = foot backwards, calf negative = knee bent.",
+  "de": "Die Firmware begrenzt jeden Befehl auf diese Grenzen und meldet `clamped` in `/diagnostics`, wenn sie eingreifen musste. Die Vorzeichenkonventionen folgen dem Go2: Oberschenkel positiv = Fuß nach hinten, Unterschenkel negativ = Knie gebeugt."
+ },
+ "7c35ebce2e0dbdb4": {
+  "en": "Bearings",
+  "de": "Lager"
+ },
+ "51b2a9bfcc58fa68": {
+  "en": "| Bearing | Size (bore × OD × width) | Qty | Where |",
+  "de": "| Lager | Größe (Bohrung × AD × Breite) | Anz. | Wo |"
+ },
+ "f6a3a9e08308c0d3": {
+  "en": "| 625ZZ | 5 × 16 × 5 mm | 4 | hip pivot, outer shoulder frames |",
+  "de": "| 625ZZ | 5 × 16 × 5 mm | 4 | Hüftdrehpunkt, äußere Schulterrahmen |"
+ },
+ "f9e21249e71c03b6": {
+  "en": "| 6805-2RS | 25 × 37 × 7 mm | 4 | shoulder crank, turning about the thigh axis around the femur servo connector |",
+  "de": "| 6805-2RS | 25 × 37 × 7 mm | 4 | Schulterkurbel, dreht sich um die Oberschenkelachse um den Femur-Servoverbinder |"
+ },
+ "b141b533cb6d9ddc": {
+  "en": "| 633ZZ | 3 × 13 × 5 mm | 8 | knee, two per tibia (inner and outer half) |",
+  "de": "| 633ZZ | 3 × 13 × 5 mm | 8 | Knie, zwei pro Tibia (innere und äußere Hälfte) |"
+ },
+ "4da1974f65388dec": {
+  "en": "| Sintered bronze sleeve | 3 × 5 × 5 mm | 32 | link eyes, two per eye, 8 per leg |",
+  "de": "| Sinterbronze-Gleitlager | 3 × 5 × 5 mm | 32 | Koppelaugen, zwei pro Auge, 8 pro Bein |"
+ },
+ "6b85dd77db847e80": {
+  "en": "**Suffixes:** **ZZ** means a metal shield on both sides, which keeps out dust but is not sealed. **2RS** means rubber seals on both sides, which also keep the grease in.",
+  "de": "**Suffixe:** **ZZ** bedeutet beidseitig eine Metalldeckscheibe, die Staub abhält, aber nicht abdichtet. **2RS** bedeutet beidseitig Gummidichtungen, die zusätzlich das Fett im Lager halten."
+ },
+ "381252d61065f784": {
+  "en": "**Ball bearings vs sleeves.** A ball bearing rolls, so friction is low and stays low under load. That suits the joints that carry the robot's weight and turn through large angles. A **sintered bronze sleeve** is a porous, oil-impregnated plain bearing: tiny, cheap, and good for link pins that only oscillate a few tens of degrees on an M3 screw. A printed hole alone would wear oval quickly; the bronze sleeve gives the screw a hard, lubricated surface to turn in.",
+  "de": "**Kugellager oder Gleitlager.** Ein Kugellager rollt, daher ist die Reibung gering und bleibt auch unter Last gering. Das passt zu den Gelenken, die das Gewicht des Roboters tragen und sich über große Winkel drehen. Ein **Sinterbronze-Gleitlager** ist ein poröses, ölgetränktes Gleitlager: winzig, günstig und gut geeignet für Koppelbolzen, die auf einer M3-Schraube nur um einige zehn Grad pendeln. Ein reines gedrucktes Loch würde schnell oval verschleißen; das Bronzelager bietet der Schraube eine harte, geschmierte Lauffläche."
+ },
+ "c905ae65811ee414": {
+  "en": "**How long does a ball bearing last?** Rolling contact eventually fatigues the raceways. The standard rating life (ISO 281) of a ball bearing is",
+  "de": "**Wie lange hält ein Kugellager?** Der Rollkontakt ermüdet die Laufbahnen mit der Zeit. Die nominelle Lebensdauer (ISO 281) eines Kugellagers beträgt"
+ },
+ "7cc636b47c405ebd": {
+  "en": "where $C$ is the bearing's basic dynamic load rating from the catalogue, $P$ the equivalent load it carries, and $L_{10}$ the life that 90 % of a large batch of bearings reach. The exponent 3 applies to ball bearings (roller bearings use $10/3$). The cube makes life very sensitive to load: halving $P$ gives eight times the life. As a worked example, take the robot's 3.07 kg (`docs/design.md`) in a trot, where two legs carry the weight, so each leg sees about $P \\approx 3.07\\,\\mathrm{kg} \\times 9.81\\,\\mathrm{m/s^2} / 2 \\approx 15.1\\,\\mathrm{N}$ when standing still in mid-stance. With $C \\approx 1.14\\,\\mathrm{kN}$, a typical catalogue rating for a 625 deep-groove bearing (check your supplier's data sheet),",
+  "de": "wobei $C$ die dynamische Tragzahl des Lagers aus dem Katalog ist, $P$ die äquivalente Belastung, die es trägt, und $L_{10}$ die Lebensdauer, die 90 % einer großen Lagercharge erreichen. Der Exponent 3 gilt für Kugellager (Rollenlager verwenden $10/3$). Die dritte Potenz macht die Lebensdauer sehr lastempfindlich: Halbiert man $P$, verachtfacht sich die Lebensdauer. Als Rechenbeispiel nehmen wir die 3,07 kg des Roboters (`docs/design.md`) im Trab, bei dem zwei Beine das Gewicht tragen, sodass jedes Bein im Stillstand in der mittleren Standphase etwa $P \\approx 3.07\\,\\mathrm{kg} \\times 9.81\\,\\mathrm{m/s^2} / 2 \\approx 15.1\\,\\mathrm{N}$ trägt. Mit $C \\approx 1.14\\,\\mathrm{kN}$, einer typischen Katalogtragzahl für ein 625-Rillenkugellager (prüfen Sie das Datenblatt Ihres Lieferanten),"
+ },
+ "ed45c656b5d225be": {
+  "en": "Dynamic foot impacts are several times the static load, and the joints only oscillate, but even a tenfold load leaves hundreds of millions of revolutions. Fatigue is not what limits these bearings; dirt, a creeping outer ring or a cracked printed seat is. See [statics and dynamics](../theory/statics-and-dynamics.md) for how joint loads arise.",
+  "de": "Dynamische Fußstöße betragen ein Mehrfaches der statischen Last, und die Gelenke pendeln nur, doch selbst eine zehnfache Last lässt noch Hunderte Millionen Umdrehungen zu. Nicht die Ermüdung begrenzt diese Lager, sondern Schmutz, ein wandernder Außenring oder ein gerissener gedruckter Sitz. Siehe [Statik und Dynamik](../theory/statics-and-dynamics.md) dazu, wie Gelenklasten entstehen."
+ },
+ "5b61277c6dd399c3": {
+  "en": "Test-fit every bearing and sleeve in its printed seat **before** assembly (`docs/assembly/README.md`).",
+  "de": "Prüfen Sie die Passung jedes Lagers und Gleitlagers in seinem gedruckten Sitz **vor** der Montage (`docs/assembly/README.md`)."
+ },
+ "c4bb9840abdbebe6": {
+  "en": "Fits: press, transition and clearance",
+  "de": "Passungen: Übermaß-, Übergangs- und Spielpassung"
+ },
+ "5204ebbc4f0e20ad": {
+  "en": "A **fit** describes how a shaft and hole of nominally the same size go together:",
+  "de": "Eine **Passung** beschreibt, wie Welle und Bohrung mit gleichem Nennmaß zusammenpassen:"
+ },
+ "1a98689831c9647b": {
+  "en": "| Fit | Hole vs part | Use |",
+  "de": "| Passung | Bohrung im Vergleich zum Teil | Verwendung |"
+ },
+ "c8a5464b183d5df3": {
+  "en": "| Clearance | hole always larger | parts that must slide or turn: screws through clearance holes, link eyes on pins |",
+  "de": "| Spielpassung | Bohrung immer größer | Teile, die gleiten oder sich drehen müssen: Schrauben durch Durchgangsbohrungen, Koppelaugen auf Bolzen |"
+ },
+ "437ece8397a3503a": {
+  "en": "| Transition | about the same size | located parts that can still be pushed in by hand |",
+  "de": "| Übergangspassung | etwa gleich groß | positionierte Teile, die sich noch von Hand einschieben lassen |"
+ },
+ "344f1f9efdff941c": {
+  "en": "| Interference (press) | hole always smaller | parts that must never move in their seat: bearing outer rings, sleeves |",
+  "de": "| Übermaßpassung (Presspassung) | Bohrung immer kleiner | Teile, die sich in ihrem Sitz nie bewegen dürfen: Lageraußenringe, Gleitlager |"
+ },
+ "9e5b1729fca4ed88": {
+  "en": "A bearing must turn on its **balls**, not in its seat. If the outer ring creeps in a loose seat, the plastic wears and the joint develops play. If the seat is far too tight, the printed part cracks, or the outer ring is squeezed so the bearing binds.",
+  "de": "Ein Lager muss sich auf seinen **Kugeln** drehen, nicht in seinem Sitz. Wandert der Außenring in einem lockeren Sitz, verschleißt der Kunststoff und das Gelenk bekommt Spiel. Ist der Sitz viel zu eng, reißt das gedruckte Teil, oder der Außenring wird so zusammengedrückt, dass das Lager klemmt."
+ },
+ "49e8f0aa2a5df99c": {
+  "en": "Strido bearing seats",
+  "de": "Lagersitze bei Strido"
+ },
+ "773d0c4255a6d804": {
+  "en": "`tolerances.yaml` allows a CAD seat bore between **0.15 mm under** and **0.30 mm over** the bearing's outer diameter. FDM printers print holes about **0.15 mm undersize**, so these CAD bands already include the expected shrink. All 32 seats pass (`docs/verification/fits.md`):",
+  "de": "`tolerances.yaml` erlaubt eine CAD-Sitzbohrung zwischen **0,15 mm unter** und **0,30 mm über** dem Außendurchmesser des Lagers. FDM-Drucker drucken Bohrungen etwa **0,15 mm zu klein**, daher berücksichtigen diese CAD-Bänder das erwartete Schrumpfen bereits. Alle 32 Sitze bestehen (`docs/verification/fits.md`):"
+ },
+ "66a078ded2522ea9": {
+  "en": "| Bearing | OD | CAD seats measured | Difference to OD |",
+  "de": "| Lager | AD | Gemessene CAD-Sitze | Differenz zum AD |"
+ },
+ "5846387d05741420": {
+  "en": "| 625ZZ (outer shoulder frame) | 16.0 mm | 16.17–16.21 mm | +0.17 to +0.21 mm |",
+  "de": "| 625ZZ (äußerer Schulterrahmen) | 16,0 mm | 16,17–16,21 mm | +0,17 bis +0,21 mm |"
+ },
+ "918869f76a87186b": {
+  "en": "| 633ZZ (tibia halves) | 13.0 mm | 13.18–13.23 mm | +0.18 to +0.23 mm |",
+  "de": "| 633ZZ (Tibiahälften) | 13,0 mm | 13,18–13,23 mm | +0,18 bis +0,23 mm |"
+ },
+ "08f7b264c2208358": {
+  "en": "| 6805-2RS (shoulder crank) | 37.0 mm | 36.92–36.95 mm | −0.05 to −0.08 mm |",
+  "de": "| 6805-2RS (Schulterkurbel) | 37,0 mm | 36,92–36,95 mm | −0,05 bis −0,08 mm |"
+ },
+ "3f9b33fb41a6ffd6": {
+  "en": "| Sleeve, short link | 5.0 mm | 4.98–4.99 mm | about −0.02 mm |",
+  "de": "| Gleitlager, kurze Koppel | 5,0 mm | 4,98–4,99 mm | etwa −0,02 mm |"
+ },
+ "7e3e34a1facdde56": {
+  "en": "| Sleeve, long link | 5.0 mm | 4.85–4.95 mm | −0.05 to −0.15 mm |",
+  "de": "| Gleitlager, lange Koppel | 5,0 mm | 4,85–4,95 mm | −0,05 bis −0,15 mm |"
+ },
+ "248dd81e60dd6486": {
+  "en": "If a printed seat comes out loose and the bearing spins, a drop of CA glue fixes it (`tolerances.yaml`).",
+  "de": "Fällt ein gedruckter Sitz zu locker aus und dreht sich das Lager mit, behebt ein Tropfen Sekundenkleber (CA) das Problem (`tolerances.yaml`)."
+ },
+ "10eb39dbd585bd39": {
+  "en": "Screws in printed holes",
+  "de": "Schrauben in gedruckten Bohrungen"
+ },
+ "d94551c1a971e331": {
+  "en": "The same shrink affects every screw hole. The fits check samples 223 screws: 0 fail, 137 warnings, each with an action.",
+  "de": "Dasselbe Schrumpfen betrifft jede Schraubenbohrung. Die Passungsprüfung erfasst 223 Schrauben: 0 Fehler, 137 Warnungen, jeweils mit einer Maßnahme."
+ },
+ "a15cb464194da0b6": {
+  "en": "**Clearance holes** that print tight: run a 3.2 mm drill (ISO 273 fine series for M3) through once.",
+  "de": "**Durchgangsbohrungen**, die zu eng gedruckt werden: einmal mit einem 3,2-mm-Bohrer (ISO 273, feine Reihe für M3) durchbohren."
+ },
+ "e3591d30a8fb2607": {
+  "en": "**Thread-forming holes**, where the screw cuts its own thread in plastic: the printed pilot should be 0.70–0.90 × the screw diameter. Above that the screw grips weakly: tighten by feel, and if it spins, harden the pilot with a drop of thin CA glue and re-drive (anaerobic thread locker does not cure on plastic). The upstream servo mounts sit just above the band (ADR-009). Print them with −0.15 mm X-Y hole compensation, or CA-harden their pilots.",
+  "de": "**Gewindeformende Bohrungen**, in denen die Schraube ihr eigenes Gewinde in den Kunststoff schneidet: Die gedruckte Vorbohrung sollte das 0,70–0,90-Fache des Schraubendurchmessers betragen. Darüber greift die Schraube schwach: Ziehen Sie sie mit Gefühl an, und wenn sie durchdreht, härten Sie die Vorbohrung mit einem Tropfen dünnflüssigem Sekundenkleber (CA) und drehen die Schraube erneut ein (anaerobe Schraubensicherung härtet auf Kunststoff nicht aus). Die Upstream-Servohalterungen liegen knapp über dem Band (ADR-009). Drucken Sie sie mit −0,15 mm X-Y-Lochkompensation oder härten Sie ihre Vorbohrungen mit CA."
+ },
+ "7ea7d93095312d05": {
+  "en": "**Lock-nut joints** in the linkage: tighten only until the joint is free of play. The links must still swing under their own weight (`docs/assembly/README.md`, Step 12).",
+  "de": "**Sicherungsmutter-Verbindungen** im Koppelgetriebe: nur so weit anziehen, bis das Gelenk spielfrei ist. Die Koppeln müssen noch unter ihrem Eigengewicht schwingen (`docs/assembly/README.md`, Schritt 12)."
+ },
+ "35a2aa8c22c8712c": {
+  "en": "Why tolerances matter so much on printed parts",
+  "de": "Warum Toleranzen bei gedruckten Teilen so wichtig sind"
+ },
+ "32c86e3a3a4cb211": {
+  "en": "`tolerances.yaml` assumes each printed surface can deviate by about 0.15 mm (0.4 mm nozzle, 0.2 mm layers). That sounds small, but leg joints act as levers. Suppose the thigh joint has a hypothetical 0.2 mm of play, measured 24 mm from its axis (the radius of the knee-drive cranks):",
+  "de": "`tolerances.yaml` geht davon aus, dass jede gedruckte Fläche um etwa 0,15 mm abweichen kann (0,4-mm-Düse, 0,2-mm-Schichten). Das klingt wenig, doch Beingelenke wirken als Hebel. Angenommen, das Oberschenkelgelenk hat hypothetisch 0,2 mm Spiel, gemessen 24 mm von seiner Achse (dem Radius der Kniekurbeln):"
+ },
+ "df7b7f5a54447d1a": {
+  "en": "This is the small-angle form of arc length, $s = r\\,\\Delta\\theta$. The foot can be up to $l_1 + l_2 = 130\\,\\mathrm{mm} + 124\\,\\mathrm{mm} = 254\\,\\mathrm{mm}$ from the thigh axis, so the same angle moves it by",
+  "de": "Das ist die Kleinwinkelform der Bogenlänge, $s = r\\,\\Delta\\theta$. Der Fuß kann bis zu $l_1 + l_2 = 130\\,\\mathrm{mm} + 124\\,\\mathrm{mm} = 254\\,\\mathrm{mm}$ von der Oberschenkelachse entfernt sein, daher verschiebt ihn derselbe Winkel um"
+ },
+ "583155298b5aafe3": {
+  "en": "Small errors in several joints add up, and the foot then lands somewhere other than where the kinematics expected. The same deviations can also make moving parts rub. The moving-clearance check therefore treats any gap below **0.3 mm** between parts on different links as a failure (it could close after printing) and below **1.0 mm** as tight (it may rub on a rough print). Across 13 poses Strido has **0 failures** and **4 tight pairs**: the front and back shells against the arm horns and shoulder cranks at full hip abduction, 0.73–0.79 mm (`docs/verification/clearance.md`).",
+  "de": "Kleine Fehler in mehreren Gelenken summieren sich, und der Fuß setzt dann woanders auf, als die Kinematik erwartet hat. Dieselben Abweichungen können auch bewegte Teile streifen lassen. Die Prüfung des Bewegungsfreigangs wertet daher jeden Spalt unter **0,3 mm** zwischen Teilen an verschiedenen Gliedern als Fehler (er könnte sich nach dem Druck schließen) und unter **1,0 mm** als knapp (er kann bei einem rauen Druck streifen). Über 13 Posen hat Strido **0 Fehler** und **4 knappe Paare**: die Front- und Rückschale gegenüber den Armhörnern und Schulterkurbeln bei voller Hüftabduktion, 0,73–0,79 mm (`docs/verification/clearance.md`)."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "3795c45aef4298dd": {
+  "en": "Why is the knee servo placed in the leg module instead of at the knee?",
+  "de": "Warum sitzt der Knieservo im Beinmodul statt am Knie?"
+ },
+ "061fc7d18d91509a": {
+  "en": "Why does moving only the thigh servo change the calf angle?",
+  "de": "Warum ändert eine Bewegung nur des Oberschenkelservos den Unterschenkelwinkel?"
+ },
+ "a8634c607e9c9dd0": {
+  "en": "What goes wrong if a 633ZZ seat prints far too loose? Far too tight?",
+  "de": "Was geht schief, wenn ein 633ZZ-Sitz viel zu locker gedruckt wird? Und viel zu eng?"
+ },
+ "eacf124c7cec77d5": {
+  "en": "A screw hole for an M3 clearance fit prints at 2.95 mm. What do you do?",
+  "de": "Eine Schraubenbohrung für eine M3-Spielpassung wird mit 2,95 mm gedruckt. Was tun Sie?"
+ },
+ "262eb3bc8815b80b": {
+  "en": "Estimate the foot wobble from 0.1 mm radial play at the 24 mm tibia crank, with the foot 124 mm from the knee.",
+  "de": "Schätzen Sie das Fußwackeln bei 0,1 mm radialem Spiel an der 24-mm-Tibiakurbel ab, wenn der Fuß 124 mm vom Knie entfernt ist."
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "28c5f538cb57307b": {
+  "en": "To keep mass and inertia out of the swinging lower leg, so the leg can accelerate faster with the same servo torque.",
+  "de": "Um Masse und Trägheit aus dem schwingenden Unterbein herauszuhalten, damit das Bein mit demselben Servodrehmoment schneller beschleunigen kann."
+ },
+ "9bfb8291366bb93f": {
+  "en": "The four-bar that drives the tibia is anchored on the femur, so rotating the femur changes the linkage geometry and therefore the knee angle.",
+  "de": "Das Viergelenk, das die Tibia antreibt, ist am Femur verankert; eine Drehung des Femurs ändert daher die Geometrie des Koppelgetriebes und damit den Kniewinkel."
+ },
+ "bd963580dcf7fb2c": {
+  "en": "Too loose: the outer ring turns in the plastic, wears the seat and adds play (fix with a drop of CA glue). Too tight: the seat cracks or the squeezed outer ring makes the bearing bind.",
+  "de": "Zu locker: Der Außenring dreht sich im Kunststoff, verschleißt den Sitz und erzeugt Spiel (Abhilfe mit einem Tropfen Sekundenkleber). Zu eng: Der Sitz reißt oder der zusammengedrückte Außenring lässt das Lager klemmen."
+ },
+ "23359b7be22a606a": {
+  "en": "Run a 3.2 mm drill through it once (ISO 273 fine clearance for M3).",
+  "de": "Einmal mit einem 3,2-mm-Bohrer durchbohren (ISO 273, feine Durchgangsbohrung für M3)."
+ },
+ "f551d572b7c63c31": {
+  "en": "$\\Delta\\theta \\approx 0.1 / 24 \\approx 0.0042\\,\\mathrm{rad}$; $\\Delta x \\approx 0.0042 \\times 124\\,\\mathrm{mm} \\approx 0.5\\,\\mathrm{mm}$ at the foot.",
+  "de": "$\\Delta\\theta \\approx 0.1 / 24 \\approx 0.0042\\,\\mathrm{rad}$; $\\Delta x \\approx 0.0042 \\times 124\\,\\mathrm{mm} \\approx 0.5\\,\\mathrm{mm}$ am Fuß."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "5428932469548d23": {
+  "en": "[Four-bar linkage (overview and transmission angle)](https://en.wikipedia.org/wiki/Four-bar_linkage)",
+  "de": "[Viergelenkgetriebe (Überblick und Übertragungswinkel)](https://en.wikipedia.org/wiki/Four-bar_linkage)"
+ },
+ "13bb907cb5303d56": {
+  "en": "[Deep groove ball bearings (SKF)](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings)",
+  "de": "[Rillenkugellager (SKF)](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings)"
+ },
+ "4b6b9e4ec55a8800": {
+  "en": "Related pages: [Servos](servos.md), [Kinematics and gaits](../software/kinematics-and-gaits.md), [3D printing](../making/3d-printing.md), [Fasteners](../making/fasteners.md), [CAD as code](../software/cad-as-code.md), [Assembly guide](../../assembly/README.md), [Strength, torque and failure](../making/strength.md)",
+  "de": "Verwandte Seiten: [Servos](servos.md), [Kinematik und Gaits](../software/kinematics-and-gaits.md), [3D-Druck](../making/3d-printing.md), [Befestigungselemente](../making/fasteners.md), [CAD als Code](../software/cad-as-code.md), [Montageanleitung](../../assembly/README.md), [Festigkeit, Drehmoment und Versagen](../making/strength.md)"
+ },
+ "c73a279c2e7e644d": {
+  "en": "Theory: [Kinematics](../theory/kinematics.md), [Statics and dynamics](../theory/statics-and-dynamics.md)",
+  "de": "Theorie: [Kinematik](../theory/kinematics.md), [Statik und Dynamik](../theory/statics-and-dynamics.md)"
+ }
+}

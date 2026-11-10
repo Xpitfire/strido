@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'top=\"${CLAUDE_PROJECT_DIR:-}\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-superproject-working-tree 2>/dev/null)\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-toplevel 2>/dev/null)\"; f=\"$top/.harness/.agents/hooks/git-guard.mjs\"; [ -f \"$f\" ] || { echo \"harness: submodule uninitialized - run: git submodule update --init\" >&2; exit 2; }; exec node \"$f\"'",
+            "timeout": 10,
+            "statusMessage": "Checking for destructive Git operations"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'top=\"${CLAUDE_PROJECT_DIR:-}\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-superproject-working-tree 2>/dev/null)\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-toplevel 2>/dev/null)\"; f=\"$top/.harness/.agents/hooks/py-guard.mjs\"; [ -f \"$f\" ] || { echo \"harness: submodule uninitialized - run: git submodule update --init\" >&2; exit 2; }; exec node \"$f\"'",
+            "timeout": 10,
+            "statusMessage": "Checking for bare-metal Python runs"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'top=\"${CLAUDE_PROJECT_DIR:-}\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-superproject-working-tree 2>/dev/null)\"; [ -n \"$top\" ] || top=\"$(git rev-parse --show-toplevel 2>/dev/null)\"; f=\"$top/.harness/.agents/hooks/terse-guard.mjs\"; [ -f \"$f\" ] || { echo \"harness: submodule uninitialized - run: git submodule update --init\" >&2; exit 0; }; exec node \"$f\"'",
+            "timeout": 10,
+            "statusMessage": "Checking reply concision"
+          }
+        ]
+      }
+    ]
+  }
+}

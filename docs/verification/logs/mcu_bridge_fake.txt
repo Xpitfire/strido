@@ -1,0 +1,14 @@
+# 2026-10-30T20:03Z mcu_bridge against a fake controller on a raw pty (ROS 2 Jazzy container)
+name:
+- FL_hip_joint
+- FL_thigh_joint
+- FL_calf_joint
+voltage: 7.699999809265137
+current: -1.2000000476837158
+first joint command: [0.0, 0.8, -1.6]
+frames received by fake MCU: {'0x1': 2, '0x6': 1} dropped: 0
+[INFO] [1793390585.618317591] [mcu_bridge]: MCU bridge on /tmp/mcu
+[WARN] [1793390591.501172969] [mcu_bridge]: ignoring command: expected 12 finite values, got [nan, 0.8, -1.6, 0.0, 0.8, -1.6, 0.0, 0.8, -1.6, 0.0, 0.8, -1.6]
+[INFO] [1793390592.415863094] [mcu_bridge]: servos relaxed
+[WARN] [1793390593.321010553] [mcu_bridge]: e-stop ENGAGED
+expected: 0x1 x2 (position command + relax), 0x6 x1 (estop), dropped 0; the NaN command is dropped by the bridge

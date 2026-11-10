@@ -1,0 +1,14 @@
+{
+ "d00aae6b7fbf77a4": {
+  "en": "Shop",
+  "de": "Shop"
+ },
+ "1b806b767e9eb972": {
+  "en": "Everything to build Strido, priced at real shops: Raspberry Pi 5 with cooler and microSD, XIAO ESP32-S3, PCA9685 servo driver, twelve SPT5435LV servos with aluminium horns, RPLIDAR C1, Camera Module 3 Wide, 2\" LCD, LSM6DSOX IMU, INA260 power monitor, 2S LiPo with charger, UBECs, regulator, fuses, connectors and wire, bearings, every screw with spares, and the filament.",
+  "de": "Alles für den Bau von Strido, bepreist bei echten Shops: Raspberry Pi 5 mit Kühler und microSD, XIAO ESP32-S3, PCA9685-Servotreiber, zwölf SPT5435LV-Servos mit Aluminium-Servohörnern, RPLIDAR C1, Camera Module 3 Wide, 2\"-LCD, LSM6DSOX-IMU, INA260-Power-Monitor, 2S-LiPo mit Ladegerät, UBECs, Spannungsregler, Sicherungen, Steckverbinder und Draht, Lager, jede Schraube mit Reserve sowie das Filament."
+ },
+ "df67a31fe496e5a2": {
+  "en": "Add the complete robot (or single parts) to the cart, choose one of the four buying plans or change the shop per part, and open any part for its description, specifications and where it goes in the robot. The cart adds every shop's shipping; the checkout splits the order per shop and walks you through it: a checklist per shop opens each item's page in turn with the quantity and order code to enter, and a copyable order list serves shops with a quick-order form. Nothing is ordered here, and prices are the offers observed on 30 October 2026: check each shop's cart before paying. The printed parts are on the [print kit](print-kit.md) page.",
+  "de": "Legen Sie den kompletten Roboter (oder einzelne Teile) in den Warenkorb, wählen Sie einen der vier Einkaufspläne oder ändern Sie den Shop pro Teil, und öffnen Sie jedes Teil für seine Beschreibung, technischen Daten und seinen Einbauort im Roboter. Der Warenkorb addiert die Versandkosten jedes Shops; die Kasse teilt die Bestellung pro Shop auf und führt Sie hindurch: Eine Checkliste pro Shop öffnet nacheinander die Seite jedes Artikels mit der einzugebenden Menge und Bestellnummer, und eine kopierbare Bestellliste dient Shops mit Schnellbestellformular. Hier wird nichts bestellt, und die Preise sind die am 30. Oktober 2026 beobachteten Angebote: Prüfen Sie den Warenkorb jedes Shops vor dem Bezahlen. Die gedruckten Teile finden Sie auf der Seite [Druckpaket](print-kit.md)."
+ }
+}

@@ -1,0 +1,422 @@
+{
+ "313d3f263217ad5d": {
+  "en": "Electronics, wiring and power",
+  "de": "Elektronik, Verkabelung und Stromversorgung"
+ },
+ "250c13281151e85f": {
+  "en": "Strido splits the robot into two power domains that share one ground:",
+  "de": "Strido teilt den Roboter in zwei Versorgungsdomänen mit gemeinsamer Masse:"
+ },
+ "51fb09652758e811": {
+  "en": "**Servo domain (6.0 V):** battery → 25 A main fuse → arming loop key → two Hobbywing UBEC-10A → WAGO servo bus in the front and rear cavities → 12 servos. The PCA9685 supplies only the servo *signals*; servo current never flows through a logic board.",
+  "de": "**Servodomäne (6,0 V):** Akku → 25-A-Hauptsicherung → Arming-Loop-Key → zwei Hobbywing UBEC-10A → WAGO-Servobus im vorderen und hinteren Hohlraum → 12 Servos. Der PCA9685 liefert nur die Servo-*Signale*; Servostrom fließt nie über eine Logikplatine."
+ },
+ "76aea7535fd15eb9": {
+  "en": "**Logic domain (5 V):** battery → 25 A main fuse → 7.5 A logic fuse → Pololu pushbutton switch → INA260 (measures pack voltage and logic current) → Pololu D36V50F5 5 V/5.5 A → Raspberry Pi 5 GPIO 5 V pins. The Pi powers the XIAO ESP32-S3 (motion controller) and the LiDAR adapter over USB.",
+  "de": "**Logikdomäne (5 V):** Akku → 25-A-Hauptsicherung → 7,5-A-Logiksicherung → Pololu-Tasterschalter → INA260 (misst Akkuspannung und Logikstrom) → Pololu D36V50F5 5 V/5,5 A → 5-V-GPIO-Pins des Raspberry Pi 5. Der Pi versorgt den XIAO ESP32-S3 (Bewegungscontroller) und den LiDAR-Adapter über USB."
+ },
+ "9469ba1530a2a361": {
+  "en": "Board positions are in the CAD; the [interference check](verification/interference.md) covers every board, stand-off and connector body. Every cable is routed through the CAD as well (`hardware/wiring.yaml`, see [wiring harness](#wiring-harness)): the renders, the 3D viewer and the assembly manual draw it, and the [wiring check](verification/wiring.md) proves that every lead reaches, every loop across a hip joint has slack over the whole hip range and no cable touches a moving part in the operating poses.",
+  "de": "Die Platinenpositionen sind im CAD festgelegt; die [Durchdringungsprüfung](verification/interference.md) erfasst jede Platine, jeden Abstandsbolzen und jeden Steckverbinderkörper. Auch jedes Kabel wird im CAD verlegt (`hardware/wiring.yaml`, siehe [Kabelbaum](#wiring-harness)): Die Renderings, die 3D-Ansicht und die Montageanleitung stellen es dar, und die [Verkabelungsprüfung](verification/wiring.md) weist nach, dass jede Leitung ihr Ziel erreicht, jede Schlaufe über ein Hüftgelenk über den gesamten Hüftbereich Spiel hat und kein Kabel in den Betriebsposen ein bewegtes Teil berührt."
+ },
+ "fa3a2563a87b0c1b": {
+  "en": "**Power** (servo domain left, logic domain right):",
+  "de": "**Stromversorgung** (Servodomäne links, Logikdomäne rechts):"
+ },
+ "b9fe8514c96691fe": {
+  "en": "flowchart TD\n  BAT[\"2S LiPo 5000 mAh<br/>XT60 lead (W00)\"] --> XT[\"robot battery input XT60H<br/>(under the deck)\"] -->|\"W01 14 AWG\"| FUSE[\"ATO holder, 25 A main fuse<br/>(rear cavity)\"]\n  FUSE -->|\"W02 14 AWG\"| KEY[\"XT60 arming port<br/>(back shell, loop key)\"]\n  KEY -->|\"W03 14 AWG\"| UF[\"UBEC-10A front<br/>6.0 V\"] -->|\"W05\"| WF[\"WAGO 221-415 ×4<br/>front cavity bus\"] --> SF[\"FL, FR servos ×6\"]\n  KEY -->|\"W03 14 AWG\"| UR[\"UBEC-10A rear<br/>6.0 V\"] -->|\"W06\"| WR[\"WAGO 221-415 ×4<br/>rear cavity bus\"] --> SR[\"RL, RR servos ×6\"]\n  FUSE -->|\"holder lead 14 AWG\"| LF[\"ATO holder, 7.5 A logic fuse<br/>(back shell)\"] -->|\"W09 18 AWG\"| SW[\"Pololu #2813<br/>pushbutton switch\"] -->|\"W10\"| INA[\"INA260<br/>0x41\"] -->|\"W11\"| REG[\"Pololu D36V50F5<br/>5 V 5.5 A\"]\n  XT -->|\"W04 14/18 AWG, ground star\"| UF & UR & SW\n  BTN[\"12 mm button<br/>(back shell)\"] -.->|\"A–B\"| SW\n  REG -->|\"W12: GPIO pins 2/4 (5 V), 6/14 (GND)\"| PI[\"Raspberry Pi 5\"]",
+  "de": "flowchart TD\n  BAT[\"2S LiPo 5000 mAh<br/>XT60-Leitung (W00)\"] --> XT[\"Akkueingang Roboter XT60H<br/>(unter dem Deck)\"] -->|\"W01 14 AWG\"| FUSE[\"ATO-Halter, 25-A-Hauptsicherung<br/>(hinterer Hohlraum)\"]\n  FUSE -->|\"W02 14 AWG\"| KEY[\"XT60-Arming-Port<br/>(Rückschale, Loop-Key)\"]\n  KEY -->|\"W03 14 AWG\"| UF[\"UBEC-10A vorne<br/>6,0 V\"] -->|\"W05\"| WF[\"WAGO 221-415 ×4<br/>Bus vorderer Hohlraum\"] --> SF[\"FL-, FR-Servos ×6\"]\n  KEY -->|\"W03 14 AWG\"| UR[\"UBEC-10A hinten<br/>6,0 V\"] -->|\"W06\"| WR[\"WAGO 221-415 ×4<br/>Bus hinterer Hohlraum\"] --> SR[\"RL-, RR-Servos ×6\"]\n  FUSE -->|\"Halterleitung 14 AWG\"| LF[\"ATO-Halter, 7,5-A-Logiksicherung<br/>(Rückschale)\"] -->|\"W09 18 AWG\"| SW[\"Pololu #2813<br/>Tasterschalter\"] -->|\"W10\"| INA[\"INA260<br/>0x41\"] -->|\"W11\"| REG[\"Pololu D36V50F5<br/>5 V 5,5 A\"]\n  XT -->|\"W04 14/18 AWG, Massestern\"| UF & UR & SW\n  BTN[\"12-mm-Taster<br/>(Rückschale)\"] -.->|\"A–B\"| SW\n  REG -->|\"W12: GPIO-Pins 2/4 (5 V), 6/14 (GND)\"| PI[\"Raspberry Pi 5\"]"
+ },
+ "7feddce1ced73a4e": {
+  "en": "**Signals:**",
+  "de": "**Signale:**"
+ },
+ "3662366cf781a6b3": {
+  "en": "flowchart TD\n  PI[\"Raspberry Pi 5\"] -->|\"USB-C\"| XIAO[\"XIAO ESP32-S3\"]\n  PI -->|\"USB\"| LIDAR[\"RPLIDAR C1<br/>+ USB adapter\"]\n  PI -->|\"CSI 300 mm\"| CAM[\"Camera Module 3 Wide\"]\n  XIAO -->|\"I²C 400 kHz\"| PCA[\"PCA9685 0x40\"]\n  XIAO -->|\"I²C\"| IMU[\"LSM6DSOX 0x6A\"]\n  XIAO -->|\"I²C\"| INA[\"INA260 0x41\"]\n  XIAO -->|\"SPI\"| LCD[\"Waveshare 2-inch ST7789\"]\n  XIAO -->|\"D3 → OE (2.2 kΩ pull-up)\"| PCA\n  PCA -->|\"signal only\"| SERVOS[\"12 servos\"]",
+  "de": "flowchart TD\n  PI[\"Raspberry Pi 5\"] -->|\"USB-C\"| XIAO[\"XIAO ESP32-S3\"]\n  PI -->|\"USB\"| LIDAR[\"RPLIDAR C1<br/>+ USB-Adapter\"]\n  PI -->|\"CSI 300 mm\"| CAM[\"Camera Module 3 Wide\"]\n  XIAO -->|\"I²C 400 kHz\"| PCA[\"PCA9685 0x40\"]\n  XIAO -->|\"I²C\"| IMU[\"LSM6DSOX 0x6A\"]\n  XIAO -->|\"I²C\"| INA[\"INA260 0x41\"]\n  XIAO -->|\"SPI\"| LCD[\"Waveshare 2-inch ST7789\"]\n  XIAO -->|\"D3 → OE (2,2-kΩ-Pull-up)\"| PCA\n  PCA -->|\"nur Signal\"| SERVOS[\"12 Servos\"]"
+ },
+ "7ce318d50b52a82a": {
+  "en": "Ratings and why these parts",
+  "de": "Nennwerte und Begründung der Teileauswahl"
+ },
+ "37f9c1274d336a10": {
+  "en": "| Element | Rating | Load in this robot | Margin / note |",
+  "de": "| Element | Nennwert | Last in diesem Roboter | Reserve / Hinweis |"
+ },
+ "fab94c7054bfc8fd": {
+  "en": "| SPT5435LV servo | 4.8–6.0 V only; PWM signal 3.3–5.0 V; 35 kg·cm @ 6 V; stall 3.5 A | standing ≈ 0.7 N·m at the knee (MuJoCo) | 6.0 V is the upper limit: do **not** use the 7.4 V UBEC setting. The PCA9685 drives 3.3 V pulses (VCC = XIAO 3V3), exactly the servo's lowest rated signal level: in spec, without margin |",
+  "de": "| Servo SPT5435LV | nur 4,8–6,0 V; PWM-Signal 3,3–5,0 V; 35 kg·cm @ 6 V; Blockierstrom 3,5 A | Stehen ≈ 0,7 N·m am Knie (MuJoCo) | 6,0 V ist die Obergrenze: Verwenden Sie **nicht** die 7,4-V-Einstellung des UBEC. Der PCA9685 gibt 3,3-V-Pulse aus (VCC = XIAO 3V3), genau den niedrigsten zulässigen Signalpegel des Servos: innerhalb der Spezifikation, ohne Reserve |"
+ },
+ "09bf575fa22eb56c": {
+  "en": "| Hobbywing UBEC-10A ×2 | 2–6S in; 6.0 V with no jumper; 10 A continuous, 15 A peak each | 6 servos each | 20 A continuous / 30 A peak total. Six stalled servos draw 21 A, more than one UBEC's 15 A peak: never command all legs into hard stops or apply power while servos are commanded (see first power-up) |",
+  "de": "| Hobbywing UBEC-10A ×2 | 2–6S Eingang; 6,0 V ohne Jumper; je 10 A dauerhaft, 15 A Spitze | je 6 Servos | insgesamt 20 A dauerhaft / 30 A Spitze. Sechs blockierte Servos ziehen 21 A, mehr als die 15 A Spitze eines UBEC: Fahren Sie nie alle Beine gegen harte Anschläge und schalten Sie nie Strom zu, während Servos angesteuert werden (siehe erstes Einschalten) |"
+ },
+ "07ef9992ee01f293": {
+  "en": "| WAGO 221-415 | 32 A, 0.2–4 mm² | ≤ 3 servos + feed per connector | 2 connectors (+/–) per leg, 8 in total |",
+  "de": "| WAGO 221-415 | 32 A, 0,2–4 mm² | ≤ 3 Servos + Einspeisung je Klemme | 2 Klemmen (+/–) je Bein, insgesamt 8 |"
+ },
+ "bcb68da1c8375c25": {
+  "en": "| Main fuse (ATO) | 25 A | servo branch (≤ 2 × 10 A UBEC output ≈ 21 A at an empty pack) + logic | protects the 14 AWG trunk behind it; W01 (≈ 0.15 m from the battery input) is unfused like the pack's own lead |",
+  "de": "| Hauptsicherung (ATO) | 25 A | Servozweig (≤ 2 × 10 A UBEC-Ausgang ≈ 21 A bei leerem Akku) + Logik | schützt die 14-AWG-Hauptleitung dahinter; W01 (≈ 0,15 m vom Akkueingang) ist wie die eigene Leitung des Akkus ungesichert |"
+ },
+ "3a4aa9b3587c748d": {
+  "en": "| Logic fuse (ATO) | 7.5 A | logic branch ≤ 3 A | protects the 18 AWG logic wiring after its holder. The tap from W02 is the holder's own 14 AWG lead, so no wire thinner than 14 AWG sits behind the 25 A fuse alone |",
+  "de": "| Logiksicherung (ATO) | 7,5 A | Logikzweig ≤ 3 A | schützt die 18-AWG-Logikverkabelung nach ihrem Halter. Der Abgriff von W02 ist die eigene 14-AWG-Leitung des Halters, daher liegt kein Draht dünner als 14 AWG allein hinter der 25-A-Sicherung |"
+ },
+ "28b7328b0ed89582": {
+  "en": "| Pololu #2813 (Big Pushbutton Power Switch HP) | 4.5–40 V; 6 A continuous at 55 °C | logic branch ≤ 3 A | never in the servo branch; not an emergency stop (Pololu) |",
+  "de": "| Pololu #2813 (Big Pushbutton Power Switch HP) | 4,5–40 V; 6 A dauerhaft bei 55 °C | Logikzweig ≤ 3 A | nie im Servozweig; kein Not-Aus (Pololu) |"
+ },
+ "d9dcd0ae5c07646c": {
+  "en": "| INA260 | 36 V, 15 A, 1.25 mA LSB | logic branch | measures pack voltage for the low-battery cut-off. **Required:** without it the firmware refuses to drive the servos |",
+  "de": "| INA260 | 36 V, 15 A, 1,25 mA LSB | Logikzweig | misst die Akkuspannung für die Unterspannungsabschaltung. **Erforderlich:** ohne ihn verweigert die Firmware die Ansteuerung der Servos |"
+ },
+ "c985e6a6e6237a2b": {
+  "en": "| Pololu D36V50F5 | 5 V ± 4 %, 5.5 A typical continuous | Pi 5 + USB + camera ≈ 2–3 A | Pi needs `PSU_MAX_CURRENT=5000` (see below) |",
+  "de": "| Pololu D36V50F5 | 5 V ± 4 %, 5,5 A typisch dauerhaft | Pi 5 + USB + Kamera ≈ 2–3 A | Pi benötigt `PSU_MAX_CURRENT=5000` (siehe unten) |"
+ },
+ "bef051384b0fefeb": {
+  "en": "| XT60 arming port | 30 A continuous | servo branch | the loop key is an XT60 with a 14 AWG bridge, see the gender rule below |",
+  "de": "| XT60-Arming-Port | 30 A dauerhaft | Servozweig | der Loop-Key ist ein XT60 mit 14-AWG-Brücke, siehe die Steckerregel unten |"
+ },
+ "37ab690fa38ce883": {
+  "en": "Every supply input and every logic signal is checked against its rated range by `python -m strido_verify.electronics` (rails, supplies and signals in `hardware/electronics.yaml`; report in [verification/electronics.md](verification/electronics.md)). Three pass without margin: the servo PWM and the LCD run at 3.3 V, the lowest level both accept, so a weak XIAO 3V3 rail (below 3.3 V) is the first thing to measure if a servo jitters or the LCD stays dark.",
+  "de": "Jeder Versorgungseingang und jedes Logiksignal wird von `python -m strido_verify.electronics` gegen seinen Nennbereich geprüft (Schienen, Versorgungen und Signale in `hardware/electronics.yaml`; Bericht in [verification/electronics.md](verification/electronics.md)). Drei bestehen ohne Reserve: Servo-PWM und LCD laufen mit 3,3 V, dem niedrigsten Pegel, den beide akzeptieren; eine schwache 3V3-Schiene des XIAO (unter 3,3 V) ist daher das Erste, was Sie messen sollten, wenn ein Servo zittert oder das LCD dunkel bleibt."
+ },
+ "ffb5e65163232acf": {
+  "en": "XT60 contact rule (the loop key must never fit the battery)",
+  "de": "XT60-Kontaktregel (der Loop-Key darf nie auf den Akku passen)"
+ },
+ "fec801c3a03c6817": {
+  "en": "Describe XT60 halves by their contacts, not by \"male/female\" (vendors use both words for both halves): one half has **pins**, the other **sockets** (Amass: XT60-M = pins, XT60-F = sockets). The loop key is a shorted connector, so it must carry the **same contact type as the battery's own connector**: then it cannot mate with the pack. The robot's battery input and the arming port carry the other type. Example: pack with sockets → robot battery input pins, arming port pins, loop key sockets. The CAD models an XT60H-F (sockets) arming port, i.e. a pack with pins; swap all three if your pack has sockets.",
+  "de": "Beschreiben Sie XT60-Hälften nach ihren Kontakten, nicht als „Stecker/Buchse“ (Händler verwenden beide Wörter für beide Hälften): Eine Hälfte hat **Stifte**, die andere **Buchsenkontakte** (Amass: XT60-M = Stifte, XT60-F = Buchsenkontakte). Der Loop-Key ist ein kurzgeschlossener Steckverbinder, daher muss er **denselben Kontakttyp wie der Steckverbinder des Akkus** tragen: Dann lässt er sich nicht mit dem Akku verbinden. Der Akkueingang des Roboters und der Arming-Port tragen den anderen Typ. Beispiel: Akku mit Buchsenkontakten → Akkueingang des Roboters Stifte, Arming-Port Stifte, Loop-Key Buchsenkontakte. Das CAD modelliert einen Arming-Port XT60H-F (Buchsenkontakte), also einen Akku mit Stiften; tauschen Sie alle drei, wenn Ihr Akku Buchsenkontakte hat."
+ },
+ "9ddeaa14ac8c4278": {
+  "en": "Check before bridging the key: take the *unbridged* key housing and try it on the pack connector; it must not fit. Never test with a bridged key. The battery itself can mate with the arming port; label the port \"ARM\" and always connect the pack to the battery input under the deck (W00 into the XT60H of W01/W04).",
+  "de": "Prüfen Sie vor dem Brücken des Steckers: Nehmen Sie das *ungebrückte* Steckergehäuse und versuchen Sie es auf den Akkustecker zu stecken; es darf nicht passen. Testen Sie nie mit einem gebrückten Stecker. Der Akku selbst passt in den Arming-Port; beschriften Sie den Port mit „ARM“ und schließen Sie den Akku immer am Akkueingang unter dem Deck an (W00 in den XT60H von W01/W04)."
+ },
+ "3111303ae041c428": {
+  "en": "Wiring list",
+  "de": "Verkabelungsliste"
+ },
+ "ff14d0a092d87b7d": {
+  "en": "Every cable of `hardware/wiring.yaml`; routes, cut lengths and the checks are in the [wiring check](verification/wiring.md) (regenerated from the CAD). Colour: red = +, black/brown = –, signals as noted.",
+  "de": "Jedes Kabel aus `hardware/wiring.yaml`; Verläufe, Zuschnittlängen und die Prüfungen stehen in der [Verkabelungsprüfung](verification/wiring.md) (aus dem CAD neu erzeugt). Farbe: rot = +, schwarz/braun = –, Signale wie angegeben."
+ },
+ "8f7c3559cfdaaaaf": {
+  "en": "| ID | From | To | Cable | Termination |",
+  "de": "| ID | Von | Nach | Kabel | Anschluss |"
+ },
+ "541e6d7f1276d47d": {
+  "en": "| W00 | battery (its own 12 AWG lead) | battery input XT60H, under the deck | supplied with the pack | plug in at Step 22 |",
+  "de": "| W00 | Akku (eigene 12-AWG-Leitung) | Akkueingang XT60H, unter dem Deck | mit dem Akku geliefert | in Schritt 22 einstecken |"
+ },
+ "402ee9f06624d6b0": {
+  "en": "| W01 | battery input XT60H (+) | 25 A main fuse holder (rear cavity) | 14 AWG red in spiral wrap | solder, heat-shrink; spliced to the holder lead trimmed to 20 mm; unfused |",
+  "de": "| W01 | Akkueingang XT60H (+) | Halter der 25-A-Hauptsicherung (hinterer Hohlraum) | 14 AWG rot in Spiralschlauch | löten, Schrumpfschlauch; an die auf 20 mm gekürzte Halterleitung gespleißt; ungesichert |"
+ },
+ "1c20b1b1d895f2d7": {
+  "en": "| W02 | main fuse out (holder lead trimmed to 20 mm) | back-shell splice → arming jack contact 1, and the logic fuse holder's own input lead (trimmed to its cut length) | 14 AWG red | solder + heat-shrink at the splices |",
+  "de": "| W02 | Ausgang Hauptsicherung (Halterleitung auf 20 mm gekürzt) | Spleiß in der Rückschale → Arming-Port Kontakt 1 und eigene Eingangsleitung des Logiksicherungshalters (auf Zuschnittlänge gekürzt) | 14 AWG rot | löten + Schrumpfschlauch an den Spleißen |"
+ },
+ "30e05ab27a8707c5": {
+  "en": "| W03 | arming jack contact 2 | splice under the deck → UBEC front IN+ and UBEC rear IN+ | 14 AWG red | solder; the loop key bridges the jack's two contacts |",
+  "de": "| W03 | Arming-Port Kontakt 2 | Spleiß unter dem Deck → UBEC vorne IN+ und UBEC hinten IN+ | 14 AWG rot | löten; der Loop-Key verbindet die beiden Kontakte des Ports |"
+ },
+ "a24a3784afa19cff": {
+  "en": "| W04 | battery input XT60H (–) | ground star beside it → UBEC IN– ×2 (14 AWG), switch GND (18 AWG) | 14 / 18 AWG black | one star point at the battery input |",
+  "de": "| W04 | Akkueingang XT60H (–) | Massestern daneben → UBEC IN– ×2 (14 AWG), Schalter GND (18 AWG) | 14 / 18 AWG schwarz | ein Sternpunkt am Akkueingang |"
+ },
+ "90508611835686d5": {
+  "en": "| W05 / W06 | UBEC front / rear OUT | port 0 of WAGO bay 0, front / rear cavity | UBEC lead extended with 18 AWG pair | strip 11 mm into the WAGO pair (red V+ upper, black GND lower) |",
+  "de": "| W05 / W06 | UBEC vorne / hinten OUT | Port 0 von WAGO-Platz 0, vorderer / hinterer Hohlraum | UBEC-Leitung mit 18-AWG-Paar verlängert | 11 mm abisolieren, in das WAGO-Paar (rot V+ oben, schwarz GND unten) |"
+ },
+ "dc0155b3ae5edfb6": {
+  "en": "| W07 / W08 | WAGO port 4 of bay 0 | port 0 of bay 1 (second leg of the cavity) | 18 AWG, one wire per rail | along the WAGO faces |",
+  "de": "| W07 / W08 | WAGO-Port 4 von Platz 0 | Port 0 von Platz 1 (zweites Bein des Hohlraums) | 18 AWG, ein Draht je Schiene | entlang der WAGO-Stirnseiten |"
+ },
+ "661b1fb3e41c0b27": {
+  "en": "| S-*leg*-*joint* (12) | servo lead | split at the base tie: red/brown → the leg's WAGO pair (port hip 1, thigh 2, knee 3); orange → PCA9685 channel | the servo's own 260 mm lead, cut to length | red/brown stripped into the WAGO; orange re-crimped (female Dupont, 1-pin housing) |",
+  "de": "| S-*leg*-*joint* (12) | Servokabel | am Basis-Kabelbinder aufgeteilt: rot/braun → WAGO-Paar des Beins (Port Hüfte 1, Oberschenkel 2, Knie 3); orange → PCA9685-Kanal | eigenes 260-mm-Servokabel, auf Länge gekürzt | rot/braun abisoliert in die WAGO; orange neu gecrimpt (Dupont-Buchse, 1-poliges Gehäuse) |"
+ },
+ "e43e108fcd19c855": {
+  "en": "| W09 | 7.5 A logic fuse out (holder lead trimmed to 20 mm) | switch VIN | 18 AWG red | splice at the holder, screw terminal at the switch; its ground is W04 |",
+  "de": "| W09 | Ausgang 7,5-A-Logiksicherung (Halterleitung auf 20 mm gekürzt) | Schalter VIN | 18 AWG rot | Spleiß am Halter, Schraubklemme am Schalter; seine Masse ist W04 |"
+ },
+ "47ee86b5859684e6": {
+  "en": "| W10 | switch VOUT | INA260 VIN+ | 18 AWG red | screw terminals; the INA260 is a high-side shunt |",
+  "de": "| W10 | Schalter VOUT | INA260 VIN+ | 18 AWG rot | Schraubklemmen; der INA260 ist ein High-Side-Shunt |"
+ },
+ "473b15702006a168": {
+  "en": "| W11 | INA260 VIN– | D36V50F5 VIN | 18 AWG red | screw terminal, solder |",
+  "de": "| W11 | INA260 VIN– | D36V50F5 VIN | 18 AWG rot | Schraubklemme, löten |"
+ },
+ "9b14f8a5d872effc": {
+  "en": "| W24 | switch GND | D36V50F5 GND | 18 AWG black | the INA260 terminal block takes only VIN+ and VIN–; its logic ground comes over I²C (W19) |",
+  "de": "| W24 | Schalter GND | D36V50F5 GND | 18 AWG schwarz | die Klemmleiste des INA260 nimmt nur VIN+ und VIN– auf; seine Logikmasse kommt über I²C (W19) |"
+ },
+ "6e85cecb0cf2b1dc": {
+  "en": "| W12 | D36V50F5 VOUT / GND | Pi 5 header pins 2 + 4 (5 V), 6 + 14 (GND) | 22 AWG ×4 | Dupont female crimp, one wire per pin (2 × 1.5 A per rail) |",
+  "de": "| W12 | D36V50F5 VOUT / GND | Pi-5-Header Pins 2 + 4 (5 V), 6 + 14 (GND) | 22 AWG ×4 | Dupont-Buchse gecrimpt, ein Draht je Pin (2 × 1,5 A je Schiene) |"
+ },
+ "c853c92176cf7f3e": {
+  "en": "| W13 | 12 mm pushbutton | switch A and B | 22 AWG pair | solder, heat-shrink |",
+  "de": "| W13 | 12-mm-Taster | Schalter A und B | 22-AWG-Paar | löten, Schrumpfschlauch |"
+ },
+ "ed37d11c9cffd08a": {
+  "en": "| W14 | Pi 5 USB-A (lower port of the left stack) | XIAO USB-C | 20 cm USB-A (90°) → C | fold the spare length in the front cavity |",
+  "de": "| W14 | Pi 5 USB-A (unterer Port des linken Stapels) | XIAO USB-C | 20 cm USB-A (90°) → C | Überlänge im vorderen Hohlraum falten |"
+ },
+ "7c13a8ba92c16130": {
+  "en": "| W15 | Pi 5 USB-A (upper port) | LiDAR USB adapter (in the pedestal) | 20 cm USB-A (90°) → C | over the Pi beside the cooler fan, up through the top-shell slot |",
+  "de": "| W15 | Pi 5 USB-A (oberer Port) | LiDAR-USB-Adapter (im Sockel) | 20 cm USB-A (90°) → C | über den Pi neben dem Kühlerlüfter, nach oben durch den Schlitz der Oberschale |"
+ },
+ "b204bb8fcb9fd9b6": {
+  "en": "| W16 | Pi 5 CAM/DISP 0 | Camera Module 3 Wide | 22→15 pin ribbon, 300 mm | through both shoulder-frame openings and the front-shell slot; fold flat |",
+  "de": "| W16 | Pi 5 CAM/DISP 0 | Camera Module 3 Wide | Flachbandkabel 22→15 Pin, 300 mm | durch beide Schulterrahmenöffnungen und den Schlitz der Frontschale; flach falten |"
+ },
+ "619aec34b19cc5b0": {
+  "en": "| W17 | XIAO D4/D5 (SDA/SCL), 3V3, GND | PCA9685 left header (SDA, SCL, VCC, GND) | 22 AWG ×4 | soldered to the XIAO pins (no room for housings under the upper shoulder frame), Dupont crimps at the PCA |",
+  "de": "| W17 | XIAO D4/D5 (SDA/SCL), 3V3, GND | linker Header des PCA9685 (SDA, SCL, VCC, GND) | 22 AWG ×4 | an die XIAO-Pins gelötet (kein Platz für Gehäuse unter dem oberen Schulterrahmen), Dupont-Crimps am PCA |"
+ },
+ "3eb5ff2920a397a8": {
+  "en": "| W18 | PCA9685 right header (VCC, SDA, SCL, GND) | LSM6DSOX STEMMA QT | STEMMA QT → female sockets, 150 mm | the IMU sits 2.5 mm under the Pi: only the low STEMMA QT plug fits |",
+  "de": "| W18 | rechter Header des PCA9685 (VCC, SDA, SCL, GND) | LSM6DSOX STEMMA QT | STEMMA QT → Buchsenkontakte, 150 mm | die IMU sitzt 2,5 mm unter dem Pi: nur der flache STEMMA-QT-Stecker passt |"
+ },
+ "61085650f0603d9c": {
+  "en": "| W19 | LSM6DSOX second STEMMA QT | INA260 header (VCC, SDA, SCL, GND) | STEMMA QT → female sockets, 150 mm | INA260 A0 jumper bridged → 0x41 |",
+  "de": "| W19 | zweiter STEMMA QT des LSM6DSOX | INA260-Header (VCC, SDA, SCL, GND) | STEMMA QT → Buchsenkontakte, 150 mm | INA260-Jumper A0 gebrückt → 0x41 |"
+ },
+ "5fb49008b02c4219": {
+  "en": "| W20 | XIAO D3 | PCA9685 OE | 22 AWG green | high = all servo outputs off. Solder a 2.2 kΩ resistor from OE to VCC on the PCA9685 header: the board pulls OE low, so without it the outputs stay on while the XIAO resets or sits in its bootloader |",
+  "de": "| W20 | XIAO D3 | PCA9685 OE | 22 AWG grün | high = alle Servoausgänge aus. Löten Sie einen 2,2-kΩ-Widerstand von OE nach VCC am PCA9685-Header: Die Platine zieht OE auf low, ohne ihn bleiben die Ausgänge also aktiv, während der XIAO zurückgesetzt wird oder im Bootloader steht |"
+ },
+ "b97560a2e81b35c3": {
+  "en": "| W21 | XIAO D8, D10, D9, D0, D1, D2, 3V3, GND | LCD CLK, DIN, DC, CS, RST, BL, VCC, GND | display cable (PH2.0 8-pin, 200 mm, supplied) | its Dupont ends soldered to the XIAO pins; 3V3 and GND share the pins of W17 |",
+  "de": "| W21 | XIAO D8, D10, D9, D0, D1, D2, 3V3, GND | LCD CLK, DIN, DC, CS, RST, BL, VCC, GND | Displaykabel (PH2.0 8-polig, 200 mm, mitgeliefert) | seine Dupont-Enden an die XIAO-Pins gelötet; 3V3 und GND teilen sich die Pins mit W17 |"
+ },
+ "c92221698efab06d": {
+  "en": "| W22 (optional) | Pi 5 GPIO 26 (pin 37) | switch OFF | 22 AWG white | Dupont crimp at the Pi, soldered at the switch; lets the Pi cut its own power after shutdown, see below |",
+  "de": "| W22 (optional) | Pi 5 GPIO 26 (Pin 37) | Schalter OFF | 22 AWG weiß | Dupont-Crimp am Pi, am Schalter gelötet; ermöglicht dem Pi, nach dem Herunterfahren die eigene Versorgung abzuschalten, siehe unten |"
+ },
+ "33213fdad83d8334": {
+  "en": "| W23 | RPLIDAR C1 | its USB adapter | the sensor's own cable | through the notch at the pedestal front |",
+  "de": "| W23 | RPLIDAR C1 | sein USB-Adapter | eigenes Kabel des Sensors | durch die Kerbe vorne am Sockel |"
+ },
+ "1a4b8e1f85fe1248": {
+  "en": "Pin maps",
+  "de": "Pinbelegungen"
+ },
+ "9ada86fa0f33ef78": {
+  "en": "**XIAO ESP32-S3** (`firmware/strido_esp32s3/src/board_config.h` is the source of truth)",
+  "de": "**XIAO ESP32-S3** (`firmware/strido_esp32s3/src/board_config.h` ist die maßgebliche Quelle)"
+ },
+ "2b1169438d407bb7": {
+  "en": "| XIAO pin | GPIO | Function |",
+  "de": "| XIAO-Pin | GPIO | Funktion |"
+ },
+ "acac5f8494c59193": {
+  "en": "| D0 | 1 | LCD CS |",
+  "de": "| D0 | 1 | LCD CS |"
+ },
+ "785040fab833c53b": {
+  "en": "| D1 | 2 | LCD RST |",
+  "de": "| D1 | 2 | LCD RST |"
+ },
+ "d354bd170c29d7d5": {
+  "en": "| D2 | 3 | LCD backlight (PWM; strapping pin, driven only after boot) |",
+  "de": "| D2 | 3 | LCD-Hintergrundbeleuchtung (PWM; Strapping-Pin, erst nach dem Booten angesteuert) |"
+ },
+ "199d470d35dbab83": {
+  "en": "| D3 | 4 | PCA9685 OE (active low enable; firmware holds it high until armed) |",
+  "de": "| D3 | 4 | PCA9685 OE (Low-aktive Freigabe; Firmware hält ihn bis zum Scharfschalten auf high) |"
+ },
+ "6fb05e58a0a5bea8": {
+  "en": "| D4 | 5 | I²C SDA |",
+  "de": "| D4 | 5 | I²C SDA |"
+ },
+ "adb2b9c2d2014cf8": {
+  "en": "| D5 | 6 | I²C SCL |",
+  "de": "| D5 | 6 | I²C SCL |"
+ },
+ "b8f47dd922465ca9": {
+  "en": "| D8 | 7 | LCD SCK |",
+  "de": "| D8 | 7 | LCD SCK |"
+ },
+ "268a7994a112316d": {
+  "en": "| D9 | 8 | LCD DC |",
+  "de": "| D9 | 8 | LCD DC |"
+ },
+ "7fbd40422d310235": {
+  "en": "| D10 | 9 | LCD MOSI |",
+  "de": "| D10 | 9 | LCD MOSI |"
+ },
+ "b733422bcf476107": {
+  "en": "| — | 21 | on-board user LED (status) |",
+  "de": "| — | 21 | Onboard-Benutzer-LED (Status) |"
+ },
+ "0e254072d5a0d4ca": {
+  "en": "**PCA9685 channels** (200 Hz, 500–2500 µs)",
+  "de": "**PCA9685-Kanäle** (200 Hz, 500–2500 µs)"
+ },
+ "e023e6f2ee36822c": {
+  "en": "| Leg | hip | thigh | knee crank |",
+  "de": "| Bein | Hüfte | Oberschenkel | Kniekurbel |"
+ },
+ "73993110ec26ce8e": {
+  "en": "**I²C bus:** PCA9685 0x40 (and its all-call 0x70), LSM6DSOX 0x6A, INA260 0x41 (A0 bridged; 0x40 would collide with the PCA9685).",
+  "de": "**I²C-Bus:** PCA9685 0x40 (und seine All-Call-Adresse 0x70), LSM6DSOX 0x6A, INA260 0x41 (A0 gebrückt; 0x40 würde mit dem PCA9685 kollidieren)."
+ },
+ "90acd26f6a09f22d": {
+  "en": "Power budget and runtime",
+  "de": "Leistungsbudget und Laufzeit"
+ },
+ "3b70543f068d7f67": {
+  "en": "| Consumer | Typical | Peak | Source |",
+  "de": "| Verbraucher | Typisch | Spitze | Quelle |"
+ },
+ "81fea77c7c5f61ab": {
+  "en": "| 12 servos standing | ≈ 30 W (≈ 5 A at 6 V) | — | [ESTIMATE] from the MuJoCo standing torques and the 3.5 A stall current at 3.43 N·m |",
+  "de": "| 12 Servos stehend | ≈ 30 W (≈ 5 A bei 6 V) | — | [ESTIMATE] aus den MuJoCo-Stehmomenten und dem Blockierstrom von 3,5 A bei 3,43 N·m |"
+ },
+ "b2a29f40c5266dae": {
+  "en": "| 12 servos trotting | ≈ 50 W | > 150 W for ms | [ESTIMATE] |",
+  "de": "| 12 Servos im Trot | ≈ 50 W | > 150 W für ms | [ESTIMATE] |"
+ },
+ "30bd3d2f0701c392": {
+  "en": "| Pi 5 + cooler | 5–7 W | 12 W | Raspberry Pi |",
+  "de": "| Pi 5 + Kühler | 5–7 W | 12 W | Raspberry Pi |"
+ },
+ "a14bb311a45bc1b8": {
+  "en": "| RPLIDAR C1 | ≈ 1.2 W | — | Slamtec datasheet |",
+  "de": "| RPLIDAR C1 | ≈ 1,2 W | — | Slamtec-Datenblatt |"
+ },
+ "747fd9d4d1e71966": {
+  "en": "| Camera, XIAO, LCD, IMU, PCA | ≈ 1.5 W | — | datasheets |",
+  "de": "| Kamera, XIAO, LCD, IMU, PCA | ≈ 1,5 W | — | Datenblätter |"
+ },
+ "315459ff9914d887": {
+  "en": "| **Total trotting** | ≈ 60 W from the pack (90 % converters) | | |",
+  "de": "| **Gesamt im Trot** | ≈ 60 W aus dem Akku (90 % Wandler) | | |"
+ },
+ "73fdf1609097d956": {
+  "en": "2S 5000 mAh ≈ 37 Wh, 80 % usable → **≈ 30 min trotting, ≈ 45 min standing** [ESTIMATE; measure with `/battery_state` and the arming-key current with a clamp meter]. The firmware warns at 6.8 V (3.4 V/cell) and relaxes the servos at 6.4 V (3.2 V/cell).",
+  "de": "2S 5000 mAh ≈ 37 Wh, 80 % nutzbar → **≈ 30 min Trot, ≈ 45 min Stehen** [ESTIMATE; messen Sie mit `/battery_state` und den Strom am Loop-Key mit einer Strommesszange]. Die Firmware warnt bei 6,8 V (3,4 V/Zelle) und entspannt die Servos bei 6,4 V (3,2 V/Zelle)."
+ },
+ "829da3b788ec8e93": {
+  "en": "Wiring harness",
+  "de": "Kabelbaum"
+ },
+ "ced7d7b19167c75c": {
+  "en": "![The routed harness with the shells, top sensors and upper shoulder frames removed](images/wiring.png)",
+  "de": "![Der verlegte Kabelbaum mit abgenommenen Schalen, oberen Sensoren und oberen Schulterrahmen](images/wiring.png)"
+ },
+ "90df4a3bce70acac": {
+  "en": "The harness is designed in the CAD, not improvised in the build: `hardware/wiring.yaml` names every cable, the connector each end sits on and the tie points it passes; `strido_cad.wiring` routes the legs between those points through the free space of the robot (every base part and everything the legs sweep over their joint ranges is kept out), and the result is drawn in the renders, the [3D viewer](viewer.md) and the [assembly manual](assembly/README.md) (Steps 14–16, the shell steps and Step 20). The [wiring check](verification/wiring.md) then proves, independently of the router:",
+  "de": "Der Kabelbaum wird im CAD konstruiert, nicht beim Bau improvisiert: `hardware/wiring.yaml` benennt jedes Kabel, den Steckverbinder an jedem Ende und die Befestigungspunkte, die es passiert; `strido_cad.wiring` verlegt die Abschnitte zwischen diesen Punkten durch den freien Raum des Roboters (jedes Basisteil und alles, was die Beine über ihre Gelenkbereiche überstreichen, wird ausgespart), und das Ergebnis wird in den Renderings, der [3D-Ansicht](viewer.md) und der [Montageanleitung](assembly/README.md) (Schritte 14–16, die Schalenschritte und Schritt 20) dargestellt. Die [Verkabelungsprüfung](verification/wiring.md) weist dann unabhängig vom Router nach:"
+ },
+ "4a247e544ba5b1f7": {
+  "en": "**reach:** every ready-made lead (servo leads 260 mm, USB 200 mm, ribbon 300 mm, STEMMA QT 150 mm, the pack lead) covers its route with at least 10 mm to spare;",
+  "de": "**Reichweite:** jede fertig konfektionierte Leitung (Servokabel 260 mm, USB 200 mm, Flachband 300 mm, STEMMA QT 150 mm, Akkuleitung) deckt ihren Verlauf mit mindestens 10 mm Reserve ab;"
+ },
+ "b280205c499aebfe": {
+  "en": "**stock:** the cut list (route + strip/solder allowance + 8 % slack) fits the wire, spiral wrap and ties in the BOM;",
+  "de": "**Material:** die Zuschnittliste (Verlauf + Abisolier-/Lötzugabe + 8 % Spiel) passt zu Draht, Spiralschlauch und Kabelbindern in der Stückliste;"
+ },
+ "1bd03bdd1ad23e15": {
+  "en": "**hip loops:** the leads of the thigh and knee servos ride on the hip and cross the hip joint near its axis; each has a free loop at least 1.2 × the largest distance its two ties reach over the whole hip range (36 mm thigh, 40 mm knee);",
+  "de": "**Hüftschlaufen:** die Servokabel der Oberschenkel- und Knieservos laufen auf der Hüfte mit und kreuzen das Hüftgelenk nahe seiner Achse; jedes hat eine freie Schlaufe von mindestens dem 1,2-Fachen des größten Abstands, den seine zwei Befestigungspunkte über den gesamten Hüftbereich erreichen (36 mm Oberschenkel, 40 mm Knie);"
+ },
+ "c0ee4fa15b4cac17": {
+  "en": "**clearance:** no cable passes through a part, and against every part of another body (legs, horns, links) it keeps the running clearance of the moving-parts check in the 13 operating poses (the router keeps cables out of everything the legs sweep over a grid of joint angles);",
+  "de": "**Freigang:** kein Kabel verläuft durch ein Teil, und gegenüber jedem Teil eines anderen Körpers (Beine, Hörner, Koppeln) hält es in den 13 Betriebsposen den Laufabstand der Prüfung bewegter Teile ein (der Router hält Kabel aus allem heraus, was die Beine über ein Raster von Gelenkwinkeln überstreichen);"
+ },
+ "3c6d205d6e35f5f2": {
+  "en": "**ports:** one cable per WAGO entry, one plug per PCA9685 channel.",
+  "de": "**Ports:** ein Kabel je WAGO-Eingang, ein Stecker je PCA9685-Kanal."
+ },
+ "2b915ec0d3599e20": {
+  "en": "Build order (the manual draws each step):",
+  "de": "Bauablauf (die Anleitung stellt jeden Schritt dar):"
+ },
+ "8ae2ebf0963308ba": {
+  "en": "**Servo bus.** Clip the four WAGO 221-415 into each bus holder: one V+ (upper) and one GND (lower) connector per leg; all entries face the robot's left side. Bay 0 (front of each cavity): UBEC feed port 0, hip/thigh/knee ports 1–3, jumper port 4. Bay 1: jumper port 0, servos 1–3, port 4 spare. Unclip a WAGO pair to open its levers: the XIAO platform blocks them in bay 0.",
+  "de": "**Servobus.** Klipsen Sie die vier WAGO 221-415 in jeden Bushalter: je Bein eine V+-Klemme (oben) und eine GND-Klemme (unten); alle Eingänge zeigen zur linken Seite des Roboters. Platz 0 (vorne in jedem Hohlraum): UBEC-Einspeisung Port 0, Hüfte/Oberschenkel/Knie Ports 1–3, Brücke Port 4. Platz 1: Brücke Port 0, Servos 1–3, Port 4 frei. Klipsen Sie ein WAGO-Paar aus, um seine Hebel zu öffnen: Auf Platz 0 blockiert die XIAO-Plattform sie."
+ },
+ "8738363228800bfe": {
+  "en": "**UBECs.** Leave the output jumper open (6.0 V). Measure the unloaded output before connecting any servo: accept 5.8–6.0 V (the servo is rated up to 6.0 V; return a unit that reads higher). Foam-tape both UBECs into the side pockets under the deck.",
+  "de": "**UBECs.** Lassen Sie den Ausgangsjumper offen (6,0 V). Messen Sie die Leerlaufausgangsspannung, bevor Sie ein Servo anschließen: zulässig sind 5,8–6,0 V (das Servo ist bis 6,0 V spezifiziert; senden Sie ein Gerät mit höherem Messwert zurück). Kleben Sie beide UBECs mit Schaumklebeband in die Seitentaschen unter dem Deck."
+ },
+ "661b3243942d89d2": {
+  "en": "**Power entry (Step 14).** Battery input XT60H with W01 (red, in spiral wrap) and W04 (black) in the pocket beside the battery; ground star; main fuse holder (leads trimmed to 20 mm) on the rear WAGO bus, tied to the upper shoulder frame; W02, W03 and W09 run to the back-shell space; no fuses yet.",
+  "de": "**Stromeingang (Schritt 14).** Akkueingang XT60H mit W01 (rot, im Spiralschlauch) und W04 (schwarz) in der Tasche neben dem Akku; Massestern; Hauptsicherungshalter (Leitungen auf 20 mm gekürzt) am hinteren WAGO-Bus, am oberen Schulterrahmen befestigt; W02, W03 und W09 laufen in den Raum der Rückschale; noch keine Sicherungen."
+ },
+ "5c86a468d64d099c": {
+  "en": "**Servo leads (Step 15).** Tie each thigh and knee lead at the servo mount plate, leave the free loop, tie it at the shoulder frame or bus holder; split it there: red/brown cut to length into the leg's WAGO pair, orange cut to length and re-crimped for its PCA9685 channel. Hip servo leads split at the inner frame opening.",
+  "de": "**Servokabel (Schritt 15).** Binden Sie jedes Oberschenkel- und Kniekabel an der Servohalterplatte fest, lassen Sie die freie Schlaufe, binden Sie es am Schulterrahmen oder Bushalter fest; teilen Sie es dort auf: rot/braun auf Länge gekürzt in das WAGO-Paar des Beins, orange auf Länge gekürzt und neu gecrimpt für seinen PCA9685-Kanal. Die Kabel der Hüftservos werden an der Öffnung des inneren Rahmens aufgeteilt."
+ },
+ "c76e002c97430cc7": {
+  "en": "**Logic and signals (Step 16).** W10/W11 (18 AWG red) from the switch through the INA260 (A0 bridged) to the D36V50F5, W24 (18 AWG black) switch GND to regulator GND, W12 crimped but **not yet plugged** into the Pi, W14, W17–W20, W22.",
+  "de": "**Logik und Signale (Schritt 16).** W10/W11 (18 AWG rot) vom Schalter über den INA260 (A0 gebrückt) zum D36V50F5, W24 (18 AWG schwarz) Schalter-GND zu Regler-GND, W12 gecrimpt, aber **noch nicht eingesteckt** in den Pi, W14, W17–W20, W22."
+ },
+ "3def01515c8c98bf": {
+  "en": "**Shell steps.** Display cable W21 (Step 17), camera ribbon W16 (Step 18); rear panel (Step 19): button W13, W02/W03 soldered to the arming jack, logic fuse holder spliced into W02 and W09.",
+  "de": "**Schalenschritte.** Displaykabel W21 (Schritt 17), Kamera-Flachbandkabel W16 (Schritt 18); Rückwand (Schritt 19): Taster W13, W02/W03 an den Arming-Port gelötet, Logiksicherungshalter in W02 und W09 gespleißt."
+ },
+ "00165a08d45c1288": {
+  "en": "**Supply check and dressing (Step 20).** Pack plugged in for a moment, both fuses in, loop key out, button pressed: 4.8–5.2 V at the W12 Dupont ends (D36V50F5: 5 V ± 4 %); fuses out again, then plug W12 onto Pi pins 2/4/6/14. Spiral wrap on every bundle of three or more cables and on W01, ties at the marked points, two adhesive tie mounts on the deck; move every leg through its range by hand and check nothing pulls or rubs. The LiDAR cables go in with the top shell (Step 21), the pack lead with the battery (Step 22).",
+  "de": "**Versorgungsprüfung und Kabelführung (Schritt 20).** Akku kurz eingesteckt, beide Sicherungen eingesetzt, Loop-Key gezogen, Taster gedrückt: 4,8–5,2 V an den Dupont-Enden von W12 (D36V50F5: 5 V ± 4 %); Sicherungen wieder heraus, dann W12 auf die Pi-Pins 2/4/6/14 stecken. Spiralschlauch über jedes Bündel aus drei oder mehr Kabeln und über W01, Kabelbinder an den markierten Punkten, zwei selbstklebende Kabelbinder-Sockel auf dem Deck; bewegen Sie jedes Bein von Hand durch seinen Bereich und prüfen Sie, dass nichts zieht oder scheuert. Die LiDAR-Kabel kommen mit der Oberschale (Schritt 21), die Akkuleitung mit dem Akku (Schritt 22)."
+ },
+ "4120868042837126": {
+  "en": "**Smoke test without servos:** fuses in, loop key **out**, power on → Pi boots, `ros2 topic echo /battery_state` shows the pack voltage, `/diagnostics` shows `pwm_ok`, `imu_ok`, `power_ok`. Hold the XIAO's BOOT button and press RESET: OE must read ≥ 2.4 V (outputs off) while it sits in the bootloader.",
+  "de": "**Rauchtest ohne Servos:** Sicherungen eingesetzt, Loop-Key **gezogen**, einschalten → Pi bootet, `ros2 topic echo /battery_state` zeigt die Akkuspannung, `/diagnostics` zeigt `pwm_ok`, `imu_ok`, `power_ok`. Halten Sie die BOOT-Taste des XIAO und drücken Sie RESET: OE muss ≥ 2,4 V (Ausgänge aus) anzeigen, solange er im Bootloader steht."
+ },
+ "dfff55a51584383b": {
+  "en": "Why the harness is laid out this way: [cable management](wiki/making/cable-management.md) (decision: [ADR-011](decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad)).",
+  "de": "Warum der Kabelbaum so ausgelegt ist: [Kabelmanagement](wiki/making/cable-management.md) (Entscheidung: [ADR-011](decisions.md#adr-011-wiring-harness-routed-and-checked-in-the-cad))."
+ },
+ "d3f788a7f7012bb5": {
+  "en": "Raspberry Pi configuration",
+  "de": "Konfiguration des Raspberry Pi"
+ },
+ "6c408d3704157964": {
+  "en": "Power through the GPIO 5 V pins bypasses USB-PD, so tell the Pi the supply can deliver 5 A:",
+  "de": "Die Versorgung über die 5-V-GPIO-Pins umgeht USB-PD; teilen Sie dem Pi daher mit, dass die Versorgung 5 A liefern kann:"
+ },
+ "bd7af5f2ee94723c": {
+  "en": "Stable device names (`ros2/strido_bringup/config/99-strido.rules`):",
+  "de": "Stabile Gerätenamen (`ros2/strido_bringup/config/99-strido.rules`):"
+ },
+ "f7330a64307a2778": {
+  "en": "Optional self power-off (W22): `dtoverlay=gpio-poweroff,gpiopin=26` in `config.txt` drives GPIO 26 high after shutdown, which pulses the switch's OFF input. [UNVERIFIED on Pi 5: test with the servos disarmed before relying on it.]",
+  "de": "Optionale Selbstabschaltung (W22): `dtoverlay=gpio-poweroff,gpiopin=26` in `config.txt` setzt GPIO 26 nach dem Herunterfahren auf high, was einen Puls auf den OFF-Eingang des Schalters gibt. [UNVERIFIED on Pi 5: test with the servos disarmed before relying on it.]"
+ },
+ "337666bcc610e0db": {
+  "en": "Safety rules",
+  "de": "Sicherheitsregeln"
+ },
+ "854c1db807d32703": {
+  "en": "Charge only in a LiPo bag with a balance charger; never leave charging unattended.",
+  "de": "Laden Sie nur in einem LiPo-Sack mit einem Balancer-Ladegerät; lassen Sie den Ladevorgang nie unbeaufsichtigt."
+ },
+ "b38f854c54411fa9": {
+  "en": "The loop key is the servo kill: pull it to disarm. The pushbutton switch is not an emergency stop (Pololu says so explicitly).",
+  "de": "Der Loop-Key ist die Servo-Abschaltung: Ziehen Sie ihn zum Entschärfen. Der Tasterschalter ist kein Not-Aus (Pololu sagt das ausdrücklich)."
+ },
+ "993c068c65d43ab5": {
+  "en": "`/strido/estop` latches: the firmware pulls PCA9685 OE high and stops all pulses.",
+  "de": "`/strido/estop` rastet ein: Die Firmware setzt PCA9685 OE auf high und stoppt alle Pulse."
+ },
+ "4d2905c01099e94e": {
+  "en": "Startup order: logic on → robot lying in the rest pose (legs folded) → insert the loop key (servos stay limp; the controller sends no pulses before the first position command) → start `ros2 launch strido_bringup robot.launch.py` (servos go to the rest pose, then a 3 s stand-up). Never insert the key while position commands are running: all servos would jump at once.",
+  "de": "Einschaltreihenfolge: Logik ein → Roboter liegt in der Ruhepose (Beine eingeklappt) → Loop-Key einsetzen (Servos bleiben schlaff; der Controller sendet vor dem ersten Positionsbefehl keine Pulse) → `ros2 launch strido_bringup robot.launch.py` starten (Servos fahren in die Ruhepose, dann 3 s Aufstehen). Setzen Sie den Loop-Key nie ein, während Positionsbefehle laufen: Alle Servos würden gleichzeitig springen."
+ },
+ "316d8dc3b42df9fe": {
+  "en": "The firmware refuses to drive without a working INA260 (no low-battery cut-off otherwise). The cut-off needs 5 consecutive readings (0.5 s) below 6.4 V, so load sags do not drop the robot mid-step.",
+  "de": "Die Firmware verweigert die Ansteuerung ohne funktionierenden INA260 (sonst gäbe es keine Unterspannungsabschaltung). Die Abschaltung benötigt 5 aufeinanderfolgende Messwerte (0,5 s) unter 6,4 V, damit Spannungseinbrüche unter Last den Roboter nicht mitten im Schritt absetzen."
+ },
+ "6046ef411f8fe46f": {
+  "en": "Without commands for 200 ms the servos hold their pose; 2 s later they relax. There is no separate keep-alive: if the gait or policy node dies, the robot holds, then relaxes.",
+  "de": "Ohne Befehle für 200 ms halten die Servos ihre Pose; 2 s später entspannen sie. Es gibt kein separates Keep-alive: Fällt der Gait- oder Policy-Node aus, hält der Roboter und entspannt dann."
+ }
+}

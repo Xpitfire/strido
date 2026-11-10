@@ -1,0 +1,8228 @@
+{
+ "generated_by": "strido_publish.viewer",
+ "units": "m",
+ "up": "y",
+ "stand_height_m": 0.17,
+ "steps": [
+  {
+   "index": 1,
+   "title": "Prepare the electronics deck"
+  },
+  {
+   "index": 2,
+   "title": "Chassis frame"
+  },
+  {
+   "index": 3,
+   "title": "Hip servos"
+  },
+  {
+   "index": 4,
+   "title": "Hip bearings and shoulder frames"
+  },
+  {
+   "index": 5,
+   "title": "Servo power bus and motion controller"
+  },
+  {
+   "index": 6,
+   "title": "Servo UBECs"
+  },
+  {
+   "index": 7,
+   "title": "Boards on the deck"
+  },
+  {
+   "index": 8,
+   "title": "Leg servo module"
+  },
+  {
+   "index": 9,
+   "title": "Thigh"
+  },
+  {
+   "index": 10,
+   "title": "Knee drive crank"
+  },
+  {
+   "index": 11,
+   "title": "Lower leg"
+  },
+  {
+   "index": 12,
+   "title": "Knee linkage"
+  },
+  {
+   "index": 13,
+   "title": "Mount the legs"
+  },
+  {
+   "index": 14,
+   "title": "Power entry"
+  },
+  {
+   "index": 15,
+   "title": "Servo leads and servo bus"
+  },
+  {
+   "index": 16,
+   "title": "Logic and signal wiring"
+  },
+  {
+   "index": 17,
+   "title": "Front display"
+  },
+  {
+   "index": 18,
+   "title": "Front camera"
+  },
+  {
+   "index": 19,
+   "title": "Rear panel"
+  },
+  {
+   "index": 20,
+   "title": "Dress the harness and check the logic supply"
+  },
+  {
+   "index": 21,
+   "title": "Top shell and LiDAR"
+  },
+  {
+   "index": 22,
+   "title": "Battery and bottom shell"
+  }
+ ],
+ "counts": {
+  "bottom_shell": 1,
+  "side_body_beam": 2,
+  "inner_shoulder_frame": 2,
+  "outer_shoulder_frame": 2,
+  "upper_shoulder_frame": 2,
+  "servo_mount_top_bracket": 4,
+  "right_servo_mount": 1,
+  "short_link": 4,
+  "femur_servo_connector": 4,
+  "femur": 4,
+  "stiff_long_link": 4,
+  "left_shoulder": 2,
+  "inner_tibia": 4,
+  "outer_tibia": 4,
+  "left_servo_mount_fl": 1,
+  "left_servo_mount": 1,
+  "right_shoulder": 2,
+  "right_servo_mount_fr": 1,
+  "bearing_625zz": 4,
+  "hip_bearing_pin": 4,
+  "servo_arm_horn_25t": 4,
+  "sleeve_bearing_3x5x5_pair": 16,
+  "bearing_6805_2rs": 4,
+  "servo_disc_horn_25t": 8,
+  "servo_spt5435lv": 12,
+  "foot_spacer": 4,
+  "bearing_633zz": 8,
+  "front_shell_display": 1,
+  "display_bracket": 1,
+  "top_shell_sensor": 1,
+  "lidar_pedestal": 1,
+  "camera_mount_base": 1,
+  "camera_tilt_plate": 1,
+  "back_shell_button": 1,
+  "arming_port_bezel": 1,
+  "arming_port_ring": 1,
+  "electronics_deck": 1,
+  "lower_shoulder_frame_front": 1,
+  "servo_bus_holder_front": 1,
+  "lower_shoulder_frame_rear": 1,
+  "servo_bus_holder_rear": 1,
+  "waveshare_lcd_2inch": 1,
+  "rplidar_c1": 1,
+  "rplidar_usb_adapter": 1,
+  "rpi_camera_module_3_wide": 1,
+  "pushbutton_12mm": 1,
+  "xt60h_female": 2,
+  "raspberry_pi_5": 1,
+  "adafruit_pca9685": 1,
+  "adafruit_lsm6dsox": 1,
+  "pololu_d36v50f5": 1,
+  "adafruit_ina260": 1,
+  "wago_221_415": 8,
+  "seeed_xiao_esp32s3": 1,
+  "pololu_power_switch_hp": 1,
+  "fuse_holder_ato": 2,
+  "cable_tie_mount": 2,
+  "hobbywing_ubec_10a": 2,
+  "lipo_2s_5000_gensace": 1,
+  "iso4762_m2x5": 10,
+  "iso4762_m3x10": 86,
+  "iso4762_m2_5x6": 8,
+  "iso4762_m3x12": 16,
+  "iso4032_m3": 56,
+  "iso4762_m3x40": 1,
+  "din985_m3": 17,
+  "iso4762_m2x10": 4,
+  "iso4032_m2": 4,
+  "standoff_m2_5_ff_6": 10,
+  "iso4762_m2_5x5": 20,
+  "iso4032_m2_5": 2,
+  "standoff_m2_ff_8": 3,
+  "iso4762_m3x8": 34,
+  "iso7089_m3": 16,
+  "iso4762_m3x20": 28,
+  "iso4762_m3x16": 4,
+  "iso4762_m3x25": 12,
+  "battery_core_red": 1,
+  "battery_core_black": 1,
+  "wire_14awg_red": 6,
+  "fuse_holder_lead": 1,
+  "wire_14awg_black": 3,
+  "wire_18awg_black": 4,
+  "wire_18awg_pair": 4,
+  "wire_18awg_red": 5,
+  "wire_22awg_quad": 4,
+  "wire_22awg_pair": 2,
+  "usb_a_c": 2,
+  "camera_ffc": 1,
+  "wire_22awg_i2c": 4,
+  "stemma_qt": 2,
+  "wire_22awg_green": 1,
+  "lcd_cable": 1,
+  "wire_22awg_white": 1,
+  "lidar_cable": 1,
+  "servo_lead": 60,
+  "servo_power": 24,
+  "servo_signal": 12,
+  "spiral_wrap": 15,
+  "cable_tie": 30
+ },
+ "nodes": {
+  "body_bottom_shell_1": {
+   "part": "bottom_shell",
+   "title": "Bottom shell",
+   "kind": "printed",
+   "step": 22,
+   "shell": true,
+   "explode": [
+    0.0457,
+    -0.0433,
+    0.0021
+   ]
+  },
+  "body_side_body_beam_7": {
+   "part": "side_body_beam",
+   "title": "Side body beam",
+   "kind": "printed",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.0193,
+    0.0163,
+    -0.0944
+   ]
+  },
+  "body_side_body_beam_8": {
+   "part": "side_body_beam",
+   "title": "Side body beam",
+   "kind": "printed",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.0195,
+    0.0157,
+    0.0954
+   ]
+  },
+  "body_inner_shoulder_frame_9": {
+   "part": "inner_shoulder_frame",
+   "title": "Inner shoulder frame",
+   "kind": "printed",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.11,
+    0.01,
+    0.0008
+   ]
+  },
+  "body_inner_shoulder_frame_10": {
+   "part": "inner_shoulder_frame",
+   "title": "Inner shoulder frame",
+   "kind": "printed",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1291,
+    0.0089,
+    0.0007
+   ]
+  },
+  "body_outer_shoulder_frame_11": {
+   "part": "outer_shoulder_frame",
+   "title": "Outer shoulder frame",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1777,
+    0.0076,
+    0.0006
+   ]
+  },
+  "body_outer_shoulder_frame_12": {
+   "part": "outer_shoulder_frame",
+   "title": "Outer shoulder frame",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1967,
+    0.0073,
+    0.0006
+   ]
+  },
+  "body_upper_shoulder_frame_13": {
+   "part": "upper_shoulder_frame",
+   "title": "Upper shoulder frame",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1612,
+    0.045,
+    0.0006
+   ]
+  },
+  "body_upper_shoulder_frame_14": {
+   "part": "upper_shoulder_frame",
+   "title": "Upper shoulder frame",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1414,
+    0.0475,
+    0.0007
+   ]
+  },
+  "RL_servo_mount_top_bracket_15": {
+   "part": "servo_mount_top_bracket",
+   "title": "Servo mount top bracket",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1442,
+    0.0374,
+    -0.0514
+   ]
+  },
+  "RL_right_servo_mount_16": {
+   "part": "right_servo_mount",
+   "title": "Right servo mount",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1455,
+    0.007,
+    -0.0519
+   ]
+  },
+  "RL_short_link_17": {
+   "part": "short_link",
+   "title": "Short link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1188,
+    0.0267,
+    -0.1017
+   ]
+  },
+  "RL_femur_servo_connector_18": {
+   "part": "femur_servo_connector",
+   "title": "Femur servo connector",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1505,
+    0.0193,
+    -0.0847
+   ]
+  },
+  "RL_femur_19": {
+   "part": "femur",
+   "title": "Femur",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1927,
+    -0.0325,
+    -0.0909
+   ]
+  },
+  "RL_long_link_20": {
+   "part": "stiff_long_link",
+   "title": "Stiff long link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2115,
+    -0.0099,
+    -0.089
+   ]
+  },
+  "RL_left_shoulder_21": {
+   "part": "left_shoulder",
+   "title": "Left shoulder",
+   "kind": "printed",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1494,
+    0.0305,
+    -0.0952
+   ]
+  },
+  "RL_inner_tibia_22": {
+   "part": "inner_tibia",
+   "title": "Inner tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1942,
+    -0.1208,
+    -0.0811
+   ]
+  },
+  "RL_outer_tibia_23": {
+   "part": "outer_tibia",
+   "title": "Outer tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1932,
+    -0.1202,
+    -0.097
+   ]
+  },
+  "FL_left_servo_mount_24": {
+   "part": "left_servo_mount_fl",
+   "title": "Left servo mount fl",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1649,
+    0.0067,
+    -0.0495
+   ]
+  },
+  "FL_servo_mount_top_bracket_25": {
+   "part": "servo_mount_top_bracket",
+   "title": "Servo mount top bracket",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1639,
+    0.0358,
+    -0.0492
+   ]
+  },
+  "FL_short_link_26": {
+   "part": "short_link",
+   "title": "Short link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1783,
+    0.0243,
+    -0.0903
+   ]
+  },
+  "FL_femur_servo_connector_27": {
+   "part": "femur_servo_connector",
+   "title": "Femur servo connector",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1519,
+    0.0193,
+    -0.0822
+   ]
+  },
+  "FL_femur_28": {
+   "part": "femur",
+   "title": "Femur",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1014,
+    -0.0375,
+    -0.1024
+   ]
+  },
+  "FL_long_link_29": {
+   "part": "stiff_long_link",
+   "title": "Stiff long link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0795,
+    -0.0124,
+    -0.108
+   ]
+  },
+  "FL_left_shoulder_30": {
+   "part": "left_shoulder",
+   "title": "Left shoulder",
+   "kind": "printed",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1494,
+    0.0306,
+    -0.093
+   ]
+  },
+  "FL_inner_tibia_31": {
+   "part": "inner_tibia",
+   "title": "Inner tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0848,
+    -0.1328,
+    -0.0867
+   ]
+  },
+  "FL_outer_tibia_32": {
+   "part": "outer_tibia",
+   "title": "Outer tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0836,
+    -0.131,
+    -0.1032
+   ]
+  },
+  "RR_servo_mount_top_bracket_33": {
+   "part": "servo_mount_top_bracket",
+   "title": "Servo mount top bracket",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.144,
+    0.0374,
+    0.0527
+   ]
+  },
+  "RR_left_servo_mount_34": {
+   "part": "left_servo_mount",
+   "title": "Left servo mount",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1453,
+    0.007,
+    0.0532
+   ]
+  },
+  "RR_short_link_35": {
+   "part": "short_link",
+   "title": "Short link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1186,
+    0.0267,
+    0.1028
+   ]
+  },
+  "RR_femur_servo_connector_36": {
+   "part": "femur_servo_connector",
+   "title": "Femur servo connector",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1504,
+    0.0193,
+    0.0858
+   ]
+  },
+  "RR_femur_37": {
+   "part": "femur",
+   "title": "Femur",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1927,
+    -0.0325,
+    0.092
+   ]
+  },
+  "RR_long_link_38": {
+   "part": "stiff_long_link",
+   "title": "Stiff long link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2114,
+    -0.0099,
+    0.0901
+   ]
+  },
+  "RR_right_shoulder_39": {
+   "part": "right_shoulder",
+   "title": "Right shoulder",
+   "kind": "printed",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1493,
+    0.0305,
+    0.0963
+   ]
+  },
+  "RR_outer_tibia_40": {
+   "part": "outer_tibia",
+   "title": "Outer tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1941,
+    -0.1207,
+    0.0822
+   ]
+  },
+  "RR_inner_tibia_41": {
+   "part": "inner_tibia",
+   "title": "Inner tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1932,
+    -0.1201,
+    0.098
+   ]
+  },
+  "FR_right_servo_mount_42": {
+   "part": "right_servo_mount_fr",
+   "title": "Right servo mount fr",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1648,
+    0.0067,
+    0.0507
+   ]
+  },
+  "FR_servo_mount_top_bracket_43": {
+   "part": "servo_mount_top_bracket",
+   "title": "Servo mount top bracket",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1638,
+    0.0358,
+    0.0504
+   ]
+  },
+  "FR_short_link_44": {
+   "part": "short_link",
+   "title": "Short link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1782,
+    0.0243,
+    0.0914
+   ]
+  },
+  "FR_femur_servo_connector_45": {
+   "part": "femur_servo_connector",
+   "title": "Femur servo connector",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1518,
+    0.0193,
+    0.0833
+   ]
+  },
+  "FR_femur_46": {
+   "part": "femur",
+   "title": "Femur",
+   "kind": "printed",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1012,
+    -0.0375,
+    0.1035
+   ]
+  },
+  "FR_long_link_47": {
+   "part": "stiff_long_link",
+   "title": "Stiff long link",
+   "kind": "printed",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0793,
+    -0.0123,
+    0.109
+   ]
+  },
+  "FR_right_shoulder_48": {
+   "part": "right_shoulder",
+   "title": "Right shoulder",
+   "kind": "printed",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1492,
+    0.0306,
+    0.0941
+   ]
+  },
+  "FR_outer_tibia_49": {
+   "part": "outer_tibia",
+   "title": "Outer tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0847,
+    -0.1327,
+    0.0878
+   ]
+  },
+  "FR_inner_tibia_50": {
+   "part": "inner_tibia",
+   "title": "Inner tibia",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0835,
+    -0.1308,
+    0.1043
+   ]
+  },
+  "body_bearing_625zz_0147": {
+   "part": "bearing_625zz",
+   "title": "Ball bearing 625ZZ",
+   "kind": "purchased",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1738,
+    0.0187,
+    0.049
+   ]
+  },
+  "body_bearing_625zz_0148": {
+   "part": "bearing_625zz",
+   "title": "Ball bearing 625ZZ",
+   "kind": "purchased",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1739,
+    0.0187,
+    -0.0479
+   ]
+  },
+  "body_bearing_625zz_0150": {
+   "part": "bearing_625zz",
+   "title": "Ball bearing 625ZZ",
+   "kind": "purchased",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1934,
+    0.0181,
+    -0.0462
+   ]
+  },
+  "body_bearing_625zz_0151": {
+   "part": "bearing_625zz",
+   "title": "Ball bearing 625ZZ",
+   "kind": "purchased",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1933,
+    0.0181,
+    0.0474
+   ]
+  },
+  "RL_hip_bearing_pin_0154": {
+   "part": "hip_bearing_pin",
+   "title": "Hip bearing pin",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.174,
+    0.019,
+    -0.0479
+   ]
+  },
+  "RL_servo_arm_horn_25t_0157": {
+   "part": "servo_arm_horn_25t",
+   "title": "25T aluminium arm horn",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1233,
+    0.0013,
+    -0.0895
+   ]
+  },
+  "RL_sleeve_bearing_3x5x5_pair_0159": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1083,
+    0.0139,
+    -0.1042
+   ]
+  },
+  "RL_sleeve_bearing_3x5x5_pair_0160": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1289,
+    0.0389,
+    -0.0993
+   ]
+  },
+  "RL_sleeve_bearing_3x5x5_pair_0177": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1648,
+    0.0438,
+    -0.0937
+   ]
+  },
+  "RL_sleeve_bearing_3x5x5_pair_0178": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2524,
+    -0.0617,
+    -0.0852
+   ]
+  },
+  "RL_bearing_6805_2rs_0179": {
+   "part": "bearing_6805_2rs",
+   "title": "Ball bearing 6805-2RS",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1503,
+    0.0193,
+    -0.0863
+   ]
+  },
+  "RL_servo_disc_horn_25t_0181": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1507,
+    0.0193,
+    -0.0834
+   ]
+  },
+  "RL_servo_spt5435lv_0182": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1441,
+    0.0202,
+    -0.0594
+   ]
+  },
+  "RL_servo_spt5435lv_0188": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1444,
+    -0.0062,
+    -0.0596
+   ]
+  },
+  "RL_foot_spacer": {
+   "part": "foot_spacer",
+   "title": "Foot spacer",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1355,
+    -0.1797,
+    -0.0893
+   ]
+  },
+  "RL_bearing_633zz_0203": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2362,
+    -0.0821,
+    -0.097
+   ]
+  },
+  "RL_bearing_633zz_0204": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2372,
+    -0.0824,
+    -0.078
+   ]
+  },
+  "RL_servo_disc_horn_25t_0206": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1147,
+    0.0224,
+    -0.0564
+   ]
+  },
+  "RL_servo_spt5435lv_0207": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.0917,
+    0.0086,
+    -0.0628
+   ]
+  },
+  "FL_hip_bearing_pin_0213": {
+   "part": "hip_bearing_pin",
+   "title": "Hip bearing pin",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1932,
+    0.0184,
+    -0.0439
+   ]
+  },
+  "FL_servo_arm_horn_25t_0216": {
+   "part": "servo_arm_horn_25t",
+   "title": "25T aluminium arm horn",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1783,
+    0.0012,
+    -0.0785
+   ]
+  },
+  "FL_sleeve_bearing_3x5x5_pair_0218": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1881,
+    0.0122,
+    -0.0893
+   ]
+  },
+  "FL_sleeve_bearing_3x5x5_pair_0219": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1682,
+    0.0367,
+    -0.0913
+   ]
+  },
+  "FL_sleeve_bearing_3x5x5_pair_0236": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1318,
+    0.0462,
+    -0.0962
+   ]
+  },
+  "FL_sleeve_bearing_3x5x5_pair_0237": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0146,
+    -0.08,
+    -0.1078
+   ]
+  },
+  "FL_bearing_6805_2rs_0238": {
+   "part": "bearing_6805_2rs",
+   "title": "Ball bearing 6805-2RS",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1517,
+    0.0193,
+    -0.0838
+   ]
+  },
+  "FL_servo_disc_horn_25t_0240": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1521,
+    0.0193,
+    -0.0808
+   ]
+  },
+  "FL_servo_spt5435lv_0241": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1644,
+    0.0193,
+    -0.0543
+   ]
+  },
+  "FL_servo_spt5435lv_0247": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1646,
+    -0.006,
+    -0.0544
+   ]
+  },
+  "FL_foot_spacer": {
+   "part": "foot_spacer",
+   "title": "Foot spacer",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.136,
+    -0.1798,
+    -0.0871
+   ]
+  },
+  "FL_bearing_633zz_0262": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0357,
+    -0.1024,
+    -0.0942
+   ]
+  },
+  "FL_bearing_633zz_0263": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0344,
+    -0.0987,
+    -0.1139
+   ]
+  },
+  "FL_servo_disc_horn_25t_0264": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1354,
+    0.0209,
+    -0.0526
+   ]
+  },
+  "FL_servo_spt5435lv_0265": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1142,
+    0.0078,
+    -0.0569
+   ]
+  },
+  "RR_hip_bearing_pin_0271": {
+   "part": "hip_bearing_pin",
+   "title": "Hip bearing pin",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1739,
+    0.019,
+    0.049
+   ]
+  },
+  "RR_servo_arm_horn_25t_0274": {
+   "part": "servo_arm_horn_25t",
+   "title": "25T aluminium arm horn",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1231,
+    0.0013,
+    0.0906
+   ]
+  },
+  "RR_sleeve_bearing_3x5x5_pair_0276": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1081,
+    0.0139,
+    0.1053
+   ]
+  },
+  "RR_sleeve_bearing_3x5x5_pair_0277": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1287,
+    0.0389,
+    0.1004
+   ]
+  },
+  "RR_sleeve_bearing_3x5x5_pair_0294": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1647,
+    0.0438,
+    0.0948
+   ]
+  },
+  "RR_sleeve_bearing_3x5x5_pair_0295": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2523,
+    -0.0617,
+    0.0863
+   ]
+  },
+  "RR_bearing_6805_2rs_0296": {
+   "part": "bearing_6805_2rs",
+   "title": "Ball bearing 6805-2RS",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1502,
+    0.0192,
+    0.0874
+   ]
+  },
+  "RR_servo_disc_horn_25t_0298": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1506,
+    0.0193,
+    0.0845
+   ]
+  },
+  "RR_servo_spt5435lv_0299": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1439,
+    0.0202,
+    0.0606
+   ]
+  },
+  "RR_servo_spt5435lv_0305": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1443,
+    -0.0062,
+    0.0608
+   ]
+  },
+  "RR_foot_spacer": {
+   "part": "foot_spacer",
+   "title": "Foot spacer",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1355,
+    -0.1796,
+    0.0904
+   ]
+  },
+  "RR_bearing_633zz_0320": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2372,
+    -0.0824,
+    0.0791
+   ]
+  },
+  "RR_bearing_633zz_0321": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2361,
+    -0.082,
+    0.098
+   ]
+  },
+  "RR_servo_disc_horn_25t_0323": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1145,
+    0.0223,
+    0.0577
+   ]
+  },
+  "RR_servo_spt5435lv_0324": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.0914,
+    0.0086,
+    0.0642
+   ]
+  },
+  "FR_hip_bearing_pin_0330": {
+   "part": "hip_bearing_pin",
+   "title": "Hip bearing pin",
+   "kind": "printed",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1931,
+    0.0184,
+    0.0451
+   ]
+  },
+  "FR_servo_arm_horn_25t_0333": {
+   "part": "servo_arm_horn_25t",
+   "title": "25T aluminium arm horn",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1782,
+    0.0012,
+    0.0796
+   ]
+  },
+  "FR_sleeve_bearing_3x5x5_pair_0335": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.188,
+    0.0122,
+    0.0903
+   ]
+  },
+  "FR_sleeve_bearing_3x5x5_pair_0336": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1681,
+    0.0367,
+    0.0924
+   ]
+  },
+  "FR_sleeve_bearing_3x5x5_pair_0353": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1317,
+    0.0461,
+    0.0973
+   ]
+  },
+  "FR_sleeve_bearing_3x5x5_pair_0354": {
+   "part": "sleeve_bearing_3x5x5_pair",
+   "title": "Sleeve bearings 3×5×5 (pair)",
+   "kind": "purchased",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0146,
+    -0.0798,
+    0.1088
+   ]
+  },
+  "FR_bearing_6805_2rs_0355": {
+   "part": "bearing_6805_2rs",
+   "title": "Ball bearing 6805-2RS",
+   "kind": "purchased",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1516,
+    0.0192,
+    0.0849
+   ]
+  },
+  "FR_servo_disc_horn_25t_0357": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1519,
+    0.0193,
+    0.082
+   ]
+  },
+  "FR_servo_spt5435lv_0358": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1643,
+    0.0193,
+    0.0555
+   ]
+  },
+  "FR_servo_spt5435lv_0364": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1645,
+    -0.006,
+    0.0556
+   ]
+  },
+  "FR_foot_spacer": {
+   "part": "foot_spacer",
+   "title": "Foot spacer",
+   "kind": "printed",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.136,
+    -0.1797,
+    0.0882
+   ]
+  },
+  "FR_bearing_633zz_0379": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0357,
+    -0.1022,
+    0.0953
+   ]
+  },
+  "FR_bearing_633zz_0380": {
+   "part": "bearing_633zz",
+   "title": "Ball bearing 633ZZ",
+   "kind": "purchased",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0344,
+    -0.0985,
+    0.115
+   ]
+  },
+  "FR_servo_disc_horn_25t_0381": {
+   "part": "servo_disc_horn_25t",
+   "title": "25T aluminium disc horn",
+   "kind": "purchased",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1353,
+    0.0208,
+    0.0538
+   ]
+  },
+  "FR_servo_spt5435lv_0382": {
+   "part": "servo_spt5435lv",
+   "title": "Servo SPT5435LV-180W",
+   "kind": "purchased",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.114,
+    0.0078,
+    0.0582
+   ]
+  },
+  "front_shell_display": {
+   "part": "front_shell_display",
+   "title": "Front shell display",
+   "kind": "printed",
+   "step": 17,
+   "shell": true,
+   "explode": [
+    0.1957,
+    0.0073,
+    0.0006
+   ]
+  },
+  "display_bracket": {
+   "part": "display_bracket",
+   "title": "Display bracket",
+   "kind": "printed",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2066,
+    0.0102,
+    -0.0
+   ]
+  },
+  "top_shell_sensor": {
+   "part": "top_shell_sensor",
+   "title": "Top shell sensor",
+   "kind": "printed",
+   "step": 21,
+   "shell": true,
+   "explode": [
+    0.0301,
+    0.0653,
+    0.0014
+   ]
+  },
+  "lidar_pedestal": {
+   "part": "lidar_pedestal",
+   "title": "Lidar pedestal",
+   "kind": "printed",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0581,
+    0.0866,
+    0.0008
+   ]
+  },
+  "camera_mount_base": {
+   "part": "camera_mount_base",
+   "title": "Camera mount base",
+   "kind": "printed",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1835,
+    0.064,
+    0.0006
+   ]
+  },
+  "camera_tilt_plate": {
+   "part": "camera_tilt_plate",
+   "title": "Camera tilt plate",
+   "kind": "printed",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1922,
+    0.076,
+    0.0006
+   ]
+  },
+  "back_shell_button": {
+   "part": "back_shell_button",
+   "title": "Back shell button",
+   "kind": "printed",
+   "step": 19,
+   "shell": true,
+   "explode": [
+    -0.185,
+    0.0075,
+    0.0006
+   ]
+  },
+  "arming_port_bezel": {
+   "part": "arming_port_bezel",
+   "title": "Arming port bezel",
+   "kind": "printed",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2161,
+    -0.0139,
+    0.0006
+   ]
+  },
+  "arming_port_ring": {
+   "part": "arming_port_ring",
+   "title": "Arming port ring",
+   "kind": "printed",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2128,
+    -0.014,
+    0.0006
+   ]
+  },
+  "electronics_deck": {
+   "part": "electronics_deck",
+   "title": "Electronics deck",
+   "kind": "printed",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0592,
+    0.0087,
+    0.001
+   ]
+  },
+  "lower_shoulder_frame_front": {
+   "part": "lower_shoulder_frame_front",
+   "title": "Lower shoulder frame front",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1622,
+    -0.0296,
+    0.0006
+   ]
+  },
+  "servo_bus_holder_front": {
+   "part": "servo_bus_holder_front",
+   "title": "Servo bus holder front",
+   "kind": "printed",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.163,
+    -0.0039,
+    0.0006
+   ]
+  },
+  "lower_shoulder_frame_rear": {
+   "part": "lower_shoulder_frame_rear",
+   "title": "Lower shoulder frame rear",
+   "kind": "printed",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1428,
+    -0.0314,
+    0.0007
+   ]
+  },
+  "servo_bus_holder_rear": {
+   "part": "servo_bus_holder_rear",
+   "title": "Servo bus holder rear",
+   "kind": "printed",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1438,
+    -0.0132,
+    0.0007
+   ]
+  },
+  "waveshare_lcd_2inch_0": {
+   "part": "waveshare_lcd_2inch",
+   "title": "Waveshare 2\" LCD (ST7789)",
+   "kind": "purchased",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2125,
+    0.0101,
+    0.0003
+   ]
+  },
+  "rplidar_c1_1": {
+   "part": "rplidar_c1",
+   "title": "RPLIDAR C1",
+   "kind": "purchased",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0501,
+    0.1159,
+    0.0007
+   ]
+  },
+  "rplidar_usb_adapter_2": {
+   "part": "rplidar_usb_adapter",
+   "title": "RPLIDAR USB adapter",
+   "kind": "purchased",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0618,
+    0.0835,
+    0.0008
+   ]
+  },
+  "rpi_camera_module_3_wide_3": {
+   "part": "rpi_camera_module_3_wide",
+   "title": "Camera Module 3 Wide",
+   "kind": "purchased",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.201,
+    0.0742,
+    0.0006
+   ]
+  },
+  "pushbutton_12mm_4": {
+   "part": "pushbutton_12mm",
+   "title": "12 mm push button",
+   "kind": "purchased",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2034,
+    0.0215,
+    0.0006
+   ]
+  },
+  "xt60h_female_5": {
+   "part": "xt60h_female",
+   "title": "XT60H female",
+   "kind": "purchased",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2076,
+    -0.0141,
+    0.0006
+   ]
+  },
+  "raspberry_pi_5_6": {
+   "part": "raspberry_pi_5",
+   "title": "Raspberry Pi 5 + Active Cooler",
+   "kind": "purchased",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    0.0801,
+    0.0375,
+    0.0022
+   ]
+  },
+  "adafruit_pca9685_7": {
+   "part": "adafruit_pca9685",
+   "title": "PCA9685 servo driver",
+   "kind": "purchased",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0587,
+    0.0416,
+    0.0022
+   ]
+  },
+  "adafruit_lsm6dsox_9": {
+   "part": "adafruit_lsm6dsox",
+   "title": "LSM6DSOX IMU",
+   "kind": "purchased",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0876,
+    0.0101,
+    0.0099
+   ]
+  },
+  "pololu_d36v50f5_10": {
+   "part": "pololu_d36v50f5",
+   "title": "Pololu D36V50F5 5 V regulator",
+   "kind": "purchased",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.091,
+    0.0202,
+    0.0222
+   ]
+  },
+  "adafruit_ina260_11": {
+   "part": "adafruit_ina260",
+   "title": "INA260 power monitor",
+   "kind": "purchased",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0891,
+    0.0295,
+    -0.0249
+   ]
+  },
+  "wago_221_415_12": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1793,
+    -0.0127,
+    0.0006
+   ]
+  },
+  "wago_221_415_13": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1794,
+    -0.0022,
+    0.0006
+   ]
+  },
+  "wago_221_415_14": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1464,
+    -0.0139,
+    0.0007
+   ]
+  },
+  "wago_221_415_15": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1466,
+    -0.0024,
+    0.0007
+   ]
+  },
+  "seeed_xiao_esp32s3_16": {
+   "part": "seeed_xiao_esp32s3",
+   "title": "Seeed XIAO ESP32-S3",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1774,
+    0.0165,
+    0.0006
+   ]
+  },
+  "wago_221_415_17": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1272,
+    -0.015,
+    0.0007
+   ]
+  },
+  "wago_221_415_18": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1276,
+    -0.0026,
+    0.0007
+   ]
+  },
+  "wago_221_415_19": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1602,
+    -0.0133,
+    0.0006
+   ]
+  },
+  "wago_221_415_20": {
+   "part": "wago_221_415",
+   "title": "WAGO 221-415",
+   "kind": "purchased",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1603,
+    -0.0023,
+    0.0006
+   ]
+  },
+  "pololu_power_switch_hp_21": {
+   "part": "pololu_power_switch_hp",
+   "title": "Pololu #2813 pushbutton switch",
+   "kind": "purchased",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    0.0705,
+    0.0129,
+    0.068
+   ]
+  },
+  "fuse_holder_ato_22": {
+   "part": "fuse_holder_ato",
+   "title": "ATO fuse holder",
+   "kind": "purchased",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.1433,
+    0.0267,
+    0.0007
+   ]
+  },
+  "fuse_holder_ato_23": {
+   "part": "fuse_holder_ato",
+   "title": "ATO fuse holder",
+   "kind": "purchased",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.1958,
+    0.0036,
+    -0.0115
+   ]
+  },
+  "xt60h_female_24": {
+   "part": "xt60h_female",
+   "title": "XT60H female",
+   "kind": "purchased",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0386,
+    -0.0418,
+    -0.0687
+   ]
+  },
+  "cable_tie_mount_25": {
+   "part": "cable_tie_mount",
+   "title": "Adhesive cable-tie mount 13 × 13 mm",
+   "kind": "purchased",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.018,
+    0.013,
+    0.0848
+   ]
+  },
+  "cable_tie_mount_26": {
+   "part": "cable_tie_mount",
+   "title": "Adhesive cable-tie mount 13 × 13 mm",
+   "kind": "purchased",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.0438,
+    0.0127,
+    -0.0768
+   ]
+  },
+  "hobbywing_ubec_10a_27": {
+   "part": "hobbywing_ubec_10a",
+   "title": "Hobbywing UBEC-10A",
+   "kind": "purchased",
+   "step": 6,
+   "shell": false,
+   "explode": [
+    0.0544,
+    -0.032,
+    -0.0643
+   ]
+  },
+  "hobbywing_ubec_10a_28": {
+   "part": "hobbywing_ubec_10a",
+   "title": "Hobbywing UBEC-10A",
+   "kind": "purchased",
+   "step": 6,
+   "shell": false,
+   "explode": [
+    0.0199,
+    -0.0353,
+    0.0732
+   ]
+  },
+  "lipo_2s_5000_gensace_29": {
+   "part": "lipo_2s_5000_gensace",
+   "title": "LiPo 2S 5000 mAh",
+   "kind": "purchased",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    0.0369,
+    -0.0564,
+    0.0017
+   ]
+  },
+  "iso4762_m2x5_0": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2057,
+    0.0279,
+    0.0316
+   ]
+  },
+  "iso4762_m2x5_1": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2057,
+    0.0279,
+    -0.031
+   ]
+  },
+  "iso4762_m2x5_2": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2061,
+    -0.0076,
+    0.0316
+   ]
+  },
+  "iso4762_m2x5_3": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2061,
+    -0.0076,
+    -0.0311
+   ]
+  },
+  "iso4762_m3x10_4": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2074,
+    0.0101,
+    0.0424
+   ]
+  },
+  "iso4762_m3x10_5": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2074,
+    0.0101,
+    -0.0424
+   ]
+  },
+  "iso4762_m2_5x6_6": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0834,
+    0.0845,
+    0.0333
+   ]
+  },
+  "iso4762_m2_5x6_7": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0208,
+    0.0959,
+    0.0377
+   ]
+  },
+  "iso4762_m2_5x6_8": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0835,
+    0.0846,
+    -0.0319
+   ]
+  },
+  "iso4762_m2_5x6_9": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0208,
+    0.0961,
+    -0.0362
+   ]
+  },
+  "iso4762_m3x12_10": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0577,
+    0.0782,
+    0.0403
+   ]
+  },
+  "iso4762_m3x12_11": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0578,
+    0.0784,
+    -0.0387
+   ]
+  },
+  "iso4762_m3x12_12": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0891,
+    0.0718,
+    0.0228
+   ]
+  },
+  "iso4762_m3x12_13": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0892,
+    0.0719,
+    -0.0213
+   ]
+  },
+  "iso4762_m3x12_14": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1753,
+    0.0514,
+    0.0191
+   ]
+  },
+  "iso4032_m3_15": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1757,
+    0.0457,
+    0.0192
+   ]
+  },
+  "iso4762_m3x12_16": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1754,
+    0.0514,
+    -0.018
+   ]
+  },
+  "iso4032_m3_17": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1758,
+    0.0457,
+    -0.018
+   ]
+  },
+  "iso4762_m3x40_18": {
+   "part": "iso4762_m3x40",
+   "title": "M3 × 40 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1887,
+    0.0678,
+    0.0012
+   ]
+  },
+  "din985_m3_19": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1884,
+    0.0677,
+    0.0245
+   ]
+  },
+  "iso4762_m2x10_20": {
+   "part": "iso4762_m2x10",
+   "title": "M2 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1964,
+    0.0873,
+    -0.0117
+   ]
+  },
+  "iso4032_m2_21": {
+   "part": "iso4032_m2",
+   "title": "M2 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1931,
+    0.0887,
+    -0.0118
+   ]
+  },
+  "iso4762_m2x10_22": {
+   "part": "iso4762_m2x10",
+   "title": "M2 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1946,
+    0.0739,
+    -0.0119
+   ]
+  },
+  "iso4032_m2_23": {
+   "part": "iso4032_m2",
+   "title": "M2 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1913,
+    0.0752,
+    -0.0119
+   ]
+  },
+  "iso4762_m2x10_24": {
+   "part": "iso4762_m2x10",
+   "title": "M2 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1964,
+    0.0873,
+    0.0129
+   ]
+  },
+  "iso4032_m2_25": {
+   "part": "iso4032_m2",
+   "title": "M2 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1931,
+    0.0886,
+    0.0129
+   ]
+  },
+  "iso4762_m2x10_26": {
+   "part": "iso4762_m2x10",
+   "title": "M2 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1946,
+    0.0739,
+    0.013
+   ]
+  },
+  "iso4032_m2_27": {
+   "part": "iso4032_m2",
+   "title": "M2 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1913,
+    0.0752,
+    0.0131
+   ]
+  },
+  "iso4762_m2_5x6_28": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2128,
+    -0.0225,
+    0.0006
+   ]
+  },
+  "iso4762_m2_5x6_29": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.2131,
+    -0.0056,
+    0.0006
+   ]
+  },
+  "standoff_m2_5_ff_6_30": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0962,
+    0.0121,
+    0.0426
+   ]
+  },
+  "iso4762_m2_5x5_31": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0964,
+    0.0048,
+    0.0427
+   ]
+  },
+  "iso4762_m2_5x5_32": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    0.0958,
+    0.0177,
+    0.0425
+   ]
+  },
+  "standoff_m2_5_ff_6_33": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0965,
+    0.0121,
+    -0.0411
+   ]
+  },
+  "iso4762_m2_5x5_34": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0967,
+    0.0049,
+    -0.0412
+   ]
+  },
+  "iso4762_m2_5x5_35": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    0.0961,
+    0.0178,
+    -0.0409
+   ]
+  },
+  "standoff_m2_5_ff_6_36": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0045,
+    0.02,
+    0.0705
+   ]
+  },
+  "iso4762_m2_5x5_37": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0046,
+    0.0082,
+    0.0721
+   ]
+  },
+  "iso4762_m2_5x5_38": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0044,
+    0.0286,
+    0.0685
+   ]
+  },
+  "standoff_m2_5_ff_6_39": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0046,
+    0.0205,
+    -0.0695
+   ]
+  },
+  "iso4762_m2_5x5_40": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0048,
+    0.0084,
+    -0.0712
+   ]
+  },
+  "iso4762_m2_5x5_41": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0045,
+    0.0293,
+    -0.0674
+   ]
+  },
+  "standoff_m2_5_ff_6_42": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.026,
+    0.0177,
+    0.0716
+   ]
+  },
+  "iso4762_m2_5x5_43": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0263,
+    0.0072,
+    0.0726
+   ]
+  },
+  "iso4762_m2_5x5_44": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0255,
+    0.0256,
+    0.0703
+   ]
+  },
+  "standoff_m2_5_ff_6_45": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0267,
+    0.0181,
+    -0.07
+   ]
+  },
+  "iso4762_m2_5x5_46": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0271,
+    0.0074,
+    -0.0711
+   ]
+  },
+  "iso4762_m2_5x5_47": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0261,
+    0.0262,
+    -0.0686
+   ]
+  },
+  "standoff_m2_5_ff_6_48": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0617,
+    0.0149,
+    0.0602
+   ]
+  },
+  "iso4762_m2_5x5_49": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0622,
+    0.006,
+    0.0606
+   ]
+  },
+  "iso4762_m2_5x5_50": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0612,
+    0.0217,
+    0.0597
+   ]
+  },
+  "standoff_m2_5_ff_6_51": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0625,
+    0.0151,
+    -0.0581
+   ]
+  },
+  "iso4762_m2_5x5_52": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.063,
+    0.0061,
+    -0.0585
+   ]
+  },
+  "iso4762_m2_5x5_53": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0619,
+    0.022,
+    -0.0575
+   ]
+  },
+  "iso4762_m2_5x6_54": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0787,
+    0.0053,
+    0.0325
+   ]
+  },
+  "iso4032_m2_5_55": {
+   "part": "iso4032_m2_5",
+   "title": "M2.5 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0787,
+    0.0002,
+    0.0325
+   ]
+  },
+  "iso4762_m2_5x6_56": {
+   "part": "iso4762_m2_5x6",
+   "title": "M2.5 × 6 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.0819,
+    0.0055,
+    -0.0122
+   ]
+  },
+  "iso4032_m2_5_57": {
+   "part": "iso4032_m2_5",
+   "title": "M2.5 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    0.082,
+    0.0002,
+    -0.0122
+   ]
+  },
+  "standoff_m2_ff_8_58": {
+   "part": "standoff_m2_ff_8",
+   "title": "M2 × 8 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0763,
+    0.0163,
+    0.0451
+   ]
+  },
+  "iso4762_m2x5_59": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0755,
+    0.0243,
+    0.0446
+   ]
+  },
+  "iso4762_m2x5_60": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.077,
+    0.0053,
+    0.0455
+   ]
+  },
+  "standoff_m2_ff_8_61": {
+   "part": "standoff_m2_ff_8",
+   "title": "M2 × 8 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0829,
+    0.0177,
+    0.0027
+   ]
+  },
+  "iso4762_m2x5_62": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0816,
+    0.0263,
+    0.0027
+   ]
+  },
+  "iso4762_m2x5_63": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0838,
+    0.0057,
+    0.0028
+   ]
+  },
+  "standoff_m2_ff_8_64": {
+   "part": "standoff_m2_ff_8",
+   "title": "M2 × 8 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0993,
+    0.0136,
+    0.0377
+   ]
+  },
+  "iso4762_m2x5_65": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0989,
+    0.0205,
+    0.0375
+   ]
+  },
+  "iso4762_m2x5_66": {
+   "part": "iso4762_m2x5",
+   "title": "M2 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0997,
+    0.0044,
+    0.0378
+   ]
+  },
+  "standoff_m2_5_ff_6_67": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.1007,
+    0.0125,
+    -0.0081
+   ]
+  },
+  "iso4762_m2_5x5_68": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.1003,
+    0.0184,
+    -0.008
+   ]
+  },
+  "iso4762_m2_5x5_69": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.101,
+    0.0041,
+    -0.0081
+   ]
+  },
+  "standoff_m2_5_ff_6_70": {
+   "part": "standoff_m2_5_ff_6",
+   "title": "M2.5 × 6 stand-off F-F (brass)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0975,
+    0.0121,
+    -0.0382
+   ]
+  },
+  "iso4762_m2_5x5_71": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 7,
+   "shell": false,
+   "explode": [
+    -0.0971,
+    0.0178,
+    -0.0381
+   ]
+  },
+  "iso4762_m2_5x5_72": {
+   "part": "iso4762_m2_5x5",
+   "title": "M2.5 × 5 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 1,
+   "shell": false,
+   "explode": [
+    -0.0977,
+    0.004,
+    -0.0384
+   ]
+  },
+  "iso4762_m3x12_73": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    0.1627,
+    -0.0193,
+    0.0006
+   ]
+  },
+  "iso4762_m3x12_74": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 5,
+   "shell": false,
+   "explode": [
+    -0.1435,
+    -0.0204,
+    0.0007
+   ]
+  },
+  "iso4762_m3x8_u0": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    0.1467,
+    -0.0381,
+    0.0074
+   ]
+  },
+  "iso4032_m3_u1": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1471,
+    -0.0333,
+    0.0074
+   ]
+  },
+  "iso4762_m3x8_u2": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.1269,
+    -0.0409,
+    0.0079
+   ]
+  },
+  "iso4032_m3_u3": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1274,
+    -0.0357,
+    0.0079
+   ]
+  },
+  "iso4762_m3x8_u4": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    0.1467,
+    -0.0382,
+    -0.0061
+   ]
+  },
+  "iso4032_m3_u5": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1471,
+    -0.0333,
+    -0.0061
+   ]
+  },
+  "iso4762_m3x8_u6": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.1269,
+    -0.0409,
+    -0.0065
+   ]
+  },
+  "iso4032_m3_u7": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1275,
+    -0.0357,
+    -0.0065
+   ]
+  },
+  "iso4762_m3x8_u8": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.1573,
+    -0.037,
+    0.0071
+   ]
+  },
+  "iso4032_m3_u9": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1576,
+    -0.0323,
+    0.0072
+   ]
+  },
+  "iso4762_m3x8_u10": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.1573,
+    -0.037,
+    -0.0059
+   ]
+  },
+  "iso4032_m3_u11": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1576,
+    -0.0323,
+    -0.0059
+   ]
+  },
+  "iso4762_m3x8_u12": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.1557,
+    0.0523,
+    0.02
+   ]
+  },
+  "iso4032_m3_u13": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1561,
+    0.0477,
+    0.02
+   ]
+  },
+  "iso4762_m3x8_u14": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.1557,
+    0.0524,
+    -0.0187
+   ]
+  },
+  "iso4032_m3_u15": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1561,
+    0.0477,
+    -0.0188
+   ]
+  },
+  "iso4762_m3x8_u16": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    0.1766,
+    -0.0354,
+    0.0068
+   ]
+  },
+  "iso4032_m3_u17": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1769,
+    -0.0308,
+    0.0068
+   ]
+  },
+  "iso4762_m3x8_u18": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    0.1766,
+    -0.0354,
+    -0.0056
+   ]
+  },
+  "iso4032_m3_u19": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1769,
+    -0.0308,
+    -0.0056
+   ]
+  },
+  "iso4762_m3x8_u20": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    0.1448,
+    0.0538,
+    0.0205
+   ]
+  },
+  "iso4032_m3_u21": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1453,
+    0.049,
+    0.0206
+   ]
+  },
+  "iso4762_m3x8_u22": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.1242,
+    0.0572,
+    0.0218
+   ]
+  },
+  "iso4032_m3_u23": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1249,
+    0.0522,
+    0.0219
+   ]
+  },
+  "iso4762_m3x8_u24": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    0.1449,
+    0.0538,
+    -0.0192
+   ]
+  },
+  "iso4032_m3_u25": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1454,
+    0.049,
+    -0.0193
+   ]
+  },
+  "iso4762_m3x8_u26": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.1243,
+    0.0572,
+    -0.0205
+   ]
+  },
+  "iso4032_m3_u27": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.125,
+    0.0523,
+    -0.0206
+   ]
+  },
+  "iso4762_m3x10_u28": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1926,
+    -0.0278,
+    -0.0055
+   ]
+  },
+  "iso4032_m3_u29": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1902,
+    -0.0279,
+    -0.0055
+   ]
+  },
+  "iso4762_m3x10_u30": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1304,
+    -0.0328,
+    -0.0065
+   ]
+  },
+  "iso4032_m3_u31": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1338,
+    -0.0324,
+    -0.0064
+   ]
+  },
+  "iso4762_m3x10_u32": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1104,
+    -0.0362,
+    -0.0071
+   ]
+  },
+  "iso4032_m3_u33": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1139,
+    -0.0355,
+    -0.007
+   ]
+  },
+  "iso4762_m3x10_u34": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1734,
+    -0.0288,
+    -0.0057
+   ]
+  },
+  "iso4032_m3_u35": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.171,
+    -0.029,
+    -0.0057
+   ]
+  },
+  "iso4762_m3x10_u36": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1926,
+    -0.0278,
+    0.0066
+   ]
+  },
+  "iso4032_m3_u37": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1902,
+    -0.0279,
+    0.0067
+   ]
+  },
+  "iso4762_m3x10_u38": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1304,
+    -0.0328,
+    0.0078
+   ]
+  },
+  "iso4032_m3_u39": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1338,
+    -0.0324,
+    0.0077
+   ]
+  },
+  "iso4762_m3x10_u40": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1103,
+    -0.0362,
+    0.0086
+   ]
+  },
+  "iso4032_m3_u41": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1139,
+    -0.0355,
+    0.0085
+   ]
+  },
+  "iso4762_m3x10_u42": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1734,
+    -0.0288,
+    0.0069
+   ]
+  },
+  "iso4032_m3_u43": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.171,
+    -0.029,
+    0.0069
+   ]
+  },
+  "iso4762_m3x10_u44": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1178,
+    0.0229,
+    -0.0718
+   ]
+  },
+  "iso4032_m3_u45": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1149,
+    0.0231,
+    -0.0724
+   ]
+  },
+  "iso4762_m3x10_u46": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0947,
+    0.0246,
+    -0.0771
+   ]
+  },
+  "iso4032_m3_u47": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0915,
+    0.0248,
+    -0.0779
+   ]
+  },
+  "iso4762_m3x10_u48": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1183,
+    0.0019,
+    -0.0722
+   ]
+  },
+  "iso4032_m3_u49": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1155,
+    0.0019,
+    -0.0728
+   ]
+  },
+  "iso4762_m3x10_u50": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0954,
+    0.002,
+    -0.0777
+   ]
+  },
+  "iso4032_m3_u51": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0923,
+    0.002,
+    -0.0785
+   ]
+  },
+  "iso4762_m3x10_u52": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1176,
+    0.0225,
+    0.0731
+   ]
+  },
+  "iso4032_m3_u53": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1147,
+    0.0227,
+    0.0737
+   ]
+  },
+  "iso4762_m3x10_u54": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0944,
+    0.0241,
+    0.0783
+   ]
+  },
+  "iso4032_m3_u55": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0912,
+    0.0244,
+    0.0791
+   ]
+  },
+  "iso4762_m3x10_u56": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1181,
+    0.0015,
+    0.0734
+   ]
+  },
+  "iso4032_m3_u57": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    0.1153,
+    0.0015,
+    0.074
+   ]
+  },
+  "iso4762_m3x10_u58": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.0951,
+    0.0016,
+    0.0789
+   ]
+  },
+  "iso4032_m3_u59": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 2,
+   "shell": false,
+   "explode": [
+    -0.092,
+    0.0016,
+    0.0798
+   ]
+  },
+  "iso4762_m3x10_u60": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1259,
+    -0.0272,
+    0.0487
+   ]
+  },
+  "iso4032_m3_u61": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1261,
+    -0.0271,
+    0.0487
+   ]
+  },
+  "iso4762_m3x10_u62": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1044,
+    -0.0295,
+    0.053
+   ]
+  },
+  "iso4032_m3_u63": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1046,
+    -0.0295,
+    0.0529
+   ]
+  },
+  "iso4762_m3x10_u64": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1241,
+    -0.0268,
+    0.062
+   ]
+  },
+  "iso4032_m3_u65": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1243,
+    -0.0268,
+    0.0619
+   ]
+  },
+  "iso4762_m3x10_u66": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1019,
+    -0.0288,
+    0.0667
+   ]
+  },
+  "iso4032_m3_u67": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1021,
+    -0.0288,
+    0.0666
+   ]
+  },
+  "iso4762_m3x10_u68": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1247,
+    0.0417,
+    0.0483
+   ]
+  },
+  "iso4032_m3_u69": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1249,
+    0.0417,
+    0.0482
+   ]
+  },
+  "iso4762_m3x10_u70": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1027,
+    0.045,
+    0.0521
+   ]
+  },
+  "iso4032_m3_u71": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1029,
+    0.045,
+    0.0521
+   ]
+  },
+  "iso4762_m3x10_u72": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.123,
+    0.0411,
+    0.0614
+   ]
+  },
+  "iso4032_m3_u73": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1232,
+    0.0411,
+    0.0614
+   ]
+  },
+  "iso4762_m3x10_u74": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1004,
+    0.044,
+    0.0657
+   ]
+  },
+  "iso4032_m3_u75": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1006,
+    0.044,
+    0.0657
+   ]
+  },
+  "iso4762_m3x10_u76": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1918,
+    0.0423,
+    0.0187
+   ]
+  },
+  "iso4032_m3_u77": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1893,
+    0.0425,
+    0.0187
+   ]
+  },
+  "iso4762_m3x10_u78": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.128,
+    0.0493,
+    0.0218
+   ]
+  },
+  "iso4032_m3_u79": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1316,
+    0.0487,
+    0.0215
+   ]
+  },
+  "iso4762_m3x10_u80": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1068,
+    0.0536,
+    0.0236
+   ]
+  },
+  "iso4032_m3_u81": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1106,
+    0.0527,
+    0.0233
+   ]
+  },
+  "iso4762_m3x10_u82": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1723,
+    0.0438,
+    0.0193
+   ]
+  },
+  "iso4032_m3_u83": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1698,
+    0.044,
+    0.0194
+   ]
+  },
+  "iso4762_m3x10_u84": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.126,
+    -0.0272,
+    -0.0474
+   ]
+  },
+  "iso4032_m3_u85": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1262,
+    -0.0272,
+    -0.0474
+   ]
+  },
+  "iso4762_m3x10_u86": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1046,
+    -0.0296,
+    -0.0516
+   ]
+  },
+  "iso4032_m3_u87": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1048,
+    -0.0296,
+    -0.0516
+   ]
+  },
+  "iso4762_m3x10_u88": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1243,
+    -0.0268,
+    -0.0607
+   ]
+  },
+  "iso4032_m3_u89": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1245,
+    -0.0268,
+    -0.0607
+   ]
+  },
+  "iso4762_m3x10_u90": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1021,
+    -0.0289,
+    -0.0654
+   ]
+  },
+  "iso4032_m3_u91": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1023,
+    -0.0289,
+    -0.0653
+   ]
+  },
+  "iso4762_m3x10_u92": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1248,
+    0.0417,
+    -0.047
+   ]
+  },
+  "iso4032_m3_u93": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.125,
+    0.0417,
+    -0.0469
+   ]
+  },
+  "iso4762_m3x10_u94": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1029,
+    0.0451,
+    -0.0508
+   ]
+  },
+  "iso4032_m3_u95": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1031,
+    0.0451,
+    -0.0507
+   ]
+  },
+  "iso4762_m3x10_u96": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1232,
+    0.0412,
+    -0.0602
+   ]
+  },
+  "iso4032_m3_u97": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    0.1234,
+    0.0412,
+    -0.0602
+   ]
+  },
+  "iso4762_m3x10_u98": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1006,
+    0.0441,
+    -0.0645
+   ]
+  },
+  "iso4032_m3_u99": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 3,
+   "shell": false,
+   "explode": [
+    -0.1009,
+    0.0441,
+    -0.0644
+   ]
+  },
+  "iso4762_m3x10_u100": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1918,
+    0.0423,
+    -0.0175
+   ]
+  },
+  "iso4032_m3_u101": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1893,
+    0.0425,
+    -0.0176
+   ]
+  },
+  "iso4762_m3x10_u102": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1281,
+    0.0493,
+    -0.0204
+   ]
+  },
+  "iso4032_m3_u103": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    0.1317,
+    0.0488,
+    -0.0202
+   ]
+  },
+  "iso4762_m3x10_u104": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1069,
+    0.0536,
+    -0.0222
+   ]
+  },
+  "iso4032_m3_u105": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1107,
+    0.0527,
+    -0.0218
+   ]
+  },
+  "iso4762_m3x10_u106": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1723,
+    0.0438,
+    -0.0181
+   ]
+  },
+  "iso4032_m3_u107": {
+   "part": "iso4032_m3",
+   "title": "M3 hex nut (ISO 4032)",
+   "kind": "fastener",
+   "step": 4,
+   "shell": false,
+   "explode": [
+    -0.1698,
+    0.0441,
+    -0.0182
+   ]
+  },
+  "iso4762_m3x8_u108": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1355,
+    0.0209,
+    -0.0526
+   ]
+  },
+  "iso4762_m3x8_u109": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.115,
+    0.0224,
+    -0.0563
+   ]
+  },
+  "iso7089_m3_u110": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1765,
+    0.0189,
+    -0.0476
+   ]
+  },
+  "iso4762_m3x10_u111": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1735,
+    0.019,
+    -0.0479
+   ]
+  },
+  "iso4762_m3x20_u112": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1198,
+    0.0398,
+    0.0577
+   ]
+  },
+  "iso4762_m3x20_u113": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.12,
+    0.0399,
+    -0.0564
+   ]
+  },
+  "iso4762_m3x20_u114": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.167,
+    0.0354,
+    0.0513
+   ]
+  },
+  "iso4762_m3x20_u115": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1671,
+    0.0354,
+    -0.0501
+   ]
+  },
+  "iso4762_m3x8_u116": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1387,
+    0.0204,
+    -0.0609
+   ]
+  },
+  "iso4762_m3x8_u117": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.118,
+    0.0217,
+    -0.0647
+   ]
+  },
+  "iso4762_m3x10_u118": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1192,
+    0.0286,
+    0.0647
+   ]
+  },
+  "iso4762_m3x10_u119": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1194,
+    0.0286,
+    -0.0635
+   ]
+  },
+  "iso4762_m3x8_u120": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1384,
+    0.0209,
+    -0.0431
+   ]
+  },
+  "iso4762_m3x8_u121": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1214,
+    0.0222,
+    -0.0457
+   ]
+  },
+  "iso4762_m3x10_u122": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1199,
+    -0.0138,
+    0.0651
+   ]
+  },
+  "iso4762_m3x10_u123": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1201,
+    -0.0138,
+    -0.0639
+   ]
+  },
+  "iso4762_m3x10_u124": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1201,
+    0.0004,
+    0.0653
+   ]
+  },
+  "iso4762_m3x10_u125": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1203,
+    0.0004,
+    -0.064
+   ]
+  },
+  "iso4762_m3x10_u126": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1199,
+    0.0146,
+    0.0651
+   ]
+  },
+  "iso4762_m3x10_u127": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1201,
+    0.0146,
+    -0.0639
+   ]
+  },
+  "iso4762_m3x10_u128": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1675,
+    0.0253,
+    0.0574
+   ]
+  },
+  "iso4762_m3x10_u129": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1676,
+    0.0254,
+    -0.0563
+   ]
+  },
+  "iso4762_m3x10_u130": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1678,
+    0.0129,
+    0.0576
+   ]
+  },
+  "iso4762_m3x10_u131": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1679,
+    0.0129,
+    -0.0564
+   ]
+  },
+  "iso4762_m3x10_u132": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1679,
+    0.0004,
+    0.0576
+   ]
+  },
+  "iso4762_m3x10_u133": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.168,
+    0.0004,
+    -0.0564
+   ]
+  },
+  "iso4762_m3x10_u134": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1678,
+    -0.0122,
+    0.0576
+   ]
+  },
+  "iso4762_m3x10_u135": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    -0.1679,
+    -0.0122,
+    -0.0564
+   ]
+  },
+  "iso7089_m3_u136": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1069,
+    0.0137,
+    0.1111
+   ]
+  },
+  "iso4762_m3x16_u137": {
+   "part": "iso4762_m3x16",
+   "title": "M3 × 16 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1083,
+    0.0139,
+    0.1041
+   ]
+  },
+  "iso7089_m3_u138": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1071,
+    0.0138,
+    -0.1101
+   ]
+  },
+  "iso4762_m3x16_u139": {
+   "part": "iso4762_m3x16",
+   "title": "M3 × 16 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1085,
+    0.0139,
+    -0.103
+   ]
+  },
+  "iso4762_m3x25_u140": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1291,
+    0.039,
+    0.0981
+   ]
+  },
+  "iso4762_m3x25_u141": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1293,
+    0.039,
+    -0.097
+   ]
+  },
+  "iso4762_m3x8_u142": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1503,
+    0.0193,
+    0.0866
+   ]
+  },
+  "iso4762_m3x8_u143": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1504,
+    0.0193,
+    -0.0855
+   ]
+  },
+  "iso4762_m3x20_u144": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1548,
+    0.0234,
+    0.0958
+   ]
+  },
+  "iso4762_m3x20_u145": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1522,
+    0.0266,
+    -0.0951
+   ]
+  },
+  "iso4762_m3x20_u146": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1527,
+    0.0116,
+    0.0964
+   ]
+  },
+  "iso4762_m3x20_u147": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1553,
+    0.0148,
+    -0.0948
+   ]
+  },
+  "iso4762_m3x20_u148": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.145,
+    0.0267,
+    0.0973
+   ]
+  },
+  "iso4762_m3x20_u149": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1427,
+    0.0235,
+    -0.0966
+   ]
+  },
+  "iso4762_m3x20_u150": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.143,
+    0.0146,
+    0.0979
+   ]
+  },
+  "iso4762_m3x20_u151": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    -0.1459,
+    0.0115,
+    -0.0964
+   ]
+  },
+  "iso7089_m3_u152": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2359,
+    -0.082,
+    0.101
+   ]
+  },
+  "iso4762_m3x10_u153": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2361,
+    -0.082,
+    0.0975
+   ]
+  },
+  "iso7089_m3_u154": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2373,
+    -0.0825,
+    0.0761
+   ]
+  },
+  "iso4762_m3x10_u155": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2371,
+    -0.0824,
+    0.0796
+   ]
+  },
+  "iso7089_m3_u156": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.236,
+    -0.082,
+    -0.0999
+   ]
+  },
+  "iso4762_m3x10_u157": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2362,
+    -0.0821,
+    -0.0964
+   ]
+  },
+  "iso7089_m3_u158": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2374,
+    -0.0825,
+    -0.075
+   ]
+  },
+  "iso4762_m3x10_u159": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.2372,
+    -0.0824,
+    -0.0786
+   ]
+  },
+  "iso4762_m3x25_u160": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.1649,
+    0.0439,
+    0.0925
+   ]
+  },
+  "iso4762_m3x25_u161": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.165,
+    0.0439,
+    -0.0914
+   ]
+  },
+  "iso4762_m3x8_u162": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1309,
+    -0.0062,
+    0.0868
+   ]
+  },
+  "iso4762_m3x8_u163": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    -0.1311,
+    -0.0062,
+    -0.0856
+   ]
+  },
+  "iso4762_m3x20_u164": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1355,
+    -0.176,
+    0.0891
+   ]
+  },
+  "din985_m3_u165": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1359,
+    -0.1766,
+    0.0795
+   ]
+  },
+  "iso4762_m3x20_u166": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1356,
+    -0.1761,
+    -0.088
+   ]
+  },
+  "din985_m3_u167": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.136,
+    -0.1766,
+    -0.0784
+   ]
+  },
+  "iso4762_m3x12_u168": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1509,
+    -0.1488,
+    0.0909
+   ]
+  },
+  "din985_m3_u169": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1512,
+    -0.149,
+    0.0857
+   ]
+  },
+  "iso4762_m3x12_u170": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.151,
+    -0.1488,
+    -0.0898
+   ]
+  },
+  "din985_m3_u171": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1513,
+    -0.1491,
+    -0.0846
+   ]
+  },
+  "iso4762_m3x12_u172": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1942,
+    -0.1192,
+    0.0889
+   ]
+  },
+  "din985_m3_u173": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1945,
+    -0.1194,
+    0.0843
+   ]
+  },
+  "iso4762_m3x12_u174": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1943,
+    -0.1192,
+    -0.0878
+   ]
+  },
+  "din985_m3_u175": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    -0.1945,
+    -0.1194,
+    -0.0832
+   ]
+  },
+  "iso4762_m3x25_u176": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2523,
+    -0.0617,
+    0.0857
+   ]
+  },
+  "din985_m3_u177": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2529,
+    -0.0618,
+    0.0753
+   ]
+  },
+  "iso4762_m3x25_u178": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2524,
+    -0.0617,
+    -0.0846
+   ]
+  },
+  "din985_m3_u179": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    -0.2529,
+    -0.0618,
+    -0.0742
+   ]
+  },
+  "iso7089_m3_u180": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1957,
+    0.0183,
+    -0.0437
+   ]
+  },
+  "iso4762_m3x10_u181": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1927,
+    0.0184,
+    -0.0439
+   ]
+  },
+  "iso4762_m3x20_u182": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1864,
+    0.0342,
+    0.0495
+   ]
+  },
+  "iso4762_m3x20_u183": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1864,
+    0.0342,
+    -0.0484
+   ]
+  },
+  "iso4762_m3x10_u184": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1399,
+    0.0269,
+    0.0611
+   ]
+  },
+  "iso4762_m3x10_u185": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1401,
+    0.027,
+    -0.0599
+   ]
+  },
+  "iso4762_m3x20_u186": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1405,
+    0.0375,
+    0.0544
+   ]
+  },
+  "iso4762_m3x20_u187": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1406,
+    0.0376,
+    -0.0532
+   ]
+  },
+  "iso4762_m3x10_u188": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1404,
+    -0.013,
+    0.0613
+   ]
+  },
+  "iso4762_m3x10_u189": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1406,
+    -0.013,
+    -0.0601
+   ]
+  },
+  "iso4762_m3x10_u190": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1406,
+    0.0004,
+    0.0614
+   ]
+  },
+  "iso4762_m3x10_u191": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1408,
+    0.0004,
+    -0.0602
+   ]
+  },
+  "iso4762_m3x10_u192": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1404,
+    0.0137,
+    0.0613
+   ]
+  },
+  "iso4762_m3x10_u193": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1406,
+    0.0137,
+    -0.0601
+   ]
+  },
+  "iso4762_m3x10_u194": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1868,
+    0.0245,
+    0.0555
+   ]
+  },
+  "iso4762_m3x10_u195": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1869,
+    0.0245,
+    -0.0544
+   ]
+  },
+  "iso4762_m3x10_u196": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1871,
+    0.0124,
+    0.0556
+   ]
+  },
+  "iso4762_m3x10_u197": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1872,
+    0.0124,
+    -0.0545
+   ]
+  },
+  "iso4762_m3x10_u198": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1872,
+    0.0003,
+    0.0556
+   ]
+  },
+  "iso4762_m3x10_u199": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1872,
+    0.0003,
+    -0.0545
+   ]
+  },
+  "iso4762_m3x10_u200": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1871,
+    -0.0118,
+    0.0556
+   ]
+  },
+  "iso4762_m3x10_u201": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 8,
+   "shell": false,
+   "explode": [
+    0.1872,
+    -0.0118,
+    -0.0545
+   ]
+  },
+  "iso7089_m3_u202": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1874,
+    0.0122,
+    0.0963
+   ]
+  },
+  "iso4762_m3x16_u203": {
+   "part": "iso4762_m3x16",
+   "title": "M3 × 16 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1881,
+    0.0122,
+    0.0892
+   ]
+  },
+  "iso7089_m3_u204": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1875,
+    0.0122,
+    -0.0952
+   ]
+  },
+  "iso4762_m3x16_u205": {
+   "part": "iso4762_m3x16",
+   "title": "M3 × 16 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1882,
+    0.0122,
+    -0.0881
+   ]
+  },
+  "iso4762_m3x25_u206": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1683,
+    0.0367,
+    0.0901
+   ]
+  },
+  "iso4762_m3x25_u207": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1684,
+    0.0368,
+    -0.089
+   ]
+  },
+  "iso4762_m3x8_u208": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1516,
+    0.0193,
+    0.0841
+   ]
+  },
+  "iso4762_m3x8_u209": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1518,
+    0.0193,
+    -0.083
+   ]
+  },
+  "iso4762_m3x20_u210": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1441,
+    0.0239,
+    0.0952
+   ]
+  },
+  "iso4762_m3x20_u211": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1469,
+    0.0269,
+    -0.0936
+   ]
+  },
+  "iso4762_m3x20_u212": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1467,
+    0.0117,
+    0.0951
+   ]
+  },
+  "iso4762_m3x20_u213": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1443,
+    0.0151,
+    -0.0943
+   ]
+  },
+  "iso4762_m3x20_u214": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1537,
+    0.0263,
+    0.0937
+   ]
+  },
+  "iso4762_m3x20_u215": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1565,
+    0.023,
+    -0.0923
+   ]
+  },
+  "iso4762_m3x20_u216": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1563,
+    0.0144,
+    0.0935
+   ]
+  },
+  "iso4762_m3x20_u217": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 9,
+   "shell": false,
+   "explode": [
+    0.1539,
+    0.0114,
+    -0.0928
+   ]
+  },
+  "iso7089_m3_u218": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0342,
+    -0.0979,
+    0.118
+   ]
+  },
+  "iso4762_m3x10_u219": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0344,
+    -0.0986,
+    0.1144
+   ]
+  },
+  "iso7089_m3_u220": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0359,
+    -0.1028,
+    0.0921
+   ]
+  },
+  "iso4762_m3x10_u221": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0356,
+    -0.1021,
+    0.0959
+   ]
+  },
+  "iso7089_m3_u222": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0342,
+    -0.0981,
+    -0.1169
+   ]
+  },
+  "iso4762_m3x10_u223": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0345,
+    -0.0988,
+    -0.1134
+   ]
+  },
+  "iso7089_m3_u224": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0359,
+    -0.103,
+    -0.0909
+   ]
+  },
+  "iso4762_m3x10_u225": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0357,
+    -0.1023,
+    -0.0948
+   ]
+  },
+  "iso4762_m3x25_u226": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.132,
+    0.0463,
+    0.095
+   ]
+  },
+  "iso4762_m3x25_u227": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.1322,
+    0.0463,
+    -0.0939
+   ]
+  },
+  "iso4762_m3x8_u228": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1717,
+    -0.0058,
+    0.078
+   ]
+  },
+  "iso4762_m3x8_u229": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 10,
+   "shell": false,
+   "explode": [
+    0.1718,
+    -0.0058,
+    -0.0769
+   ]
+  },
+  "iso4762_m3x20_u230": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1368,
+    -0.1761,
+    0.0868
+   ]
+  },
+  "din985_m3_u231": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1372,
+    -0.1766,
+    0.0772
+   ]
+  },
+  "iso4762_m3x20_u232": {
+   "part": "iso4762_m3x20",
+   "title": "M3 × 20 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1368,
+    -0.1761,
+    -0.0857
+   ]
+  },
+  "din985_m3_u233": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1372,
+    -0.1766,
+    -0.0762
+   ]
+  },
+  "iso4762_m3x12_u234": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1263,
+    -0.1514,
+    0.0902
+   ]
+  },
+  "din985_m3_u235": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1266,
+    -0.1518,
+    0.0849
+   ]
+  },
+  "iso4762_m3x12_u236": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1264,
+    -0.1515,
+    -0.0891
+   ]
+  },
+  "din985_m3_u237": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.1267,
+    -0.1518,
+    -0.0838
+   ]
+  },
+  "iso4762_m3x12_u238": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.084,
+    -0.1307,
+    0.095
+   ]
+  },
+  "din985_m3_u239": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0843,
+    -0.1313,
+    0.0902
+   ]
+  },
+  "iso4762_m3x12_u240": {
+   "part": "iso4762_m3x12",
+   "title": "M3 × 12 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.084,
+    -0.1308,
+    -0.0939
+   ]
+  },
+  "din985_m3_u241": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 11,
+   "shell": false,
+   "explode": [
+    0.0844,
+    -0.1314,
+    -0.0891
+   ]
+  },
+  "iso4762_m3x25_u242": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0146,
+    -0.0799,
+    0.1082
+   ]
+  },
+  "din985_m3_u243": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0151,
+    -0.0825,
+    0.0975
+   ]
+  },
+  "iso4762_m3x25_u244": {
+   "part": "iso4762_m3x25",
+   "title": "M3 × 25 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0146,
+    -0.0802,
+    -0.1071
+   ]
+  },
+  "din985_m3_u245": {
+   "part": "din985_m3",
+   "title": "M3 lock nut (nylon insert) (DIN 985)",
+   "kind": "fastener",
+   "step": 12,
+   "shell": false,
+   "explode": [
+    0.0151,
+    -0.0827,
+    -0.0964
+   ]
+  },
+  "iso4762_m3x8_u246": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1354,
+    0.0208,
+    0.0538
+   ]
+  },
+  "iso4762_m3x8_u247": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1148,
+    0.0223,
+    0.0576
+   ]
+  },
+  "iso7089_m3_u248": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1764,
+    0.0189,
+    0.0488
+   ]
+  },
+  "iso4762_m3x10_u249": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1734,
+    0.019,
+    0.0491
+   ]
+  },
+  "iso4762_m3x8_u250": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1383,
+    0.0209,
+    0.0443
+   ]
+  },
+  "iso4762_m3x8_u251": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1212,
+    0.0221,
+    0.0471
+   ]
+  },
+  "iso4762_m3x8_u252": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1385,
+    0.0204,
+    0.0621
+   ]
+  },
+  "iso4762_m3x8_u253": {
+   "part": "iso4762_m3x8",
+   "title": "M3 × 8 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    -0.1178,
+    0.0217,
+    0.066
+   ]
+  },
+  "iso7089_m3_u254": {
+   "part": "iso7089_m3",
+   "title": "M3 washer (ISO 7089)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1956,
+    0.0183,
+    0.0449
+   ]
+  },
+  "iso4762_m3x10_u255": {
+   "part": "iso4762_m3x10",
+   "title": "M3 × 10 socket head screw (ISO 4762)",
+   "kind": "fastener",
+   "step": 13,
+   "shell": false,
+   "explode": [
+    0.1927,
+    0.0184,
+    0.0451
+   ]
+  },
+  "cable_W00_red_0.0": {
+   "part": "battery_core_red",
+   "title": "Cable: 12 AWG battery core red",
+   "kind": "cable",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.0976,
+    -0.0252,
+    -0.0276
+   ]
+  },
+  "cable_W00_black_0.0": {
+   "part": "battery_core_black",
+   "title": "Cable: 12 AWG battery core black",
+   "kind": "cable",
+   "step": 22,
+   "shell": false,
+   "explode": [
+    -0.0973,
+    -0.0251,
+    -0.0294
+   ]
+  },
+  "cable_W01_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0833,
+    -0.001,
+    -0.0304
+   ]
+  },
+  "cable_W02_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.1783,
+    0.0038,
+    0.0003
+   ]
+  },
+  "cable_W02_arming_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.1925,
+    -0.0154,
+    0.0006
+   ]
+  },
+  "cable_W02_logic_0.0": {
+   "part": "fuse_holder_lead",
+   "title": "Cable: 14 AWG fuse holder lead",
+   "kind": "cable",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.1918,
+    -0.0063,
+    0.0134
+   ]
+  },
+  "cable_W03_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.1465,
+    -0.0101,
+    -0.0231
+   ]
+  },
+  "cable_W03_front_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.05,
+    -0.0351,
+    -0.0638
+   ]
+  },
+  "cable_W03_rear_0.0": {
+   "part": "wire_14awg_red",
+   "title": "Cable: 14 AWG wire 14awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0395,
+    -0.0565,
+    0.0161
+   ]
+  },
+  "cable_W04_0.0": {
+   "part": "wire_14awg_black",
+   "title": "Cable: 14 AWG wire 14awg black",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0428,
+    -0.0392,
+    -0.0769
+   ]
+  },
+  "cable_W04_front_0.0": {
+   "part": "wire_14awg_black",
+   "title": "Cable: 14 AWG wire 14awg black",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0376,
+    -0.0367,
+    -0.0756
+   ]
+  },
+  "cable_W04_rear_0.0": {
+   "part": "wire_14awg_black",
+   "title": "Cable: 14 AWG wire 14awg black",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.04,
+    -0.0573,
+    0.0085
+   ]
+  },
+  "cable_W04_logic_0.0": {
+   "part": "wire_18awg_black",
+   "title": "Cable: 18 AWG wire 18awg black",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.0691,
+    0.0019,
+    0.0064
+   ]
+  },
+  "cable_W05_0.0": {
+   "part": "wire_18awg_pair",
+   "title": "Cable: 18 AWG wire 18awg pair",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1422,
+    0.0045,
+    -0.0184
+   ]
+  },
+  "cable_W05_0.1": {
+   "part": "wire_18awg_pair",
+   "title": "Cable: 18 AWG wire 18awg pair",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1423,
+    0.0062,
+    -0.0181
+   ]
+  },
+  "cable_W06_0.0": {
+   "part": "wire_18awg_pair",
+   "title": "Cable: 18 AWG wire 18awg pair",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0939,
+    -0.0087,
+    0.021
+   ]
+  },
+  "cable_W06_0.1": {
+   "part": "wire_18awg_pair",
+   "title": "Cable: 18 AWG wire 18awg pair",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0939,
+    -0.0079,
+    0.0174
+   ]
+  },
+  "cable_W07_vplus_0.0": {
+   "part": "wire_18awg_red",
+   "title": "Cable: 18 AWG wire 18awg red",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1629,
+    -0.0036,
+    -0.0123
+   ]
+  },
+  "cable_W07_gnd_0.0": {
+   "part": "wire_18awg_black",
+   "title": "Cable: 18 AWG wire 18awg black",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1626,
+    -0.0146,
+    -0.0142
+   ]
+  },
+  "cable_W08_vplus_0.0": {
+   "part": "wire_18awg_red",
+   "title": "Cable: 18 AWG wire 18awg red",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1437,
+    -0.0038,
+    -0.0131
+   ]
+  },
+  "cable_W08_gnd_0.0": {
+   "part": "wire_18awg_black",
+   "title": "Cable: 18 AWG wire 18awg black",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1434,
+    -0.0155,
+    -0.015
+   ]
+  },
+  "cable_W09_0.0": {
+   "part": "wire_18awg_red",
+   "title": "Cable: 18 AWG wire 18awg red",
+   "kind": "cable",
+   "step": 14,
+   "shell": false,
+   "explode": [
+    -0.1111,
+    0.0206,
+    0.0024
+   ]
+  },
+  "cable_W10_0.0": {
+   "part": "wire_18awg_red",
+   "title": "Cable: 18 AWG wire 18awg red",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.054,
+    0.043,
+    0.0345
+   ]
+  },
+  "cable_W11_0.0": {
+   "part": "wire_18awg_red",
+   "title": "Cable: 18 AWG wire 18awg red",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.1047,
+    0.0291,
+    0.005
+   ]
+  },
+  "cable_W24_0.0": {
+   "part": "wire_18awg_black",
+   "title": "Cable: 18 AWG wire 18awg black",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.0445,
+    0.0392,
+    0.0559
+   ]
+  },
+  "cable_W12_0.0": {
+   "part": "wire_22awg_quad",
+   "title": "Cable: 22 AWG wire 22awg quad",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.0556,
+    0.0573,
+    -0.0246
+   ]
+  },
+  "cable_W12_0.1": {
+   "part": "wire_22awg_quad",
+   "title": "Cable: 22 AWG wire 22awg quad",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.0542,
+    0.0577,
+    -0.0226
+   ]
+  },
+  "cable_W12_0.2": {
+   "part": "wire_22awg_quad",
+   "title": "Cable: 22 AWG wire 22awg quad",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.0552,
+    0.0562,
+    -0.0236
+   ]
+  },
+  "cable_W12_0.3": {
+   "part": "wire_22awg_quad",
+   "title": "Cable: 22 AWG wire 22awg quad",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    -0.0555,
+    0.0563,
+    -0.0254
+   ]
+  },
+  "cable_W13_0.0": {
+   "part": "wire_22awg_pair",
+   "title": "Cable: 22 AWG wire 22awg pair",
+   "kind": "cable",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.0952,
+    0.0256,
+    0.0339
+   ]
+  },
+  "cable_W13_0.1": {
+   "part": "wire_22awg_pair",
+   "title": "Cable: 22 AWG wire 22awg pair",
+   "kind": "cable",
+   "step": 19,
+   "shell": false,
+   "explode": [
+    -0.095,
+    0.0248,
+    0.0361
+   ]
+  },
+  "cable_W14_0.0": {
+   "part": "usb_a_c",
+   "title": "Cable: usb a c",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.1419,
+    0.0164,
+    -0.0
+   ]
+  },
+  "cable_W15_0.0": {
+   "part": "usb_a_c",
+   "title": "Cable: usb a c",
+   "kind": "cable",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    0.0708,
+    0.0663,
+    0.0042
+   ]
+  },
+  "cable_W16_0.0": {
+   "part": "camera_ffc",
+   "title": "Cable: camera ffc",
+   "kind": "cable",
+   "step": 18,
+   "shell": false,
+   "explode": [
+    0.1441,
+    0.0447,
+    0.0104
+   ]
+  },
+  "cable_W17_0.0": {
+   "part": "wire_22awg_i2c",
+   "title": "Cable: 22 AWG wire 22awg i2c",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.1031,
+    0.0334,
+    0.0006
+   ]
+  },
+  "cable_W17_0.1": {
+   "part": "wire_22awg_i2c",
+   "title": "Cable: 22 AWG wire 22awg i2c",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.1025,
+    0.0337,
+    -0.001
+   ]
+  },
+  "cable_W17_0.2": {
+   "part": "wire_22awg_i2c",
+   "title": "Cable: 22 AWG wire 22awg i2c",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.1034,
+    0.0334,
+    -0.0013
+   ]
+  },
+  "cable_W17_0.3": {
+   "part": "wire_22awg_i2c",
+   "title": "Cable: 22 AWG wire 22awg i2c",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.1033,
+    0.0335,
+    0.0004
+   ]
+  },
+  "cable_W18_0.0": {
+   "part": "stemma_qt",
+   "title": "Cable: stemma qt",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.0282,
+    0.045,
+    -0.0596
+   ]
+  },
+  "cable_W19_0.0": {
+   "part": "stemma_qt",
+   "title": "Cable: stemma qt",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.0078,
+    0.0635,
+    0.0229
+   ]
+  },
+  "cable_W20_0.0": {
+   "part": "wire_22awg_green",
+   "title": "Cable: 22 AWG wire 22awg green",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.103,
+    0.0336,
+    -0.0004
+   ]
+  },
+  "cable_W21_0.0": {
+   "part": "lcd_cable",
+   "title": "Cable: lcd cable",
+   "kind": "cable",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.192,
+    0.0196,
+    -0.012
+   ]
+  },
+  "cable_W22_0.0": {
+   "part": "wire_22awg_white",
+   "title": "Cable: 22 AWG wire 22awg white",
+   "kind": "cable",
+   "step": 16,
+   "shell": false,
+   "explode": [
+    0.0523,
+    0.0512,
+    0.023
+   ]
+  },
+  "cable_W23_0.0": {
+   "part": "lidar_cable",
+   "title": "Cable: lidar cable",
+   "kind": "cable",
+   "step": 21,
+   "shell": false,
+   "explode": [
+    -0.0339,
+    0.0968,
+    -0.014
+   ]
+  },
+  "cable_S-FL-hip_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1113,
+    0.0457,
+    -0.0249
+   ]
+  },
+  "cable_S-FL-hip_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1122,
+    0.0438,
+    -0.0247
+   ]
+  },
+  "cable_S-FL-hip_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1124,
+    0.0449,
+    -0.0256
+   ]
+  },
+  "cable_S-FL-hip_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1567,
+    0.0112,
+    -0.0058
+   ]
+  },
+  "cable_S-FL-hip_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.157,
+    0.0118,
+    -0.0041
+   ]
+  },
+  "cable_S-FL-hip_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.0717,
+    0.0609,
+    -0.0154
+   ]
+  },
+  "cable_S-FL-thigh_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1451,
+    0.021,
+    -0.0349
+   ]
+  },
+  "cable_S-FL-thigh_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1455,
+    0.0199,
+    -0.0338
+   ]
+  },
+  "cable_S-FL-thigh_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1456,
+    0.0214,
+    -0.0338
+   ]
+  },
+  "cable_S-FL-thigh_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1482,
+    0.0251,
+    -0.025
+   ]
+  },
+  "cable_S-FL-thigh_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1486,
+    0.0253,
+    -0.0251
+   ]
+  },
+  "cable_S-FL-thigh_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1482,
+    0.0264,
+    -0.026
+   ]
+  },
+  "cable_S-FL-thigh_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1618,
+    0.0097,
+    -0.0147
+   ]
+  },
+  "cable_S-FL-thigh_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1619,
+    0.0103,
+    -0.0138
+   ]
+  },
+  "cable_S-FL-thigh_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.0835,
+    0.0558,
+    -0.0036
+   ]
+  },
+  "cable_S-FL-calf_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1864,
+    0.0052,
+    -0.0302
+   ]
+  },
+  "cable_S-FL-calf_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1867,
+    0.0049,
+    -0.0314
+   ]
+  },
+  "cable_S-FL-calf_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1863,
+    0.0052,
+    -0.0316
+   ]
+  },
+  "cable_S-FL-calf_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1779,
+    0.0163,
+    -0.0279
+   ]
+  },
+  "cable_S-FL-calf_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.178,
+    0.0155,
+    -0.0276
+   ]
+  },
+  "cable_S-FL-calf_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.178,
+    0.0171,
+    -0.0275
+   ]
+  },
+  "cable_S-FL-calf_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1755,
+    0.0031,
+    -0.0151
+   ]
+  },
+  "cable_S-FL-calf_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1753,
+    0.0037,
+    -0.0143
+   ]
+  },
+  "cable_S-FL-calf_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1014,
+    0.043,
+    -0.0045
+   ]
+  },
+  "cable_S-FR-hip_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1106,
+    0.0453,
+    0.0336
+   ]
+  },
+  "cable_S-FR-hip_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1116,
+    0.0447,
+    0.0345
+   ]
+  },
+  "cable_S-FR-hip_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1114,
+    0.0435,
+    0.0336
+   ]
+  },
+  "cable_S-FR-hip_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.14,
+    0.0121,
+    -0.0059
+   ]
+  },
+  "cable_S-FR-hip_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1408,
+    0.0124,
+    -0.0046
+   ]
+  },
+  "cable_S-FR-hip_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.0718,
+    0.061,
+    -0.013
+   ]
+  },
+  "cable_S-FR-thigh_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1456,
+    0.0205,
+    0.0347
+   ]
+  },
+  "cable_S-FR-thigh_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1451,
+    0.0201,
+    0.0358
+   ]
+  },
+  "cable_S-FR-thigh_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1453,
+    0.0217,
+    0.0359
+   ]
+  },
+  "cable_S-FR-thigh_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1484,
+    0.026,
+    0.027
+   ]
+  },
+  "cable_S-FR-thigh_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1483,
+    0.0248,
+    0.026
+   ]
+  },
+  "cable_S-FR-thigh_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.148,
+    0.0259,
+    0.0269
+   ]
+  },
+  "cable_S-FR-thigh_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1463,
+    0.012,
+    0.0008
+   ]
+  },
+  "cable_S-FR-thigh_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1451,
+    0.0121,
+    0.0006
+   ]
+  },
+  "cable_S-FR-thigh_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.0835,
+    0.0558,
+    0.0035
+   ]
+  },
+  "cable_S-FR-calf_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1863,
+    0.0052,
+    0.0331
+   ]
+  },
+  "cable_S-FR-calf_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1866,
+    0.0049,
+    0.0317
+   ]
+  },
+  "cable_S-FR-calf_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1862,
+    0.0051,
+    0.0319
+   ]
+  },
+  "cable_S-FR-calf_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.178,
+    0.0163,
+    0.0286
+   ]
+  },
+  "cable_S-FR-calf_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1779,
+    0.0155,
+    0.0291
+   ]
+  },
+  "cable_S-FR-calf_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1779,
+    0.0171,
+    0.029
+   ]
+  },
+  "cable_S-FR-calf_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1561,
+    0.0039,
+    0.0022
+   ]
+  },
+  "cable_S-FR-calf_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.1569,
+    0.0034,
+    0.001
+   ]
+  },
+  "cable_S-FR-calf_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    0.101,
+    0.0429,
+    0.0149
+   ]
+  },
+  "cable_S-RL-hip_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0906,
+    0.0459,
+    -0.0327
+   ]
+  },
+  "cable_S-RL-hip_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0895,
+    0.0467,
+    -0.0317
+   ]
+  },
+  "cable_S-RL-hip_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0897,
+    0.0479,
+    -0.0326
+   ]
+  },
+  "cable_S-RL-hip_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1194,
+    0.0105,
+    -0.0093
+   ]
+  },
+  "cable_S-RL-hip_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1183,
+    0.0105,
+    -0.0093
+   ]
+  },
+  "cable_S-RL-hip_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0748,
+    0.0568,
+    -0.0186
+   ]
+  },
+  "cable_S-RL-thigh_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1671,
+    0.0197,
+    -0.0351
+   ]
+  },
+  "cable_S-RL-thigh_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1669,
+    0.0187,
+    -0.0341
+   ]
+  },
+  "cable_S-RL-thigh_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1666,
+    0.0203,
+    -0.0342
+   ]
+  },
+  "cable_S-RL-thigh_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1652,
+    0.0156,
+    -0.0277
+   ]
+  },
+  "cable_S-RL-thigh_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1651,
+    0.0144,
+    -0.0288
+   ]
+  },
+  "cable_S-RL-thigh_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1648,
+    0.0153,
+    -0.0281
+   ]
+  },
+  "cable_S-RL-thigh_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1461,
+    0.0,
+    -0.0181
+   ]
+  },
+  "cable_S-RL-thigh_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1464,
+    0.0005,
+    -0.0172
+   ]
+  },
+  "cable_S-RL-thigh_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1105,
+    0.0371,
+    -0.013
+   ]
+  },
+  "cable_S-RL-calf_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1263,
+    0.0057,
+    -0.0383
+   ]
+  },
+  "cable_S-RL-calf_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1257,
+    0.0052,
+    -0.0397
+   ]
+  },
+  "cable_S-RL-calf_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.126,
+    0.0057,
+    -0.0399
+   ]
+  },
+  "cable_S-RL-calf_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1295,
+    0.0145,
+    -0.0324
+   ]
+  },
+  "cable_S-RL-calf_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1292,
+    0.0145,
+    -0.0324
+   ]
+  },
+  "cable_S-RL-calf_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1294,
+    0.0158,
+    -0.0315
+   ]
+  },
+  "cable_S-RL-calf_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1295,
+    0.0002,
+    -0.0192
+   ]
+  },
+  "cable_S-RL-calf_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1304,
+    0.0006,
+    -0.0185
+   ]
+  },
+  "cable_S-RL-calf_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0915,
+    0.042,
+    -0.0105
+   ]
+  },
+  "cable_S-RR-hip_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0904,
+    0.0458,
+    0.0343
+   ]
+  },
+  "cable_S-RR-hip_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0895,
+    0.0478,
+    0.0342
+   ]
+  },
+  "cable_S-RR-hip_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0893,
+    0.0466,
+    0.0332
+   ]
+  },
+  "cable_S-RR-hip_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1355,
+    0.01,
+    -0.0084
+   ]
+  },
+  "cable_S-RR-hip_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1348,
+    0.0091,
+    -0.0087
+   ]
+  },
+  "cable_S-RR-hip_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0749,
+    0.0569,
+    -0.0162
+   ]
+  },
+  "cable_S-RR-thigh_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1666,
+    0.0195,
+    0.0351
+   ]
+  },
+  "cable_S-RR-thigh_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1671,
+    0.0189,
+    0.036
+   ]
+  },
+  "cable_S-RR-thigh_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1668,
+    0.0205,
+    0.036
+   ]
+  },
+  "cable_S-RR-thigh_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1648,
+    0.0146,
+    0.0299
+   ]
+  },
+  "cable_S-RR-thigh_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1652,
+    0.0149,
+    0.0296
+   ]
+  },
+  "cable_S-RR-thigh_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1649,
+    0.0158,
+    0.0288
+   ]
+  },
+  "cable_S-RR-thigh_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1636,
+    0.0004,
+    0.0034
+   ]
+  },
+  "cable_S-RR-thigh_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1625,
+    0.0004,
+    0.0037
+   ]
+  },
+  "cable_S-RR-thigh_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1106,
+    0.0371,
+    0.0103
+   ]
+  },
+  "cable_S-RR-calf_0.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1257,
+    0.0057,
+    0.0417
+   ]
+  },
+  "cable_S-RR-calf_0.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1258,
+    0.0052,
+    0.04
+   ]
+  },
+  "cable_S-RR-calf_0.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1261,
+    0.0057,
+    0.0403
+   ]
+  },
+  "cable_S-RR-calf_1.0": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1291,
+    0.0154,
+    0.0332
+   ]
+  },
+  "cable_S-RR-calf_1.1": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1292,
+    0.014,
+    0.034
+   ]
+  },
+  "cable_S-RR-calf_1.2": {
+   "part": "servo_lead",
+   "title": "Cable: 22 AWG servo lead",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1294,
+    0.0154,
+    0.0332
+   ]
+  },
+  "cable_S-RR-calf_power_0.0": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.149,
+    0.0006,
+    0.0044
+   ]
+  },
+  "cable_S-RR-calf_power_0.1": {
+   "part": "servo_power",
+   "title": "Cable: 22 AWG servo power",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.1483,
+    0.0001,
+    0.003
+   ]
+  },
+  "cable_S-RR-calf_signal_0.0": {
+   "part": "servo_signal",
+   "title": "Cable: 22 AWG servo signal",
+   "kind": "cable",
+   "step": 15,
+   "shell": false,
+   "explode": [
+    -0.0913,
+    0.042,
+    0.0137
+   ]
+  },
+  "cable_sleeve_0": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1249,
+    0.0373,
+    0.0106
+   ]
+  },
+  "cable_sleeve_1": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1199,
+    0.0464,
+    0.0132
+   ]
+  },
+  "cable_sleeve_2": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.0707,
+    0.0671,
+    0.0115
+   ]
+  },
+  "cable_sleeve_3": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1103,
+    -0.0073,
+    -0.007
+   ]
+  },
+  "cable_sleeve_4": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0978,
+    0.0378,
+    0.0272
+   ]
+  },
+  "cable_sleeve_5": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0785,
+    0.0409,
+    0.0453
+   ]
+  },
+  "cable_sleeve_6": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0427,
+    0.0351,
+    0.0683
+   ]
+  },
+  "cable_sleeve_7": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0772,
+    0.0619,
+    -0.0023
+   ]
+  },
+  "cable_sleeve_8": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1004,
+    0.0476,
+    0.0
+   ]
+  },
+  "cable_sleeve_9": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1055,
+    0.0368,
+    0.0004
+   ]
+  },
+  "cable_sleeve_10": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1086,
+    -0.0163,
+    -0.0144
+   ]
+  },
+  "cable_sleeve_11": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1051,
+    -0.0206,
+    -0.0224
+   ]
+  },
+  "cable_sleeve_12": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1017,
+    -0.0206,
+    -0.0348
+   ]
+  },
+  "cable_sleeve_13": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0987,
+    -0.0206,
+    -0.0415
+   ]
+  },
+  "cable_sleeve_14": {
+   "part": "spiral_wrap",
+   "title": "Spiral wrap",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0636,
+    -0.026,
+    -0.0544
+   ]
+  },
+  "cable_tie_0": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1778,
+    0.0082,
+    0.0006
+   ]
+  },
+  "cable_tie_1": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0178,
+    0.0229,
+    0.0837
+   ]
+  },
+  "cable_tie_2": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1272,
+    0.0356,
+    0.0079
+   ]
+  },
+  "cable_tie_3": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1787,
+    0.0132,
+    -0.0162
+   ]
+  },
+  "cable_tie_4": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1273,
+    0.0097,
+    -0.0184
+   ]
+  },
+  "cable_tie_5": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1082,
+    0.0332,
+    0.0008
+   ]
+  },
+  "cable_tie_6": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1963,
+    0.02,
+    0.0006
+   ]
+  },
+  "cable_tie_7": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.0432,
+    0.0224,
+    -0.0758
+   ]
+  },
+  "cable_tie_8": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1055,
+    0.0511,
+    -0.051
+   ]
+  },
+  "cable_tie_9": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1435,
+    0.0211,
+    -0.0339
+   ]
+  },
+  "cable_tie_10": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1434,
+    0.0307,
+    -0.0177
+   ]
+  },
+  "cable_tie_11": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1863,
+    0.0162,
+    -0.0306
+   ]
+  },
+  "cable_tie_12": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1714,
+    0.0159,
+    -0.0184
+   ]
+  },
+  "cable_tie_13": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1053,
+    0.051,
+    0.0524
+   ]
+  },
+  "cable_tie_14": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1461,
+    0.0144,
+    -0.0177
+   ]
+  },
+  "cable_tie_15": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1434,
+    0.0211,
+    0.0352
+   ]
+  },
+  "cable_tie_16": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1433,
+    0.0307,
+    0.019
+   ]
+  },
+  "cable_tie_17": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1863,
+    0.0162,
+    0.0318
+   ]
+  },
+  "cable_tie_18": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    0.1713,
+    0.0159,
+    0.0196
+   ]
+  },
+  "cable_tie_19": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0815,
+    0.0557,
+    -0.0556
+   ]
+  },
+  "cable_tie_20": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.169,
+    0.0197,
+    -0.0335
+   ]
+  },
+  "cable_tie_21": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1652,
+    0.0097,
+    -0.0219
+   ]
+  },
+  "cable_tie_22": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1239,
+    0.0183,
+    -0.0386
+   ]
+  },
+  "cable_tie_23": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1305,
+    0.0109,
+    -0.0245
+   ]
+  },
+  "cable_tie_24": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.0813,
+    0.0555,
+    0.057
+   ]
+  },
+  "cable_tie_25": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.16,
+    0.0086,
+    -0.0163
+   ]
+  },
+  "cable_tie_26": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1689,
+    0.0197,
+    0.0347
+   ]
+  },
+  "cable_tie_27": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1652,
+    0.0097,
+    0.0231
+   ]
+  },
+  "cable_tie_28": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1237,
+    0.0183,
+    0.04
+   ]
+  },
+  "cable_tie_29": {
+   "part": "cable_tie",
+   "title": "Cable tie 2.5 × 100 mm",
+   "kind": "cable",
+   "step": 20,
+   "shell": false,
+   "explode": [
+    -0.1304,
+    0.0109,
+    0.0259
+   ]
+  },
+  "lcd_face": {
+   "part": "waveshare_lcd_2inch",
+   "title": "LCD face (firmware default expression)",
+   "kind": "purchased",
+   "step": 17,
+   "shell": false,
+   "explode": [
+    0.2125,
+    0.0101,
+    0.0003
+   ]
+  }
+ }
+}

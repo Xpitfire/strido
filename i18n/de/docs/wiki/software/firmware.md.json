@@ -1,0 +1,430 @@
+{
+ "8ebab0c606bf2d32": {
+  "en": "Firmware on the ESP32-S3",
+  "de": "Firmware auf dem ESP32-S3"
+ },
+ "be63654837e7666d": {
+  "en": "The firmware is the C++ program on the Seeed XIAO ESP32-S3 that turns joint-angle commands from the Pi into servo pulses 200 times a second, reads the IMU and battery monitor, and stops the robot safely when anything goes wrong. It is small, but it is the last line of software between a bug and twelve servos.",
+  "de": "Die Firmware ist das C++-Programm auf dem Seeed XIAO ESP32-S3, das Gelenkwinkelbefehle vom Pi 200-mal pro Sekunde in Servopulse umsetzt, die IMU und den Akkumonitor ausliest und den Roboter sicher anhält, wenn etwas schiefgeht. Sie ist klein, aber sie ist die letzte Softwareschicht zwischen einem Fehler und zwölf Servos."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "e29afa52cff43ae7": {
+  "en": "**Project:** `firmware/strido_esp32s3` (PlatformIO, Arduino-ESP32 3.x).",
+  "de": "**Projekt:** `firmware/strido_esp32s3` (PlatformIO, Arduino-ESP32 3.x)."
+ },
+ "ed669dd3c331318e": {
+  "en": "**Entry point:** `src/main.cpp`; pins and rates in `src/board_config.h`; LCD face in `src/face.cpp`.",
+  "de": "**Einstiegspunkt:** `src/main.cpp`; Pins und Raten in `src/board_config.h`; LCD-Gesicht in `src/face.cpp`."
+ },
+ "4d72ba08aea5d4b7": {
+  "en": "**Portable core:** `lib/strido_core` (knee linkage, servo mapping, protocol, safety), unit-tested on your computer with `pio test -e native`.",
+  "de": "**Portabler Kern:** `lib/strido_core` (Kniekoppelgetriebe, Servozuordnung, Protokoll, Sicherheit), mit Unit-Tests auf Ihrem Computer über `pio test -e native`."
+ },
+ "1c57aeaad58a0322": {
+  "en": "**Generated:** `lib/strido_core/include/strido/geometry_generated.h`, written from the CAD by `strido_cad.codegen`; never edit by hand.",
+  "de": "**Generiert:** `lib/strido_core/include/strido/geometry_generated.h`, aus dem CAD erzeugt von `strido_cad.codegen`; niemals von Hand bearbeiten."
+ },
+ "ee7552fa54bdc6b8": {
+  "en": "**Peripherals on I²C (400 kHz):** PCA9685 servo driver `0x40`, LSM6DSOX IMU `0x6A`, INA260 power monitor `0x41`; ST7789V LCD on SPI.",
+  "de": "**Peripherie am I²C (400 kHz):** PCA9685-Servotreiber `0x40`, LSM6DSOX-IMU `0x6A`, INA260-Power-Monitor `0x41`; ST7789V-LCD an SPI."
+ },
+ "52c720e17d6a23ec": {
+  "en": "**Host side:** `mcu_bridge` (ROS 2) and `strido-cli` (bench tool) speak the same protocol through `packages/strido-core/src/strido/protocol.py`.",
+  "de": "**Host-Seite:** `mcu_bridge` (ROS 2) und `strido-cli` (Werkbank-Werkzeug) sprechen dasselbe Protokoll über `packages/strido-core/src/strido/protocol.py`."
+ },
+ "76739ab0ec839ccf": {
+  "en": "Why a microcontroller at all",
+  "de": "Warum überhaupt ein Mikrocontroller"
+ },
+ "efc0317bce723af1": {
+  "en": "The Pi runs Linux, which can pause any process for tens of milliseconds. A servo signal that stutters makes the leg jerk; a safety check that runs \"usually\" is not a safety check. The ESP32-S3 runs nothing but this firmware, so its loop period is predictable. It also keeps working if the Pi crashes, which is exactly when you need the watchdog.",
+  "de": "Auf dem Pi läuft Linux, das jeden Prozess für einige zehn Millisekunden anhalten kann. Ein stotterndes Servosignal lässt das Bein ruckeln; eine Sicherheitsprüfung, die „meistens“ läuft, ist keine Sicherheitsprüfung. Auf dem ESP32-S3 läuft nichts außer dieser Firmware, daher ist seine Schleifenperiode vorhersagbar. Er arbeitet auch weiter, wenn der Pi abstürzt, und genau dann brauchen Sie den Watchdog."
+ },
+ "d5385a3e4db76448": {
+  "en": "The division of labour: the Pi decides **what** angles the legs should have; the ESP32 decides **how** to reach them safely (linkage maths, slew limit, clamps, calibration) and **whether** to drive at all.",
+  "de": "Die Arbeitsteilung: Der Pi entscheidet, **welche** Winkel die Beine haben sollen; der ESP32 entscheidet, **wie** sie sicher erreicht werden (Koppelgetriebe-Mathematik, Anstiegsbegrenzung, Begrenzungen, Kalibrierung) und **ob** überhaupt angesteuert wird."
+ },
+ "3c67eab1831f9ff4": {
+  "en": "Build, test and flash with PlatformIO",
+  "de": "Mit PlatformIO bauen, testen und flashen"
+ },
+ "c71612b60fc69d8c": {
+  "en": "PlatformIO is a build system and package manager for embedded code. `platformio.ini` pins the toolchain (`espressif32 @ ~8.0.0`), the board (`seeed_xiao_esp32s3`) and every library (Adafruit PWM Servo Driver, LSM6DS, INA260, AHRS, LovyanGFX), so everyone builds the same binary.",
+  "de": "PlatformIO ist ein Build-System und Paketmanager für Embedded-Code. `platformio.ini` legt die Toolchain (`espressif32 @ ~8.0.0`), das Board (`seeed_xiao_esp32s3`) und jede Bibliothek (Adafruit PWM Servo Driver, LSM6DS, INA260, AHRS, LovyanGFX) fest, sodass alle dasselbe Binary bauen."
+ },
+ "be835e2a15386fd8": {
+  "en": "It defines two environments:",
+  "de": "Es definiert zwei Umgebungen:"
+ },
+ "fe3a72cb9023a2c6": {
+  "en": "| Environment | Builds for | Used by |",
+  "de": "| Umgebung | Baut für | Verwendet von |"
+ },
+ "f9e74bf55d77baa3": {
+  "en": "| `xiao_esp32s3` (default) | The real board | `make firmware`, upload |",
+  "de": "| `xiao_esp32s3` (Standard) | Das echte Board | `make firmware`, Upload |"
+ },
+ "4b6bd2fc24bdec21": {
+  "en": "| `native` | Your computer, with the Unity test framework | `make test-firmware` |",
+  "de": "| `native` | Ihren Computer, mit dem Testframework Unity | `make test-firmware` |"
+ },
+ "03201fee0570f197": {
+  "en": "`-DARDUINO_USB_CDC_ON_BOOT=1` routes `Serial` to the chip's native USB, so the board appears to Linux as a CDC-ACM device (`/dev/ttyACM*`, symlinked to `/dev/strido_mcu`). The baud rate is ignored on USB CDC. If an upload cannot connect, hold the XIAO's BOOT button while plugging in USB to force the ROM bootloader.",
+  "de": "`-DARDUINO_USB_CDC_ON_BOOT=1` leitet `Serial` auf den nativen USB-Anschluss des Chips um, sodass das Board unter Linux als CDC-ACM-Gerät erscheint (`/dev/ttyACM*`, verlinkt auf `/dev/strido_mcu`). Die Baudrate wird bei USB CDC ignoriert. Wenn ein Upload keine Verbindung aufbauen kann, halten Sie beim Einstecken des USB-Kabels die BOOT-Taste des XIAO gedrückt, um den ROM-Bootloader zu erzwingen."
+ },
+ "b3683a2994cd68c2": {
+  "en": "Why a native test environment",
+  "de": "Warum eine native Testumgebung"
+ },
+ "aac29d015b6c420a": {
+  "en": "`lib/strido_core` contains no Arduino calls. The same kinematics, protocol and safety code compiles for the ESP32 *and* for your laptop, so `pio test -e native` checks it in seconds, without hardware, and fails in CI if someone breaks the watchdog.",
+  "de": "`lib/strido_core` enthält keine Arduino-Aufrufe. Derselbe Kinematik-, Protokoll- und Sicherheitscode kompiliert für den ESP32 *und* für Ihren Laptop, daher prüft `pio test -e native` ihn in Sekunden ohne Hardware und schlägt in der CI fehl, wenn jemand den Watchdog kaputt macht."
+ },
+ "dad6d09050c3033f": {
+  "en": "Program structure",
+  "de": "Programmstruktur"
+ },
+ "e1942612c0c1a457": {
+  "en": "`setup()` initialises the hardware and starts two FreeRTOS tasks pinned to the two cores of the ESP32-S3. `loop()` then sleeps forever.",
+  "de": "`setup()` initialisiert die Hardware und startet zwei FreeRTOS-Tasks, die an die beiden Kerne des ESP32-S3 gebunden sind. `loop()` schläft danach für immer."
+ },
+ "d04eead31cde0ef9": {
+  "en": "flowchart LR\n  subgraph C0[\"Core 0: commsTask (priority 2)\"]\n    RX[\"read USB bytes<br/>→ COBS frames → handlePacket\"] --> CMD[(\"command<br/>(spinlock)\")]\n    ST2[(\"state<br/>(spinlock)\")] --> TX[\"STATE frame<br/>every 10 ms (100 Hz)\"]\n    FACE[\"LCD face, status LED<br/>every 50 ms\"]\n  end\n  subgraph C1[\"Core 1: controlTask (priority 3), every 5 ms\"]\n    IMU[\"IMU read + Mahony filter\"] --> SAFE[\"SafetySupervisor.update\"]\n    PWR[\"INA260 every 100 ms\"] --> SAFE\n    SAFE --> SERVO[\"rate limit → linkage → clamp<br/>→ calibrated pulses → PCA9685\"]\n    SERVO --> ST1[\"write state\"]\n  end\n  CMD --> SAFE\n  ST1 --> ST2",
+  "de": "flowchart LR\n  subgraph C0[\"Kern 0: commsTask (Priorität 2)\"]\n    RX[\"USB-Bytes lesen<br/>→ COBS-Frames → handlePacket\"] --> CMD[(\"Befehl<br/>(Spinlock)\")]\n    ST2[(\"Zustand<br/>(Spinlock)\")] --> TX[\"STATE-Frame<br/>alle 10 ms (100 Hz)\"]\n    FACE[\"LCD-Gesicht, Status-LED<br/>alle 50 ms\"]\n  end\n  subgraph C1[\"Kern 1: controlTask (Priorität 3), alle 5 ms\"]\n    IMU[\"IMU lesen + Mahony-Filter\"] --> SAFE[\"SafetySupervisor.update\"]\n    PWR[\"INA260 alle 100 ms\"] --> SAFE\n    SAFE --> SERVO[\"Ratenbegrenzung → Koppelgetriebe → Begrenzung<br/>→ kalibrierte Pulse → PCA9685\"]\n    SERVO --> ST1[\"Zustand schreiben\"]\n  end\n  CMD --> SAFE\n  ST1 --> ST2"
+ },
+ "d91c3bafc54b5800": {
+  "en": "Why two tasks: USB traffic arrives in bursts and the LCD takes time to draw; neither must delay the servo update. The control task runs at a higher priority on its own core, and the shared data (`command`, `state`) is copied under short spinlock critical sections (`portENTER_CRITICAL`). I²C reads, which block, are never done inside a critical section.",
+  "de": "Warum zwei Tasks: USB-Verkehr kommt stoßweise, und das LCD braucht Zeit zum Zeichnen; keines von beiden darf die Servoaktualisierung verzögern. Der Regel-Task läuft mit höherer Priorität auf einem eigenen Kern, und die gemeinsamen Daten (`command`, `state`) werden in kurzen kritischen Abschnitten unter Spinlock kopiert (`portENTER_CRITICAL`). Blockierende I²C-Lesevorgänge finden nie innerhalb eines kritischen Abschnitts statt."
+ },
+ "e03d19ab856caaaf": {
+  "en": "Start-up sequence",
+  "de": "Startsequenz"
+ },
+ "bd97018766bbce80": {
+  "en": "Drive the PCA9685 **OE** pin (D3) high: all servo outputs off, servos limp.",
+  "de": "Den **OE**-Pin des PCA9685 (D3) auf High setzen: alle Servoausgänge aus, Servos kraftlos."
+ },
+ "6d76987bde4ba981": {
+  "en": "Start I²C on D4/D5 at 400 kHz; load calibration from flash.",
+  "de": "I²C an D4/D5 mit 400 kHz starten; Kalibrierung aus dem Flash laden."
+ },
+ "751c50f141dc063a": {
+  "en": "Set the internal joint state to the assembly reference pose.",
+  "de": "Den internen Gelenkzustand auf die Montage-Referenzpose setzen."
+ },
+ "9e997ba2497bd73d": {
+  "en": "Start the PCA9685 at 200 Hz with every channel off; IMU at ±8 g, ±1000 °/s, 416 Hz; INA260 at `0x41`.",
+  "de": "PCA9685 mit 200 Hz und allen Kanälen aus starten; IMU mit ±8 g, ±1000 °/s, 416 Hz; INA260 an `0x41`."
+ },
+ "46942f6456e9fe1b": {
+  "en": "Show \"ready\" on the LCD (or \"NO PCA9685\"), start the tasks.",
+  "de": "„ready“ auf dem LCD anzeigen (oder „NO PCA9685“), die Tasks starten."
+ },
+ "427bef9b170af2e8": {
+  "en": "The servos stay limp until the host sends its first position command. That is why the start-up order in [electronics](../../electronics.md#safety-rules) works: the loop key can go in safely, and the gait node's first command is the rest pose the robot is already lying in.",
+  "de": "Die Servos bleiben kraftlos, bis der Host seinen ersten Positionsbefehl sendet. Deshalb funktioniert die Startreihenfolge in [Elektronik](../../electronics.md#safety-rules): Der Loop-Key kann sicher eingesteckt werden, und der erste Befehl des Gait-Nodes ist die Ruhepose, in der der Roboter bereits liegt."
+ },
+ "b0e60d20387b6e18": {
+  "en": "One control cycle (5 ms)",
+  "de": "Ein Regelzyklus (5 ms)"
+ },
+ "6e7fb4eaa5cd7b20": {
+  "en": "**IMU.** Read the LSM6DSOX, rotate its axes into the base frame (the board is mounted with its x to robot left, y to robot rear), update the Mahony orientation filter.",
+  "de": "**IMU.** Den LSM6DSOX auslesen, seine Achsen in das Basiskoordinatensystem drehen (das Board ist mit x zur linken Seite des Roboters, y zum Heck des Roboters montiert), den Mahony-Orientierungsfilter aktualisieren."
+ },
+ "de8a8e8ffa56ea71": {
+  "en": "**Power.** Every 100 ms read bus voltage and current from the INA260 and feed the voltage to the safety supervisor.",
+  "de": "**Leistung.** Alle 100 ms Busspannung und Strom vom INA260 lesen und die Spannung an den Sicherheitsüberwacher weitergeben."
+ },
+ "bab4aa9d6c85ad41": {
+  "en": "**Safety.** `safety.update(now)` returns the drive state (below). Copy the latest command.",
+  "de": "**Sicherheit.** `safety.update(now)` liefert den Ansteuerzustand (siehe unten). Den neuesten Befehl kopieren."
+ },
+ "012e538312c44762": {
+  "en": "**Servos**, if the state is Active:",
+  "de": "**Servos**, wenn der Zustand Active ist:"
+ },
+ "45d5e684b430b209": {
+  "en": "**Rate limit:** no joint moves faster than $\\dot q_\\mathrm{max} = 6\\,\\mathrm{rad/s}$, so each 5 ms step is clamped to $\\lvert \\Delta q \\rvert \\le \\dot q_\\mathrm{max}\\,\\Delta t = 0.03\\,\\mathrm{rad}$. The SPT5435LV's rated speed is 0.14 s per 60° at 6 V, about $7.5\\,\\mathrm{rad/s}$; staying below it keeps the commanded and real positions close.",
+  "de": "**Ratenbegrenzung:** Kein Gelenk bewegt sich schneller als $\\dot q_\\mathrm{max} = 6\\,\\mathrm{rad/s}$, daher wird jeder 5-ms-Schritt auf $\\lvert \\Delta q \\rvert \\le \\dot q_\\mathrm{max}\\,\\Delta t = 0.03\\,\\mathrm{rad}$ begrenzt. Die Nenngeschwindigkeit des SPT5435LV beträgt 0,14 s pro 60° bei 6 V, etwa $7.5\\,\\mathrm{rad/s}$; wer darunter bleibt, hält befohlene und tatsächliche Position nahe beieinander."
+ },
+ "2325744e2cfe9dfc": {
+  "en": "**Knee linkage:** convert (hip, thigh, calf) into the three *actuator* angles (hip, thigh, knee crank). The knee servo drives the calf through a parallelogram and a four-bar, so the crank angle depends on both thigh and calf ([kinematics](kinematics-and-gaits.md)).",
+  "de": "**Kniekoppelgetriebe:** (Hüfte, Oberschenkel, Unterschenkel) in die drei *Aktuator*-Winkel (Hüfte, Oberschenkel, Kniekurbel) umrechnen. Der Knieservo treibt den Unterschenkel über ein Parallelogramm und ein Viergelenk an, daher hängt der Kurbelwinkel sowohl vom Oberschenkel als auch vom Unterschenkel ab ([Kinematik](kinematics-and-gaits.md))."
+ },
+ "88bca3d216b4140c": {
+  "en": "**Clamp** hip, thigh and crank to the generated limits, then check the calf angle that results is inside its window. An unreachable request keeps the previous pulses.",
+  "de": "**Begrenzen** von Hüfte, Oberschenkel und Kurbel auf die generierten Grenzen, dann prüfen, ob der resultierende Unterschenkelwinkel in seinem Fenster liegt. Eine unerreichbare Anforderung behält die vorherigen Pulse bei."
+ },
+ "04dec26cf0f8ff69": {
+  "en": "**Pulse:** convert each actuator angle $\\theta$ to a pulse width, then clamp it to `[min_us, max_us]`:",
+  "de": "**Puls:** Jeden Aktuatorwinkel $\\theta$ in eine Pulsbreite umrechnen und diese dann auf `[min_us, max_us]` begrenzen:"
+ },
+ "deab029672678719": {
+  "en": "with `neutral_us` $t_\\mathrm{neutral}$, `direction` $s = \\pm 1$ and `zero_rad` $\\theta_0$. The slope is $2000\\,\\mu\\mathrm{s} / \\pi\\,\\mathrm{rad} \\approx 636.6\\,\\mu\\mathrm{s/rad}$: the SPT5435LV-180W maps 500–2500 µs onto 180° ([servos](../hardware/servos.md)).",
+  "de": "mit `neutral_us` $t_\\mathrm{neutral}$, `direction` $s = \\pm 1$ und `zero_rad` $\\theta_0$. Die Steigung beträgt $2000\\,\\mu\\mathrm{s} / \\pi\\,\\mathrm{rad} \\approx 636.6\\,\\mu\\mathrm{s/rad}$: Der SPT5435LV-180W bildet 500–2500 µs auf 180° ab ([Servos](../hardware/servos.md))."
+ },
+ "c6fa5a2341c8a620": {
+  "en": "Write the pulses to the PCA9685 channels (`kServoChannel`: FL hip on 15 … RR calf on 4, kept identical to the upstream Yertle wiring).",
+  "de": "Die Pulse auf die PCA9685-Kanäle schreiben (`kServoChannel`: FL-Hüfte auf 15 … RR-Unterschenkel auf 4, identisch zur Upstream-Verkabelung von Yertle gehalten)."
+ },
+ "d1a6eb12ae019fda": {
+  "en": "**Report** the angles actually applied (after clamping, and the calf angle the clamped crank really produces) plus flags into the shared state.",
+  "de": "**Melden** der tatsächlich angewendeten Winkel (nach der Begrenzung, und des Unterschenkelwinkels, den die begrenzte Kurbel wirklich erzeugt) sowie der Flags in den gemeinsamen Zustand."
+ },
+ "ea96c96578092bd4": {
+  "en": "Why the PCA9685",
+  "de": "Warum der PCA9685"
+ },
+ "9182c7bcc8f62170": {
+  "en": "The PCA9685 is a 16-channel, 12-bit PWM generator controlled over I²C. Once configured, it produces all pulses in hardware, so the ESP32 only sends new values. At 200 Hz a period is $T = 5000\\,\\mu\\mathrm{s}$ and 12 bits give $2^{12} = 4096$ steps, $T/4096 \\approx 1.2\\,\\mu\\mathrm{s}$ per step, or roughly 0.1° of servo travel. The servo frequency is 200 Hz (the SPT5435LV accepts up to 330 Hz): a faster frame rate than the classic 50 Hz means less delay between a new command and the servo seeing it. The sampling period also bounds what any digital controller can do; see [control](../theory/control.md).",
+  "de": "Der PCA9685 ist ein 16-Kanal-PWM-Generator mit 12 Bit, der über I²C gesteuert wird. Einmal konfiguriert, erzeugt er alle Pulse in Hardware, sodass der ESP32 nur neue Werte sendet. Bei 200 Hz beträgt eine Periode $T = 5000\\,\\mu\\mathrm{s}$, und 12 Bit ergeben $2^{12} = 4096$ Schritte, $T/4096 \\approx 1.2\\,\\mu\\mathrm{s}$ pro Schritt, also grob 0,1° Servoweg. Die Servofrequenz beträgt 200 Hz (der SPT5435LV akzeptiert bis zu 330 Hz): Eine höhere Bildrate als die klassischen 50 Hz bedeutet weniger Verzögerung zwischen einem neuen Befehl und dem Zeitpunkt, an dem der Servo ihn sieht. Die Abtastperiode begrenzt außerdem, was jeder digitale Controller leisten kann; siehe [Regelung](../theory/control.md)."
+ },
+ "a6198226c2563962": {
+  "en": "Its active-low **OE** (output enable) pin is wired to D3. Driving it high stops every pulse at once, independent of I²C. The board itself pulls OE low (outputs on), so the harness adds a 2.2 kΩ pull-up from OE to VCC (W20 in [electronics](../../electronics.md)): it holds OE high, servos off, while the ESP32 resets or sits in its bootloader.",
+  "de": "Sein Low-aktiver **OE**-Pin (Output Enable) ist mit D3 verbunden. Wird er auf High gesetzt, stoppen alle Pulse sofort, unabhängig von I²C. Das Board selbst zieht OE auf Low (Ausgänge an), daher ergänzt der Kabelbaum einen 2,2-kΩ-Pull-up von OE nach VCC (W20 in [Elektronik](../../electronics.md)): Er hält OE auf High, Servos aus, während der ESP32 neu startet oder in seinem Bootloader steht."
+ },
+ "0569c16f22d60192": {
+  "en": "The serial protocol to the Pi",
+  "de": "Das serielle Protokoll zum Pi"
+ },
+ "43afdea02cb6483b": {
+  "en": "Messages travel over USB CDC as frames:",
+  "de": "Nachrichten laufen über USB CDC als Frames:"
+ },
+ "a1f98c60c48919de": {
+  "en": "**COBS** (Consistent Overhead Byte Stuffing) removes every zero byte from the data, so `0x00` can mark the end of a frame. A receiver that joins mid-stream, or loses a byte, resynchronises at the next zero.",
+  "de": "**COBS** (Consistent Overhead Byte Stuffing) entfernt jedes Null-Byte aus den Daten, sodass `0x00` das Ende eines Frames markieren kann. Ein Empfänger, der mitten im Datenstrom einsteigt oder ein Byte verliert, synchronisiert sich bei der nächsten Null neu."
+ },
+ "500db5a2e0463aad": {
+  "en": "**CRC-16/CCITT-FALSE** detects corrupted frames, which are dropped. The firmware and Python share a test vector so both sides compute the same CRC.",
+  "de": "**CRC-16/CCITT-FALSE** erkennt beschädigte Frames, die verworfen werden. Firmware und Python teilen sich einen Testvektor, sodass beide Seiten dieselbe CRC berechnen."
+ },
+ "e32b5262a0bf1b47": {
+  "en": "**Payloads** are little-endian packed structs, defined twice and tested against each other: `lib/strido_core/include/strido/protocol.h` and `packages/strido-core/src/strido/protocol.py`.",
+  "de": "**Nutzdaten** sind gepackte Little-Endian-Structs, zweimal definiert und gegeneinander getestet: `lib/strido_core/include/strido/protocol.h` und `packages/strido-core/src/strido/protocol.py`."
+ },
+ "67ba7d5763b0a45e": {
+  "en": "| Type | Name | Direction | Payload |",
+  "de": "| Typ | Name | Richtung | Nutzdaten |"
+ },
+ "4fa369edc85fd27a": {
+  "en": "| `0x01` | JOINT_COMMAND | Pi → MCU | seq u16, mode u8 (0 relax, 1 position), q[12] f32 |",
+  "de": "| `0x01` | JOINT_COMMAND | Pi → MCU | seq u16, mode u8 (0 relax, 1 position), q[12] f32 |"
+ },
+ "1e6af21ba6e6bbab": {
+  "en": "| `0x02` | SERVO_PULSE_COMMAND | Pi → MCU | seq u16, pulse_us[12] u16 (0 = off); calibration only |",
+  "de": "| `0x02` | SERVO_PULSE_COMMAND | Pi → MCU | seq u16, pulse_us[12] u16 (0 = aus); nur Kalibrierung |"
+ },
+ "440fe2c06a3ac472": {
+  "en": "| `0x03` | SET_CALIBRATION | Pi → MCU | joint, direction, neutral_us, zero_rad, min_us, max_us |",
+  "de": "| `0x03` | SET_CALIBRATION | Pi → MCU | joint, direction, neutral_us, zero_rad, min_us, max_us |"
+ },
+ "0d7769c1bfd8bb7d": {
+  "en": "| `0x04` | SAVE_CALIBRATION | Pi → MCU | none |",
+  "de": "| `0x04` | SAVE_CALIBRATION | Pi → MCU | keine |"
+ },
+ "f119580ce3bd4aa2": {
+  "en": "| `0x05` | REQUEST_CALIBRATION | Pi → MCU | none → 12 × CALIBRATION |",
+  "de": "| `0x05` | REQUEST_CALIBRATION | Pi → MCU | keine → 12 × CALIBRATION |"
+ },
+ "0f7b14f3b2443891": {
+  "en": "| `0x06` | ESTOP | Pi → MCU | engaged u8 |",
+  "de": "| `0x06` | ESTOP | Pi → MCU | engaged u8 |"
+ },
+ "c735871e00708845": {
+  "en": "| `0x07` | DISPLAY | Pi → MCU | expression u8, length u8, text |",
+  "de": "| `0x07` | DISPLAY | Pi → MCU | expression u8, length u8, text |"
+ },
+ "278c0edaff05e9ab": {
+  "en": "| `0x81` | STATE | MCU → Pi, 100 Hz | last seq, time, flags, q[12], quaternion, gyro, accel, bus V, current |",
+  "de": "| `0x81` | STATE | MCU → Pi, 100 Hz | letzte seq, Zeit, Flags, q[12], Quaternion, Gyro, Beschleunigung, Bus-V, Strom |"
+ },
+ "77bed2662006d5b7": {
+  "en": "| `0x82` | CALIBRATION | MCU → Pi | as SET_CALIBRATION |",
+  "de": "| `0x82` | CALIBRATION | MCU → Pi | wie SET_CALIBRATION |"
+ },
+ "eccb64561ddf699e": {
+  "en": "| `0x83` | LOG | MCU → Pi | ASCII |",
+  "de": "| `0x83` | LOG | MCU → Pi | ASCII |"
+ },
+ "5cccc046aec51461": {
+  "en": "A joint command is 56 bytes on the wire (51-byte payload + type + CRC + COBS overhead + delimiter); at the gait's 100 Hz that is about 5.6 kB/s, trivial for USB. The firmware rejects any joint command containing NaN or infinity at deserialisation: a NaN compares false against every limit and would otherwise slip through all the clamps.",
+  "de": "Ein Gelenkbefehl ist auf der Leitung 56 Bytes lang (51 Byte Nutzdaten + Typ + CRC + COBS-Overhead + Trennzeichen); bei den 100 Hz des Gaits sind das etwa 5,6 kB/s, für USB eine Kleinigkeit. Die Firmware verwirft beim Deserialisieren jeden Gelenkbefehl, der NaN oder Unendlich enthält: Ein Vergleich mit NaN ist gegen jede Grenze falsch, und NaN würde sonst durch alle Begrenzungen rutschen."
+ },
+ "f5618d0385a31877": {
+  "en": "Calibration in flash",
+  "de": "Kalibrierung im Flash"
+ },
+ "545ca180d60db47f": {
+  "en": "No two servo horns sit on their splines at exactly the same angle. Each joint therefore has a `ServoCalibration`:",
+  "de": "Keine zwei Servohörner sitzen in exakt demselben Winkel auf ihrer Verzahnung. Jedes Gelenk hat daher eine `ServoCalibration`:"
+ },
+ "b862b79fb0b7e58d": {
+  "en": "| Field | Meaning |",
+  "de": "| Feld | Bedeutung |"
+ },
+ "d9c0399f216066fe": {
+  "en": "| `direction` | +1 or −1: sign between shaft angle and pulse width (mirrored legs) |",
+  "de": "| `direction` | +1 oder −1: Vorzeichen zwischen Wellenwinkel und Pulsbreite (gespiegelte Beine) |"
+ },
+ "62f5856bdba316cb": {
+  "en": "| `neutral_us` | Pulse that holds the shaft at `zero_rad` (default 1500 µs) |",
+  "de": "| `neutral_us` | Puls, der die Welle auf `zero_rad` hält (Standard 1500 µs) |"
+ },
+ "babb5bb6db15aa68": {
+  "en": "| `zero_rad` | Actuator angle at the neutral pulse (default: the assembly reference pose) |",
+  "de": "| `zero_rad` | Aktuatorwinkel beim Neutralpuls (Standard: die Montage-Referenzpose) |"
+ },
+ "3010bba6a5057e43": {
+  "en": "| `min_us`, `max_us` | Hard pulse window (default 500–2500 µs) |",
+  "de": "| `min_us`, `max_us` | Hartes Pulsfenster (Standard 500–2500 µs) |"
+ },
+ "0773841b51c24bae": {
+  "en": "Defaults come from the generated geometry. Saved values are stored with the ESP32 `Preferences` library (key-value storage in flash, namespace `strido`, keys `cal0` … `cal11`), so they survive power-off and re-flashing the application. The bench tool drives the process:",
+  "de": "Die Standardwerte stammen aus der generierten Geometrie. Gespeicherte Werte werden mit der ESP32-Bibliothek `Preferences` abgelegt (Schlüssel-Wert-Speicher im Flash, Namensraum `strido`, Schlüssel `cal0` … `cal11`), sodass sie das Ausschalten und das erneute Flashen der Anwendung überstehen. Das Werkbank-Werkzeug steuert den Ablauf:"
+ },
+ "e989fdddc25337c2": {
+  "en": "`strido-cli` streams commands at 20 Hz so the watchdog stays fed. Raw pulses bypass the joint limits (only the per-joint pulse window applies), which is why calibration is done with horns unfitted or legs free to move. See the [assembly manual](../../assembly/README.md) for when to do this.",
+  "de": "`strido-cli` sendet Befehle mit 20 Hz, damit der Watchdog versorgt bleibt. Rohe Pulse umgehen die Gelenkgrenzen (nur das Pulsfenster des jeweiligen Gelenks gilt), deshalb wird mit nicht montierten Hörnern oder frei beweglichen Beinen kalibriert. Wann das zu tun ist, steht in der [Montageanleitung](../../assembly/README.md)."
+ },
+ "972377e3ecaf051b": {
+  "en": "Safety and failsafes, as implemented",
+  "de": "Sicherheit und Failsafes, wie implementiert"
+ },
+ "41c93f3d8fa02e10": {
+  "en": "`SafetySupervisor` (`lib/strido_core/src/safety.cpp`) is a small state machine with four drive states:",
+  "de": "`SafetySupervisor` (`lib/strido_core/src/safety.cpp`) ist ein kleiner Zustandsautomat mit vier Ansteuerzuständen:"
+ },
+ "944c04d8f70795ad": {
+  "en": "flowchart LR\n  R[\"Relaxed<br/>OE high, limp\"] -->|\"position command<br/>(battery ok, INA260 present)\"| A[\"Active<br/>following commands\"]\n  A -->|\"no command for 200 ms\"| H[\"Holding<br/>last pose\"]\n  H -->|\"new command\"| A\n  H -->|\"2 s more\"| R\n  A -->|\"relax command\"| R\n  A -->|\"ESTOP engaged\"| E[\"Estop<br/>latched, OE high\"]\n  H -->|\"ESTOP engaged\"| E\n  R -->|\"ESTOP engaged\"| E\n  E -->|\"ESTOP released\"| R",
+  "de": "flowchart LR\n  R[\"Relaxed<br/>OE high, kraftlos\"] -->|\"Positionsbefehl<br/>(Akku ok, INA260 vorhanden)\"| A[\"Active<br/>folgt Befehlen\"]\n  A -->|\"kein Befehl für 200 ms\"| H[\"Holding<br/>letzte Pose\"]\n  H -->|\"neuer Befehl\"| A\n  H -->|\"weitere 2 s\"| R\n  A -->|\"Relax-Befehl\"| R\n  A -->|\"ESTOP aktiviert\"| E[\"Estop<br/>verriegelt, OE high\"]\n  H -->|\"ESTOP aktiviert\"| E\n  R -->|\"ESTOP aktiviert\"| E\n  E -->|\"ESTOP freigegeben\"| R"
+ },
+ "1aacf4276dbd5ac6": {
+  "en": "| Failsafe | Behaviour | Why |",
+  "de": "| Failsafe | Verhalten | Warum |"
+ },
+ "a05c3ac5afde5882": {
+  "en": "| Command watchdog | Only joint commands feed it; no command for 200 ms → hold; 2 s more → relax | If the gait node or the Pi dies, the robot neither freezes forever under load nor collapses instantly |",
+  "de": "| Befehls-Watchdog | Nur Gelenkbefehle versorgen ihn; kein Befehl für 200 ms → halten; weitere 2 s → entspannen | Wenn der Gait-Node oder der Pi ausfällt, erstarrt der Roboter weder für immer unter Last, noch bricht er sofort zusammen |"
+ },
+ "c35cd6a77da0dade": {
+  "en": "| Latched e-stop | `ESTOP` turns outputs off until released; release goes to Relaxed, so a *fresh* position command is needed | Releasing the stop must never make the robot jump back into motion |",
+  "de": "| Verriegelter Not-Halt | `ESTOP` schaltet die Ausgänge ab, bis er freigegeben wird; die Freigabe führt zu Relaxed, daher ist ein *neuer* Positionsbefehl nötig | Das Freigeben des Halts darf den Roboter nie wieder in Bewegung springen lassen |"
+ },
+ "a89c2bb46cc66495": {
+  "en": "| Hard output kill | Relaxed and Estop pull PCA9685 OE high and zero every channel | Works even if I²C is stuck |",
+  "de": "| Harte Ausgangsabschaltung | Relaxed und Estop ziehen OE des PCA9685 auf High und setzen jeden Kanal auf null | Funktioniert auch, wenn I²C hängt |"
+ },
+ "0892e851d736ce1d": {
+  "en": "| Battery cut-off | Warning below 6.8 V (3.4 V/cell); cut-off after 5 consecutive readings (0.5 s) below 6.4 V (3.2 V/cell); recovers only above 6.8 V | Protects the 2S LiPo; debouncing ignores the short voltage sags of a stepping leg |",
+  "de": "| Akku-Abschaltung | Warnung unter 6,8 V (3,4 V/Zelle); Abschaltung nach 5 aufeinanderfolgenden Messungen (0,5 s) unter 6,4 V (3,2 V/Zelle); erholt sich erst über 6,8 V | Schützt den 2S-LiPo; die Entprellung ignoriert die kurzen Spannungseinbrüche eines tretenden Beins |"
+ },
+ "f4d51b1885d21a87": {
+  "en": "| No power monitor, no driving | Without a working INA260 position commands are refused (raw calibration pulses still allowed) | Without voltage readings there is no low-battery protection |",
+  "de": "| Kein Power-Monitor, keine Ansteuerung | Ohne funktionierenden INA260 werden Positionsbefehle abgelehnt (rohe Kalibrierpulse bleiben erlaubt) | Ohne Spannungsmessung gibt es keinen Unterspannungsschutz |"
+ },
+ "53c752099ae336f6": {
+  "en": "| Rate limit | 6 rad/s per joint | No step change, even if the host sends one |",
+  "de": "| Ratenbegrenzung | 6 rad/s pro Gelenk | Kein Sprung, selbst wenn der Host einen sendet |"
+ },
+ "780bf7a094986abc": {
+  "en": "| Joint and knee-crank limits | From the CAD range-of-motion sweep, generated into the firmware | A bad command cannot drive a leg into the body or lock the linkage |",
+  "de": "| Gelenk- und Kniekurbelgrenzen | Aus dem CAD-Durchlauf des Bewegungsbereichs, in die Firmware generiert | Ein fehlerhafter Befehl kann ein Bein nicht in den Körper fahren oder das Koppelgetriebe blockieren |"
+ },
+ "3f6b1fcf8f3c0f64": {
+  "en": "| Non-finite rejection | Commands with NaN/Inf are dropped | NaN bypasses comparisons |",
+  "de": "| Ablehnung nicht endlicher Werte | Befehle mit NaN/Inf werden verworfen | NaN umgeht Vergleiche |"
+ },
+ "99d9eea22fe58125": {
+  "en": "| Re-enable from command | When outputs come back on, the internal state jumps to the commanded pose instead of slewing from a stale one | Servo positions are unknown after being limp |",
+  "de": "| Wiedereinschalten ab Befehl | Wenn die Ausgänge wieder einschalten, springt der interne Zustand auf die befohlene Pose, statt von einer veralteten aus zu fahren | Die Servopositionen sind nach dem kraftlosen Zustand unbekannt |"
+ },
+ "0ecc4bf65f05ac4a": {
+  "en": "The state of all of this reaches ROS as flags in `/diagnostics` (`estop`, `relaxed`, `watchdog`, `imu_ok`, `power_ok`, `pwm_ok`, `clamped`, `calibration_mode`).",
+  "de": "Der Zustand all dessen erreicht ROS als Flags in `/diagnostics` (`estop`, `relaxed`, `watchdog`, `imu_ok`, `power_ok`, `pwm_ok`, `clamped`, `calibration_mode`)."
+ },
+ "d889a1f95eb064c3": {
+  "en": "These are software failsafes. The servo loop key is the hardware kill and must stay within reach whenever the robot is armed ([safety](../making/safety.md)).",
+  "de": "Dies sind Software-Failsafes. Der Servo-Loop-Key ist die Hardware-Abschaltung und muss immer in Reichweite bleiben, wenn der Roboter scharfgeschaltet ist ([Sicherheit](../making/safety.md))."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "095669c9c7581460": {
+  "en": "Why does the servo loop run on the ESP32 and not on the Pi?",
+  "de": "Warum läuft die Servoschleife auf dem ESP32 und nicht auf dem Pi?"
+ },
+ "2093a363c251dee3": {
+  "en": "What happens, step by step, if the gait node crashes while the robot stands?",
+  "de": "Was passiert Schritt für Schritt, wenn der Gait-Node abstürzt, während der Roboter steht?"
+ },
+ "55c35a1566f193e7": {
+  "en": "Why does COBS make it safe to use `0x00` as a frame delimiter?",
+  "de": "Warum macht COBS es sicher, `0x00` als Frame-Trennzeichen zu verwenden?"
+ },
+ "8a28ac2ccfe21308": {
+  "en": "What is the maximum change of one joint angle in one 5 ms cycle?",
+  "de": "Wie groß ist die maximale Änderung eines Gelenkwinkels in einem 5-ms-Zyklus?"
+ },
+ "adb79f50dbd120f3": {
+  "en": "Where do calibration trims live, and why do they survive a firmware upload?",
+  "de": "Wo liegen die Kalibrierwerte, und warum überstehen sie einen Firmware-Upload?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "70fb1ef62294ecec": {
+  "en": "Linux can pause processes unpredictably; the ESP32 runs only this loop, so the 200 Hz timing and the safety checks are deterministic and keep working if the Pi fails.",
+  "de": "Linux kann Prozesse unvorhersehbar anhalten; der ESP32 führt nur diese Schleife aus, daher sind das 200-Hz-Timing und die Sicherheitsprüfungen deterministisch und arbeiten weiter, wenn der Pi ausfällt."
+ },
+ "8f47ba095bde5e48": {
+  "en": "Joint commands stop; after 200 ms the supervisor goes to Holding and keeps the last pose (watchdog flag set); after 2 s more it relaxes, pulling OE high.",
+  "de": "Die Gelenkbefehle bleiben aus; nach 200 ms wechselt der Überwacher in Holding und hält die letzte Pose (Watchdog-Flag gesetzt); nach weiteren 2 s entspannt er und zieht OE auf High."
+ },
+ "ba5b35e01e0a864b": {
+  "en": "COBS encoding removes all zero bytes from the data, so the only zero in the stream is the delimiter.",
+  "de": "Die COBS-Kodierung entfernt alle Null-Bytes aus den Daten, daher ist die einzige Null im Datenstrom das Trennzeichen."
+ },
+ "d38bf03f2b52d015": {
+  "en": "$6\\,\\mathrm{rad/s} \\times 0.005\\,\\mathrm{s} = 0.03\\,\\mathrm{rad}$ (about $1.7^\\circ$).",
+  "de": "$6\\,\\mathrm{rad/s} \\times 0.005\\,\\mathrm{s} = 0.03\\,\\mathrm{rad}$ (etwa $1.7^\\circ$)."
+ },
+ "00232935e73cfb52": {
+  "en": "In the ESP32's flash via `Preferences` (namespace `strido`, keys `cal0`–`cal11`); that storage partition is separate from the application, so an upload does not erase it.",
+  "de": "Im Flash des ESP32 über `Preferences` (Namensraum `strido`, Schlüssel `cal0`–`cal11`); diese Speicherpartition ist von der Anwendung getrennt, daher löscht ein Upload sie nicht."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "c66d40526c49e600": {
+  "en": "[PlatformIO documentation](https://docs.platformio.org/en/latest/)",
+  "de": "[PlatformIO-Dokumentation](https://docs.platformio.org/en/latest/)"
+ },
+ "446a1ff295f82ec0": {
+  "en": "[Seeed Studio XIAO ESP32S3 getting started](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)",
+  "de": "[Seeed Studio XIAO ESP32S3: Erste Schritte](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)"
+ },
+ "76dd9f6f1da7ff0d": {
+  "en": "[ESP32-S3 datasheet (Espressif)](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)",
+  "de": "[ESP32-S3-Datenblatt (Espressif)](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)"
+ },
+ "d61fa2af7bb3c834": {
+  "en": "[PCA9685 datasheet (NXP, copy hosted by Adafruit)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)",
+  "de": "[PCA9685-Datenblatt (NXP, Kopie bei Adafruit)](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf)"
+ },
+ "b06129c47b929f38": {
+  "en": "[Arduino-ESP32 Preferences library](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/preferences.html)",
+  "de": "[Arduino-ESP32-Bibliothek Preferences](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/preferences.html)"
+ },
+ "d8b00a49aff948f9": {
+  "en": "Theory: [Control](../theory/control.md), [State estimation](../theory/state-estimation.md) (the IMU filter)",
+  "de": "Theorie: [Regelung](../theory/control.md), [State Estimation](../theory/state-estimation.md) (der IMU-Filter)"
+ }
+}

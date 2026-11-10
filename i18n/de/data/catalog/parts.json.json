@@ -1,0 +1,254 @@
+{
+ "3ce208c0d01fc733": {
+  "en": "Arming port bezel",
+  "de": "Blende des Arming-Ports"
+ },
+ "a10ad6f4bdc55dc1": {
+  "en": "Arming port ring",
+  "de": "Ring des Arming-Ports"
+ },
+ "9f45a717bf001f87": {
+  "en": "Back shell button",
+  "de": "Rückschale mit Taster"
+ },
+ "a7f54e0a58f023c5": {
+  "en": "Bottom shell",
+  "de": "Unterschale"
+ },
+ "128de248dc31ad78": {
+  "en": "Camera mount base",
+  "de": "Kamerahalterung (Basis)"
+ },
+ "b82c382df842b322": {
+  "en": "Camera tilt plate",
+  "de": "Kamera-Neigeplatte"
+ },
+ "565fbbf5a434e157": {
+  "en": "Display bracket",
+  "de": "Display-Halterung"
+ },
+ "f8aa21f787bb0d7a": {
+  "en": "Electronics deck",
+  "de": "Elektronikdeck"
+ },
+ "cd5cd5d70e8108cb": {
+  "en": "Femur",
+  "de": "Femur"
+ },
+ "177ada34f3606084": {
+  "en": "Femur servo connector",
+  "de": "Femur-Servoverbinder"
+ },
+ "82b7fe5aab72088d": {
+  "en": "Foot spacer",
+  "de": "Fuß-Distanzstück"
+ },
+ "3764a15d4c2a2d43": {
+  "en": "Front shell display",
+  "de": "Frontschale mit Display"
+ },
+ "f343caa798a1585c": {
+  "en": "Hip bearing pin",
+  "de": "Hüftlagerbolzen"
+ },
+ "9cf04afb07648aea": {
+  "en": "Inner shoulder frame",
+  "de": "Innerer Schulterrahmen"
+ },
+ "83816b2b61c99f8d": {
+  "en": "Inner tibia",
+  "de": "Innere Tibia"
+ },
+ "ba0ef2007fd22ebc": {
+  "en": "Left servo mount",
+  "de": "Linke Servohalterung"
+ },
+ "784cad3569abd8f7": {
+  "en": "Left servo mount fl",
+  "de": "Linke Servohalterung FL"
+ },
+ "395e59d6db51f4ed": {
+  "en": "Left shoulder",
+  "de": "Linke Schulter"
+ },
+ "556deb90e682ea0e": {
+  "en": "Lidar pedestal",
+  "de": "LiDAR-Sockel"
+ },
+ "32cca01331f55059": {
+  "en": "Lower shoulder frame front",
+  "de": "Unterer Schulterrahmen vorne"
+ },
+ "80703fb084c5b693": {
+  "en": "Lower shoulder frame rear",
+  "de": "Unterer Schulterrahmen hinten"
+ },
+ "c6512b9ce0895744": {
+  "en": "Outer shoulder frame",
+  "de": "Äußerer Schulterrahmen"
+ },
+ "b17b7256c3bcd615": {
+  "en": "Outer tibia",
+  "de": "Äußere Tibia"
+ },
+ "006e6e7c8f67b301": {
+  "en": "Right servo mount",
+  "de": "Rechte Servohalterung"
+ },
+ "bf559910a3b6adda": {
+  "en": "Right servo mount fr",
+  "de": "Rechte Servohalterung FR"
+ },
+ "ec1aa4a6e8e91c21": {
+  "en": "Right shoulder",
+  "de": "Rechte Schulter"
+ },
+ "73a6fd40bf76f294": {
+  "en": "Servo bus holder front",
+  "de": "Servobus-Halter vorne"
+ },
+ "9450195a7c045db7": {
+  "en": "Servo bus holder rear",
+  "de": "Servobus-Halter hinten"
+ },
+ "94c640f4849e986c": {
+  "en": "Servo mount top bracket",
+  "de": "Obere Servohalterungsklammer"
+ },
+ "f44e613ad8ad8906": {
+  "en": "Short link",
+  "de": "Kurze Koppel"
+ },
+ "ddc6d177b261bbed": {
+  "en": "Side body beam",
+  "de": "Seitlicher Rumpfträger"
+ },
+ "3dfeabbac039b50a": {
+  "en": "Stiff long link",
+  "de": "Steife lange Koppel"
+ },
+ "8e8469afe4dee859": {
+  "en": "Top shell sensor",
+  "de": "Oberschale mit Sensor"
+ },
+ "33791f163cb1120c": {
+  "en": "Upper shoulder frame",
+  "de": "Oberer Schulterrahmen"
+ },
+ "433bd435428a333a": {
+  "en": "INA260 power monitor",
+  "de": "INA260-Power-Monitor"
+ },
+ "9d42635e1d6ef6cf": {
+  "en": "LSM6DSOX IMU",
+  "de": "LSM6DSOX-IMU"
+ },
+ "c1b6eb0a533971df": {
+  "en": "PCA9685 servo driver",
+  "de": "PCA9685-Servotreiber"
+ },
+ "6ea4f5799864b749": {
+  "en": "Ball bearing 625ZZ",
+  "de": "Kugellager 625ZZ"
+ },
+ "ff7179bc5a3e7254": {
+  "en": "Ball bearing 6805-2RS",
+  "de": "Kugellager 6805-2RS"
+ },
+ "8055e918163645af": {
+  "en": "Adhesive cable-tie mount 13 × 13 mm",
+  "de": "Selbstklebender Kabelbinder-Sockel 13 × 13 mm"
+ },
+ "32e0b8f5ba740c41": {
+  "en": "ATO fuse holder",
+  "de": "ATO-Sicherungshalter"
+ },
+ "c2bf0d0d09b2061e": {
+  "en": "Hobbywing UBEC-10A",
+  "de": "Hobbywing UBEC-10A"
+ },
+ "8c0e09780f10a66e": {
+  "en": "LiPo 2S 5000 mAh",
+  "de": "LiPo 2S 5000 mAh"
+ },
+ "aabc145099c52b64": {
+  "en": "Pololu D36V50F5 5 V regulator",
+  "de": "Pololu D36V50F5 5-V-Spannungsregler"
+ },
+ "16d02d853c5a885a": {
+  "en": "Pololu #2813 pushbutton switch",
+  "de": "Pololu #2813 Tasterschalter"
+ },
+ "a4136a62ae9fa240": {
+  "en": "12 mm push button",
+  "de": "12-mm-Drucktaster"
+ },
+ "01ff4ae7220288b4": {
+  "en": "Raspberry Pi 5 + Active Cooler",
+  "de": "Raspberry Pi 5 + Active Cooler"
+ },
+ "c6df165556cac373": {
+  "en": "Camera Module 3 Wide",
+  "de": "Camera Module 3 Wide"
+ },
+ "d29867cbf8bc4531": {
+  "en": "RPLIDAR C1",
+  "de": "RPLIDAR C1"
+ },
+ "0d5dfcadd1c72937": {
+  "en": "RPLIDAR USB adapter",
+  "de": "RPLIDAR-USB-Adapter"
+ },
+ "83f787d5356f5cd5": {
+  "en": "Seeed XIAO ESP32-S3",
+  "de": "Seeed XIAO ESP32-S3"
+ },
+ "1e1fbd22f01c0507": {
+  "en": "25T aluminium arm horn",
+  "de": "25T-Aluminium-Servohorn (Arm)"
+ },
+ "23ae5eacf68baaff": {
+  "en": "25T aluminium disc horn",
+  "de": "25T-Aluminium-Servohorn (Scheibe)"
+ },
+ "0596c6228645b41e": {
+  "en": "Servo SPT5435LV-180W",
+  "de": "Servo SPT5435LV-180W"
+ },
+ "496e50336523fec4": {
+  "en": "Sleeve bearings 3×5×5 (pair)",
+  "de": "Gleitlager 3×5×5 (Paar)"
+ },
+ "06f142ee2cc5f53a": {
+  "en": "WAGO 221-415",
+  "de": "WAGO 221-415"
+ },
+ "618e8a38fcafbe6b": {
+  "en": "Waveshare 2\" LCD (ST7789)",
+  "de": "Waveshare 2\" LCD (ST7789)"
+ },
+ "c1acce5d5a40675f": {
+  "en": "XT60H female",
+  "de": "XT60H Buchse"
+ },
+ "21281fbabfdff365": {
+  "en": "M3 lock nut (nylon insert) (DIN 985)",
+  "de": "M3-Sicherungsmutter (mit Nylonring) (DIN 985)"
+ },
+ "a7029c065e80bf53": {
+  "en": "M2 hex nut (ISO 4032)",
+  "de": "M2-Sechskantmutter (ISO 4032)"
+ },
+ "e084606da14e96eb": {
+  "en": "M2.5 × 5 socket head screw (ISO 4762)",
+  "de": "M2.5 × 5 Zylinderschraube mit Innensechskant (ISO 4762)"
+ },
+ "012badcd80fb5533": {
+  "en": "M3 washer (ISO 7089)",
+  "de": "M3-Unterlegscheibe (ISO 7089)"
+ },
+ "833ae808b075b67f": {
+  "en": "M2.5 × 6 stand-off F-F (brass)",
+  "de": "M2.5 × 6 Abstandsbolzen I-I (Messing)"
+ }
+}

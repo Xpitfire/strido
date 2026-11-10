@@ -1,0 +1,4 @@
+# 2026-10-30T21:18Z make sim-gazebo (gait_node), Gazebo Harmonic headless, ROS 2 Jazzy, Docker arm64
+{"ok": true, "reason": "ok", "messages": {"joint_states": 2808, "imu": 2810, "scan": 141, "camera": 213, "odom": 702}, "scan_min_m": 0.7201032042503357, "forward": 1.0025, "lateral": 0.1241, "height": 0.1817, "roll": -0.0979, "pitch": -0.0426}
+# 2026-10-30T21:18Z make sim-gazebo POLICY=build/rl/ppo-v1/policy.npz (policy_node)
+{"ok": true, "reason": "ok", "messages": {"joint_states": 2808, "imu": 2810, "scan": 141, "camera": 213, "odom": 702}, "scan_min_m": 0.6998701691627502, "forward": 0.8215, "lateral": 0.0998, "height": 0.1884, "roll": -0.0131, "pitch": 0.0208}

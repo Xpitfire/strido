@@ -1,0 +1,42 @@
+# Inputs of the strength check (strido_verify.strength): loads the robot can produce on itself and
+# the material data they are compared with. Every value carries its source; assumptions are marked.
+loads:
+  servo_stall_torque_nm: 3.43   # SPT5435LV-180W: 35 kg·cm at 6.0 V (spt-servo.com) = 35 × 0.0981 N·m
+  robot_mass_kg: 3.07           # CAD mass incl. battery and the routed harness (mass_report.yaml)
+  impact_factor: 3.0            # [ASSUMPTION] peak ground force of a hard landing or stumble: 3 × the
+                                # robot weight on one diagonal pair (1.5 × weight per foot); measured
+                                # trotting dogs peak at about 1-1.2 × weight per front leg
+  buckling_out_of_plane_k: 0.7  # [ASSUMPTION] effective-length factor across the leg plane: the link
+                                # ends sit on 10 mm long pins/sleeves that resist tilting (pinned = 1.0, fixed = 0.5)
+
+material:
+  name: PETG (Prusament PETG technical data sheet v1.1, printed specimens, 0.2 mm layers)
+  tensile_xy_mpa: 47            # tensile yield, specimen printed flat: stress along the layers
+  layer_adhesion_mpa: 18        # interlayer adhesion (18 ± 4): stress across the layers
+  modulus_gpa: 1.5
+  shear_factor: 0.577           # von Mises: shear strength ≈ tensile strength / √3
+print:
+  wall_mm: 1.2                  # 3 perimeters × 0.4 mm (hardware/print/prusaslicer.ini)
+  # infill (30 % gyroid) is ignored: sections carry load in their walls only (conservative)
+
+screws:
+  name: DIN 912 A2-70 (ISO 3506, Bossard tables)
+  rm_mpa: 700
+  rp02_mpa: 450
+  stress_area_mm2: {M2: 2.07, M2.5: 3.39, M3: 5.03}   # ISO 898-1 formula (M3 tabulated by Bossard)
+  torque_factor: 0.2            # T = k · F · d, k ≈ 0.2 for dry stainless threads (VDI 2230 range 0.15-0.25)
+
+bearings:                       # static radial load rating C0; branded parts (SKF, Koyo); the kit's
+                                # unbranded bearings are assumed no better
+  "633ZZ": {c0_n: 490, source: "Koyo 633 ZZ"}
+  "625ZZ": {c0_n: 380, source: "SKF 625-2Z"}
+  "6805-2RS": {c0_n: 2600, source: "SKF 61805-2RS1"}
+
+safety:
+  fail_below: 1.5               # printed parts: scatter of FDM strength, notches, creep
+  warn_below: 2.0
+  thread_torque_factor: 2.0     # recommended tightening torque into a printed pilot = pull-out torque / 2
+
+# Checks below the fail limit that are accepted by a decision record: reported as warnings with the action,
+# but only while S stays at or above `min_safety` (a worse result fails again).
+accepted: {}  # none today; ADR-010's long link buckling is fixed by the stiff long link

@@ -1,0 +1,454 @@
+{
+ "7140f4f19dec5259": {
+  "en": "Verification",
+  "de": "Verifikation"
+ },
+ "241f32001a802945": {
+  "en": "**Status:** evidence ledger. Each section records what ran, at which tier, the observed result and its boundary. Tiers: **Q0** static/unit (seconds), **Q1** CAD verification (minutes), **Q2** simulation and integration smokes, **Q3** hardware. Nothing here has been exercised on a physical robot (no Q3 yet).",
+  "de": "**Status:** Nachweisregister. Jeder Abschnitt hält fest, was gelaufen ist, auf welcher Stufe, das beobachtete Ergebnis und seine Grenze. Stufen: **Q0** statisch/Unit (Sekunden), **Q1** CAD-Verifikation (Minuten), **Q2** Simulation und Integrations-Smoke-Tests, **Q3** Hardware. Nichts hiervon wurde an einem physischen Roboter durchgeführt (noch kein Q3)."
+ },
+ "7d0b9ebc5752887e": {
+  "en": "2026-11-01 — print kit after the builder's second review",
+  "de": "2026-11-01 — Druckpaket nach der zweiten Durchsicht eines Bauenden"
+ },
+ "767dcdf97fee2ab2": {
+  "en": "| Check | Command | Tier | Observed result | Boundary |",
+  "de": "| Prüfung | Befehl | Stufe | Beobachtetes Ergebnis | Grenze |"
+ },
+ "88659de19306b915": {
+  "en": "| Hole-step detection | `strido_publish.print_bridges.hole_steps` on every kit part as it lies | Q0 | 4 steps found and cut: one bearing seat each in `inner_tibia` and `outer_tibia`, two 625ZZ seats (16.3 → 12.3 mm) in `outer_shoulder_frame` (the parts the builder named); steps under one extrusion line (0.4 mm) and part rims are skipped; after the cut the detector finds none. Section images at the step show wide hole, slot, square, narrow hole. Review sliced the cut parts: `outer_shoulder_frame` prints slot, square and hole at 4.2/4.4/4.6 mm with no support; in both tibias the seat sits under a boss 7.4 mm above the bed and PrusaSlicer still fills the bore with support (the notes now say to block it); cut heights are snapped to the slicing layers | geometric detection; a seat that is not round is not handled; slicer support placement checked by hand on these three parts |",
+  "de": "| Erkennung von Lochstufen | `strido_publish.print_bridges.hole_steps` auf jedem Teil des Druckpakets, so wie es liegt | Q0 | 4 Stufen gefunden und ausgeschnitten: je ein Lagersitz in `inner_tibia` und `outer_tibia`, zwei 625ZZ-Sitze (16,3 → 12,3 mm) in `outer_shoulder_frame` (die Teile, die der Bauende genannt hat); Stufen unter einer Extrusionslinie (0,4 mm) und Ränder des Teils werden übersprungen; nach dem Ausschnitt findet die Erkennung keine mehr. Schnittbilder an der Stufe zeigen weites Loch, Schlitz, Quadrat, enges Loch. Das Review hat die ausgeschnittenen Teile gesliced: `outer_shoulder_frame` druckt Schlitz, Quadrat und Loch bei 4,2/4,4/4,6 mm ohne Stützen; in beiden Tibias liegt der Sitz unter einem Auge 7,4 mm über dem Bett, und PrusaSlicer füllt die Bohrung trotzdem mit Stützen (die Notizen sagen jetzt, sie zu blockieren); die Schnitthöhen sind auf die Slicing-Schichten eingerastet | geometrische Erkennung; ein nicht runder Sitz wird nicht behandelt; Stützenplatzierung des Slicers an diesen drei Teilen von Hand geprüft |"
+ },
+ "c97c0b450c69f344": {
+  "en": "| Printability with the new orientation and cuts | `make printability` (PrusaSlicer 2.9.6) | Q1 | 34 parts and 13 plates: 0 fail, 4 warn (thin skins in the upstream servo mounts, 0.38–0.53 mm); kit 958 g, 100 h; servo mounts 19 mm tall like a U, 2 % overhang; `inner_tibia` on its flat side (1638 mm² on the bed, was 71 mm²) | slicer estimate; no part printed yet |",
+  "de": "| Druckbarkeit mit neuer Ausrichtung und Ausschnitten | `make printability` (PrusaSlicer 2.9.6) | Q1 | 34 Teile und 13 Platten: 0 fail, 4 warn (dünne Deckschichten in den Upstream-Servohaltern, 0,38–0,53 mm); Druckpaket 958 g, 100 h; Servohalter 19 mm hoch wie ein U, 2 % Überhang; `inner_tibia` auf der flachen Seite (1638 mm² Bettkontakt, vorher 71 mm²) | Slicer-Schätzung; noch kein Teil gedruckt |"
+ },
+ "e53697acbb57cf89": {
+  "en": "| Strength and print-kit tests | `python -m strido_verify.strength`, `pytest tests/verify/test_print_kit.py tests/verify/test_strength.py` | Q1 | 19 checks ok (sections read from the cut STLs); 6 tests passed | — |",
+  "de": "| Tests für Festigkeit und Druckpaket | `python -m strido_verify.strength`, `pytest tests/verify/test_print_kit.py tests/verify/test_strength.py` | Q1 | 19 Prüfungen ok (Querschnitte aus den ausgeschnittenen STLs); 6 Tests bestanden | — |"
+ },
+ "5416761be95da9c8": {
+  "en": "2026-11-01 — stiff long link and print kit orientation",
+  "de": "2026-11-01 — steife lange Koppel und Ausrichtung des Druckpakets"
+ },
+ "afcc828b1bbad5b8": {
+  "en": "| Strength with the stiff long link | `python -m strido_verify.strength` | Q1 | 19 checks, 19 ok, 0 warn, 0 fail; long link buckling S = 2.53 (upstream link 0.34, ADR-010), tension/compression S = 4.34 including the bending from the 2 mm shaft offset (secant formula; review finding, the first run checked F/A only and gave 10.3), eye bearing pressure S = 7.1; lowest factor now the tibia halves (2.22); no accepted deviation left (`accepted: {}`); mass 3.07 kg (+24 g for the four links), landing foot force 45.2 N | walls-only sections, PETG data sheet values |",
+  "de": "| Festigkeit mit der steifen langen Koppel | `python -m strido_verify.strength` | Q1 | 19 Prüfungen, 19 ok, 0 warn, 0 fail; Knicken der langen Koppel S = 2,53 (Upstream-Koppel 0,34, ADR-010), Zug/Druck S = 4,34 einschließlich der Biegung aus dem 2-mm-Versatz des Schafts (Secans-Formel; Befund der Durchsicht, der erste Lauf prüfte nur F/A und ergab 10,3), Lochleibung am Auge S = 7,1; kleinster Faktor jetzt die Tibia-Hälften (2,22); keine akzeptierte Abweichung mehr (`accepted: {}`); Masse 3,07 kg (+24 g für die vier Koppeln), Fußkraft bei der Landung 45,2 N | Querschnitte nur aus Wänden, Werte aus dem PETG-Datenblatt |"
+ },
+ "320778ba78ed6e8b": {
+  "en": "| Gate seen red while designing the link | `python -m strido_verify.rom`, neighbour-distance sweep (throwaway script, 4 thigh × 43 calf poses per leg) | Q1 | a link centred on the pin line came within 0.25 mm of the femur at the stretched knee and touched the short link's washer at full flex; the ROM sweep moved the calf limit from −45° to −50° (seen as a `hardware/joint_limits.yaml` diff). Shaft 2 mm off the pin line with the upstream eyes: every neighbour ≥ 1.0 mm (femur 1.1, short link 1.4), joint limits unchanged | point-sampled distances; the gates below are the evidence |",
+  "de": "| Prüfung rot gesehen beim Entwurf der Koppel | `python -m strido_verify.rom`, Sweep der Nachbarabstände (Wegwerfskript, 4 Oberschenkel × 43 Unterschenkel-Posen je Bein) | Q1 | eine mittig auf der Bolzenlinie liegende Koppel kam dem Femur bei gestrecktem Knie bis auf 0,25 mm nahe und berührte bei voller Beugung die Unterlegscheibe der kurzen Koppel; der ROM-Sweep verschob die Unterschenkelgrenze von −45° auf −50° (sichtbar als Diff in `hardware/joint_limits.yaml`). Schaft 2 mm neben der Bolzenlinie mit den Upstream-Augen: jeder Nachbar ≥ 1,0 mm (Femur 1,1, kurze Koppel 1,4), Gelenkgrenzen unverändert | punktweise abgetastete Abstände; der Nachweis sind die Prüfungen unten |"
+ },
+ "d0ef22d325630af2": {
+  "en": "| Full CAD verification | `make verify` | Q1 | interference 0 unexplained overlaps (4 poses, 483 solids); clearance 0 fail, 4 tight (unchanged); ROM limits unchanged (only the collision evidence beyond the limits lists the new link); fits 0 fail (sleeve seats 4.85–4.95 mm in the 5.0 mm bores); wiring 174 checks, 0 fail, 1 warn; geometry bindings in sync | nominal geometry |",
+  "de": "| Vollständige CAD-Verifikation | `make verify` | Q1 | Durchdringung 0 ungeklärte Überlappungen (4 Posen, 483 Körper); Freigang 0 fail, 4 knapp (unverändert); ROM-Grenzen unverändert (nur die Kollisionsnachweise außerhalb der Grenzen nennen die neue Koppel); Passungen 0 fail (Gleitlagersitze 4,85–4,95 mm in den 5,0-mm-Bohrungen); Verkabelung 174 Prüfungen, 0 fail, 1 warn; Geometrie-Bindungen synchron | nominelle Geometrie |"
+ },
+ "5c2bbbf61d820336": {
+  "en": "| Print kit orientation | `make print`, `make printability` (PrusaSlicer 2.9.6) | Q1 | femur, top bracket, femur servo connector, side beam and right shoulder re-oriented; camera base on its base; stiff long link flat, no supports; the servo mounts stay upright (review: on their side the hip-horn pilots would print horizontal, out of reach of the ADR-009 hole compensation). 34 parts and 13 plates: 0 fail, 4 warn (thin skins in the upstream servo mounts); kit 1002 g, 103 h (was 1021 g, 104 h). Triggered by a builder's review: the plates kept the published STL poses (top bracket 56 mm tall on a 19 × 6 mm footprint, femur on 2 mm² of bed contact) | slicer estimate; no part printed yet |",
+  "de": "| Ausrichtung des Druckpakets | `make print`, `make printability` (PrusaSlicer 2.9.6) | Q1 | Femur, obere Halterung, Femur-Servoverbinder, Seitenträger und rechte Schulter neu ausgerichtet; Kamerasockel auf seiner Grundfläche; steife lange Koppel flach, ohne Stützen; die Servohalter bleiben aufrecht (Durchsicht: auf der Seite lägen die Vorbohrungen für das Hüfthorn waagrecht, außer Reichweite der Lochkompensation nach ADR-009). 34 Teile und 13 Platten: 0 fail, 4 warn (dünne Stellen in den Upstream-Servohaltern); Druckpaket 1002 g, 103 h (vorher 1021 g, 104 h). Anlass war die Durchsicht eines Bauenden: die Platten behielten die Lage der veröffentlichten STLs (obere Halterung 56 mm hoch auf 19 × 6 mm Grundfläche, Femur mit 2 mm² Bettkontakt) | Slicer-Schätzung; noch kein Teil gedruckt |"
+ },
+ "22717d00c73e6794": {
+  "en": "| Strength and translation tests | `pytest tests/verify/test_strength.py`, `make drift` | Q0 | strength tests 4 passed (acceptance mechanism tested with an injected ADR entry; the stiff link's walls-only I matches the hollow-square formula within 2 %) | — |",
+  "de": "| Tests für Festigkeit und Übersetzung | `pytest tests/verify/test_strength.py`, `make drift` | Q0 | Festigkeitstests 4 bestanden (Ausnahmemechanismus mit einem eingefügten ADR-Eintrag geprüft; das Flächenträgheitsmoment der steifen Koppel aus den Wänden stimmt auf 2 % mit der Formel des Hohlquadrats überein) | — |"
+ },
+ "d133fcc60f2398d7": {
+  "en": "2026-10-31 — German site, AI assistant, MCP server and Agent Skill",
+  "de": "2026-10-31 — Deutsche Seite, KI-Assistent, MCP-Server und Agent Skill"
+ },
+ "066749ab78673bba": {
+  "en": "| **New:** translation catalogues complete and structurally sound | `node docs-site/scripts/i18n-catalogues.mjs check` (in `make drift`) | Q0 | 5746 of 5746 German segments; 0 broken (code spans, math, link targets, HTML tags, bold markers, table cells, line count) | structure only: wording reviewed by spot checks and a terminology pass, not by a native proofreader |",
+  "de": "| **Neu:** Übersetzungskataloge vollständig und strukturell intakt | `node docs-site/scripts/i18n-catalogues.mjs check` (in `make drift`) | Q0 | 5746 von 5746 deutschen Segmenten; 0 defekt (Code-Spans, Mathematik, Linkziele, HTML-Tags, Fettmarkierungen, Tabellenzellen, Zeilenzahl) | nur Struktur: Wortlaut per Stichprobe und Terminologie-Durchgang geprüft, nicht von einem muttersprachlichen Lektorat |"
+ },
+ "dbe8a14c85feb5a1": {
+  "en": "| Gate seen red | same | Q0 | failed with 5431/5433 while two new paragraphs were untranslated, and during translation on bold-marker mismatches; a number re-grouped by the translator (`1126` → `1.126`) now makes the segment untranslated instead of keeping a stale figure (test fails on the earlier rule) | — |",
+  "de": "| Prüfung rot gesehen | dieselbe | Q0 | schlug mit 5431/5433 fehl, solange zwei neue Absätze unübersetzt waren, und während der Übersetzung bei abweichenden Fettmarkierungen; eine vom Übersetzer umgruppierte Zahl (`1126` → `1.126`) macht das Segment jetzt unübersetzt, statt eine veraltete Zahl zu behalten (der Test schlägt mit der früheren Regel fehl) | — |"
+ },
+ "d145bb3adeefd9b3": {
+  "en": "| Translation engine tests | `node --test 'docs-site/scripts/*.test.mjs'` (in `make test-web`) | Q0 | 7 passed: every untranslated page renders back to its English source, German headings keep the English ids (repeats numbered like VitePress), numbers carry over in German notation, merge keeps/opens/drops segments, structure check | synthetic segments plus every published page |",
+  "de": "| Tests der Übersetzungs-Engine | `node --test 'docs-site/scripts/*.test.mjs'` (in `make test-web`) | Q0 | 7 bestanden: jede unübersetzte Seite rendert zurück zu ihrer englischen Quelle, deutsche Überschriften behalten die englischen IDs (Wiederholungen nummeriert wie bei VitePress), Zahlen werden in deutscher Schreibweise übernommen, das Zusammenführen behält/öffnet/verwirft Segmente, Strukturprüfung | synthetische Segmente plus jede veröffentlichte Seite |"
+ },
+ "7b086ba7b6448510": {
+  "en": "| German site build | `make docs-build`, built HTML compared | Q0 | builds with the dead-link check; 60 pages × heading ids identical in `/docs/**` and `/de/docs/**` (0 mismatches); every German page 100 % translated | — |",
+  "de": "| Build der deutschen Seite | `make docs-build`, gebautes HTML verglichen | Q0 | baut mit der Prüfung toter Links; 60 Seiten × Überschriften-IDs identisch in `/docs/**` und `/de/docs/**` (0 Abweichungen); jede deutsche Seite zu 100 % übersetzt | — |"
+ },
+ "53ea56f9910618e4": {
+  "en": "| German site in the browser | managed Chrome, `/de/`, `/de/docs/shop` | Q2 | German navigation, home, shop (plan A € 978,76), sidebar, language switch | visual spot check |",
+  "de": "| Deutsche Seite im Browser | verwaltetes Chrome, `/de/`, `/de/docs/shop` | Q2 | deutsche Navigation, Startseite, Shop (Plan A € 978,76), Seitenleiste, Sprachumschalter | visuelle Stichprobe |"
+ },
+ "1a7994248376e82c": {
+  "en": "| **New:** assistant service tests | `cd assistant && npm test` (in `make test-web`) | Q0 | 34 passed: owner scoping, header-secret and `cxu_` token checks (refusals cached), SSE event order, stop stores `stopped`, regenerate without a duplicate question, last tool round with `tool_choice: none`, attachment magic bytes and limits, per-user quota, body limits, MCP initialize/list/call | fake model transport, fixture knowledge |",
+  "de": "| **Neu:** Tests des Assistenzdienstes | `cd assistant && npm test` (in `make test-web`) | Q0 | 34 bestanden: Eigentümerbindung, Prüfung von Header-Secret und `cxu_`-Token (Ablehnungen gecacht), Reihenfolge der SSE-Events, Stopp speichert `stopped`, Neu-Generieren ohne doppelte Frage, letzte Tool-Runde mit `tool_choice: none`, Magic Bytes und Grenzen von Anhängen, Kontingent pro Nutzer, Body-Grenzen, MCP initialize/list/call | gefälschter Modell-Transport, Fixture-Wissensbasis |"
+ },
+ "d30cd9e55092f01c": {
+  "en": "| Assistant against the real model | `make assistant` + `make docs`, managed Chrome | Q2 | Keyring `claude-sonnet-5`: \"front knee loop\" answered 32 mm = 1.2 × 25.6 mm with KaTeX and four source links; pinned sidebar persists across pages; a pasted 2400 × 1600 image of Step 1 identified in German on `/de/docs/assembly/` with a link to Step 1; Stop then Retry stored one question and one answer; conversations listed, renamed, deleted over the API | local development identity; Keyring credential state on the stack not exercised |",
+  "de": "| Assistent gegen das echte Modell | `make assistant` + `make docs`, verwaltetes Chrome | Q2 | Keyring `claude-sonnet-5`: „Schlaufe des vorderen Knies“ beantwortet mit 32 mm = 1,2 × 25,6 mm, mit KaTeX und vier Quellenlinks; angeheftete Seitenleiste bleibt über Seitenwechsel erhalten; ein eingefügtes 2400 × 1600-Bild von Schritt 1 auf `/de/docs/assembly/` auf Deutsch erkannt, mit Link zu Schritt 1; Stopp und dann Wiederholen speicherte eine Frage und eine Antwort; Unterhaltungen über die API aufgelistet, umbenannt, gelöscht | lokale Entwicklungsidentität; Zustand der Keyring-Zugangsdaten auf dem Stack nicht geprüft |"
+ },
+ "55fe8260d2d377fe": {
+  "en": "| MCP with a real client | `@modelcontextprotocol/sdk` Streamable HTTP client against `/mcp` | Q2 | tools `search_docs`, `read_page`, `list_pages`, `search_parts`; German search for \"loop key arming\" returns the glossary entry with its `/de/` link; `read_page` returns the wiring-list section | local, no app token (dev identity) |",
+  "de": "| MCP mit einem echten Client | `@modelcontextprotocol/sdk` Streamable-HTTP-Client gegen `/mcp` | Q2 | Werkzeuge `search_docs`, `read_page`, `list_pages`, `search_parts`; deutsche Suche nach „loop key arming“ liefert den Glossareintrag mit seinem `/de/`-Link; `read_page` liefert den Abschnitt der Verkabelungsliste | lokal, ohne App-Token (Entwicklungsidentität) |"
+ },
+ "af1032bb80c553aa": {
+  "en": "| Production images and identity | `docker compose -f docker-compose.docs.yml -f docker-compose.cortex.yml` (both targets) | Q2 | read-only containers start; assistant without the header secret 401, with it serves `/me` (disabled without Keyring) and writes to its volume; a fake `cxu_` token 401; docs 200 on `/de/docs/ai` | Cortex gateway route, Keyring and app key exercised only after deploy |",
+  "de": "| Produktions-Images und Identität | `docker compose -f docker-compose.docs.yml -f docker-compose.cortex.yml` (beide Targets) | Q2 | schreibgeschützte Container starten; Assistent ohne Header-Secret 401, mit ihm liefert er `/me` (ohne Keyring deaktiviert) und schreibt in sein Volume; ein gefälschtes `cxu_`-Token 401; Doku 200 auf `/de/docs/ai` | Cortex-Gateway-Route, Keyring und App-Key erst nach dem Deploy geprüft |"
+ },
+ "51504600ec192fa0": {
+  "en": "| Deployed 0.3.1 (two services, own gateway route) | `cortex deploy` (job `mvwtwfpf-530e539a`), `cortex apps show strido`, `curl` | Q2 | healthy on `c80f807` (\"SSO route HTTP 302, upstream HTTP 200; 2 live containers\"); `/api/health` open (61 en / 61 de pages, model configured); `/`, `/de/`, `/llms.txt`, `/api/assistant/me`, `/mcp` without a session redirect to the SSO login; a fake `cxu_` bearer reaches the assistant and gets 401 from Cortex's token check | signed-in browser pages not re-checked (the relay tab's session had expired) |",
+  "de": "| 0.3.1 deployt (zwei Dienste, eigene Gateway-Route) | `cortex deploy` (Job `mvwtwfpf-530e539a`), `cortex apps show strido`, `curl` | Q2 | gesund auf `c80f807` („SSO route HTTP 302, upstream HTTP 200; 2 live containers“); `/api/health` offen (61 en / 61 de Seiten, Modell konfiguriert); `/`, `/de/`, `/llms.txt`, `/api/assistant/me`, `/mcp` leiten ohne Sitzung zum SSO-Login um; ein gefälschter `cxu_`-Bearer erreicht den Assistenten und bekommt 401 aus der Token-Prüfung von Cortex | angemeldete Browser-Seiten nicht erneut geprüft (die Sitzung des Relay-Tabs war abgelaufen) |"
+ },
+ "027c65a7753e4ff2": {
+  "en": "| MCP on the deployed site with a real app token | token minted with `cortex api post /api/v1/apps/strido/tokens` (1 day), SDK client, then revoked | Q2 | `tools/list` 4 tools; German `search_docs` \"Hauptsicherung Bemessung\" answers from the German glossary; `search_parts` \"servo\" returns the BOM line; `/api/agent/llms.txt` 200, skill ZIP 615 655 bytes; the token gets 403 on `/api/assistant/*`. `cortex apps connect strido` answers 404: Control records `.cortex/package.json` only for Cortex-created apps (TODO) | one token, one client |",
+  "de": "| MCP auf der deployten Seite mit einem echten App-Token | Token erzeugt mit `cortex api post /api/v1/apps/strido/tokens` (1 Tag), SDK-Client, danach widerrufen | Q2 | `tools/list` 4 Werkzeuge; deutsches `search_docs` „Hauptsicherung Bemessung“ antwortet aus dem deutschen Glossar; `search_parts` „servo“ liefert die Stücklistenzeile; `/api/agent/llms.txt` 200, Skill-ZIP 615 655 Bytes; das Token bekommt 403 auf `/api/assistant/*`. `cortex apps connect strido` antwortet 404: Control erfasst `.cortex/package.json` nur für von Cortex erstellte Apps (TODO) | ein Token, ein Client |"
+ },
+ "5638360c8d9a8efe": {
+  "en": "2026-10-31 — wiring harness routed and checked in the CAD",
+  "de": "2026-10-31 — Kabelbaum im CAD verlegt und geprüft"
+ },
+ "8a569a2ed645c8ea": {
+  "en": "| **New:** wiring gate | `python -m strido_verify.wiring` (in `make verify`) | Q1 | 37 cables in 71 runs, 174 checks: 0 fail, 1 warn (W23, the LiDAR's own cable: length not published). Reach (cut branches counted with their slack and crimp): tightest the front knee leads (243/241 of 250 mm usable from 260 mm), W19 STEMMA QT (125 of 140 mm). Stock: 18 AWG fits only with the BOM raised to 2 m per colour. Hip loops: front 30/32 mm vs. 28.9/30.7 mm needed (1.2 × tie-to-tie 24.1/25.6 mm), rear 22 mm vs. 19.4 mm. Clearance in 13 poses: no conductor through a part; nearest moving part ≥ 1 mm | nominal geometry; bend radii and loop shape not modelled; lead exits and supplied lead lengths partly assumed (TODO) |",
+  "de": "| **Neu:** Verkabelungsprüfung | `python -m strido_verify.wiring` (in `make verify`) | Q1 | 37 Kabel in 71 Abschnitten, 174 Prüfungen: 0 fail, 1 warn (W23, das eigene Kabel des LiDAR: Länge nicht veröffentlicht). Reichweite (zugeschnittene Abzweige mit Reserve und Crimp gezählt): am knappsten die vorderen Knie-Servokabel (243/241 von 250 mm nutzbar aus 260 mm), W19 STEMMA QT (125 von 140 mm). Vorrat: 18 AWG reicht nur, wenn die Stückliste auf 2 m pro Farbe erhöht wird. Hüftschlaufen: vorne 30/32 mm gegenüber 28,9/30,7 mm benötigt (1,2 × Kabelbinder-zu-Kabelbinder 24,1/25,6 mm), hinten 22 mm gegenüber 19,4 mm. Abstand in 13 Posen: kein Leiter durch ein Teil; nächstes bewegtes Teil ≥ 1 mm | Nenngeometrie; Biegeradien und Schlaufenform nicht modelliert; Kabelausgänge und gelieferte Kabellängen teils angenommen (TODO) |"
+ },
+ "f1c95dd272489541": {
+  "en": "| Gate seen red during design | same | Q1 | first runs failed: W00/W15/W17/W19/W20 and three front servo leads too short, 18 AWG and STEMMA QT stock short, the front bus jumper 0.3 mm into the FL calf servo at the inward hip limit, the pack lead's mated plug inside the front UBEC, a conductor drawn outside its routed envelope (the gate now checks every drawn conductor). After the review's reach fix the front knee leads (258/259 mm) and W22 (196 mm) failed: knee crossing moved to the bus holder and the front opening tie onto the cables' natural path, W22 now cut 22 AWG wire. Each fixed in the data or the CAD, not by a looser limit | — |",
+  "de": "| Prüfung während der Konstruktion rot gesehen | dasselbe | Q1 | erste Läufe schlugen fehl: W00/W15/W17/W19/W20 und drei vordere Servokabel zu kurz, Vorrat an 18 AWG und STEMMA QT zu knapp, die vordere Bus-Brücke 0,3 mm im FL-Unterschenkelservo an der inneren Hüftgrenze, der gesteckte Stecker der Akkuleitung im vorderen UBEC, ein Leiter außerhalb seiner verlegten Hülle gezeichnet (die Prüfung kontrolliert jetzt jeden gezeichneten Leiter). Nach der Reichweitenkorrektur aus dem Review schlugen die vorderen Knie-Servokabel (258/259 mm) und W22 (196 mm) fehl: Kreuzung der Knieleitungen zum Bushalter verlegt und der vordere Öffnungs-Kabelbinder auf den natürlichen Kabelweg, W22 jetzt aus zugeschnittenem 22-AWG-Draht. Jeweils in den Daten oder im CAD behoben, nicht durch eine lockerere Grenze | — |"
+ },
+ "01c7214baf35c9c0": {
+  "en": "| Review findings fixed | reviewer subagent on the change, then `make verify` | Q1 | reach ignored branch slack and counted the PCA end as a plug (both fixed; regression test fails on the old rule); tie mounts were not in the obstacle grid (now catalogue parts); W10/W11 were drawn as pairs onto a two-terminal INA260 (now single wires + W24 ground); W01 unwrapped although unfused (spiral wrap per cable); W04 trunk missing from the main fuse's list; manual dressed the harness before the rear-panel wiring existed and plugged the Pi before a supply check (Step 20 now does both, in that order) | — |",
+  "de": "| Review-Befunde behoben | Reviewer-Subagent auf die Änderung, dann `make verify` | Q1 | Reichweite ignorierte die Reserve der Abzweige und zählte das PCA-Ende als Stecker (beides behoben; Regressionstest schlägt mit der alten Regel fehl); Kabelbinder-Sockel waren nicht im Hindernisraster (jetzt Katalogteile); W10/W11 waren als Paare auf einen INA260 mit zwei Anschlüssen gezeichnet (jetzt Einzeldrähte + W24 Masse); W01 ohne Umwicklung, obwohl ungesichert (Spiralschlauch pro Kabel); W04-Hauptstrang fehlte in der Liste der Hauptsicherung; Montageanleitung verlegte den Kabelbaum, bevor die Verkabelung der Rückwand existierte, und steckte den Pi vor einer Versorgungsprüfung an (Schritt 20 erledigt jetzt beides, in dieser Reihenfolge) | — |"
+ },
+ "f797ec8bdc33cfcd": {
+  "en": "| Wiring gate unit tests | `pytest tests/verify/test_wiring.py tests/verify/test_electronics.py` | Q0 | 17 passed: reach margin, a cut branch needing its slack, longest servo-lead branch, a port used twice and a pair taking both rails, a loop 1 mm shorter than needed, a 22 AWG servo branch behind the 25 A fuse, a branch held to its own fuse | synthetic rows plus the tracked YAML |",
+  "de": "| Unit-Tests der Verkabelungsprüfung | `pytest tests/verify/test_wiring.py tests/verify/test_electronics.py` | Q0 | 17 bestanden: Reichweitenreserve, ein zugeschnittener Abzweig, der seine Reserve braucht, längster Servokabel-Abzweig, ein doppelt belegter Anschluss und ein Paar, das beide Schienen belegt, eine Schlaufe 1 mm kürzer als nötig, ein 22-AWG-Servoabzweig hinter der 25-A-Sicherung, ein Abzweig, der an seiner eigenen Sicherung gemessen wird | synthetische Zeilen plus die versionierte YAML |"
+ },
+ "318233496ffced92": {
+  "en": "| Full CAD verification with the cables and the re-placed power parts | `make verify` | Q1 | pass: interference 0 unexplained overlaps (first run caught the rotated LiDAR adapter in a pedestal screw column, fixed), clearance unchanged (0 fail, 4 tight), sensors: cables block no LiDAR ray and stay out of the camera view, wiring 173 ok / 1 warn | cables excluded from the part-to-part gates (they have their own); tie mounts are checked |",
+  "de": "| Vollständige CAD-Verifikation mit den Kabeln und den neu platzierten Leistungsteilen | `make verify` | Q1 | bestanden: Durchdringung 0 ungeklärte Überlappungen (erster Lauf fand den gedrehten LiDAR-Adapter in einer Schraubensäule des Sockels, behoben), Abstand unverändert (0 fail, 4 knapp), Sensoren: Kabel blockieren keinen LiDAR-Strahl und bleiben außerhalb des Kamerabilds, Verkabelung 173 ok / 1 warn | Kabel von den Teil-zu-Teil-Prüfungen ausgenommen (sie haben ihre eigene); Kabelbinder-Sockel werden geprüft |"
+ },
+ "c0c9588f8af9ff1c": {
+  "en": "| Electronics gate on the routed cables | `python -m strido_verify.electronics` | Q0 | 81 checks pass (3 without margin); the old 18 AWG tap behind the 25 A fuse would have failed and is gone (logic holder's own 14 AWG lead) | ampacity table, not thermal model |",
+  "de": "| Elektronikprüfung der verlegten Kabel | `python -m strido_verify.electronics` | Q0 | 81 Prüfungen bestanden (3 ohne Reserve); der alte 18-AWG-Abgriff hinter der 25-A-Sicherung wäre durchgefallen und ist entfernt (eigene 14-AWG-Leitung des Logikhalters) | Strombelastbarkeitstabelle, kein thermisches Modell |"
+ },
+ "d42b42d617c494ef": {
+  "en": "| Published artefacts | `make bom models manual renders viewer catalog` | Q1 | plans A €978.76 / B €1,126.97 / C €1,145.24 / D €987.73 (servo extensions out, spiral wrap, tie mounts, crimp contacts, solder, 2nd STEMMA QT and 2nd 18 AWG set in); CAD mass 3.008 → 3.050 kg (cables weighed per instance, lump removed); manual 22 steps (wiring Steps 14–16 and 20), new `wiring.png` render, GLB with the harness | prices observed 2026-10-31 |",
+  "de": "| Veröffentlichte Artefakte | `make bom models manual renders viewer catalog` | Q1 | Pläne A 978,76 € / B 1.126,97 € / C 1.145,24 € / D 987,73 € (Servoverlängerungen raus, Spiralschlauch, Kabelbinder-Sockel, Crimpkontakte, Lötzinn, 2. STEMMA QT und 2. 18-AWG-Satz rein); CAD-Masse 3,008 → 3,050 kg (Kabel pro Instanz gewogen, Pauschalposten entfernt); Montageanleitung 22 Schritte (Verkabelung Schritte 14–16 und 20), neues Rendering `wiring.png`, GLB mit dem Kabelbaum | Preise beobachtet am 2026-10-31 |"
+ },
+ "ec379ab45f63e5d6": {
+  "en": "2026-10-31 — documentation site: shop, print kit, product pages, Learn wiki",
+  "de": "2026-10-31 — Dokumentationsseite: Shop, Druckpaket, Produktseiten, Lernen-Wiki"
+ },
+ "158a691123e87b72": {
+  "en": "| Shop pricing reproduces the BOM optimiser | managed Chrome on the built site: complete robot in the cart, plans A–D | Q2 | cart totals €963.67 / €1,107.16 / €1,128.66 / €972.64 with 8 / 4 / 9 / 8 shops, equal to `make bom`; kit card shows €963.67 incl. shipping (€924.14 parts + €39.53); reviewer recomputed the same totals from `shop.json` | offers observed 2026-10-30; nothing ordered |",
+  "de": "| Shop-Preise reproduzieren den Stücklisten-Optimierer | verwaltetes Chrome auf der gebauten Seite: kompletter Roboter im Warenkorb, Pläne A–D | Q2 | Warenkorbsummen 963,67 € / 1.107,16 € / 1.128,66 € / 972,64 € mit 8 / 4 / 9 / 8 Shops, gleich wie `make bom`; Paketkarte zeigt 963,67 € inkl. Versand (924,14 € Teile + 39,53 €); Reviewer hat dieselben Summen aus `shop.json` nachgerechnet | Angebote beobachtet am 2026-10-30; nichts bestellt |"
+ },
+ "3b44e15e28cb6b96": {
+  "en": "| Print package download | print kit page, complete robot, ZIP captured from the page | Q2 | `strido-print-package-1-robot.zip`, 49 files (README, profile, 34 STLs named with quantity, 13 plates), `unzip -t` clean; parts sheet 67 pieces, 719 g graphite, 301 g lime, 104 h 16 min | ZIP built in the browser, stored (uncompressed) |",
+  "de": "| Download des Druckpakets | Druckpaket-Seite, kompletter Roboter, ZIP von der Seite abgefangen | Q2 | `strido-print-package-1-robot.zip`, 49 Dateien (README, Profil, 34 STLs mit Stückzahl im Namen, 13 Druckplatten), `unzip -t` fehlerfrei; Teileblatt 67 Stück, 719 g Graphit, 301 g Lime, 104 h 16 min | ZIP im Browser erzeugt, gespeichert (unkomprimiert) |"
+ },
+ "bed81ce88bc323ef": {
+  "en": "| Product information complete | `make bom`, `pytest tests/workspace/test_products.py` | Q0 | 59 BOM lines and 34 printed parts covered, every Learn link resolves; the test also proves a removed part and a dead wiki link are reported | wording reviewed, datasheet values partly from memory (flagged in the review) |",
+  "de": "| Produktinformationen vollständig | `make bom`, `pytest tests/workspace/test_products.py` | Q0 | 59 Stücklistenzeilen und 34 Druckteile abgedeckt, jeder Lernen-Link löst auf; der Test zeigt auch, dass ein entferntes Teil und ein toter Wiki-Link gemeldet werden | Formulierungen geprüft, Datenblattwerte teils aus dem Gedächtnis (im Review markiert) |"
+ },
+ "1dfe73bfdfdb7bc9": {
+  "en": "| Site build and links | `make docs-build` | Q0 | builds; dead-link check still fails on a missing public file (`/viewer/missing.glb`) and on a directory link (`/viewer/`), and accepts existing STL/GLB/INI/log files | only internal links are checked |",
+  "de": "| Seitenbuild und Links | `make docs-build` | Q0 | baut; Prüfung toter Links schlägt weiterhin bei einer fehlenden öffentlichen Datei (`/viewer/missing.glb`) und einem Verzeichnislink (`/viewer/`) fehl und akzeptiert vorhandene STL/GLB/INI/Log-Dateien | nur interne Links werden geprüft |"
+ },
+ "b9153797e58f8fa3": {
+  "en": "| Site audit | managed Chrome, all sidebar pages at 1440×900 and 390×844, light and dark | Q2 | 0 broken images, 0 failing internal links, 0 console errors, no horizontal overflow on phones; 35 findings (3 broken, 18 confusing) fixed, re-checked on the rebuilt site | visual review, no automated accessibility suite |",
+  "de": "| Seitenaudit | verwaltetes Chrome, alle Seiten der Seitenleiste bei 1440×900 und 390×844, hell und dunkel | Q2 | 0 defekte Bilder, 0 fehlerhafte interne Links, 0 Konsolenfehler, kein horizontaler Überlauf auf Smartphones; 35 Befunde (3 defekt, 18 verwirrend) behoben, auf der neu gebauten Seite erneut geprüft | visuelle Prüfung, keine automatisierte Barrierefreiheitssuite |"
+ },
+ "2448fd2661419351": {
+  "en": "| Thread-locker fallback corrected | `python -m strido_verify.fits` | Q1 | 223 screws ok 86 / warn 137 / fail 0, seats 32 / fail 0 (unchanged); weak-pilot and ADR-009 actions now name a CA-hardened pilot | wording change only |",
+  "de": "| Ausweichlösung Schraubensicherung korrigiert | `python -m strido_verify.fits` | Q1 | 223 Schrauben ok 86 / warn 137 / fail 0, Sitze 32 / fail 0 (unverändert); Maßnahmen für schwache Vorbohrungen und ADR-009 nennen jetzt eine mit Sekundenkleber gehärtete Vorbohrung | nur Textänderung |"
+ },
+ "33d0185dc33096a9": {
+  "en": "| **New:** strength of legs and joints | `python -m strido_verify.strength` | Q1 | 19 checks: 18 ok, 1 warn, 0 fail. Long link buckling in the leg plane S = 0.34 at the worst pose with the knee servo at stall (known weak point, ADR-010, bounded by `min_safety` 0.3); femur bending S = 3.2, tibia S = 2.2, hip horn hole pressure S = 2.6; pilot torque limits 0.05–0.35 N·m; reviewer recomputed femur bending, buckling and a pilot torque by hand and found the link axes swapped in the first version (fixed: pin axis from the bores); section math unit-tested against b·h³/12 (mutation that keeps hole orientation fails: area 104 instead of 56 mm²) | static, walls-only sections, servo stall torque as design load (back-driving takes more), assumed 3 × weight landing, K = 0.7 across the plane; no fatigue/creep; not a physical test |",
+  "de": "| **Neu:** Festigkeit von Beinen und Gelenken | `python -m strido_verify.strength` | Q1 | 19 Prüfungen: 18 ok, 1 warn, 0 fail. Knicken der langen Koppel in der Beinebene S = 0,34 in der ungünstigsten Pose mit Knieservo im Blockierzustand (bekannte Schwachstelle, ADR-010, begrenzt durch `min_safety` 0.3); Biegung Femur S = 3,2, Tibia S = 2,2, Lochleibung am Hüft-Servohorn S = 2,6; Drehmomentgrenzen für Vorbohrungen 0,05–0,35 N·m; Reviewer hat Femur-Biegung, Knicken und ein Vorbohrungs-Drehmoment von Hand nachgerechnet und in der ersten Version vertauschte Koppelachsen gefunden (behoben: Bolzenachse aus den Bohrungen); Querschnittsberechnung per Unit-Test gegen b·h³/12 geprüft (Mutation, die die Lochausrichtung beibehält, schlägt fehl: Fläche 104 statt 56 mm²) | statisch, nur Wandquerschnitte, Blockiermoment des Servos als Auslegungslast (Rücktreiben braucht mehr), angenommene Landung mit 3 × Gewicht, K = 0,7 quer zur Ebene; keine Ermüdung/Kriechen; kein physischer Test |"
+ },
+ "e059cfa89f7704a9": {
+  "en": "| Datasheet check of disagreements and product specs | research agent against manufacturer sources (Hobbywing, Gens ace, Raspberry Pi, Seeed, NXP, ST, TI, Slamtec, SKF, Koyo, Prusament, Bossard) | static | UBEC 15 A peak confirmed (20 A was the aircraft model); LiPo 60C; all listed product specs ok; filament offers were PLA (now PETG); cooler \"JST\" unverified (removed) | bearing ratings of branded parts used as upper bounds for unbranded ones |",
+  "de": "| Datenblattprüfung von Abweichungen und Produktspezifikationen | Recherche-Agent gegen Herstellerquellen (Hobbywing, Gens ace, Raspberry Pi, Seeed, NXP, ST, TI, Slamtec, SKF, Koyo, Prusament, Bossard) | statisch | UBEC 15 A Spitze bestätigt (20 A war das Flugzeugmodell); LiPo 60C; alle gelisteten Produktspezifikationen ok; Filamentangebote waren PLA (jetzt PETG); Kühler „JST“ unbestätigt (entfernt) | Lagerkennwerte von Markenteilen als Obergrenze für No-Name-Teile verwendet |"
+ },
+ "eae91c2ae04d7615": {
+  "en": "| Amazon one-click cart | signed-in Chrome, `gp/aws/cart/add.html` with one ASIN (no click on the page) | Q2 | redirects via `associates/addtocart` to an empty cart: the form needs an Associates tag; replaced by the guided checkout (window.open into one tab per shop, checklist persisted) | Amazon policy can change |",
+  "de": "| Amazon-Warenkorb mit einem Klick | angemeldetes Chrome, `gp/aws/cart/add.html` mit einer ASIN (kein Klick auf der Seite) | Q2 | leitet über `associates/addtocart` auf einen leeren Warenkorb um: Das Formular benötigt ein Associates-Tag; ersetzt durch die geführte Kasse (window.open in einem Tab pro Shop, Checkliste gespeichert) | Amazon-Richtlinien können sich ändern |"
+ },
+ "93d9674e2fa17ed7": {
+  "en": "| Plans after the PETG offers | `make bom` | Q0 | A €965.27 (8 shops), B €1,107.41 (4), C €1,130.26 (9), D €974.24 (8) | prices observed 2026-10-30/31 |",
+  "de": "| Pläne nach den PETG-Angeboten | `make bom` | Q0 | A 965,27 € (8 Shops), B 1.107,41 € (4), C 1.130,26 € (9), D 974,24 € (8) | Preise beobachtet am 2026-10-30/31 |"
+ },
+ "23fd123f4e3b019c": {
+  "en": "| LaTeX rendering of the wiki and strength report | `make docs-build`, built HTML scanned, managed Chrome at 1440 px and 390 px | Q0/Q2 | 0 MathJax error nodes, 0 unrendered `$…$` pairs in the built pages (15 one-line `<details>` answers had to be split to render); theory pages 73–121 equations each; no horizontal page overflow at 390 px (display equations scroll inside the column) | visual spot checks of 4 pages, not every equation |",
+  "de": "| LaTeX-Rendering des Wikis und des Festigkeitsberichts | `make docs-build`, gebautes HTML durchsucht, verwaltetes Chrome bei 1440 px und 390 px | Q0/Q2 | 0 MathJax-Fehlerknoten, 0 nicht gerenderte `$…$`-Paare in den gebauten Seiten (15 einzeilige `<details>`-Antworten mussten zum Rendern aufgeteilt werden); Theorieseiten mit je 73–121 Gleichungen; kein horizontaler Seitenüberlauf bei 390 px (abgesetzte Gleichungen scrollen innerhalb der Spalte) | visuelle Stichproben auf 4 Seiten, nicht jede Gleichung |"
+ },
+ "67ed66dadcc35bba": {
+  "en": "2026-10-31 — v0.2.0 rework (harness, packages, new gates, fixes)",
+  "de": "2026-10-31 — Überarbeitung v0.2.0 (Harness, Pakete, neue Prüfungen, Korrekturen)"
+ },
+ "c6c89ddff7e57090": {
+  "en": "| Lint, strict types (core, NT-X, workspace), import layers | `make lint typecheck layers` | Q0 | ruff clean; mypy: no issues in 21 files; 3 import-linter contracts kept | CAD/verify/publish packages are linted, not strictly typed |",
+  "de": "| Lint, strikte Typen (Core, NT-X, Workspace), Import-Schichten | `make lint typecheck layers` | Q0 | ruff sauber; mypy: keine Probleme in 21 Dateien; 3 import-linter-Verträge eingehalten | CAD/Verify/Publish-Pakete werden gelintet, aber nicht strikt typisiert |"
+ },
+ "dd770b3ffd66639d": {
+  "en": "| Generated sources in sync | `make drift` | Q0 | geometry bindings, electronics report and NT-X assets up to date; seen red when `geometry.py` was reformatted and when limits changed | text assets compared byte for byte; NT-X meshes only for presence |",
+  "de": "| Generierte Quellen synchron | `make drift` | Q0 | Geometrie-Bindings, Elektronikbericht und NT-X-Assets aktuell; rot gesehen, als `geometry.py` umformatiert wurde und als sich Grenzen änderten | Text-Assets byteweise verglichen; NT-X-Meshes nur auf Vorhandensein |"
+ },
+ "3cac9c6bb435a2af": {
+  "en": "| Python tests with coverage gate (80 %) | `make test` | Q0 | 73 passed, coverage 83.7 % | modules that run in NT-X / over stdio are excluded from coverage and exercised by the smokes |",
+  "de": "| Python-Tests mit Coverage-Schwelle (80 %) | `make test` | Q0 | 73 bestanden, Coverage 83,7 % | Module, die in NT-X / über stdio laufen, sind von der Coverage ausgenommen und durch die Smoke-Tests abgedeckt |"
+ },
+ "4b10033206388342": {
+  "en": "| Electronics: firmware header vs `hardware/electronics.yaml` in both directions, unique GPIO/I²C, servo channels, loads ≤ fuses ≤ wire ampacity | `python -m strido_verify.electronics` | Q0 | 44/44 checks pass; tests prove a swapped pin, a header pin missing from the YAML, duplicate channel, address clash, undersized wire and UBEC overload all fail | currents are datasheet/[ESTIMATE] values, not measured |",
+  "de": "| Elektronik: Firmware-Header vs. `hardware/electronics.yaml` in beide Richtungen, eindeutige GPIO/I²C, Servokanäle, Lasten ≤ Sicherungen ≤ Strombelastbarkeit der Leitungen | `python -m strido_verify.electronics` | Q0 | 44/44 Prüfungen bestanden; Tests zeigen, dass ein vertauschter Pin, ein in der YAML fehlender Header-Pin, ein doppelter Kanal, eine Adresskollision, eine unterdimensionierte Leitung und eine UBEC-Überlast alle fehlschlagen | Ströme sind Datenblatt-/[ESTIMATE]-Werte, nicht gemessen |"
+ },
+ "bf026f4aaaa7ae89": {
+  "en": "| Firmware core (kinematics with new limits, protocol, safety) | `make test-firmware` | Q0 | 15/15 passed | native host build, not the ESP32 |",
+  "de": "| Firmware-Kern (Kinematik mit neuen Grenzen, Protokoll, Sicherheit) | `make test-firmware` | Q0 | 15/15 bestanden | nativer Host-Build, nicht der ESP32 |"
+ },
+ "ca799cf4d3b05c51": {
+  "en": "| Interference, 479 solids, 4 poses | `make verify` | Q1 | 0 unexplained overlaps (292 classified overlaps at stand) | mesh geometry, nominal sizes |",
+  "de": "| Durchdringung, 479 Körper, 4 Posen | `make verify` | Q1 | 0 ungeklärte Überlappungen (292 klassifizierte Überlappungen im Stand) | Mesh-Geometrie, Nennmaße |"
+ },
+ "4ddf7e8db065c722": {
+  "en": "| **New:** fits and tolerances of every screw (223) and bearing/bushing seat (32) | `python -m strido_verify.fits` | Q1 | 0 fail, 137 with a builder action (drill a tight hole on a nut joint, CA-hardened pilot / hole compensation on a weak pilot), 86 ok; 29 of the warnings are the accepted upstream servo-mount pilots (ADR-009: fail without the acceptance). Seen red with 168 → 0 failures while fixing the model and three real defects (below); engagement counts only material the screw cuts; a bearing without a seat fails | CAD sizes with a 0.15 mm FDM shrink model; real prints vary by printer |",
+  "de": "| **Neu:** Passungen und Toleranzen jeder Schraube (223) und jedes Lager-/Buchsensitzes (32) | `python -m strido_verify.fits` | Q1 | 0 fail, 137 mit einer Maßnahme für den Erbauer (enges Loch an einer Mutterverbindung aufbohren, mit Sekundenkleber gehärtete Vorbohrung / Lochkompensation bei schwacher Vorbohrung), 86 ok; 29 der Warnungen sind die akzeptierten Vorbohrungen der Upstream-Servohalterungen (ADR-009: ohne die Akzeptanz fail). Rot gesehen mit 168 → 0 Fehlern beim Korrigieren des Modells und dreier echter Defekte (unten); Einschraubtiefe zählt nur Material, das die Schraube schneidet; ein Lager ohne Sitz schlägt fehl | CAD-Maße mit einem FDM-Schwindungsmodell von 0,15 mm; reale Drucke variieren je nach Drucker |"
+ },
+ "4508b8736708e531": {
+  "en": "| **New:** moving-part clearance, 13 operating poses | `python -m strido_verify.clearance` | Q1 | 0 fail (< 0.3 mm), 4 tight (0.73–0.79 mm at the hip-out limit), 80 rotational interfaces, 72 joint interfaces (only across real joints/linkage pins); seen red: both front feet collided in `hips_in` (50 fails) before the limit fix; restricting the exemption exposed the RR shoulder / back shell pair (0.73 mm, previously exempt because it touched at the CAD pose) | nominal geometry; servo backlash not modelled |",
+  "de": "| **Neu:** Freigang bewegter Teile, 13 Betriebsposen | `python -m strido_verify.clearance` | Q1 | 0 fail (< 0,3 mm), 4 knapp (0,73–0,79 mm an der äußeren Hüftgrenze), 80 rotatorische Schnittstellen, 72 Gelenkschnittstellen (nur über echte Gelenke/Koppelbolzen); rot gesehen: beide Vorderfüße kollidierten in `hips_in` (50 fails) vor der Korrektur der Grenze; die Einschränkung der Ausnahme deckte das Paar RR-Schulter / Rückschale auf (0,73 mm, zuvor ausgenommen, weil es sich in der CAD-Pose berührte) | Nenngeometrie; Servospiel nicht modelliert |"
+ },
+ "a4b035f9a967eb0c": {
+  "en": "| Range of motion with mirrored partner leg and 0.3 mm clearance | `python -m strido_verify.rom` | Q1 | hip limits now FL/RL −17.5…50/45°, FR/RR −50/−45…17.5° (inward travel reduced from 25–30° so the feet cannot meet) | grid 5°/2.5° |",
+  "de": "| Bewegungsbereich mit gespiegeltem Partnerbein und 0,3 mm Abstand | `python -m strido_verify.rom` | Q1 | Hüftgrenzen jetzt FL/RL −17,5…50/45°, FR/RR −50/−45…17,5° (Einwärtsweg von 25–30° reduziert, damit sich die Füße nicht treffen können) | Raster 5°/2,5° |"
+ },
+ "7e47dca3a70b6287": {
+  "en": "| Sensor field of view | `python -m strido_verify.sensor_fov` | Q1 | 0 of 720 LiDAR rays blocked, camera sees 0 % robot, 5 poses | — |",
+  "de": "| Sensor-Sichtfeld | `python -m strido_verify.sensor_fov` | Q1 | 0 von 720 LiDAR-Strahlen blockiert, Kamera sieht 0 % Roboter, 5 Posen | — |"
+ },
+ "54b74973287b4676": {
+  "en": "| **New:** print kit complete and printable | `pytest tests/verify/test_print_kit.py` | Q1 | 34 part types / 67 pieces, every STL a closed manifold within 220 × 220 × 250 mm, every piece on exactly one 3MF plate; seen red: the camera base and tilt plate were missing from the plates (trimesh drops 3MF nodes named `camera*`) | slicer settings not simulated |",
+  "de": "| **Neu:** Druckpaket vollständig und druckbar | `pytest tests/verify/test_print_kit.py` | Q1 | 34 Teiletypen / 67 Stück, jede STL eine geschlossene Mannigfaltigkeit innerhalb 220 × 220 × 250 mm, jedes Stück auf genau einer 3MF-Druckplatte; rot gesehen: Kamerabasis und Neigeplatte fehlten auf den Druckplatten (trimesh verwirft 3MF-Knoten namens `camera*`) | Slicer-Einstellungen nicht simuliert |"
+ },
+ "6c4b0ee912b397f6": {
+  "en": "| BOM covers every CAD part and fastener | `make bom` | Q1 | all strategies covered; lowest total €963.67 (8 shops) | prices observed 2026-10-30 |",
+  "de": "| Stückliste deckt jedes CAD-Teil und Befestigungselement ab | `make bom` | Q1 | alle Strategien abgedeckt; niedrigste Summe 963,67 € (8 Shops) | Preise beobachtet am 2026-10-30 |"
+ },
+ "6484e635eff74cc1": {
+  "en": "| MuJoCo gait walk | `make sim-walk` | Q2 | 0.15 m/s for 10 s → 1.104 m, height 0.174 m, yaw −1.7° | simulator heading hold |",
+  "de": "| MuJoCo-Gang | `make sim-walk` | Q2 | 0,15 m/s für 10 s → 1,104 m, Höhe 0,174 m, Gieren −1,7° | Kurshaltung über den Simulator |"
+ },
+ "c0c19618e1e2d413": {
+  "en": "| Gazebo Harmonic headless walk, gait node (ROS 2 Jazzy, Docker, arm64) | `make sim-gazebo` | Q2 | 8 s at 0.15 m/s → 0.98 m forward, lateral −0.003 m, height 0.178 m, roll/pitch < 0.01 rad; joint_states, IMU, scan (min 0.49 m), camera and odom all publishing | simulator only; same container as the robot image minus the Pi camera stack |",
+  "de": "| Gazebo Harmonic Gang ohne GUI, Gait-Node (ROS 2 Jazzy, Docker, arm64) | `make sim-gazebo` | Q2 | 8 s bei 0,15 m/s → 0,98 m vorwärts, seitlich −0,003 m, Höhe 0,178 m, Rollen/Nicken < 0,01 rad; joint_states, IMU, Scan (min. 0,49 m), Kamera und Odom veröffentlichen alle | nur Simulator; derselbe Container wie das Roboter-Image ohne den Pi-Kamera-Stack |"
+ },
+ "0e5c78622f2f520d": {
+  "en": "| Released PPO policy with the new limits | `make rl-eval` | Q2 | 0.2 m/s command → 0.215 m/s mean, 2.15 m in 10 s, upright | MuJoCo only |",
+  "de": "| Veröffentlichte PPO-Policy mit den neuen Grenzen | `make rl-eval` | Q2 | Befehl 0,2 m/s → 0,215 m/s Mittel, 2,15 m in 10 s, aufrecht | nur MuJoCo |"
+ },
+ "55be3c97517b46e9": {
+  "en": "| PPO pipeline | `make rl-smoke` | Q2 | 20 k steps in 6 s, policy exported and evaluated (not trained to walk) | pipeline check only |",
+  "de": "| PPO-Pipeline | `make rl-smoke` | Q2 | 20 k Schritte in 6 s, Policy exportiert und evaluiert (nicht auf Gehen trainiert) | nur Pipeline-Prüfung |"
+ },
+ "f8c74a837d5d9520": {
+  "en": "| **New:** hardware MCP server over stdio | `make mcp-smoke` | Q2 | 10 tools listed, 9/9 calls ok | `measure_gap` covered by the CAD tests, not the smoke |",
+  "de": "| **Neu:** Hardware-MCP-Server über stdio | `make mcp-smoke` | Q2 | 10 Tools gelistet, 9/9 Aufrufe ok | `measure_gap` durch die CAD-Tests abgedeckt, nicht durch den Smoke-Test |"
+ },
+ "79e5e8c51a534265": {
+  "en": "| **New:** NT-X integration inside the NT-X harness environment | `make ntx-smoke` | Q2 | catalog robot (12 joints, 3.008 kg) and skill load; stands 2 s in NT-X MuJoCo (base 0.178 m, tilt 0.0°); adapter `strido-serial` registered; RobotPort ↔ protocol-level fake MCU: the real `pd-pose` runtime output (gains + gravity feed-forward up to 0.06 N·m) → position target → state with the echoed command sequence, IMU loss raises and latches the protective stop, protective stop latches, close frees the device; seen red when the model path was wrong | fake MCU speaks the real protocol but is not the firmware; hardware sessions also need a base estimate (NT-X odometry gate) |",
+  "de": "| **Neu:** NT-X-Integration in der NT-X-Harness-Umgebung | `make ntx-smoke` | Q2 | Katalogroboter (12 Gelenke, 3,008 kg) und Skill laden; steht 2 s in NT-X MuJoCo (Basis 0,178 m, Neigung 0,0°); Adapter `strido-serial` registriert; RobotPort ↔ Fake-MCU auf Protokollebene: die echte Laufzeitausgabe von `pd-pose` (Verstärkungen + Schwerkraft-Vorsteuerung bis 0,06 N·m) → Positionsziel → Zustand mit zurückgemeldeter Befehlssequenz, IMU-Ausfall löst den Schutzstopp aus und hält ihn, Schutzstopp rastet ein, Schließen gibt das Gerät frei; rot gesehen, als der Modellpfad falsch war | Fake-MCU spricht das echte Protokoll, ist aber nicht die Firmware; Hardware-Sitzungen brauchen außerdem eine Basisschätzung (NT-X-Odometrieprüfung) |"
+ },
+ "d568b44cff0a0952": {
+  "en": "| **New:** CAD regression tests for the fixed fit defects | `make test-cad` | Q1 | 3 passed (no screw fit fails; all 4 hip-pivot screws thread into a servo mount incl. the `_fl`/`_fr` variants; LiDAR pedestal screws engage the pedestal); seen red with the old 6 mm pedestal pilot depth (2 failed: `solid`/`fail`) | same CAD-size model as the fits gate |",
+  "de": "| **Neu:** CAD-Regressionstests für die behobenen Passungsdefekte | `make test-cad` | Q1 | 3 bestanden (keine Schraubenpassung schlägt fehl; alle 4 Hüftdrehpunkt-Schrauben greifen in eine Servohalterung inkl. der Varianten `_fl`/`_fr`; Schrauben des LiDAR-Sockels greifen in den Sockel); rot gesehen mit der alten Vorbohrtiefe von 6 mm am Sockel (2 fehlgeschlagen: `solid`/`fail`) | dasselbe CAD-Maßmodell wie die Passungsprüfung |"
+ },
+ "907083ae018cbf07": {
+  "en": "| **New:** docs site and 3D viewer | `make docs-build`, preview in Chrome | Q2 | site builds; viewer loads the GLB, explode / step / shells / fasteners / picking work (picked part shows name, id, count, step); parts catalogue shows 76 part types; seen broken: every unique mesh was also exported at the GLB origin in millimetres (a 100 m \"wedge\" around the robot) until the geometry was stored without its own node | desktop Chrome only; no mobile/Safari check |",
+  "de": "| **Neu:** Dokumentationsseite und 3D-Ansicht | `make docs-build`, Vorschau in Chrome | Q2 | Seite baut; 3D-Ansicht lädt das GLB, Explosion / Schritt / Schalen / Befestigungselemente / Auswahl funktionieren (ausgewähltes Teil zeigt Name, ID, Anzahl, Schritt); Teilekatalog zeigt 76 Teiletypen; defekt gesehen: jedes einzigartige Mesh wurde zusätzlich am GLB-Ursprung in Millimetern exportiert (ein 100 m großer „Keil“ um den Roboter), bis die Geometrie ohne eigenen Knoten gespeichert wurde | nur Desktop-Chrome; keine Mobil-/Safari-Prüfung |"
+ },
+ "8f8d917287a188e9": {
+  "en": "| Harness gates (agent config drift, env docs, arch scan, secrets, npm audit) | `make harness-check` | Q0 | pass; gitleaks no leaks; npm audit 0 vulnerabilities; three v0.1 CAD definition modules baselined in the shrink-only arch-scan ledger | Semgrep/Trivy skipped (heavy security off) |",
+  "de": "| Harness-Prüfungen (Drift der Agent-Konfiguration, Env-Doku, Arch-Scan, Secrets, npm audit) | `make harness-check` | Q0 | bestanden; gitleaks keine Lecks; npm audit 0 Schwachstellen; drei CAD-Definitionsmodule aus v0.1 im nur schrumpfenden Arch-Scan-Register als Baseline erfasst | Semgrep/Trivy übersprungen (aufwendige Sicherheitsprüfung aus) |"
+ },
+ "3594c740b1b5936d": {
+  "en": "| **New:** printability: every part sliced by a real slicer | `make printability` (PrusaSlicer 2.9.6, `hardware/print/prusaslicer.ini`) | Q1 | 34 part types and 13 plates: 0 fail. Each part sliced as prescribed (supports/brim) with no error message and complete G-code; supported parts also sliced without supports and show only issues supports fix; every plate prints all its parts without tool-path conflicts. Kit 1021 g PETG (719 g graphite, 301 g lime: one 1 kg spool each), 104 h. Wall-thickness scan 0 fail, 5 warn (upstream femur and servo mounts: walls 0.65–0.8 mm, printable but thin). Seen red: electronics deck without supports (floating bridge anchors under the IMU pocket); tibias/short links/hip pins in published orientation (low bed adhesion, found once supported parts got the extra unsupported slice); plates with 4 mm part gaps (tool-path conflicts); deck with supports removed from the print list (unit test of the parser and a gate run) | slicer simulation, not a test print; thin regions shorter than 5 mm and narrower than 1 mm count as cusps |",
+  "de": "| **Neu:** Druckbarkeit: jedes Teil von einem echten Slicer geslict | `make printability` (PrusaSlicer 2.9.6, `hardware/print/prusaslicer.ini`) | Q1 | 34 Teiletypen und 13 Druckplatten: 0 fail. Jedes Teil wie vorgeschrieben geslict (Stützstrukturen/Brim) ohne Fehlermeldung und mit vollständigem G-Code; gestützte Teile zusätzlich ohne Stützstrukturen geslict und zeigen nur Probleme, die Stützstrukturen beheben; jede Druckplatte druckt alle ihre Teile ohne Werkzeugpfadkonflikte. Druckpaket 1021 g PETG (719 g Graphit, 301 g Lime: je eine 1-kg-Spule), 104 h. Wandstärkenscan 0 fail, 5 warn (Upstream-Femur und Servohalterungen: Wände 0,65–0,8 mm, druckbar, aber dünn). Rot gesehen: Elektronikdeck ohne Stützstrukturen (schwebende Brückenanker unter der IMU-Tasche); Tibias/kurze Koppeln/Hüftbolzen in veröffentlichter Ausrichtung (geringe Betthaftung, gefunden, sobald gestützte Teile den zusätzlichen ungestützten Slice erhielten); Druckplatten mit 4 mm Teileabstand (Werkzeugpfadkonflikte); Deck mit aus der Druckliste entfernten Stützstrukturen (Unit-Test des Parsers und ein Prüflauf) | Slicer-Simulation, kein Testdruck; dünne Bereiche kürzer als 5 mm und schmaler als 1 mm zählen als Spitzen |"
+ },
+ "9852360c743c4419": {
+  "en": "| **New:** electronics voltage domains | `python -m strido_verify.electronics` | Q0 | 16 supply/signal checks pass: no rail can exceed a rated maximum, every nominal level is in range; 3 pass without margin because the rail minimum reaches below the rating (servo PWM and LCD at 3.3 V, the lowest level they accept); seen red: servo rail at the UBEC's 7.4 V setting and a 6.3 V UBEC (tests) | ratings from vendor pages/datasheets; rail tolerances partly [ESTIMATE]; no custom PCB exists, so no ERC/DRC/SPICE applies |",
+  "de": "| **Neu:** Spannungsdomänen der Elektronik | `python -m strido_verify.electronics` | Q0 | 16 Versorgungs-/Signalprüfungen bestanden: keine Schiene kann ein zulässiges Maximum überschreiten, jeder Nennpegel liegt im Bereich; 3 bestehen ohne Reserve, weil das Schienenminimum unter die Nennwerte reicht (Servo-PWM und LCD bei 3,3 V, dem niedrigsten Pegel, den sie akzeptieren); rot gesehen: Servoschiene bei der 7,4-V-Einstellung des UBEC und ein 6,3-V-UBEC (Tests) | Nennwerte aus Herstellerseiten/Datenblättern; Schienentoleranzen teils [ESTIMATE]; es gibt keine eigene Leiterplatte, daher gilt kein ERC/DRC/SPICE |"
+ },
+ "61335954788ac07a": {
+  "en": "| **New:** documentation site on Cortex | `docker compose -f docker-compose.docs.yml up --build docs`; `cortex deploy --ref b0fe000` (job `mvvsdmmc-108830e0`) | Q2 | local container: /healthz ok, /docs/downloads 200, build kit 17.5 MB `application/zip` (57 files, `unzip -t` clean), PDF 13.9 MB; deployed 0.2.1: `cortex apps show strido` healthy (\"SSO route HTTP 302, upstream HTTP 200\"); unauthenticated requests to /, /docs/downloads, the ZIP, the PDF and /healthz all redirect (302) to the Cortex SSO login; signed in (Chrome): home page renders, ZIP/PDF/GLB downloads answer 200 with the right type | one browser session; no load test |",
+  "de": "| **Neu:** Dokumentationsseite auf Cortex | `docker compose -f docker-compose.docs.yml up --build docs`; `cortex deploy --ref b0fe000` (Job `mvvsdmmc-108830e0`) | Q2 | lokaler Container: /healthz ok, /docs/downloads 200, Baupaket 17,5 MB `application/zip` (57 Dateien, `unzip -t` fehlerfrei), PDF 13,9 MB; deployt 0.2.1: `cortex apps show strido` gesund („SSO route HTTP 302, upstream HTTP 200“); nicht authentifizierte Anfragen an /, /docs/downloads, das ZIP, das PDF und /healthz leiten alle (302) zum Cortex-SSO-Login um; angemeldet (Chrome): Startseite wird gerendert, ZIP/PDF/GLB-Downloads antworten 200 mit dem richtigen Typ | eine Browsersitzung; kein Lasttest |"
+ },
+ "c5df22561fe7eaf4": {
+  "en": "Defects found and fixed (gates and review)",
+  "de": "Gefundene und behobene Defekte (Prüfungen und Review)"
+ },
+ "3499dcee5520fce4": {
+  "en": "| Defect | Found by | Fix |",
+  "de": "| Defekt | Gefunden durch | Behebung |"
+ },
+ "d7c5fcd4b969d282": {
+  "en": "| LiDAR pedestal pilots 9 mm deep for screws that protrude 10 mm: the screws bottom out before clamping the shell | fits (`solid` at the tip) | pilot depth 11 mm (`PEDESTAL_PILOT_DEPTH`) |",
+  "de": "| Vorbohrungen des LiDAR-Sockels 9 mm tief für Schrauben, die 10 mm herausragen: Die Schrauben laufen auf Grund, bevor sie die Schale klemmen | Passungen (`solid` an der Spitze) | Vorbohrtiefe 11 mm (`PEDESTAL_PILOT_DEPTH`) |"
+ },
+ "8ac3be3efe74a1aa": {
+  "en": "| Front servo mounts (same STL as the rear) have no hip-pivot pilot on the face the front legs use: 5.5 mm of solid plastic | fits (`solid`) | Strido variants `left_servo_mount_fl`, `right_servo_mount_fr` with a Ø2.5 mm pilot (ADR-004) |",
+  "de": "| Vordere Servohalterungen (dieselbe STL wie hinten) haben keine Hüftdrehpunkt-Vorbohrung auf der Seite, die die Vorderbeine nutzen: 5,5 mm massiver Kunststoff | Passungen (`solid`) | Strido-Varianten `left_servo_mount_fl`, `right_servo_mount_fr` mit einer Ø2,5-mm-Vorbohrung (ADR-004) |"
+ },
+ "23ac36c9c5c5beca": {
+  "en": "| Right-leg femur horn screws 3.7 mm off the printed femur's holes (STEP mirrors the right femurs; one STL prints all four) | fits (`solid`) | `hardware/assembly/corrections.yaml`: disc horn −30°, femur connector +22° on FR/RR |",
+  "de": "| Servohorn-Schrauben des rechten Femurs 3,7 mm neben den Löchern des gedruckten Femurs (STEP spiegelt die rechten Femurs; eine STL druckt alle vier) | Passungen (`solid`) | `hardware/assembly/corrections.yaml`: Scheibenhorn −30°, Femur-Verbinder +22° an FR/RR |"
+ },
+ "e255d21395f2bdad": {
+  "en": "| Left-leg thigh horn centre screws pointed away from the servo (head placed in the spline cavity) | fits (`nothing holds the screw`) | head pocket = longest end-opening bore in `strido_cad.fasteners` |",
+  "de": "| Mittelschrauben des Oberschenkel-Servohorns am linken Bein zeigten vom Servo weg (Kopf im Verzahnungshohlraum platziert) | Passungen (`nothing holds the screw`) | Kopfsenkung = längste stirnseitig offene Bohrung in `strido_cad.fasteners` |"
+ },
+ "1167e66c857065af": {
+  "en": "| Both front (and both rear) feet could meet under the body at the inward hip limits | clearance (`hips_in`) | ROM sweep with mirrored partner leg and 0.3 mm clearance (ADR-005) |",
+  "de": "| Beide Vorderfüße (und beide Hinterfüße) konnten sich an den inneren Hüftgrenzen unter dem Körper treffen | Freigang (`hips_in`) | Bewegungsbereich-Durchlauf mit gespiegeltem Partnerbein und 0,3 mm Abstand (ADR-005) |"
+ },
+ "596fa025e8ce8cbe": {
+  "en": "| Camera base and tilt plate missing from the 3MF plates of v0.1.0 | print-kit test | plate node names prefixed `part_` |",
+  "de": "| Kamerabasis und Neigeplatte fehlten auf den 3MF-Druckplatten von v0.1.0 | Druckpaket-Test | Knotennamen der Druckplatten mit Präfix `part_` |"
+ },
+ "380dab1750a2a58d": {
+  "en": "| Right-leg hip disc horns moved by the femur correction (wrong body) | ROM (RR outward limit collapsed to 20°) | corrections apply per rigid body |",
+  "de": "| Hüft-Scheibenhörner des rechten Beins durch die Femur-Korrektur verschoben (falscher Körper) | Bewegungsbereich (äußere RR-Grenze auf 20° eingebrochen) | Korrekturen gelten pro Starrkörper |"
+ },
+ "3d109bee372ac742": {
+  "en": "| The NT-X serial port rejected every command of the shipped `pd-pose` skill (gravity feed-forward is never zero) and reported a level, still robot when the IMU failed | review; `make ntx-smoke` now runs the real runtime output | feed-forward dropped, `kp <= 0` rejected, IMU loss fails closed, stale frames drained |",
+  "de": "| Der serielle NT-X-Port lehnte jeden Befehl des mitgelieferten `pd-pose`-Skills ab (Schwerkraft-Vorsteuerung ist nie null) und meldete bei IMU-Ausfall einen ebenen, ruhenden Roboter | Review; `make ntx-smoke` verwendet jetzt die echte Laufzeitausgabe | Vorsteuerung entfernt, `kp <= 0` abgelehnt, IMU-Ausfall führt in den sicheren Zustand, veraltete Frames verworfen |"
+ },
+ "2556a667d6e93dad": {
+  "en": "| CAD cache served meshes of an older source after a revert (manifest per digest, meshes at fixed paths) | `make check` failed after a deliberate gate break was reverted | one manifest, valid only for the digest of the last build; seen red/green by breaking and restoring `PEDESTAL_PILOT_DEPTH` |",
+  "de": "| CAD-Cache lieferte nach einem Revert Meshes einer älteren Quelle aus (Manifest pro Digest, Meshes an festen Pfaden) | `make check` schlug fehl, nachdem ein absichtlicher Prüfungsbruch zurückgenommen wurde | ein Manifest, nur gültig für den Digest des letzten Builds; rot/grün gesehen durch Brechen und Wiederherstellen von `PEDESTAL_PILOT_DEPTH` |"
+ },
+ "39f9ec40deece7b5": {
+  "en": "| Clearance exemption covered any pair touching at the CAD pose, not only joints | review | exemption limited to bodies joined by a joint or linkage pin; exposed one tight pair (0.73 mm) |",
+  "de": "| Freigang-Ausnahme deckte jedes in der CAD-Pose berührende Paar ab, nicht nur Gelenke | Review | Ausnahme auf Körper beschränkt, die durch ein Gelenk oder einen Koppelbolzen verbunden sind; deckte ein knappes Paar auf (0,73 mm) |"
+ },
+ "a9ac4beed2899ae0": {
+  "en": "| Electronics deck printed without supports: the IMU pocket floor is an 18 mm bridge with floating anchors | printability (slicer) | deck declared `supports=True` |",
+  "de": "| Elektronikdeck ohne Stützstrukturen gedruckt: Der Boden der IMU-Tasche ist eine 18-mm-Brücke mit schwebenden Ankern | Druckbarkeit (Slicer) | Deck als `supports=True` deklariert |"
+ },
+ "a069a676585557a4": {
+  "en": "| Tibias (135 mm upright), short links and hip bearing pins have too little bed contact in the published orientation | printability (unsupported analysis slice) | re-oriented flat in the print kit; tibias 1.5 h instead of 2.5 h |",
+  "de": "| Tibias (135 mm aufrecht), kurze Koppeln und Hüftlagerbolzen haben in der veröffentlichten Ausrichtung zu wenig Bettkontakt | Druckbarkeit (ungestützter Analyse-Slice) | im Druckpaket flach umorientiert; Tibias 1,5 h statt 2,5 h |"
+ },
+ "6ce37534eb0dec42": {
+  "en": "| 3MF plates packed with 4 mm gaps: neighbouring supported parts produced conflicting tool paths | printability (slicer) | 10 mm gaps, snug supports, first-fit packing (13 plates) |",
+  "de": "| 3MF-Druckplatten mit 4 mm Abstand gepackt: Benachbarte gestützte Teile erzeugten widersprüchliche Werkzeugpfade | Druckbarkeit (Slicer) | 10 mm Abstand, eng anliegende Stützstrukturen, First-Fit-Packung (13 Druckplatten) |"
+ },
+ "7fb89ca9c9b41ea0": {
+  "en": "| XT60 window corners left 0.26 mm slivers in the bezel boss; FDM-rounded inner corners would bind the square XT60 hood | thickness scan, review | boss reduced to an upper and lower arc; 0.5 mm dog-bone corner reliefs in bezel and clamp ring |",
+  "de": "| Ecken des XT60-Fensters ließen 0,26 mm dünne Stege im Blendendom; im FDM-Druck verrundete Innenecken würden die eckige XT60-Haube klemmen | Dickenscan, Review | Dom auf einen oberen und einen unteren Bogen reduziert; 0,5 mm Dog-Bone-Eckfreistiche in Blende und Klemmring |"
+ },
+ "8c78e70a99128b73": {
+  "en": "| A 6.2 mm screwdriver bore in the 6 mm bus-holder divider left 0.1 mm slivers | thickness scan | access slot instead of the bore |",
+  "de": "| Eine 6,2-mm-Schraubendreherbohrung im 6 mm dicken Bushalter-Trennsteg ließ 0,1 mm dünne Stege | Dickenscan | Zugangsschlitz statt der Bohrung |"
+ },
+ "4a7e1d787011a55e": {
+  "en": "| UBEC acceptance window (6.0 ± 0.1 V) allowed 6.1 V on a servo rated to 6.0 V | voltage-domain check | accept 5.8–6.0 V unloaded |",
+  "de": "| Abnahmefenster des UBEC (6,0 ± 0,1 V) ließ 6,1 V an einem für 6,0 V spezifizierten Servo zu | Spannungsdomänen-Prüfung | 5,8–6,0 V im Leerlauf akzeptieren |"
+ },
+ "65be10cfef70b72a": {
+  "en": "Excerpts of the command output are linked per row (`docs/verification/logs/`); deliberate gate breaks are in [gates.txt](verification/logs/gates.txt). Commands refer to the v0.1.0 layout (`tools/…`).",
+  "de": "Auszüge der Befehlsausgabe sind pro Zeile verlinkt (`docs/verification/logs/`); absichtliche Prüfungsbrüche stehen in [gates.txt](verification/logs/gates.txt). Befehle beziehen sich auf das Layout von v0.1.0 (`tools/…`)."
+ },
+ "ea4295b50ff41a84": {
+  "en": "| Check | Command | Tier | Result | Log |",
+  "de": "| Prüfung | Befehl | Stufe | Ergebnis | Log |"
+ },
+ "8758caeb5f7783f4": {
+  "en": "| Fasteners derived from the measured hole stacks; placed fasteners must equal the rule totals | `make verify` (`hole_stacks.py`, `fasteners.py`) | static | all stacks matched; placements = rule counts (gate proven red by un-merging the split tibia-pin stacks) | [verify.txt](verification/logs/verify.txt) |",
+  "de": "| Befestigungselemente aus den gemessenen Lochstapeln abgeleitet; platzierte Befestigungselemente müssen den Regelsummen entsprechen | `make verify` (`hole_stacks.py`, `fasteners.py`) | statisch | alle Stapel zugeordnet; Platzierungen = Regelanzahlen (Prüfung nachweislich rot durch Auftrennen der geteilten Tibia-Bolzenstapel) | [verify.txt](verification/logs/verify.txt) |"
+ },
+ "473710d63dc2bc51": {
+  "en": "| Interference of 479 solids (printed, purchased, fasteners) at stand 170 mm, crouch 120 mm, tall 210 mm and the CAD pose | `interference_check.py` | static | **0 unexplained overlaps** in all 4 poses; every remaining overlap is classified (thread engagement, seating contact, joint, upstream fit, upstream fastener on its measured hole axis) – [interference.md](verification/interference.md) | verify.txt |",
+  "de": "| Durchdringung von 479 Körpern (gedruckt, gekauft, Befestigungselemente) im Stand 170 mm, Hocke 120 mm, hoch 210 mm und in der CAD-Pose | `interference_check.py` | statisch | **0 ungeklärte Überlappungen** in allen 4 Posen; jede verbleibende Überlappung ist klassifiziert (Gewindeeingriff, Sitzkontakt, Gelenk, Upstream-Passung, Upstream-Befestigungselement auf seiner gemessenen Lochachse) – [interference.md](verification/interference.md) | verify.txt |"
+ },
+ "4defadfb6e81d2dd": {
+  "en": "| LiDAR occlusion (720 rays) and camera self-view, 5 poses incl. trot and full hip abduction | `sensor_fov.py` | static | 0 rays blocked; robot in 0.0 % of the camera image – [sensors.md](verification/sensors.md) | verify.txt |",
+  "de": "| LiDAR-Verdeckung (720 Strahlen) und Kamera-Eigensicht, 5 Posen inkl. Trot und voller Hüftabduktion | `sensor_fov.py` | statisch | 0 Strahlen blockiert; Roboter in 0,0 % des Kamerabilds – [sensors.md](verification/sensors.md) | verify.txt |"
+ },
+ "446ea033cff37321": {
+  "en": "| Range of motion: thigh × calf grid (5°) at zero abduction, transmission ≥ 25°; hip range at stand and mid pose | `rom_sweep.py` | static | limits as committed in `hardware/joint_limits.yaml` (no diff after the run) | verify.txt |",
+  "de": "| Bewegungsbereich: Raster Oberschenkel × Unterschenkel (5°) bei null Abduktion, Übertragungswinkel ≥ 25°; Hüftbereich im Stand und in mittlerer Pose | `rom_sweep.py` | statisch | Grenzen wie in `hardware/joint_limits.yaml` eingecheckt (kein Diff nach dem Lauf) | verify.txt |"
+ },
+ "0ba7b4ccacbca45d": {
+  "en": "| Generated geometry in firmware/Python matches the YAML | `codegen.py --check` | static | no drift | verify.txt, [test.txt](verification/logs/test.txt) |",
+  "de": "| Generierte Geometrie in Firmware/Python entspricht der YAML | `codegen.py --check` | statisch | keine Abweichung | verify.txt, [test.txt](verification/logs/test.txt) |"
+ },
+ "36d0e362e65d1534": {
+  "en": "| Printability: closed manifold, fits 220 × 220 × 250 mm, on the bed | `make print` | static | 32 part types / 67 pieces pass | [docs.txt](verification/logs/docs.txt) |",
+  "de": "| Druckbarkeit: geschlossene Mannigfaltigkeit, passt in 220 × 220 × 250 mm, liegt auf dem Bett | `make print` | statisch | 32 Teiletypen / 67 Stück bestanden | [docs.txt](verification/logs/docs.txt) |"
+ },
+ "0193e2240e918971": {
+  "en": "| BOM supplies every purchased part and fastener of the CAD for the offers each strategy buys (packs rounded up, fasteners + max(2, 10 %) spares) | `make bom` | static | all covered in all 4 strategies; gate proven red by removing the M3 × 10 supply | docs.txt |",
+  "de": "| Stückliste liefert jedes gekaufte Teil und Befestigungselement des CAD für die Angebote, die jede Strategie kauft (Packungen aufgerundet, Befestigungselemente + max(2, 10 %) Reserve) | `make bom` | statisch | alles abgedeckt in allen 4 Strategien; Prüfung nachweislich rot durch Entfernen des M3 × 10-Vorrats | docs.txt |"
+ },
+ "19f9f239450b3532": {
+  "en": "| Python core: protocol (CRC vector shared with the firmware, COBS, corruption, resync), IK/FK, knee linkage inverse, gait limits incl. the knee-crank clamp, CLI calibration and the CLI's refusal when the controller keeps the servos relaxed (fake controller on a pseudo-terminal) | `pytest` | unit | 27 passed; the crank-limit test fails when the clamp is removed | test.txt, gates.txt |",
+  "de": "| Python-Kern: Protokoll (CRC-Vektor gemeinsam mit der Firmware, COBS, Beschädigung, Resynchronisation), IK/FK, Inverse des Kniekoppelgetriebes, Gait-Grenzen inkl. der Kniekurbel-Begrenzung, CLI-Kalibrierung und die Weigerung der CLI, wenn der Controller die Servos entspannt hält (Fake-Controller an einem Pseudoterminal) | `pytest` | Unit | 27 bestanden; der Kurbelgrenzen-Test schlägt fehl, wenn die Begrenzung entfernt wird | test.txt, gates.txt |"
+ },
+ "d01bc8d4c4caa2e2": {
+  "en": "| Firmware core: kinematics, protocol, watchdog, e-stop, debounced battery cut-off, no driving without the power monitor (bench calibration allowed), NaN rejection | `pio test -e native` | unit | 15/15 passed; the NaN test fails with the old clamp | test.txt, gates.txt |",
+  "de": "| Firmware-Kern: Kinematik, Protokoll, Watchdog, Not-Aus, entprellte Akku-Abschaltung, kein Ansteuern ohne Power-Monitor (Kalibrierung am Prüfstand erlaubt), NaN-Ablehnung | `pio test -e native` | Unit | 15/15 bestanden; der NaN-Test schlägt mit der alten Begrenzung fehl | test.txt, gates.txt |"
+ },
+ "2bb9e8b54798dc08": {
+  "en": "| Firmware build for the XIAO ESP32-S3 | `pio run -e xiao_esp32s3` | build | success, RAM 8.0 %, flash 16.0 % | [firmware.txt](verification/logs/firmware.txt) |",
+  "de": "| Firmware-Build für den XIAO ESP32-S3 | `pio run -e xiao_esp32s3` | Build | erfolgreich, RAM 8,0 %, Flash 16,0 % | [firmware.txt](verification/logs/firmware.txt) |"
+ },
+ "448b514d1eb9289e": {
+  "en": "| `mcu_bridge` (ROS 2 Jazzy container) against a fake controller on a raw pseudo-terminal | throwaway script | integration | STATE → `/joint_states` (Go2 names) and `/battery_state` (7.7 V, −1.2 A); command → JOINT_COMMAND; NaN command dropped; relax → JOINT_COMMAND(relax); e-stop → ESTOP; no frame dropped | [mcu_bridge_fake.txt](verification/logs/mcu_bridge_fake.txt) |",
+  "de": "| `mcu_bridge` (ROS-2-Jazzy-Container) gegen einen Fake-Controller an einem rohen Pseudoterminal | Wegwerfskript | Integration | STATE → `/joint_states` (Go2-Namen) und `/battery_state` (7,7 V, −1,2 A); Befehl → JOINT_COMMAND; NaN-Befehl verworfen; relax → JOINT_COMMAND(relax); Not-Aus → ESTOP; kein Frame verloren | [mcu_bridge_fake.txt](verification/logs/mcu_bridge_fake.txt) |"
+ },
+ "a39967f953a88d7b": {
+  "en": "| MuJoCo, production gait (heading hold uses the simulator's yaw) | `make sim-walk` | simulation | 0.15 m/s: 1.10 m in 10 s, height 0.174 m, yaw −1.7°; turn 0.6 rad/s: 197.9° in 6 s (−162.1° wrapped) | [mujoco_walk.txt](verification/logs/mujoco_walk.txt) |",
+  "de": "| MuJoCo, Produktions-Gait (Kurshaltung nutzt den Gierwinkel des Simulators) | `make sim-walk` | Simulation | 0,15 m/s: 1,10 m in 10 s, Höhe 0,174 m, Gieren −1,7°; Drehung 0,6 rad/s: 197,9° in 6 s (−162,1° umgebrochen) | [mujoco_walk.txt](verification/logs/mujoco_walk.txt) |"
+ },
+ "04333603a7e3a138": {
+  "en": "| Gazebo Harmonic headless walk, gait node (ROS 2 Jazzy, Docker, arm64) | `make sim-gazebo` | simulation | 1.00 m in 8 s at 0.15 m/s, lateral 0.12 m, roll/pitch < 0.1 rad, all sensor topics publishing | [gazebo.txt](verification/logs/gazebo.txt) |",
+  "de": "| Gazebo Harmonic Gang ohne GUI, Gait-Node (ROS 2 Jazzy, Docker, arm64) | `make sim-gazebo` | Simulation | 1,00 m in 8 s bei 0,15 m/s, seitlich 0,12 m, Rollen/Nicken < 0,1 rad, alle Sensor-Topics veröffentlichen | [gazebo.txt](verification/logs/gazebo.txt) |"
+ },
+ "536d373e6b53a381": {
+  "en": "| PPO policy, 20 M steps (1734 s, CPU), firmware slew limit modelled | `make rl-train`, `evaluate.py` | simulation | MuJoCo, 10 s per command: vx 0.2 → 0.210 m/s (yaw 2°), 0.15 → 0.152 m/s, 0 → stands, −0.1 → −0.068 m/s, vy 0.1 → 0.023 m/s (weak), wz 0.5 → 232° in 10 s (−128.4° wrapped) | [rl_eval.txt](verification/logs/rl_eval.txt) |",
+  "de": "| PPO-Policy, 20 M Schritte (1734 s, CPU), Anstiegsbegrenzung der Firmware modelliert | `make rl-train`, `evaluate.py` | Simulation | MuJoCo, 10 s pro Befehl: vx 0,2 → 0,210 m/s (Gieren 2°), 0,15 → 0,152 m/s, 0 → steht, −0,1 → −0,068 m/s, vy 0,1 → 0,023 m/s (schwach), wz 0,5 → 232° in 10 s (−128,4° umgebrochen) | [rl_eval.txt](verification/logs/rl_eval.txt) |"
+ },
+ "c6613d4cd5543107": {
+  "en": "| Same policy in Gazebo through `policy_node` (sim-to-sim) | `make sim-gazebo POLICY=build/rl/ppo-v1/policy.npz` | simulation | 0.82 m in 8 s at 0.15 m/s, lateral 0.10 m, upright | gazebo.txt |",
+  "de": "| Dieselbe Policy in Gazebo über `policy_node` (Sim-to-Sim) | `make sim-gazebo POLICY=build/rl/ppo-v1/policy.npz` | Simulation | 0,82 m in 8 s bei 0,15 m/s, seitlich 0,10 m, aufrecht | gazebo.txt |"
+ },
+ "25da16feb4ae6d5d": {
+  "en": "| Vendor CAD fetch | `make vendor-cad` | — | 8 of 9 downloads verified by SHA-256; the Littelfuse file is form-gated (manual download, envelope fallback) | gates.txt |",
+  "de": "| Abruf der Hersteller-CAD | `make vendor-cad` | — | 8 von 9 Downloads per SHA-256 verifiziert; die Littelfuse-Datei liegt hinter einem Formular (manueller Download, Hüllkörper als Ersatz) | gates.txt |"
+ },
+ "15133907259330da": {
+  "en": "Not verified",
+  "de": "Nicht verifiziert"
+ },
+ "f4ce9e34415b2f9e": {
+  "en": "Nothing has been printed, assembled, wired or powered. Fits are checked against CAD and datasheets, not against printed parts (expect to tune hole and bearing fits to your printer).",
+  "de": "Nichts wurde gedruckt, montiert, verkabelt oder eingeschaltet. Passungen sind gegen CAD und Datenblätter geprüft, nicht gegen gedruckte Teile (rechnen Sie damit, Loch- und Lagerpassungen an Ihren Drucker anpassen zu müssen)."
+ },
+ "0fd8b0db98f419d1": {
+  "en": "Servo current, runtime and thermal behaviour are estimates ([electronics](electronics.md)). The OE pull-up value assumes the PCA9685 board's pull-down is ≥ 10 kΩ (measure OE during reset as described).",
+  "de": "Servostrom, Laufzeit und thermisches Verhalten sind Schätzungen ([Elektronik](electronics.md)). Der Wert des OE-Pull-ups setzt voraus, dass der Pull-down der PCA9685-Platine ≥ 10 kΩ ist (messen Sie OE während des Resets wie beschrieben)."
+ },
+ "65b5ec343a9d6e57": {
+  "en": "Datasheet envelopes (no vendor CAD): servos (upstream STEP model), WAGO 221-415, LiPo, UBEC, pushbutton, LiDAR USB adapter (size unverified).",
+  "de": "Datenblatt-Hüllkörper (keine Hersteller-CAD): Servos (Upstream-STEP-Modell), WAGO 221-415, LiPo, UBEC, Taster, LiDAR-USB-Adapter (Größe unbestätigt)."
+ },
+ "b8494a82d9d028c9": {
+  "en": "Upstream joint fasteners are placed from hole stacks with an approximate head side and nut orientation; they are part of the static interference check but not of the range-of-motion sweep.",
+  "de": "Upstream-Gelenkbefestigungselemente werden aus Lochstapeln mit ungefährer Kopfseite und Mutterausrichtung platziert; sie sind Teil der statischen Durchdringungsprüfung, aber nicht des Bewegungsbereich-Durchlaufs."
+ },
+ "0614600b440ed8b3": {
+  "en": "The knee is a revolute joint in Gazebo/MuJoCo; linkage compliance and backlash are not simulated. The learned policy has not seen real servo dynamics.",
+  "de": "Das Knie ist in Gazebo/MuJoCo ein Drehgelenk; Nachgiebigkeit und Spiel des Koppelgetriebes werden nicht simuliert. Die gelernte Policy hat keine echte Servodynamik gesehen."
+ },
+ "343930a6d27a0f0b": {
+  "en": "The camera node on the Pi 5 needs the Raspberry Pi libcamera fork (not in the Docker image); `robot.launch.py` was not run on a Pi.",
+  "de": "Der Kamera-Node auf dem Pi 5 benötigt den libcamera-Fork von Raspberry Pi (nicht im Docker-Image); `robot.launch.py` wurde nicht auf einem Pi ausgeführt."
+ }
+}

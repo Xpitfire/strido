@@ -1,0 +1,129 @@
+# Contacts that are part of the design. Anything else found by
+# strido_verify.contacts fails the check.
+
+# Upstream STLs are placed by registration against the upstream STEP; the
+# shells register with up to ~0.8 mm RMS (coarse STL chords), so overlaps
+# between upstream parts below this depth are fits that exist in the upstream
+# design, not new collisions.
+upstream_fit_max_penetration_mm: 1.0
+
+# Strido parts that are boolean edits of an upstream part keep its outer
+# geometry and therefore its upstream fits.
+derived_from_upstream:
+  front_shell_display: front_shell
+  top_shell_sensor: top_shell
+  back_shell_button: back_shell
+  electronics_deck: electronics_mounting_plate
+  lower_shoulder_frame_front: lower_shoulder_frame
+  lower_shoulder_frame_rear: lower_shoulder_frame
+
+# Bodies with internal threads (a screw shank inside them is engagement).
+threaded_parts:
+  - waveshare_lcd_2inch      # factory M2 hex studs on the module
+  - rplidar_c1               # M2.5 threaded inserts in the sensor base (max 4 mm)
+  - standoff_m2_5_ff_6
+  - standoff_m2_ff_8
+  - iso4032_m2
+  - iso4032_m2_5
+  - iso4032_m3
+  - din985_m3
+
+seating_contacts:
+  - pair: [front_shell_display, waveshare_lcd_2inch]
+    why: LCD glass pressed against the inside of the front shell by the bracket
+  - pair: [top_shell_sensor, lidar_pedestal]
+    why: pedestal stands on the shell top surface
+  - pair: [top_shell_sensor, rplidar_usb_adapter]
+    why: adapter taped to the shell top inside the pedestal
+  - pair: [top_shell_sensor, camera_mount_base]
+    why: camera base stands on the shell top surface
+  - pair: [rplidar_c1, lidar_pedestal]
+    why: LiDAR base on the pedestal top plate
+  - pair: [electronics_deck, adafruit_lsm6dsox]
+    why: IMU sits in its deck pocket
+  - pair: [electronics_deck, standoff_m2_5_ff_6]
+    why: stand-off on the deck
+  - pair: [adafruit_pca9685, standoff_m2_5_ff_6]
+    why: PCB on its stand-off
+  - pair: [raspberry_pi_5, standoff_m2_5_ff_6]
+    why: PCB on its stand-off
+  - pair: [adafruit_ina260, standoff_m2_5_ff_6]
+    why: PCB on its stand-off
+  - pair: [pololu_d36v50f5, standoff_m2_ff_8]
+    why: PCB on its stand-off
+  - pair: [electronics_deck, standoff_m2_ff_8]
+    why: stand-off on the deck
+  - pair: [servo_bus_holder_front, lower_shoulder_frame_front]
+    why: holder seated on the frame crown
+  - pair: [servo_bus_holder_rear, lower_shoulder_frame_rear]
+    why: holder seated on the frame crown
+  - pair: [wago_221_415, servo_bus_holder_front]
+    why: connector resting in its bay
+  - pair: [wago_221_415, servo_bus_holder_rear]
+    why: connector resting in its bay
+  - pair: [wago_221_415, wago_221_415]
+    why: stacked connectors
+  - pair: [seeed_xiao_esp32s3, servo_bus_holder_front]
+    why: XIAO resting on its rails
+  - pair: [arming_port_bezel, xt60h_female]
+    why: XT60 pressed into the bezel window
+  - pair: [arming_port_ring, back_shell_button]
+    why: clamp ring against the inside of the back shell
+  - pair: [arming_port_bezel, back_shell_button]
+    why: bezel flange against the outside of the back shell
+  - pair: [pushbutton_12mm, back_shell_button]
+    why: button bezel against the shell, body through the D12.2 hole
+  - pair: [electronics_deck, pololu_power_switch_hp]
+    why: switch board taped to the deck
+  - pair: [electronics_deck, fuse_holder_ato]
+    why: fuse holder cable-tied on the deck
+  - pair: [camera_tilt_plate, rpi_camera_module_3_wide]
+    why: camera PCB on its bosses
+  - pair: [front_shell_display, camera_mount_base]
+    why: camera base stands on the front shell top surface
+
+joints:
+  - pair: [servo_disc_horn_25t, servo_spt5435lv]
+    why: horn on the servo output spline
+  - pair: [servo_arm_horn_25t, servo_spt5435lv]
+    why: horn on the servo output spline
+  - pair: [bearing_633zz, femur]
+    why: knee bearing on its pin/bore
+  - pair: [bearing_6805_2rs, femur]
+    why: thigh bearing seat
+  - pair: [bearing_6805_2rs, femur_servo_connector]
+    why: thigh bearing seat
+  - pair: [bearing_6805_2rs, left_shoulder]
+    why: bearing pressed into the crank
+  - pair: [bearing_6805_2rs, right_shoulder]
+    why: bearing pressed into the crank
+  - pair: [bearing_625zz, hip_bearing_pin]
+    why: hip bearing on its pin
+  - pair: [bearing_625zz, left_servo_mount]
+    why: hip bearing seat
+  - pair: [bearing_625zz, right_servo_mount]
+    why: hip bearing seat
+  - pair: [femur_servo_connector, servo_disc_horn_25t]
+    why: horn clamped inside the femur connector (upstream fit)
+  - pair: [femur_servo_connector, femur]
+    why: connector bonded/bolted into the femur (upstream fit)
+  - pair: [sleeve_bearing_3x5x5_pair, long_link]
+    why: sleeve bearings pressed into the link
+  - pair: [sleeve_bearing_3x5x5_pair, short_link]
+    why: sleeve bearings pressed into the link
+  - pair: [inner_tibia, outer_tibia]
+    why: tibia halves bonded together (upstream fit)
+  - pair: [foot_spacer, inner_tibia]
+    why: foot spacer between the tibia halves
+  - pair: [foot_spacer, outer_tibia]
+    why: foot spacer between the tibia halves
+  - pair: [servo_spt5435lv, left_servo_mount]
+    why: servo flange in its mount
+  - pair: [servo_spt5435lv, right_servo_mount]
+    why: servo flange in its mount
+  - pair: [femur, servo_spt5435lv]
+    why: femur hub around the thigh servo spline
+  - pair: [bearing_625zz, iso7089_m3]
+    why: hip pivot washer clamps the 625 inner race (protrudes 0.4 mm past the pin)
+  - pair: [bearing_625zz, iso4762_m3x10]
+    why: hip pivot screw head clamps the 625 inner race

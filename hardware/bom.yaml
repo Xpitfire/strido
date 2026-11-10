@@ -1,0 +1,1027 @@
+# Strido bill of materials: single source for docs/bom/*.md (strido_publish.bom).
+#
+# lines[].qty     pieces needed (a kit counts as one piece)
+# lines[].cad     CAD part/fastener id -> units one bought piece supplies. strido_publish.bom
+#                 checks, for the offers every shopping strategy picks (packs rounded up), that
+#                 every purchased part and fastener of the CAD assembly is covered (fasteners
+#                 need max(2, 10 %) spares), so the shopping list cannot miss a bolt.
+# offers[]        price = EUR incl. VAT per pack of `pack` pieces, as observed on 2026-10-30
+#                 (agent research reports; see docs/bom/sources.md). status: observed | listing |
+#                 approximate | unverified. Prices change: re-check before ordering.
+# genuine: false  marks clone/third-party parts that are fine to use (see notes).
+# vendors[].search  product search URL of the shop; {q} = the offer's order code (the SKU without
+#                 notes in brackets; DigiKey: the -ND number). Used by the order configurator.
+
+vendors:
+  digikey_at:
+    search: https://www.digikey.at/en/products/result?keywords={q}
+    name: DigiKey.at
+    shipping: 25.0
+    free_from: 75.0
+    region: US warehouse
+    url: https://www.digikey.at
+  amazon_de:
+    search: https://www.amazon.de/s?k={q}
+    name: Amazon.de
+    shipping: 3.99
+    free_from: 39.0
+    per_order_fee: 2.4
+    region: EU
+    url: https://www.amazon.de
+    note: +2.40 Austrian parcel tax per order
+  aliexpress:
+    search: https://de.aliexpress.com/item/{q}.html
+    name: AliExpress (DigitalServo Store)
+    shipping: 5.9
+    free_from: null
+    region: CN
+    note: 'servo order > 150 EUR leaves IOSS: split into two orders or expect import VAT/clearance'
+  reichelt_at:
+    search: https://www.reichelt.at/at/de/shop/suche/{q}
+    name: Reichelt.at
+    shipping: 6.95
+    free_from: null
+    region: EU
+    url: https://www.reichelt.at
+  berrybase_at:
+    search: https://www.berrybase.at/search?search={q}
+    name: Berrybase.at
+    shipping: 5.95
+    free_from: 200.0
+    region: EU
+    url: https://www.berrybase.at
+  welectron:
+    search: https://www.welectron.com/search/?qs={q}
+    name: Welectron (DE)
+    shipping: 9.9
+    free_from: null
+    region: EU
+    url: https://www.welectron.com
+  eckstein:
+    search: https://eckstein-shop.de/search/?qs={q}
+    name: Eckstein (DE)
+    shipping: 6.9
+    free_from: null
+    region: EU
+    url: https://eckstein-shop.de
+    note: 'shipping to AT not shown before checkout: 6.90 assumed (UNVERIFIED)'
+  lindinger_at:
+    search: https://www.lindinger.at/de/search?search={q}
+    name: Lindinger.at
+    shipping: 5.99
+    free_from: 89.0
+    region: EU
+    url: https://www.lindinger.at
+  threedjake_at:
+    search: https://www.3djake.at/suche?q={q}
+    name: 3DJake.at
+    shipping: 5.49
+    free_from: 49.9
+    region: EU
+    url: https://www.3djake.at
+  schraubenking_at:
+    search: https://www.schraubenking.at/search/?qs={q}
+    name: Schraubenking.at
+    shipping: 5.9
+    free_from: 99.0
+    region: EU
+    url: https://www.schraubenking.at
+  kugellager_express:
+    search: https://www.kugellager-express.de/search?sSearch={q}
+    name: kugellager-express.de
+    shipping: 8.9
+    free_from: null
+    region: EU
+    url: https://www.kugellager-express.de
+lines:
+- id: pi5_4gb
+  name: Raspberry Pi 5, 4 GB
+  category: Compute and sensors
+  qty: 1
+  cad:
+    raspberry_pi_5: 1
+  offers:
+  - vendor: digikey_at
+    sku: SC1431 (2648-SC1431-ND)
+    price: 117.18
+    status: observed
+  - vendor: berrybase_at
+    sku: RPI5-4GB
+    price: 123.9
+    status: observed
+    stock: limited
+  - vendor: reichelt_at
+    sku: RASP PI 5 B 4GB
+    price: 137.55
+    status: observed
+    stock: pre-order
+- id: pi5_cooler
+  name: Raspberry Pi Active Cooler
+  category: Compute and sensors
+  qty: 1
+  offers:
+  - vendor: welectron
+    sku: SC1148
+    price: 4.9
+    status: observed
+  - vendor: digikey_at
+    sku: SC1148
+    price: 5.33
+    status: observed
+  - vendor: reichelt_at
+    sku: SC1148
+    price: 5.6
+    status: observed
+  - vendor: berrybase_at
+    sku: SC1148
+    price: 5.9
+    status: observed
+- id: microsd_64
+  name: microSD 64 GB A2 (SanDisk Extreme)
+  category: Compute and sensors
+  qty: 1
+  offers:
+  - vendor: berrybase_at
+    sku: SanDisk Extreme A2 64GB
+    price: 25.9
+    status: observed
+    stock: limited
+  - vendor: amazon_de
+    sku: B09X7CXWQQ
+    price: 26.21
+    status: observed
+- id: camera_module_3_wide
+  name: Raspberry Pi Camera Module 3 Wide
+  category: Compute and sensors
+  qty: 1
+  cad:
+    rpi_camera_module_3_wide: 1
+  offers:
+  - vendor: welectron
+    sku: Camera Module 3 Wide
+    price: 35.9
+    status: observed
+  - vendor: digikey_at
+    sku: SC1224
+    price: 37.28
+    status: observed
+- id: camera_cable_300
+  name: Pi 5 camera cable 22→15 pin, 300 mm
+  category: Compute and sensors
+  qty: 1
+  offers:
+  - vendor: digikey_at
+    sku: SC1129
+    price: 2.14
+    status: observed
+  - vendor: berrybase_at
+    sku: RPI-CC-SM-30
+    price: 2.3
+    status: observed
+  - vendor: amazon_de
+    sku: B0CX1SFD44
+    price: 9.67
+    status: observed
+    genuine: false
+- id: xiao_esp32s3
+  name: Seeed XIAO ESP32-S3, pre-soldered headers
+  category: Compute and sensors
+  qty: 1
+  cad:
+    seeed_xiao_esp32s3: 1
+  offers:
+  - vendor: digikey_at
+    sku: 102010634
+    price: 9.05
+    status: observed
+  - vendor: berrybase_at
+    sku: SE-102010634
+    price: 9.9
+    status: observed
+  - vendor: amazon_de
+    sku: B0BYSB66S5
+    price: 16.08
+    status: observed
+- id: pca9685
+  name: PCA9685 16-channel PWM board (Adafruit 815 layout)
+  category: Compute and sensors
+  qty: 1
+  cad:
+    adafruit_pca9685: 1
+  note: clones must have the Adafruit 815 footprint (62.5 x 25.4 mm, 4 corner holes)
+  offers:
+  - vendor: amazon_de
+    sku: B06XSFFXQY
+    price: 6.95
+    status: observed
+    genuine: false
+  - vendor: eckstein
+    sku: QITA PCA9685
+    price: 10.5
+    status: observed
+    genuine: false
+  - vendor: digikey_at
+    sku: Adafruit 815
+    price: 15.92
+    status: observed
+- id: lsm6dsox
+  name: Adafruit LSM6DSOX 6-DoF IMU (4438)
+  category: Compute and sensors
+  qty: 1
+  cad:
+    adafruit_lsm6dsox: 1
+  offers:
+  - vendor: digikey_at
+    sku: Adafruit 4438
+    price: 12.73
+    status: observed
+  - vendor: amazon_de
+    sku: B085F3F19D
+    price: 20.16
+    status: observed
+    stock: 3 left
+- id: ina260
+  name: Adafruit INA260 power monitor (4226)
+  category: Compute and sensors
+  qty: 1
+  cad:
+    adafruit_ina260: 1
+  offers:
+  - vendor: digikey_at
+    sku: Adafruit 4226
+    price: 10.6
+    status: observed
+  - vendor: eckstein
+    sku: Adafruit 4226
+    price: 11.84
+    status: observed
+- id: lcd_2inch
+  name: Waveshare 2" LCD module, ST7789, 240x320 (17344)
+  category: Compute and sensors
+  qty: 1
+  cad:
+    waveshare_lcd_2inch: 1
+  offers:
+  - vendor: welectron
+    sku: 17344
+    price: 10.9
+    status: observed
+  - vendor: eckstein
+    sku: Waveshare 2inch LCD
+    price: 14.27
+    status: observed
+  - vendor: amazon_de
+    sku: B081NBBRWS
+    price: 20.16
+    status: observed
+- id: rplidar_c1
+  name: Slamtec RPLIDAR C1 (with USB adapter)
+  category: Compute and sensors
+  qty: 1
+  cad:
+    rplidar_c1: 1
+    rplidar_usb_adapter: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0CP8YRY44 (WayPonDEV)
+    price: 70.58
+    status: observed
+    stock: ships in 4-5 days
+  - vendor: amazon_de
+    sku: B0CT31PH8S (Waveshare)
+    price: 103.86
+    status: observed
+- id: stemma_qt_female
+  name: STEMMA QT to female sockets cable, 150 mm (Adafruit 4397; IMU to PCA9685 and IMU to INA260)
+  category: Compute and sensors
+  qty: 2
+  offers:
+  - vendor: digikey_at
+    sku: Adafruit 4397
+    price: 1.01
+    status: observed
+  - vendor: berrybase_at
+    sku: SE-114992154 (Seeed, alternative)
+    price: 2.5
+    status: observed
+- id: resistor_2k2
+  name: Resistor 2.2 kΩ 0.25 W (PCA9685 OE pull-up)
+  category: Compute and sensors
+  qty: 1
+  offers:
+  - vendor: reichelt_at
+    sku: METALL 2,20K
+    price: 0.1
+    status: unverified
+- id: servo_spt5435lv
+  name: SPT5435LV-180W servo, 35 kg·cm, 180° (12 + 1 spare)
+  category: Actuation and mechanics
+  qty: 13
+  cad:
+    servo_spt5435lv: 1
+  note: must be the 180° variant (500-2500 µs = 180°); confirm angle with any non-SPT seller
+  offers:
+  - vendor: aliexpress
+    sku: 4000135787995, variant 35kg-180 Waterproof
+    price: 13.46
+    status: observed
+  - vendor: amazon_de
+    sku: B0G39ZHL4B (angle not stated)
+    price: 22.48
+    status: observed
+    stock: 3 left
+- id: disc_horn_25t
+  name: 25T aluminium disc horn
+  category: Actuation and mechanics
+  qty: 8
+  cad:
+    servo_disc_horn_25t: 1
+  offers:
+  - vendor: amazon_de
+    sku: B07F71J1Q2 (DollaTek, 5-pack)
+    price: 5.03
+    pack: 5
+    status: observed
+    genuine: false
+- id: arm_horn_25t
+  name: 25T aluminium clamping arm horn
+  category: Actuation and mechanics
+  qty: 4
+  cad:
+    servo_arm_horn_25t: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0F5QG8HQS (5-pack)
+    price: 9.06
+    pack: 5
+    status: observed
+    genuine: false
+    stock: 17 left
+- id: bearing_625zz
+  name: Ball bearing 625ZZ (5x16x5)
+  category: Actuation and mechanics
+  qty: 4
+  cad:
+    bearing_625zz: 1
+  offers:
+  - vendor: kugellager_express
+    sku: 625-ZZ
+    price: 0.88
+    status: observed
+  - vendor: threedjake_at
+    sku: 625ZZ 10-pack
+    price: 4.99
+    pack: 10
+    status: observed
+  - vendor: amazon_de
+    sku: B0CM8TYDR6 (15-pack)
+    price: 7.36
+    pack: 15
+    status: observed
+- id: bearing_6805
+  name: Ball bearing 6805-2RS (25x37x7)
+  category: Actuation and mechanics
+  qty: 4
+  cad:
+    bearing_6805_2rs: 1
+  offers:
+  - vendor: kugellager_express
+    sku: 6805/61805-2RS
+    price: 1.7
+    status: observed
+  - vendor: amazon_de
+    sku: B0CL4Z679J (2-pack)
+    price: 6.74
+    pack: 2
+    status: observed
+- id: bearing_633zz
+  name: Ball bearing 633ZZ (3x13x5)
+  category: Actuation and mechanics
+  qty: 8
+  cad:
+    bearing_633zz: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0GGT3GW69 (8-pack)
+    price: 10.27
+    pack: 8
+    status: observed
+    stock: 3 left
+- id: sleeve_3x5x5
+  name: Sintered bronze sleeve bearing 3x5x5
+  category: Actuation and mechanics
+  qty: 32
+  cad:
+    sleeve_bearing_3x5x5_pair: 0.5
+  offers:
+  - vendor: amazon_de
+    sku: B0G15L264D (50-pack)
+    price: 10.27
+    pack: 50
+    status: observed
+    stock: 4 left
+  - vendor: amazon_de
+    sku: B0CWRXCWF9 (wrapped, 10-pack)
+    price: 5.44
+    pack: 10
+    status: observed
+- id: ubec_10a
+  name: Hobbywing UBEC-10A (V2-Car), 6.0 V
+  category: Power
+  qty: 2
+  cad:
+    hobbywing_ubec_10a: 1
+  offers:
+  - vendor: lindinger_at
+    sku: HW30603003
+    price: 26.99
+    status: observed
+    stock: few left
+  - vendor: amazon_de
+    sku: B0BCWYQYKW (genuine Hobbywing, marketplace sellers)
+    price: 29.9
+    status: listing
+- id: lipo_2s_5000
+  name: LiPo 2S 5000 mAh hardcase, XT60, max 138 x 47 x 25 mm (Gens ace G-Tech)
+  category: Power
+  qty: 1
+  cad:
+    lipo_2s_5000_gensace: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0GKP683YF
+    price: 22.18
+    status: observed
+- id: charger
+  name: LiPo balance charger, AC input (B6AC class)
+  category: Power
+  qty: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0F3CYZ6L8 (HTRC B6AC)
+    price: 46.38
+    status: observed
+- id: lipo_bag
+  name: LiPo safety bag
+  category: Power
+  qty: 1
+  offers:
+  - vendor: lindinger_at
+    sku: Robbe 23x30 cm (9787514)
+    price: 6.49
+    status: observed
+  - vendor: amazon_de
+    sku: B09C31KVK1
+    price: 14.11
+    status: observed
+- id: lipo_checker
+  name: LiPo cell checker / low-voltage alarm
+  category: Power
+  qty: 1
+  offers:
+  - vendor: lindinger_at
+    sku: Absima (9771616)
+    price: 5.95
+    status: observed
+  - vendor: amazon_de
+    sku: B077Z1N9CS
+    price: 6.04
+    status: observed
+- id: pololu_regulator
+  name: Pololu D36V50F5 5 V 5.5 A step-down regulator
+  category: Power
+  qty: 1
+  cad:
+    pololu_d36v50f5: 1
+  offers:
+  - vendor: eckstein
+    sku: D36V50F5
+    price: 41.59
+    status: observed
+  - vendor: digikey_at
+    sku: Pololu 4091 (Marketplace)
+    price: 48.24
+    status: observed
+- id: pololu_switch
+  name: 'Pololu #2813 Big Pushbutton Power Switch HP'
+  category: Power
+  qty: 1
+  cad:
+    pololu_power_switch_hp: 1
+  offers:
+  - vendor: digikey_at
+    sku: Pololu 2813 (Marketplace)
+    price: 10.8
+    status: observed
+- id: pushbutton
+  name: 12 mm momentary pushbutton, stainless (ONPOW GQ12B-10S)
+  category: Power
+  qty: 1
+  cad:
+    pushbutton_12mm: 1
+  offers:
+  - vendor: reichelt_at
+    sku: 318555
+    price: 5.66
+    status: observed
+  - vendor: reichelt_at
+    sku: 318547 (solder lugs)
+    price: 7.46
+    status: observed
+- id: xt60_pairs
+  name: XT60H connectors, 3 pairs (battery lead, arming port, loop key)
+  category: Power
+  qty: 1
+  cad:
+    xt60h_female: 3
+  offers:
+  - vendor: amazon_de
+    sku: B07C3KH1VT (Amass, 3 pairs)
+    price: 6.44
+    status: observed
+  - vendor: lindinger_at
+    sku: Robbe XT60 3 pairs (9750234)
+    price: 4.99
+    status: observed
+- id: fuse_holder
+  name: Inline ATO fuse holder, 14 AWG leads (main + logic branch)
+  category: Power
+  qty: 2
+  cad:
+    fuse_holder_ato: 1
+  offers:
+  - vendor: amazon_de
+    sku: B087BT1PH3 (6 holders + 100 fuses)
+    price: 10.07
+    status: observed
+    genuine: false
+    pack: 6
+  - vendor: amazon_de
+    sku: B07426WCLM (Nilight, 10 holders)
+    price: 8.56
+    status: observed
+    genuine: false
+    pack: 10
+- id: fuse_25a
+  name: ATO blade fuse 25 A (main, 1 + 2 spare)
+  category: Power
+  qty: 3
+  offers:
+  - vendor: reichelt_at
+    sku: '7786'
+    price: 0.36
+    status: observed
+  - vendor: amazon_de
+    sku: B09ZXRZLV8 (10-pack)
+    price: 4.02
+    pack: 10
+    status: observed
+- id: fuse_7_5a
+  name: ATO blade fuse 7.5 A (logic branch, 1 + 1 spare)
+  category: Power
+  qty: 2
+  offers:
+  - vendor: reichelt_at
+    sku: FKS 7.5 A (same series as 7786)
+    price: 0.36
+    status: approximate
+- id: wago_221_415
+  name: WAGO 221-415 lever connector
+  category: Power
+  qty: 8
+  cad:
+    wago_221_415: 1
+  offers:
+  - vendor: reichelt_at
+    sku: 149800
+    price: 0.81
+    status: observed
+  - vendor: amazon_de
+    sku: B0107SYYGU (25-pack)
+    price: 14.11
+    pack: 25
+    status: observed
+- id: wire_14awg
+  name: Silicone wire 14 AWG / 2.5 mm², red + black, 1 m each
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: lindinger_at
+    sku: 20479
+    price: 4.99
+    status: observed
+  - vendor: amazon_de
+    sku: B0C53D343Y (5 m)
+    price: 12.1
+    status: observed
+- id: wire_18awg
+  name: Silicone wire 18 AWG / 0.75 mm², red + black (1 m each per unit)
+  category: Wiring
+  qty: 2
+  offers:
+  - vendor: lindinger_at
+    sku: 44422
+    price: 2.99
+    status: observed
+  - vendor: amazon_de
+    sku: B0D12R349S (5+5 m)
+    price: 9.06
+    status: observed
+- id: wire_22awg
+  name: Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0C7T9KYND (6 colours x 4 m)
+    price: 12.1
+    status: observed
+- id: usb_a_c_short
+  name: USB-A to USB-C cable, 20 cm, 90° (Pi → XIAO, Pi → LiDAR adapter)
+  category: Wiring
+  qty: 2
+  offers:
+  - vendor: amazon_de
+    sku: B09ZDV7S44 (aceyoon 20 cm 90°, 3-pack)
+    price: 7.64
+    pack: 3
+    status: observed
+- id: dupont_set
+  name: Dupont jumper set 20 cm (F-F, M-M, F-M)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: berrybase_at
+    sku: DUPK-SET-20
+    price: 4.9
+    status: observed
+  - vendor: amazon_de
+    sku: B0F98KBV61 (160 x F-F)
+    price: 8.05
+    status: observed
+- id: heat_shrink
+  name: Heat-shrink assortment
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: reichelt_at
+    sku: 152924
+    price: 5.39
+    status: observed
+  - vendor: amazon_de
+    sku: B071D7LJ31
+    price: 8.56
+    status: observed
+- id: cable_ties
+  name: Cable ties 100 x 2.5 mm (100)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: berrybase_at
+    sku: E-E510
+    price: 0.9
+    status: observed
+  - vendor: reichelt_at
+    sku: Delock 19186
+    price: 1.16
+    status: observed
+- id: spiral_wrap
+  name: Spiral wrap, black PE, for bundles 4-10 mm (5-10 m)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: reichelt_at
+    sku: CIMCO 186220 (10 m, bundles 4-20 mm)
+    price: 4.84
+    status: observed
+  - vendor: amazon_de
+    sku: B093SSR4KS (SeKi, 5 m, bundles 1.5-10 mm)
+    price: 4.94
+    status: observed
+- id: cable_tie_mounts
+  name: Adhesive cable-tie mount 13 x 13 mm (HellermannTyton MB2APT-A)
+  category: Wiring
+  qty: 2
+  cad:
+    cable_tie_mount: 1
+  offers:
+  - vendor: reichelt_at
+    sku: HT 151-02243 (per piece)
+    price: 1.06
+    status: observed
+- id: dupont_crimp_contacts
+  name: Dupont 2.54 mm crimp contacts and housings (1-6 pin), for the cut-to-length signal leads
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: berrybase_at
+    sku: DUPST-SET (610 pieces)
+    price: 9.9
+    status: observed
+  - vendor: amazon_de
+    sku: B0FP14VDGS (620 pieces)
+    price: 9.06
+    status: observed
+- id: solder
+  name: Solder wire, lead-free, 0.8 mm, flux core (50-100 g)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: amazon_de
+    sku: B07Z7BVKXQ (100 g, Sn99.3Cu0.7)
+    price: 13.84
+    status: observed
+  - vendor: reichelt_at
+    sku: Goobay 420259 (50 g, SAC)
+    price: 13.61
+    status: observed
+- id: velcro
+  name: Hook-and-loop straps (battery strap)
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: reichelt_at
+    sku: 280182
+    price: 5.14
+    status: observed
+  - vendor: amazon_de
+    sku: B0BFVRQVFP
+    price: 7.04
+    status: observed
+- id: foam_tape
+  name: Double-sided foam mounting tape, 19 mm
+  category: Wiring
+  qty: 1
+  offers:
+  - vendor: reichelt_at
+    sku: tesa PRO Universal 338987
+    price: 9.98
+    status: observed
+  - vendor: amazon_de
+    sku: B00EDLPG7Y (3M VHB 5952F)
+    price: 14.11
+    status: observed
+- id: m3_kit
+  name: M3 socket head screw kit, stainless (6-50 mm, nuts, washers; WZHUIDA 1080 pcs)
+  category: Fasteners
+  qty: 1
+  cad:
+    iso4762_m3x8: 40
+    iso4762_m3x10: 30
+    iso4762_m3x12: 30
+    iso4762_m3x16: 30
+    iso4762_m3x20: 30
+    iso4762_m3x25: 20
+    iso4762_m3x40: 20
+    iso4032_m3: 360
+    iso7089_m3: 360
+  offers:
+  - vendor: amazon_de
+    sku: B0D2VST57H
+    price: 17.14
+    status: observed
+    stock: 17 left
+- id: m3x10_100
+  name: M3 x 10 DIN 912 A2
+  category: Fasteners
+  qty: 100
+  cad:
+    iso4762_m3x10: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: M3x10 DIN912 A2, 100
+    price: 2.35
+    status: approximate
+    pack: 100
+- id: m3x20
+  name: M3 x 20 DIN 912 A2
+  category: Fasteners
+  qty: 10
+  cad:
+    iso4762_m3x20: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: M3x20 DIN912 A2, 10
+    price: 0.97
+    pack: 10
+    status: approximate
+- id: m3_nyloc
+  name: M3 DIN 985 nylon lock nut
+  category: Fasteners
+  qty: 25
+  cad:
+    din985_m3: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P000461 (zinc-plated)
+    price: 1.39
+    status: observed
+    pack: 100
+  - vendor: schraubenking_at
+    sku: P000454 (A2)
+    price: 2.3
+    status: observed
+    pack: 100
+  - vendor: reichelt_at
+    sku: SKSM M3-100
+    price: 3.48
+    status: observed
+    pack: 100
+  - vendor: amazon_de
+    sku: B0BJYRLG6G (50)
+    price: 5.53
+    status: observed
+    pack: 50
+- id: m2_5x5
+  name: M2.5 x 5 DIN 912 A2
+  category: Fasteners
+  qty: 22
+  cad:
+    iso4762_m2_5x5: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P004986
+    price: 0.83
+    status: observed
+    pack: 10
+- id: m2_5x6
+  name: M2.5 x 6 DIN 912 A2
+  category: Fasteners
+  qty: 10
+  cad:
+    iso4762_m2_5x6: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P005010
+    price: 0.83
+    status: observed
+    pack: 10
+- id: m2x5
+  name: M2 x 5 DIN 912 A2
+  category: Fasteners
+  qty: 12
+  cad:
+    iso4762_m2x5: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P003957
+    price: 0.86
+    status: observed
+    pack: 10
+- id: m2x10
+  name: M2 x 10 DIN 912 A2
+  category: Fasteners
+  qty: 6
+  cad:
+    iso4762_m2x10: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P002803
+    price: 0.78
+    status: observed
+    pack: 10
+- id: m2_nuts
+  name: M2 hex nut DIN 934 A2
+  category: Fasteners
+  qty: 6
+  cad:
+    iso4032_m2: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P002807
+    price: 1.87
+    status: observed
+    pack: 100
+- id: m2_5_nuts
+  name: M2.5 hex nut DIN 934 A2
+  category: Fasteners
+  qty: 4
+  cad:
+    iso4032_m2_5: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: P004196
+    price: 2.0
+    status: unverified
+    pack: 100
+- id: standoff_m2_5x6
+  name: Stand-off M2.5 x 6 mm female-female (Würth 970060151)
+  category: Fasteners
+  qty: 12
+  cad:
+    standoff_m2_5_ff_6: 1
+  offers:
+  - vendor: digikey_at
+    sku: 970060151
+    price: 0.552
+    status: observed
+  - vendor: amazon_de
+    sku: B0GK7QTZ7B (brass F-F assortment; confirm the 6 mm variant)
+    price: 11.29
+    pack: 12
+    status: unverified
+- id: standoff_m2x8
+  name: Stand-off M2 x 8 mm female-female, brass
+  category: Fasteners
+  qty: 5
+  cad:
+    standoff_m2_ff_8: 1
+  offers:
+  - vendor: amazon_de
+    sku: B0DR67YGQL
+    price: 7.73
+    status: observed
+    stock: 2 left
+    pack: 40
+- id: threadlocker
+  name: Thread locker, medium strength (blue)
+  category: Fasteners
+  qty: 1
+  offers:
+  - vendor: schraubenking_at
+    sku: Förch 10 ml (P002471)
+    price: 5.71
+    status: observed
+  - vendor: amazon_de
+    sku: B00745GNPK (Loctite 243, 5 ml)
+    price: 8.11
+    status: observed
+- id: filament_primary
+  name: Filament PETG, graphite/black, 1 kg
+  category: Filament
+  qty: 1
+  note: PETG to match the verified slicer profile and the strength check (PLA softens near the warm servos)
+  offers:
+  - vendor: threedjake_at
+    sku: ELG-50.203.0216 (Elegoo Rapid PETG black)
+    price: 11.19
+    status: observed
+  - vendor: amazon_de
+    sku: B07TJDTJZD (Sunlu PETG black)
+    price: 14.11
+    status: observed
+- id: filament_secondary
+  name: Filament PETG, lime/yellow (shells), 1 kg
+  category: Filament
+  qty: 1
+  note: PETG to match the verified slicer profile and the strength check
+  offers:
+  - vendor: threedjake_at
+    sku: ELG-50.203.0221 (Elegoo Rapid PETG yellow)
+    price: 11.19
+    status: observed
+    stock: pre-order
+  - vendor: amazon_de
+    sku: B0D9NDB63H (Sunlu Rapid PETG yellow)
+    price: 14.36
+    status: observed
+- id: pi_psu
+  name: Raspberry Pi 27 W USB-C power supply, EU plug (bench power without battery)
+  category: Bench (recommended)
+  qty: 1
+  offers:
+  - vendor: welectron
+    sku: SC1407
+    price: 11.9
+    status: observed
+  - vendor: berrybase_at
+    sku: SC1407
+    price: 12.4
+    status: observed
+  - vendor: digikey_at
+    sku: SC1407 (not SC1153 = US plug)
+    price: 12.78
+    status: observed
+tools:
+- name: Hex keys 1.5-2.5 mm (Wera 950/9 Hex-Plus)
+  vendor: Amazon.de
+  sku: B009ODV0OE
+  price: 28.22
+- name: Soldering iron (Miniware TS101)
+  vendor: Amazon.de
+  sku: B0CPDRQZYB
+  price: 74.62
+- name: Wire stripper (Jokari Super 4 plus)
+  vendor: Amazon.de
+  price: 14.06
+- name: Dupont crimp set with housings (DxCRIMP)
+  vendor: Amazon.de
+  price: 30.22
+- name: Multimeter (Kaiweets)
+  vendor: Amazon.de
+  price: 46.28
+- name: Calipers
+  vendor: Amazon.de
+  price: 18.94
+- name: Flush cutters (Wiha 26812)
+  vendor: Amazon.de
+  price: 16.09
+- name: Nut drivers 4.0 / 5.0 / 5.5 mm (M2, M2.5, M3 nuts)
+  vendor: not priced
+  price: null
+- name: Thin CA glue (liquid superglue) for hardening weak printed pilots (ADR-009)
+  vendor: not priced
+  price: null
+- name: 3D printer with >= 220 x 220 mm bed (shells are 114 x 208 mm), e.g. Bambu Lab A1 Combo
+  vendor: eu.store.bambulab.com
+  price: 339.0

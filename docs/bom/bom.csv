@@ -1,0 +1,63 @@
+id,category,qty,name,vendor,sku,pack,price_eur,line_cost_eur,price_status,genuine
+pi5_4gb,Compute and sensors,1,"Raspberry Pi 5, 4 GB",DigiKey.at,SC1431 (2648-SC1431-ND),1,117.18,117.18,observed,True
+pi5_cooler,Compute and sensors,1,Raspberry Pi Active Cooler,Welectron (DE),SC1148,1,4.9,4.9,observed,True
+microsd_64,Compute and sensors,1,microSD 64 GB A2 (SanDisk Extreme),Berrybase.at,SanDisk Extreme A2 64GB,1,25.9,25.9,observed,True
+camera_module_3_wide,Compute and sensors,1,Raspberry Pi Camera Module 3 Wide,Welectron (DE),Camera Module 3 Wide,1,35.9,35.9,observed,True
+camera_cable_300,Compute and sensors,1,"Pi 5 camera cable 22→15 pin, 300 mm",DigiKey.at,SC1129,1,2.14,2.14,observed,True
+xiao_esp32s3,Compute and sensors,1,"Seeed XIAO ESP32-S3, pre-soldered headers",DigiKey.at,102010634,1,9.05,9.05,observed,True
+pca9685,Compute and sensors,1,PCA9685 16-channel PWM board (Adafruit 815 layout),Amazon.de,B06XSFFXQY,1,6.95,6.95,observed,False
+lsm6dsox,Compute and sensors,1,Adafruit LSM6DSOX 6-DoF IMU (4438),DigiKey.at,Adafruit 4438,1,12.73,12.73,observed,True
+ina260,Compute and sensors,1,Adafruit INA260 power monitor (4226),DigiKey.at,Adafruit 4226,1,10.6,10.6,observed,True
+lcd_2inch,Compute and sensors,1,"Waveshare 2"" LCD module, ST7789, 240x320 (17344)",Welectron (DE),17344,1,10.9,10.9,observed,True
+rplidar_c1,Compute and sensors,1,Slamtec RPLIDAR C1 (with USB adapter),Amazon.de,B0CP8YRY44 (WayPonDEV),1,70.58,70.58,observed,True
+stemma_qt_female,Compute and sensors,2,"STEMMA QT to female sockets cable, 150 mm (Adafruit 4397; IMU to PCA9685 and IMU to INA260)",DigiKey.at,Adafruit 4397,1,1.01,2.02,observed,True
+resistor_2k2,Compute and sensors,1,Resistor 2.2 kΩ 0.25 W (PCA9685 OE pull-up),Reichelt.at,"METALL 2,20K",1,0.1,0.1,unverified,True
+servo_spt5435lv,Actuation and mechanics,13,"SPT5435LV-180W servo, 35 kg·cm, 180° (12 + 1 spare)",AliExpress (DigitalServo Store),"4000135787995, variant 35kg-180 Waterproof",1,13.46,174.98,observed,True
+disc_horn_25t,Actuation and mechanics,8,25T aluminium disc horn,Amazon.de,"B07F71J1Q2 (DollaTek, 5-pack)",5,5.03,10.06,observed,False
+arm_horn_25t,Actuation and mechanics,4,25T aluminium clamping arm horn,Amazon.de,B0F5QG8HQS (5-pack),5,9.06,9.06,observed,False
+bearing_625zz,Actuation and mechanics,4,Ball bearing 625ZZ (5x16x5),kugellager-express.de,625-ZZ,1,0.88,3.52,observed,True
+bearing_6805,Actuation and mechanics,4,Ball bearing 6805-2RS (25x37x7),kugellager-express.de,6805/61805-2RS,1,1.7,6.8,observed,True
+bearing_633zz,Actuation and mechanics,8,Ball bearing 633ZZ (3x13x5),Amazon.de,B0GGT3GW69 (8-pack),8,10.27,10.27,observed,True
+sleeve_3x5x5,Actuation and mechanics,32,Sintered bronze sleeve bearing 3x5x5,Amazon.de,B0G15L264D (50-pack),50,10.27,10.27,observed,True
+ubec_10a,Power,2,"Hobbywing UBEC-10A (V2-Car), 6.0 V",Lindinger.at,HW30603003,1,26.99,53.98,observed,True
+lipo_2s_5000,Power,1,"LiPo 2S 5000 mAh hardcase, XT60, max 138 x 47 x 25 mm (Gens ace G-Tech)",Amazon.de,B0GKP683YF,1,22.18,22.18,observed,True
+charger,Power,1,"LiPo balance charger, AC input (B6AC class)",Amazon.de,B0F3CYZ6L8 (HTRC B6AC),1,46.38,46.38,observed,True
+lipo_bag,Power,1,LiPo safety bag,Lindinger.at,Robbe 23x30 cm (9787514),1,6.49,6.49,observed,True
+lipo_checker,Power,1,LiPo cell checker / low-voltage alarm,Lindinger.at,Absima (9771616),1,5.95,5.95,observed,True
+pololu_regulator,Power,1,Pololu D36V50F5 5 V 5.5 A step-down regulator,Eckstein (DE),D36V50F5,1,41.59,41.59,observed,True
+pololu_switch,Power,1,Pololu #2813 Big Pushbutton Power Switch HP,DigiKey.at,Pololu 2813 (Marketplace),1,10.8,10.8,observed,True
+pushbutton,Power,1,"12 mm momentary pushbutton, stainless (ONPOW GQ12B-10S)",Reichelt.at,318555,1,5.66,5.66,observed,True
+xt60_pairs,Power,1,"XT60H connectors, 3 pairs (battery lead, arming port, loop key)",Lindinger.at,Robbe XT60 3 pairs (9750234),1,4.99,4.99,observed,True
+fuse_holder,Power,2,"Inline ATO fuse holder, 14 AWG leads (main + logic branch)",Amazon.de,"B07426WCLM (Nilight, 10 holders)",10,8.56,8.56,observed,False
+fuse_25a,Power,3,"ATO blade fuse 25 A (main, 1 + 2 spare)",Reichelt.at,7786,1,0.36,1.08,observed,True
+fuse_7_5a,Power,2,"ATO blade fuse 7.5 A (logic branch, 1 + 1 spare)",Reichelt.at,FKS 7.5 A (same series as 7786),1,0.36,0.72,approximate,True
+wago_221_415,Power,8,WAGO 221-415 lever connector,Reichelt.at,149800,1,0.81,6.48,observed,True
+wire_14awg,Wiring,1,"Silicone wire 14 AWG / 2.5 mm², red + black, 1 m each",Lindinger.at,20479,1,4.99,4.99,observed,True
+wire_18awg,Wiring,2,"Silicone wire 18 AWG / 0.75 mm², red + black (1 m each per unit)",Lindinger.at,44422,1,2.99,5.98,observed,True
+wire_22awg,Wiring,1,"Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)",Amazon.de,B0C7T9KYND (6 colours x 4 m),1,12.1,12.1,observed,True
+usb_a_c_short,Wiring,2,"USB-A to USB-C cable, 20 cm, 90° (Pi → XIAO, Pi → LiDAR adapter)",Amazon.de,"B09ZDV7S44 (aceyoon 20 cm 90°, 3-pack)",3,7.64,7.64,observed,True
+dupont_set,Wiring,1,"Dupont jumper set 20 cm (F-F, M-M, F-M)",Berrybase.at,DUPK-SET-20,1,4.9,4.9,observed,True
+heat_shrink,Wiring,1,Heat-shrink assortment,Reichelt.at,152924,1,5.39,5.39,observed,True
+cable_ties,Wiring,1,Cable ties 100 x 2.5 mm (100),Berrybase.at,E-E510,1,0.9,0.9,observed,True
+spiral_wrap,Wiring,1,"Spiral wrap, black PE, for bundles 4-10 mm (5-10 m)",Reichelt.at,"CIMCO 186220 (10 m, bundles 4-20 mm)",1,4.84,4.84,observed,True
+cable_tie_mounts,Wiring,2,Adhesive cable-tie mount 13 x 13 mm (HellermannTyton MB2APT-A),Reichelt.at,HT 151-02243 (per piece),1,1.06,2.12,observed,True
+dupont_crimp_contacts,Wiring,1,"Dupont 2.54 mm crimp contacts and housings (1-6 pin), for the cut-to-length signal leads",Amazon.de,B0FP14VDGS (620 pieces),1,9.06,9.06,observed,True
+solder,Wiring,1,"Solder wire, lead-free, 0.8 mm, flux core (50-100 g)",Reichelt.at,"Goobay 420259 (50 g, SAC)",1,13.61,13.61,observed,True
+velcro,Wiring,1,Hook-and-loop straps (battery strap),Reichelt.at,280182,1,5.14,5.14,observed,True
+foam_tape,Wiring,1,"Double-sided foam mounting tape, 19 mm",Reichelt.at,tesa PRO Universal 338987,1,9.98,9.98,observed,True
+m3_kit,Fasteners,1,"M3 socket head screw kit, stainless (6-50 mm, nuts, washers; WZHUIDA 1080 pcs)",Amazon.de,B0D2VST57H,1,17.14,17.14,observed,True
+m3x10_100,Fasteners,100,M3 x 10 DIN 912 A2,Schraubenking.at,"M3x10 DIN912 A2, 100",100,2.35,2.35,approximate,True
+m3x20,Fasteners,10,M3 x 20 DIN 912 A2,Schraubenking.at,"M3x20 DIN912 A2, 10",10,0.97,0.97,approximate,True
+m3_nyloc,Fasteners,25,M3 DIN 985 nylon lock nut,Schraubenking.at,P000461 (zinc-plated),100,1.39,1.39,observed,True
+m2_5x5,Fasteners,22,M2.5 x 5 DIN 912 A2,Schraubenking.at,P004986,10,0.83,2.49,observed,True
+m2_5x6,Fasteners,10,M2.5 x 6 DIN 912 A2,Schraubenking.at,P005010,10,0.83,0.83,observed,True
+m2x5,Fasteners,12,M2 x 5 DIN 912 A2,Schraubenking.at,P003957,10,0.86,1.72,observed,True
+m2x10,Fasteners,6,M2 x 10 DIN 912 A2,Schraubenking.at,P002803,10,0.78,0.78,observed,True
+m2_nuts,Fasteners,6,M2 hex nut DIN 934 A2,Schraubenking.at,P002807,100,1.87,1.87,observed,True
+m2_5_nuts,Fasteners,4,M2.5 hex nut DIN 934 A2,Schraubenking.at,P004196,100,2.0,2.0,unverified,True
+standoff_m2_5x6,Fasteners,12,Stand-off M2.5 x 6 mm female-female (Würth 970060151),DigiKey.at,970060151,1,0.552,6.62,observed,True
+standoff_m2x8,Fasteners,5,"Stand-off M2 x 8 mm female-female, brass",Amazon.de,B0DR67YGQL,40,7.73,7.73,observed,True
+threadlocker,Fasteners,1,"Thread locker, medium strength (blue)",Schraubenking.at,Förch 10 ml (P002471),1,5.71,5.71,observed,True
+filament_primary,Filament,1,"Filament PETG, graphite/black, 1 kg",3DJake.at,ELG-50.203.0216 (Elegoo Rapid PETG black),1,11.19,11.19,observed,True
+filament_secondary,Filament,1,"Filament PETG, lime/yellow (shells), 1 kg",3DJake.at,ELG-50.203.0221 (Elegoo Rapid PETG yellow),1,11.19,11.19,observed,True
+pi_psu,Bench (recommended),1,"Raspberry Pi 27 W USB-C power supply, EU plug (bench power without battery)",Welectron (DE),SC1407,1,11.9,11.9,observed,True

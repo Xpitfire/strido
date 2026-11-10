@@ -1,0 +1,426 @@
+{
+ "b854920ae35815b7": {
+  "en": "Prepare the electronics deck",
+  "de": "Elektronikdeck vorbereiten"
+ },
+ "2cd9d7d486d5c304": {
+  "en": "Chassis frame",
+  "de": "Chassisrahmen"
+ },
+ "786cc08da399ec68": {
+  "en": "Hip servos",
+  "de": "Hüftservos"
+ },
+ "f328a49ff4ff3825": {
+  "en": "Hip bearings and shoulder frames",
+  "de": "Hüftlager und Schulterrahmen"
+ },
+ "f1a506cfb82b6c97": {
+  "en": "Servo power bus and motion controller",
+  "de": "Servo-Versorgungsbus und Bewegungssteuerung"
+ },
+ "6bed7351284eea3e": {
+  "en": "Servo UBECs",
+  "de": "Servo-UBECs"
+ },
+ "4f91f08c4df2a4d3": {
+  "en": "Boards on the deck",
+  "de": "Platinen auf dem Deck"
+ },
+ "3da326e98e113218": {
+  "en": "Leg servo module",
+  "de": "Bein-Servomodul"
+ },
+ "c6b5d7fd9e0a0a80": {
+  "en": "Thigh",
+  "de": "Oberschenkel"
+ },
+ "6e88a85cae3d0a67": {
+  "en": "Knee drive crank",
+  "de": "Kniekurbel"
+ },
+ "e456215289aeb434": {
+  "en": "Lower leg",
+  "de": "Unterbein"
+ },
+ "72e5f72ae6995c51": {
+  "en": "Knee linkage",
+  "de": "Kniekoppelgetriebe"
+ },
+ "b3bbf89d24ccdb29": {
+  "en": "Mount the legs",
+  "de": "Beine montieren"
+ },
+ "fc1d9ef814ca7dd9": {
+  "en": "Power entry",
+  "de": "Stromeingang"
+ },
+ "bc86f877d210f34c": {
+  "en": "Servo leads and servo bus",
+  "de": "Servokabel und Servobus"
+ },
+ "5ba7d0d624f5aec7": {
+  "en": "Logic and signal wiring",
+  "de": "Logik- und Signalverkabelung"
+ },
+ "61f89fde34482365": {
+  "en": "Front display",
+  "de": "Frontdisplay"
+ },
+ "fd301dc5d0e7ccf1": {
+  "en": "Front camera",
+  "de": "Frontkamera"
+ },
+ "305f6eb47cb74ed7": {
+  "en": "Rear panel",
+  "de": "Rückwand"
+ },
+ "e20f2b4d7bdc7f67": {
+  "en": "Dress the harness and check the logic supply",
+  "de": "Kabelbaum verlegen und Logikversorgung prüfen"
+ },
+ "2fb4dc5bc296c5a9": {
+  "en": "Top shell and LiDAR",
+  "de": "Oberschale und LiDAR"
+ },
+ "64ac74e2c467e1a8": {
+  "en": "Battery and bottom shell",
+  "de": "Akku und Unterschale"
+ },
+ "a7f54e0a58f023c5": {
+  "en": "Bottom shell",
+  "de": "Unterschale"
+ },
+ "ddc6d177b261bbed": {
+  "en": "Side body beam",
+  "de": "Seitlicher Körperträger"
+ },
+ "9cf04afb07648aea": {
+  "en": "Inner shoulder frame",
+  "de": "Innerer Schulterrahmen"
+ },
+ "c6512b9ce0895744": {
+  "en": "Outer shoulder frame",
+  "de": "Äußerer Schulterrahmen"
+ },
+ "33791f163cb1120c": {
+  "en": "Upper shoulder frame",
+  "de": "Oberer Schulterrahmen"
+ },
+ "94c640f4849e986c": {
+  "en": "Servo mount top bracket",
+  "de": "Obere Halterung der Servohalterung"
+ },
+ "006e6e7c8f67b301": {
+  "en": "Right servo mount",
+  "de": "Rechte Servohalterung"
+ },
+ "f44e613ad8ad8906": {
+  "en": "Short link",
+  "de": "Kurze Koppel"
+ },
+ "177ada34f3606084": {
+  "en": "Femur servo connector",
+  "de": "Femur-Servoverbinder"
+ },
+ "cd5cd5d70e8108cb": {
+  "en": "Femur",
+  "de": "Femur"
+ },
+ "3dfeabbac039b50a": {
+  "en": "Stiff long link",
+  "de": "Steife lange Koppel"
+ },
+ "395e59d6db51f4ed": {
+  "en": "Left shoulder",
+  "de": "Linke Schulter"
+ },
+ "83816b2b61c99f8d": {
+  "en": "Inner tibia",
+  "de": "Innere Tibia"
+ },
+ "b17b7256c3bcd615": {
+  "en": "Outer tibia",
+  "de": "Äußere Tibia"
+ },
+ "784cad3569abd8f7": {
+  "en": "Left servo mount fl",
+  "de": "Linke Servohalterung fl"
+ },
+ "ba0ef2007fd22ebc": {
+  "en": "Left servo mount",
+  "de": "Linke Servohalterung"
+ },
+ "ec1aa4a6e8e91c21": {
+  "en": "Right shoulder",
+  "de": "Rechte Schulter"
+ },
+ "bf559910a3b6adda": {
+  "en": "Right servo mount fr",
+  "de": "Rechte Servohalterung fr"
+ },
+ "6ea4f5799864b749": {
+  "en": "Ball bearing 625ZZ",
+  "de": "Kugellager 625ZZ"
+ },
+ "f343caa798a1585c": {
+  "en": "Hip bearing pin",
+  "de": "Hüftlagerbolzen"
+ },
+ "1e1fbd22f01c0507": {
+  "en": "25T aluminium arm horn",
+  "de": "25T-Aluminium-Armhorn"
+ },
+ "496e50336523fec4": {
+  "en": "Sleeve bearings 3×5×5 (pair)",
+  "de": "Gleitlager 3×5×5 (Paar)"
+ },
+ "ff7179bc5a3e7254": {
+  "en": "Ball bearing 6805-2RS",
+  "de": "Kugellager 6805-2RS"
+ },
+ "23ae5eacf68baaff": {
+  "en": "25T aluminium disc horn",
+  "de": "25T-Aluminium-Scheibenhorn"
+ },
+ "0596c6228645b41e": {
+  "en": "Servo SPT5435LV-180W",
+  "de": "Servo SPT5435LV-180W"
+ },
+ "82b7fe5aab72088d": {
+  "en": "Foot spacer",
+  "de": "Fuß-Distanzstück"
+ },
+ "3764a15d4c2a2d43": {
+  "en": "Front shell display",
+  "de": "Frontschale Display"
+ },
+ "565fbbf5a434e157": {
+  "en": "Display bracket",
+  "de": "Displayhalterung"
+ },
+ "8e8469afe4dee859": {
+  "en": "Top shell sensor",
+  "de": "Oberschale Sensor"
+ },
+ "556deb90e682ea0e": {
+  "en": "Lidar pedestal",
+  "de": "LiDAR-Sockel"
+ },
+ "128de248dc31ad78": {
+  "en": "Camera mount base",
+  "de": "Kamerahalterung Basis"
+ },
+ "b82c382df842b322": {
+  "en": "Camera tilt plate",
+  "de": "Kamera-Neigeplatte"
+ },
+ "9f45a717bf001f87": {
+  "en": "Back shell button",
+  "de": "Rückschale Taster"
+ },
+ "3ce208c0d01fc733": {
+  "en": "Arming port bezel",
+  "de": "Blende des Arming-Ports"
+ },
+ "a10ad6f4bdc55dc1": {
+  "en": "Arming port ring",
+  "de": "Ring des Arming-Ports"
+ },
+ "f8aa21f787bb0d7a": {
+  "en": "Electronics deck",
+  "de": "Elektronikdeck"
+ },
+ "32cca01331f55059": {
+  "en": "Lower shoulder frame front",
+  "de": "Unterer Schulterrahmen vorne"
+ },
+ "73a6fd40bf76f294": {
+  "en": "Servo bus holder front",
+  "de": "Servobus-Halter vorne"
+ },
+ "80703fb084c5b693": {
+  "en": "Lower shoulder frame rear",
+  "de": "Unterer Schulterrahmen hinten"
+ },
+ "9450195a7c045db7": {
+  "en": "Servo bus holder rear",
+  "de": "Servobus-Halter hinten"
+ },
+ "618e8a38fcafbe6b": {
+  "en": "Waveshare 2\" LCD (ST7789)",
+  "de": "Waveshare 2\"-LCD (ST7789)"
+ },
+ "d29867cbf8bc4531": {
+  "en": "RPLIDAR C1",
+  "de": "RPLIDAR C1"
+ },
+ "0d5dfcadd1c72937": {
+  "en": "RPLIDAR USB adapter",
+  "de": "RPLIDAR-USB-Adapter"
+ },
+ "c6df165556cac373": {
+  "en": "Camera Module 3 Wide",
+  "de": "Camera Module 3 Wide"
+ },
+ "a4136a62ae9fa240": {
+  "en": "12 mm push button",
+  "de": "12-mm-Taster"
+ },
+ "c1acce5d5a40675f": {
+  "en": "XT60H female",
+  "de": "XT60H Buchse"
+ },
+ "01ff4ae7220288b4": {
+  "en": "Raspberry Pi 5 + Active Cooler",
+  "de": "Raspberry Pi 5 + Active Cooler"
+ },
+ "c1b6eb0a533971df": {
+  "en": "PCA9685 servo driver",
+  "de": "PCA9685-Servotreiber"
+ },
+ "9d42635e1d6ef6cf": {
+  "en": "LSM6DSOX IMU",
+  "de": "LSM6DSOX-IMU"
+ },
+ "aabc145099c52b64": {
+  "en": "Pololu D36V50F5 5 V regulator",
+  "de": "Pololu D36V50F5 5-V-Spannungsregler"
+ },
+ "433bd435428a333a": {
+  "en": "INA260 power monitor",
+  "de": "INA260-Power-Monitor"
+ },
+ "06f142ee2cc5f53a": {
+  "en": "WAGO 221-415",
+  "de": "WAGO 221-415"
+ },
+ "83f787d5356f5cd5": {
+  "en": "Seeed XIAO ESP32-S3",
+  "de": "Seeed XIAO ESP32-S3"
+ },
+ "16d02d853c5a885a": {
+  "en": "Pololu #2813 pushbutton switch",
+  "de": "Pololu #2813 Tasterschalter"
+ },
+ "32e0b8f5ba740c41": {
+  "en": "ATO fuse holder",
+  "de": "ATO-Sicherungshalter"
+ },
+ "8055e918163645af": {
+  "en": "Adhesive cable-tie mount 13 × 13 mm",
+  "de": "Selbstklebender Kabelbinder-Sockel 13 × 13 mm"
+ },
+ "c2bf0d0d09b2061e": {
+  "en": "Hobbywing UBEC-10A",
+  "de": "Hobbywing UBEC-10A"
+ },
+ "8c0e09780f10a66e": {
+  "en": "LiPo 2S 5000 mAh",
+  "de": "LiPo 2S 5000 mAh"
+ },
+ "e084606da14e96eb": {
+  "en": "M2 × 5 socket head screw (ISO 4762)",
+  "de": "M2 × 5 Zylinderschraube mit Innensechskant (ISO 4762)"
+ },
+ "a7029c065e80bf53": {
+  "en": "M3 hex nut (ISO 4032)",
+  "de": "M3-Sechskantmutter (ISO 4032)"
+ },
+ "21281fbabfdff365": {
+  "en": "M3 lock nut (nylon insert) (DIN 985)",
+  "de": "M3-Sicherungsmutter (mit Nylonring) (DIN 985)"
+ },
+ "833ae808b075b67f": {
+  "en": "M2.5 × 6 stand-off F-F (brass)",
+  "de": "M2.5 × 6 Abstandsbolzen Innen-Innen (Messing)"
+ },
+ "012badcd80fb5533": {
+  "en": "M3 washer (ISO 7089)",
+  "de": "M3-Unterlegscheibe (ISO 7089)"
+ },
+ "0bef04e72280986c": {
+  "en": "Cable: 12 AWG battery core red",
+  "de": "Kabel: 12 AWG Akku-Ader rot"
+ },
+ "54982b1b0f79e6e1": {
+  "en": "Cable: 12 AWG battery core black",
+  "de": "Kabel: 12 AWG Akku-Ader schwarz"
+ },
+ "f620b649038157f4": {
+  "en": "Cable: 14 AWG wire 14awg red",
+  "de": "Kabel: 14 AWG Litze 14awg rot"
+ },
+ "1f20dd94db8d9d6e": {
+  "en": "Cable: 14 AWG fuse holder lead",
+  "de": "Kabel: 14 AWG Leitung Sicherungshalter"
+ },
+ "18808b2a7be9c980": {
+  "en": "Cable: 14 AWG wire 14awg black",
+  "de": "Kabel: 14 AWG Litze 14awg schwarz"
+ },
+ "77e9fa4fb6e40d3b": {
+  "en": "Cable: 18 AWG wire 18awg pair",
+  "de": "Kabel: 18 AWG Litze 18awg Paar"
+ },
+ "be1fe777d302589a": {
+  "en": "Cable: 22 AWG wire 22awg quad",
+  "de": "Kabel: 22 AWG Litze 22awg vieradrig"
+ },
+ "a5d66904942e202d": {
+  "en": "Cable: usb a c",
+  "de": "Kabel: USB A C"
+ },
+ "0fea267da9c4f024": {
+  "en": "Cable: camera ffc",
+  "de": "Kabel: Kamera-FFC"
+ },
+ "373e236e88648491": {
+  "en": "Cable: 22 AWG wire 22awg i2c",
+  "de": "Kabel: 22 AWG Litze 22awg I2C"
+ },
+ "8988950e9453fc2a": {
+  "en": "Cable: stemma qt",
+  "de": "Kabel: STEMMA QT"
+ },
+ "80d6e9ff441d6fe6": {
+  "en": "Cable: 22 AWG wire 22awg green",
+  "de": "Kabel: 22 AWG Litze 22awg grün"
+ },
+ "7111c5edbdfa21b0": {
+  "en": "Cable: lcd cable",
+  "de": "Kabel: LCD-Kabel"
+ },
+ "eade700a453d5dea": {
+  "en": "Cable: 22 AWG wire 22awg white",
+  "de": "Kabel: 22 AWG Litze 22awg weiß"
+ },
+ "e73d284af343f7cb": {
+  "en": "Cable: lidar cable",
+  "de": "Kabel: LiDAR-Kabel"
+ },
+ "b5b116c18c74108a": {
+  "en": "Cable: 22 AWG servo lead",
+  "de": "Kabel: 22 AWG Servokabel"
+ },
+ "62d94ade9c7c0e2f": {
+  "en": "Cable: 22 AWG servo power",
+  "de": "Kabel: 22 AWG Servoversorgung"
+ },
+ "fc5c2fd9a02e44a7": {
+  "en": "Cable: 22 AWG servo signal",
+  "de": "Kabel: 22 AWG Servosignal"
+ },
+ "592fd69eacfc7a91": {
+  "en": "Spiral wrap",
+  "de": "Spiralschlauch"
+ },
+ "89bc2008a9bf248d": {
+  "en": "Cable tie 2.5 × 100 mm",
+  "de": "Kabelbinder 2,5 × 100 mm"
+ },
+ "c0f29a27c89c97f6": {
+  "en": "LCD face (firmware default expression)",
+  "de": "LCD-Gesicht (Standardausdruck der Firmware)"
+ }
+}

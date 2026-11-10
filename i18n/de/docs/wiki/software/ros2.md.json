@@ -1,0 +1,370 @@
+{
+ "0bd15902a2087240": {
+  "en": "ROS 2 Jazzy",
+  "de": "ROS 2 Jazzy"
+ },
+ "08042ea7aca90e85": {
+  "en": "ROS 2 (Robot Operating System 2) is not an operating system but a framework: a set of libraries and tools that let many small programs, called nodes, exchange typed messages. Strido uses ROS 2 Jazzy so that the same nodes run in Gazebo and on the real robot, and so that standard tools (teleop, RViz, Nav2, SLAM) can drive it.",
+  "de": "ROS 2 (Robot Operating System 2) ist kein Betriebssystem, sondern ein Framework: eine Sammlung von Bibliotheken und Werkzeugen, mit denen viele kleine Programme, sogenannte Nodes, typisierte Messages austauschen. Strido verwendet ROS 2 Jazzy, damit dieselben Nodes in Gazebo und auf dem echten Roboter laufen und damit Standardwerkzeuge (Teleop, RViz, Nav2, SLAM) ihn steuern können."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "d6b231967535a05e": {
+  "en": "**Packages** (in `ros2/`): `strido_description` (URDF/xacro generated from CAD, `controllers.yaml`, `display.launch.py`), `strido_bringup` (`robot.launch.py`, `gazebo.launch.py`, `worlds/flat.sdf`, udev rules), `strido_control` (`gait_node`, `policy_node`, `mcu_bridge`, `walk_smoke`).",
+  "de": "**Pakete** (in `ros2/`): `strido_description` (aus dem CAD generiertes URDF/xacro, `controllers.yaml`, `display.launch.py`), `strido_bringup` (`robot.launch.py`, `gazebo.launch.py`, `worlds/flat.sdf`, udev-Regeln), `strido_control` (`gait_node`, `policy_node`, `mcu_bridge`, `walk_smoke`)."
+ },
+ "c79d05902df1ef0f": {
+  "en": "**Shared core:** `packages/strido-core` (plain Python, no ROS) holds the gait, kinematics, MCU protocol and policy runtime that the nodes call.",
+  "de": "**Gemeinsamer Kern:** `packages/strido-core` (reines Python, kein ROS) enthält den Gait, die Kinematik, das MCU-Protokoll und die Policy-Laufzeit, die die Nodes aufrufen."
+ },
+ "e7edb28e882a950d": {
+  "en": "**Interface:** Unitree Go2-style topics and joint names, listed in [software](../../software.md#ros-2-interface-go2-style).",
+  "de": "**Schnittstelle:** Topics und Gelenknamen im Stil des Unitree Go2, aufgeführt unter [Software](../../software.md#ros-2-interface-go2-style)."
+ },
+ "6a42314eabbd2964": {
+  "en": "**Runs in:** the `strido-ros:jazzy` Docker image ([Docker](docker.md)).",
+  "de": "**Läuft in:** dem Docker-Image `strido-ros:jazzy` ([Docker](docker.md))."
+ },
+ "24988dddbb9b27c3": {
+  "en": "Why Jazzy",
+  "de": "Warum Jazzy"
+ },
+ "edbdd1cd2d2bccda": {
+  "en": "Jazzy Jalisco (May 2024) is a long-term-support release, supported until May 2029, and its Tier 1 platform is Ubuntu 24.04, the base of the `ros:jazzy-ros-base` image. It pairs with Gazebo Harmonic, which the repo uses for simulation. An LTS release means the robot's software stack does not have to chase a new ROS version every year.",
+  "de": "Jazzy Jalisco (Mai 2024) ist eine Long-Term-Support-Version mit Unterstützung bis Mai 2029, und ihre Tier-1-Plattform ist Ubuntu 24.04, die Basis des Images `ros:jazzy-ros-base`. Sie ist auf Gazebo Harmonic abgestimmt, das das Repository für die Simulation nutzt. Eine LTS-Version bedeutet, dass der Software-Stack des Roboters nicht jedes Jahr einer neuen ROS-Version hinterherlaufen muss."
+ },
+ "9b9237eeda82f3c8": {
+  "en": "The ROS graph of this robot",
+  "de": "Der ROS-Graph dieses Roboters"
+ },
+ "f95fec8e6054a29c": {
+  "en": "flowchart LR\n  TELEOP[\"teleop_twist_keyboard<br/>(or Nav2, your node)\"] -->|\"/cmd_vel\"| GAIT[\"gait_node<br/>or policy_node\"]\n  GAIT -->|\"/leg_controller/commands\"| BRIDGE[\"mcu_bridge\"]\n  GAIT -->|\"/odom, TF odom→base_link\"| RSP[\"robot_state_publisher\"]\n  BRIDGE -->|\"/joint_states\"| RSP\n  BRIDGE -->|\"/imu/data, /battery_state, /diagnostics\"| OUT[\"your tools\"]\n  BRIDGE -->|\"/imu/data\"| GAIT\n  LIDAR[\"sllidar_ros2\"] -->|\"/scan\"| OUT\n  BRIDGE <-->|\"USB CDC\"| MCU[\"ESP32-S3 firmware\"]",
+  "de": "flowchart LR\n  TELEOP[\"teleop_twist_keyboard<br/>(oder Nav2, Ihr Node)\"] -->|\"/cmd_vel\"| GAIT[\"gait_node<br/>oder policy_node\"]\n  GAIT -->|\"/leg_controller/commands\"| BRIDGE[\"mcu_bridge\"]\n  GAIT -->|\"/odom, TF odom→base_link\"| RSP[\"robot_state_publisher\"]\n  BRIDGE -->|\"/joint_states\"| RSP\n  BRIDGE -->|\"/imu/data, /battery_state, /diagnostics\"| OUT[\"Ihre Werkzeuge\"]\n  BRIDGE -->|\"/imu/data\"| GAIT\n  LIDAR[\"sllidar_ros2\"] -->|\"/scan\"| OUT\n  BRIDGE <-->|\"USB CDC\"| MCU[\"ESP32-S3-Firmware\"]"
+ },
+ "75629c5f72bae06c": {
+  "en": "(`policy_node` subscribes to `/imu/data`; `gait_node` does not.)",
+  "de": "(`policy_node` abonniert `/imu/data`; `gait_node` nicht.)"
+ },
+ "7ac362063b9f2046": {
+  "en": "Nodes",
+  "de": "Nodes"
+ },
+ "23b78d77f2f49367": {
+  "en": "A **node** is one process (or one object in a process) with a single job. Splitting the robot into nodes means you can replace one piece without touching the others: `gait_node` and `policy_node` are interchangeable because both turn `/cmd_vel` into `/leg_controller/commands`.",
+  "de": "Ein **Node** ist ein Prozess (oder ein Objekt in einem Prozess) mit genau einer Aufgabe. Die Aufteilung des Roboters in Nodes bedeutet, dass Sie ein Teil austauschen können, ohne die anderen anzufassen: `gait_node` und `policy_node` sind austauschbar, weil beide `/cmd_vel` in `/leg_controller/commands` umsetzen."
+ },
+ "5a89d31d63ad966a": {
+  "en": "| Node (package `strido_control`) | Job |",
+  "de": "| Node (Paket `strido_control`) | Aufgabe |"
+ },
+ "bd04c70bf19c2ba7": {
+  "en": "| `gait_node` | Velocity command → trot gait → 12 joint targets at 100 Hz; publishes `/odom` and the `odom→base_link` transform by integrating the *commanded* velocity |",
+  "de": "| `gait_node` | Geschwindigkeitsbefehl → Trot-Gait → 12 Gelenkziele mit 100 Hz; veröffentlicht `/odom` und die Transformation `odom→base_link` durch Integration der *befohlenen* Geschwindigkeit |"
+ },
+ "59e75a7c96d88168": {
+  "en": "| `policy_node` | Runs a learned policy (`policy.npz`) at 50 Hz from `/cmd_vel` and `/imu/data` |",
+  "de": "| `policy_node` | Führt eine gelernte Policy (`policy.npz`) mit 50 Hz aus `/cmd_vel` und `/imu/data` aus |"
+ },
+ "2b46967ac3d7b83b": {
+  "en": "| `mcu_bridge` | Translates between ROS topics and the binary serial protocol of the ESP32-S3 |",
+  "de": "| `mcu_bridge` | Übersetzt zwischen ROS-Topics und dem binären seriellen Protokoll des ESP32-S3 |"
+ },
+ "cca62fbc4d232b91": {
+  "en": "| `walk_smoke` | Automated Gazebo test: walks and checks ground truth |",
+  "de": "| `walk_smoke` | Automatisierter Gazebo-Test: läuft und prüft die Ground Truth |"
+ },
+ "8bc43f2073a384b0": {
+  "en": "Plus standard nodes: `robot_state_publisher`, the Slamtec `sllidar_ros2` driver, `camera_ros` (optional), and in simulation the Gazebo bridge and `ros2_control` controllers.",
+  "de": "Dazu kommen Standard-Nodes: `robot_state_publisher`, der Slamtec-Treiber `sllidar_ros2`, `camera_ros` (optional) und in der Simulation die Gazebo-Bridge und die `ros2_control`-Controller."
+ },
+ "4fa2afec312a04fb": {
+  "en": "Each `strido_control` node is a Python class derived from `rclpy.node.Node`, registered as a console script in `setup.py`, so you start it with:",
+  "de": "Jeder `strido_control`-Node ist eine von `rclpy.node.Node` abgeleitete Python-Klasse, registriert als Konsolenskript in `setup.py`, daher starten Sie ihn mit:"
+ },
+ "e22820fcf5cd90e3": {
+  "en": "Topics",
+  "de": "Topics"
+ },
+ "035ff3316708ad75": {
+  "en": "A **topic** is a named, typed, many-to-many stream. Publishers do not know who listens. That loose coupling is why the gait node needs no change between simulation and hardware: in Gazebo, `/leg_controller/commands` is consumed by `ros2_control`'s `leg_controller`; on the robot, by `mcu_bridge`.",
+  "de": "Ein **Topic** ist ein benannter, typisierter Many-to-many-Datenstrom. Publisher wissen nicht, wer zuhört. Diese lose Kopplung ist der Grund, warum der Gait-Node zwischen Simulation und Hardware keine Änderung braucht: In Gazebo wird `/leg_controller/commands` vom `leg_controller` von `ros2_control` verarbeitet, auf dem Roboter von `mcu_bridge`."
+ },
+ "e643b277dca3d0db": {
+  "en": "The topics this repo actually uses:",
+  "de": "Die Topics, die dieses Repository tatsächlich verwendet:"
+ },
+ "7303b5300e3476ef": {
+  "en": "| Topic | Type | Published by | Notes |",
+  "de": "| Topic | Typ | Veröffentlicht von | Hinweise |"
+ },
+ "bd6234c469566882": {
+  "en": "| `/cmd_vel` | `geometry_msgs/Twist` | you / teleop | `linear.x`, `linear.y` [m/s], `angular.z` [rad/s]; gait clamps to 0.30 / 0.15 / 1.0 |",
+  "de": "| `/cmd_vel` | `geometry_msgs/Twist` | Sie / Teleop | `linear.x`, `linear.y` [m/s], `angular.z` [rad/s]; der Gait begrenzt auf 0,30 / 0,15 / 1,0 |"
+ },
+ "99b1649352193d7b": {
+  "en": "| `/leg_controller/commands` | `std_msgs/Float64MultiArray` | gait or policy node | 12 angles [rad], order FL, FR, RL, RR × hip, thigh, calf |",
+  "de": "| `/leg_controller/commands` | `std_msgs/Float64MultiArray` | Gait- oder Policy-Node | 12 Winkel [rad], Reihenfolge FL, FR, RL, RR × Hüfte, Oberschenkel, Unterschenkel |"
+ },
+ "cfd12b5bb30e5a9a": {
+  "en": "| `/joint_states` | `sensor_msgs/JointState` | `mcu_bridge` (robot), `joint_state_broadcaster` (Gazebo) | names `FL_hip_joint` …; on the robot these are the commanded angles after clamping, because the servos have no feedback |",
+  "de": "| `/joint_states` | `sensor_msgs/JointState` | `mcu_bridge` (Roboter), `joint_state_broadcaster` (Gazebo) | Namen `FL_hip_joint` …; auf dem Roboter sind dies die befohlenen Winkel nach der Begrenzung, da die Servos keine Rückmeldung haben |"
+ },
+ "ca9e2c8ad144d261": {
+  "en": "| `/imu/data` | `sensor_msgs/Imu` | `mcu_bridge` / Gazebo IMU | frame `imu_link`; not published while the IMU reports a fault |",
+  "de": "| `/imu/data` | `sensor_msgs/Imu` | `mcu_bridge` / Gazebo-IMU | Frame `imu_link`; wird nicht veröffentlicht, solange die IMU einen Fehler meldet |"
+ },
+ "3ef7469175896d81": {
+  "en": "| `/battery_state` | `sensor_msgs/BatteryState` | `mcu_bridge` | pack voltage, current negative = discharging |",
+  "de": "| `/battery_state` | `sensor_msgs/BatteryState` | `mcu_bridge` | Akkupackspannung, Strom negativ = Entladen |"
+ },
+ "a6bcf2f664c57cf0": {
+  "en": "| `/diagnostics` | `diagnostic_msgs/DiagnosticArray` | `mcu_bridge` | flags `estop`, `relaxed`, `watchdog`, `imu_ok`, `power_ok`, `pwm_ok`, `clamped`, `calibration_mode` |",
+  "de": "| `/diagnostics` | `diagnostic_msgs/DiagnosticArray` | `mcu_bridge` | Flags `estop`, `relaxed`, `watchdog`, `imu_ok`, `power_ok`, `pwm_ok`, `clamped`, `calibration_mode` |"
+ },
+ "17825fb367150e41": {
+  "en": "| `/odom` | `nav_msgs/Odometry` | `gait_node` | dead reckoning of the commanded velocity |",
+  "de": "| `/odom` | `nav_msgs/Odometry` | `gait_node` | Koppelnavigation aus der befohlenen Geschwindigkeit |"
+ },
+ "0da2ce7eca282af9": {
+  "en": "| `/scan` | `sensor_msgs/LaserScan` | `sllidar_ros2` / Gazebo | frame `lidar_link`, 10 Hz |",
+  "de": "| `/scan` | `sensor_msgs/LaserScan` | `sllidar_ros2` / Gazebo | Frame `lidar_link`, 10 Hz |"
+ },
+ "b60c8f1167cb4afd": {
+  "en": "| `/camera/image_raw` | `sensor_msgs/Image` | `camera_ros` / Gazebo | frame `camera_optical_frame` |",
+  "de": "| `/camera/image_raw` | `sensor_msgs/Image` | `camera_ros` / Gazebo | Frame `camera_optical_frame` |"
+ },
+ "7f9e237d65d131b7": {
+  "en": "| `/strido/estop` | `std_msgs/Bool` | you | `true` latches a stop (servo outputs off) |",
+  "de": "| `/strido/estop` | `std_msgs/Bool` | Sie | `true` verriegelt einen Halt (Servoausgänge aus) |"
+ },
+ "206d28359bb42181": {
+  "en": "| `/strido/relax` | `std_msgs/Bool` | you | `true` makes the servos limp |",
+  "de": "| `/strido/relax` | `std_msgs/Bool` | Sie | `true` macht die Servos kraftlos |"
+ },
+ "7341c98af0ff145b": {
+  "en": "| `/strido/face` | `std_msgs/UInt8` | you | LCD expression id |",
+  "de": "| `/strido/face` | `std_msgs/UInt8` | Sie | ID des LCD-Gesichtsausdrucks |"
+ },
+ "fa72d746e60b2536": {
+  "en": "| `/ground_truth/odom` | `nav_msgs/Odometry` | Gazebo only | used by `walk_smoke` to measure real progress |",
+  "de": "| `/ground_truth/odom` | `nav_msgs/Odometry` | nur Gazebo | wird von `walk_smoke` verwendet, um den tatsächlichen Fortschritt zu messen |"
+ },
+ "7bd994de8022f0cd": {
+  "en": "`/odom` from `gait_node` is pure dead reckoning: each step it rotates the commanded body velocity into the odometry frame with the current heading $\\psi$ and integrates it,",
+  "de": "`/odom` von `gait_node` ist reine Koppelnavigation: In jedem Schritt dreht der Node die befohlene Körpergeschwindigkeit mit dem aktuellen Kurs $\\psi$ in das Odometrie-Koordinatensystem und integriert sie,"
+ },
+ "143101710ff9bcc2": {
+  "en": "so any difference between commanded and real motion (foot slip, a policy that undershoots) accumulates without bound. That is why `walk_smoke` judges progress with `/ground_truth/odom`, and why SLAM corrects the pose from `/scan`. See [frames and rotations](../theory/frames-and-rotations.md) and [state estimation](../theory/state-estimation.md).",
+  "de": "daher summiert sich jeder Unterschied zwischen befohlener und tatsächlicher Bewegung (Fußschlupf, eine Policy, die zu kurz tritt) unbegrenzt auf. Deshalb bewertet `walk_smoke` den Fortschritt mit `/ground_truth/odom`, und deshalb korrigiert SLAM die Pose anhand von `/scan`. Siehe [Koordinatensysteme und Rotationen](../theory/frames-and-rotations.md) und [State Estimation](../theory/state-estimation.md)."
+ },
+ "6b81d936b0a57055": {
+  "en": "Exploring them from a shell inside the container:",
+  "de": "So erkunden Sie sie aus einer Shell im Container:"
+ },
+ "b3cd216bc4af1bad": {
+  "en": "Services and actions",
+  "de": "Services und Actions"
+ },
+ "18255c9c1c7510e5": {
+  "en": "A **service** is a request/response call (like a function call over the network); an **action** is a long-running goal with feedback and cancellation (like \"walk to this pose\"). The Strido nodes define **neither**: every command, including e-stop and relax, is a topic. That is a deliberate fit for a robot whose firmware treats the command stream itself as the heartbeat (no command for 200 ms → hold, see [firmware](firmware.md)).",
+  "de": "Ein **Service** ist ein Request/Response-Aufruf (wie ein Funktionsaufruf über das Netzwerk); eine **Action** ist ein lang laufendes Ziel mit Rückmeldung und Abbruchmöglichkeit (wie „laufe zu dieser Pose“). Die Strido-Nodes definieren **keines von beiden**: Jeder Befehl, einschließlich Not-Halt und Relax, ist ein Topic. Das passt bewusst zu einem Roboter, dessen Firmware den Befehlsstrom selbst als Herzschlag behandelt (kein Befehl für 200 ms → halten, siehe [Firmware](firmware.md))."
+ },
+ "df85d7f75b3304a8": {
+  "en": "You still meet services through standard nodes. Every node exposes parameter services (`ros2 param ...` uses them), and the `spawner` in `gazebo.launch.py` calls the `controller_manager`'s services to load `joint_state_broadcaster` and `leg_controller`. Actions appear once you add Nav2, whose `NavigateToPose` action would publish `/cmd_vel` to this robot.",
+  "de": "Services begegnen Ihnen trotzdem über Standard-Nodes. Jeder Node stellt Parameter-Services bereit (`ros2 param ...` nutzt sie), und der `spawner` in `gazebo.launch.py` ruft die Services des `controller_manager` auf, um `joint_state_broadcaster` und `leg_controller` zu laden. Actions kommen hinzu, sobald Sie Nav2 ergänzen, dessen Action `NavigateToPose` `/cmd_vel` an diesen Roboter veröffentlichen würde."
+ },
+ "e68b36b17cbd9908": {
+  "en": "Parameters",
+  "de": "Parameter"
+ },
+ "253ad3e95e9212b0": {
+  "en": "**Parameters** are per-node settings, declared in code with defaults and overridable at launch. The real ones:",
+  "de": "**Parameter** sind Node-spezifische Einstellungen, im Code mit Standardwerten deklariert und beim Start überschreibbar. Die tatsächlichen:"
+ },
+ "1ae965865f67c62a": {
+  "en": "| Node | Parameter | Default |",
+  "de": "| Node | Parameter | Standard |"
+ },
+ "f10e70a4eb2ef586": {
+  "en": "| | `cmd_timeout_s` | 0.5 s (no `/cmd_vel` for this long → stand still) |",
+  "de": "| | `cmd_timeout_s` | 0,5 s (so lange kein `/cmd_vel` → stillstehen) |"
+ },
+ "b8cc7e3090c23187": {
+  "en": "| | `accel_limit` | 0.5 m/s² and rad/s² |",
+  "de": "| | `accel_limit` | 0,5 m/s² bzw. rad/s² |"
+ },
+ "57411431a0b5eb08": {
+  "en": "| | `publish_tf` | true |",
+  "de": "| | `publish_tf` | true |"
+ },
+ "6eab768c77f895d6": {
+  "en": "| `policy_node` | `policy` | \"\" (required: path to `policy.npz`) |",
+  "de": "| `policy_node` | `policy` | \"\" (erforderlich: Pfad zu `policy.npz`) |"
+ },
+ "1fbb1af96ab8bb17": {
+  "en": "The nodes read their parameters once at start-up, so set them on the command line rather than with `ros2 param set` while running:",
+  "de": "Die Nodes lesen ihre Parameter einmalig beim Start, setzen Sie sie daher auf der Kommandozeile statt mit `ros2 param set` während des Betriebs:"
+ },
+ "ee711f88b6a2cf44": {
+  "en": "`use_sim_time:=true` is a parameter every node has: it makes the node's clock follow Gazebo's `/clock` topic instead of wall time. `gazebo.launch.py` sets it for all its nodes.",
+  "de": "`use_sim_time:=true` ist ein Parameter, den jeder Node hat: Er lässt die Uhr des Nodes dem Gazebo-Topic `/clock` statt der Echtzeit folgen. `gazebo.launch.py` setzt ihn für alle seine Nodes."
+ },
+ "d8f21c5603e27404": {
+  "en": "Launch files",
+  "de": "Launch-Dateien"
+ },
+ "064ff49eed48bcfe": {
+  "en": "A **launch file** starts a set of nodes with their parameters and arguments. Strido's are Python (`*.launch.py`).",
+  "de": "Ein **Launch-File** startet eine Gruppe von Nodes mit ihren Parametern und Argumenten. Die von Strido sind in Python geschrieben (`*.launch.py`)."
+ },
+ "c33763c36013ba0f": {
+  "en": "| Launch file | Arguments (default) |",
+  "de": "| Launch-Datei | Argumente (Standard) |"
+ },
+ "c870064ecc214a68": {
+  "en": "| `robot.launch.py` | `mcu_port` (`/dev/strido_mcu`), `lidar_port` (`/dev/rplidar`), `lidar` (true), `camera` (false), `use_policy` (false), `policy` (\"\") |",
+  "de": "| `robot.launch.py` | `mcu_port` (`/dev/strido_mcu`), `lidar_port` (`/dev/rplidar`), `lidar` (true), `camera` (false), `use_policy` (false), `policy` (\"\") |"
+ },
+ "ae32fa6cf4091bd1": {
+  "en": "| `gazebo.launch.py` | `world` (`worlds/flat.sdf`), `headless` (false), `use_policy` (false), `policy` (\"\") |",
+  "de": "| `gazebo.launch.py` | `world` (`worlds/flat.sdf`), `headless` (false), `use_policy` (false), `policy` (\"\") |"
+ },
+ "f1445de2da40cdfb": {
+  "en": "| `display.launch.py` | `rviz` (true) |",
+  "de": "| `display.launch.py` | `rviz` (true) |"
+ },
+ "1eb6f987eb6d38c0": {
+  "en": "`robot.launch.py` shows the main launch building blocks: `DeclareLaunchArgument`, `Node(...)`, `IfCondition`/`UnlessCondition` to choose `gait_node` or `policy_node`, `IncludeLaunchDescription` to reuse the Slamtec launch file, and `Command([\"xacro \", file])` to turn the xacro into the `robot_description` string. `gazebo.launch.py` adds event handlers (`OnProcessExit`) so the controllers are spawned only after the robot exists in the simulator.",
+  "de": "`robot.launch.py` zeigt die wichtigsten Launch-Bausteine: `DeclareLaunchArgument`, `Node(...)`, `IfCondition`/`UnlessCondition` zur Wahl zwischen `gait_node` und `policy_node`, `IncludeLaunchDescription` zur Wiederverwendung der Slamtec-Launch-Datei und `Command([\"xacro \", file])`, um das xacro in den String `robot_description` umzuwandeln. `gazebo.launch.py` ergänzt Event-Handler (`OnProcessExit`), damit die Controller erst gestartet werden, wenn der Roboter im Simulator existiert."
+ },
+ "447781fb4dfc27fe": {
+  "en": "tf2 and frames",
+  "de": "tf2 und Koordinatensysteme"
+ },
+ "cfb3db3648c4b073": {
+  "en": "**tf2** keeps track of coordinate frames over time, so any node can ask \"where is the LiDAR relative to the odometry origin, 50 ms ago?\". Frames follow REP-103: `base_link` has x forward, y left, z up.",
+  "de": "**tf2** verfolgt Koordinatensysteme über die Zeit, sodass jeder Node fragen kann: „Wo war der LiDAR vor 50 ms relativ zum Odometrie-Ursprung?“ Die Koordinatensysteme folgen REP-103: `base_link` hat x nach vorne, y nach links, z nach oben."
+ },
+ "c75bfa7543962939": {
+  "en": "flowchart TD\n  ODOM[\"odom\"] -->|\"gait_node (TransformBroadcaster)\"| BASE[\"base_link\"]\n  BASE -->|\"robot_state_publisher<br/>from /joint_states\"| HIP[\"FL_hip → FL_thigh → FL_calf → FL_foot<br/>(same for FR, RL, RR)\"]\n  BASE -->|\"fixed joints in URDF\"| SENS[\"imu_link, lidar_link,<br/>camera_link → camera_optical_frame\"]",
+  "de": "flowchart TD\n  ODOM[\"odom\"] -->|\"gait_node (TransformBroadcaster)\"| BASE[\"base_link\"]\n  BASE -->|\"robot_state_publisher<br/>aus /joint_states\"| HIP[\"FL_hip → FL_thigh → FL_calf → FL_foot<br/>(ebenso für FR, RL, RR)\"]\n  BASE -->|\"feste Gelenke im URDF\"| SENS[\"imu_link, lidar_link,<br/>camera_link → camera_optical_frame\"]"
+ },
+ "9c3a7005c43fd35c": {
+  "en": "`robot_state_publisher` reads the URDF (generated from the CAD by `strido_cad.models`) and the `/joint_states`, and publishes every link's pose. On the robot the joint states are the commanded angles after clamping: good for visualisation, but they cannot show a servo that stalls.",
+  "de": "`robot_state_publisher` liest das URDF (vom CAD durch `strido_cad.models` generiert) und die `/joint_states` und veröffentlicht die Pose jedes Glieds. Auf dem Roboter sind die Gelenkzustände die befohlenen Winkel nach der Begrenzung: gut für die Visualisierung, aber sie können keinen blockierenden Servo zeigen."
+ },
+ "435b7de0f942985a": {
+  "en": "The `odom→base_link` transform comes from integrating the commanded velocity, with no slip model. It is enough for teleoperation and as a seed for SLAM; for navigation use a LiDAR odometry or SLAM source. `policy_node` publishes no `/odom`.",
+  "de": "Die Transformation `odom→base_link` entsteht durch Integration der befohlenen Geschwindigkeit, ohne Schlupfmodell. Sie reicht für die Fernsteuerung und als Startwert für SLAM; für die Navigation verwenden Sie eine LiDAR-Odometrie- oder SLAM-Quelle. `policy_node` veröffentlicht kein `/odom`."
+ },
+ "134e3bfb462651a8": {
+  "en": "Quality of Service (QoS)",
+  "de": "Quality of Service (QoS)"
+ },
+ "0c1aa432d5e91a65": {
+  "en": "**QoS** settings decide how messages are delivered: reliability (reliable or best effort), history depth, durability (whether late subscribers get old messages) and deadlines. A publisher and subscriber must have compatible QoS or they will silently not connect.",
+  "de": "**QoS**-Einstellungen bestimmen, wie Messages zugestellt werden: Zuverlässigkeit (reliable oder best effort), Verlaufstiefe, Dauerhaftigkeit (ob spät hinzukommende Abonnenten alte Messages erhalten) und Deadlines. Publisher und Subscriber müssen kompatible QoS haben, sonst verbinden sie sich stillschweigend nicht."
+ },
+ "201e86574bfa7b2a": {
+  "en": "All Strido publishers and subscribers pass a plain integer depth (`10`; `50` for `policy_node`'s IMU subscription). In `rclpy` that means the default profile: **keep last N, reliable, volatile**. Reliable delivery is right for commands on the same machine. If you connect a sensor driver that publishes best effort (common for cameras and some LiDAR drivers), a reliable subscriber will not receive it: check with",
+  "de": "Alle Publisher und Subscriber von Strido übergeben eine einfache ganzzahlige Tiefe (`10`; `50` für das IMU-Abonnement von `policy_node`). In `rclpy` bedeutet das das Standardprofil: **keep last N, reliable, volatile**. Zuverlässige Zustellung ist für Befehle auf derselben Maschine richtig. Wenn Sie einen Sensortreiber anbinden, der mit best effort veröffentlicht (üblich bei Kameras und einigen LiDAR-Treibern), empfängt ein zuverlässiger Subscriber nichts: Prüfen Sie das mit"
+ },
+ "aad88924f42dc68d": {
+  "en": "Teleoperation",
+  "de": "Fernsteuerung"
+ },
+ "12abbb8b0b443275": {
+  "en": "Drive the robot (or the simulation) from the keyboard. The image includes `teleop_twist_keyboard`:",
+  "de": "Steuern Sie den Roboter (oder die Simulation) über die Tastatur. Das Image enthält `teleop_twist_keyboard`:"
+ },
+ "1d0da997e6a66878": {
+  "en": "`teleop_twist_keyboard` starts with 0.5 m/s and 1.0 rad/s; `gait_node` clamps to 0.30 m/s forward, 0.15 m/s sideways and 1.0 rad/s, and ramps at 0.5 m/s². Press `z` (all speeds −10 %) or `x` (linear only) a few times so the key presses map onto the usable range. The teleop publishes a message per key press (hold a key and keyboard auto-repeat keeps it coming); `gait_node` treats `/cmd_vel` older than 0.5 s (`cmd_timeout_s`) as stale and stands still, so the robot stops when the messages stop. Kill the gait node entirely and the firmware holds the pose for 200 ms, then relaxes 2 s later.",
+  "de": "`teleop_twist_keyboard` startet mit 0,5 m/s und 1,0 rad/s; `gait_node` begrenzt auf 0,30 m/s vorwärts, 0,15 m/s seitwärts und 1,0 rad/s und beschleunigt mit 0,5 m/s². Drücken Sie einige Male `z` (alle Geschwindigkeiten −10 %) oder `x` (nur linear), damit die Tastendrücke in den nutzbaren Bereich fallen. Die Teleop-Anwendung veröffentlicht pro Tastendruck eine Message (halten Sie eine Taste gedrückt, sorgt die automatische Tastenwiederholung für Nachschub); `gait_node` behandelt `/cmd_vel`, das älter als 0,5 s ist (`cmd_timeout_s`), als veraltet und bleibt stehen, daher hält der Roboter an, wenn die Messages ausbleiben. Beenden Sie den Gait-Node ganz, hält die Firmware die Pose 200 ms lang und entspannt dann 2 s später."
+ },
+ "e452fd69280d370a": {
+  "en": "Teleop is not an emergency stop. Pulling the servo loop key is the hardware kill; `/strido/estop` is the software one ([safety](../making/safety.md)).",
+  "de": "Teleop ist kein Not-Halt. Das Ziehen des Servo-Loop-Keys ist die Hardware-Abschaltung; `/strido/estop` ist die Software-Abschaltung ([Sicherheit](../making/safety.md))."
+ },
+ "05ca9678b5bf992b": {
+  "en": "Porting from a Unitree Go2",
+  "de": "Portierung von einem Unitree Go2"
+ },
+ "5fe8816d894c3d94": {
+  "en": "Joint names, signs, frames and `/cmd_vel` match the Go2 ROS 2 description, so velocity-level stacks run unchanged. Differences: the command array order is FL, FR, RL, RR (the Unitree SDK uses FR, FL, RR, RL: map by name), there are no foot-contact or motor-torque topics, `/joint_states` are commanded values, and the speed envelope is about 0.3 m/s.",
+  "de": "Gelenknamen, Vorzeichen, Koordinatensysteme und `/cmd_vel` entsprechen der ROS-2-Beschreibung des Go2, daher laufen Stacks auf Geschwindigkeitsebene unverändert. Unterschiede: Die Reihenfolge im Befehlsarray ist FL, FR, RL, RR (das Unitree SDK verwendet FR, FL, RR, RL: nach Namen zuordnen), es gibt keine Topics für Fußkontakt oder Motordrehmoment, `/joint_states` sind befohlene Werte, und der Geschwindigkeitsbereich liegt bei etwa 0,3 m/s."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "877dad70dd88d26c": {
+  "en": "Why can `gait_node` run unchanged in Gazebo and on the robot?",
+  "de": "Warum kann `gait_node` unverändert in Gazebo und auf dem Roboter laufen?"
+ },
+ "96923d29fe3d2fe1": {
+  "en": "Which Strido node publishes `odom→base_link`, and what is its weakness?",
+  "de": "Welcher Strido-Node veröffentlicht `odom→base_link`, und was ist seine Schwäche?"
+ },
+ "0b5fdb7e12a03549": {
+  "en": "Name one service the robot uses even though `strido_control` defines none.",
+  "de": "Nennen Sie einen Service, den der Roboter nutzt, obwohl `strido_control` keinen definiert."
+ },
+ "554dc209b812f7fa": {
+  "en": "You run `ros2 param set /gait_node body_height 0.15` and nothing changes. Why?",
+  "de": "Sie führen `ros2 param set /gait_node body_height 0.15` aus, und nichts ändert sich. Warum?"
+ },
+ "6caf4126fd5ff816": {
+  "en": "A best-effort camera driver publishes `/camera/image_raw` but your default subscriber gets nothing. What is the likely cause?",
+  "de": "Ein Kameratreiber mit best effort veröffentlicht `/camera/image_raw`, aber Ihr Standard-Subscriber erhält nichts. Was ist die wahrscheinliche Ursache?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "c6f6f739ccfeaea2": {
+  "en": "It only publishes `/leg_controller/commands`; in Gazebo `ros2_control`'s `leg_controller` consumes it, on the robot `mcu_bridge` does.",
+  "de": "Er veröffentlicht nur `/leg_controller/commands`; in Gazebo verarbeitet das der `leg_controller` von `ros2_control`, auf dem Roboter `mcu_bridge`."
+ },
+ "4ed01e2fe207062f": {
+  "en": "`gait_node`; it integrates the commanded velocity (dead reckoning without slip), so it drifts from reality.",
+  "de": "`gait_node`; er integriert die befohlene Geschwindigkeit (Koppelnavigation ohne Schlupf) und driftet daher von der Realität weg."
+ },
+ "41ce07095c91c25f": {
+  "en": "The `controller_manager` services called by `spawner` in `gazebo.launch.py`, or the parameter services every node has.",
+  "de": "Die Services des `controller_manager`, die `spawner` in `gazebo.launch.py` aufruft, oder die Parameter-Services, die jeder Node hat."
+ },
+ "a1d24ce40c3f44c6": {
+  "en": "The node reads its parameters only at start-up; restart it with `--ros-args -p body_height:=0.15`.",
+  "de": "Der Node liest seine Parameter nur beim Start; starten Sie ihn mit `--ros-args -p body_height:=0.15` neu."
+ },
+ "f06c9f7903d8f461": {
+  "en": "A QoS mismatch: a reliable subscriber does not match a best-effort publisher.",
+  "de": "Eine QoS-Unverträglichkeit: Ein zuverlässiger (reliable) Subscriber passt nicht zu einem Best-effort-Publisher."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "a55ae412ceb9efb5": {
+  "en": "[ROS 2 Jazzy concepts (nodes, topics, services, actions, parameters, launch)](https://docs.ros.org/en/jazzy/Concepts.html)",
+  "de": "[ROS 2 Jazzy: Konzepte (Nodes, Topics, Services, Actions, Parameter, Launch)](https://docs.ros.org/en/jazzy/Concepts.html)"
+ },
+ "11bfbbe09ef74555": {
+  "en": "[About Quality of Service settings](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)",
+  "de": "[Über die Quality-of-Service-Einstellungen](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Quality-of-Service-Settings.html)"
+ },
+ "b4c05e219e13d106": {
+  "en": "[tf2 introduction](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html)",
+  "de": "[Einführung in tf2](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Tf2.html)"
+ },
+ "fc837e8a2f0c0332": {
+  "en": "[REP-103: units and coordinate conventions](https://www.ros.org/reps/rep-0103.html)",
+  "de": "[REP-103: Einheiten und Koordinatenkonventionen](https://www.ros.org/reps/rep-0103.html)"
+ },
+ "124bddb85527a629": {
+  "en": "[ros2_control documentation (Jazzy)](https://control.ros.org/jazzy/index.html)",
+  "de": "[ros2_control-Dokumentation (Jazzy)](https://control.ros.org/jazzy/index.html)"
+ }
+}

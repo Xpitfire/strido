@@ -1,0 +1,81 @@
+# FDM fit classes for the printed parts (mm), used by `python -m strido_verify.fits`.
+#
+# Measured on the CAD meshes at the reference pose; vendor/metal parts are not measured.
+# FDM prints holes ~0.1-0.2 mm undersize (polygonal perimeters, first-layer squish), so the
+# bands below are the nominal CAD sizes that give the intended fit after printing with the
+# settings in hardware/print/print_list.md (0.4 mm nozzle, 0.2 mm layers, PETG/PLA+).
+# Sources: Prusa knowledge base (hole compensation), Ultimaker/Bambu design guides, and the
+# upstream Yertle build (holes it uses that were printed and assembled are the reference).
+
+process: {nozzle_mm: 0.4, layer_mm: 0.2, expected_hole_shrink_mm: 0.15}
+
+# Screw passes freely through the part.
+screw_clearance:
+  fail_below_over_nominal_mm: 0.05      # screw will not pass without drilling
+  warn_below_over_nominal_mm: 0.20      # likely tight after printing: chase with a drill (size in report)
+  fail_above_over_nominal_mm: 1.60      # applies to the part under the head or the nut: bearing face unsupported
+
+# Screw forms its own thread in a printed pilot hole (self-tapping into PETG/PLA).
+# Ratios are of the *printed* pilot (CAD - expected_hole_shrink_mm) to the nominal diameter;
+# thread-forming screw guides for thermoplastics recommend ~0.8 d.
+thread_forming:
+  min_ratio: 0.70                        # below: boss splits, screw strips the head
+  ok_max_ratio: 0.90                     # up to here: full grip
+  warn_max_ratio: 0.93                   # (0.90, 0.93]: weak grip, CA-hardened pilot; above: no grip -> fail
+  min_engagement_diameters: 1.5          # engaged length (hole narrower than d) >= 1.5 d: ok
+  warn_engagement_diameters: 1.0         # [1.0, 1.5) d: warn (do not over-tighten); below: fail
+
+# Ball bearings and bushings pressed into printed seats (seat bore vs. outer diameter).
+bearing_seat:
+  min_over_od_mm: -0.15                  # tighter: seat cracks or the outer ring distorts
+  max_over_od_mm: 0.30                   # looser: bearing spins in the seat (use a drop of CA glue)
+
+bearings:  # catalogue part -> outer diameter, width (ISO 15; bushing pair: two 3x5x5 sleeves per link)
+  bearing_625zz: {od: 16.0, width: 5.0}
+  bearing_633zz: {od: 13.0, width: 5.0}
+  bearing_6805_2rs: {od: 37.0, width: 7.0}
+  sleeve_bearing_3x5x5_pair: {od: 5.0, width: 10.0}
+
+# Upstream Yertle holes that miss a band but are kept: changing them means re-designing upstream
+# parts that were printed and assembled as they are. Each entry needs an ADR in docs/decisions.md
+# and a builder action; the check then reports these holes as warnings carrying that action.
+# New Strido parts never go here (fix the part); derived variants that keep upstream holes may.
+accepted_deviations:
+  - adr: ADR-009
+    parts: [left_servo_mount, right_servo_mount, left_servo_mount_fl, right_servo_mount_fr, servo_mount_top_bracket]
+    fit: thread-forming
+    nominal_mm: 3.0
+    min_hole_mm: 2.935                   # only oversize pilots: 0.93 d printed = 2.94 mm CAD (smaller ones never match)
+    max_hole_mm: 2.975                   # largest measured CAD pilot 2.973 mm; printed ~2.82 mm = 0.94 d
+    action: "print with X-Y hole compensation -0.15 mm (pilot ~2.65 mm); on an uncompensated print, harden the pilot with a drop of thin CA glue before driving the screw and check it bites before loading the joint (no anaerobic thread locker on plastic)"
+
+# Sampling of the screw axis: step along the shank and minimum span to count a part as passed.
+sampling: {step_mm: 0.5, min_span_mm: 0.75, edge_margin_mm: 0.3}
+
+# Running clearance between parts on different rigid bodies (strido_verify.clearance, strido_verify.rom).
+# Two printed surfaces each deviate up to ~0.15 mm (0.4 mm nozzle, 0.2 mm layers, tuned flow): a nominal
+# gap below 0.3 mm can close after printing (fail); below 1.0 mm it may rub on a rough print (tight).
+moving_clearance:
+  interface_contact_mm: 0.05             # touching at the CAD pose across a joint = joint interface
+  constant_gap_band_mm: 0.05             # gap constant over all poses = rotational interface (turns about its axis)
+  fail_below_mm: 0.3
+  warn_below_mm: 1.0
+
+# Printability (strido_verify.printability): slicer gate plus a wall-thickness scan. A lateral wall
+# is built from extrusion lines (0.4 mm nozzle: one line ~0.45 mm), a horizontal skin from layers
+# (0.2 mm). Below one line / one layer the slicer drops the feature; below two lines / three layers
+# it prints but is fragile.
+printability:
+  lateral_wall_mm: {fail_below: 0.4, warn_below: 0.8}
+  vertical_skin_mm: {fail_below: 0.2, warn_below: 0.6}
+  lateral_normal_z_max: 0.5            # |normal z| below this: side wall (thickness across it is lateral)
+  thin_area_mm2: {fail_above: 2.0, warn_above: 10.0}  # per part, counting only wall-like regions
+  samples_per_mm2: 2.0                 # surface samples for the thickness rays (spacing ~0.7 mm)
+  samples_min: 4000
+  samples_max: 200000
+  coincident_below_mm: 0.05            # thinner hits are duplicate/internal mesh faces, not material
+  cluster_link_mm: 1.0                 # thin samples closer than this belong to one region
+  wall_min_width_mm: 1.0               # narrower regions are cusp lines where two surfaces meet ...
+  fin_min_length_mm: 5.0               # ... unless they run this long (a thin rib or knife edge)
+  brim_above_height_mm: 40.0           # print list: brim on parts taller than 40 mm
+  brim_width_mm: 5

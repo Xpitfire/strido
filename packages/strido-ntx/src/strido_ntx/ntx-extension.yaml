@@ -1,0 +1,22 @@
+id: strido
+version: 0.2.0
+label: Strido quadruped
+description: >-
+  Strido (3D-printed 12-DoF quadruped, ESP32-S3 motion controller, Raspberry Pi 5) in the NT-X catalog:
+  robot spec and MuJoCo model generated from the verified CAD, a standing skill, and the serial
+  RobotPort for the physical robot (position servos, IMU state, latched protective stop).
+capabilities:
+  - robot.strido
+  - skill.strido-stand
+  - transport.strido-serial
+requirements:
+  bins: []
+  env:
+    - {name: STRIDO_SERIAL_PORT, optional: true, hint: "MCU device for hardware sessions (default /dev/strido_mcu, udev rule in ros2/strido_bringup/config)"}
+  python:
+    - {name: "ntx-harness>=0.2.0", hint: "the extension runs inside the NT-X environment"}
+    - {name: "strido-core>=0.2.0", hint: "uv pip install -e packages/strido-core (from the Strido repository)"}
+    - {name: "pyserial>=3.5", optional: true, hint: "hardware transport only"}
+  gpu: none
+docs:
+  - https://github.com/Xpitfire/strido/blob/main/docs/ntx-integration.md

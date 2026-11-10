@@ -1,0 +1,266 @@
+{
+ "ccfe8c7787ff26a2": {
+  "en": "Docker and containers",
+  "de": "Docker und Container"
+ },
+ "bef527e227508b78": {
+  "en": "Docker packages software with everything it needs (libraries, ROS 2, Python packages) into an *image* that runs the same way on a laptop, a CI runner and the robot. Strido uses one image, `strido-ros:jazzy`, for both the Gazebo simulation and the real robot.",
+  "de": "Docker verpackt Software mit allem, was sie benötigt (Bibliotheken, ROS 2, Python-Pakete), in ein *Image*, das auf einem Laptop, einem CI-Runner und dem Roboter gleich läuft. Strido verwendet ein Image, `strido-ros:jazzy`, sowohl für die Gazebo-Simulation als auch für den echten Roboter."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "d0e05d79cd035a70": {
+  "en": "`docker/ros2/Dockerfile` builds the ROS 2 Jazzy + Gazebo Harmonic workspace image for amd64 and arm64 (Raspberry Pi 5, Apple silicon).",
+  "de": "`docker/ros2/Dockerfile` erstellt das Workspace-Image mit ROS 2 Jazzy + Gazebo Harmonic für amd64 und arm64 (Raspberry Pi 5, Apple Silicon)."
+ },
+ "f29fdb00050901e5": {
+  "en": "`docker/compose.yaml` defines three services: `ros` (builds the image), `sim-smoke` (headless Gazebo walk test) and `robot` (runs on the Pi with access to `/dev`).",
+  "de": "`docker/compose.yaml` definiert drei Services: `ros` (erstellt das Image), `sim-smoke` (Gazebo-Lauftest ohne Oberfläche) und `robot` (läuft auf dem Pi mit Zugriff auf `/dev`)."
+ },
+ "e98ba368915f805a": {
+  "en": "`docker/ros2/entrypoint.sh` sources ROS 2 and the workspace; `docker/ros2/sim_smoke.sh` is the automated simulation test behind `make sim-gazebo`.",
+  "de": "`docker/ros2/entrypoint.sh` lädt ROS 2 und den Workspace; `docker/ros2/sim_smoke.sh` ist der automatisierte Simulationstest hinter `make sim-gazebo`."
+ },
+ "9388e3ed32cee388": {
+  "en": "`ROS_DOMAIN_ID` defaults to `42` ([configuration](../../configuration.md)).",
+  "de": "`ROS_DOMAIN_ID` ist standardmäßig `42` ([Konfiguration](../../configuration.md))."
+ },
+ "6a1b045ad83ba997": {
+  "en": "Containers versus virtual machines",
+  "de": "Container im Vergleich zu virtuellen Maschinen"
+ },
+ "e4a9f44ae890382d": {
+  "en": "A **virtual machine** emulates a whole computer: its own kernel, virtual disk and virtual hardware. A **container** is just a group of normal processes on the host kernel, isolated with Linux namespaces (own file system view, process list, network) and limited with cgroups.",
+  "de": "Eine **virtuelle Maschine** emuliert einen ganzen Computer: eigener Kernel, virtuelle Festplatte und virtuelle Hardware. Ein **Container** ist nur eine Gruppe normaler Prozesse auf dem Host-Kernel, isoliert mit Linux-Namespaces (eigene Sicht auf Dateisystem, Prozessliste, Netzwerk) und begrenzt mit cgroups."
+ },
+ "bca5581a258ecf00": {
+  "en": "| | Virtual machine | Container |",
+  "de": "| | Virtuelle Maschine | Container |"
+ },
+ "826d1eac2a420d6d": {
+  "en": "| Kernel | Own guest kernel | Shares the host kernel |",
+  "de": "| Kernel | Eigener Gast-Kernel | Teilt den Host-Kernel |"
+ },
+ "56809900bc486b18": {
+  "en": "| Start-up | Tens of seconds | About a second |",
+  "de": "| Start | Zehn Sekunden und mehr | Etwa eine Sekunde |"
+ },
+ "372ff0ff7ffaf612": {
+  "en": "| Overhead | Reserved RAM and CPU | Almost none |",
+  "de": "| Overhead | Reservierter RAM und CPU | Fast keiner |"
+ },
+ "c166606594317ece": {
+  "en": "| Hardware access | Through emulated or passed-through devices | Host device files can be mapped in directly |",
+  "de": "| Hardwarezugriff | Über emulierte oder durchgereichte Geräte | Gerätedateien des Hosts lassen sich direkt einbinden |"
+ },
+ "a9feac3642b0e3d0": {
+  "en": "For a robot this matters: the Pi 5 has 4 GB of RAM in this build, and the `mcu_bridge` polls a USB serial port every 2 ms. A container gives near-native performance and direct access to `/dev/strido_mcu`; a VM would cost memory and add latency.",
+  "de": "Für einen Roboter ist das wichtig: Der Pi 5 hat in diesem Aufbau 4 GB RAM, und `mcu_bridge` fragt alle 2 ms eine serielle USB-Schnittstelle ab. Ein Container bietet nahezu native Leistung und direkten Zugriff auf `/dev/strido_mcu`; eine VM würde Speicher kosten und Latenz hinzufügen."
+ },
+ "fb64fcac69eb8589": {
+  "en": "On macOS, Docker Desktop runs a small Linux VM and the containers live inside it. That is why the Gazebo test works on a Mac but USB devices are hard to reach there: you test simulation on the laptop and hardware on the Pi.",
+  "de": "Unter macOS betreibt Docker Desktop eine kleine Linux-VM, in der die Container laufen. Deshalb funktioniert der Gazebo-Test auf einem Mac, USB-Geräte sind dort aber schwer erreichbar: Sie testen die Simulation auf dem Laptop und die Hardware auf dem Pi."
+ },
+ "224686090d6547b8": {
+  "en": "Images and layers",
+  "de": "Images und Schichten"
+ },
+ "d8bede174b299cd6": {
+  "en": "An image is a stack of read-only **layers**, one per file-changing instruction in the `Dockerfile`. Docker caches layers: if an instruction and everything before it is unchanged, the cached layer is reused. The Strido Dockerfile is ordered so that slow, rarely changing steps come first:",
+  "de": "Ein Image ist ein Stapel schreibgeschützter **Schichten** (Layer), eine je dateiändernder Anweisung im `Dockerfile`. Docker speichert Schichten zwischen: Sind eine Anweisung und alles davor unverändert, wird die zwischengespeicherte Schicht wiederverwendet. Das Strido-Dockerfile ist so geordnet, dass langsame, selten geänderte Schritte zuerst kommen:"
+ },
+ "83338f6c4143c8c9": {
+  "en": "flowchart TD\n  A[\"FROM ros:jazzy-ros-base<br/>Ubuntu 24.04 + ROS 2 core\"] --> B[\"apt-get install<br/>ros-gz, gz-ros2-control, ros2-controllers,<br/>xacro, robot-state-publisher, tf2-ros,<br/>teleop-twist-keyboard, python3-serial, numpy\"]\n  B --> C[\"git clone sllidar_ros2<br/>pinned commit\"]\n  C --> D[\"COPY + pip install packages/strido-core\"]\n  D --> E[\"COPY ros2/strido_description,<br/>strido_bringup, strido_control\"]\n  E --> F[\"colcon build --symlink-install\"]\n  F --> G[\"entrypoint.sh: source ROS + workspace\"]",
+  "de": "flowchart TD\n  A[\"FROM ros:jazzy-ros-base<br/>Ubuntu 24.04 + ROS-2-Kern\"] --> B[\"apt-get install<br/>ros-gz, gz-ros2-control, ros2-controllers,<br/>xacro, robot-state-publisher, tf2-ros,<br/>teleop-twist-keyboard, python3-serial, numpy\"]\n  B --> C[\"git clone sllidar_ros2<br/>fixierter Commit\"]\n  C --> D[\"COPY + pip install packages/strido-core\"]\n  D --> E[\"COPY ros2/strido_description,<br/>strido_bringup, strido_control\"]\n  E --> F[\"colcon build --symlink-install\"]\n  F --> G[\"entrypoint.sh: ROS + Workspace laden\"]"
+ },
+ "dba8af5a3c845f1b": {
+  "en": "Editing a ROS node only invalidates the last few layers, so a rebuild after a code change takes seconds to minutes instead of re-downloading Gazebo.",
+  "de": "Das Bearbeiten eines ROS-Nodes macht nur die letzten Schichten ungültig, daher dauert ein Neubau nach einer Codeänderung Sekunden bis Minuten, statt Gazebo neu herunterzuladen."
+ },
+ "7d8b7719ac243b02": {
+  "en": "Details worth noticing:",
+  "de": "Beachtenswerte Details:"
+ },
+ "38151cabbf94f8c6": {
+  "en": "**Pinned dependencies.** The Slamtec LiDAR driver is not packaged for Jazzy, so it is cloned at a fixed commit (`ARG SLLIDAR_COMMIT=...`). Pinning means a rebuild next year produces the same driver.",
+  "de": "**Fixierte Abhängigkeiten.** Der Slamtec-LiDAR-Treiber ist für Jazzy nicht paketiert, daher wird er auf einem festen Commit geklont (`ARG SLLIDAR_COMMIT=...`). Durch das Fixieren erzeugt ein Neubau im nächsten Jahr denselben Treiber."
+ },
+ "1aabf6283c4a7bd7": {
+  "en": "**`--no-deps` install of `strido-core`.** The core package (gait, kinematics, protocol, numpy policy runtime) has only NumPy as a runtime need, which apt already installed. No PyTorch, CadQuery or MuJoCo enters the robot image (ADR-003 in [decisions](../../decisions.md)).",
+  "de": "**`--no-deps`-Installation von `strido-core`.** Das Kernpaket (Gait, Kinematik, Protokoll, NumPy-Policy-Laufzeit) benötigt zur Laufzeit nur NumPy, das apt bereits installiert hat. Weder PyTorch noch CadQuery noch MuJoCo gelangen in das Roboter-Image (ADR-003 in [Entscheidungen](../../decisions.md))."
+ },
+ "87d7e0f1b28d42b9": {
+  "en": "**`rm -rf /var/lib/apt/lists/*`** in the same `RUN` as `apt-get install` keeps the package index out of the layer. Deleting it in a later layer would not shrink the image, because earlier layers are immutable.",
+  "de": "**`rm -rf /var/lib/apt/lists/*`** im selben `RUN` wie `apt-get install` hält den Paketindex aus der Schicht heraus. Ihn in einer späteren Schicht zu löschen, würde das Image nicht verkleinern, weil frühere Schichten unveränderlich sind."
+ },
+ "099fdfdcd90386b5": {
+  "en": "**Multi-architecture.** `ros:jazzy-ros-base` is published for amd64 and arm64, so the same Dockerfile builds natively on the Pi and on an Apple silicon Mac.",
+  "de": "**Multi-Architektur.** `ros:jazzy-ros-base` wird für amd64 und arm64 veröffentlicht, daher baut dasselbe Dockerfile nativ auf dem Pi und auf einem Mac mit Apple Silicon."
+ },
+ "0f5ac79aeea07614": {
+  "en": "Containers at run time",
+  "de": "Container zur Laufzeit"
+ },
+ "15ccbc4820f0b3fe": {
+  "en": "A container is a running instance of an image plus a thin writable layer. Anything written inside disappears when the container is removed (`--rm`). That suits the robot: state that must persist (servo calibration) lives in the ESP32's flash, not in the container.",
+  "de": "Ein Container ist eine laufende Instanz eines Images plus einer dünnen beschreibbaren Schicht. Alles, was darin geschrieben wird, verschwindet, wenn der Container entfernt wird (`--rm`). Das passt zum Roboter: Zustand, der erhalten bleiben muss (Servokalibrierung), liegt im Flash des ESP32, nicht im Container."
+ },
+ "3e07f1de3eedf8bb": {
+  "en": "The entrypoint is three lines:",
+  "de": "Der Entrypoint besteht aus drei Zeilen:"
+ },
+ "7f03419fbc663bd8": {
+  "en": "It makes every command you pass (for example `ros2 launch ...`) see both ROS 2 and the Strido packages, and `exec` replaces the shell so signals such as Ctrl-C reach ROS directly.",
+  "de": "Damit sieht jeder übergebene Befehl (zum Beispiel `ros2 launch ...`) sowohl ROS 2 als auch die Strido-Pakete, und `exec` ersetzt die Shell, sodass Signale wie Strg-C ROS direkt erreichen."
+ },
+ "f99c57e9dbac4425": {
+  "en": "Compose: the repo's `docker/compose.yaml`",
+  "de": "Compose: `docker/compose.yaml` des Repos"
+ },
+ "c47612e3b6f93b0d": {
+  "en": "Docker Compose describes several containers in one YAML file so you do not have to remember long `docker run` command lines.",
+  "de": "Docker Compose beschreibt mehrere Container in einer YAML-Datei, sodass Sie sich keine langen `docker run`-Befehlszeilen merken müssen."
+ },
+ "1518d63065a59add": {
+  "en": "| Service | What it does | Key settings |",
+  "de": "| Service | Funktion | Wichtige Einstellungen |"
+ },
+ "755c940e76416a85": {
+  "en": "| `ros` | Builds `strido-ros:jazzy` from `docker/ros2/Dockerfile` (context = repo root) | `network_mode: host`, `ipc: host`, `ROS_DOMAIN_ID` |",
+  "de": "| `ros` | Erstellt `strido-ros:jazzy` aus `docker/ros2/Dockerfile` (Kontext = Repo-Wurzel) | `network_mode: host`, `ipc: host`, `ROS_DOMAIN_ID` |"
+ },
+ "a9f35ac9d5def2d0": {
+  "en": "| `sim-smoke` | Runs `/sim_smoke.sh`: Gazebo headless, stand up, walk 8 s at 0.15 m/s, check ≥ 0.4 m progress and sensor topics | exit code is the test result |",
+  "de": "| `sim-smoke` | Führt `/sim_smoke.sh` aus: Gazebo ohne Oberfläche, aufstehen, 8 s mit 0,15 m/s laufen, ≥ 0,4 m Fortschritt und Sensor-Topics prüfen | der Exit-Code ist das Testergebnis |"
+ },
+ "de16d17a02032fa7": {
+  "en": "| `robot` | Runs `ros2 launch strido_bringup robot.launch.py` on the Pi | `privileged: true`, `/dev:/dev`, host network |",
+  "de": "| `robot` | Führt `ros2 launch strido_bringup robot.launch.py` auf dem Pi aus | `privileged: true`, `/dev:/dev`, Host-Netzwerk |"
+ },
+ "a239d1f1620794ea": {
+  "en": "Commands you will use:",
+  "de": "Befehle, die Sie verwenden werden:"
+ },
+ "04baa5022bef526f": {
+  "en": "`make sim-gazebo POLICY=<policy.npz>` mounts a learned policy read-only into the container (`-v ...:/policy.npz:ro`) and sets `POLICY=/policy.npz`, which makes `sim_smoke.sh` launch `policy_node` instead of `gait_node`.",
+  "de": "`make sim-gazebo POLICY=<policy.npz>` bindet eine gelernte Policy schreibgeschützt in den Container ein (`-v ...:/policy.npz:ro`) und setzt `POLICY=/policy.npz`, wodurch `sim_smoke.sh` `policy_node` statt `gait_node` startet."
+ },
+ "d2676941dc942743": {
+  "en": "Why host networking and host IPC",
+  "de": "Warum Host-Netzwerk und Host-IPC"
+ },
+ "feb9672303067c81": {
+  "en": "ROS 2 discovers nodes with DDS multicast and, between processes on the same machine, can use shared memory. Docker's default bridge network hides multicast, and a private IPC namespace hides shared memory. `network_mode: host` and `ipc: host` put the container on the host's network and IPC so that a teleop container, the robot container and a laptop on the same Wi-Fi (same `ROS_DOMAIN_ID`) see each other's topics without extra configuration.",
+  "de": "ROS 2 findet Nodes über DDS-Multicast und kann zwischen Prozessen auf demselben Rechner Shared Memory verwenden. Das Standard-Bridge-Netzwerk von Docker verbirgt Multicast, und ein privater IPC-Namespace verbirgt Shared Memory. `network_mode: host` und `ipc: host` setzen den Container in das Netzwerk und den IPC des Hosts, sodass ein Teleop-Container, der Roboter-Container und ein Laptop im selben WLAN (gleiche `ROS_DOMAIN_ID`) die Topics der anderen ohne zusätzliche Konfiguration sehen."
+ },
+ "5b54a0985e487606": {
+  "en": "Use a different `ROS_DOMAIN_ID` per robot when several share a network:",
+  "de": "Verwenden Sie je Roboter eine andere `ROS_DOMAIN_ID`, wenn sich mehrere ein Netzwerk teilen:"
+ },
+ "4f8a807b3045f194": {
+  "en": "Device access",
+  "de": "Gerätezugriff"
+ },
+ "4e08e7a7c60c4044": {
+  "en": "A container cannot see host hardware unless you grant it. The `robot` service does it bluntly:",
+  "de": "Ein Container sieht keine Host-Hardware, sofern Sie sie nicht freigeben. Der Service `robot` tut das ohne Umschweife:"
+ },
+ "0cbdb443fc4f5aba": {
+  "en": "Bind-mounting the whole `/dev` matters because the udev symlinks (`/dev/strido_mcu`, `/dev/rplidar`) are created by the host's udev, and a USB device that is unplugged and replugged gets a new device node. A fixed `devices:` list would only map nodes that exist when the container starts. `privileged: true` lifts the device cgroup restrictions so the new nodes are usable.",
+  "de": "Das gesamte `/dev` per Bind-Mount einzubinden ist wichtig, weil die udev-Symlinks (`/dev/strido_mcu`, `/dev/rplidar`) vom udev des Hosts angelegt werden und ein USB-Gerät, das abgesteckt und wieder angesteckt wird, einen neuen Geräteknoten erhält. Eine feste `devices:`-Liste würde nur Knoten einbinden, die beim Start des Containers existieren. `privileged: true` hebt die Geräte-cgroup-Beschränkungen auf, sodass die neuen Knoten nutzbar sind."
+ },
+ "bebd2cc99f0459dd": {
+  "en": "A privileged container has nearly full control of the host. That is acceptable on a dedicated robot computer; do not use the `robot` service on your everyday laptop. For the simulation services, which need no hardware, no privileges are set.",
+  "de": "Ein privilegierter Container hat nahezu volle Kontrolle über den Host. Auf einem dedizierten Roboterrechner ist das akzeptabel; verwenden Sie den Service `robot` nicht auf Ihrem Alltagslaptop. Für die Simulations-Services, die keine Hardware benötigen, sind keine Privilegien gesetzt."
+ },
+ "ed2ff17cd2727bf7": {
+  "en": "The udev rules must be installed on the **host**, not in the image ([Linux on the Pi](linux-on-the-pi.md#users-groups-and-device-permissions)).",
+  "de": "Die udev-Regeln müssen auf dem **Host** installiert werden, nicht im Image ([Linux auf dem Pi](linux-on-the-pi.md#users-groups-and-device-permissions))."
+ },
+ "b5315ec0ccc7ac63": {
+  "en": "What is not in the image",
+  "de": "Was nicht im Image ist"
+ },
+ "23cf1e04ff5ffded": {
+  "en": "**Camera node.** The Pi 5 camera stack needs the Raspberry Pi libcamera fork; the image has no camera node, and `robot.launch.py` defaults to `camera:=false`. Build `camera_ros` on the host or use `rpicam-vid` with a GStreamer bridge ([software](../../software.md#raspberry-pi-setup)).",
+  "de": "**Kamera-Node.** Der Kamera-Stack des Pi 5 benötigt den libcamera-Fork von Raspberry Pi; das Image hat keinen Kamera-Node, und `robot.launch.py` verwendet standardmäßig `camera:=false`. Bauen Sie `camera_ros` auf dem Host oder verwenden Sie `rpicam-vid` mit einer GStreamer-Brücke ([Software](../../software.md#raspberry-pi-setup))."
+ },
+ "55eaff59069a2e8a": {
+  "en": "**Firmware tools.** PlatformIO is not installed; flash the ESP32-S3 from a development machine or install PlatformIO on the Pi ([firmware](firmware.md)).",
+  "de": "**Firmware-Werkzeuge.** PlatformIO ist nicht installiert; flashen Sie den ESP32-S3 von einem Entwicklungsrechner aus oder installieren Sie PlatformIO auf dem Pi ([Firmware](firmware.md))."
+ },
+ "c1b49f6085793794": {
+  "en": "**GUI.** Gazebo with a window (`gazebo.launch.py` without `headless:=true`) needs X11/Wayland forwarding into the container ([simulation](../../simulation.md)).",
+  "de": "**GUI.** Gazebo mit Fenster (`gazebo.launch.py` ohne `headless:=true`) benötigt eine X11/Wayland-Weiterleitung in den Container ([Simulation](../../simulation.md))."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "2e52c4fac1cd0d1c": {
+  "en": "Why does a container start faster and use less memory than a VM?",
+  "de": "Warum startet ein Container schneller und braucht weniger Speicher als eine VM?"
+ },
+ "921004a69e3a8064": {
+  "en": "Which Dockerfile change triggers the shortest rebuild, and why?",
+  "de": "Welche Dockerfile-Änderung löst den kürzesten Neubau aus, und warum?"
+ },
+ "abbbf2ad5eef5dbc": {
+  "en": "What breaks if you remove `network_mode: host` from the `robot` service?",
+  "de": "Was funktioniert nicht mehr, wenn Sie `network_mode: host` aus dem Service `robot` entfernen?"
+ },
+ "eb6f250373d76f09": {
+  "en": "Why does the `robot` service mount all of `/dev` instead of listing two devices?",
+  "de": "Warum bindet der Service `robot` ganz `/dev` ein, statt zwei Geräte aufzulisten?"
+ },
+ "7d00e1f04c7727c3": {
+  "en": "Where must `99-strido.rules` be installed for the container to see `/dev/strido_mcu`?",
+  "de": "Wo muss `99-strido.rules` installiert sein, damit der Container `/dev/strido_mcu` sieht?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "d829418ab2fc0a62": {
+  "en": "It shares the host kernel: no guest OS to boot and no reserved RAM; it is just isolated processes.",
+  "de": "Er teilt den Host-Kernel: kein Gast-Betriebssystem zu booten und kein reservierter RAM; es sind nur isolierte Prozesse."
+ },
+ "b0eacfcd40038c54": {
+  "en": "Changing files in `ros2/` only invalidates the `COPY ros2/...` layers and the `colcon build` after them; the apt and Git layers come from the cache.",
+  "de": "Das Ändern von Dateien in `ros2/` macht nur die `COPY ros2/...`-Schichten und das anschließende `colcon build` ungültig; die apt- und Git-Schichten kommen aus dem Cache."
+ },
+ "5954124efd30baae": {
+  "en": "DDS discovery across containers and machines; teleop or RViz in another container or on a laptop would no longer see the robot's topics.",
+  "de": "Die DDS-Erkennung über Container und Rechner hinweg; Teleop oder RViz in einem anderen Container oder auf einem Laptop würden die Topics des Roboters nicht mehr sehen."
+ },
+ "a6b03d241b5bd07f": {
+  "en": "udev on the host creates the symlinks and replugged devices get new nodes; a static device list would miss them.",
+  "de": "udev auf dem Host legt die Symlinks an, und wieder angesteckte Geräte erhalten neue Knoten; eine statische Geräteliste würde sie verpassen."
+ },
+ "13a4ed646d388dd6": {
+  "en": "On the host, in `/etc/udev/rules.d/`; the container sees the result through the `/dev` bind mount.",
+  "de": "Auf dem Host, in `/etc/udev/rules.d/`; der Container sieht das Ergebnis über den Bind-Mount von `/dev`."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "cbbbbe1c7b73b6b9": {
+  "en": "[Docker overview (images, containers, layers)](https://docs.docker.com/get-started/docker-overview/)",
+  "de": "[Docker-Überblick (Images, Container, Schichten)](https://docs.docker.com/get-started/docker-overview/)"
+ },
+ "b23330c611d81584": {
+  "en": "[Compose file reference](https://docs.docker.com/reference/compose-file/)",
+  "de": "[Referenz der Compose-Datei](https://docs.docker.com/reference/compose-file/)"
+ },
+ "09a52a17551a08f7": {
+  "en": "[Dockerfile reference](https://docs.docker.com/reference/dockerfile/)",
+  "de": "[Dockerfile-Referenz](https://docs.docker.com/reference/dockerfile/)"
+ },
+ "2ee97cf022fb5590": {
+  "en": "[Official ROS images on Docker Hub](https://hub.docker.com/_/ros)",
+  "de": "[Offizielle ROS-Images auf Docker Hub](https://hub.docker.com/_/ros)"
+ }
+}

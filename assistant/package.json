@@ -1,0 +1,14 @@
+{
+  "name": "strido-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strido documentation assistant: chat API, MCP endpoint and agent files over the docs knowledge base",
+  "type": "module",
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test 'test/*.test.mjs'"
+  }
+}

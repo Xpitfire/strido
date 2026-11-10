@@ -1,0 +1,322 @@
+{
+ "726d11bd5b230253": {
+  "en": "Safety",
+  "de": "Sicherheit"
+ },
+ "6cd0b30317a24609": {
+  "en": "Strido carries a lithium-polymer battery that can deliver hundreds of amperes into a short circuit, and twelve servos strong enough to trap a finger. This page explains the hazards, the protective parts the robot uses against them, and the order in which to power it up the first time.",
+  "de": "Strido trägt einen Lithium-Polymer-Akku, der bei einem Kurzschluss Hunderte Ampere liefern kann, und zwölf Servos, die stark genug sind, einen Finger einzuklemmen. Diese Seite erklärt die Gefahren, die Schutzteile, die der Roboter dagegen einsetzt, und die Reihenfolge, in der Sie ihn zum ersten Mal einschalten."
+ },
+ "cd93a632b2508abb": {
+  "en": "In Strido",
+  "de": "In Strido"
+ },
+ "496f493776651a84": {
+  "en": "Safety parts: the 25 A main fuse and 7.5 A logic fuse (ATO blade fuses), the XT60 arming port with its loop key in the back shell, the Pololu #2813 pushbutton switch, the INA260 power monitor (low-battery cut-off), and the PCA9685 OE pull-up. Rules and the smoke test are in [electronics.md](../../electronics.md#safety-rules); first power-up is assembly Step 23 ([assembly manual](../../assembly/README.md)). Firmware safety (watchdog, e-stop, cut-off) is described in [software.md](../../software.md#firmware).",
+  "de": "Sicherheitsteile: die 25-A-Hauptsicherung und die 7,5-A-Logiksicherung (ATO-Flachsicherungen), der XT60-Arming-Port mit seinem Loop-Key in der Rückschale, der Pololu-#2813-Einschalttaster, der INA260-Power-Monitor (Abschaltung bei niedrigem Akkustand) und der Pull-up-Widerstand an PCA9685 OE. Regeln und der Rauchtest stehen in [electronics.md](../../electronics.md#safety-rules); das erste Einschalten ist Montageschritt 23 ([Montageanleitung](../../assembly/README.md)). Die Firmware-Sicherheit (Watchdog, Not-Halt, Abschaltung) ist in [software.md](../../software.md#firmware) beschrieben."
+ },
+ "2eb7e6eb3085e782": {
+  "en": "LiPo batteries",
+  "de": "LiPo-Akkus"
+ },
+ "43beeac4ff28ed8b": {
+  "en": "The pack is a **2S LiPo, 5000 mAh**, hardcase, XT60 lead. \"2S\" means two cells in series: 7.4 V nominal, 8.4 V full, about 37 Wh. In `hardware/electronics.yaml` its maximum discharge is listed as 300 A (60C; 500 A in bursts). A short across its terminals therefore does not blow gently: the wire glows, insulation burns and the cells can be damaged into a fire.",
+  "de": "Der Akkupack ist ein **2S-LiPo, 5000 mAh**, Hardcase, XT60-Leitung. „2S“ bedeutet zwei Zellen in Reihe: 7,4 V nominal, 8,4 V voll, etwa 37 Wh. In `hardware/electronics.yaml` ist seine maximale Entladung mit 300 A angegeben (60C; 500 A kurzzeitig). Ein Kurzschluss über seinen Anschlüssen verläuft daher nicht sanft: Der Draht glüht, die Isolierung brennt, und die Zellen können bis zum Brand beschädigt werden."
+ },
+ "ec989818548ccb99": {
+  "en": "| Rule | Why |",
+  "de": "| Regel | Warum |"
+ },
+ "2c36bac34ae747d5": {
+  "en": "| Charge only with a **balance charger**, inside the **LiPo bag**, never unattended | Balancing keeps both cells at the same voltage; an unbalanced cell can be overcharged and fail; the bag contains a fire long enough to react |",
+  "de": "| Nur mit einem **Balance-Ladegerät**, im **LiPo-Sack** und nie unbeaufsichtigt laden | Balancing hält beide Zellen auf derselben Spannung; eine unausgeglichene Zelle kann überladen werden und versagen; der Sack hält einen Brand lange genug zurück, um zu reagieren |"
+ },
+ "41ab400aa69eeb38": {
+  "en": "| Never charge above 4.2 V per cell (8.4 V for the pack) | Overcharging lithium cells is the classic cause of thermal runaway |",
+  "de": "| Nie über 4,2 V pro Zelle laden (8,4 V für den Akkupack) | Überladen von Lithiumzellen ist die klassische Ursache für thermisches Durchgehen |"
+ },
+ "80851be58980e232": {
+  "en": "| Never run the pack flat | Deep discharge damages lithium cells. The firmware warns at **6.8 V** (3.4 V/cell) and relaxes the servos at **6.4 V** (3.2 V/cell); the cell checker / low-voltage alarm in the BOM gives a second opinion |",
+  "de": "| Den Akkupack nie leer fahren | Tiefentladung schädigt Lithiumzellen. Die Firmware warnt bei **6,8 V** (3,4 V/Zelle) und entspannt die Servos bei **6,4 V** (3,2 V/Zelle); der Zellprüfer / Unterspannungsalarm in der Stückliste liefert eine zweite Meinung |"
+ },
+ "1127b5b14bf650ad": {
+  "en": "| Store at storage charge (about 3.8 V/cell; B6AC-class chargers have a storage mode) | Full packs age faster and hold more energy if something goes wrong |",
+  "de": "| Mit Lagerladung lagern (etwa 3,8 V/Zelle; Ladegeräte der B6AC-Klasse haben einen Lagermodus) | Volle Akkupacks altern schneller und enthalten mehr Energie, falls etwas schiefgeht |"
+ },
+ "81751ed96a551d75": {
+  "en": "| Retire a pack that is **puffed**, dented or hot after normal use | Swelling is gas from decomposing electrolyte, a sign of internal damage |",
+  "de": "| Einen Akkupack ausmustern, der **aufgebläht**, verbeult oder nach normalem Gebrauch heiß ist | Die Schwellung ist Gas aus zersetztem Elektrolyt, ein Zeichen für innere Schäden |"
+ },
+ "7d9b88918c0023db": {
+  "en": "| Insulate bare leads; transport the pack in the bag | Prevents shorts from keys, tools or the other connector |",
+  "de": "| Blanke Leitungen isolieren; den Akkupack im Sack transportieren | Verhindert Kurzschlüsse durch Schlüssel, Werkzeug oder den anderen Stecker |"
+ },
+ "a9c7279722d9514d": {
+  "en": "If a LiPo smokes",
+  "de": "Wenn ein LiPo raucht"
+ },
+ "5dbefb370d634606": {
+  "en": "Do not try to save it. Move away, keep others away and ventilate. Do not cover a burning pack with your hands or a cloth. Contact your local fire service if the fire spreads. A pack that has vented is never used again.",
+  "de": "Versuchen Sie nicht, ihn zu retten. Gehen Sie weg, halten Sie andere fern und lüften Sie. Decken Sie einen brennenden Akkupack nicht mit den Händen oder einem Tuch ab. Verständigen Sie die örtliche Feuerwehr, wenn sich der Brand ausbreitet. Ein Akkupack, der ausgegast hat, wird nie wieder verwendet."
+ },
+ "3218183658e1c604": {
+  "en": "Fuses: protecting the wire",
+  "de": "Sicherungen: Schutz der Leitung"
+ },
+ "e04691a1d93ddaf7": {
+  "en": "A fuse protects the **wire** downstream of it from overheating. A wire's heating power is $P = I^2 R$, so it grows with the square of the current, and a short circuit can heat a thin wire until its insulation melts long before the battery runs out. The fuse is a deliberately weak link that melts first, so it is sized below the current the wire can carry and above the current the load needs:",
+  "de": "Eine Sicherung schützt die **Leitung** dahinter vor Überhitzung. Die Heizleistung einer Leitung ist $P = I^2 R$, sie wächst also mit dem Quadrat des Stroms, und ein Kurzschluss kann einen dünnen Draht erhitzen, bis seine Isolierung schmilzt, lange bevor der Akku leer ist. Die Sicherung ist eine bewusst schwache Stelle, die zuerst schmilzt; sie wird daher unterhalb des Stroms bemessen, den die Leitung tragen kann, und oberhalb des Stroms, den die Last braucht:"
+ },
+ "5d3523f168c8a63c": {
+  "en": "For the main fuse the servo load converts back to the pack through the UBECs (90 % efficient, see [power](../hardware/power.md)). The worst case is the nearly empty pack at the $6.4\\,\\mathrm{V}$ cut-off: $2 \\times 10\\,\\mathrm{A} \\times 6.0\\,\\mathrm{V} / (0.9 \\times 6.4\\,\\mathrm{V}) \\approx 20.8\\,\\mathrm{A}$, plus $2.7\\,\\mathrm{A}$ logic $= 23.6\\,\\mathrm{A}$ ([electronics check](../../verification/electronics.md)). That stays below the 25 A fuse, which in turn is below the 14 AWG trunk's 32 A.",
+  "de": "Für die Hauptsicherung wird die Servolast über die UBECs (90 % Wirkungsgrad, siehe [Stromversorgung](../hardware/power.md)) auf den Akkupack zurückgerechnet. Der ungünstigste Fall ist der fast leere Akkupack an der Abschaltgrenze von $6.4\\,\\mathrm{V}$: $2 \\times 10\\,\\mathrm{A} \\times 6.0\\,\\mathrm{V} / (0.9 \\times 6.4\\,\\mathrm{V}) \\approx 20.8\\,\\mathrm{A}$, plus $2.7\\,\\mathrm{A}$ Logik $= 23.6\\,\\mathrm{A}$ ([Elektronikprüfung](../../verification/electronics.md)). Das bleibt unter der 25-A-Sicherung, die ihrerseits unter den 32 A der 14-AWG-Hauptleitung liegt."
+ },
+ "ea27be3083d3da3a": {
+  "en": "| Fuse | Rating | Protects | Wire rating (`electronics.yaml`) | Load |",
+  "de": "| Sicherung | Nennwert | Schützt | Leitungsbelastbarkeit (`electronics.yaml`) | Last |"
+ },
+ "f4831c44c2b1a0e6": {
+  "en": "| Main (ATO) | **25 A** | W02, W03, W04/front, W04/rear: the 14 AWG trunk | 32 A | servo branch ≤ 2 × 10 A UBEC output (≈ 21 A at an empty pack, see [electronics](../../electronics.md#ratings-and-why-these-parts)) + logic |",
+  "de": "| Haupt (ATO) | **25 A** | W02, W03, W04/front, W04/rear: die 14-AWG-Hauptleitung | 32 A | Servozweig ≤ 2 × 10 A UBEC-Ausgang (≈ 21 A bei leerem Akkupack, siehe [Elektronik](../../electronics.md#ratings-and-why-these-parts)) + Logik |"
+ },
+ "78e2e62cb49ad455": {
+  "en": "| Logic (ATO) | **7.5 A** | W09, W10, W11 and the logic ground returns W24, W04/logic: the 18 AWG logic wiring | 16 A | logic branch ≤ 3 A |",
+  "de": "| Logik (ATO) | **7,5 A** | W09, W10, W11 und die Logik-Masserückleitungen W24, W04/logic: die 18-AWG-Logikverkabelung | 16 A | Logikzweig ≤ 3 A |"
+ },
+ "49322ce294e46c3c": {
+  "en": "The fuses sit as close to the battery input as their holders fit, because the short-circuit hazard is largest there. The main fuse holder lies on the rear WAGO bus, about 0.15 m from the battery input; W01, the 14 AWG lead between them, is unfused like the pack's own lead, so it is kept short, in spiral wrap and away from moving parts. The logic fuse holder in the back shell is fed through **the holder's own 14 AWG lead**, spliced to W02: no wire thinner than 14 AWG sits behind the 25 A fuse alone. Why that matters: [cable management](cable-management.md#fusing-a-fuse-protects-the-wire).",
+  "de": "Die Sicherungen sitzen so nah am Akkueingang, wie es ihre Halter zulassen, weil dort die Kurzschlussgefahr am größten ist. Der Halter der Hauptsicherung liegt auf dem hinteren WAGO-Bus, etwa 0,15 m vom Akkueingang entfernt; W01, die 14-AWG-Leitung dazwischen, ist wie die eigene Leitung des Akkupacks nicht abgesichert, daher wird sie kurz, im Spiralschlauch und fern von beweglichen Teilen gehalten. Der Halter der Logiksicherung in der Rückschale wird über **die eigene 14-AWG-Leitung des Halters** versorgt, an W02 angespleißt: Hinter der 25-A-Sicherung allein liegt kein Draht dünner als 14 AWG. Warum das wichtig ist: [Kabelmanagement](cable-management.md#fusing-a-fuse-protects-the-wire)."
+ },
+ "eebc41263b0d0206": {
+  "en": "Spares are in the BOM (two extra 25 A, one extra 7.5 A). Replace a blown fuse only with the **same rating**, and only after you have found why it blew. During harness building the fuses stay **out** until the wiring is checked: the power entry is wired without them (harness step 3), and they go in only for the Pi power check (harness step 6).",
+  "de": "Ersatz ist in der Stückliste (zwei zusätzliche 25 A, eine zusätzliche 7,5 A). Ersetzen Sie eine ausgelöste Sicherung nur durch eine mit **demselben Nennwert** und erst, nachdem Sie herausgefunden haben, warum sie ausgelöst hat. Beim Bau des Kabelbaums bleiben die Sicherungen **draußen**, bis die Verkabelung geprüft ist: Der Stromeingang wird ohne sie verdrahtet (Kabelbaum-Schritt 3), und sie kommen erst für die Pi-Stromprüfung hinein (Kabelbaum-Schritt 6)."
+ },
+ "7d8ae9cab5730a96": {
+  "en": "First power-up without servos: the smoke test",
+  "de": "Erstes Einschalten ohne Servos: der Rauchtest"
+ },
+ "74d2e3c6190ab447": {
+  "en": "The first time the robot gets battery power, the servos must not be able to move and the expensive boards must see the right voltages. The harness steps in [electronics.md](../../electronics.md#wiring-harness) do it in this order:",
+  "de": "Wenn der Roboter zum ersten Mal Akkustrom bekommt, dürfen sich die Servos nicht bewegen können, und die teuren Platinen müssen die richtigen Spannungen sehen. Die Kabelbaum-Schritte in [electronics.md](../../electronics.md#wiring-harness) gehen in dieser Reihenfolge vor:"
+ },
+ "cdbce13c8767f29f": {
+  "en": "flowchart TD\n  A[\"UBECs: measure 5.8–6.0 V unloaded<br/>(no servo connected)\"] --> B[\"Fuses in, button pressed:<br/>4.8–5.2 V at the W12 Dupont ends\"]\n  B --> C[\"Plug W12 onto Pi pins 2/4 (5 V), 6/14 (GND)\"]\n  C --> D[\"Smoke test: fuses in, loop key OUT, power on\"]\n  D --> E[\"Pi boots; /battery_state shows pack voltage;<br/>/diagnostics: pwm_ok, imu_ok, power_ok\"]\n  E --> F[\"XIAO in bootloader (BOOT + RESET):<br/>PCA9685 OE ≥ 2.4 V (outputs off)\"]",
+  "de": "flowchart TD\n  A[\"UBECs: 5,8–6,0 V ohne Last messen<br/>(kein Servo angeschlossen)\"] --> B[\"Sicherungen rein, Taster gedrückt:<br/>4,8–5,2 V an den W12-Dupont-Enden\"]\n  B --> C[\"W12 auf Pi-Pins 2/4 (5 V), 6/14 (GND) stecken\"]\n  C --> D[\"Rauchtest: Sicherungen rein, Loop-Key RAUS, einschalten\"]\n  D --> E[\"Pi bootet; /battery_state zeigt Akkuspannung;<br/>/diagnostics: pwm_ok, imu_ok, power_ok\"]\n  E --> F[\"XIAO im Bootloader (BOOT + RESET):<br/>PCA9685 OE ≥ 2,4 V (Ausgänge aus)\"]"
+ },
+ "2c82153ac0fbb3a0": {
+  "en": "Why each check:",
+  "de": "Warum jede Prüfung:"
+ },
+ "24813769cf079b24": {
+  "en": "**UBEC 5.8–6.0 V before servos:** the SPT5435LV is rated 4.8–6.0 V only. A unit set to (or failing at) 7.4 V would over-stress twelve servos at once.",
+  "de": "**UBEC 5,8–6,0 V vor den Servos:** Der SPT5435LV ist nur für 4,8–6,0 V ausgelegt. Ein auf 7,4 V eingestelltes (oder so ausfallendes) Gerät würde zwölf Servos gleichzeitig überlasten."
+ },
+ "6dfd935bb29a6412": {
+  "en": "**5 V at the Dupont ends before the Pi:** the Pi is fed through its GPIO 5 V pins, which bypasses the USB-C power input and its power negotiation; a wrong voltage there reaches the board directly.",
+  "de": "**5 V an den Dupont-Enden vor dem Pi:** Der Pi wird über seine GPIO-5-V-Pins versorgt, was den USB-C-Stromeingang und dessen Aushandlung umgeht; eine falsche Spannung dort erreicht die Platine direkt."
+ },
+ "84d4396df48f9bdc": {
+  "en": "**Loop key out:** the servo branch is dead, so nothing can move while you check the logic side.",
+  "de": "**Loop-Key draußen:** Der Servozweig ist stromlos, sodass sich nichts bewegen kann, während Sie die Logikseite prüfen."
+ },
+ "684173a1c83c0d39": {
+  "en": "**OE ≥ 2.4 V in the bootloader:** the PCA9685 board pulls OE low (outputs on) by default. The 2.2 kΩ pull-up keeps the outputs off whenever the XIAO is resetting or not running firmware, so a reset can never send random pulses.",
+  "de": "**OE ≥ 2,4 V im Bootloader:** Die PCA9685-Platine zieht OE standardmäßig auf Low (Ausgänge an). Der 2,2-kΩ-Pull-up hält die Ausgänge aus, wann immer der XIAO zurückgesetzt wird oder keine Firmware ausführt, sodass ein Reset nie zufällige Pulse senden kann."
+ },
+ "a283b0494a6cd073": {
+  "en": "Keep a hand near the power button for the first boot, and switch off at once if anything gets hot or smells.",
+  "de": "Halten Sie beim ersten Booten eine Hand in der Nähe des Einschalttasters und schalten Sie sofort ab, wenn etwas heiß wird oder riecht."
+ },
+ "c93ddba6aa96116e": {
+  "en": "Arming: the loop key",
+  "de": "Scharfschalten: der Loop-Key"
+ },
+ "6037dbe11ece5cd5": {
+  "en": "The **loop key** is a shorted XT60 plug that you insert into the **arming port** in the back shell to connect the servo branch. Pulling it is the servo kill: no current reaches the UBECs, whatever the software does.",
+  "de": "Der **Loop-Key** ist ein kurzgeschlossener XT60-Stecker, den Sie in den **Arming-Port** in der Rückschale stecken, um den Servozweig zu verbinden. Ihn zu ziehen ist der Servo-Not-Aus: Kein Strom erreicht die UBECs, egal was die Software tut."
+ },
+ "3f5f649e18659589": {
+  "en": "The **pushbutton switch is not an emergency stop.** It switches only the logic branch (Pololu states it is not intended as an emergency stop).",
+  "de": "Der **Einschalttaster ist kein Not-Halt.** Er schaltet nur den Logikzweig (Pololu gibt an, dass er nicht als Not-Halt gedacht ist)."
+ },
+ "2865760d99f015f6": {
+  "en": "The loop key must never fit the battery itself, otherwise it would short the pack. It therefore has the same contact type as the battery connector. Check this with the *unbridged* key housing before you solder the bridge (see the [XT60 contact rule](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery)).",
+  "de": "Der Loop-Key darf nie auf den Akku selbst passen, sonst würde er den Akkupack kurzschließen. Er hat daher denselben Kontakttyp wie der Akkustecker. Prüfen Sie das mit dem *nicht gebrückten* Steckergehäuse, bevor Sie die Brücke einlöten (siehe die [XT60-Kontaktregel](../../electronics.md#xt60-contact-rule-the-loop-key-must-never-fit-the-battery))."
+ },
+ "157f54b89ae02117": {
+  "en": "Label the port \"ARM\": the battery itself can mate with it, so always connect the pack to the battery input under the deck (its lead W00 into the XT60H).",
+  "de": "Beschriften Sie die Buchse mit „ARM“: Der Akku selbst passt hinein, schließen Sie den Akkupack daher immer am Akkueingang unter dem Deck an (seine Leitung W00 in die XT60H)."
+ },
+ "78d2b6095a75d89a": {
+  "en": "**Startup order** (from the safety rules): logic on → robot lying in the rest pose, legs folded → insert the loop key (servos stay limp; the controller sends no pulses before the first position command) → start `ros2 launch strido_bringup robot.launch.py` (servos go to the rest pose, then a 3 s stand-up).",
+  "de": "**Startreihenfolge** (aus den Sicherheitsregeln): Logik an → Roboter liegt in der Ruhepose, Beine eingeklappt → Loop-Key einstecken (Servos bleiben schlaff; der Controller sendet vor dem ersten Positionsbefehl keine Pulse) → `ros2 launch strido_bringup robot.launch.py` starten (Servos fahren in die Ruhepose, dann 3 s Aufstehen)."
+ },
+ "9abfa9da58783e4a": {
+  "en": "Never arm while commands are running",
+  "de": "Nie scharf schalten, während Befehle laufen"
+ },
+ "4cace4571af83d35": {
+  "en": "Inserting the loop key while position commands are being sent makes all twelve servos jump to their targets at once. Six stalled servos draw about 21 A, more than one UBEC's 15 A peak.",
+  "de": "Wird der Loop-Key eingesteckt, während Positionsbefehle gesendet werden, springen alle zwölf Servos gleichzeitig auf ihre Ziele. Sechs blockierte Servos ziehen etwa 21 A, mehr als die 15 A Spitzenstrom eines UBEC."
+ },
+ "6be01aab37404d22": {
+  "en": "Software stops, in addition to the key:",
+  "de": "Software-Stopps zusätzlich zum Loop-Key:"
+ },
+ "993c068c65d43ab5": {
+  "en": "`/strido/estop` latches: the firmware pulls PCA9685 OE high and stops all pulses.",
+  "de": "`/strido/estop` verriegelt: Die Firmware zieht PCA9685 OE auf High und stoppt alle Pulse."
+ },
+ "83b8c2ff06270077": {
+  "en": "Watchdog: no joint command for 200 ms → servos hold; 2 s later → they relax.",
+  "de": "Watchdog: kein Gelenkbefehl für 200 ms → Servos halten; 2 s später → sie entspannen."
+ },
+ "07e02a96201b48c0": {
+  "en": "The firmware refuses to drive without a working INA260, because without it there is no low-battery cut-off.",
+  "de": "Die Firmware verweigert den Betrieb ohne funktionierenden INA260, weil es ohne ihn keine Abschaltung bei niedrigem Akkustand gibt."
+ },
+ "0922f13d57c04933": {
+  "en": "Pinch points and moving legs",
+  "de": "Quetschstellen und bewegte Beine"
+ },
+ "2de14a92096c5baf": {
+  "en": "Each SPT5435LV is rated 35 kg·cm (about 3.43 N·m at stall). Torque is force times lever arm, $\\tau = F r$, so at $r = 30\\,\\mathrm{mm}$ from the axis the servo can press with",
+  "de": "Jeder SPT5435LV ist mit 35 kg·cm angegeben (etwa 3,43 N·m Blockiermoment). Drehmoment ist Kraft mal Hebelarm, $\\tau = F r$, daher kann der Servo bei $r = 30\\,\\mathrm{mm}$ von der Achse drücken mit"
+ },
+ "1f937058b4a35bdf": {
+  "en": "roughly the weight of $114\\,\\mathrm{N} / 9.81\\,\\mathrm{m/s^2} \\approx 11.7\\,\\mathrm{kg}$, on a fingertip. Closer to the axis the force is even larger. The knee is driven through a crank and linkages, so there are scissor points between the links, the femur and the tibia that close as the knee bends.",
+  "de": "ungefähr der Gewichtskraft von $114\\,\\mathrm{N} / 9.81\\,\\mathrm{m/s^2} \\approx 11.7\\,\\mathrm{kg}$, auf eine Fingerkuppe. Näher an der Achse ist die Kraft noch größer. Das Knie wird über eine Kurbel und Koppeln angetrieben, daher gibt es Scherstellen zwischen den Koppeln, dem Femur und der Tibia, die sich beim Beugen des Knies schließen."
+ },
+ "2d5af5a94821b492": {
+  "en": "Keep fingers out of the legs whenever the loop key is in.",
+  "de": "Halten Sie die Finger aus den Beinen, solange der Loop-Key steckt."
+ },
+ "e20d0024380ef7de": {
+  "en": "Hold the robot by the body shell, never by a leg.",
+  "de": "Halten Sie den Roboter an der Körperschale, nie an einem Bein."
+ },
+ "c4606c2bad7d2ce0": {
+  "en": "Test new gaits or policies with the robot lifted on a stand first, legs free.",
+  "de": "Testen Sie neue Gaits oder Policies zuerst mit dem Roboter auf einem Ständer, Beine frei."
+ },
+ "ef1cf2fce2c03dab": {
+  "en": "Before reaching into the legs, pull the loop key; relaxing the servos in software is not enough.",
+  "de": "Ziehen Sie den Loop-Key, bevor Sie in die Beine greifen; die Servos in der Software zu entspannen genügt nicht."
+ },
+ "19350bc6294dfff0": {
+  "en": "Long hair, sleeves and cables away from the knee linkages.",
+  "de": "Lange Haare, Ärmel und Kabel von den Kniegetrieben fernhalten."
+ },
+ "0eaa4d5f3c87064c": {
+  "en": "ESD: static electricity",
+  "de": "ESD: statische Elektrizität"
+ },
+ "390e6588e47b9977": {
+  "en": "A static spark you do not even feel can damage the inputs of a microcontroller or sensor. The Raspberry Pi 5, XIAO ESP32-S3, LSM6DSOX IMU, INA260 and PCA9685 are bare boards with exposed pins.",
+  "de": "Ein statischer Funke, den Sie nicht einmal spüren, kann die Eingänge eines Mikrocontrollers oder Sensors beschädigen. Raspberry Pi 5, XIAO ESP32-S3, LSM6DSOX-IMU, INA260 und PCA9685 sind nackte Platinen mit offenliegenden Pins."
+ },
+ "9cbc80f69eb4d4ab": {
+  "en": "Touch a grounded metal object before handling a board; an ESD wrist strap is better.",
+  "de": "Berühren Sie einen geerdeten Metallgegenstand, bevor Sie eine Platine anfassen; ein ESD-Armband ist besser."
+ },
+ "b5cdf01d6d36f104": {
+  "en": "Hold boards by their edges; do not touch the pins or components.",
+  "de": "Halten Sie Platinen an den Kanten; berühren Sie weder Pins noch Bauteile."
+ },
+ "d53c6900cd183939": {
+  "en": "Keep boards in their anti-static bags until mounting.",
+  "de": "Bewahren Sie Platinen bis zur Montage in ihren Antistatikbeuteln auf."
+ },
+ "8d5bf5a704fa8dfa": {
+  "en": "Work on a bare table or an ESD mat rather than carpet or plastic sheeting.",
+  "de": "Arbeiten Sie auf einem blanken Tisch oder einer ESD-Matte statt auf Teppich oder Plastikfolie."
+ },
+ "cc7738bd0ec4795f": {
+  "en": "Other workshop hazards",
+  "de": "Weitere Werkstattgefahren"
+ },
+ "67c199d403489141": {
+  "en": "**Burns:** the soldering iron runs at around 370–400 °C, the printer nozzle at 240 °C, the bed at 80 °C.",
+  "de": "**Verbrennungen:** Der Lötkolben arbeitet mit etwa 370–400 °C, die Druckerdüse mit 240 °C, das Druckbett mit 80 °C."
+ },
+ "ee2d9b04401708ce": {
+  "en": "**Fumes:** ventilate when soldering (flux) and printing.",
+  "de": "**Dämpfe:** Beim Löten (Flussmittel) und Drucken lüften."
+ },
+ "2493e3283498c432": {
+  "en": "**Flying cut-offs:** wear eye protection when cutting supports, wire and resistor leads with flush cutters.",
+  "de": "**Fliegende Abschnitte:** Tragen Sie eine Schutzbrille, wenn Sie Stützstrukturen, Draht und Widerstandsbeinchen mit dem Seitenschneider abschneiden."
+ },
+ "9030f628ebaf46fd": {
+  "en": "Check yourself",
+  "de": "Selbsttest"
+ },
+ "3ca1f6ed90801d35": {
+  "en": "What is the difference between pulling the loop key and pressing the pushbutton switch?",
+  "de": "Was ist der Unterschied zwischen dem Ziehen des Loop-Keys und dem Drücken des Einschalttasters?"
+ },
+ "73a432abbcbb12b5": {
+  "en": "Why is the logic fuse 7.5 A when the logic branch only draws up to 3 A?",
+  "de": "Warum hat die Logiksicherung 7,5 A, wenn der Logikzweig nur bis zu 3 A zieht?"
+ },
+ "b3e43fbc6f5c574c": {
+  "en": "What two voltages must you measure before the first servo or the Pi is connected?",
+  "de": "Welche zwei Spannungen müssen Sie messen, bevor der erste Servo oder der Pi angeschlossen wird?"
+ },
+ "8f06d00fb24abc2d": {
+  "en": "At what pack voltage does the firmware relax the servos, and why?",
+  "de": "Bei welcher Akkuspannung entspannt die Firmware die Servos, und warum?"
+ },
+ "19b08b42d0d39317": {
+  "en": "Why must the loop key have the same contact type as the battery connector?",
+  "de": "Warum muss der Loop-Key denselben Kontakttyp wie der Akkustecker haben?"
+ },
+ "e7037f4adae8c4e0": {
+  "en": "<summary>Answers</summary>",
+  "de": "<summary>Antworten</summary>"
+ },
+ "7e486da460697b11": {
+  "en": "The loop key cuts the servo power branch (servo kill); the pushbutton switches only the logic branch and is not an emergency stop.",
+  "de": "Der Loop-Key trennt den Servo-Stromzweig (Servo-Not-Aus); der Taster schaltet nur den Logikzweig und ist kein Not-Halt."
+ },
+ "54116feeed7c380e": {
+  "en": "The fuse protects the 18 AWG wire (rated 16 A here), not the load; it must not blow at normal load but must blow well before the wire overheats.",
+  "de": "Die Sicherung schützt die 18-AWG-Leitung (hier mit 16 A belastbar), nicht die Last; sie darf bei normaler Last nicht auslösen, muss aber deutlich vor der Überhitzung der Leitung auslösen."
+ },
+ "36cff9b8dfc15f1e": {
+  "en": "5.8–6.0 V at each unloaded UBEC output and 4.8–5.2 V at the W12 Dupont ends.",
+  "de": "5,8–6,0 V an jedem unbelasteten UBEC-Ausgang und 4,8–5,2 V an den W12-Dupont-Enden."
+ },
+ "f777bec5586c2424": {
+  "en": "6.4 V (3.2 V per cell), after 5 consecutive readings below it, to avoid deep-discharging the LiPo.",
+  "de": "6,4 V (3,2 V pro Zelle), nach 5 aufeinanderfolgenden Messwerten darunter, um eine Tiefentladung des LiPo zu vermeiden."
+ },
+ "35b9929023b5f8d3": {
+  "en": "So that the shorted key cannot mate with the battery and short the pack.",
+  "de": "Damit der kurzgeschlossene Stecker nicht auf den Akku passt und den Akkupack kurzschließt."
+ },
+ "4082f515b2f4929c": {
+  "en": "Further reading",
+  "de": "Weiterführende Literatur"
+ },
+ "21aa5a8427af7509": {
+  "en": "[Battery University: Safety concerns with Li-ion (BU-304a)](https://batteryuniversity.com/article/bu-304a-safety-concerns-with-li-ion)",
+  "de": "[Battery University: Sicherheitsaspekte bei Li-Ion (BU-304a)](https://batteryuniversity.com/article/bu-304a-safety-concerns-with-li-ion)"
+ },
+ "2023daff4baf31f0": {
+  "en": "[OSHA: Lithium-ion battery safety (PDF)](https://www.osha.gov/sites/default/files/publications/OSHA4480.pdf)",
+  "de": "[OSHA: Sicherheit von Lithium-Ionen-Akkus (PDF)](https://www.osha.gov/sites/default/files/publications/OSHA4480.pdf)"
+ },
+ "fa888ab7750fb4e6": {
+  "en": "[Pololu Big Pushbutton Power Switch HP (#2813)](https://www.pololu.com/product/2813)",
+  "de": "[Pololu Big Pushbutton Power Switch HP (#2813)](https://www.pololu.com/product/2813)"
+ },
+ "cb74dce7899dfc31": {
+  "en": "[Electronics, wiring and power: safety rules](../../electronics.md#safety-rules)",
+  "de": "[Elektronik, Verkabelung und Stromversorgung: Sicherheitsregeln](../../electronics.md#safety-rules)"
+ },
+ "6d9f555569873079": {
+  "en": "Related in this wiki: [batteries](../hardware/batteries.md), [power](../hardware/power.md), [cable management](cable-management.md), [firmware](../software/firmware.md)",
+  "de": "Verwandt in diesem Wiki: [Akkus](../hardware/batteries.md), [Stromversorgung](../hardware/power.md), [Kabelmanagement](cable-management.md), [Firmware](../software/firmware.md)"
+ }
+}

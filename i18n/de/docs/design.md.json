@@ -1,0 +1,110 @@
+{
+ "8080536170ed0435": {
+  "en": "Design and CAD pipeline",
+  "de": "Design und CAD-Pipeline"
+ },
+ "7e28e1d334b1039e": {
+  "en": "Source of truth",
+  "de": "Maßgebliche Quelle"
+ },
+ "f13d246c40c9bcc0": {
+  "en": "The upstream Yertle STEP assembly (`upstream/yertle/design/CAD/Yertle_Single_v2.step`) and the published print STLs\n(`upstream/yertle/design/STL/`) define the mechanics. Nothing is re-modelled by hand: the pipeline reads the STEP,\nregisters every STL to its STEP solid, measures the kinematics, and builds the Strido parts as\nCadQuery booleans on top of the upstream geometry.",
+  "de": "Die Upstream-Yertle-STEP-Baugruppe (`upstream/yertle/design/CAD/Yertle_Single_v2.step`) und die veröffentlichten Druck-STLs\n(`upstream/yertle/design/STL/`) definieren die Mechanik. Nichts wird von Hand nachmodelliert: Die Pipeline liest die STEP-Datei,\nregistriert jede STL auf ihren STEP-Körper, misst die Kinematik und baut die Strido-Teile als\nCadQuery-Boolesche Operationen auf der Upstream-Geometrie auf."
+ },
+ "33e62d10ae728180": {
+  "en": "flowchart TD\n  STEP[\"upstream/yertle/design/CAD/Yertle_Single_v2.step\"] --> CACHE[\"strido_cad.step_cache<br/>tessellated solids (build/)\"]\n  STL[\"upstream/yertle/design/STL/*.stl\"] --> REG[\"strido_cad.register_upstream<br/>STL ↔ STEP registration\"]\n  CACHE --> REG --> PLACE[\"hardware/assembly/upstream_placements.yaml\"]\n  CACHE --> KIN[\"strido_cad.extract_kinematics\"] --> KY[\"hardware/kinematics.yaml<br/>hip/thigh/knee axes, linkage lengths\"]\n  KY --> ROM[\"strido_verify.rom<br/>collision-free joint limits\"] --> JL[\"hardware/joint_limits.yaml\"]\n  KY --> GEN[\"strido_cad.codegen\"]\n  JL --> GEN\n  GEN --> PYG[\"packages/strido-core/src/strido/geometry.py\"]\n  GEN --> CG[\"firmware/.../geometry_generated.h\"]\n  VEND[\"strido_cad.fetch_vendor_cad<br/>official vendor STEP\"] --> PARTS\n  PLACE --> PARTS[\"strido_cad.parts + catalog.py<br/>new / modified parts, vendor boards, fasteners\"]\n  PARTS --> ASM[\"strido_cad.assembly<br/>full posed assembly\"]\n  ASM --> VER[\"strido_verify<br/>interference, ROM, fits, clearance, sensor FoV\"]\n  ASM --> SIM[\"strido_cad.models<br/>URDF/xacro + MJCF + meshes\"]\n  ASM --> OUT[\"print files, BOM, manual, renders\"]",
+  "de": "flowchart TD\n  STEP[\"upstream/yertle/design/CAD/Yertle_Single_v2.step\"] --> CACHE[\"strido_cad.step_cache<br/>tessellierte Körper (build/)\"]\n  STL[\"upstream/yertle/design/STL/*.stl\"] --> REG[\"strido_cad.register_upstream<br/>STL ↔ STEP-Registrierung\"]\n  CACHE --> REG --> PLACE[\"hardware/assembly/upstream_placements.yaml\"]\n  CACHE --> KIN[\"strido_cad.extract_kinematics\"] --> KY[\"hardware/kinematics.yaml<br/>Hüft-/Oberschenkel-/Knieachsen, Koppellängen\"]\n  KY --> ROM[\"strido_verify.rom<br/>kollisionsfreie Gelenkgrenzen\"] --> JL[\"hardware/joint_limits.yaml\"]\n  KY --> GEN[\"strido_cad.codegen\"]\n  JL --> GEN\n  GEN --> PYG[\"packages/strido-core/src/strido/geometry.py\"]\n  GEN --> CG[\"firmware/.../geometry_generated.h\"]\n  VEND[\"strido_cad.fetch_vendor_cad<br/>offizielle Hersteller-STEP\"] --> PARTS\n  PLACE --> PARTS[\"strido_cad.parts + catalog.py<br/>neue / geänderte Teile, Herstellerplatinen, Befestigungselemente\"]\n  PARTS --> ASM[\"strido_cad.assembly<br/>vollständige gestellte Baugruppe\"]\n  ASM --> VER[\"strido_verify<br/>Durchdringung, Bewegungsbereich, Passungen, Freigang, Sensor-Sichtfeld\"]\n  ASM --> SIM[\"strido_cad.models<br/>URDF/xacro + MJCF + meshes\"]\n  ASM --> OUT[\"Druckdateien, Stückliste, Anleitung, Renderings\"]"
+ },
+ "9bb3529ddde37630": {
+  "en": "Frames: the STEP frame has +x = robot left, +y = robot rear, +z = up (mm). `assembly.step_to_base()`\nmaps it to the REP-103 `base_link` frame (x forward, y left, z up; origin between the hip axes).",
+  "de": "Koordinatensysteme: Das STEP-System hat +x = Roboter links, +y = Roboter hinten, +z = oben (mm). `assembly.step_to_base()`\nbildet es auf das REP-103-System `base_link` ab (x vorwärts, y links, z oben; Ursprung zwischen den Hüftachsen)."
+ },
+ "cde62c2de08f964c": {
+  "en": "Changes compared with upstream Yertle",
+  "de": "Änderungen gegenüber dem Upstream-Yertle"
+ },
+ "04c77c2f9fe2ce04": {
+  "en": "| Module | Part | Change and reason |",
+  "de": "| Modul | Teil | Änderung und Begründung |"
+ },
+ "12a4dff82f7139ff": {
+  "en": "| Front display | `front_shell_display` | Upstream front shell + 43 × 33 mm window and two M3 bosses for the Waveshare 2\" LCD; camera ribbon slot |",
+  "de": "| Frontdisplay | `front_shell_display` | Upstream-Frontschale + Fenster 43 × 33 mm und zwei M3-Dome für das Waveshare-2\"-LCD; Schlitz für das Kamera-Flachbandkabel |"
+ },
+ "51781fe119dfa816": {
+  "en": "| | `display_bracket` | Clamps the LCD on its M2 hex studs to the shell bosses |",
+  "de": "| | `display_bracket` | Klemmt das LCD auf seinen M2-Sechskant-Abstandsbolzen an die Dome der Schale |"
+ },
+ "5864261d74e37d80": {
+  "en": "| Front camera | `camera_mount_base`, `camera_tilt_plate` | Tilting mount on the flat front-shell top; shares the two upstream shell screws (M3 × 12 instead of × 8); pivot M3 × 40 with lock nut gives a friction tilt. Moved here from the top shell because the first position saw the robot's nose in 42 % of the image (ray-cast check); now 0 % |",
+  "de": "| Frontkamera | `camera_mount_base`, `camera_tilt_plate` | Neigbare Halterung auf der flachen Oberseite der Frontschale; nutzt die beiden Upstream-Schalenschrauben mit (M3 × 12 statt × 8); Drehachse M3 × 40 mit Sicherungsmutter ergibt eine Reibungsneigung. Von der Oberschale hierher verlegt, weil in der ersten Position die Nase des Roboters 42 % des Bildes einnahm (Raycast-Prüfung); jetzt 0 % |"
+ },
+ "9c0354194ef08f6a": {
+  "en": "| Top sensors | `top_shell_sensor`, `lidar_pedestal` | 14 mm pedestal with a pocket for the C1 USB adapter lifts the scan plane above every leg pose and the camera; cable slot to the bay |",
+  "de": "| Obere Sensoren | `top_shell_sensor`, `lidar_pedestal` | 14-mm-Sockel mit Tasche für den C1-USB-Adapter hebt die Scanebene über jede Beinpose und die Kamera; Kabelschlitz zum Innenraum |"
+ },
+ "8774138be6685bd3": {
+  "en": "| Rear panel | `back_shell_button`, `arming_port_bezel`, `arming_port_ring` | Ø 12.2 mm hole for the power button; XT60 arming port in the existing Ø 20 mm hole |",
+  "de": "| Rückwand | `back_shell_button`, `arming_port_bezel`, `arming_port_ring` | Bohrung Ø 12,2 mm für den Einschalttaster; XT60-Arming-Port in der vorhandenen Bohrung Ø 20 mm |"
+ },
+ "20fd2250c2364663": {
+  "en": "| Electronics | `electronics_deck` | Upstream plate + IMU pocket and stand-off holes for the regulator and INA260; printable top-face-down without supports |",
+  "de": "| Elektronik | `electronics_deck` | Upstream-Platte + IMU-Tasche und Bohrungen für Abstandsbolzen für Spannungsregler und INA260; mit der Oberseite nach unten ohne Stützstrukturen druckbar |"
+ },
+ "ccbe62379750a3d1": {
+  "en": "| Cavities | `lower_shoulder_frame_front/_rear`, `servo_bus_holder_front/_rear` | WAGO servo power bus per cavity, one extra pilot hole in the upstream frame |",
+  "de": "| Hohlräume | `lower_shoulder_frame_front/_rear`, `servo_bus_holder_front/_rear` | WAGO-Servostrombus pro Hohlraum, eine zusätzliche Vorbohrung im Upstream-Rahmen |"
+ },
+ "6c477aa17be1e24a": {
+  "en": "| Purchased | — | Pi 5 (was Pi 4), XIAO ESP32-S3 (was ESP32 DevKit), 2 × UBEC-10A (was one SBEC), LiDAR, camera, LCD, INA260, LSM6DSOX, Pololu switch and regulator |",
+  "de": "| Zukaufteile | — | Pi 5 (war Pi 4), XIAO ESP32-S3 (war ESP32 DevKit), 2 × UBEC-10A (war ein SBEC), LiDAR, Kamera, LCD, INA260, LSM6DSOX, Pololu-Schalter und -Spannungsregler |"
+ },
+ "6c28401e74d397b1": {
+  "en": "The upstream \"servo holder3\" solid in the STEP is a stale duplicate that overlaps the real holder by\n2860 mm³; it is ignored. The foot spacer and hip bearing pin exist only in the STEP and are exported as\nprintable STLs.",
+  "de": "Der Upstream-Körper „servo holder3“ in der STEP-Datei ist ein veraltetes Duplikat, das den echten Halter um\n2860 mm³ überlappt; er wird ignoriert. Der Fuß-Distanzring und der Hüftlagerbolzen existieren nur in der STEP-Datei und werden als\ndruckbare STLs exportiert."
+ },
+ "3c44d96f7f5bea9f": {
+  "en": "Kinematics",
+  "de": "Kinematik"
+ },
+ "b3cd3a1759252535": {
+  "en": "Each leg: hip abduction (servo in the body), thigh (servo in the leg module, direct drive) and knee.\nThe knee servo drives a crank; a parallelogram and a four-bar linkage transmit it to the tibia, so the\ncalf angle is a non-linear function of the crank angle *and* the thigh angle. `packages/strido-core/src/strido/leg.py`\nand the firmware's `servo_map` solve that linkage exactly from the CAD-measured link lengths\n(`hardware/kinematics.yaml`). The upstream STEP has a 1.02 mm link-length mismatch (drawn knee −98.8°,\nclosed linkage −101.2°); the measured lengths are used.",
+  "de": "Jedes Bein: Hüftabduktion (Servo im Körper), Oberschenkel (Servo im Beinmodul, Direktantrieb) und Knie.\nDer Knieservo treibt eine Kurbel an; ein Parallelogramm und ein Viergelenk übertragen sie auf die Tibia, sodass der\nUnterschenkelwinkel eine nichtlineare Funktion des Kurbelwinkels *und* des Oberschenkelwinkels ist. `packages/strido-core/src/strido/leg.py`\nund das `servo_map` der Firmware lösen dieses Koppelgetriebe exakt aus den im CAD gemessenen Koppellängen\n(`hardware/kinematics.yaml`). Die Upstream-STEP-Datei hat eine Koppellängen-Abweichung von 1,02 mm (gezeichnetes Knie −98,8°,\ngeschlossenes Koppelgetriebe −101,2°); verwendet werden die gemessenen Längen."
+ },
+ "ea2d7a28bcc4b1a3": {
+  "en": "Joint limits come from a collision sweep of the full assembly (all parts and the Strido fasteners;\nupstream joint fasteners, whose head side and nut orientation are approximated, are only in the static\ninterference check): thigh × calf on a 5° grid at zero abduction with a minimum linkage transmission\nangle of 25°, then the hip range at the standing and mid poses with the mirrored partner leg and 0.3 mm\nclearance (`hardware/joint_limits.yaml`, MECH-005). Code generation additionally keeps every joint within\n±85° servo travel of its assembly neutral:",
+  "de": "Die Gelenkgrenzen stammen aus einer Kollisionsanalyse der gesamten Baugruppe (alle Teile und die Strido-Befestigungselemente;\nUpstream-Gelenkbefestigungen, deren Kopfseite und Mutterausrichtung angenähert sind, gehen nur in die statische\nDurchdringungsprüfung ein): Oberschenkel × Unterschenkel in einem 5°-Raster bei null Abduktion mit einem minimalen\nÜbertragungswinkel von 25°, dann der Hüftbereich in der Stand- und Mittelpose mit dem gespiegelten Partnerbein und 0,3 mm\nAbstand (`hardware/joint_limits.yaml`, MECH-005). Die Codegenerierung hält zusätzlich jedes Gelenk innerhalb von\n±85° Servoweg um seine Montage-Neutralstellung:"
+ },
+ "9831742835986aae": {
+  "en": "| Joint | Limit |",
+  "de": "| Gelenk | Grenze |"
+ },
+ "9f6321c6ad7b412c": {
+  "en": "| Hip (abduction) | FL −17.5…50°, FR −50…17.5°, RL −17.5…45°, RR −45…17.5° |",
+  "de": "| Hüfte (Abduktion) | FL −17,5…50°, FR −50…17,5°, RL −17,5…45°, RR −45…17,5° |"
+ },
+ "80a486dc161a64f7": {
+  "en": "| Thigh | −40…125° (front; sweep −45°, travel-limited around the 45° neutral), −15…125° (rear) |",
+  "de": "| Oberschenkel | −40…125° (vorne; Analyse −45°, durch den Servoweg um die 45°-Neutralstellung begrenzt), −15…125° (hinten) |"
+ },
+ "a9756b3e3d359671": {
+  "en": "| Calf | −150…−45° |",
+  "de": "| Unterschenkel | −150…−45° |"
+ },
+ "ad12dc2e9d323890": {
+  "en": "| Knee crank | −2.5…75° |",
+  "de": "| Kniekurbel | −2,5…75° |"
+ },
+ "6cefb199c354028c": {
+  "en": "Assembly reference (all servos at 1500 µs): legs vertical in abduction, femur 45° backwards, knee crank 35°.",
+  "de": "Montagereferenz (alle Servos bei 1500 µs): Beine in der Abduktion senkrecht, Femur 45° nach hinten, Kniekurbel 35°."
+ },
+ "e7848e6cb26a3174": {
+  "en": "Mass properties",
+  "de": "Masseeigenschaften"
+ },
+ "a4ca725612de6d22": {
+  "en": "Masses come from part volumes (printed parts: PETG/PLA density with the print settings' effective\ninfill) and datasheet masses for purchased parts (`hardware/mass_properties.yaml`); inertias from the\nmeshes, the routed cables by length. Total 3.07 kg; per-link values in `ros2/strido_description/config/mass_report.yaml`.",
+  "de": "Die Massen ergeben sich aus den Teilevolumina (Druckteile: PETG/PLA-Dichte mit der effektiven Füllung der Druckeinstellungen)\nund aus Datenblattmassen für Zukaufteile (`hardware/mass_properties.yaml`); Trägheiten aus den\nNetzen, die verlegten Kabel nach Länge. Gesamt 3,07 kg; Werte pro Glied in `ros2/strido_description/config/mass_report.yaml`."
+ }
+}

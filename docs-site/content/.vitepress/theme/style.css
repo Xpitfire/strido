@@ -1,0 +1,172 @@
+/* Strido documentation theme: graphite frame, lime shell accent (the robot's colours). */
+:root {
+  --yx-lime: #c4dc1c;
+  --yx-lime-ink: #5b6f00;
+  --yx-graphite: #23292d;
+  --yx-orange: #ff7a1a;
+  --vp-c-brand-1: #5b6f00;
+  --vp-c-brand-2: #6d8500;
+  --vp-c-brand-3: #7f9a00;
+  --vp-c-brand-soft: rgba(196, 220, 28, 0.18);
+  --vp-c-bg: #fbfbf8;
+  --vp-c-bg-alt: #f2f3ee;
+  --vp-c-bg-soft: #eef0e8;
+  --vp-c-text-1: #1d2428;
+  --vp-c-text-2: #4b555b;
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #23292d 30%, #7f9a00);
+  --vp-home-hero-image-background-image: radial-gradient(closest-side, rgba(196, 220, 28, 0.35), transparent);
+  --vp-home-hero-image-filter: blur(40px);
+  --vp-font-family-base: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Brand buttons: graphite text on lime (white on lime was 2.4-3.2:1). */
+  --vp-button-brand-bg: var(--yx-lime);
+  --vp-button-brand-border: var(--yx-lime);
+  --vp-button-brand-text: var(--yx-graphite);
+  --vp-button-brand-hover-bg: #d4ea3a;
+  --vp-button-brand-hover-border: #d4ea3a;
+  --vp-button-brand-hover-text: var(--yx-graphite);
+  --vp-button-brand-active-bg: #b0c71a;
+  --vp-button-brand-active-border: #b0c71a;
+  --vp-button-brand-active-text: var(--yx-graphite);
+  --vp-code-color: #4e5f00;
+}
+
+.dark {
+  --vp-c-brand-1: #c4dc1c;
+  --vp-c-brand-2: #b0c71a;
+  --vp-c-brand-3: #9cb316;
+  --vp-c-brand-soft: rgba(196, 220, 28, 0.16);
+  --vp-c-bg: #15191c;
+  --vp-c-bg-alt: #101315;
+  --vp-c-bg-soft: #1c2125;
+  --vp-c-text-1: #e8ecee;
+  --vp-c-text-2: #a9b3b8;
+  --vp-home-hero-name-background: linear-gradient(120deg, #e8ecee 30%, #c4dc1c);
+  --vp-code-color: #c4dc1c;
+}
+.vp-doc .custom-block.danger code, .vp-doc .custom-block.caution code { color: inherit; }
+
+/* Keyboard focus ring for links and controls; text inputs (local search, shop search) show focus with
+   their own border, a second outline there drew a double frame. */
+:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 2px; }
+input[type='search']:focus-visible, input[type='text']:focus-visible, input:not([type]):focus-visible, textarea:focus-visible { outline: none; }
+
+/* Tables never grow past the content column (a display: table wider than the column slid under the
+   "On this page" aside): they scroll horizontally instead. Words, paths and code stay whole (code only
+   breaks at spaces); a table wider than the column scrolls. */
+.vp-doc table { display: block; max-width: 100%; overflow-x: auto; font-size: 0.92em; }
+.vp-doc td, .vp-doc th { overflow-wrap: normal; }
+.vp-doc td code { white-space: normal; overflow-wrap: normal; word-break: normal; }
+.vp-doc td a[title^='http'] { white-space: nowrap; } /* shop links render as their domain: keep it on one line */
+
+/* ---------- outline toggle: hide the "On this page" aside to give wide pages the full width ---------- */
+.yx-outline-toggle {
+  position: fixed; z-index: 20; right: 1.5rem; top: calc(var(--vp-nav-height) + 0.75rem);
+  display: none; align-items: center; gap: 0.35rem; padding: 0.2rem 0.65rem; border-radius: 999px;
+  border: 1px solid var(--vp-c-divider); background: var(--vp-c-bg); color: var(--vp-c-text-2); font-size: 0.78rem;
+}
+.yx-outline-toggle:hover { color: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
+@media (min-width: 80rem) { .yx-outline-toggle { display: inline-flex; } }
+html.yx-outline-hidden .VPDoc .aside { display: none !important; }
+html.yx-outline-hidden .VPDoc.has-aside .content-container { max-width: 72rem !important; }
+.vp-doc img { border-radius: 8px; }
+/* Display equations (MathJax SVG) scroll sideways inside the column instead of widening the page. */
+.vp-doc mjx-container[display='true'] { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 0.2rem 0; }
+/* Outline entries wrap (long step and shop headings were cut with an ellipsis). */
+.VPDocAsideOutline .outline-link { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.35; padding: 3px 0; }
+
+/* ---------- 3D viewer ---------- */
+.yx-viewer { margin: 1.5rem 0; }
+.yx-viewer__canvas {
+  position: relative; width: 100%; border-radius: 12px; overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 100%);
+  border: 1px solid var(--vp-c-divider);
+}
+.yx-viewer__canvas canvas { display: block; }
+.yx-viewer__status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--vp-c-text-2); }
+.yx-viewer__picked {
+  position: absolute; left: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 2px; max-width: 70%;
+  padding: 8px 12px; border-radius: 8px; font-size: 0.85em; background: var(--vp-c-bg); border: 1px solid var(--vp-c-divider);
+}
+.yx-viewer__controls { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; margin-top: 0.75rem; font-size: 0.9em; }
+.yx-viewer__controls label { display: inline-flex; gap: 0.4rem; align-items: center; }
+.yx-viewer__controls input[type='range'] { width: 220px; accent-color: var(--vp-c-brand-1); }
+.yx-viewer__step { width: 16rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--vp-c-text-2); }
+.yx-viewer__hint { font-size: 0.8em; color: var(--vp-c-text-2); }
+
+/* ---------- parts catalogue ---------- */
+.yx-catalog__toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; align-items: center; }
+.yx-catalog__toolbar button {
+  padding: 0.3rem 0.8rem; border-radius: 999px; border: 1px solid var(--vp-c-divider); font-size: 0.85em; text-transform: capitalize;
+}
+.yx-catalog__toolbar button.active { background: var(--vp-c-brand-soft); border-color: var(--vp-c-brand-1); color: var(--vp-c-brand-1); }
+.yx-catalog__toolbar input { flex: 1 1 180px; padding: 0.3rem 0.6rem; border: 1px solid var(--vp-c-divider); border-radius: 8px; }
+.yx-catalog__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.9rem; }
+.yx-part { display: flex; gap: 0.7rem; padding: 0.7rem; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); }
+.yx-part[data-kind='printed'] { border-left: 4px solid var(--yx-lime); }
+.yx-part[data-kind='purchased'] { border-left: 4px solid #3d74c9; }
+.yx-part[data-kind='fastener'] { border-left: 4px solid #8a8f94; }
+.yx-part img { width: 72px; height: 72px; object-fit: contain; background: #fff; border-radius: 6px; flex: none; }
+.yx-part__body { min-width: 0; font-size: 0.82em; }
+.yx-part__body header { font-weight: 600; font-size: 1.08em; line-height: 1.3; }
+.yx-part__qty { color: var(--vp-c-brand-1); }
+.yx-part dl { display: grid; grid-template-columns: auto 1fr; gap: 0 0.5rem; margin: 0.35rem 0 0; }
+.yx-part dt { color: var(--vp-c-text-2); }
+.yx-part dd { margin: 0; overflow-wrap: anywhere; }
+.yx-part__note { margin: 0.35rem 0 0; color: var(--vp-c-text-2); }
+
+/* ---------- diagrams ---------- */
+.yx-diagram { margin: 1.25rem 0; }
+.yx-diagram__canvas { overflow-x: auto; padding: 0.75rem; border: 1px solid var(--vp-c-divider); border-radius: 10px; background: var(--vp-c-bg-soft); }
+.yx-diagram__canvas svg { display: block; margin: 0 auto; max-width: none; }
+.yx-diagram__canvas--fit svg { width: 100%; height: auto; }
+.yx-diagram__toolbar { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 0.4rem; }
+.yx-diagram__toolbar button { border: 1px solid var(--vp-c-divider); border-radius: 6px; padding: 0 0.5rem; }
+.yx-diagram details { font-size: 0.8em; margin-top: 0.4rem; }
+.yx-diagram__error { color: var(--vp-c-danger-1); }
+
+/* ---------- home ---------- */
+.yx-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.75rem; margin: 1.5rem 0; }
+.yx-specs div { padding: 0.8rem; border-radius: 10px; background: var(--vp-c-bg-soft); border: 1px solid var(--vp-c-divider); }
+.yx-specs strong { display: block; font-size: 1.25em; color: var(--vp-c-brand-1); }
+.yx-specs span { font-size: 0.82em; color: var(--vp-c-text-2); }
+.yx-journey { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0 0; }
+.vp-doc .yx-journey a {
+  display: flex; flex-direction: column; gap: 0.25rem; padding: 1rem; border: 1px solid var(--vp-c-divider); border-radius: 14px;
+  background: var(--vp-c-bg-soft); color: var(--vp-c-text-1); text-decoration: none; transition: border-color 0.15s, transform 0.15s;
+}
+.vp-doc .yx-journey a:hover { border-color: var(--vp-c-brand-1); transform: translateY(-2px); }
+.yx-journey span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--vp-c-brand-1); }
+.yx-journey strong { font-size: 1.3rem; }
+.yx-journey small { font-size: 0.82rem; color: var(--vp-c-text-2); }
+
+/* top-bar cart indicator (NavCart.vue) */
+.yx-nav-cart { position: relative; display: inline-flex; align-items: center; margin-left: 0.75rem; padding: 0.4rem; color: var(--vp-c-text-2); }
+.yx-nav-cart:hover { color: var(--vp-c-brand-1); }
+.yx-nav-cart span {
+  position: absolute; top: -0.1rem; right: -0.45rem; min-width: 1.15rem; padding: 0 0.3rem; border-radius: 999px;
+  background: var(--yx-lime); color: var(--yx-graphite); font-size: 0.68rem; font-weight: 800; line-height: 1.15rem; text-align: center;
+}
+
+/* assembly build progress (BuildProgress.vue) */
+.yx-progress {
+  position: fixed; z-index: 25; right: 1.5rem; bottom: 1.2rem; display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.5rem 0.9rem; border: 1px solid var(--vp-c-divider); border-radius: 999px; background: var(--vp-c-bg); font-size: 0.82rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.yx-progress__bar { width: 9rem; height: 0.45rem; border-radius: 999px; background: var(--vp-c-bg-soft); overflow: hidden; }
+.yx-progress__bar span { display: block; height: 100%; background: var(--yx-lime); transition: width 0.2s; }
+.yx-progress button { color: var(--vp-c-text-2); text-decoration: underline; font-size: 0.78rem; }
+.vp-doc h2 .yx-step-done { width: 1.1rem; height: 1.1rem; margin-right: 0.6rem; vertical-align: middle; accent-color: var(--yx-lime); cursor: pointer; }
+.dark .vp-doc img[alt^='Step '] { filter: brightness(0.9); border: 1px solid var(--vp-c-divider); } /* white line drawings: less glare on dark pages */
+.vp-doc h2.yx-step--done { color: var(--vp-c-text-2); }
+
+/* ---------- phones ---------- */
+@media (max-width: 640px) {
+  .vp-doc h2 .yx-step-done { width: 1.5rem; height: 1.5rem; }
+  .yx-progress { left: 1rem; right: 1rem; justify-content: center; }
+  .yx-viewer__controls { gap: 0.6rem 1rem; }
+  .yx-viewer__controls input[type='range'] { width: 150px; }
+  .yx-viewer__controls input[type='checkbox'] { width: 1.2rem; height: 1.2rem; }
+  .yx-viewer__step { width: 100%; }
+}

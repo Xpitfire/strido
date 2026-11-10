@@ -1,0 +1,358 @@
+{
+ "ea9590e78f5216ca": {
+  "en": "DigiKey.at",
+  "de": "DigiKey.at"
+ },
+ "2c0e678cd5769075": {
+  "en": "US warehouse",
+  "de": "US-Lager"
+ },
+ "4d69a3a5cc28a9fc": {
+  "en": "Amazon.de",
+  "de": "Amazon.de"
+ },
+ "bbb5147e44555fb2": {
+  "en": "+2.40 Austrian parcel tax per order",
+  "de": "+2,40 österreichische Paketabgabe pro Bestellung"
+ },
+ "2d34bd1a530989dd": {
+  "en": "AliExpress (DigitalServo Store)",
+  "de": "AliExpress (DigitalServo Store)"
+ },
+ "04bbb438289ef052": {
+  "en": "servo order > 150 EUR leaves IOSS: split into two orders or expect import VAT/clearance",
+  "de": "Servobestellung > 150 EUR fällt aus IOSS heraus: in zwei Bestellungen aufteilen oder mit Einfuhrumsatzsteuer/Verzollung rechnen"
+ },
+ "d2f32c4ef8b54a3d": {
+  "en": "Reichelt.at",
+  "de": "Reichelt.at"
+ },
+ "34fa413e02206560": {
+  "en": "Berrybase.at",
+  "de": "Berrybase.at"
+ },
+ "93410aa4b6a487c8": {
+  "en": "Welectron (DE)",
+  "de": "Welectron (DE)"
+ },
+ "16066c7d45f0d07f": {
+  "en": "Eckstein (DE)",
+  "de": "Eckstein (DE)"
+ },
+ "11a1d8406ac70b0e": {
+  "en": "shipping to AT not shown before checkout: 6.90 assumed (UNVERIFIED)",
+  "de": "Versand nach AT erst an der Kasse angezeigt: 6,90 angenommen (UNVERIFIED)"
+ },
+ "bdabd199f260e164": {
+  "en": "Lindinger.at",
+  "de": "Lindinger.at"
+ },
+ "6200d815a2103af1": {
+  "en": "3DJake.at",
+  "de": "3DJake.at"
+ },
+ "0ad051056ae5cc35": {
+  "en": "Schraubenking.at",
+  "de": "Schraubenking.at"
+ },
+ "01f5bd84669a4e27": {
+  "en": "kugellager-express.de",
+  "de": "kugellager-express.de"
+ },
+ "a90523d5126f7fd3": {
+  "en": "Raspberry Pi 5, 4 GB",
+  "de": "Raspberry Pi 5, 4 GB"
+ },
+ "e7faa88706bb958a": {
+  "en": "Compute and sensors",
+  "de": "Rechner und Sensoren"
+ },
+ "fe6d166bb19a8203": {
+  "en": "Raspberry Pi Active Cooler",
+  "de": "Raspberry Pi Active Cooler"
+ },
+ "1e3c734c5496d684": {
+  "en": "microSD 64 GB A2 (SanDisk Extreme)",
+  "de": "microSD 64 GB A2 (SanDisk Extreme)"
+ },
+ "27e68b64fd984a96": {
+  "en": "Raspberry Pi Camera Module 3 Wide",
+  "de": "Raspberry Pi Camera Module 3 Wide"
+ },
+ "5f8e623f1b3e297f": {
+  "en": "Pi 5 camera cable 22→15 pin, 300 mm",
+  "de": "Pi-5-Kamerakabel 22→15 Pin, 300 mm"
+ },
+ "74ddd718f28e9f7d": {
+  "en": "Seeed XIAO ESP32-S3, pre-soldered headers",
+  "de": "Seeed XIAO ESP32-S3, Stiftleisten vorgelötet"
+ },
+ "3fb910abaa9cea8b": {
+  "en": "PCA9685 16-channel PWM board (Adafruit 815 layout)",
+  "de": "PCA9685-16-Kanal-PWM-Platine (Adafruit-815-Layout)"
+ },
+ "7699c3aa7bc08b02": {
+  "en": "clones must have the Adafruit 815 footprint (62.5 x 25.4 mm, 4 corner holes)",
+  "de": "Klone müssen den Footprint der Adafruit 815 haben (62,5 x 25,4 mm, 4 Eckbohrungen)"
+ },
+ "407d6604b82310bb": {
+  "en": "Adafruit LSM6DSOX 6-DoF IMU (4438)",
+  "de": "Adafruit LSM6DSOX 6-DoF-IMU (4438)"
+ },
+ "88161be84189d961": {
+  "en": "Adafruit INA260 power monitor (4226)",
+  "de": "Adafruit INA260 Power-Monitor (4226)"
+ },
+ "5764e0f60b7a0793": {
+  "en": "Waveshare 2\" LCD module, ST7789, 240x320 (17344)",
+  "de": "Waveshare 2\"-LCD-Modul, ST7789, 240x320 (17344)"
+ },
+ "8da166c797b54872": {
+  "en": "Slamtec RPLIDAR C1 (with USB adapter)",
+  "de": "Slamtec RPLIDAR C1 (mit USB-Adapter)"
+ },
+ "fe3c8a41774e9c86": {
+  "en": "STEMMA QT to female sockets cable, 150 mm (Adafruit 4397; IMU to PCA9685 and IMU to INA260)",
+  "de": "Kabel STEMMA QT auf Buchsen, 150 mm (Adafruit 4397; IMU zu PCA9685 und IMU zu INA260)"
+ },
+ "54fef96c4a7d8950": {
+  "en": "Resistor 2.2 kΩ 0.25 W (PCA9685 OE pull-up)",
+  "de": "Widerstand 2,2 kΩ 0,25 W (PCA9685-OE-Pull-up)"
+ },
+ "c947b5c25ce21bc2": {
+  "en": "SPT5435LV-180W servo, 35 kg·cm, 180° (12 + 1 spare)",
+  "de": "SPT5435LV-180W-Servo, 35 kg·cm, 180° (12 + 1 Ersatz)"
+ },
+ "202cfb77f926cbc8": {
+  "en": "Actuation and mechanics",
+  "de": "Aktorik und Mechanik"
+ },
+ "4b54ec2c4b012158": {
+  "en": "must be the 180° variant (500-2500 µs = 180°); confirm angle with any non-SPT seller",
+  "de": "muss die 180°-Variante sein (500-2500 µs = 180°); Winkel bei jedem Nicht-SPT-Verkäufer bestätigen lassen"
+ },
+ "23ae5eacf68baaff": {
+  "en": "25T aluminium disc horn",
+  "de": "25T-Aluminium-Scheibenhorn"
+ },
+ "3a605081cbec9738": {
+  "en": "25T aluminium clamping arm horn",
+  "de": "25T-Aluminium-Klemmarmhorn"
+ },
+ "d8b0822f7efb0d5b": {
+  "en": "Ball bearing 625ZZ (5x16x5)",
+  "de": "Kugellager 625ZZ (5x16x5)"
+ },
+ "0e98f6c30fe6593c": {
+  "en": "Ball bearing 6805-2RS (25x37x7)",
+  "de": "Kugellager 6805-2RS (25x37x7)"
+ },
+ "00971e7fb27ac02f": {
+  "en": "Sintered bronze sleeve bearing 3x5x5",
+  "de": "Sinterbronze-Gleitlager 3x5x5"
+ },
+ "470f1ffaaee13b15": {
+  "en": "Hobbywing UBEC-10A (V2-Car), 6.0 V",
+  "de": "Hobbywing UBEC-10A (V2-Car), 6,0 V"
+ },
+ "848e96567d6b48d5": {
+  "en": "Power",
+  "de": "Stromversorgung"
+ },
+ "a04ed95f8231a40f": {
+  "en": "LiPo 2S 5000 mAh hardcase, XT60, max 138 x 47 x 25 mm (Gens ace G-Tech)",
+  "de": "LiPo 2S 5000 mAh Hardcase, XT60, max. 138 x 47 x 25 mm (Gens ace G-Tech)"
+ },
+ "162ead93f696b98e": {
+  "en": "LiPo balance charger, AC input (B6AC class)",
+  "de": "LiPo-Balance-Ladegerät, Netzeingang (B6AC-Klasse)"
+ },
+ "aa49ec5cd06cc8af": {
+  "en": "LiPo safety bag",
+  "de": "LiPo-Sicherheitstasche"
+ },
+ "8a7cb0578d84c539": {
+  "en": "LiPo cell checker / low-voltage alarm",
+  "de": "LiPo-Zellenprüfer / Unterspannungsalarm"
+ },
+ "8663f167b13607c7": {
+  "en": "Pololu D36V50F5 5 V 5.5 A step-down regulator",
+  "de": "Pololu D36V50F5 5 V 5,5 A Abwärtsregler"
+ },
+ "8b49075117e24405": {
+  "en": "Pololu #2813 Big Pushbutton Power Switch HP",
+  "de": "Pololu #2813 Big Pushbutton Power Switch HP"
+ },
+ "2c1de478d332cb44": {
+  "en": "12 mm momentary pushbutton, stainless (ONPOW GQ12B-10S)",
+  "de": "12-mm-Taster, Edelstahl (ONPOW GQ12B-10S)"
+ },
+ "f0551d6f4835aecf": {
+  "en": "XT60H connectors, 3 pairs (battery lead, arming port, loop key)",
+  "de": "XT60H-Steckverbinder, 3 Paare (Akkukabel, Arming-Port, Loop-Key)"
+ },
+ "bf3e3b904a13857d": {
+  "en": "Inline ATO fuse holder, 14 AWG leads (main + logic branch)",
+  "de": "Inline-ATO-Sicherungshalter, 14-AWG-Leitungen (Haupt- und Logikzweig)"
+ },
+ "d6c3d8b69db9e5be": {
+  "en": "ATO blade fuse 25 A (main, 1 + 2 spare)",
+  "de": "ATO-Flachsicherung 25 A (Hauptsicherung, 1 + 2 Ersatz)"
+ },
+ "1d7d83a01c90b8d6": {
+  "en": "ATO blade fuse 7.5 A (logic branch, 1 + 1 spare)",
+  "de": "ATO-Flachsicherung 7,5 A (Logikzweig, 1 + 1 Ersatz)"
+ },
+ "c1262a089d273764": {
+  "en": "WAGO 221-415 lever connector",
+  "de": "WAGO 221-415 Hebelklemme"
+ },
+ "03a943b66dee88c2": {
+  "en": "Silicone wire 14 AWG / 2.5 mm², red + black, 1 m each",
+  "de": "Silikonlitze 14 AWG / 2,5 mm², rot + schwarz, je 1 m"
+ },
+ "72529059b7cb73d8": {
+  "en": "Wiring",
+  "de": "Verkabelung"
+ },
+ "405ca18f56d3f82a": {
+  "en": "Silicone wire 18 AWG / 0.75 mm², red + black (1 m each per unit)",
+  "de": "Silikonlitze 18 AWG / 0,75 mm², rot + schwarz (je 1 m pro Einheit)"
+ },
+ "f4e51757cc51a5fc": {
+  "en": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)",
+  "de": "Silikonlitze 22 AWG (Pi-5-V-Versorgung mit Dupont-Crimps, Taster, Brücken)"
+ },
+ "0bfc62484141062c": {
+  "en": "USB-A to USB-C cable, 20 cm, 90° (Pi → XIAO, Pi → LiDAR adapter)",
+  "de": "USB-A-auf-USB-C-Kabel, 20 cm, 90° (Pi → XIAO, Pi → LiDAR-Adapter)"
+ },
+ "9e4e625d86a78193": {
+  "en": "Dupont jumper set 20 cm (F-F, M-M, F-M)",
+  "de": "Dupont-Jumper-Set 20 cm (F-F, M-M, F-M)"
+ },
+ "a35223321c3a81ed": {
+  "en": "Heat-shrink assortment",
+  "de": "Schrumpfschlauch-Sortiment"
+ },
+ "e56049dae6a9d74d": {
+  "en": "Cable ties 100 x 2.5 mm (100)",
+  "de": "Kabelbinder 100 x 2,5 mm (100)"
+ },
+ "c3cf4d9cc3240d40": {
+  "en": "Spiral wrap, black PE, for bundles 4-10 mm (5-10 m)",
+  "de": "Spiralschlauch, schwarzes PE, für Bündel 4-10 mm (5-10 m)"
+ },
+ "bb5b36351ef2c254": {
+  "en": "Adhesive cable-tie mount 13 x 13 mm (HellermannTyton MB2APT-A)",
+  "de": "Selbstklebender Kabelbinder-Sockel 13 x 13 mm (HellermannTyton MB2APT-A)"
+ },
+ "3ace9d1e3367e101": {
+  "en": "Dupont 2.54 mm crimp contacts and housings (1-6 pin), for the cut-to-length signal leads",
+  "de": "Dupont-2,54-mm-Crimpkontakte und -Gehäuse (1-6 Pin), für die auf Länge geschnittenen Signalleitungen"
+ },
+ "859a7305cc8cd594": {
+  "en": "Solder wire, lead-free, 0.8 mm, flux core (50-100 g)",
+  "de": "Lötdraht, bleifrei, 0,8 mm, Flussmittelseele (50-100 g)"
+ },
+ "d44c85f4c3e3d160": {
+  "en": "Hook-and-loop straps (battery strap)",
+  "de": "Klettbänder (Akkuband)"
+ },
+ "523c863fccf8d837": {
+  "en": "Double-sided foam mounting tape, 19 mm",
+  "de": "Doppelseitiges Schaumstoff-Montageband, 19 mm"
+ },
+ "33e97ac3769082b5": {
+  "en": "M3 socket head screw kit, stainless (6-50 mm, nuts, washers; WZHUIDA 1080 pcs)",
+  "de": "M3-Zylinderschrauben-Set mit Innensechskant, Edelstahl (6-50 mm, Muttern, Unterlegscheiben; WZHUIDA 1080 Stk.)"
+ },
+ "2002edff70c64a18": {
+  "en": "Fasteners",
+  "de": "Befestigungselemente"
+ },
+ "7e5c16cab8f49cd6": {
+  "en": "M3 x 10 DIN 912 A2",
+  "de": "M3 x 10 DIN 912 A2"
+ },
+ "4baac1edbfca6a27": {
+  "en": "M3 DIN 985 nylon lock nut",
+  "de": "M3 DIN 985 Nylon-Sicherungsmutter"
+ },
+ "02cf62c8efd988ae": {
+  "en": "M2 hex nut DIN 934 A2",
+  "de": "M2-Sechskantmutter DIN 934 A2"
+ },
+ "fc92a343058403fe": {
+  "en": "Stand-off M2.5 x 6 mm female-female (Würth 970060151)",
+  "de": "Abstandsbolzen M2.5 x 6 mm Innen-Innen (Würth 970060151)"
+ },
+ "bd3b88612035894f": {
+  "en": "Stand-off M2 x 8 mm female-female, brass",
+  "de": "Abstandsbolzen M2 x 8 mm Innen-Innen, Messing"
+ },
+ "6b715d0c0126d465": {
+  "en": "Thread locker, medium strength (blue)",
+  "de": "Schraubensicherung, mittelfest (blau)"
+ },
+ "3e91a424ddc49ac9": {
+  "en": "Filament PETG, graphite/black, 1 kg",
+  "de": "Filament PETG, graphit/schwarz, 1 kg"
+ },
+ "0a9066fa6acd2d7a": {
+  "en": "Filament",
+  "de": "Filament"
+ },
+ "bdf16ee6cf6bf47f": {
+  "en": "PETG to match the verified slicer profile and the strength check (PLA softens near the warm servos)",
+  "de": "PETG passend zum verifizierten Slicer-Profil und zur Festigkeitsprüfung (PLA erweicht in der Nähe der warmen Servos)"
+ },
+ "7b1a1f5e96592ef9": {
+  "en": "Filament PETG, lime/yellow (shells), 1 kg",
+  "de": "Filament PETG, limette/gelb (Schalen), 1 kg"
+ },
+ "a8d3d818d75f5404": {
+  "en": "PETG to match the verified slicer profile and the strength check",
+  "de": "PETG passend zum verifizierten Slicer-Profil und zur Festigkeitsprüfung"
+ },
+ "8dca2b6d129370b0": {
+  "en": "Raspberry Pi 27 W USB-C power supply, EU plug (bench power without battery)",
+  "de": "Raspberry Pi 27 W USB-C-Netzteil, EU-Stecker (Werkbankversorgung ohne Akku)"
+ },
+ "e02ee1c0c763fe55": {
+  "en": "Bench (recommended)",
+  "de": "Werkbank (empfohlen)"
+ },
+ "18348f82c6247843": {
+  "en": "Lowest total",
+  "de": "Niedrigste Gesamtkosten"
+ },
+ "9f05fef656f86913": {
+  "en": "the price matters most; servos come from AliExpress (2-3 weeks; above €150 split the order or expect import VAT)",
+  "de": "der Preis zählt am meisten; die Servos kommen von AliExpress (2-3 Wochen; über 150 € die Bestellung aufteilen oder mit Einfuhrumsatzsteuer rechnen)"
+ },
+ "9274184585dd419d": {
+  "en": "Fewest shops",
+  "de": "Möglichst wenige Shops"
+ },
+ "40a4349e598b5141": {
+  "en": "you want as few parcels and accounts as possible; costs more because Amazon replaces cheaper shops",
+  "de": "Sie möchten so wenige Pakete und Konten wie möglich; kostet mehr, weil Amazon günstigere Shops ersetzt"
+ },
+ "3918b1158687cb9b": {
+  "en": "EU warehouses (DigiKey only for parts without an EU offer, no AliExpress)",
+  "de": "EU-Lager (DigiKey nur für Teile ohne EU-Angebot, kein AliExpress)"
+ },
+ "c85729095845fc8e": {
+  "en": "everything from EU warehouses (no AliExpress), fastest delivery; DigiKey only where no EU shop lists the part",
+  "de": "alles aus EU-Lagern (kein AliExpress), schnellste Lieferung; DigiKey nur, wo kein EU-Shop das Teil führt"
+ },
+ "cbd63415c98e8ab3": {
+  "en": "Genuine boards where available",
+  "de": "Originalplatinen, wo verfügbar"
+ },
+ "bbb644849ff7f3d7": {
+  "en": "like A, but original Adafruit/Seeed/Pololu boards wherever a clone would be cheaper",
+  "de": "wie A, aber originale Adafruit-/Seeed-/Pololu-Platinen überall dort, wo ein Klon günstiger wäre"
+ }
+}

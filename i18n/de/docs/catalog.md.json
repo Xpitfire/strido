@@ -1,0 +1,18 @@
+{
+ "a03d11db3c38de16": {
+  "en": "Parts catalogue",
+  "de": "Teilekatalog"
+ },
+ "4750ac814071a84f": {
+  "en": "**Status:** generated from the verified CAD assembly and `hardware/bom.yaml` (`make catalog`). Prices are observed offers (EUR incl. VAT, 2026-10-30); re-check before ordering.",
+  "de": "**Status:** generiert aus der verifizierten CAD-Baugruppe und `hardware/bom.yaml` (`make catalog`). Die Preise sind beobachtete Angebote (EUR inkl. MwSt., 2026-10-30); prüfen Sie sie vor der Bestellung erneut."
+ },
+ "2cc31c99e08eb8da": {
+  "en": "**[Download the catalogue & assembly book (A4 PDF)](catalog/strido-catalog.pdf)** — printed parts, purchased parts, hardware bags drawn at 1:1, the shopping plan, tools, every assembly step, wiring and the software appendix.",
+  "de": "**[Katalog & Montagebuch herunterladen (A4-PDF)](catalog/strido-catalog.pdf)** — gedruckte Teile, Kaufteile, Schraubenbeutel im Maßstab 1:1, der Einkaufsplan, Werkzeuge, jeder Montageschritt, die Verkabelung und der Software-Anhang."
+ },
+ "7d49219d89f936be": {
+  "en": "Machine-readable: `docs/catalog/parts.json` (also served by the `strido-hardware` MCP server). Items that are not modelled in the CAD (wire, servo extensions, fuses, filament, tape) are listed in the [BOM](bom/README.md).",
+  "de": "Maschinenlesbar: `docs/catalog/parts.json` (wird auch vom MCP-Server `strido-hardware` bereitgestellt). Teile, die nicht im CAD modelliert sind (Draht, Servokabel-Verlängerungen, Sicherungen, Filament, Klebeband), sind in der [Stückliste](bom/README.md) aufgeführt."
+ }
+}

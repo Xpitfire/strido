@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "_doc": "Strido harness checks. Env keys are documented in docs/configuration.md. archScan baseline (shrink-only): the three v0.1 CAD definition modules (parts = every Strido part as CadQuery booleans, vendor = datasheet envelopes of every purchased part, models = URDF/xacro/MJCF writers); split them when they next change substantially.",
+  "checks": {
+    "archScan": {
+      "maxLines": 400,
+      "serviceDirs": ["packages", "src"],
+      "baseline": [
+        "packages/strido-cad/src/strido_cad/models.py",
+        "packages/strido-cad/src/strido_cad/parts.py",
+        "packages/strido-cad/src/strido_cad/vendor.py"
+      ]
+    },
+    "env": {
+      "bases": [".env.example"],
+      "configDoc": "docs/configuration.md",
+      "groups": [
+        { "name": "ros", "prefixes": ["ROS_"], "keys": [] },
+        { "name": "strido", "prefixes": ["STRIDO_"], "keys": [], "catchAll": true }
+      ]
+    },
+    "security": {
+      "allowedTrackedEnv": [".env.example"],
+      "excludePaths": ["upstream/", "build/", "dist/", ".venv/", "docs-site/node_modules/"],
+      "auditCommand": "npm --prefix docs-site audit --audit-level=high"
+    }
+  }
+}

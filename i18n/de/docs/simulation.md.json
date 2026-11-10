@@ -1,0 +1,66 @@
+{
+ "13626f8408cfca25": {
+  "en": "Simulation and learning",
+  "de": "Simulation und Lernen"
+ },
+ "6af44ba3bdb4b280": {
+  "en": "All models are generated from the CAD by `strido_cad.models` (`make models`):",
+  "de": "Alle Modelle werden von `strido_cad.models` (`make models`) aus dem CAD erzeugt:"
+ },
+ "17507267629c4828": {
+  "en": "| File | Use |",
+  "de": "| Datei | Verwendung |"
+ },
+ "99dce9573234b5af": {
+  "en": "| `ros2/strido_description/urdf/strido.urdf.xacro` (+ `strido.urdf`) | ROS 2 / Gazebo Harmonic: `sim:=true` adds `gz_ros2_control`, IMU, GPU LiDAR, camera and a ground-truth odometry publisher |",
+  "de": "| `ros2/strido_description/urdf/strido.urdf.xacro` (+ `strido.urdf`) | ROS 2 / Gazebo Harmonic: `sim:=true` fügt `gz_ros2_control`, IMU, GPU-LiDAR, Kamera und einen Ground-Truth-Odometrie-Publisher hinzu |"
+ },
+ "72d037db097716fc": {
+  "en": "| `ros2/strido_description/meshes/*.stl` | 13 link meshes (decimated, 25 k faces each) |",
+  "de": "| `ros2/strido_description/meshes/*.stl` | 13 Link-Meshes (dezimiert, je 25 k Flächen) |"
+ },
+ "7111be73473bbb4b": {
+  "en": "| `models/mujoco/strido.xml`, `scene.xml` | MuJoCo 3: position servos (kp 25, kv 0.4, ±3.43 N·m = SPT5435LV stall torque), IMU and foot sites |",
+  "de": "| `models/mujoco/strido.xml`, `scene.xml` | MuJoCo 3: Positionsservos (kp 25, kv 0,4, ±3,43 N·m = Blockiermoment des SPT5435LV), IMU und Fuß-Sites |"
+ },
+ "dfe853ae3e15d5cf": {
+  "en": "Link masses and inertias come from the CAD (`ros2/strido_description/config/mass_report.yaml`, total 3.07 kg incl. the routed wiring).\nThe knee is modelled as a direct revolute joint on the calf; the linkage is solved in software (gait, firmware) and\nits limits are applied before commands reach the joint.",
+  "de": "Linkmassen und Trägheiten stammen aus dem CAD (`ros2/strido_description/config/mass_report.yaml`, gesamt 3,07 kg inkl. der verlegten Verkabelung).\nDas Knie ist als direktes Drehgelenk am Unterschenkel modelliert; das Koppelgetriebe wird in Software (Gait, Firmware) gelöst, und\nseine Grenzen werden angewendet, bevor Befehle das Gelenk erreichen."
+ },
+ "eed814896836b6e9": {
+  "en": "MuJoCo",
+  "de": "MuJoCo"
+ },
+ "cccb6e1c99db5104": {
+  "en": "The walking demo runs `packages/strido-core/src/strido/gait.py`, the gait the robot runs through ROS 2, plus a heading hold that uses the simulator's yaw (the robot has no such loop).",
+  "de": "Die Lauf-Demo führt `packages/strido-core/src/strido/gait.py` aus, den Gait, den der Roboter über ROS 2 ausführt, plus eine Kurshaltung, die den Gierwinkel des Simulators nutzt (der Roboter hat keine solche Regelschleife)."
+ },
+ "263b4b0307e049c6": {
+  "en": "Gazebo Harmonic (ROS 2 Jazzy, Docker)",
+  "de": "Gazebo Harmonic (ROS 2 Jazzy, Docker)"
+ },
+ "0c32d27d37acf44d": {
+  "en": "`POLICY=/path/policy.npz` runs the same test with `policy_node` (mount the file into the container, see `docker/ros2/sim_smoke.sh`). `walk_smoke` stands the robot up, commands 0.15 m/s for 8 s and checks ground-truth progress\n(≥ 0.4 m), uprightness and that `/joint_states`, `/imu/data`, `/scan`, `/camera/image_raw` and\n`/ground_truth/odom` are publishing.",
+  "de": "`POLICY=/path/policy.npz` führt denselben Test mit `policy_node` aus (binden Sie die Datei in den Container ein, siehe `docker/ros2/sim_smoke.sh`). `walk_smoke` stellt den Roboter auf, befiehlt 8 s lang 0,15 m/s und prüft den Ground-Truth-Fortschritt\n(≥ 0,4 m), die aufrechte Haltung und dass `/joint_states`, `/imu/data`, `/scan`, `/camera/image_raw` und\n`/ground_truth/odom` publizieren."
+ },
+ "dc378942c0b0cd38": {
+  "en": "Reinforcement learning (MuJoCo + PPO)",
+  "de": "Reinforcement Learning (MuJoCo + PPO)"
+ },
+ "cfc59ffecca602ea": {
+  "en": "`strido_sim.rl.env` (`packages/strido-sim`) is a Gymnasium velocity-tracking task designed for transfer to\nhobby servos: the policy only observes what the robot can measure (IMU gyro and gravity, command,\nits previous action, a gait clock) — no joint feedback, because the SPT5435LV has none. Actions are\njoint offsets around the stand pose, clamped by the same joint and knee-crank limits as the firmware.\nThe firmware's 6 rad/s joint slew limit is applied in the environment (per 20 ms policy step; the firmware\nramps in 5 ms steps at the same speed), followed by the joint and knee-crank clamp. Domain randomisation: contact friction (floor and feet together,\nsince MuJoCo uses the larger of the two), servo stiffness, base mass, IMU noise. `policy_node` clips\n`/cmd_vel` to the trained command ranges and publishes no `/odom` (use LiDAR odometry/SLAM).",
+  "de": "`strido_sim.rl.env` (`packages/strido-sim`) ist eine Gymnasium-Aufgabe zur Geschwindigkeitsverfolgung, ausgelegt für die Übertragung auf\nHobby-Servos: Die Policy beobachtet nur, was der Roboter messen kann (IMU-Gyro und Schwerkraft, Befehl,\nihre vorherige Action, ein Gangtakt) — kein Gelenk-Feedback, denn der SPT5435LV hat keines. Actions sind\nGelenkversätze um die Standpose, begrenzt durch dieselben Gelenk- und Kniekurbelgrenzen wie in der Firmware.\nDie Gelenk-Anstiegsbegrenzung der Firmware von 6 rad/s wird in der Umgebung angewendet (pro 20-ms-Policy-Schritt; die Firmware\nrampt in 5-ms-Schritten mit derselben Geschwindigkeit), gefolgt von der Gelenk- und Kniekurbelbegrenzung. Domain Randomization: Kontaktreibung (Boden und Füße gemeinsam,\nda MuJoCo den größeren der beiden Werte verwendet), Servosteifigkeit, Basismasse, IMU-Rauschen. `policy_node` begrenzt\n`/cmd_vel` auf die trainierten Befehlsbereiche und publiziert kein `/odom` (verwenden Sie LiDAR-Odometrie/SLAM)."
+ },
+ "c0eccee4d6c7b285": {
+  "en": "Training writes `policy.npz` (plain arrays). `strido.policy.MlpPolicy` runs it with numpy, both in\n`evaluate.py` and in the ROS 2 `policy_node`, so no PyTorch is needed on the Pi:",
+  "de": "Das Training schreibt `policy.npz` (einfache Arrays). `strido.policy.MlpPolicy` führt sie mit numpy aus, sowohl in\n`evaluate.py` als auch im ROS-2-`policy_node`, daher ist auf dem Pi kein PyTorch nötig:"
+ },
+ "805ba7fd891728ec": {
+  "en": "Before running a learned policy on hardware: evaluate it in MuJoCo and Gazebo, start with the robot on\na stand, keep `/strido/estop` at hand, and expect to retrain with measured servo response (kp/kv,\nlatency) once the robot exists.",
+  "de": "Bevor Sie eine gelernte Policy auf der Hardware ausführen: Evaluieren Sie sie in MuJoCo und Gazebo, beginnen Sie mit dem Roboter auf\neinem Ständer, halten Sie `/strido/estop` bereit und rechnen Sie damit, mit gemessenem Servoverhalten (kp/kv,\nLatenz) neu zu trainieren, sobald der Roboter existiert."
+ },
+ "0564b72f2ca88a76": {
+  "en": "The upstream PyBullet (`upstream/yertle/learning/`) and Isaac Lab (`upstream/yertle/isaac_lab/`) pipelines\ntarget the original Yertle URDF and are kept for reference.",
+  "de": "Die Upstream-Pipelines für PyBullet (`upstream/yertle/learning/`) und Isaac Lab (`upstream/yertle/isaac_lab/`)\nzielen auf die ursprüngliche Yertle-URDF und werden als Referenz beibehalten."
+ }
+}

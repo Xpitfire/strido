@@ -1,0 +1,25 @@
+{
+  "name": "strido-documentation",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=26.1.0 <27"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-docs.mjs",
+    "dev": "npm run sync && vitepress dev content --host 127.0.0.1 --port 4173",
+    "build": "npm run sync && vitepress build content",
+    "preview": "vitepress preview content --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "dompurify": "3.4.17",
+    "katex": "0.19.1",
+    "markdown-it-mathjax3": "4.3.2",
+    "marked": "18.1.2",
+    "mermaid": "12.2.0",
+    "three": "0.187.0",
+    "vitepress": "2.0.0-alpha.20",
+    "vue": "3.5.44"
+  }
+}

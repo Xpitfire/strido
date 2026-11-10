@@ -1,0 +1,67 @@
+# Strido on the Cortex access gateway: one host, two upstreams (installed by the app deploy bridge,
+# cortex docs/ACCESS_GATEWAY.md "app-owned snippets").
+#
+#   /api/health                                     open (monitors): the assistant's health
+#   Authorization: Bearer cxu_... on /mcp, /api/*   machine lane: agents connected with `cortex apps connect
+#                                                   strido`; the assistant verifies the token with Cortex
+#   /api/*, /mcp (everything else)                  Cortex SSO -> assistant (AI bar API, SSE answer streams)
+#   everything else                                 public -> the static site (nginx): docs, viewer, build kit
+#
+# Every identity header a client might send is stripped on every lane first; only the gateway adds
+# X-Cortex-Auth-Secret (from its own CORTEX_APP_HEADER_SECRET), and the assistant trusts X-Cortex-* identity
+# only beside it. No `encode` on the assistant lanes: Caddy buffers compressed text/event-stream (caddy#6293),
+# which would stall the answer streams; flush_interval -1 passes SSE frames through at once.
+strido.cortex.a2olabs.com {
+	route {
+		import cortex_proxy_auth_strip
+		request_header -X-Cortex-Auth-Secret
+		request_header -X-Cortex-Auth-Mode
+		request_header -X-Cortex-Auth-Provider
+		request_header -X-Cortex-User
+		request_header -X-Cortex-Username
+		request_header -X-Cortex-On-Behalf-Of
+		request_header -X-Cortex-Gateway-Surface
+		request_header -X-Cortex-Email
+		request_header -X-Cortex-Groups
+		request_header -X-Cortex-Uid
+		request_header -X-Cortex-Scopes
+		request_header -X-Authentik-Scopes
+		request_header -X-Auth-Request-Scopes
+		request_header -X-Authentik-Username
+		request_header -X-Authentik-Email
+		request_header -X-Authentik-Groups
+		request_header -X-Authentik-Uid
+
+		@health path /api/health
+		handle @health {
+			reverse_proxy http://strido-assistant:8090
+		}
+
+		# Before SSO: forward-auth would answer 401 to a token it did not issue. The regexp matches an
+		# Authorization value of "Bearer", whitespace, then a Cortex per-user app token (cxu_).
+		@machine {
+			path /mcp /mcp/* /api/*
+			header_regexp Authorization ^Bearer\s+cxu_
+		}
+		handle @machine {
+			reverse_proxy http://strido-assistant:8090 {
+				header_up X-Cortex-Auth-Secret "{$CORTEX_APP_HEADER_SECRET}"
+				flush_interval -1
+			}
+		}
+
+		@assistant path /mcp /mcp/* /api/*
+		handle @assistant {
+			import cortex_sso_headers
+			reverse_proxy http://strido-assistant:8090 {
+				header_up X-Cortex-Auth-Secret "{$CORTEX_APP_HEADER_SECRET}"
+				flush_interval -1
+			}
+		}
+
+		handle {
+			encode zstd gzip
+			reverse_proxy http://strido-docs:8080
+		}
+	}
+}

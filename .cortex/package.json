@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "id": "strido",
+ "label": "Strido",
+ "summary": "Documentation, shop, print kit and engineering wiki of the Strido open quadruped robot, with an AI assistant.",
+ "description": "Strido is an open 12-DoF quadruped: printable CAD, a verified assembly, parts catalogue and shop, electronics and wiring, firmware, ROS 2, simulation and reinforcement learning, documented in English and German. The site has an AI assistant that answers from the documentation, and an MCP server and agent skill that give coding agents the same knowledge.",
+ "categories": [
+  "documentation",
+  "robotics",
+  "education"
+ ],
+ "tags": [
+  "quadruped",
+  "robot",
+  "ros2",
+  "3d-printing",
+  "knowledge-base",
+  "mcp"
+ ],
+ "icon": "docs-site/content/public/favicon.svg",
+ "screenshots": [],
+ "license": "Apache-2.0",
+ "config": [
+  {
+   "key": "CORTEX_APP_HEADER_SECRET",
+   "label": "Gateway proof secret",
+   "required": true,
+   "secret": true,
+   "description": "Proves a request reached the assistant through the Cortex access gateway; read from the gateway's own env file."
+  }
+ ],
+ "provides": {
+  "mcp": {
+   "http": "/mcp"
+  },
+  "skills": [
+   "skills/strido/SKILL.md"
+  ],
+  "docs": {
+   "user": "docs/ai.md",
+   "api": "assistant/README.md"
+  }
+ }
+}

@@ -1,0 +1,8 @@
+# 2026-10-30T21:19Z PPO policy build/rl/ppo-v1 (20 M steps), evaluate.py on the current MJCF, 10 s per command, no randomisation
+training: rollout/ep_rew_mean=1227.7 (upper bound ≈ 1800), ep_len_mean=1000, timesteps=20004864, time=1734 s
+fallen=False distance x=2.101 m y=0.133 m mean vx=0.210 m/s (command 0.2, 0.0, 0.0) height=0.184 m yaw=2.4 deg (wrapped)
+fallen=False distance x=1.506 m y=0.198 m mean vx=0.152 m/s (command 0.15, 0.0, 0.0) height=0.184 m yaw=5.1 deg (wrapped)
+fallen=False distance x=0.024 m y=0.028 m mean vx=0.002 m/s (command 0.0, 0.0, 0.0) height=0.181 m yaw=6.2 deg (wrapped)
+fallen=False distance x=-0.679 m y=-0.007 m mean vx=-0.068 m/s (command -0.1, 0.0, 0.0) height=0.172 m yaw=10.1 deg (wrapped)
+fallen=False distance x=0.019 m y=0.226 m mean vx=0.005 m/s (command 0.0, 0.1, 0.0) height=0.180 m yaw=21.5 deg (wrapped)
+fallen=False distance x=-0.056 m y=-0.004 m mean vx=0.005 m/s (command 0.0, 0.0, 0.5) height=0.185 m yaw=-128.4 deg (wrapped)

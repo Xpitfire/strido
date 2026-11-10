@@ -1,0 +1,36 @@
+# Cortex overlay for docker-compose.docs.yml (listed in .cortex/app.yml). Cortex runs both files from the
+# workspace root with a scrubbed environment, so the assistant's settings come from env files:
+#   .cortex/assistant.env                       committed defaults (cortex identity, model, site URL)
+#   the gateway's generated env (optional)      CORTEX_APP_HEADER_SECRET, the proof that a request passed
+#                                               the gateway (the contract Cortex Sign and Folio use)
+#   the Keyring env file Control attaches       CORTEX_MODEL_* (models block in .cortex/app.yml)
+#   the app key Control attaches                app-directory access for `cxu_` tokens (access block)
+# Both services join cortex-access under the aliases the gateway route (.cortex/access/caddy/sso/) uses.
+services:
+  docs:
+    networks:
+      default: {}
+      cortex-access:
+        aliases:
+          - strido-docs
+
+  assistant:
+    env_file: !override
+      - path: .cortex/assistant.env
+      - path: ${CORTEX_ACCESS_GENERATED_ENV:-/mnt/cortex-data/access/generated.env}
+        required: false
+      - path: .env
+        required: false
+    # Drop the base file's development identity and local model variables: inline `environment` would
+    # beat the env files (an empty ANTHROPIC_BASE_URL would hide Keyring's).
+    environment: !reset {}
+    networks:
+      default: {}
+      cortex-access:
+        aliases:
+          - strido-assistant
+
+networks:
+  cortex-access:
+    external: true
+    name: ${CORTEX_ACCESS_NETWORK:-cortex-access}

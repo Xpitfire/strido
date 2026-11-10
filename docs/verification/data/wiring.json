@@ -1,0 +1,2108 @@
+{
+ "findings": [
+  {
+   "check": "reach",
+   "item": "W00",
+   "status": "ok",
+   "value": "53 mm",
+   "limit": "≤ 110 mm",
+   "note": "120 mm supplied, 67 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W14",
+   "status": "ok",
+   "value": "22 mm",
+   "limit": "≤ 190 mm",
+   "note": "200 mm supplied, 178 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W15",
+   "status": "ok",
+   "value": "145 mm",
+   "limit": "≤ 190 mm",
+   "note": "200 mm supplied, 55 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W16",
+   "status": "ok",
+   "value": "167 mm",
+   "limit": "≤ 290 mm",
+   "note": "300 mm supplied, 133 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W18",
+   "status": "ok",
+   "value": "96 mm",
+   "limit": "≤ 140 mm",
+   "note": "150 mm supplied, 54 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W19",
+   "status": "ok",
+   "value": "125 mm",
+   "limit": "≤ 140 mm",
+   "note": "150 mm supplied, 25 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W21",
+   "status": "ok",
+   "value": "59 mm",
+   "limit": "≤ 190 mm",
+   "note": "200 mm supplied, 141 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "W23",
+   "status": "warn",
+   "value": "57 mm",
+   "limit": "length not published",
+   "note": "RPLIDAR C1 sensor cable to the USB adapter (supplied; length not published [MEASURE])"
+  },
+  {
+   "check": "reach",
+   "item": "S-FL-hip",
+   "status": "ok",
+   "value": "210 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 50 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-FL-thigh",
+   "status": "ok",
+   "value": "197 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 63 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-FL-calf",
+   "status": "ok",
+   "value": "243 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 17 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-FR-hip",
+   "status": "ok",
+   "value": "198 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 62 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-FR-thigh",
+   "status": "ok",
+   "value": "189 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 71 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-FR-calf",
+   "status": "ok",
+   "value": "241 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 19 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RL-hip",
+   "status": "ok",
+   "value": "149 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 111 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RL-thigh",
+   "status": "ok",
+   "value": "179 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 81 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RL-calf",
+   "status": "ok",
+   "value": "162 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 98 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RR-hip",
+   "status": "ok",
+   "value": "162 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 98 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RR-thigh",
+   "status": "ok",
+   "value": "180 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 80 mm to fold and tie"
+  },
+  {
+   "check": "reach",
+   "item": "S-RR-calf",
+   "status": "ok",
+   "value": "162 mm",
+   "limit": "≤ 250 mm",
+   "note": "260 mm supplied, 98 mm to fold and tie"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_14awg black",
+   "status": "ok",
+   "value": "360 mm",
+   "limit": "≤ 1000 mm",
+   "note": "Silicone wire 14 AWG / 2.5 mm², red + black, 1 m each"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_14awg red",
+   "status": "ok",
+   "value": "717 mm",
+   "limit": "≤ 1000 mm",
+   "note": "Silicone wire 14 AWG / 2.5 mm², red + black, 1 m each"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_18awg black",
+   "status": "ok",
+   "value": "886 mm",
+   "limit": "≤ 2000 mm",
+   "note": "Silicone wire 18 AWG / 0.75 mm², red + black (1 m each per unit)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_18awg red",
+   "status": "ok",
+   "value": "1022 mm",
+   "limit": "≤ 2000 mm",
+   "note": "Silicone wire 18 AWG / 0.75 mm², red + black (1 m each per unit)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg black",
+   "status": "ok",
+   "value": "838 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg blue",
+   "status": "ok",
+   "value": "312 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg green",
+   "status": "ok",
+   "value": "312 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg red",
+   "status": "ok",
+   "value": "838 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg white",
+   "status": "ok",
+   "value": "219 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "wire_22awg yellow",
+   "status": "ok",
+   "value": "312 mm",
+   "limit": "≤ 4000 mm",
+   "note": "Silicone wire 22 AWG (Pi 5 V feed with Dupont crimps, button, jumpers)"
+  },
+  {
+   "check": "wire stock",
+   "item": "spiral_wrap",
+   "status": "ok",
+   "value": "312 mm",
+   "limit": "≤ 5000 mm",
+   "note": "Spiral wrap, black PE, for bundles 4-10 mm (5-10 m)"
+  },
+  {
+   "check": "ready-made cables",
+   "item": "cable_ties",
+   "status": "ok",
+   "value": "30",
+   "limit": "≤ 100",
+   "note": "Cable ties 100 x 2.5 mm (100)"
+  },
+  {
+   "check": "ready-made cables",
+   "item": "camera_cable_300",
+   "status": "ok",
+   "value": "1",
+   "limit": "≤ 1",
+   "note": "Pi 5 camera cable 22→15 pin, 300 mm"
+  },
+  {
+   "check": "ready-made cables",
+   "item": "stemma_qt_female",
+   "status": "ok",
+   "value": "2",
+   "limit": "≤ 2",
+   "note": "STEMMA QT to female sockets cable, 150 mm (Adafruit 4397; IMU to PCA9685 and IMU to INA260)"
+  },
+  {
+   "check": "ready-made cables",
+   "item": "usb_a_c_short",
+   "status": "ok",
+   "value": "2",
+   "limit": "≤ 2",
+   "note": "USB-A to USB-C cable, 20 cm, 90° (Pi → XIAO, Pi → LiDAR adapter)"
+  },
+  {
+   "check": "hip loop",
+   "item": "front.thigh_tie.L → front.thigh_base.L",
+   "status": "ok",
+   "value": "30 mm",
+   "limit": "≥ 28.9 mm",
+   "note": "tie-to-tie 13.0–24.1 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "front.calf_tie.L → front.calf_base.L",
+   "status": "ok",
+   "value": "32 mm",
+   "limit": "≥ 30.7 mm",
+   "note": "tie-to-tie 20.0–25.6 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "front.thigh_tie.R → front.thigh_base.R",
+   "status": "ok",
+   "value": "30 mm",
+   "limit": "≥ 28.9 mm",
+   "note": "tie-to-tie 13.0–24.1 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "front.calf_tie.R → front.calf_base.R",
+   "status": "ok",
+   "value": "32 mm",
+   "limit": "≥ 30.7 mm",
+   "note": "tie-to-tie 20.0–25.6 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "rear.thigh_tie.L → rear.thigh_base.L",
+   "status": "ok",
+   "value": "22 mm",
+   "limit": "≥ 19.4 mm",
+   "note": "tie-to-tie 11.9–16.2 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "rear.calf_tie.L → rear.calf_base.L",
+   "status": "ok",
+   "value": "22 mm",
+   "limit": "≥ 19.4 mm",
+   "note": "tie-to-tie 11.9–16.1 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "rear.thigh_tie.R → rear.thigh_base.R",
+   "status": "ok",
+   "value": "22 mm",
+   "limit": "≥ 19.4 mm",
+   "note": "tie-to-tie 11.9–16.2 mm over the hip range"
+  },
+  {
+   "check": "hip loop",
+   "item": "rear.calf_tie.R → rear.calf_base.R",
+   "status": "ok",
+   "value": "22 mm",
+   "limit": "≥ 19.4 mm",
+   "note": "tie-to-tie 11.9–16.1 mm over the hip range"
+  },
+  {
+   "check": "port",
+   "item": "pca:10",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-thigh/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:11",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-thigh/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:12",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-hip/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:13",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-hip/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:14",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-hip/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:15",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-hip/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:4",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-calf/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:5",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-calf/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:6",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-calf/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:7",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-calf/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:8",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-thigh/signal"
+  },
+  {
+   "check": "port",
+   "item": "pca:9",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-thigh/signal"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p0.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W05"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p0.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W05"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p1.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p1.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p2.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p2.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p3.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p3.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FL-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p4.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W07/gnd"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.0.p4.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W07/vplus"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p0.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W07/gnd"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p0.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W07/vplus"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p1.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p1.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p2.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p2.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p3.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:front.1.p3.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-FR-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p0.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W06"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p0.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W06"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p1.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p1.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p2.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p2.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p3.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p3.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RL-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p4.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W08/gnd"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.0.p4.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W08/vplus"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p0.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W08/gnd"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p0.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "W08/vplus"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p1.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p1.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-hip/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p2.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p2.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-thigh/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p3.GND",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-calf/power"
+  },
+  {
+   "check": "port",
+   "item": "wago:rear.1.p3.V+",
+   "status": "ok",
+   "value": "1",
+   "limit": "1",
+   "note": "S-RR-calf/power"
+  },
+  {
+   "check": "through parts",
+   "item": "W00/red",
+   "status": "ok",
+   "value": "+1.07 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "W00/black",
+   "status": "ok",
+   "value": "+1.11 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "W01",
+   "status": "ok",
+   "value": "+0.89 mm",
+   "limit": "≥ 0",
+   "note": "nearest: lipo_2s_5000_gensace"
+  },
+  {
+   "check": "through parts",
+   "item": "W02",
+   "status": "ok",
+   "value": "+1.67 mm",
+   "limit": "≥ 0",
+   "note": "nearest: fuse_holder_ato"
+  },
+  {
+   "check": "through parts",
+   "item": "W02/arming",
+   "status": "ok",
+   "value": "+3.87 mm",
+   "limit": "≥ 0",
+   "note": "nearest: xt60h_female"
+  },
+  {
+   "check": "through parts",
+   "item": "W02/logic",
+   "status": "ok",
+   "value": "+1.18 mm",
+   "limit": "≥ 0",
+   "note": "nearest: fuse_holder_ato"
+  },
+  {
+   "check": "through parts",
+   "item": "W03",
+   "status": "ok",
+   "value": "+1.04 mm",
+   "limit": "≥ 0",
+   "note": "nearest: lipo_2s_5000_gensace"
+  },
+  {
+   "check": "through parts",
+   "item": "W03/front",
+   "status": "ok",
+   "value": "+0.90 mm",
+   "limit": "≥ 0",
+   "note": "nearest: xt60h_female"
+  },
+  {
+   "check": "through parts",
+   "item": "W03/rear",
+   "status": "ok",
+   "value": "+1.18 mm",
+   "limit": "≥ 0",
+   "note": "nearest: lipo_2s_5000_gensace"
+  },
+  {
+   "check": "through parts",
+   "item": "W04",
+   "status": "ok",
+   "value": "+1.06 mm",
+   "limit": "≥ 0",
+   "note": "nearest: bottom_shell"
+  },
+  {
+   "check": "through parts",
+   "item": "W04/front",
+   "status": "ok",
+   "value": "+1.06 mm",
+   "limit": "≥ 0",
+   "note": "nearest: bottom_shell"
+  },
+  {
+   "check": "through parts",
+   "item": "W04/rear",
+   "status": "ok",
+   "value": "+0.78 mm",
+   "limit": "≥ 0",
+   "note": "nearest: lipo_2s_5000_gensace"
+  },
+  {
+   "check": "through parts",
+   "item": "W04/logic",
+   "status": "ok",
+   "value": "+1.03 mm",
+   "limit": "≥ 0",
+   "note": "nearest: electronics_deck"
+  },
+  {
+   "check": "through parts",
+   "item": "W05",
+   "status": "ok",
+   "value": "+0.65 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "W06",
+   "status": "ok",
+   "value": "+0.73 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "W07/vplus",
+   "status": "ok",
+   "value": "+0.60 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "W07/gnd",
+   "status": "ok",
+   "value": "+1.08 mm",
+   "limit": "≥ 0",
+   "note": "nearest: servo_bus_holder_front"
+  },
+  {
+   "check": "through parts",
+   "item": "W08/vplus",
+   "status": "ok",
+   "value": "+0.60 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "W08/gnd",
+   "status": "ok",
+   "value": "+1.08 mm",
+   "limit": "≥ 0",
+   "note": "nearest: servo_bus_holder_rear"
+  },
+  {
+   "check": "through parts",
+   "item": "W09",
+   "status": "ok",
+   "value": "+0.83 mm",
+   "limit": "≥ 0",
+   "note": "nearest: outer_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "W10",
+   "status": "ok",
+   "value": "+2.20 mm",
+   "limit": "≥ 0",
+   "note": "nearest: cable_tie_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "W11",
+   "status": "ok",
+   "value": "+2.00 mm",
+   "limit": "≥ 0",
+   "note": "nearest: pololu_d36v50f5"
+  },
+  {
+   "check": "through parts",
+   "item": "W24",
+   "status": "ok",
+   "value": "+2.20 mm",
+   "limit": "≥ 0",
+   "note": "nearest: cable_tie_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "W12",
+   "status": "ok",
+   "value": "+2.92 mm",
+   "limit": "≥ 0",
+   "note": "nearest: pololu_d36v50f5"
+  },
+  {
+   "check": "through parts",
+   "item": "W13",
+   "status": "ok",
+   "value": "+0.91 mm",
+   "limit": "≥ 0",
+   "note": "nearest: raspberry_pi_5"
+  },
+  {
+   "check": "through parts",
+   "item": "W14",
+   "status": "ok",
+   "value": "+4.89 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "W15",
+   "status": "ok",
+   "value": "+0.89 mm",
+   "limit": "≥ 0",
+   "note": "nearest: raspberry_pi_5"
+  },
+  {
+   "check": "through parts",
+   "item": "W16",
+   "status": "ok",
+   "value": "+0.77 mm",
+   "limit": "≥ 0",
+   "note": "nearest: front_shell_display"
+  },
+  {
+   "check": "through parts",
+   "item": "W17",
+   "status": "ok",
+   "value": "+0.82 mm",
+   "limit": "≥ 0",
+   "note": "nearest: raspberry_pi_5"
+  },
+  {
+   "check": "through parts",
+   "item": "W18",
+   "status": "ok",
+   "value": "+0.70 mm",
+   "limit": "≥ 0",
+   "note": "nearest: electronics_deck"
+  },
+  {
+   "check": "through parts",
+   "item": "W19",
+   "status": "ok",
+   "value": "+0.63 mm",
+   "limit": "≥ 0",
+   "note": "nearest: adafruit_pca9685"
+  },
+  {
+   "check": "through parts",
+   "item": "W20",
+   "status": "ok",
+   "value": "+1.88 mm",
+   "limit": "≥ 0",
+   "note": "nearest: raspberry_pi_5"
+  },
+  {
+   "check": "through parts",
+   "item": "W21",
+   "status": "ok",
+   "value": "+2.81 mm",
+   "limit": "≥ 0",
+   "note": "nearest: outer_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "W22",
+   "status": "ok",
+   "value": "+1.08 mm",
+   "limit": "≥ 0",
+   "note": "nearest: raspberry_pi_5"
+  },
+  {
+   "check": "through parts",
+   "item": "W23",
+   "status": "ok",
+   "value": "+0.89 mm",
+   "limit": "≥ 0",
+   "note": "nearest: rplidar_c1"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-hip",
+   "status": "ok",
+   "value": "+0.80 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-hip/power",
+   "status": "ok",
+   "value": "+0.72 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-FL-hip/power",
+   "status": "ok",
+   "value": "1.20 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-hip/signal",
+   "status": "ok",
+   "value": "+1.06 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-thigh",
+   "status": "ok",
+   "value": "+3.34 mm",
+   "limit": "≥ 0",
+   "note": "nearest: left_servo_mount_fl"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-thigh/power",
+   "status": "ok",
+   "value": "+0.72 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-FL-thigh/power",
+   "status": "ok",
+   "value": "1.19 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-thigh/signal",
+   "status": "ok",
+   "value": "+1.14 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-calf",
+   "status": "ok",
+   "value": "+1.17 mm",
+   "limit": "≥ 0",
+   "note": "nearest: servo_spt5435lv"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-calf/power",
+   "status": "ok",
+   "value": "+0.63 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-FL-calf/power",
+   "status": "ok",
+   "value": "1.20 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FL-calf/signal",
+   "status": "ok",
+   "value": "+1.31 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-hip",
+   "status": "ok",
+   "value": "+1.29 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-hip/power",
+   "status": "ok",
+   "value": "+0.54 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-FR-hip/power",
+   "status": "ok",
+   "value": "1.60 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-hip/signal",
+   "status": "ok",
+   "value": "+1.07 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-thigh",
+   "status": "ok",
+   "value": "+3.58 mm",
+   "limit": "≥ 0",
+   "note": "nearest: right_servo_mount_fr"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-thigh/power",
+   "status": "ok",
+   "value": "+0.89 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-thigh/signal",
+   "status": "ok",
+   "value": "+1.17 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-calf",
+   "status": "ok",
+   "value": "+1.04 mm",
+   "limit": "≥ 0",
+   "note": "nearest: servo_spt5435lv"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-calf/power",
+   "status": "ok",
+   "value": "+0.46 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "S-FR-calf/signal",
+   "status": "ok",
+   "value": "+1.33 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-hip",
+   "status": "ok",
+   "value": "+3.34 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-hip/power",
+   "status": "ok",
+   "value": "+0.79 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-hip/signal",
+   "status": "ok",
+   "value": "+1.22 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-thigh",
+   "status": "ok",
+   "value": "+1.41 mm",
+   "limit": "≥ 0",
+   "note": "nearest: right_servo_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-thigh/power",
+   "status": "ok",
+   "value": "+0.41 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RL-thigh/power",
+   "status": "ok",
+   "value": "1.18 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-thigh/signal",
+   "status": "ok",
+   "value": "+0.63 mm",
+   "limit": "≥ 0",
+   "note": "nearest: fuse_holder_ato"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RL-thigh/signal",
+   "status": "ok",
+   "value": "1.79 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-calf",
+   "status": "ok",
+   "value": "+1.65 mm",
+   "limit": "≥ 0",
+   "note": "nearest: right_servo_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-calf/power",
+   "status": "ok",
+   "value": "+0.66 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RL-calf/power",
+   "status": "ok",
+   "value": "1.38 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RL-calf/signal",
+   "status": "ok",
+   "value": "+1.99 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RL-calf/signal",
+   "status": "ok",
+   "value": "1.79 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-hip",
+   "status": "ok",
+   "value": "+3.33 mm",
+   "limit": "≥ 0",
+   "note": "nearest: inner_shoulder_frame"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-hip/power",
+   "status": "ok",
+   "value": "+0.42 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-hip/signal",
+   "status": "ok",
+   "value": "+1.25 mm",
+   "limit": "≥ 0",
+   "note": "nearest: top_shell_sensor"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-thigh",
+   "status": "ok",
+   "value": "+1.68 mm",
+   "limit": "≥ 0",
+   "note": "nearest: left_servo_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-thigh/power",
+   "status": "ok",
+   "value": "+0.85 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RR-thigh/power",
+   "status": "ok",
+   "value": "1.67 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-thigh/signal",
+   "status": "ok",
+   "value": "+0.71 mm",
+   "limit": "≥ 0",
+   "note": "nearest: fuse_holder_ato"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RR-thigh/signal",
+   "status": "ok",
+   "value": "1.76 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-calf",
+   "status": "ok",
+   "value": "+1.46 mm",
+   "limit": "≥ 0",
+   "note": "nearest: left_servo_mount"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-calf/power",
+   "status": "ok",
+   "value": "+0.50 mm",
+   "limit": "≥ 0",
+   "note": "nearest: wago_221_415"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RR-calf/power",
+   "status": "ok",
+   "value": "1.34 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  },
+  {
+   "check": "through parts",
+   "item": "S-RR-calf/signal",
+   "status": "ok",
+   "value": "+1.03 mm",
+   "limit": "≥ 0",
+   "note": "nearest: fuse_holder_ato"
+  },
+  {
+   "check": "moving parts",
+   "item": "S-RR-calf/signal",
+   "status": "ok",
+   "value": "1.79 mm",
+   "limit": "≥ 1.0 mm",
+   "note": "servo_spt5435lv (hips_in)"
+  }
+ ],
+ "cut_list": [
+  {
+   "run": "W00/red",
+   "cable": "W00",
+   "type": "battery_core_red",
+   "from": "battery.lead_red",
+   "to": "xt60_battery.pack_red",
+   "routed_mm": 41.5,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W00/black",
+   "cable": "W00",
+   "type": "battery_core_black",
+   "from": "battery.lead_black",
+   "to": "xt60_battery.pack_black",
+   "routed_mm": 53.1,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W01",
+   "cable": "W01",
+   "type": "wire_14awg_red",
+   "from": "xt60_battery.robot_red",
+   "to": "fuse_main.in",
+   "routed_mm": 128.8,
+   "terminations_mm": 12.0,
+   "cut_mm": 151
+  },
+  {
+   "run": "W02",
+   "cable": "W02",
+   "type": "wire_14awg_red",
+   "from": "fuse_main.out",
+   "to": "back.splice",
+   "routed_mm": 46.3,
+   "terminations_mm": 6.0,
+   "cut_mm": 62
+  },
+  {
+   "run": "W02/arming",
+   "cable": "W02",
+   "type": "wire_14awg_red",
+   "from": "back.splice",
+   "to": "xt60_arming.cups",
+   "routed_mm": 10.0,
+   "terminations_mm": 6.0,
+   "cut_mm": 26
+  },
+  {
+   "run": "W02/logic",
+   "cable": "W02",
+   "type": "fuse_holder_lead",
+   "from": "back.splice",
+   "to": "fuse_logic.in",
+   "routed_mm": 35.5,
+   "terminations_mm": 6.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W03",
+   "cable": "W03",
+   "type": "wire_14awg_red",
+   "from": "xt60_arming.cups",
+   "to": "mid.ubec_split",
+   "routed_mm": 163.0,
+   "terminations_mm": 6.0,
+   "cut_mm": 182
+  },
+  {
+   "run": "W03/front",
+   "cable": "W03",
+   "type": "wire_14awg_red",
+   "from": "mid.ubec_split",
+   "to": "ubec_front.in",
+   "routed_mm": 67.6,
+   "terminations_mm": 6.0,
+   "cut_mm": 84
+  },
+  {
+   "run": "W03/rear",
+   "cable": "W03",
+   "type": "wire_14awg_red",
+   "from": "mid.ubec_split",
+   "to": "ubec_rear.in",
+   "routed_mm": 191.1,
+   "terminations_mm": 6.0,
+   "cut_mm": 212
+  },
+  {
+   "run": "W04",
+   "cable": "W04",
+   "type": "wire_14awg_black",
+   "from": "xt60_battery.robot_black",
+   "to": "mid.ground_star",
+   "routed_mm": 50.1,
+   "terminations_mm": 6.0,
+   "cut_mm": 66
+  },
+  {
+   "run": "W04/front",
+   "cable": "W04",
+   "type": "wire_14awg_black",
+   "from": "mid.ground_star",
+   "to": "ubec_front.in",
+   "routed_mm": 59.0,
+   "terminations_mm": 6.0,
+   "cut_mm": 75
+  },
+  {
+   "run": "W04/rear",
+   "cable": "W04",
+   "type": "wire_14awg_black",
+   "from": "mid.ground_star",
+   "to": "ubec_rear.in",
+   "routed_mm": 197.3,
+   "terminations_mm": 6.0,
+   "cut_mm": 219
+  },
+  {
+   "run": "W04/logic",
+   "cable": "W04",
+   "type": "wire_18awg_black",
+   "from": "mid.ground_star",
+   "to": "switch.vin",
+   "routed_mm": 202.4,
+   "terminations_mm": 7.0,
+   "cut_mm": 226
+  },
+  {
+   "run": "W05",
+   "cable": "W05",
+   "type": "wire_18awg_pair",
+   "from": "ubec_front.out",
+   "to": "wago:front.0.p0",
+   "routed_mm": 200.8,
+   "terminations_mm": 17.0,
+   "cut_mm": 234
+  },
+  {
+   "run": "W06",
+   "cable": "W06",
+   "type": "wire_18awg_pair",
+   "from": "ubec_rear.out",
+   "to": "wago:rear.0.p0",
+   "routed_mm": 151.3,
+   "terminations_mm": 17.0,
+   "cut_mm": 180
+  },
+  {
+   "run": "W07/vplus",
+   "cable": "W07",
+   "type": "wire_18awg_red",
+   "from": "wago:front.0.p4.V+",
+   "to": "wago:front.1.p0.V+",
+   "routed_mm": 14.8,
+   "terminations_mm": 22.0,
+   "cut_mm": 47
+  },
+  {
+   "run": "W07/gnd",
+   "cable": "W07",
+   "type": "wire_18awg_black",
+   "from": "wago:front.0.p4.GND",
+   "to": "wago:front.1.p0.GND",
+   "routed_mm": 17.0,
+   "terminations_mm": 22.0,
+   "cut_mm": 49
+  },
+  {
+   "run": "W08/vplus",
+   "cable": "W08",
+   "type": "wire_18awg_red",
+   "from": "wago:rear.0.p4.V+",
+   "to": "wago:rear.1.p0.V+",
+   "routed_mm": 14.8,
+   "terminations_mm": 22.0,
+   "cut_mm": 47
+  },
+  {
+   "run": "W08/gnd",
+   "cable": "W08",
+   "type": "wire_18awg_black",
+   "from": "wago:rear.0.p4.GND",
+   "to": "wago:rear.1.p0.GND",
+   "routed_mm": 17.0,
+   "terminations_mm": 22.0,
+   "cut_mm": 49
+  },
+  {
+   "run": "W09",
+   "cable": "W09",
+   "type": "wire_18awg_red",
+   "from": "fuse_logic.out",
+   "to": "switch.vin",
+   "routed_mm": 256.0,
+   "terminations_mm": 13.0,
+   "cut_mm": 290
+  },
+  {
+   "run": "W10",
+   "cable": "W10",
+   "type": "wire_18awg_red",
+   "from": "switch.vout",
+   "to": "ina.vin",
+   "routed_mm": 132.8,
+   "terminations_mm": 14.0,
+   "cut_mm": 157
+  },
+  {
+   "run": "W11",
+   "cable": "W11",
+   "type": "wire_18awg_red",
+   "from": "ina.vin",
+   "to": "reg.vin",
+   "routed_mm": 43.7,
+   "terminations_mm": 13.0,
+   "cut_mm": 67
+  },
+  {
+   "run": "W24",
+   "cable": "W24",
+   "type": "wire_18awg_black",
+   "from": "switch.vout",
+   "to": "reg.vin",
+   "routed_mm": 124.9,
+   "terminations_mm": 13.0,
+   "cut_mm": 148
+  },
+  {
+   "run": "W12",
+   "cable": "W12",
+   "type": "wire_22awg_quad",
+   "from": "reg.vout",
+   "to": "pi.gpio_power",
+   "routed_mm": 103.8,
+   "terminations_mm": 9.0,
+   "cut_mm": 123
+  },
+  {
+   "run": "W13",
+   "cable": "W13",
+   "type": "wire_22awg_pair",
+   "from": "button.terminals",
+   "to": "switch.ab",
+   "routed_mm": 247.9,
+   "terminations_mm": 12.0,
+   "cut_mm": 280
+  },
+  {
+   "run": "W14",
+   "cable": "W14",
+   "type": "usb_a_c",
+   "from": "pi.usb_low",
+   "to": "xiao.usb",
+   "routed_mm": 21.5,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W15",
+   "cable": "W15",
+   "type": "usb_a_c",
+   "from": "pi.usb_high",
+   "to": "lidar_adapter.usb",
+   "routed_mm": 145.4,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W16",
+   "cable": "W16",
+   "type": "camera_ffc",
+   "from": "pi.cam0",
+   "to": "camera.ffc",
+   "routed_mm": 167.3,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W17",
+   "cable": "W17",
+   "type": "wire_22awg_i2c",
+   "from": "xiao.pins",
+   "to": "pca.header_left",
+   "routed_mm": 280.1,
+   "terminations_mm": 9.0,
+   "cut_mm": 312
+  },
+  {
+   "run": "W18",
+   "cable": "W18",
+   "type": "stemma_qt",
+   "from": "pca.header_right",
+   "to": "imu.qt_right",
+   "routed_mm": 95.9,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W19",
+   "cable": "W19",
+   "type": "stemma_qt",
+   "from": "imu.qt_left",
+   "to": "ina.header",
+   "routed_mm": 125.3,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W20",
+   "cable": "W20",
+   "type": "wire_22awg_green",
+   "from": "xiao.pins",
+   "to": "pca.header_left",
+   "routed_mm": 280.1,
+   "terminations_mm": 9.0,
+   "cut_mm": 312
+  },
+  {
+   "run": "W21",
+   "cable": "W21",
+   "type": "lcd_cable",
+   "from": "lcd.connector",
+   "to": "xiao.pins",
+   "routed_mm": 52.9,
+   "terminations_mm": 6.0,
+   "cut_mm": null
+  },
+  {
+   "run": "W22",
+   "cable": "W22",
+   "type": "wire_22awg_white",
+   "from": "pi.gpio_poweroff",
+   "to": "switch.ab",
+   "routed_mm": 194.5,
+   "terminations_mm": 9.0,
+   "cut_mm": 219
+  },
+  {
+   "run": "W23",
+   "cable": "W23",
+   "type": "lidar_cable",
+   "from": "lidar.cable",
+   "to": "lidar_adapter.sensor",
+   "routed_mm": 57.2,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FL-hip",
+   "cable": "S-FL-hip",
+   "type": "servo_lead",
+   "from": "servo:FL.hip",
+   "to": "front.opening",
+   "routed_mm": 62.5,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FL-hip/power",
+   "cable": "S-FL-hip",
+   "type": "servo_power",
+   "from": "front.opening",
+   "to": "wago:front.0.p1",
+   "routed_mm": 93.3,
+   "terminations_mm": 11.0,
+   "cut_mm": 114
+  },
+  {
+   "run": "S-FL-hip/signal",
+   "cable": "S-FL-hip",
+   "type": "servo_signal",
+   "from": "front.opening",
+   "to": "pca:15",
+   "routed_mm": 133.6,
+   "terminations_mm": 3.0,
+   "cut_mm": 147
+  },
+  {
+   "run": "S-FL-thigh",
+   "cable": "S-FL-thigh",
+   "type": "servo_lead",
+   "from": "servo:FL.thigh",
+   "to": "front.thigh_base.L",
+   "routed_mm": 34.9,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FL-thigh/power",
+   "cable": "S-FL-thigh",
+   "type": "servo_power",
+   "from": "front.thigh_base.L",
+   "to": "wago:front.0.p2",
+   "routed_mm": 59.1,
+   "terminations_mm": 11.0,
+   "cut_mm": 80
+  },
+  {
+   "run": "S-FL-thigh/signal",
+   "cable": "S-FL-thigh",
+   "type": "servo_signal",
+   "from": "front.thigh_base.L",
+   "to": "pca:11",
+   "routed_mm": 147.6,
+   "terminations_mm": 3.0,
+   "cut_mm": 162
+  },
+  {
+   "run": "S-FL-calf",
+   "cable": "S-FL-calf",
+   "type": "servo_lead",
+   "from": "servo:FL.calf",
+   "to": "front.calf_base.L",
+   "routed_mm": 54.9,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FL-calf/power",
+   "cable": "S-FL-calf",
+   "type": "servo_power",
+   "from": "front.calf_base.L",
+   "to": "wago:front.0.p3",
+   "routed_mm": 29.3,
+   "terminations_mm": 11.0,
+   "cut_mm": 50
+  },
+  {
+   "run": "S-FL-calf/signal",
+   "cable": "S-FL-calf",
+   "type": "servo_signal",
+   "from": "front.calf_base.L",
+   "to": "pca:7",
+   "routed_mm": 171.2,
+   "terminations_mm": 3.0,
+   "cut_mm": 188
+  },
+  {
+   "run": "S-FR-hip",
+   "cable": "S-FR-hip",
+   "type": "servo_lead",
+   "from": "servo:FR.hip",
+   "to": "front.opening",
+   "routed_mm": 52.8,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FR-hip/power",
+   "cable": "S-FR-hip",
+   "type": "servo_power",
+   "from": "front.opening",
+   "to": "wago:front.1.p1",
+   "routed_mm": 58.2,
+   "terminations_mm": 11.0,
+   "cut_mm": 79
+  },
+  {
+   "run": "S-FR-hip/signal",
+   "cable": "S-FR-hip",
+   "type": "servo_signal",
+   "from": "front.opening",
+   "to": "pca:14",
+   "routed_mm": 131.2,
+   "terminations_mm": 3.0,
+   "cut_mm": 145
+  },
+  {
+   "run": "S-FR-thigh",
+   "cable": "S-FR-thigh",
+   "type": "servo_lead",
+   "from": "servo:FR.thigh",
+   "to": "front.thigh_base.R",
+   "routed_mm": 34.9,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FR-thigh/power",
+   "cable": "S-FR-thigh",
+   "type": "servo_power",
+   "from": "front.thigh_base.R",
+   "to": "wago:front.1.p2",
+   "routed_mm": 60.2,
+   "terminations_mm": 11.0,
+   "cut_mm": 81
+  },
+  {
+   "run": "S-FR-thigh/signal",
+   "cable": "S-FR-thigh",
+   "type": "servo_signal",
+   "from": "front.thigh_base.R",
+   "to": "pca:10",
+   "routed_mm": 139.5,
+   "terminations_mm": 3.0,
+   "cut_mm": 154
+  },
+  {
+   "run": "S-FR-calf",
+   "cable": "S-FR-calf",
+   "type": "servo_lead",
+   "from": "servo:FR.calf",
+   "to": "front.calf_base.R",
+   "routed_mm": 54.9,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-FR-calf/power",
+   "cable": "S-FR-calf",
+   "type": "servo_power",
+   "from": "front.calf_base.R",
+   "to": "wago:front.1.p3",
+   "routed_mm": 64.7,
+   "terminations_mm": 11.0,
+   "cut_mm": 86
+  },
+  {
+   "run": "S-FR-calf/signal",
+   "cable": "S-FR-calf",
+   "type": "servo_signal",
+   "from": "front.calf_base.R",
+   "to": "pca:6",
+   "routed_mm": 169.2,
+   "terminations_mm": 3.0,
+   "cut_mm": 186
+  },
+  {
+   "run": "S-RL-hip",
+   "cable": "S-RL-hip",
+   "type": "servo_lead",
+   "from": "servo:RL.hip",
+   "to": "rear.opening",
+   "routed_mm": 58.6,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RL-hip/power",
+   "cable": "S-RL-hip",
+   "type": "servo_power",
+   "from": "rear.opening",
+   "to": "wago:rear.0.p1",
+   "routed_mm": 49.9,
+   "terminations_mm": 11.0,
+   "cut_mm": 71
+  },
+  {
+   "run": "S-RL-hip/signal",
+   "cable": "S-RL-hip",
+   "type": "servo_signal",
+   "from": "rear.opening",
+   "to": "pca:13",
+   "routed_mm": 77.5,
+   "terminations_mm": 3.0,
+   "cut_mm": 90
+  },
+  {
+   "run": "S-RL-thigh",
+   "cable": "S-RL-thigh",
+   "type": "servo_lead",
+   "from": "servo:RL.thigh",
+   "to": "rear.thigh_base.L",
+   "routed_mm": 27.4,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RL-thigh/power",
+   "cable": "S-RL-thigh",
+   "type": "servo_power",
+   "from": "rear.thigh_base.L",
+   "to": "wago:rear.0.p2",
+   "routed_mm": 57.2,
+   "terminations_mm": 11.0,
+   "cut_mm": 78
+  },
+  {
+   "run": "S-RL-thigh/signal",
+   "cable": "S-RL-thigh",
+   "type": "servo_signal",
+   "from": "rear.thigh_base.L",
+   "to": "pca:9",
+   "routed_mm": 138.1,
+   "terminations_mm": 3.0,
+   "cut_mm": 152
+  },
+  {
+   "run": "S-RL-calf",
+   "cable": "S-RL-calf",
+   "type": "servo_lead",
+   "from": "servo:RL.calf",
+   "to": "rear.calf_base.L",
+   "routed_mm": 44.6,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RL-calf/power",
+   "cable": "S-RL-calf",
+   "type": "servo_power",
+   "from": "rear.calf_base.L",
+   "to": "wago:rear.0.p3",
+   "routed_mm": 22.2,
+   "terminations_mm": 11.0,
+   "cut_mm": 43
+  },
+  {
+   "run": "S-RL-calf/signal",
+   "cable": "S-RL-calf",
+   "type": "servo_signal",
+   "from": "rear.calf_base.L",
+   "to": "pca:5",
+   "routed_mm": 103.8,
+   "terminations_mm": 3.0,
+   "cut_mm": 117
+  },
+  {
+   "run": "S-RR-hip",
+   "cable": "S-RR-hip",
+   "type": "servo_lead",
+   "from": "servo:RR.hip",
+   "to": "rear.opening",
+   "routed_mm": 58.6,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RR-hip/power",
+   "cable": "S-RR-hip",
+   "type": "servo_power",
+   "from": "rear.opening",
+   "to": "wago:rear.1.p1",
+   "routed_mm": 82.4,
+   "terminations_mm": 11.0,
+   "cut_mm": 103
+  },
+  {
+   "run": "S-RR-hip/signal",
+   "cable": "S-RR-hip",
+   "type": "servo_signal",
+   "from": "rear.opening",
+   "to": "pca:12",
+   "routed_mm": 75.5,
+   "terminations_mm": 3.0,
+   "cut_mm": 88
+  },
+  {
+   "run": "S-RR-thigh",
+   "cable": "S-RR-thigh",
+   "type": "servo_lead",
+   "from": "servo:RR.thigh",
+   "to": "rear.thigh_base.R",
+   "routed_mm": 27.4,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RR-thigh/power",
+   "cable": "S-RR-thigh",
+   "type": "servo_power",
+   "from": "rear.thigh_base.R",
+   "to": "wago:rear.1.p2",
+   "routed_mm": 46.1,
+   "terminations_mm": 11.0,
+   "cut_mm": 67
+  },
+  {
+   "run": "S-RR-thigh/signal",
+   "cable": "S-RR-thigh",
+   "type": "servo_signal",
+   "from": "rear.thigh_base.R",
+   "to": "pca:8",
+   "routed_mm": 138.5,
+   "terminations_mm": 3.0,
+   "cut_mm": 153
+  },
+  {
+   "run": "S-RR-calf",
+   "cable": "S-RR-calf",
+   "type": "servo_lead",
+   "from": "servo:RR.calf",
+   "to": "rear.calf_base.R",
+   "routed_mm": 44.6,
+   "terminations_mm": 0.0,
+   "cut_mm": null
+  },
+  {
+   "run": "S-RR-calf/power",
+   "cable": "S-RR-calf",
+   "type": "servo_power",
+   "from": "rear.calf_base.R",
+   "to": "wago:rear.1.p3",
+   "routed_mm": 60.4,
+   "terminations_mm": 11.0,
+   "cut_mm": 81
+  },
+  {
+   "run": "S-RR-calf/signal",
+   "cable": "S-RR-calf",
+   "type": "servo_signal",
+   "from": "rear.calf_base.R",
+   "to": "pca:4",
+   "routed_mm": 104.2,
+   "terminations_mm": 3.0,
+   "cut_mm": 117
+  }
+ ]
+}

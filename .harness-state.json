@@ -1,0 +1,139 @@
+{
+  "harness": ".harness",
+  "commit": "8726119beebbad61b98ef62e7182d570590fa171",
+  "profile": "checks",
+  "artifacts": [
+    {
+      "path": ".harness-config.json",
+      "kind": "seed"
+    },
+    {
+      "path": ".github/workflows/harness.yml",
+      "kind": "copy"
+    },
+    {
+      "path": ".githooks/pre-commit",
+      "kind": "copy"
+    },
+    {
+      "path": "AGENTS.md",
+      "kind": "managed"
+    },
+    {
+      "path": "CLAUDE.md",
+      "kind": "managed"
+    },
+    {
+      "path": ".gitignore",
+      "kind": "managed"
+    },
+    {
+      "path": ".claude/settings.json",
+      "kind": "json"
+    },
+    {
+      "path": ".claude/output-styles/terse.md",
+      "kind": "copy"
+    },
+    {
+      "path": ".codex/hooks.json",
+      "kind": "json"
+    },
+    {
+      "path": ".mcp.json",
+      "kind": "json"
+    },
+    {
+      "path": ".codex/config.toml",
+      "kind": "managed"
+    },
+    {
+      "path": ".claude/skills/grill-with-docs",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/grill-with-docs",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/grilling",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/grilling",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/handoff",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/handoff",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/impeccable",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/impeccable",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/research",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/research",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/software-engineering",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/software-engineering",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/to-spec",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/to-spec",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/to-tickets",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/to-tickets",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/wayfinder",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/wayfinder",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/skills/writing-for-agents",
+      "kind": "symlink"
+    },
+    {
+      "path": ".agents/skills/writing-for-agents",
+      "kind": "symlink"
+    },
+    {
+      "path": ".claude/agents/reviewer.md",
+      "kind": "symlink"
+    },
+    {
+      "path": ".codex/agents/reviewer.toml",
+      "kind": "symlink"
+    }
+  ]
+}
