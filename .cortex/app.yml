@@ -18,6 +18,8 @@ workspace: strido
 version: "0.3"
 repo: Xpitfire/strido
 ref: main
+placement:
+  node: local                        # the primary node, where the previous (Yertle-X) deployment ran
 compose_files:
   - docker-compose.docs.yml
   - docker-compose.cortex.yml        # access network aliases, assistant env files
