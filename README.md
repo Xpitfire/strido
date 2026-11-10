@@ -40,7 +40,8 @@ The documentation site (`make docs`, http://127.0.0.1:4173) renders all of this 
 ## Develop
 
 ```bash
-make setup          # uv workspace (Python 3.12), docs site, harness (hooks, skills, MCP config)
+make setup-standalone   # uv workspace (Python 3.12) and docs site: everything you need to build, verify and publish
+make setup              # NT-X maintainers: also the agent harness (.harness, a private submodule)
 make check-fast     # Q0: lint, strict types, layers, drift, tests, firmware native tests
 make verify         # Q1: CAD verification (interference, ROM, fits, strength, clearance, wiring, sensors) ~15 min
 make smoke          # Q2: MuJoCo walk, MCP server, NT-X integration
